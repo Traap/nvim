@@ -1,0 +1,8 @@
+local utils = require('utils')
+utils.map('n', '<Leader>gc', '<cmd>G commit<CR>')
+utils.map('n', '<Leader>gd', '<cmd>G diff<CR>')
+utils.map('n', '<Leader>gh', '<cmd>silent vert bo help fugitive<cr>')
+utils.map('n', '<Leader>gl', '<cmd>G log<CR>')
+utils.map('n', '<Leader>gP', '<cmd>G pull<CR>')
+utils.map('n', '<Leader>gp', '<cmd>G push<CR>')
+utils.map('n', '<Leader>gs', '<cmd>G status<CR>')
