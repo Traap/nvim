@@ -83,9 +83,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = false,
@@ -100,6 +112,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  ["telescope-media-files.nvim"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/telescope.nvim"
@@ -107,6 +123,10 @@ _G.packer_plugins = {
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-devicons"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-devicons"
   },
   ["vim-dispatch"] = {
     loaded = true,
@@ -119,6 +139,10 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-ripgrep"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-ripgrep"
   },
   ["vim-surround"] = {
     loaded = true,

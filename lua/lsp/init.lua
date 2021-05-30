@@ -61,26 +61,18 @@ for _, lang in ipairs(servers) do
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ vls conf example
-
-local vls_binary = "/usr/local/bin/vls"
-lspconf.vls.setup {
-  cmd = {vls_binary}
-}
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Common On Attach 
 
-function lsp_config.common_on_attach(client, bufnr)
-  -- print('client: ', client)
-  -- print(' bufnr: ', bufnr)
-  documentHighlight(client, bufnr)
-end
+-- function lsp_config.common_on_attach(client, bufnr)
+--   -- print('client: ', client)
+--   -- print(' bufnr: ', bufnr)
+--   documentHighlight(client, bufnr)
+-- end
 
-function lsp_config.tsserver_on_attach(client, bufnr)
-  lsp_config.common_on_attach(client, bufnr)
-  client.resolved_capabilities.document_formatting = false
-end
+-- function lsp_config.tsserver_on_attach(client, bufnr)
+--   lsp_config.common_on_attach(client, bufnr)
+--   client.resolved_capabilities.document_formatting = false
+-- end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Require Language Servers 
@@ -89,7 +81,7 @@ end
 -- require('lsp.html-ls')
 -- require('lsp.json-ls')
 -- require('lsp.latex-ls')
--- require('lsp.lua-ls')
+ require('lsp.lua-ls')
 -- require('lsp.python-ls')
 -- require('lsp.ruby-ls')
 -- require('lsp.rust-ls')

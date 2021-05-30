@@ -1,3 +1,12 @@
+-- {{{ Map leader to space
+
+local g = vim.g
+     g.mapleader = [[ ]]
+g.maplocalleader = [[ ]]
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Keybindings 
+
 local utils = require('utils')
 local   map = utils.map
 
@@ -7,9 +16,13 @@ map('n', '<leader><space>', '<cmd>noh<CR>')
 -- Find files using Telescope command-line suggar.
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-map('n', '<c-n>', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
+
+-- nvim-tree
+map('n', '<c-n>',       '<cmd>NvimTreeToggle<cr>')
+map('n', '<leader>nr',  '<cmd>NvimTreeRefresh<cr>')
+map('n', '<leader>nf',  '<cmd>NvimTreeFindFile<cr>')
 
 -- Buffer resize
 map('n', '<a-H>', '<cmd>vertical resize -1<cr>')
@@ -50,3 +63,5 @@ map('n', '<leader>wr', '<cmd>%s/\r//g<cr>')
 
 -- KJV verse lookup.
 map('n', 'gk', '<cmd>exec "r!kjv -b -d -w -65" getreg("k")<cr>')
+
+-- ------------------------------------------------------------------------- }}}
