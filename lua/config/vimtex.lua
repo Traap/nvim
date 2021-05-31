@@ -19,7 +19,7 @@ g.vimtex_view_enabled = 1
 --   'Underfull'
 --   }
 
-g.vimtex_compiler_progname="nrv"
+g.vimtex_compiler_progname="nvr"
 g.vimtex_view_general_viewer = 'okular'
 -- g.vimtex_compiler_latexmk = {
 --   'backend': 'jobs', 
