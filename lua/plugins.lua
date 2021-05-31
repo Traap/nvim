@@ -37,23 +37,15 @@ return require('packer').startup(function()
   use { 'kyazdani42/nvim-web-devicons' }
   use { 'ryanoasis/vim-devicons' }
 
+  -- LaTeX and Wiki
+ use { 'lervag/vimtex' }
+ use { 'lervag/wiki-ft.vim' }
+ use { 'lervag/wiki.vim' }
+
   -- RipGrep
   use { 'jremmen/vim-ripgrep' }
 
   -- Easyaling
   use { 'junegunn/vim-easy-align' }
-
-  -- Load personalizations. 
-  local configs = {
-    'settings',
-    'keymappings',
-    'config.colorscheme',
-    'config.completions',
-    'config.fugitive',
-    'config.nvim-tree'
-  }
-  for _, cfg in ipairs(configs) do
-    require(cfg)
-  end
 
 end)

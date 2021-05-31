@@ -132,6 +132,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-dispatch"
   },
+  ["vim-easy-align"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-easy-align"
+  },
   ["vim-endwise"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-endwise"
@@ -151,6 +155,18 @@ _G.packer_plugins = {
   ["vim-unimpaired"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-unimpaired"
+  },
+  vimtex = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/vimtex"
+  },
+  ["wiki-ft.vim"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/wiki-ft.vim"
+  },
+  ["wiki.vim"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/wiki.vim"
   }
 }
 
