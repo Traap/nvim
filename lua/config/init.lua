@@ -2,6 +2,7 @@
 
 require 'config.compe-completion'
 require 'config.file-icons'
+require 'config.galaxyline-nvim'
 require 'config.keymappings'
 require 'config.nvim-tree'
 require 'config.settings'

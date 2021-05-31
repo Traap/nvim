@@ -25,6 +25,11 @@ keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
 keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
 keymap('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', opts)
 
+-- Media files.
+require("telescope").load_extension("media_files")
+keymap("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opts)
+
+
 -- nvim-tree
 keymap('n', '<c-n>',       '<cmd>NvimTreeToggle<cr>', opts)
 keymap('n', '<leader>nr',  '<cmd>NvimTreeRefresh<cr>', opts)
@@ -82,5 +87,6 @@ keymap('n', '<Leader>gs', '<cmd>G status<CR>', opts)
 -- <Tab> to navigate the completion menu
 keymap('n', '<S-Tab>', 'pumvisible() ? [[\\<C-p>" : "\\<Tab>"', {expr = true})
 keymap('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
+
 
  -------------------------------------------------------------------------  }}}

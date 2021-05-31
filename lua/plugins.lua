@@ -41,7 +41,7 @@ return require('packer').startup(
     -- File manager
     use 'kyazdani42/nvim-tree.lua'
     use 'kyazdani42/nvim-web-devicons'
-    use 'ryanoasis/vim-devicons'
+    use 'glepnir/galaxyline.nvim'
 
     -- LaTeX and Wiki
     use 'lervag/vimtex'

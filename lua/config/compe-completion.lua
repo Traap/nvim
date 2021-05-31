@@ -1,4 +1,10 @@
-vim.o.completeopt = "menuone,noselect"
+-- Alias to vim functions.
+
+local function keymap(...) vim.api.nvim_set_keymap(...) end
+local api = vim.api
+local fn = vim.fn
+
+-- compe setup
 
 require "compe".setup {
     enabled = true,
@@ -20,55 +26,63 @@ require "compe".setup {
     }
 }
 
+-- Function to repalce termcodes
+
 local t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+    return api.nvim_replace_termcodes(str, true, true, true)
 end
 
+-- Function to check for backspace
+
 local check_back_space = function()
-    local col = vim.fn.col(".") - 1
-    if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
+    local col = fn.col(".") - 1
+    if col == 0 or fn.getline("."):sub(col, col):match("%s") then
         return true
     else
         return false
     end
 end
 
--- tab completion
+-- Function to check for tab completion.
 
 _G.tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
+    if fn.pumvisible() == 1 then
         return t "<C-n>"
     elseif check_back_space() then
         return t "<Tab>"
     else
-        return vim.fn["compe#complete"]()
+        return fn["compe#complete"]()
     end
 end
+
+-- Function to check for shift-tab completion
+
 _G.s_tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
+    if fn.pumvisible() == 1 then
         return t "<C-p>"
-    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+    elseif fn.call("vsnip#jumpable", {-1}) == 1 then
         return t "<Plug>(vsnip-jump-prev)"
     else
         return t "<S-Tab>"
     end
 end
 
---  mappings
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+-- Function to manaage completions.
 
 function _G.completions()
     local npairs = require("nvim-autopairs")
-    if vim.fn.pumvisible() == 1 then
-        if vim.fn.complete_info()["selected"] ~= -1 then
-            return vim.fn["compe#confirm"]("<CR>")
+    if fn.pumvisible() == 1 then
+        if fn.complete_info()["selected"] ~= -1 then
+            return fn["compe#confirm"]("<CR>")
         end
     end
     return npairs.check_break_line_char()
 end
 
-vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true})
+-- Keymap for tab and shift-tab.
+
+keymap("i", "<Tab>",   "v:lua.tab_complete()", {expr = true})
+keymap("s", "<Tab>",   "v:lua.tab_complete()", {expr = true})
+keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+keymap("i", "<CR>",    "v:lua.completions()", {expr = true})

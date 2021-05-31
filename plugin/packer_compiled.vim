@@ -79,6 +79,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/completion-nvim"
   },
+  ["galaxyline.nvim"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+  },
   neoformat = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/neoformat"
@@ -151,10 +155,6 @@ _G.packer_plugins = {
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-commentary"
-  },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/home/gary/.local/share/nvim/site/pack/packer/start/vim-devicons"
   },
   ["vim-dispatch"] = {
     loaded = true,
