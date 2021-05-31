@@ -59,8 +59,8 @@ map('n', '<c-k>', '<c-w>k')
 map('n', '<c-l>', '<c-w>l')
 
 -- Clean trailing whitespaces
--- map('n', '<leader>ww', "mz<cmd>%s//\s\+$//<cr><cmd>let @/=''<cr>`z")
 map('n', '<leader>wr', '<cmd>%s/\r//g<cr>')
+map('n', '<leader>ws', "mz<cmd>%s//\\s\\+$//<cr><cmd>let @/=''<cr>`z")
 
 -- KJV verse lookup.
 map('n', 'gk', '<cmd>exec "r!kjv -b -d -w -65" getreg("k")<cr>')

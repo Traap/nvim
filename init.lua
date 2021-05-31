@@ -5,9 +5,9 @@ local stdpath = vim.fn.stdpath
   CONFIG_PATH = stdpath('config')
     DATA_PATH = stdpath('data')
 
--- Let show begin. 
+-- Let show begin.
 
 require 'bootstrap'
-require('plugins')
-require('config')
-require('lsp')
+require 'plugins'
+require 'config'
+require 'lsp'
