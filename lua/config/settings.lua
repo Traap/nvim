@@ -1,38 +1,38 @@
-local  utils = require('utils')
-
+local function option(...) vim.api.nvim_set_option(...) end
 local cmd = vim.cmd
-local opt = utils.opt
+local g = vim.g
 
-local indent = 2
-
-cmd 'syntax enable'
-cmd 'filetype plugin indent on'
-
-opt('b', 'expandtab', true)
-opt('b', 'shiftwidth', indent)
-opt('b', 'smartindent', true)
-opt('b', 'tabstop', indent)
-
-opt('o', 'clipboard', 'unnamed,unnamedplus')
-opt('o', 'colorcolumn', '+1')
-opt('o', 'complete', '.,w,b,u,t,i,kspell')
-opt('o', 'foldmethod', 'marker')
-opt('o', 'hidden', true)
-opt('o', 'ignorecase', true)
-opt('o', 'numberwidth', 3)
-opt('o', 'scrolloff', 4)
-opt('o', 'shiftround', true)
-opt('o', 'shiftwidth', 2)
-opt('o', 'signcolumn', 'yes')
-opt('o', 'smartcase', true)
-opt('o', 'softtabstop', 2)
-opt('o', 'splitbelow', true)
-opt('o', 'splitright', true)
-opt('o', 'textwidth', 80)
-opt('o', 'wildmode', 'list:longest')
-
-opt('w', 'number', true)
-opt('w', 'relativenumber', true)
+option('clipboard', 'unnamed,unnamedplus')
+option('colorcolumn', '+1')
+option('complete', '.,w,b,u,t,i,kspell')
+option('completeopt', 'menuone,noinsert,noselect')
+option('expandtab', true)
+option('foldmethod', 'marker')
+option('hidden', true)
+option('ignorecase', true)
+option('number', true)
+option('numberwidth', 3)
+option('relativenumber', true)
+option('scrolloff', 4)
+option('shiftround', true)
+option('shiftwidth', 2)
+option('shortmess', 'c')
+option('signcolumn', 'yes')
+option('smartcase', true)
+option('smartindent', true)
+option('softtabstop', 2)
+option('splitbelow', true)
+option('splitright', true)
+option('termguicolors', true)
+option('textwidth', 80)
+option('wildmode', 'list:longest')
 
 -- Highlight on yank
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+cmd 'colorscheme base16-chalk'
+cmd 'filetype plugin indent on'
+cmd 'syntax enable'
+
+-- Completion confirmation.
+g.completion_confirm_key = ""
+g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}

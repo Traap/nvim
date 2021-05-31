@@ -1,9 +1,6 @@
 -- Configure neovim environment and plugin.
 
-require 'config.colorscheme'
 require 'config.compe-completion'
-require 'config.completions'
-require 'config.fugitive'
 require 'config.file-icons'
 require 'config.keymappings'
 require 'config.nvim-tree'
