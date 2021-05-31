@@ -99,6 +99,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
@@ -124,6 +128,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  ["snippets.nvim"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/snippets.nvim"
+  },
   ["startuptime.vim"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/startuptime.vim"
@@ -131,6 +139,10 @@ _G.packer_plugins = {
   ["telescope-media-files.nvim"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
+  },
+  ["telescope-snippets.nvim"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/telescope-snippets.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

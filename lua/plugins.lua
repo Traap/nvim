@@ -22,6 +22,7 @@ return require('packer').startup(
 
     -- LSP and completion
     use 'neovim/nvim-lspconfig'
+    use 'kabouzeid/nvim-lspinstall'
     use 'nvim-lua/completion-nvim'
     use 'hrsh7th/nvim-compe'
     use 'nvim-treesitter/nvim-treesitter'
