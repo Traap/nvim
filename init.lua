@@ -10,4 +10,4 @@ local stdpath = vim.fn.stdpath
 require 'bootstrap'
 require('plugins')
 require('config')
--- require('lsp')
+require('lsp')
