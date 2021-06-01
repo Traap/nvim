@@ -10,6 +10,7 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
  - [ ] Configure missing icons.
  - [ ] settings.lua does not appear to fire the first file edited.
  - [ ] Display neovim welcome page. 
+ - [ ] Configure snippets.
  - [ ] Complete user acceptance testing with all plugins loaded.
 
 
