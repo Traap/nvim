@@ -82,7 +82,7 @@ keymap('n', '<Leader>gh', '<cmd>silent vert bo help fugitive<cr>', opts)
 keymap('n', '<Leader>gl', '<cmd>G log<CR>', opts)
 keymap('n', '<Leader>gP', '<cmd>G pull<CR>', opts)
 keymap('n', '<Leader>gp', '<cmd>G push<CR>', opts)
-keymap('n', '<Leader>gs', '<cmd>G status<CR>', opts)
+keymap('n', '<Leader>gs', '<cmd>Gstatus<CR>', opts)
 
 -- <Tab> to navigate the completion menu
 keymap('n', '<S-Tab>', 'pumvisible() ? [[\\<C-p>" : "\\<Tab>"', {expr = true})
