@@ -1,21 +1,21 @@
-# nvim
+### nvim
 
-My 100% pure Coconut Oil neovim configuration done with Lua.
+My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 
-# Credits
+### Credits
 * [siduck86](https://github.com/siduck76/neovim-dotfiles)
 * [ThePrimeagen](https://github.com/ThePrimeagen)
 * [ThePrimeagen Discord](https://discord.gg/3ujcVMe)
 * [TJ DeVries](https://github.com/tjdevries)
 
-# Package Manager
+### Package Manager
 * [Packer](https://github.com/wbthomason/packer.nvim)
 
-# Colors
+### Colors
 * [Base16](https://github.com/chriskempson/base16-vim)
 * [Colorizer](https://github.com/norcalli/nvim-colorizer.lua)
 
-# Fuzzy
+### Fuzzy
 * [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 * [Popup](https://github.com/vim-lua/popup.nvim)
 * [Plenary](https://github.com/nvim-lua/plenary.nvim)
@@ -23,10 +23,10 @@ My 100% pure Coconut Oil neovim configuration done with Lua.
 * [Telesope Snippets](https://github.com/nvim-telescope/telescope-snippets.nvim)
 * [Snippets](https://github.com/norcalli/snippets.nvim)
 
-# Language Server
+### Language Server
 * [Lua Development](https://github.com/tjdevries/nlua.nvim)
 
-# neovim without Tim Pope?  No Way!!!
+### neovim without Tim Pope?  No Way!!!
 * [Commentary](https://github.com/tpope/vim-commentary)
 * [Dispatch](https://github.com/tpope/vim-dispatch)
 * [Endwise](https://github.com/tpope/vim-endwise)
@@ -34,7 +34,7 @@ My 100% pure Coconut Oil neovim configuration done with Lua.
 * [Surround](https://github.com/tpope/vim-surround)
 * [Unimpaired](https://github.com/tpope/vim-unimpaired)
 
-# File Manager 
+### File Manager 
 * [Tree](https://github.com/kyazdani42/nvim-tree.lua)
 
 # LaTeX and Wiki
@@ -42,12 +42,14 @@ My 100% pure Coconut Oil neovim configuration done with Lua.
 * [Wiki](https://github.com/lervag/wiki.vim)
 * [Wiki File Type](https://github.com/lervag/wiki-ft.vim)
 
-# Utilities 
+### Utilities 
 * [Easy Align](https://github.com/junegunn/vim-easy-align)
 * [Galaxyline](https://github.com/glepnir/galaxyline.nvim)
 * [Neoformat](https://github.com/sbdchd/neoformat)
 * [Tweek Monster](https://github.com/tweekmonster/startuptime.vim)
 * [Web Devicons](https://github.com/kyazdani42/nvim-web-devicons)
+
+### Simple and Sweet folder structure.
 
 ```
 nvim
