@@ -24,6 +24,7 @@ keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
 keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
 keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
 keymap('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', opts)
+keymap('n', '<leader>mf', '<cmd>Telescope media_files<cr>', opts)
 
 -- Media files.
 require("telescope").load_extension("media_files")
