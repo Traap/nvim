@@ -6,6 +6,13 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 * [ThePrimeagen Discord](https://discord.gg/3ujcVMe)
 * [TJ DeVries](https://github.com/tjdevries)
 
+### Todo 
+ - [ ] Configure missing icons.
+ - [ ] settings.lua does not appear to fire the first file edited.
+ - [ ] Display neovim welcome page. 
+ - [ ] Complete user acceptance testing with all plugins loaded.
+
+
 ### Package Manager
 * [Packer](https://github.com/wbthomason/packer.nvim)
 
