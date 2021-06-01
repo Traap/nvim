@@ -1,7 +1,7 @@
 My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 
 ### Credits
-* [siduck86](https://github.com/siduck76/neovim-dotfiles)
+* [siduck76](https://github.com/siduck76/neovim-dotfiles)
 * [ThePrimeagen](https://github.com/ThePrimeagen)
 * [ThePrimeagen Discord](https://discord.gg/3ujcVMe)
 * [TJ DeVries](https://github.com/tjdevries)
