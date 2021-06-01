@@ -1,4 +1,4 @@
-### nvim
+nvim
 
 My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 
@@ -37,7 +37,7 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 ### File Manager 
 * [Tree](https://github.com/kyazdani42/nvim-tree.lua)
 
-# LaTeX and Wiki
+### LaTeX and Wiki
 * [VimTeX](https://github.com/lervag/vimtex)
 * [Wiki](https://github.com/lervag/wiki.vim)
 * [Wiki File Type](https://github.com/lervag/wiki-ft.vim)
