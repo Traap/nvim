@@ -17,4 +17,4 @@ require 'config'
 require 'keybindings'
 
 -- Enable language servers.
-require 'lsp'
+require 'language-servers'

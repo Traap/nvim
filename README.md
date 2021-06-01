@@ -66,13 +66,11 @@ nvim
 │   │   ├── vimtex.lua
 │   │   └── wiki-vim.lua
 │   ├── keybindings.lua
-│   ├── lsp
-│   │   └── init.lua
+│   ├── language-servers.lua
 │   ├── plugins.lua
 │   └── settings.lua
 ├── plugin
 │   └── packer_compiled.vim
 └── README.md
-
 ```
 
