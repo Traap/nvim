@@ -10,7 +10,7 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 * [Packer](https://github.com/wbthomason/packer.nvim)
 
 ### Colors
-* [Base16](https://github.com/chriskempson/base16-vim)
+* [Base16](https://github.com/siduck76/nvim-base16.lua)
 * [Colorizer](https://github.com/norcalli/nvim-colorizer.lua)
 
 ### Fuzzy
