@@ -30,7 +30,7 @@ return require('packer').startup(
     -- Lua development
     use { 'tjdevries/nlua.nvim' }
 
-    -- neovim without Tpope?  Now Way!!!
+    -- neovim without Tpope?  No Way!!!
     use 'tpope/vim-commentary'
     use 'tpope/vim-dispatch'
     use 'tpope/vim-endwise'
