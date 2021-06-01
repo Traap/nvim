@@ -71,10 +71,6 @@ end
 time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
-  ["base16-vim"] = {
-    loaded = true,
-    path = "/home/gary/.local/share/nvim/site/pack/packer/start/base16-vim"
-  },
   ["completion-nvim"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/completion-nvim"
@@ -94,6 +90,10 @@ _G.packer_plugins = {
   ["nvim-base16.lua"] = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-base16.lua"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-compe"] = {
     loaded = true,
