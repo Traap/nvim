@@ -91,9 +91,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gary/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
-  ["nvim-colorizer.lua"] = {
+  ["nvim-base16.lua"] = {
     loaded = true,
-    path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+    path = "/home/gary/.local/share/nvim/site/pack/packer/start/nvim-base16.lua"
   },
   ["nvim-compe"] = {
     loaded = true,

@@ -6,7 +6,7 @@ return require('packer').startup(
 
     -- Color scheme
     use 'chriskempson/base16-vim'
-    use 'norcalli/nvim-colorizer.lua'
+    use 'siduck76/nvim-base16.lua'
 
     -- Fuzzy finder
     use {

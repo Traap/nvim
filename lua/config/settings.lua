@@ -29,10 +29,13 @@ option('wildmode', 'list:longest')
 
 -- Highlight on yank
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
-cmd 'colorscheme base16-chalk'
 cmd 'filetype plugin indent on'
 cmd 'syntax enable'
 
+-- Colors
+local base16 = require 'base16'
+base16(base16.themes['onedark'],true)
+--
 -- Completion confirmation.
 g.completion_confirm_key = ""
 g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
