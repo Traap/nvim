@@ -1,5 +1,3 @@
-nvim
-
 My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 
 ### Credits
