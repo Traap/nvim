@@ -57,21 +57,22 @@ nvim
 │   ├── bootstrap.lua
 │   ├── config
 │   │   ├── compe-completion.lua
-│   │   ├── file-icons.lua
 │   │   ├── galaxyline-nvim.lua
 │   │   ├── init.lua
-│   │   ├── keymappings.lua
 │   │   ├── nvim-tree.lua
-│   │   ├── settings.lua
+│   │   ├── nvim-web-devicons.lua
 │   │   ├── telescope-nvim.lua
 │   │   ├── treesitter-nvim.lua
 │   │   ├── vimtex.lua
 │   │   └── wiki-vim.lua
+│   ├── keybindings.lua
 │   ├── lsp
 │   │   └── init.lua
-│   └── plugins.lua
+│   ├── plugins.lua
+│   └── settings.lua
 ├── plugin
 │   └── packer_compiled.vim
 └── README.md
+
 ```
 
