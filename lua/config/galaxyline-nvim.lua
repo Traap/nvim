@@ -1,7 +1,6 @@
-local gl = require("galaxyline")
+local gl = require('galaxyline')
+local condition = require('galaxyline.condition')
 local gls = gl.section
-
-gl.short_line_list = {" "} -- keeping this table { } as empty will show inactive statuslines
 
 local colors = {
     bg = "#22262e",
@@ -14,11 +13,15 @@ local colors = {
     grey = "#6f737b"
 }
 
+local checkwidth = function()
+    local squeeze_width = vim.fn.winwidth(0) / 2
+    if squeeze_width > 30 then return true end
+    return false
+end
+
 gls.left[2] = {
     statusIcon = {
-        provider = function()
-            return "   "
-        end,
+        provider = function() return "   " end,
         highlight = {colors.bg, colors.blue},
         separator = "  ",
         separator_highlight = {colors.blue, colors.lightbg}
@@ -28,7 +31,7 @@ gls.left[2] = {
 gls.left[3] = {
     FileIcon = {
         provider = "FileIcon",
-        condition = buffer_not_empty,
+        condition = condition.buffer_not_empty,
         highlight = {colors.fg, colors.lightbg}
     }
 }
@@ -36,20 +39,12 @@ gls.left[3] = {
 gls.left[4] = {
     FileName = {
         provider = {"FileName"},
-        condition = buffer_not_empty,
+        condition = condition.buffer_not_empty,
         highlight = {colors.fg, colors.lightbg},
         separator = " ",
         separator_highlight = {colors.lightbg, colors.bg}
     }
 }
-
-local checkwidth = function()
-    local squeeze_width = vim.fn.winwidth(0) / 2
-    if squeeze_width > 30 then
-        return true
-    end
-    return false
-end
 
 gls.left[5] = {
     DiffAdd = {
@@ -96,9 +91,7 @@ gls.left[9] = {
 
 gls.right[1] = {
     GitIcon = {
-        provider = function()
-            return " "
-        end,
+        provider = function() return " " end,
         condition = require("galaxyline.provider_vcs").check_git_workspace,
         highlight = {colors.grey, colors.lightbg},
         separator = "",
@@ -116,9 +109,7 @@ gls.right[2] = {
 
 gls.right[3] = {
     viMode_icon = {
-        provider = function()
-            return " "
-        end,
+        provider = function() return " " end,
         highlight = {colors.bg, colors.red},
         separator = " ",
         separator_highlight = {colors.red, colors.lightbg}
@@ -151,9 +142,7 @@ gls.right[4] = {
 
 gls.right[5] = {
     time_icon = {
-        provider = function()
-            return " "
-        end,
+        provider = function() return " " end,
         separator = "",
         separator_highlight = {colors.green, colors.bg},
         highlight = {colors.lightbg, colors.green}
@@ -162,9 +151,7 @@ gls.right[5] = {
 
 gls.right[6] = {
     time = {
-        provider = function()
-            return "  " .. os.date("%H:%M") .. " "
-        end,
+        provider = function() return "  " .. os.date("%H:%M") .. " " end,
         highlight = {colors.green, colors.lightbg}
     }
 }
