@@ -7,7 +7,7 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 * [TJ DeVries](https://github.com/tjdevries)
 
 ### Todo 
- - [ ] Configure missing icons.
+ - [x] Install nerdfonts hack to configure missing icons 
  - [ ] settings.lua does not appear to fire the first file edited.
  - [ ] Display neovim welcome page. 
  - [ ] Configure snippets.
@@ -81,4 +81,3 @@ nvim
 │   └── packer_compiled.vim
 └── README.md
 ```
-
