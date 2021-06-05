@@ -13,6 +13,7 @@ require 'config.wiki-vim'
 
 -- Now colorize
 require('colorizer').setup()
+require('config.highlights')
 
 -- Take control of all keybindings.
 require 'config.keybindings'
