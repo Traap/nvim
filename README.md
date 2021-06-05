@@ -63,21 +63,23 @@ nvim
 ├── LICENSE
 ├── lua
 │   ├── bootstrap.lua
-│   ├── config
-│   │   ├── compe-completion.lua
-│   │   ├── galaxyline-nvim.lua
-│   │   ├── init.lua
-│   │   ├── keybindings.lua
-│   │   ├── language-servers.lua
-│   │   ├── nvim-tree.lua
-│   │   ├── nvim-web-devicons.lua
-│   │   ├── settings.lua
-│   │   ├── telescope-nvim.lua
-│   │   ├── treesitter-nvim.lua
-│   │   ├── vimtex.lua
-│   │   └── wiki-vim.lua
-│   └── plugins.lua
+│   ├── plugins.lua
+│   └── traap
+│       ├── compe-completion.lua
+│       ├── galaxyline-nvim.lua
+│       ├── highlights.lua
+│       ├── init.lua
+│       ├── keybindings.lua
+│       ├── language-servers.lua
+│       ├── nvim-tree.lua
+│       ├── nvim-web-devicons.lua
+│       ├── settings.lua
+│       ├── telescope-nvim.lua
+│       ├── treesitter-nvim.lua
+│       ├── vimtex.lua
+│       └── wiki-vim.lua
 ├── plugin
 │   └── packer_compiled.vim
 └── README.md
+
 ```
