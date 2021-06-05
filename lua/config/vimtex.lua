@@ -4,6 +4,7 @@
 
 local g = vim.g
 
+g.most_minimal_folds_line_count = 1
 g.vimtex_fold_enabled = 0
 g.vimtex_fold_manual = 1
 g.vimtex_format_enabled = 1
