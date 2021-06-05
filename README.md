@@ -67,16 +67,16 @@ nvim
 │   │   ├── compe-completion.lua
 │   │   ├── galaxyline-nvim.lua
 │   │   ├── init.lua
+│   │   ├── keybindings.lua
+│   │   ├── language-servers.lua
 │   │   ├── nvim-tree.lua
 │   │   ├── nvim-web-devicons.lua
+│   │   ├── settings.lua
 │   │   ├── telescope-nvim.lua
 │   │   ├── treesitter-nvim.lua
 │   │   ├── vimtex.lua
 │   │   └── wiki-vim.lua
-│   ├── keybindings.lua
-│   ├── language-servers.lua
-│   ├── plugins.lua
-│   └── settings.lua
+│   └── plugins.lua
 ├── plugin
 │   └── packer_compiled.vim
 └── README.md
