@@ -8,5 +8,5 @@ require 'plugins'
 
 -- Plugin are configured when nvim is not bootstrapped.
 if vim.g.nvim_bootstrapped == 0 then
-  require 'config'
+  require 'traap'
 end
