@@ -30,11 +30,20 @@ keymap('n', '<leader>mf', '<cmd>Telescope media_files<cr>', opts)
 require("telescope").load_extension("media_files")
 keymap("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opts)
 
-
 -- nvim-tree
 keymap('n', '<c-n>',       '<cmd>NvimTreeToggle<cr>', opts)
 keymap('n', '<leader>nr',  '<cmd>NvimTreeRefresh<cr>', opts)
 keymap('n', '<leader>nf',  '<cmd>NvimTreeFindFile<cr>', opts)
+
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+g.nvim_tree_bindings = {
+  ['<BS>']   = tree_cb('close_node'),
+  ['<CR>']   = tree_cb('edit'),
+  ['D']      = tree_cb('remove'),
+  ['s']      = tree_cb('split'),
+  ['v']      = tree_cb('vplit'),
+  ['q']      = tree_cb('close'),
+}
 
 -- Buffer resize
 keymap('n', '<a-H>', '<cmd>vertical resize -1<cr>', opts)
@@ -88,6 +97,5 @@ keymap('n', '<Leader>gs', '<cmd>Gstatus<CR>', opts)
 -- <Tab> to navigate the completion menu
 keymap('n', '<S-Tab>', 'pumvisible() ? [[\\<C-p>" : "\\<Tab>"', {expr = true})
 keymap('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
-
 
  -------------------------------------------------------------------------  }}}

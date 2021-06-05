@@ -1,4 +1,7 @@
 -- Setup icons with nvim-web-devicons.
+--
+-- See: https://github.com/siduck76/NvChad for additional aspiration
+
 
 require "nvim-web-devicons".setup {
     override = {
