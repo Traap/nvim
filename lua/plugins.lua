@@ -57,6 +57,7 @@ return require('packer').startup(
     -- Utility
     use 'sbdchd/neoformat'
     use 'tweekmonster/startuptime.vim'
+    use 'vim-utils/vim-most-minimal-folds'
 
   end,
   {
