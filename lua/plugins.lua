@@ -1,5 +1,11 @@
-return require('packer').startup(
+local g = vim.g
+local packer = require('packer')
+
+return packer.startup(
   function()
+
+    -- Silence 'Undefined global `use` message for every line
+    local use = use
 
     -- Packer can manage itself as an optional plugin
     use {'wbthomason/packer.nvim', opt = true}
@@ -59,6 +65,11 @@ return require('packer').startup(
     use 'tweekmonster/startuptime.vim'
     use 'vim-utils/vim-most-minimal-folds'
 
+    -- Auto compile and install plugins when packer is bootstrapped.
+    if g.nvim_bootstrapped == 1 then
+      packer.compile('plugin/packer_compiled.vim')
+      packer.install()
+    end
   end,
   {
     display = {

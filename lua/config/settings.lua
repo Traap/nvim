@@ -39,7 +39,7 @@ cmd 'syntax enable'
 -- Colors
 local base16 = require 'base16'
 base16(base16.themes['onedark'],true)
---
+
 -- Completion confirmation.
 g.completion_confirm_key = ""
 g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}

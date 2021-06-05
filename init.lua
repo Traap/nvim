@@ -6,5 +6,7 @@ require 'bootstrap'
 -- Time to load all plugins.
 require 'plugins'
 
--- Now we can configure our plugins.
-require 'config'
+-- Plugin are configured when nvim is not bootstrapped.
+if vim.g.nvim_bootstrapped == 0 then
+  require 'config'
+end
