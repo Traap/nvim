@@ -6,13 +6,14 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 * [ThePrimeagen Discord](https://discord.gg/3ujcVMe)
 * [TJ DeVries](https://github.com/tjdevries)
 
-### Todo 
- - [x] Install nerdfonts hack to configure missing icons 
+### Todo
+ - [x] Install nerdfonts hack to configure missing icons
  - [x] Automate nvim bootstrapping.
  - [ ] Automate treesitter bootstrapping.
- - [ ] settings.lua does not appear to fire the first file edited.
- - [ ] Display neovim welcome page. 
+ - [x] settings.lua does not appear to fire the first file edited.
+ - [ ] Display neovim welcome page.
  - [ ] Configure snippets.
+ - [ ] Analyze healthcheck feedback
  - [ ] Complete user acceptance testing with all plugins loaded.
 
 
@@ -42,7 +43,7 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 * [Surround](https://github.com/tpope/vim-surround)
 * [Unimpaired](https://github.com/tpope/vim-unimpaired)
 
-### File Manager 
+### File Manager
 * [Tree](https://github.com/kyazdani42/nvim-tree.lua)
 
 ### LaTeX and Wiki
@@ -50,7 +51,7 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 * [Wiki](https://github.com/lervag/wiki.vim)
 * [Wiki File Type](https://github.com/lervag/wiki-ft.vim)
 
-### Utilities 
+### Utilities
 * [Easy Align](https://github.com/junegunn/vim-easy-align)
 * [Galaxyline](https://github.com/glepnir/galaxyline.nvim)
 * [Neoformat](https://github.com/sbdchd/neoformat)

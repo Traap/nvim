@@ -1,40 +1,56 @@
-local function set(...) vim.api.nvim_set_option(...) end
+local   g = vim.g
 local cmd = vim.cmd
-local g = vim.g
+local opt = vim.opt
 
-set('clipboard', 'unnamedplus')
-set('colorcolumn', '+1')
-set('complete', '.,w,b,u,t,i,kspell')
-set('completeopt', 'menuone,noinsert,noselect')
-set('expandtab', true)
-set('foldmethod', 'marker')
-set('hidden', true)
-set('ignorecase', true)
-set('lazyredraw', true)
-set('number', true)
-set('numberwidth', 3)
-set('relativenumber', true)
-set('scrolloff', 4)
-set('shiftround', true)
-set('shiftwidth', 2)
-set('shortmess', 'c')
-set('signcolumn', 'yes')
-set('showbreak','↪')
-set('showmatch', true)
-set('smartcase', true)
-set('smartindent', true)
-set('softtabstop', 2)
-set('splitbelow', true)
-set('splitright', true)
-set('termguicolors', true)
-set('textwidth', 80)
-set('virtualedit', 'block')
-set('wildmode', 'list:longest')
+-- Alphebetical listing of settings I like.
+opt.clipboard = 'unnamedplus'
+opt.colorcolumn = '+1'
+opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
+opt.completeopt = {'menuone', 'noinsert', 'noselect'}
+opt.expandtab = true
+opt.foldmethod = 'marker'
+opt.hidden = true
+opt.ignorecase = true
+opt.lazyredraw = true
+opt.number = true
+opt.numberwidth= 3
+opt.relativenumber = true
+opt.scrolloff = 4
+opt.shiftround = true
+opt.shiftwidth = 2
+opt.shortmess = 'c'
+opt.showbreak = '↪'
+opt.showmatch = true
+opt.signcolumn = 'yes'
+opt.smartcase = true
+opt.smartindent = true
+opt.softtabstop =  2
+opt.splitbelow = true
+opt.splitright = true
+opt.swapfile = false
+opt.termguicolors = true
+opt.textwidth = 80
+opt.virtualedit = {'block'}
+opt.wildmode = {'list', 'longest'}
+
+cmd([[filetype plugin indent on]])
+cmd([[syntax enable]])
 
 -- Highlight on yank
-cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
-cmd 'filetype plugin indent on'
-cmd 'syntax enable'
+cmd([[
+  augroup YankGroup
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{on_visual = false}
+  augroup END
+]])
+
+-- Remove whitespaces
+cmd([[
+  augroup RemoveWhiteSpaceGroup
+    autocmd!
+    autocmd BufWritePre * :%s/\s\+$//e
+  augroup END
+]])
 
 -- Colors
 local base16 = require 'base16'
