@@ -1,4 +1,5 @@
 -- Let show begin.
+local g = vim.g
 
 -- Bootstrap Packer when needed.
 require 'bootstrap'
@@ -7,6 +8,7 @@ require 'bootstrap'
 require 'plugins'
 
 -- Plugin are configured when nvim is not bootstrapped.
-if vim.g.nvim_bootstrapped == 0 then
+if g.nvim_bootstrapped == 0 then
   require 'traap'
 end
+
