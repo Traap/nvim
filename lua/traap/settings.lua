@@ -1,8 +1,12 @@
+-- {{{ Alias to vim APis.
+
 local   g = vim.g
 local cmd = vim.cmd
 local opt = vim.opt
 
--- Alphebetical listing of settings I like.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Alphebetical listing of settings I like.
+
 opt.clipboard = 'unnamedplus'
 opt.colorcolumn = '+1'
 opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
@@ -36,7 +40,9 @@ opt.wildmode = {'list', 'longest'}
 cmd([[filetype plugin indent on]])
 cmd([[syntax enable]])
 
--- Highlight on yank
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Highlight on yank
+
 cmd([[
   augroup YankGroup
     autocmd!
@@ -44,7 +50,9 @@ cmd([[
   augroup END
 ]])
 
--- Remove whitespaces
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Remove whitespaces
+
 cmd([[
   augroup RemoveWhiteSpaceGroup
     autocmd!
@@ -52,10 +60,10 @@ cmd([[
   augroup END
 ]])
 
--- Colors
-local base16 = require 'base16'
-base16(base16.themes['onedark'],true)
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Completion confirmation.
 
--- Completion confirmation.
 g.completion_confirm_key = ""
 g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
+
+-- ------------------------------------------------------------------------- }}}

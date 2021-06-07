@@ -1,7 +1,17 @@
--- {{{ Alias to vim functions
+-- {{{ Alias to vim APis.
 
-local g = vim.g
-local function keymap(...) vim.api.nvim_set_keymap(...) end
+local      g = vim.g
+local    api = vim.api
+local extend = vim.tbl_extend
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ keymap helper function.
+--
+local function map(mode, lhs, rhs, opts)
+  local options = { noremap=true, silent=true }
+  if opts then options = extend('force', options, opts) end
+  api.nvim_set_keymap(mode, lhs, rhs, options)
+end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Map leader to space
@@ -12,28 +22,80 @@ g.maplocalleader = [[ ]]
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Keybindings
 
--- Default options applied to each keymap.
-local opts = { noremap=true, silent=true }
-
 -- Stop search highlights.
-keymap('n', '<leader><space>', '<cmd>noh<CR>', opts)
+map('n', '<leader><space>', '<cmd>noh<CR>')
 
 -- Find files using Telescope command-line suggar.
-keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
-keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
-keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
-keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
-keymap('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', opts)
-keymap('n', '<leader>mf', '<cmd>Telescope media_files<cr>', opts)
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
+map('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>')
+map('n', '<leader>mf', '<cmd>Telescope media_files<cr>')
 
 -- Media files.
 require("telescope").load_extension("media_files")
-keymap("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opts)
+map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]])
+
+-- Buffer resize
+map('n', '<a-H>', '<cmd>vertical resize -1<cr>')
+map('n', '<a-J>', '<cmd>resize +1<cr>')
+map('n', '<a-K>', '<cmd>resize -1<cr>')
+map('n', '<a-L>', '<cmd>vertical resize +1<cr>')
+
+-- Copy and Paste
+map('n', '<leader>cc', 'ggVGg_"+y')
+map('v', '<leader>cc', '"+y')
+map('v', '<leader>cv', '"+p')
+
+-- Make only the current buffer visible.
+map('n', '<leader>oo', '<cmd>only<cr>')
+
+-- Delete the current line.
+map('n', '-', 'dd')
+
+-- Select (charwise) the contents of the current line, excluding indentation.
+map('n', 'vv', '^vg_')
+
+-- Select the entire buffer.
+map('n', 'vaa', 'ggvGg_')
+map('n', 'Vaa', 'ggvG')
+
+-- Linewise reslection of what you just pasted.
+map('n', '<leader>V', 'V`')
+
+-- Window movement without Tmux-Navigator
+map('n', '<c-h>', '<c-w>h')
+map('n', '<c-j>', '<c-w>j')
+map('n', '<c-k>', '<c-w>k')
+map('n', '<c-l>', '<c-w>l')
+
+-- Clean trailing whitespaces
+map('n', '<leader>wr', '<cmd>%s/\r//g<cr>')
+map('n', '<leader>ws', "mz<cmd>%s//\\s\\+$//<cr><cmd>let @/=''<cr>`z")
+
+-- KJV verse lookup.
+map('n', 'gk', [[0mMvg_"ky<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
+map('v', 'gs', 'S*v)3>')
+
+-- Fugitive
+map('n', '<Leader>gc', '<cmd>G commit<CR>')
+map('n', '<Leader>gd', '<cmd>G diff<CR>')
+map('n', '<Leader>gh', '<cmd>silent vert bo help fugitive<cr>')
+map('n', '<Leader>gl', '<cmd>G log<CR>')
+map('n', '<Leader>gP', '<cmd>G pull<CR>')
+map('n', '<Leader>gp', '<cmd>G push<CR>')
+map('n', '<Leader>gs', '<cmd>Gstatus<CR>')
+
+-- <Tab> to navigate the completion menu
+map('n', '<S-Tab>', 'pumvisible() ? [[\\<C-p>" : "\\<Tab>"', {expr = true})
+map('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
+
 
 -- nvim-tree
-keymap('n', '<c-n>',       '<cmd>NvimTreeToggle<cr>', opts)
-keymap('n', '<leader>nr',  '<cmd>NvimTreeRefresh<cr>', opts)
-keymap('n', '<leader>nf',  '<cmd>NvimTreeFindFile<cr>', opts)
+map('n', '<c-n>',       '<cmd>NvimTreeToggle<cr>')
+map('n', '<leader>nr',  '<cmd>NvimTreeRefresh<cr>')
+map('n', '<leader>nf',  '<cmd>NvimTreeFindFile<cr>')
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 g.nvim_tree_bindings = {
@@ -44,58 +106,5 @@ g.nvim_tree_bindings = {
   ['v']      = tree_cb('vplit'),
   ['q']      = tree_cb('close'),
 }
-
--- Buffer resize
-keymap('n', '<a-H>', '<cmd>vertical resize -1<cr>', opts)
-keymap('n', '<a-J>', '<cmd>resize +1<cr>', opts)
-keymap('n', '<a-K>', '<cmd>resize -1<cr>', opts)
-keymap('n', '<a-L>', '<cmd>vertical resize +1<cr>', opts)
-
--- Copy and Paste
-keymap('n', '<leader>cc', 'ggVGg_"+y', opts)
-keymap('v', '<leader>cc', '"+y', opts)
-keymap('v', '<leader>cv', '"+p', opts)
-
--- Make only the current buffer visible.
-keymap('n', '<leader>oo', '<cmd>only<cr>', opts)
-
--- Delete the current line.
-keymap('n', '-', 'dd', opts)
-
--- Select (charwise) the contents of the current line, excluding indentation.
-keymap('n', 'vv', '^vg_', opts)
-
--- Select the entire buffer.
-keymap('n', 'vaa', 'ggvGg_', opts)
-keymap('n', 'Vaa', 'ggvG', opts)
-
--- Linewise reslection of what you just pasted.
-keymap('n', '<leader>V', 'V`', opts)
-
--- Window movement without Tmux-Navigator
-keymap('n', '<c-h>', '<c-w>h', opts)
-keymap('n', '<c-j>', '<c-w>j', opts)
-keymap('n', '<c-k>', '<c-w>k', opts)
-keymap('n', '<c-l>', '<c-w>l', opts)
-
--- Clean trailing whitespaces
-keymap('n', '<leader>wr', '<cmd>%s/\r//g<cr>', opts)
-keymap('n', '<leader>ws', "mz<cmd>%s//\\s\\+$//<cr><cmd>let @/=''<cr>`z", opts)
-
--- KJV verse lookup.
-keymap('n', 'gk', '<cmd>exec "r!kjv -b -d -w -65" getreg("k", opts)<cr>', opts)
-
--- Fugitive
-keymap('n', '<Leader>gc', '<cmd>G commit<CR>', opts)
-keymap('n', '<Leader>gd', '<cmd>G diff<CR>', opts)
-keymap('n', '<Leader>gh', '<cmd>silent vert bo help fugitive<cr>', opts)
-keymap('n', '<Leader>gl', '<cmd>G log<CR>', opts)
-keymap('n', '<Leader>gP', '<cmd>G pull<CR>', opts)
-keymap('n', '<Leader>gp', '<cmd>G push<CR>', opts)
-keymap('n', '<Leader>gs', '<cmd>Gstatus<CR>', opts)
-
--- <Tab> to navigate the completion menu
-keymap('n', '<S-Tab>', 'pumvisible() ? [[\\<C-p>" : "\\<Tab>"', {expr = true})
-keymap('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
 
  -------------------------------------------------------------------------  }}}

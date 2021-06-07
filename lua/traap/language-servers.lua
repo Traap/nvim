@@ -1,11 +1,21 @@
 -- Initialize Installed Language Servers
 --
 -- https://github.com/kabouzied/nvim-lspinstall/wiki
+-- {{{ Alias to vim APis.
 
+local         api = vim.api
+local         cmd = vim.cmd
+local        exec = vim.api.nvim_exec
+local          fn = vim.fn
+local         lsp = vim.lsp
+local sign_define = vim.fn.sign_define
+local       split = vim.split
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Step 0: A functions activate keymaps and enables snippet support
 
 local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local capabilities = lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   return {
     -- enable snippet support
@@ -36,7 +46,7 @@ local lua_settings = {
     runtime = {
       -- LuaJIT in the case of Neovim
       version = 'LuaJIT',
-      path = vim.split(package.path, ';'),
+      path = split(package.path, ';'),
     },
     diagnostics = {
       -- Get the language server to recognize the `vim` global
@@ -45,15 +55,15 @@ local lua_settings = {
     workspace = {
       -- Make the server aware of Neovim runtime files
       library = {
-        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        [fn.expand('$VIMRUNTIME/lua')] = true,
+        [fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
       },
     },
   }
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Step 3: call the setup function
+-- {{{ Step 3: Call the setup function
 
 setup_servers()
 
@@ -63,15 +73,15 @@ setup_servers()
 
 require'lspinstall'.post_installation_hook = function ()
   setup_servers()        -- reload
-  vim.cmd('bufdo e')     -- Trigger FileType autocmd to start servers 
+  cmd('bufdo e')     -- Trigger FileType autocmd to start servers
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Step 5: Assign keybindings when a lanaguage server attaches. 
+-- {{{ Step 5: Assign keybindings when a lanaguage server attaches.
 
 local on_attach = function(client, bufnr)
-  local function keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local function keymap(...) api.nvim_buf_set_keymap(bufnr, ...) end
+  local function option(...) api.nvim_buf_set_option(bufnr, ...) end
 
   option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -103,12 +113,12 @@ local on_attach = function(client, bufnr)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-    augroup lsp_document_highlight
-    autocmd! * <buffer>
-    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
+    exec([[
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
     ]], false)
   end
 
@@ -116,9 +126,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Step 6: Replace default diagnostics with prettier symbols. 
-
-local sign_define = vim.fn.sign_define
+-- {{{ Step 6: Replace default diagnostics with prettier symbols.
 
 sign_define("LspDiagnosticsSignError",
             {text = "", numhl = "LspDiagnosticsDefaultError"})
