@@ -9,11 +9,11 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 ### Todo
  - [x] Install nerdfonts hack to configure missing icons
  - [x] Automate nvim bootstrapping.
- - [ ] Automate treesitter bootstrapping.
+ - [x] Automate treesitter bootstrapping.
  - [x] settings.lua does not appear to fire the first file edited.
  - [ ] Display neovim welcome page.
  - [ ] Configure snippets.
- - [ ] Analyze healthcheck feedback
+ - [x] Analyze checkhealth feedback
  - [ ] Complete user acceptance testing with all plugins loaded.
 
 
