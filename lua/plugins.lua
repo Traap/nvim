@@ -31,7 +31,7 @@ return packer.startup(
     use 'kabouzeid/nvim-lspinstall'
     use 'nvim-lua/completion-nvim'
     use 'hrsh7th/nvim-compe'
-    use 'nvim-treesitter/nvim-treesitter'
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
     -- Lua development
     use { 'tjdevries/nlua.nvim' }

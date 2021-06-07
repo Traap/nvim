@@ -1,14 +1,17 @@
--- {{{ Auto install packer.nvim if not exists
+-- {{{ Auto install packer.nvim if when needed.
 
 local     cmd = vim.cmd
 local execute = vim.api.nvim_command
 local      fn = vim.fn
 local       g = vim.g
 
--- Install packer when needed.
+-- Set installation path and clone url.
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local url = 'https://github.com/wbthomason/packer.nvim'
+
+-- Clone packer if necessary.
 if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  fn.system('git', 'clone', url, install_path)
   execute 'packadd packer.nvim'
   g.nvim_bootstrapped = 1
 else
