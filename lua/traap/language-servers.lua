@@ -12,7 +12,7 @@ local sign_define = vim.fn.sign_define
 local       split = vim.split
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Step 0: A functions activate keymaps and enables snippet support
+-- {{{ Step 0: A function activate keymaps and enable snippet support
 
 local function make_config()
   local capabilities = lsp.protocol.make_client_capabilities()
@@ -72,7 +72,7 @@ setup_servers()
 --             restarting neovim.
 
 require'lspinstall'.post_installation_hook = function ()
-  setup_servers()        -- reload
+  setup_servers()    -- reload
   cmd('bufdo e')     -- Trigger FileType autocmd to start servers
 end
 
