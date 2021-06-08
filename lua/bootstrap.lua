@@ -11,8 +11,7 @@ local url = 'https://github.com/wbthomason/packer.nvim'
 
 -- Clone packer if necessary.
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system('git', 'clone', url, install_path)
-  execute 'packadd packer.nvim'
+  fn.system({'git', 'clone', url, install_path})
   g.nvim_bootstrapped = 1
 else
   g.nvim_bootstrapped = 0
