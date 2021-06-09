@@ -85,7 +85,7 @@ map('n', '<Leader>gh', '<cmd>silent vert bo help fugitive<cr>')
 map('n', '<Leader>gl', '<cmd>G log<CR>')
 map('n', '<Leader>gP', '<cmd>G pull<CR>')
 map('n', '<Leader>gp', '<cmd>G push<CR>')
-map('n', '<Leader>gs', '<cmd>Gstatus<CR>')
+map('n', '<Leader>gs', '<cmd>G<CR>')
 
 -- <Tab> to navigate the completion menu
 map('n', '<S-Tab>', 'pumvisible() ? [[\\<C-p>" : "\\<Tab>"', {expr = true})
