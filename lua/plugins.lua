@@ -64,6 +64,7 @@ return packer.startup(
     use 'sbdchd/neoformat'
     use 'tweekmonster/startuptime.vim'
     use 'vim-utils/vim-most-minimal-folds'
+    use 'christoomey/vim-tmux-navigator'
 
     -- Auto compile and install plugins when packer is bootstrapped.
     if g.nvim_bootstrapped == 1 then
