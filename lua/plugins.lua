@@ -52,11 +52,8 @@ return packer.startup(
     -- LaTeX and Wiki
     use 'lervag/vimtex'
 
-    use {
-      'lervag/wiki-ft.vim',
-      requires = 'lervag/wiki.vim',
-      event = 'BufEnter'
-    }
+    use 'lervag/wiki.vim'
+    use 'lervag/wiki-ft.vim'
 
     -- RipGrep
     use 'jremmen/vim-ripgrep'
@@ -70,8 +67,7 @@ return packer.startup(
     use 'christoomey/vim-tmux-navigator'
 
     -- Profiling
-    use {'tweekmonster/startuptime.vim', cmd = 'StartupTime'}
-
+    use 'tweekmonster/startuptime.vim'
 
     -- Auto compile and install plugins when packer is bootstrapped.
     if g.nvim_bootstrapped == 1 then
