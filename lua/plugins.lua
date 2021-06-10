@@ -53,7 +53,7 @@ return packer.startup(
     use 'lervag/vimtex'
 
     use 'lervag/wiki.vim'
-    use 'lervag/wiki-ft.vim'
+    use 'Traap/wiki-ft.vim'
 
     -- RipGrep
     use 'jremmen/vim-ripgrep'
