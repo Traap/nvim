@@ -2,6 +2,7 @@
 
 local      g = vim.g
 local    api = vim.api
+local    cmd = vim.cmd
 local extend = vim.tbl_extend
 
 -- ------------------------------------------------------------------------- }}}
@@ -33,9 +34,6 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 map('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>')
 map('n', '<leader>mf', '<cmd>Telescope media_files<cr>')
 
--- Media files.
-require("telescope").load_extension("media_files")
-map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]])
 
 -- Buffer resize
 map('n', '<a-H>', '<cmd>vertical resize -1<cr>')
@@ -46,7 +44,7 @@ map('n', '<a-L>', '<cmd>vertical resize +1<cr>')
 -- Copy and Paste
 map('n', '<leader>cc', 'ggVGg_"+y')
 map('v', '<leader>cc', '"+y')
-map('v', '<leader>cv', '"+p')
+map('n', '<leader>cv', '"+p')
 
 -- Make only the current buffer visible.
 map('n', '<leader>oo', '<cmd>only<cr>')
@@ -91,7 +89,6 @@ map('n', '<Leader>gs', '<cmd>G<CR>')
 map('n', '<S-Tab>', 'pumvisible() ? [[\\<C-p>" : "\\<Tab>"', {expr = true})
 map('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
 
-
 -- nvim-tree
 map('n', '<c-n>',       '<cmd>NvimTreeToggle<cr>')
 map('n', '<leader>nr',  '<cmd>NvimTreeRefresh<cr>')
@@ -106,5 +103,15 @@ g.nvim_tree_bindings = {
   ['v']      = tree_cb('vplit'),
   ['q']      = tree_cb('close'),
 }
+
+-- wiki.vim
+map('n', '<leader>fw', '<cmd>WikiFzfPages<cr>')
+
+-- Easy align
+vim.cmd([[
+  xmap ga <Plug>(EasyAlign)
+  nmap ga <Plug>(EasyAlign)
+  nmap <bar> gaip*<bar>
+]])
 
  -------------------------------------------------------------------------  }}}
