@@ -32,6 +32,7 @@ map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
+map('n', '<leader>fn', '<cmd>Telescope find_files cwd=~/.config/nvim<cr>')
 map('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>')
 map('n', '<leader>mf', '<cmd>Telescope media_files<cr>')
 
