@@ -8,8 +8,6 @@ require 'traap.nvim-tree'
 require 'traap.nvim-web-devicons'
 require 'traap.telescope-nvim'
 require 'traap.treesitter-nvim'
-require 'traap.vimtex'
-require 'traap.wiki-vim'
 
 -- Now colorize
 require('colorizer').setup()

@@ -1,20 +1,42 @@
+-- {{{ Packer startup function definition.
+
 local g = vim.g
 local packer = require('packer')
 
 return packer.startup(
   function()
 
-    -- Silence 'Undefined global `use` message for every line
-    local use = use
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Silence 'Undefined global `use` message for every line.
 
-    -- Packer can manage itself as an optional plugin
+  local use = use
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Packer can manage itself as an optional plugin.
+
     use {'wbthomason/packer.nvim', opt = true}
 
-    -- Color scheme
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Color scheme
+
     use 'norcalli/nvim-colorizer.lua'
     use 'siduck76/nvim-base16.lua'
 
-    -- Fuzzy finder
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Easyalign
+
+    use 'junegunn/vim-easy-align'
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ File manager
+
+    use 'kyazdani42/nvim-tree.lua'
+    use 'kyazdani42/nvim-web-devicons'
+    use 'glepnir/galaxyline.nvim'
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Fuzzy finder
+
     use {
       'nvim-telescope/telescope.nvim',
       requires = {
@@ -26,17 +48,39 @@ return packer.startup(
       }
     }
 
-    -- LSP and completion
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Lua development
+
+    use { 'tjdevries/nlua.nvim' }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ LSP and completion
+
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
     use 'nvim-lua/completion-nvim'
     use 'hrsh7th/nvim-compe'
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
-    -- Lua development
-    use { 'tjdevries/nlua.nvim' }
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Profiling
 
-    -- neovim without Tpope?  No Way!!!
+    use 'tweekmonster/startuptime.vim'
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ PlantUML
+
+    use {
+      'aklt/plantuml-syntax',
+      requires = {
+        'weirongxu/plantuml-previewer.vim',
+        'Traap/vim-bundle-plantuml'
+      }
+    }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ neovim without Tpope?  No Way!!!
+
     use 'tpope/vim-commentary'
     use 'tpope/vim-dispatch'
     use 'tpope/vim-endwise'
@@ -44,40 +88,55 @@ return packer.startup(
     use 'tpope/vim-surround'
     use 'tpope/vim-unimpaired'
 
-    -- File manager
-    use 'kyazdani42/nvim-tree.lua'
-    use 'kyazdani42/nvim-web-devicons'
-    use 'glepnir/galaxyline.nvim'
+-- ------------------------------------------------------------------------- }}}
+-- {{{ RipGrep
 
-    -- LaTeX and Wiki
-    use 'lervag/vimtex'
-
-    use 'lervag/wiki.vim'
-    use 'Traap/wiki-ft.vim'
-
-    -- RipGrep
     use 'jremmen/vim-ripgrep'
 
-    -- Easyaling
-    use 'junegunn/vim-easy-align'
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Utility
 
-    -- Utility
     use 'sbdchd/neoformat'
     use 'vim-utils/vim-most-minimal-folds'
     use 'christoomey/vim-tmux-navigator'
 
-    -- Profiling
-    use 'tweekmonster/startuptime.vim'
+-- ------------------------------------------------------------------------- }}}
+-- {{{ VimTex
 
-    -- Auto compile and install plugins when packer is bootstrapped.
+    use {
+      'lervag/vimtex',
+      requires = {
+        'Traap/wiki-ft.vim',
+        'Traap/vim-bundle-vimtex'
+      }
+    }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Wiki.Vim
+
+    use {
+      'lervag/wiki.vim',
+      requires = {
+        'Traap/vim-bundle-vimwiki'
+      }
+    }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Auto compile and install plugins when packer is bootstrapped.
+
     if g.nvim_bootstrapped == 1 then
       packer.compile('plugin/packer_compiled.vim')
       packer.install()
     end
   end,
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Display boarders
+
   {
     display = {
       border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
     }
   }
 )
+-- ------------------------------------------------------------------------- }}}
