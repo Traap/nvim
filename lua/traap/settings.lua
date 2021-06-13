@@ -12,6 +12,7 @@ opt.colorcolumn = '+1'
 opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
 opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 opt.expandtab = true
+opt.fillchars = 'fold: '
 opt.foldmethod = 'marker'
 opt.hidden = true
 opt.ignorecase = true

@@ -106,7 +106,6 @@ return packer.startup(
     use {
       'lervag/vimtex',
       requires = {
-        'Traap/wiki-ft.vim',
         'Traap/vim-bundle-vimtex'
       }
     }
@@ -117,7 +116,8 @@ return packer.startup(
     use {
       'lervag/wiki.vim',
       requires = {
-        'Traap/vim-bundle-vimwiki'
+        'Traap/vim-bundle-vimwiki',
+         'lervag/wiki-ft.vim'
       }
     }
 
