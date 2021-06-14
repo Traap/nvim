@@ -52,6 +52,20 @@ cmd([[
 ]])
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ PlantUml 
+
+cmd([[
+
+augroup plantuml_group 
+  autocmd!  
+  autocmd BufRead,BufNewFile *.puml,*.wsd :call InitUmlSettings() 
+  autocmd BufWritePost       *.puml,*.wsd :call GenerateUmlDiagram() 
+  autocmd BufLeave           *.puml,*.wsd :call ClearUmlLaunchFlag()
+augroup END
+
+]])
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Remove whitespaces
 
 cmd([[

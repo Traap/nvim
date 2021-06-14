@@ -78,8 +78,9 @@ map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 map('n', '<leader>fn', '<cmd>Telescope find_files cwd=~/.config/nvim<cr>')
-map('n', '<leader>fv', '<cmd>Telescope find_files cwd=~/git/vim<cr>')
 map('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>')
+map('n', '<leader>fp', '<cmd>Telescope find_files cwd=~/.local/share/nvim/site/pack/packer<cr>')
+map('n', '<leader>fv', '<cmd>Telescope find_files cwd=~/git/vim<cr>')
 map('n', '<leader>mf', '<cmd>Telescope media_files<cr>')
 
 -- ------------------------------------------------------------------------- }}}
@@ -115,6 +116,11 @@ g.nvim_tree_bindings = {
   ['v']      = tree_cb('vplit'),
   ['q']      = tree_cb('close'),
 }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Plant UML
+
+map('n', '<leader>gu', '<cmd>call GenerateUmlDiagram()<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Stop search highlights.
