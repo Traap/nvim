@@ -73,7 +73,6 @@ return packer.startup(
     use {
       'aklt/plantuml-syntax',
       requires = {
-        'weirongxu/plantuml-previewer.vim',
         'Traap/vim-bundle-plantuml'
       }
     }
