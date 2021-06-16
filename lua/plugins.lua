@@ -116,7 +116,8 @@ return packer.startup(
       'lervag/wiki.vim',
       requires = {
         'Traap/vim-bundle-vimwiki',
-         'lervag/wiki-ft.vim'
+        'dkarter/bullets.vim',
+        'lervag/wiki-ft.vim'
       }
     }
 

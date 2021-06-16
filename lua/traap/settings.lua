@@ -84,6 +84,10 @@ cmd([[
 -- ------------------------------------------------------------------------- }}}
 -- {{{ wiki.vim hack
 
+-- cmd ([[
+-- let g:bullets_enabled_file_types = ['gitcommit', 'markdown', 'scratch', 'text', 'wiki']
+-- ]])
+
 cmd([[
   augroup WikiGroup
     autocmd!
