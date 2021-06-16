@@ -42,6 +42,26 @@ cmd([[filetype plugin indent on]])
 cmd([[syntax enable]])
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Completion confirmation.
+
+g.completion_confirm_key = ""
+g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ PlantUml
+
+cmd([[
+
+augroup plantuml_group
+  autocmd!
+  autocmd BufRead,BufNewFile *.puml,*.wsd :call InitUmlSettings()
+  autocmd BufWritePost       *.puml,*.wsd :call GenerateUmlDiagram()
+  autocmd BufLeave           *.puml,*.wsd :call ClearUmlLaunchFlag()
+augroup END
+
+]])
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Highlight on yank
 
 cmd([[
@@ -49,20 +69,6 @@ cmd([[
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{on_visual = false}
   augroup END
-]])
-
--- ------------------------------------------------------------------------- }}}
--- {{{ PlantUml 
-
-cmd([[
-
-augroup plantuml_group 
-  autocmd!  
-  autocmd BufRead,BufNewFile *.puml,*.wsd :call InitUmlSettings() 
-  autocmd BufWritePost       *.puml,*.wsd :call GenerateUmlDiagram() 
-  autocmd BufLeave           *.puml,*.wsd :call ClearUmlLaunchFlag()
-augroup END
-
 ]])
 
 -- ------------------------------------------------------------------------- }}}
@@ -76,9 +82,14 @@ cmd([[
 ]])
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Completion confirmation.
+-- {{{ wiki.vim hack
 
-g.completion_confirm_key = ""
-g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
+cmd([[
+  augroup WikiGroup
+    autocmd!
+    autocmd FileType wiki,md,markdown setlocal foldlevelstart=1
+    autocmd FileType wiki,md,markdown setlocal filetype=wiki
+  augroup END
+]])
 
 -- ------------------------------------------------------------------------- }}}
