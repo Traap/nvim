@@ -26,7 +26,7 @@ opt.shiftwidth = 2
 opt.shortmess = 'aToOS'
 opt.showbreak = '↪'
 opt.showmatch = true
-opt.showmode = false 
+opt.showmode = false
 opt.signcolumn = 'yes'
 opt.smartcase = true
 opt.smartindent = true
@@ -83,11 +83,18 @@ cmd([[
 ]])
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ wiki.vim hack
+-- {{{ Bullets
 
--- cmd ([[
--- let g:bullets_enabled_file_types = ['gitcommit', 'markdown', 'scratch', 'text', 'wiki']
--- ]])
+g.bullets_enabled_file_types = {
+  'gitcommit',
+  'markdown',
+  'scratch',
+  'text',
+  'wiki'
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ wiki.vim
 
 cmd([[
   augroup WikiGroup
