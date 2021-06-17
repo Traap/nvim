@@ -26,6 +26,7 @@ opt.shiftwidth = 2
 opt.shortmess = 'aToOS'
 opt.showbreak = '↪'
 opt.showmatch = true
+opt.showmode = false 
 opt.signcolumn = 'yes'
 opt.smartcase = true
 opt.smartindent = true
