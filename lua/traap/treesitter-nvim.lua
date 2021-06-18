@@ -7,8 +7,12 @@ ts_config.setup {
         "html",
         "javascript",
         "json",
+        "latex",
         "lua",
-        "python"
+        "python",
+        "ruby",
+        "typescript",
+        "yaml"
     },
     highlight = {
         enable = true,
