@@ -1,7 +1,14 @@
-local gl = require('galaxyline')
+-- {{{ Requires and aliases
+
+local        gl = require('galaxyline')
 local condition = require('galaxyline.condition')
+
+local api = vim.api
+local  fn = vim.fn
 local gls = gl.section
-local fn = vim.fn
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Colors
 
 local colors = {
   -- Mine
@@ -26,11 +33,56 @@ local colors = {
   vivid_blue = '#4FC1FF'
 }
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Determine width to squeeze.
+
 local checkwidth = function()
   local squeeze_width = fn.winwidth(0) / 2
   if squeeze_width > 30 then return true end
   return false
 end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Colors associated with ViMode.
+
+local mode_color = {
+  n = colors.blue,
+  i = colors.green,
+  v = colors.purple,
+  [''] = colors.purple,
+  V = colors.purple,
+  c = colors.magenta,
+  no = colors.blue,
+  s = colors.orange,
+  S = colors.orange,
+  [''] = colors.orange,
+  ic = colors.yellow,
+  R = colors.red,
+  Rv = colors.red,
+  cv = colors.blue,
+  ce = colors.blue,
+  r = colors.cyan,
+  rm = colors.cyan,
+  ['r?'] = colors.cyan,
+  ['!'] = colors.blue,
+  t = colors.blue
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ VI mode names
+
+local mode_names = {
+  n      = "Normal ",
+  i      = "Insert ",
+  c      = "Command",
+  V      = "Visual ",
+  [""] = "Visual ",
+  v      = "Visual ",
+  R      = "Replace"
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[1]
 
 gls.left[1] = {
   statusIcon = {
@@ -41,55 +93,42 @@ gls.left[1] = {
   }
 }
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[2]
+
 gls.left[2] = {
   ViMode = {
     provider = function()
-      -- auto change color according the vim mode
-      local mode_color = {
-          n = colors.blue,
-          i = colors.green,
-          v = colors.purple,
-          [''] = colors.purple,
-          V = colors.purple,
-          c = colors.magenta,
-          no = colors.blue,
-          s = colors.orange,
-          S = colors.orange,
-          [''] = colors.orange,
-          ic = colors.yellow,
-          R = colors.red,
-          Rv = colors.red,
-          cv = colors.blue,
-          ce = colors.blue,
-          r = colors.cyan,
-          rm = colors.cyan,
-          ['r?'] = colors.cyan,
-          ['!'] = colors.blue,
-          t = colors.blue
-      }
-      vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
-      --  color mode alias
-      local alias = {
-        n      = "Normal ",
-        i      = "Insert ",
-        c      = "Command",
-        V      = "Visual ",
-        [""] = "Visual ",
-        v      = "Visual ",
-        R      = "Replace"
-      }
-      local current_Mode = alias[fn.mode()]
-      if current_Mode == nil then
+      api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[fn.mode()])
+
+      local current_mode = mode_names[fn.mode()]
+      if current_mode == nil then
         return "  Terminal "
       else
-        return " " .. current_Mode .. " "
+        return " " .. current_mode .. " "
       end
+
     end,
     highlight = {colors.red, colors.lightbg}
   }
 }
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[3]
+
 gls.left[3] = {
+  viMode_icon = {
+    provider = function() return "   " end,
+    highlight = {colors.bg, colors.blue},
+    separator = "",
+    separator_highlight = {colors.blue, colors.lightbg}
+  }
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[4]
+
+gls.left[4] = {
   FileIcon = {
     provider = "FileIcon",
     condition = condition.buffer_not_empty,
@@ -97,7 +136,10 @@ gls.left[3] = {
   }
 }
 
-gls.left[4] = {
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[5]
+
+gls.left[5] = {
   FileName = {
     provider = {"FileName"},
     condition = condition.buffer_not_empty,
@@ -107,7 +149,10 @@ gls.left[4] = {
   }
 }
 
-gls.left[5] = {
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[6]
+
+gls.left[6] = {
   DiffAdd = {
     provider = "DiffAdd",
     condition = checkwidth,
@@ -116,7 +161,10 @@ gls.left[5] = {
   }
 }
 
-gls.left[6] = {
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[7]
+
+gls.left[7] = {
   DiffModified = {
     provider = "DiffModified",
     condition = checkwidth,
@@ -125,7 +173,10 @@ gls.left[6] = {
   }
 }
 
-gls.left[7] = {
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[8]
+
+gls.left[8] = {
   DiffRemove = {
     provider = "DiffRemove",
     condition = checkwidth,
@@ -134,7 +185,10 @@ gls.left[7] = {
   }
 }
 
-gls.left[8] = {
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[9]
+
+gls.left[9] = {
   DiagnosticError = {
     provider = "DiagnosticError",
     icon = "  ",
@@ -142,13 +196,19 @@ gls.left[8] = {
   }
 }
 
-gls.left[9] = {
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[10]
+
+gls.left[10] = {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     icon = "  ",
     highlight = {colors.yellow, colors.bg}
   }
 }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ right[1]
 
 gls.right[1] = {
   GitIcon = {
@@ -160,6 +220,9 @@ gls.right[1] = {
   }
 }
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ right[2]
+
 gls.right[2] = {
   GitBranch = {
     provider = "GitBranch",
@@ -168,17 +231,10 @@ gls.right[2] = {
   }
 }
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ right[3]
+
 gls.right[3] = {
-  viMode_icon = {
-    provider = function() return " " end,
-    highlight = {colors.bg, colors.red},
-    separator = " ",
-    separator_highlight = {colors.red, colors.lightbg}
-  }
-}
-
-
-gls.right[5] = {
   time_icon = {
     provider = function() return " " end,
     separator = "",
@@ -187,9 +243,14 @@ gls.right[5] = {
   }
 }
 
-gls.right[6] = {
+-- ------------------------------------------------------------------------- }}}
+-- {{{ right[4]
+
+gls.right[4] = {
   time = {
     provider = function() return "  " .. os.date("%H:%M") .. " " end,
     highlight = {colors.green, colors.lightbg}
   }
 }
+
+-- ------------------------------------------------------------------------- }}}
