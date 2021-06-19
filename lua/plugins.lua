@@ -3,13 +3,7 @@
 local g = vim.g
 local packer = require('packer')
 
-return packer.startup(
-  function()
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Silence 'Undefined global `use` message for every line.
-
-  local use = use
+return packer.startup(function(use)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Packer can manage itself as an optional plugin.

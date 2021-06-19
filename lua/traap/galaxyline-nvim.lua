@@ -6,6 +6,7 @@ local condition = require('galaxyline.condition')
 local api = vim.api
 local  fn = vim.fn
 local gls = gl.section
+local lsp = vim.lsp
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
@@ -85,31 +86,9 @@ local mode_names = {
 -- {{{ left[1]
 
 gls.left[1] = {
-  statusIcon = {
-    provider = function() return "   " end,
+  viMode_icon = {
+    provider = function() return '   ' end,
     highlight = {colors.bg, colors.blue},
-    separator = "",
-    separator_highlight = {colors.blue, colors.lightbg}
-  }
-}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ left[2]
-
-gls.left[2] = {
-  ViMode = {
-    provider = function()
-      api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[fn.mode()])
-
-      local current_mode = mode_names[fn.mode()]
-      if current_mode == nil then
-        return "  Terminal "
-      else
-        return " " .. current_mode .. " "
-      end
-
-    end,
-    highlight = {colors.red, colors.lightbg}
   }
 }
 
@@ -117,11 +96,19 @@ gls.left[2] = {
 -- {{{ left[3]
 
 gls.left[3] = {
-  viMode_icon = {
-    provider = function() return "   " end,
-    highlight = {colors.bg, colors.blue},
-    separator = "",
-    separator_highlight = {colors.blue, colors.lightbg}
+  ViMode = {
+    provider = function()
+      api.nvim_command('hi GalaxyViMode guibg=' .. mode_color[fn.mode()])
+
+      local current_mode = mode_names[fn.mode()]
+      if current_mode == nil then
+        return '  Terminal '
+      else
+        return ' ' .. current_mode
+      end
+
+    end,
+    highlight = {colors.bg, colors.fg},
   }
 }
 
@@ -129,10 +116,9 @@ gls.left[3] = {
 -- {{{ left[4]
 
 gls.left[4] = {
-  FileIcon = {
-    provider = "FileIcon",
-    condition = condition.buffer_not_empty,
-    highlight = {colors.fg, colors.lightbg}
+  Space = {
+    provider = function() return ' ' end,
+    highlight = {colors.bg, colors.bg}
   }
 }
 
@@ -140,12 +126,10 @@ gls.left[4] = {
 -- {{{ left[5]
 
 gls.left[5] = {
-  FileName = {
-    provider = {"FileName"},
+  FileIcon = {
+    provider = 'FileIcon',
     condition = condition.buffer_not_empty,
-    highlight = {colors.fg, colors.lightbg},
-    separator = " ",
-    separator_highlight = {colors.lightbg, colors.bg}
+    highlight = {colors.fg, colors.lightbg}
   }
 }
 
@@ -153,6 +137,19 @@ gls.left[5] = {
 -- {{{ left[6]
 
 gls.left[6] = {
+  FileName = {
+    provider = 'FileName',
+    condition = condition.buffer_not_empty,
+    highlight = {colors.fg, colors.lightbg},
+    separator = ' ',
+    separator_highlight = {colors.lightbg, colors.bg}
+  }
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ left[7]
+
+gls.left[7] = {
   DiffAdd = {
     provider = "DiffAdd",
     condition = checkwidth,
@@ -162,9 +159,9 @@ gls.left[6] = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ left[7]
+-- {{{ left[8]
 
-gls.left[7] = {
+gls.left[8] = {
   DiffModified = {
     provider = "DiffModified",
     condition = checkwidth,
@@ -174,9 +171,9 @@ gls.left[7] = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ left[8]
+-- {{{ left[9]
 
-gls.left[8] = {
+gls.left[9] = {
   DiffRemove = {
     provider = "DiffRemove",
     condition = checkwidth,
@@ -186,9 +183,9 @@ gls.left[8] = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ left[9]
+-- {{{ left[10]
 
-gls.left[9] = {
+gls.left[10] = {
   DiagnosticError = {
     provider = "DiagnosticError",
     icon = "  ",
@@ -197,9 +194,9 @@ gls.left[9] = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ left[10]
+-- {{{ left[11]
 
-gls.left[10] = {
+gls.left[11] = {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     icon = "  ",
@@ -210,7 +207,24 @@ gls.left[10] = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ right[1]
 
-gls.right[1] = {
+-- local LspStatus = function()
+--   if #lsp.get_active_clients() > 0 then
+--     return require('lsp-status').status()
+--   end
+--   return ''
+-- end
+
+-- gls.right[1] = {
+--   LspStatus = {
+--     provier = {LspStatus},
+--     highlight= {colors.fg, colors.bg},
+--   }
+-- }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ right[2]
+
+gls.right[2] = {
   GitIcon = {
     provider = function() return " " end,
     condition = require("galaxyline.provider_vcs").check_git_workspace,
@@ -221,9 +235,9 @@ gls.right[1] = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ right[2]
+-- {{{ right[3]
 
-gls.right[2] = {
+gls.right[3] = {
   GitBranch = {
     provider = "GitBranch",
     condition = require("galaxyline.provider_vcs").check_git_workspace,
@@ -232,24 +246,34 @@ gls.right[2] = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ right[3]
+-- {{{ right[4]
 
-gls.right[3] = {
-  time_icon = {
-    provider = function() return " " end,
-    separator = "",
-    separator_highlight = {colors.green, colors.bg},
-    highlight = {colors.lightbg, colors.green}
+gls.right[4] = {
+  FileSize = {
+    provider = 'FileSize',
+    condition = function()
+      if fn.empty(fn.expand('%:t')) ~= 1 then
+        return true
+      end
+      return false
+    end,
+    highlight = {colors.lightbg, colors.fg},
+    separator = '',
+    separator_highlight = {colors.fg, colors.lightbg},
+    icon = 'l',
   }
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ right[4]
+-- {{{ right[5]
 
-gls.right[4] = {
+gls.right[5] = {
   time = {
-    provider = function() return "  " .. os.date("%H:%M") .. " " end,
-    highlight = {colors.green, colors.lightbg}
+    provider = function() return ' ' .. os.date('%H:%M') .. ' ' end,
+    highlight = {colors.light_green, colors.lightbg},
+    icon = '  ',
+    -- separator = '',
+    -- separator_highlight = {colors.green, colors.bg},
   }
 }
 
