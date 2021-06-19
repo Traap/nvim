@@ -20,8 +20,14 @@ require "compe".setup {
     max_menu_width = 100,
     documentation = true,
     source = {
-        buffer = {kind = "﬘", true},
-        vsnip = {kind = "﬌"}, --replace to what sign you prefer
+        buffer = {kind = "   (Buffer)"},
+--        buffer = {kind = "﬘", true},
+        calc = {kind = "   (Calc)"},
+        nvim_lsp = {kind = "   (LSP)"},
+        path = {kind = "   (Path)"},
+        spell = {kind = "   (Spell)"},
+        vsnip = {kind = "   (Snippet)"},
+--        vsnip = {kind = "﬌"}, --replace to what sign you prefer
         nvim_lsp = true
     }
 }

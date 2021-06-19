@@ -4,14 +4,26 @@ local gls = gl.section
 local fn = vim.fn
 
 local colors = {
-  bg = "#22262e",
-  fg = "#abb2bf",
-  green = "#82ad63",
-  red = "#d47d85",
-  lightbg = "#2e323a",
-  blue = "#7797b7",
-  yellow = "#e0c080",
-  grey = "#6f737b"
+  -- Mine
+  bg = '#22262e',
+  fg = '#abb2bf',
+  blue = '#7797b7',
+  green = '#82ad63',
+  grey = '#6f737b',
+  lightbg = '#2e323a',
+  red = '#d47d85',
+  yellow = '#e0c080',
+  -- LunarVim
+  cyan = '#4EC9B0',
+  dark_yellow = '#D7BA7D',
+  error_red = '#F44747',
+  info_yellow = '#FFCC66',
+  light_green = '#B5CEA8',
+  magenta = '#D16D9E',
+  orange = '#FF8800',
+  purple = '#C586C0',
+  string_orange = '#CE9178',
+  vivid_blue = '#4FC1FF'
 }
 
 local checkwidth = function()
@@ -20,12 +32,60 @@ local checkwidth = function()
   return false
 end
 
-gls.left[2] = {
+gls.left[1] = {
   statusIcon = {
     provider = function() return "   " end,
     highlight = {colors.bg, colors.blue},
-    separator = "  ",
+    separator = "",
     separator_highlight = {colors.blue, colors.lightbg}
+  }
+}
+
+gls.left[2] = {
+  ViMode = {
+    provider = function()
+      -- auto change color according the vim mode
+      local mode_color = {
+          n = colors.blue,
+          i = colors.green,
+          v = colors.purple,
+          [''] = colors.purple,
+          V = colors.purple,
+          c = colors.magenta,
+          no = colors.blue,
+          s = colors.orange,
+          S = colors.orange,
+          [''] = colors.orange,
+          ic = colors.yellow,
+          R = colors.red,
+          Rv = colors.red,
+          cv = colors.blue,
+          ce = colors.blue,
+          r = colors.cyan,
+          rm = colors.cyan,
+          ['r?'] = colors.cyan,
+          ['!'] = colors.blue,
+          t = colors.blue
+      }
+      vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
+      --  color mode alias
+      local alias = {
+        n      = "Normal ",
+        i      = "Insert ",
+        c      = "Command",
+        V      = "Visual ",
+        [""] = "Visual ",
+        v      = "Visual ",
+        R      = "Replace"
+      }
+      local current_Mode = alias[fn.mode()]
+      if current_Mode == nil then
+        return "  Terminal "
+      else
+        return " " .. current_Mode .. " "
+      end
+    end,
+    highlight = {colors.red, colors.lightbg}
   }
 }
 
@@ -117,29 +177,6 @@ gls.right[3] = {
   }
 }
 
-gls.right[4] = {
-  ViMode = {
-    provider = function()
-      local alias = {
-        n = "Normal",
-        i = "Insert",
-        c = "Command",
-        V = "Visual",
-        [""] = "Visual",
-        v = "Visual",
-        R = "Replace"
-      }
-      local current_Mode = alias[fn.mode()]
-
-      if current_Mode == nil then
-        return "  Terminal "
-      else
-        return "  " .. current_Mode .. " "
-      end
-    end,
-    highlight = {colors.red, colors.lightbg}
-  }
-}
 
 gls.right[5] = {
   time_icon = {
