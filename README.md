@@ -5,18 +5,17 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 * [ThePrimeagen](https://github.com/ThePrimeagen)
 * [ThePrimeagen Discord](https://discord.gg/3ujcVMe)
 * [TJ DeVries](https://github.com/tjdevries)
+* [Christian Chiarulli](https://github.com/ChristianChiarulli/LunarVim)
 
-### Todo
- - [x] Install nerdfonts hack to configure missing icons
- - [x] Automate nvim bootstrapping.
- - [x] Automate treesitter bootstrapping.
- - [x] settings.lua does not appear to fire the first file edited.
- - [ ] Display neovim welcome page.
- - [ ] Configure snippets.
- - [x] Analyze checkhealth feedback
- - [ ] Complete user acceptance testing with all plugins loaded.
+### Disclaimer
+  1. I use this script on my Linux computers.
+  2. This script does not perform any error checking.
+  3. This script does remove ~/.cache/nvim, ~/.local/nvim, and ~/.config/nvim.
 
-
+### Linux Bash Installation
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Traap/nvim/master/install.sh)"
+```
 ### Package Manager
 * [Packer](https://github.com/wbthomason/packer.nvim)
 
@@ -58,11 +57,23 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 * [Tweek Monster](https://github.com/tweekmonster/startuptime.vim)
 * [Web Devicons](https://github.com/kyazdani42/nvim-web-devicons)
 
+### Todo
+ - [x] Install nerdfonts hack to configure missing icons
+ - [x] Automate nvim bootstrapping.
+ - [x] Automate treesitter bootstrapping.
+ - [x] settings.lua does not appear to fire the first file edited.
+ - [ ] Display neovim welcome page.
+ - [x] Configure Galaxy Line.
+ - [ ] Configure snippets.
+ - [x] Analyze checkhealth feedback
+ - [ ] Complete user acceptance testing with all plugins loaded.
+
 ### Simple and Sweet folder structure.
 
 ```
 nvim
 ├── init.lua
+├── install.sh
 ├── LICENSE
 ├── lua
 │   ├── bootstrap.lua
@@ -78,11 +89,12 @@ nvim
 │       ├── nvim-web-devicons.lua
 │       ├── settings.lua
 │       ├── telescope-nvim.lua
-│       ├── treesitter-nvim.lua
-│       ├── vimtex.lua
-│       └── wiki-vim.lua
+│       └── treesitter-nvim.lua
+├── package-lock.json
 ├── plugin
 │   └── packer_compiled.vim
-└── README.md
-
+├── README.md
+└── spell
+    ├── en.utf-8.add
+    └── en.utf-8.add.spl
 ```
