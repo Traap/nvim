@@ -59,7 +59,7 @@ map('n', '<leader>cv', '"+p')
 -- {{{ Clean trailing whitespaces
 
 map('n', '<leader>wr', '<cmd>%s/\r//g<cr>')
-map('n', '<leader>ws', "mz<cmd>%s//\\s\\+$//<cr><cmd>let @/=''<cr>`z")
+map('n', '<leader>ws', "mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easy align
@@ -77,7 +77,7 @@ map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
-map('n', '<leader>fn', '<cmd>Telescope find_files cwd=~/.config/nvim<cr>')
+map('n', '<leader>fn', '<cmd>Telescope find_files cwd=~/git/nvim<cr>')
 map('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>')
 map('n', '<leader>fp', '<cmd>Telescope find_files cwd=~/.local/share/nvim/site/pack/packer<cr>')
 map('n', '<leader>fv', '<cmd>Telescope find_files cwd=~/git/vim<cr>')
