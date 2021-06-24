@@ -123,6 +123,11 @@ g.nvim_tree_bindings = {
 map('n', '<leader>gu', '<cmd>call GenerateUmlDiagram()<cr>')
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Quit now
+
+map('n', '<c-q>', '<cmd>qall!<cr>')
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Stop search highlights.
 
 map('n', '<leader><space>', '<cmd>noh<CR>')

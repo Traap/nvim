@@ -104,4 +104,13 @@ cmd([[
   augroup END
 ]])
 
+g.traap_wiki_export = {
+  args = '--metadata-file=$HOME/git/wiki/wiki.yaml',
+  ext = 'pdf',
+  from_format = 'markdown',
+  link_ext_replace = false,
+  output = 'printed',
+  view = true,
+}
+
 -- ------------------------------------------------------------------------- }}}
