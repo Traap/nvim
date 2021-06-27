@@ -1,13 +1,9 @@
 -- {{{ Alias to vim APis.
 
-local        vim = vim
-local          g = vim.g
-local        cmd = vim.cmd
-local        env = vim.env
-local        opt = vim.opt
-local       trim = vim.fn.trim
-local     system = vim.fn.system
-local substitute = vim.fn.substitute
+local    vim = vim
+local      g = vim.g
+local   trim = vim.fn.trim
+local system = vim.fn.system
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Archlinux and Windows Subsystem for Linux check
