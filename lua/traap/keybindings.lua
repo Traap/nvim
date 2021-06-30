@@ -98,7 +98,12 @@ map('n', '<Leader>gs', '<cmd>G<CR>')
 -- {{{ KJV verse lookup.
 
 map('n', 'gk', [[0mMvg_"ky<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
-map('v', 'gs', 'S*v)3>')
+map('n', 'gt', 'v)3>')
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Lua File.
+
+map('n', '<Leader>lf', [[<cmd>w<cr><cmd>luafile %<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ nvim-tree
