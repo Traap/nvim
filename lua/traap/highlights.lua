@@ -6,7 +6,7 @@ local cmd = vim.cmd
 -- {{{ Colors
 
 local base16 = require 'base16'
-base16(base16.themes['onedark'],true)
+base16(base16.themes['chalk'],true)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Color contrasts pleasing to my eyes.
@@ -17,9 +17,10 @@ cmd 'highlight clear Concel'
 cmd 'highlight clear CursorLine'
 cmd 'highlight clear Folded'
 cmd 'highlight clear SpellBad'
+cmd 'highlight clear SignColumn'
 
 -- I use color 18 and 19, which will change when I switch base16 colorscemes.
-cmd 'highlight ColorColumn   guibg=#202006 gui=none'
+cmd 'highlight ColorColumn   guibg=#151515 gui=none'
 cmd 'highlight Comment       guifg=#80a0ff gui=none'
 cmd 'highlight CursorlineNr  guifg=#e06c74 gui=none'
 cmd 'highlight DiffAdd       guifg=#7eca9c gui=none'
@@ -28,7 +29,6 @@ cmd 'highlight DiffDelete    guifg=#ff75a0 gui=none'
 cmd 'highlight DiffText      guifg=#EBCB8B gui=none'
 cmd 'highlight Folded        guifg=#80a0ff gui=none'
 cmd 'highlight LineNbr       guifg=#2a2e36 gui=none'
-cmd 'highlight SignColumn    guibg=#2a2e36 gui=none'
 cmd 'highlight SpellBad      guibg=#DE6874 gui=undercurl'
 cmd 'highlight search        guibg=#BD77DC gui=none'
 
