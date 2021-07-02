@@ -13,7 +13,6 @@ local treesitter = vim.treesitter
 -- {{{ Colors
 
 local colors = {
-  -- bg = '#2E2E2E',
   bg = '#292D38',
   yellow = '#DCDCAA',
   dark_yellow = '#D7BA7D',
@@ -83,8 +82,16 @@ gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
 table.insert(gls.left, {
   ViMode = {
     provider = function()
-      api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[fn.mode()])
-      return '▊ ' ..  mode_names[fn.mode()]
+
+      local color = mode_color[fn.mode()]
+      if color == nil then color = colors.blue end
+
+      local name = mode_names[fn.mode()]
+      if name == nil then name = 'Normal' end
+
+      api.nvim_command('hi GalaxyViMode guifg=' .. color)
+      return '▊ ' .. name
+
     end,
     highlight = {colors.red, colors.bg}
   }
