@@ -9,7 +9,6 @@ require('telescope').setup {
       '--column',
       '--smart-case'
     },
-    prompt_position = 'bottom',
     prompt_prefix = ' ',
     selection_caret = ' ',
     entry_prefix = '  ',
@@ -17,24 +16,21 @@ require('telescope').setup {
     selection_strategy = 'reset',
     sorting_strategy = 'descending',
     layout_strategy = 'horizontal',
-    layout_defaults = {
+    layout_config = {
       horizontal = {
         mirror = false,
         preview_width = 0.5
       },
       vertical = {
         mirror = false
-      }
+      },
+      width = 0.75
     },
     file_sorter = require 'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
     shorten_path = true,
     winblend = 0,
-    width = 0.75,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
     border = {},
     borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
     color_devicons = true,
