@@ -23,10 +23,10 @@ g.maplocalleader = [[ ]]
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Buffer resize
 
-map('n', '<a-H>', '<cmd>vertical resize -1<cr>')
-map('n', '<a-J>', '<cmd>resize +1<cr>')
-map('n', '<a-K>', '<cmd>resize -1<cr>')
-map('n', '<a-L>', '<cmd>vertical resize +1<cr>')
+map('n', '<leader>h', '<cmd>vertical resize -1<cr>')
+map('n', '<leader>j', '<cmd>resize +1<cr>')
+map('n', '<leader>k', '<cmd>resize -1<cr>')
+map('n', '<leader>l', '<cmd>vertical resize +1<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Buffer selection
