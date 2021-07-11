@@ -49,17 +49,22 @@ map('n', 'Vaa', 'ggvG')
 map('n', '<leader>V', 'V`')
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Copy and Paste
+-- {{{ Check Health
 
-map('n', '<leader>cc', 'ggVGg_"+y')
-map('v', '<leader>cc', '"+y')
-map('n', '<leader>cv', '"+p')
+map('n', '<leader>ch', '<cmd>checkhealth<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Clean trailing whitespaces
 
 map('n', '<leader>wr', '<cmd>%s/\r//g<cr>')
 map('n', '<leader>ws', "mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z")
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Copy and Paste
+
+map('n', '<leader>cc', 'ggVGg_"+y')
+map('v', '<leader>cc', '"+y')
+map('n', '<leader>cv', '"+p')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easy align
