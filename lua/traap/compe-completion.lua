@@ -99,7 +99,7 @@ keymap("s", "<Tab>",   "v:lua.tab_complete()", {expr = true})
 keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
-keymap("i", "<CR>",    "compe#confirm('<CR>')", { noremap = true, silent = true, expr = true })
+-- keymap("i", "<CR>",    "compe#confirm('<CR>')", { noremap = true, silent = true, expr = true })
 
 keymap("i", "<C-Space>", "compe#complete()",     { noremap = true, silent = true, expr = true })
 keymap("i", "<C-e>",     "compe#close('<C-e>')", { noremap = true, silent = true, expr = true })
