@@ -6,7 +6,7 @@ local cmd = vim.cmd
 -- {{{ Colors
 
 local base16 = require 'base16'
-base16(base16.themes['chalk'],true)
+base16(base16.themes('chalk'),true)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Color contrasts pleasing to my eyes.
