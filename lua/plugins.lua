@@ -14,7 +14,7 @@ return packer.startup(function(use)
 -- {{{ Color scheme
 
     use 'norcalli/nvim-colorizer.lua'
-    use 'siduck76/nvim-base16.lua'
+    use 'Traap/nvim-base16.lua'
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easyalign
