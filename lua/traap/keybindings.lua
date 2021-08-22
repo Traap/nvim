@@ -89,6 +89,21 @@ map('n', '<leader>fv', '<cmd>Telescope find_files cwd=~/git/vim<cr>')
 map('n', '<leader>mf', '<cmd>Telescope media_files<cr>')
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Fold navigation
+--
+-- Author: Karl Yngve Lervåg
+--    See: https://github.com/lervag/dotnvim
+
+-- Close all fold except the current one.
+map('n', 'zv', 'zMzvzz')
+
+-- Close current fold when open. Always open next fold.
+map('n', 'zj', 'zcjzOzz')
+
+-- Close current fold when open. Always open previous fold.
+map('n', 'zk', 'zckzOzz')
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Fugitive
 
 map('n', '<Leader>gc', '<cmd>G commit<CR>')
@@ -178,7 +193,7 @@ map('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
 
 map('n', '<leader>fw', '<cmd>WikiFzfPages<cr>')
 map('n', '<leader>we', '<cmd>WikiExport<cr>')
--- map('n', '<leader>wv', '<cmd>execute '!'g:traap_pdf_viewer g:wiki_root . '/printed/' . expand('%:p:t:r') .'.pdf' . '&'<cr>)
+map('n', '<leader>wv', '<cmd>execute '!'g:traap_pdf_viewer g:wiki_root . '/printed/' . expand('%:p:t:r') .'.pdf' . '&'<cr>)
 
 
 -- ------------------------------------------------------------------------- }}}
