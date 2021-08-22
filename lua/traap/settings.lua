@@ -17,6 +17,7 @@ opt.foldmethod = 'marker'
 opt.hidden = true
 opt.ignorecase = true
 opt.lazyredraw = true
+opt.nrformats = {'alpha', 'octal', 'hex'}
 opt.number = true
 opt.numberwidth= 3
 opt.relativenumber = true

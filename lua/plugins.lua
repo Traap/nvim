@@ -89,9 +89,10 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Utility
 
-    use 'sbdchd/neoformat'
-    use 'vim-utils/vim-most-minimal-folds'
     use 'christoomey/vim-tmux-navigator'
+    use 'sbdchd/neoformat'
+    use 'triglav/vim-visual-increment'
+    use 'vim-utils/vim-most-minimal-folds'
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ VimTex
