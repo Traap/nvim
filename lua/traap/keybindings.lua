@@ -193,8 +193,7 @@ map('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
 
 map('n', '<leader>fw', '<cmd>WikiFzfPages<cr>')
 map('n', '<leader>we', '<cmd>WikiExport<cr>')
-map('n', '<leader>wv', '<cmd>execute '!'g:traap_pdf_viewer g:wiki_root . '/printed/' . expand('%:p:t:r') .'.pdf' . '&'<cr>)
-
+map('n', '<leader>wv', "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Window movement without Tmux-Navigator
