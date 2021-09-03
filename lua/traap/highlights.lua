@@ -12,7 +12,7 @@ base16(base16.themes('chalk'),true)
 -- {{{ Color contrasts pleasing to my eyes.
 
 -- Clear items I want full control over.
-cmd 'highlight clear ColorColumn'
+-- cmd 'highlight clear ColorColumn'
 cmd 'highlight clear Concel'
 cmd 'highlight clear CursorLine'
 cmd 'highlight clear Folded'
@@ -20,7 +20,7 @@ cmd 'highlight clear SpellBad'
 cmd 'highlight clear SignColumn'
 
 -- I use color 18 and 19, which will change when I switch base16 colorscemes.
-cmd 'highlight ColorColumn   guibg=#151515 gui=none'
+cmd 'highlight ColorColumn   guifg=#2a2e36'
 cmd 'highlight Comment       guifg=#80a0ff gui=none'
 cmd 'highlight CursorlineNr  guifg=#e06c74 gui=none'
 cmd 'highlight DiffAdd       guifg=#7eca9c gui=none'
