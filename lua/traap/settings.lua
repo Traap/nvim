@@ -11,12 +11,14 @@ opt.clipboard = 'unnamedplus'
 opt.colorcolumn = '+1'
 opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
 opt.completeopt = {'menuone', 'noinsert', 'noselect'}
+opt.cursorline = true
 opt.expandtab = true
 opt.fillchars = 'fold: '
 opt.foldmethod = 'marker'
 opt.hidden = true
 opt.ignorecase = true
 opt.lazyredraw = true
+opt.listchars = {eol = '↲', tab = '▸ ', trail = '·'}
 opt.nrformats = {'alpha', 'octal', 'hex'}
 opt.number = true
 opt.numberwidth= 3
@@ -39,7 +41,6 @@ opt.termguicolors = true
 opt.textwidth = 80
 opt.virtualedit = {'block'}
 opt.wildmode = {'list', 'longest'}
-
 cmd([[filetype plugin indent on]])
 cmd([[syntax enable]])
 
