@@ -1,7 +1,6 @@
 -- {{{ Auto install packer.nvim if when needed.
 
 local     cmd = vim.cmd
-local execute = vim.api.nvim_command
 local      fn = vim.fn
 local       g = vim.g
 
