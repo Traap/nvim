@@ -24,9 +24,13 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File manager
 
-    use 'kyazdani42/nvim-tree.lua'
-    use 'kyazdani42/nvim-web-devicons'
-    use 'glepnir/galaxyline.nvim'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function() require'plugins.nvim-tree' end
+  }
+
+  use 'kyazdani42/nvim-web-devicons'
+  use 'glepnir/galaxyline.nvim'
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Fuzzy finder
