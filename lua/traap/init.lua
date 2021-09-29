@@ -25,7 +25,7 @@ require('traap.highlights')
 require 'traap.keybindings'
 
 -- Enable language servers.
-require 'traap.language-servers'
+require 'traap.nvim-lspinstall'
 
 -- The Wild West! ... You have been warned1!!!
 require 'traap.os-check'
