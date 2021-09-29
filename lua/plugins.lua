@@ -53,11 +53,11 @@ return packer.startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
     use 'nvim-lua/completion-nvim'
-    -- use 'hrsh7th/nvim-compe'
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-nvim-lua'
-    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/nvim-compe'
+    -- use 'hrsh7th/nvim-cmp'
+    -- use 'hrsh7th/cmp-buffer'
+    -- use 'hrsh7th/cmp-nvim-lua'
+    -- use 'hrsh7th/cmp-nvim-lsp'
 
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
