@@ -1,3 +1,6 @@
+-- Disable plugins.  See TJ DeVries.
+require 'traap.disable_builtin'
+
 -- Configure neovim environment.
 require 'traap.settings'
 
