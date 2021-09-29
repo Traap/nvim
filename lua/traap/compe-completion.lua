@@ -8,25 +8,25 @@ local fn = vim.fn
 -- {{{ compe setup
 
 require "compe".setup {
-  enabled = true,
-  autocomplete = true,
-  debug = false,
-  min_length = 1,
-  preselect = "enable",
-  throttle_time = 80,
-  source_timeout = 200,
+  enabled          = true,
+  autocomplete     = true,
+  debug            = false,
+  min_length       = 1,
+  preselect        = "enable",
+  throttle_time    = 80,
+  source_timeout   = 200,
   incomplete_delay = 400,
-  max_abbr_width = 100,
-  max_kind_width = 100,
-  max_menu_width = 100,
-  documentation = true,
-  source = {
-    buffer = {kind = " ﬘  (Buffer)"},
-    calc = {kind = "   (Calc)"},
-    nvim_lsp = {kind = "   (LSP)"},
-    path = {kind = "   (Path)"},
-    spell = {kind = "   (Spell)"},
-    vsnip = {kind = "   (Snippet)"},
+  max_abbr_width   = 100,
+  max_kind_width   = 100,
+  max_menu_width   = 100,
+  documentation    = true,
+  source           = {
+    buffer         = {kind = " ﬘  (Buffer)"},
+    calc           = {kind = "   (Calc)"},
+    nvim_lsp       = {kind = "   (LSP)"},
+    path           = {kind = "   (Path)"},
+    spell          = {kind = "   (Spell)"},
+    vsnip          = {kind = "   (Snippet)"},
   }
 }
 
@@ -78,7 +78,7 @@ _G.s_tab_complete = function()
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Function to manaage completions.
+-- {{{ Function to manage completions.
 
 function _G.completions()
   local npairs = require("nvim-autopairs")
@@ -106,4 +106,5 @@ keymap("i", "<C-e>",     "compe#close('<C-e>')", { noremap = true, silent = true
 
 keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", { noremap = true, silent = true, expr = true })
 keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", { noremap = true, silent = true, expr = true })
+
 -- ------------------------------------------------------------------------- }}}
