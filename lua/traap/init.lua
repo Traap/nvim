@@ -5,7 +5,11 @@ require 'traap.disable_builtin'
 require 'traap.settings'
 
 -- Configure plugins
-require 'traap.compe-completion'
+-- require 'traap.compe-completion'
+require 'traap.nvim-cmp'
+require 'traap.cmp-buffer'
+require 'traap.cmp-nvim-lua'
+require 'traap.cmp-nvim-lsp'
 require 'traap.galaxyline-nvim'
 require 'traap.nvim-tree'
 require 'traap.nvim-web-devicons'

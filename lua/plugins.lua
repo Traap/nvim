@@ -24,11 +24,7 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File manager
 
-  use {
-    'kyazdani42/nvim-tree.lua',
-    config = function() require'plugins.nvim-tree' end
-  }
-
+  use 'kyazdani42/nvim-tree.lua'
   use 'kyazdani42/nvim-web-devicons'
   use 'glepnir/galaxyline.nvim'
 
@@ -57,7 +53,12 @@ return packer.startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
     use 'nvim-lua/completion-nvim'
-    use 'hrsh7th/nvim-compe'
+    -- use 'hrsh7th/nvim-compe'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp'
+
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
 -- ------------------------------------------------------------------------- }}}
