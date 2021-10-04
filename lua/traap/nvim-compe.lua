@@ -1,3 +1,9 @@
+-- {{{ Credits
+
+-- Karim Abou Zeid
+-- https://github.com/kabouzeid/dotfiles/tree/master/nvim/lua
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Alias to vim APis.
 
 local function keymap(...) vim.api.nvim_set_keymap(...) end
@@ -65,13 +71,11 @@ _G.tab_complete = function()
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Function to check for shift-tab completion
+-- {{{ Function to check for shift-tab completion.
 
 _G.s_tab_complete = function()
   if fn.pumvisible() == 1 then
     return t "<C-p>"
-  elseif fn.call("vsnip#jumpable", {-1}) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
   else
     return t "<S-Tab>"
   end
@@ -99,12 +103,11 @@ keymap("s", "<Tab>",   "v:lua.tab_complete()", {expr = true})
 keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
--- keymap("i", "<CR>",    "compe#confirm('<CR>')", { noremap = true, silent = true, expr = true })
+keymap("i", "<C-Space>", "compe#complete()",     { expr = true, noremap = true, silent = true })
+keymap("i", "<CR>",      "compe#complete()",     { expr = true, noremap = true, silent = true })
+keymap("i", "<C-e>",     "compe#close('<C-e>')", { expr = true, noremap = true, silent = true })
 
-keymap("i", "<C-Space>", "compe#complete()",     { noremap = true, silent = true, expr = true })
-keymap("i", "<C-e>",     "compe#close('<C-e>')", { noremap = true, silent = true, expr = true })
-
-keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", { noremap = true, silent = true, expr = true })
-keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", { noremap = true, silent = true, expr = true })
+keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", { expr = true, noremap = true, silent = true })
+keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", { expr = true, noremap = true, silent = true })
 
 -- ------------------------------------------------------------------------- }}}
