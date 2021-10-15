@@ -97,7 +97,6 @@ require'nvim-tree'.setup {
   hijack_netrw        = true,
   open_on_setup       = false,
   open_on_tab         = false,
-  lsp_diagnostics     = true,
   auto_close          = false,
   hijack_cursor       = true,
   update_cwd          = true,
