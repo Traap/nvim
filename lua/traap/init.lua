@@ -6,16 +6,11 @@ require 'traap.settings'
 
 -- Configure plugins
 require 'traap.nvim-compe'
--- require 'traap.nvim-cmp'
--- require 'traap.cmp-buffer'
--- require 'traap.cmp-nvim-lua'
--- require 'traap.cmp-nvim-lsp'
 require 'traap.galaxyline-nvim'
 require 'traap.nvim-tree'
 require 'traap.nvim-web-devicons'
 require 'traap.telescope-nvim'
 require 'traap.treesitter-nvim'
-require 'traap.wiki-vim'
 
 -- Now colorize
 require('colorizer').setup()
