@@ -51,36 +51,12 @@ g.completion_confirm_key = ""
 g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ PlantUml
-
-cmd([[
-
-augroup plantuml_group
-  autocmd!
-  autocmd BufRead,BufNewFile *.puml,*.wsd :call InitUmlSettings()
-  autocmd BufWritePost       *.puml,*.wsd :call GenerateUmlDiagram()
-  autocmd BufLeave           *.puml,*.wsd :call ClearUmlLaunchFlag()
-augroup END
-
-]])
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Highlight on yank
 
 cmd([[
   augroup YankGroup
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{on_visual = false}
-  augroup END
-]])
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Remove whitespaces
-
-cmd([[
-  augroup RemoveWhiteSpaceGroup
-    autocmd!
-    autocmd BufWritePre * :%s/\s\+$//e
   augroup END
 ]])
 
@@ -93,26 +69,6 @@ g.bullets_enabled_file_types = {
   'scratch',
   'text',
   'wiki'
-}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ wiki.vim
-
-cmd([[
-  augroup WikiGroup
-    autocmd!
-    autocmd FileType wiki,md,markdown setlocal foldlevelstart=1
-    autocmd FileType wiki,md,markdown setlocal filetype=wiki
-  augroup END
-]])
-
-g.traap_wiki_export = {
-  args = '--metadata-file=$HOME/git/wiki/wiki.yaml',
-  ext = 'pdf',
-  from_format = 'markdown',
-  link_ext_replace = false,
-  output = 'printed',
-  view = true,
 }
 
 -- ------------------------------------------------------------------------- }}}
