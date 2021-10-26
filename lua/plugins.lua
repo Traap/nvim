@@ -107,9 +107,10 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Zulu : Reuse Traap's vim bundles last.
 
+  use 'Traap/vim-bundle-autocmd'
   use 'Traap/vim-bundle-plantuml'
   use 'Traap/vim-bundle-vimtex'
-  use 'Traap/vim-bundle-wikivim'
+  use 'Traap/vim-bundle-vimwiki'
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Auto compile and install plugins when packer is bootstrapped.
