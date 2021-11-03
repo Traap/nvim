@@ -93,6 +93,8 @@ return packer.startup(function(use)
   use 'triglav/vim-visual-increment'
   use 'vim-utils/vim-most-minimal-folds'
   use 'xiyaowong/nvim-transparent'
+  use 'mechatroner/rainbow_csv'
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ VimTex
 

@@ -72,7 +72,8 @@ map('n', '<leader>cv', '"+p')
 cmd([[
   xmap ga <Plug>(EasyAlign)
   nmap ga <Plug>(EasyAlign)
-  nmap <bar> gaip*<bar>
+  nmap <bar>     gaip*<bar>
+  nmap <leader>0 gaip*,
 ]])
 
  -------------------------------------------------------------------------  }}}
@@ -156,9 +157,9 @@ map('n', '<leader>wv', "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Window movement without Tmux-Navigator
 
-map('n', '<c-h>', '<c-w>h')
-map('n', '<c-j>', '<c-w>j')
-map('n', '<c-k>', '<c-w>k')
-map('n', '<c-l>', '<c-w>l')
+-- map('n', '<c-h>', '<c-w>h')
+-- map('n', '<c-j>', '<c-w>j')
+-- map('n', '<c-k>', '<c-w>k')
+-- map('n', '<c-l>', '<c-w>l')
 
 -- ------------------------------------------------------------------------- }}}
