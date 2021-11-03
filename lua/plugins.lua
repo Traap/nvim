@@ -87,7 +87,7 @@ return packer.startup(function(use)
   use 'sbdchd/neoformat'
   use 'triglav/vim-visual-increment'
   use 'vim-utils/vim-most-minimal-folds'
-
+  use 'xiyaowong/nvim-transparent'
 -- ------------------------------------------------------------------------- }}}
 -- {{{ VimTex
 

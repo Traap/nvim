@@ -60,7 +60,6 @@ local keymap_list = {
 -- {{{ nvim-config : nvim-tree.lua
 --     https://github.com/kyazdani42/nvim-config
 
-g.nvim_tree_ignore = { '.git', 'node_modules', 'dist' }
 g.nvim_tree_gitignore = 1
 g.nvim_tree_show_icons = {
   git = 1,
@@ -105,7 +104,7 @@ require'nvim-tree'.setup {
     update_cwd = true,
     ignore_list = { 'fzf' }
   },
-  ignore_ft_on_setup = {},
+  ignore_ft_on_setup = {'.git', 'node_modules', 'dist'},
   system_open = {
     cmd  = nil,
     args = {}
