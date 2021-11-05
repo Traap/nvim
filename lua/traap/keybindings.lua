@@ -142,6 +142,22 @@ map('n', '<c-q>', '<cmd>qall!<cr>')
 map('n', '<leader><space>', '<cmd>noh<CR>')
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Tmux
+
+map('n', '<leader>rr',  '<cmd>VtrResizeRunner<cr>')
+map('n', '<leader>ror', '<cmd>VtrReorientRunner<cr>')
+map('n', '<leader>sc',  '<cmd>VtrSendCommandToRunner<cr>')
+map('n', '<leader>sf',  '<cmd>VtrSendFile!<cr>')
+map('n', '<leader>sl',  '<cmd>VtrSendLinesToRunner<cr>')
+map('n', '<leader>or',  "<cmd>VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>")
+map('n', '<leader>kr',  '<cmd>VtrKillRunner<cr>')
+map('n', '<leader>fr',  '<cmd>VtrFocusRunner<cr>')
+map('n', '<leader>dr',  '<cmd>VtrDetachRunner<cr>')
+map('n', '<leader>ar',  '<cmd>VtrReattachRunner<cr>')
+map('n', '<leader>cr',  '<cmd>VtrClearRunner<cr>')
+map('n', '<leader>fc',  '<cmd>VtrFlushCommand<cr>')
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ <Tab> to navigate the completion menu
 
 map('n', '<S-Tab>', 'pumvisible() ? [[\\<C-p>" : "\\<Tab>"', {expr = true})

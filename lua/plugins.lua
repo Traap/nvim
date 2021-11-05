@@ -86,9 +86,14 @@ return packer.startup(function(use)
   use 'traap/vim-ripgrep'
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Utility
+-- {{{ Tmux
 
   use 'christoomey/vim-tmux-navigator'
+  use 'christoomey/vim-tmux-runner'
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Utility
+
   use 'sbdchd/neoformat'
   use 'triglav/vim-visual-increment'
   use 'vim-utils/vim-most-minimal-folds'
