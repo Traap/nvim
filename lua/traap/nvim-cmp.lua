@@ -50,14 +50,52 @@ cmp.setup({
 --     Use buffer source for `/` (if you enabled `native_menu`, this won't work
 --     hanymore).
 
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
+    -- buffer         = {kind = " ﬘  (Buffer)"},
+    -- calc           = {kind = "   (Calc)"},
+    -- nvim_lsp       = {kind = "   (LSP)"},
+    -- path           = {kind = "   (Path)"},
+    -- spell          = {kind = "   (Spell)"},
+    -- vsnip          = {kind = "   (Snippet)"},
+
+require'cmp'.setup.cmdline('/',{
+  sources = cmp.config.sources({
+    {name = 'nvim_lsp_document_symbol'}
+  }, {
+    {name = 'buffer'}
+  })
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Setup path.
+-- {{{ Calculator setup.
+
+cmp.setup {
+  sources = {
+    { name = 'calc' }
+  }
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Nvim lsp setup.
+
+cmp.setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  }
+}
+
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Nvim lua setup.
+
+cmp.setup {
+  sources = {
+    { name = 'nvim_lua' }
+  }
+}
+
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Path setup.
 --
 --     Use cmdline & path source for ':' (if you enabled `native_menu`, this
 --     won't work anymore).
@@ -70,20 +108,11 @@ cmp.setup.cmdline(':', {
   })
 })
 -- ------------------------------------------------------------------------- }}}
--- {{{ Setup spelling.
+-- {{{ Spelling setup.
 
 cmp.setup {
   sources = {
     { name = 'spell' }
-  }
-}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Setup calculator.
-
-cmp.setup {
-  sources = {
-    { name = 'calc' }
   }
 }
 

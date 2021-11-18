@@ -22,6 +22,22 @@ return packer.startup(function(use)
   }
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Completion
+
+  -- nvim-compe is deprecated
+  --use 'hrsh7th/nvim-compe'
+
+    use "hrsh7th/nvim-cmp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-calc"
+    use "hrsh7th/cmp-cmdline"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-nvim-lsp-document-symbol"
+    use "hrsh7th/cmp-nvim-lua"
+    use "hrsh7th/cmp-path"
+    use "f3fora/cmp-spell"
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Easyalign
 
  use 'junegunn/vim-easy-align'
@@ -53,12 +69,10 @@ return packer.startup(function(use)
   use { 'tjdevries/nlua.nvim' }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ LSP and completion
+-- {{{ LSP
 
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
-  use 'hrsh7th/nvim-compe'
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Profiling
@@ -77,6 +91,7 @@ return packer.startup(function(use)
   use 'tpope/vim-dispatch'
   use 'tpope/vim-endwise'
   use 'tpope/vim-fugitive'
+  use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
 
@@ -84,6 +99,11 @@ return packer.startup(function(use)
 -- {{{ RipGrep
 
   use 'traap/vim-ripgrep'
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Treesitter
+
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Tmux
