@@ -72,7 +72,7 @@ local mode_names = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Short list list
+-- {{{ Short line list
 
 gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
 
@@ -287,7 +287,7 @@ table.insert(gls.right, {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Spacing: 2, 4, 8 who dowe appreciate?
+-- {{{ Spacing: 2, 4, 8 who do we appreciate?
 
 table.insert(gls.right, {
   Tabstop = {
