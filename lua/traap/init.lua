@@ -1,27 +1,19 @@
--- Disable plugins.  See TJ DeVries.
-require 'traap.disable_builtin'
+-- Utilities first.
+require 'traap.utility'
 
--- Configure neovim environment.
+-- The Wild West! ... You have been warned1!!!
 require 'traap.settings'
 
 -- Configure plugins
--- require 'traap.nvim-compe'
-require 'traap.nvim-cmp'
-require 'traap.galaxyline-nvim'
-require 'traap.nvim-tree'
-require 'traap.nvim-web-devicons'
-require 'traap.telescope-nvim'
-require 'traap.treesitter-nvim'
+require 'traap.lsp'
+require 'traap.galaxyline'
+require 'traap.tree'
+require 'traap.web-devicons'
+require 'traap.telescope'
+require 'traap.treesitter'
 
 -- Now colorize
-require('colorizer').setup()
-require('traap.highlights')
+-- require 'traap.colorize'
 
 -- Take control of all keybindings.
 require 'traap.keybindings'
-
--- Enable language servers.
-require 'traap.nvim-lspinstall'
-
--- The Wild West! ... You have been warned1!!!
-require 'traap.os-check'

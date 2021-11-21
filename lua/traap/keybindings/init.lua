@@ -4,7 +4,7 @@ local      g = vim.g
 local    api = vim.api
 local    cmd = vim.cmd
 local extend = vim.tbl_extend
-local      u = require'traap.utility'
+local      u = require'traap.utility.helpers'
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Map leader to space

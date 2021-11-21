@@ -1,14 +1,11 @@
--- Let show begin.
-local g = vim.g
-
 -- Bootstrap Packer when needed.
-require 'bootstrap'
+require 'traap.bootstrap'
 
 -- Time to load all plugins.
-require 'plugins'
+require 'traap.plugins'
 
 -- Plugin are configured when nvim is not bootstrapped.
+local g = vim.g
 if g.nvim_bootstrapped == 0 then
   require 'traap'
 end
-

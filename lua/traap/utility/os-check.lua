@@ -8,6 +8,7 @@ local system = vim.fn.system
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Archlinux and Windows Subsystem for Linux check
 
+
 local uname = {
   arch      = trim(system("cat /etc/issue | rg 'Arch Linux' -c")),
   kernel    = trim(system('uname -s')),
