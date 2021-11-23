@@ -10,7 +10,7 @@ local vim = vim
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Required lsp packages.
 --
-require 'traap/lsp/nvim-cmp'
+require 'traap/lsp/cmp'
 require 'traap/lsp/diagnostic-signs'
 require 'traap/lsp/language-servers'
 -- require 'lsp/nvim-lspinstall'

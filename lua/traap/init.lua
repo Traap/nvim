@@ -13,7 +13,7 @@ require 'traap.telescope'
 require 'traap.treesitter'
 
 -- Now colorize
--- require 'traap.colorize'
+require 'traap.colorize'
 
 -- Take control of all keybindings.
 require 'traap.keybindings'

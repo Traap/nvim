@@ -50,8 +50,8 @@ end
 --     set the path to the sumneko installation; if you previously installed via
 --     the now deprecated :LspInstall, use
 
-local sumneko_root_path = '/Users/neilsabde/.config/something/ls/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+local sumneko_path = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
+local sumneko_binary = sumneko_path.."/bin/"..system_name.."/lua-language-server"
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
@@ -61,22 +61,28 @@ table.insert(runtime_path, "lua/?/init.lua")
 -- {{{ Langauge Servers
 
 local langservers = {
-  'html',
   'cssls',
-  'tsserver',
-  'pylsp',
+  'diagnosticls',
+  'html',
+  'jsonls',
   'ls_emmet',
-  'sumneko_lua'
+  'pylsp',
+  'sumneko_lua',
+  'texlab',
+  'tsserver',
+  'yamlls'
 }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Configure language servers.
 
 for _, server in ipairs(langservers) do
-  if server == 'sumneko_lua' then
+  if server ~= 'sumneko_lua' then
+    require'lspconfig'[server].setup {capabilities = capabilities}
+  else
     require'lspconfig'[server].setup {
 
-      cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+      cmd = {sumneko_binary, "-E", sumneko_path .. "/main.lua"};
 
       settings = {
         Lua = {
@@ -108,8 +114,6 @@ for _, server in ipairs(langservers) do
         },
       },
     }
-  else
-    require'lspconfig'[server].setup {capabilities = capabilities}
   end
 end
 
