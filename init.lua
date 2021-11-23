@@ -4,8 +4,7 @@ require 'traap.bootstrap'
 -- Time to load all plugins.
 require 'traap.plugins'
 
--- Plugin are configured when nvim is not bootstrapped.
-local g = vim.g
-if g.nvim_bootstrapped == 0 then
+-- A second start of NeoVim is needed to configure plugins and load treesitter.
+if vim.g.nvim_bootstrapped == 0 then
   require 'traap'
 end

@@ -3,11 +3,6 @@
 -- https://github.com/hackorum/nfs
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Alias to vim APis.
-
-local vim = vim
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Setup lspconfig.
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
@@ -58,7 +53,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Langauge Servers
+-- {{{ Langauge Server List
 
 local langservers = {
   'cssls',
@@ -74,24 +69,22 @@ local langservers = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Configure language servers.
+-- {{{ Iterate over language servers.
 
 for _, server in ipairs(langservers) do
-  if server ~= 'sumneko_lua' then
-    require'lspconfig'[server].setup {capabilities = capabilities}
-  else
+  if server == 'sumneko_lua' then
     require'lspconfig'[server].setup {
 
       cmd = {sumneko_binary, "-E", sumneko_path .. "/main.lua"};
 
       settings = {
         Lua = {
-          runtime = {
-            -- Tell the language server which version of Lua you're using. Most
-            -- likely LuaJIT in the case of Neovim.
-            version = 'LuaJIT',
 
-            -- Setup your lua path.
+          runtime = {
+            -- Tell the language server which version of Lua you're using (most
+            -- likely LuaJIT in the case of Neovim)
+            version = 'LuaJIT',
+            -- Setup your lua path
             path = runtime_path,
           },
 
@@ -113,6 +106,10 @@ for _, server in ipairs(langservers) do
           },
         },
       },
+    }
+  else
+    require'lspconfig'[server].setup {
+      capabilities = capabilities
     }
   end
 end

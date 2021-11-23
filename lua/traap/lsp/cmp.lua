@@ -12,6 +12,9 @@ local function keymap(...) vim.api.nvim_set_keymap(...) end
 
 
 -- ------------------------------------------------------------------------- }}}
+
+vim.opt.completeopt = "menuone,noselect"
+
 -- {{{ Source mappings.  Found reading ThePrimeagen nvim config.
 
 local source_mapping = {
@@ -32,31 +35,55 @@ local has_words_before = function()
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define feedkey funcction
+-- {{{ Define feedkey function
 
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Define icons
+--
+--  https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#basic-customisationsv
+
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = ""
+}
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Setup nvim-cmp
 
 local cmp = require'cmp'
-local lspkind = require('lspkind')
+vim.opt.completeopt = "menuone,noselect"
 
 cmp.setup({
   snippet = {
-
     expand = function(args)
-      -- For `vsnip` user.
-      -- vim.fn["vsnip#anonymous"](args.body)
-
-      -- For `luasnip` user.
       require("luasnip").lsp_expand(args.body)
-
-      -- For `ultisnips` user.
-      -- vim.fn["UltiSnips#Anon"](args.body)
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
 
@@ -95,24 +122,23 @@ cmp.setup({
     { name = "cmp_tabnine" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
---    { name = "vsnip" },
     { name = "buffer" },
   },
 
   formatting = {
-    -- format = function(entry, vim_item)
-    --   vim_item.kind = lspkind.presets.default[vim_item.kind]
-    --   local menu = source_mapping[entry.source.name]
-    --   if entry.source.name == 'cmp_tabnine' then
-    --     if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-    --       menu = entry.completion_item.data.detail .. ' ' .. menu
-    --     end
-    --     vim_item.kind = ''
-    --   end
-    --   vim_item.menu = menu
-    --   return vim_item
-    -- end
-    format = lspkind.cmp_format({with_text = true, maxwidth = 50})
+    format = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      -- Source
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[LaTeX]",
+      })[entry.source.name]
+      return vim_item
+    end
   },
 
 })
@@ -145,22 +171,21 @@ cmp.setup {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Nvim lsp setup.
 
--- cmp.setup {
---   sources = {
---     { name = 'nvim_lsp' }
---   }
--- }
+cmp.setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  }
+}
 
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Nvim lua setup.
 
--- cmp.setup {
---   sources = {
---     { name = 'nvim_lua' }
---   }
--- }
-
+cmp.setup {
+  sources = {
+    { name = 'nvim_lua' }
+  }
+}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Path setup.
@@ -188,7 +213,6 @@ cmp.setup {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ config lsp
 
-
 -- local function config(_config)
 --   return vim.tbl_deep_extend(
 --     "force", {
@@ -199,7 +223,6 @@ cmp.setup {
 --     _config or {}
 --   )
 -- end
-
 -- require("lspconfig").ruby.setup(config())
 
 -- ------------------------------------------------------------------------- }}}
