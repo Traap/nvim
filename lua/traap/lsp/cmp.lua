@@ -1,155 +1,192 @@
 -- {{{ Credits
 
 -- https://github.com/hrsh7th/nvim-cmp
+-- https://github.com/ThePrimeagen/.dotfiles
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Alias to vim APis.
+-- {{{ Alias to vim APis and other required packages.
 
 local vim =vim
 local api = vim.api
-local fn = vim.fn
-local function keymap(...) vim.api.nvim_set_keymap(...) end
-
-
--- ------------------------------------------------------------------------- }}}
-
-vim.opt.completeopt = "menuone,noselect"
-
--- {{{ Source mappings.  Found reading ThePrimeagen nvim config.
-
-local source_mapping = {
-  buffer   = " ﬘  (Buffer)",
-  calc     = "   (Calc)",
-  nvim_lsp = "   (LSP)",
-  path     = "   (Path)",
-  spell    = "   (Spell)",
-  vsnip    = "   (Snippet)",
-}
+local cmp = require'cmp'
+local lspkind = require("lspkind")
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define has words before function.
+-- {{{ Define: has words before function.
 
 local has_words_before = function()
   local line, col = unpack(api.nvim_win_get_cursor(0))
   return col ~= 0 and api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define feedkey function
+-- {{{ Define: feedkey function
 
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define icons
+-- {{{ Define: icons
 --
 --  https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#basic-customisationsv
 
 local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "ﴯ",
-  Interface = "",
-  Module = "",
-  Property = "ﰠ",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = ""
+  Class         = "ﴯ",
+  Color         = "",
+  Constant      = "",
+  Constructor   = "",
+  Enum          = "",
+  EnumMember    = "",
+  Event         = "",
+  Field         = "",
+  File          = "",
+  Folder        = "",
+  Function      = "",
+  Interface     = "",
+  Keyword       = "",
+  Method        = "",
+  Module        = "",
+  Operator      = "",
+  Property      = "ﰠ",
+  Reference     = "",
+  Snippet       = "",
+  Struct        = "",
+  Text          = "",
+  TypeParameter = "",
+  Unit          = "",
+  Value         = "",
+  Variable      = "",
+  buffer        = "﬘ ",
+  calc          = " ",
+  nvim_lsp      = " ",
+  path          = " ",
+  spell         = " ",
+  vsnip         = " ",
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Setup nvim-cmp
+-- {{{ Define: mappings
 
-local cmp = require'cmp'
+local mapping = {
+  ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+  ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+  ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+  ['<C-y>'] = cmp.config.disable,
+  ['<C-e>'] = cmp.mapping({
+    i = cmp.mapping.abort(),
+    c = cmp.mapping.close(),
+  }),
+  ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  ["<Tab>"] = cmp.mapping(
+    function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["vsnip#available"]() == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }
+  ),
+
+  ["<S-Tab>"] = cmp.mapping(function()
+    if cmp.visible() then
+      cmp.select_prev_item()
+    elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+      feedkey("<Plug>(vsnip-jump-prev)", "")
+    end
+  end, { "i", "s" }),
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Define: source mappings.
+
+local source_mapping = {
+  buffer        = "[Buffer]",
+  latex_symbols = "[LaTeX]",
+  luasnip       = "[LuaSnip]",
+  nvim_lsp      = "[LSP]",
+  nvim_lua      = "[Lua]",
+  path          = "[Path]",
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Define: sources
+
+local sources = {
+  { name = "buffer" },
+  { name = "calc" },
+  { name = "latex_symbols" },
+  { name = "luasnip" },
+  { name = "nvim_lsp" },
+  { name = "nvim_lua" },
+  { name = "path" },
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Define: snippet
+
+local snippet = {
+  expand = function(args)
+    require("luasnip").lsp_expand(args.body)
+  end,
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Define: formatting
+
+-- local formatting = {
+--   format = function(entry, vim_item)
+--     vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+--     vim_item.menu = ({
+--       buffer = "[Buffer]",
+--       nvim_lsp = "[LSP]",
+--       luasnip = "[LuaSnip]",
+--       nvim_lua = "[Lua]",
+--       latex_symbols = "[LaTeX]",
+--     })[entry.source.name]
+--     return vim_item
+--   end
+-- }
+
+local formatting = {
+  format = function(entry, vim_item)
+    vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+    vim_item.menu = (source_mapping)[entry.source.name]
+    return vim_item
+  end
+}
+
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Setup: lspkind
+
+require('lspkind').init({
+  with_text = true,
+})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Setup: cmp
+
 vim.opt.completeopt = "menuone,noselect"
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      require("luasnip").lsp_expand(args.body)
-    end,
-  },
-
-  mapping = {
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-y>'] = cmp.config.disable,
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-    if cmp.visible() then
-      cmp.select_next_item()
-    elseif vim.fn["vsnip#available"]() == 1 then
-      feedkey("<Plug>(vsnip-expand-or-jump)", "")
-    elseif has_words_before() then
-      cmp.complete()
-    else
-      fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-    end
-    end, { "i", "s" }),
-
-    ["<S-Tab>"] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
-      end
-    end, { "i", "s" }),
-  },
-
-  sources = {
-    { name = "cmp_tabnine" },
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-  },
-
-  formatting = {
-    format = function(entry, vim_item)
-      -- Kind icons
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-      -- Source
-      vim_item.menu = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
-      })[entry.source.name]
-      return vim_item
-    end
-  },
-
+  snippet = snippet,
+  mapping = mapping,
+  sources = sources,
+  formatting = formatting,
 })
 
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Buffer setup.
+-- {{{ Completion: Buffer
 --
 --     Use buffer source for `/` (if you enabled `native_menu`, this won't work
 --     hanymore).
-
 
 require'cmp'.setup.cmdline('/',{
   sources = cmp.config.sources({
@@ -160,7 +197,7 @@ require'cmp'.setup.cmdline('/',{
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Calculator setup.
+-- {{{ Completion: Calculator
 
 cmp.setup {
   sources = {
@@ -169,7 +206,7 @@ cmp.setup {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Nvim lsp setup.
+-- {{{ Completion: nvim_lsp
 
 cmp.setup {
   sources = {
@@ -177,9 +214,8 @@ cmp.setup {
   }
 }
 
-
 -- ------------------------------------------------------------------------- }}}
--- {{{ Nvim lua setup.
+-- {{{ Completion: nvim_lua.
 
 cmp.setup {
   sources = {
@@ -188,10 +224,10 @@ cmp.setup {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Path setup.
+-- {{{ Completion: cmdline & path
 --
---     Use cmdline & path source for ':' (if you enabled `native_menu`, this
---     won't work anymore).
+--     Use cmdline & path source for ':'
+--     Note: if you enabled `native_menu`, this  won't work anymore.
 
 cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
@@ -202,27 +238,12 @@ cmp.setup.cmdline(':', {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Spelling setup.
+-- {{{ Completion: Spelling
 
 cmp.setup {
   sources = {
     { name = 'spell' }
   }
 }
-
--- ------------------------------------------------------------------------- }}}
--- {{{ config lsp
-
--- local function config(_config)
---   return vim.tbl_deep_extend(
---     "force", {
---       capabilities = require("cmp_nvim_lsp").update_capabilities(
---       vim.lsp.protocol.make_client_capabilities()
---       ),
---     },
---     _config or {}
---   )
--- end
--- require("lspconfig").ruby.setup(config())
 
 -- ------------------------------------------------------------------------- }}}

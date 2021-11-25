@@ -1,13 +1,21 @@
 -- {{{ Credits
 
 -- https://github.com/hackorum/nfs
+-- https://github.com/ThePrimeagen/.dotfiles
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Setup lspconfig.
+-- {{{ Sumneko paths
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
+local sumneko_root_path = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
+local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Lsp capabilities.
+
+vim.lsp.set_log_level("debug")
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ HTML languages.
@@ -26,27 +34,10 @@ require'lspconfig/configs'.ls_emmet = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Operating system Check
-
-local system_name
-if vim.fn.has("mac") == 1 then
-  system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-  system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-  system_name = "Windows"
-else
-  print("Unsupported system for sumneko")
-end
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Sumneko hack.
 --
 --     set the path to the sumneko installation; if you previously installed via
 --     the now deprecated :LspInstall, use
-
-local sumneko_path = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
-local sumneko_binary = sumneko_path.."/bin/"..system_name.."/lua-language-server"
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
@@ -62,56 +53,62 @@ local langservers = {
   'jsonls',
   'ls_emmet',
   'pylsp',
-  'sumneko_lua',
   'texlab',
   'tsserver',
   'yamlls'
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Iterate over language servers.
+-- {{{ function: cmp_nvim_lsp
+
+local function config(_config)
+  return vim.tbl_deep_extend("force", {
+    capabilities = require("cmp_nvim_lsp").update_capabilities(
+       vim.lsp.protocol.make_client_capabilities()
+     ),
+   },
+   _config or {}
+  )
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ lsp: Iterate over language servers.
 
 for _, server in ipairs(langservers) do
-  if server == 'sumneko_lua' then
-    require'lspconfig'[server].setup {
+  require'lspconfig'[server].setup(config())
+end
 
-      cmd = {sumneko_binary, "-E", sumneko_path .. "/main.lua"};
+-- ------------------------------------------------------------------------- }}}
 
-      settings = {
-        Lua = {
-
-          runtime = {
-            -- Tell the language server which version of Lua you're using (most
-            -- likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
-            -- Setup your lua path
-            path = runtime_path,
-          },
-
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = {'vim'},
-          },
-
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false
-          },
-
-          -- Do not send telemetry data containing a randomized but unique
-          -- identifier
-          telemetry = {
-            enable = false,
-          },
+require("lspconfig").sumneko_lua.setup(config({
+  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+        path = vim.split(package.path, ";"),
+      },
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
         },
       },
-    }
-  else
-    require'lspconfig'[server].setup {
-      capabilities = capabilities
-    }
-  end
-end
+    },
+  },
+}))
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Symbol outlines
+
+local opts = {
+  highlight_hovered_item = true,
+  show_guides = true,
+}
+
+require("symbols-outline").setup(opts)
 
 -- ------------------------------------------------------------------------- }}}
