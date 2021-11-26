@@ -14,8 +14,9 @@ local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
 
 vim.lsp.set_log_level("debug")
 
+-- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ HTML languages.
@@ -34,19 +35,10 @@ require'lspconfig/configs'.ls_emmet = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Sumneko hack.
---
---     set the path to the sumneko installation; if you previously installed via
---     the now deprecated :LspInstall, use
-
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Langauge Server List
 
 local langservers = {
+  'bashls',
   'cssls',
   'diagnosticls',
   'html',
@@ -55,6 +47,7 @@ local langservers = {
   'pylsp',
   'texlab',
   'tsserver',
+  'solargraph',
   'yamlls'
 }
 
@@ -75,10 +68,13 @@ end
 -- {{{ lsp: Iterate over language servers.
 
 for _, server in ipairs(langservers) do
-  require'lspconfig'[server].setup(config())
+  require'lspconfig'[server].setup{
+    capabilities = capabilities,
+  }
 end
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ lsp: sumneko_lu
 
 require("lspconfig").sumneko_lua.setup(config({
   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
@@ -87,7 +83,7 @@ require("lspconfig").sumneko_lua.setup(config({
       runtime = {
         version = "LuaJIT",
         path = vim.split(package.path, ";"),
-      },
+     },
       diagnostics = {
         globals = { "vim" },
       },

@@ -1,5 +1,6 @@
 -- {{{ Credits
 
+
 -- https://github.com/hrsh7th/nvim-cmp
 -- https://github.com/ThePrimeagen/.dotfiles
 
@@ -70,7 +71,7 @@ local kind_icons = {
 -- {{{ Define: mappings
 
 local mapping = {
-  ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+  ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
   ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
   ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
   ['<C-y>'] = cmp.config.disable,
@@ -79,27 +80,6 @@ local mapping = {
     c = cmp.mapping.close(),
   }),
   ['<CR>'] = cmp.mapping.confirm({ select = true }),
-  ["<Tab>"] = cmp.mapping(
-    function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn["vsnip#available"]() == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback()
-      end
-    end, { "i", "s" }
-  ),
-
-  ["<S-Tab>"] = cmp.mapping(function()
-    if cmp.visible() then
-      cmp.select_prev_item()
-    elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-      feedkey("<Plug>(vsnip-jump-prev)", "")
-    end
-  end, { "i", "s" }),
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -172,7 +152,7 @@ require('lspkind').init({
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup: cmp
 
-vim.opt.completeopt = "menuone,noselect"
+-- vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 cmp.setup({
   snippet = snippet,
@@ -183,67 +163,20 @@ cmp.setup({
 
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Completion: Buffer
---
---     Use buffer source for `/` (if you enabled `native_menu`, this won't work
---     hanymore).
+-- {{{ Completion: path and command line.
 
-require'cmp'.setup.cmdline('/',{
-  sources = cmp.config.sources({
-    {name = 'nvim_lsp_document_symbol'}
-  }, {
-    {name = 'buffer'}
-  })
+cmp.setup.cmdline('/', {
+  sources = {
+    {name = 'buffer'},
+  }
 })
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Completion: Calculator
-
-cmp.setup {
-  sources = {
-    { name = 'calc' }
-  }
-}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Completion: nvim_lsp
-
-cmp.setup {
-  sources = {
-    { name = 'nvim_lsp' }
-  }
-}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Completion: nvim_lua.
-
-cmp.setup {
-  sources = {
-    { name = 'nvim_lua' }
-  }
-}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Completion: cmdline & path
---
---     Use cmdline & path source for ':'
---     Note: if you enabled `native_menu`, this  won't work anymore.
 
 cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
+  sources = cmp.config.sources(
+    {{name = 'path'}},
+    {{name = 'cmdline'}}
+  )
 })
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Completion: Spelling
-
-cmp.setup {
-  sources = {
-    { name = 'spell' }
-  }
-}
 
 -- ------------------------------------------------------------------------- }}}
