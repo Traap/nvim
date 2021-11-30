@@ -5,7 +5,7 @@
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Diagnostics Signs.
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = require('traap.config').diagnostic_signs
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type

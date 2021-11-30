@@ -2,15 +2,7 @@
 
 local g = vim.g
 local api = vim.api
-
--- ------------------------------------------------------------------------- }}}
--- {{{ keymap helper function.
-
-local function map(mode, lhs, rhs, opts)
-  local options = { noremap=true, silent=true }
-  if opts then options = extend('force', options, opts) end
-  api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local map = require('traap.utility.helpers').keymap
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ list of keys mapped

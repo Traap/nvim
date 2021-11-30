@@ -145,7 +145,7 @@ end
 -- end,
 --   {
 --     display = {
---       border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
+--       border = require('traap/config).display_boarder
 --     }
 --   }
 -- )

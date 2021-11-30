@@ -14,6 +14,7 @@ g.maplocalleader = [[ ]]
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Buffer resize
+
 u.keymap('n', '<leader>h', '<cmd>vertical resize -1<cr>')
 u.keymap('n', '<leader>j', '<cmd>resize +1<cr>')
 u.keymap('n', '<leader>k', '<cmd>resize -1<cr>')

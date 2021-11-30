@@ -6,11 +6,11 @@
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Sumneko paths
 
-local sumneko_root_path = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
-local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
+local sumneko_root_path = require('traap/config').sumneko_root_path
+local sumneko_binary    = require('traap/config').sumneko_binary
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Lsp capabilitiesjkkj
+-- {{{ Lsp capabilities
 
 vim.lsp.set_log_level("debug")
 
@@ -41,19 +41,7 @@ lspconfig.emmet_ls.setup{capabilities = capabilities}
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Langauge Server List
 
-local langservers = {
-  'bashls',
-  'cssls',
-  'diagnosticls',
-  'html',
-  'jsonls',
-  'emmet_ls',
-  'pylsp',
-  'texlab',
-  'tsserver',
-  'solargraph',
-  'yamlls'
-}
+local language_servers = require('traap/config').language_servers
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ function: on_attach
@@ -109,7 +97,7 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ lsp: Iterate over language servers.
 
-for _, server in ipairs(langservers) do
+for _, server in ipairs(language_servers) do
   require'lspconfig'[server].setup{config()}
 end
 

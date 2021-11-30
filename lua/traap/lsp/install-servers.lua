@@ -1,16 +1,5 @@
 local lsp_installer = require('nvim-lsp-installer')
-local servers = {
-  'bashls',
-  'cssls',
-  'diagnosticls',
-  'html',
-  'jsonls',
-  'emmet_ls',
-  'texlab',
-  'tsserver',
-  'solargraph',
-  'yamlls'
-}
+local servers = require('traap/config').language_servers
 
 -- Automatically install the lanaguage server if supported by
 -- nvim-lsp-installer.
