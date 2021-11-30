@@ -1,5 +1,6 @@
--- https://github.com/hackorum/nfs
+-- Setup language servers and completions.
 
-require 'traap/lsp/cmp'
-require 'traap/lsp/language-servers'
+require 'traap/lsp/install-servers'
+require 'traap/lsp/setup-cmp'
+require 'traap/lsp/server-capabilities'
 require 'traap/lsp/diagnostic-signs'

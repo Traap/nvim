@@ -13,22 +13,6 @@ local cmp = require'cmp'
 local lspkind = require("lspkind")
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define: has words before function.
-
-local has_words_before = function()
-  local line, col = unpack(api.nvim_win_get_cursor(0))
-  return col ~= 0 and api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Define: feedkey function
-
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Define: icons
 --
 --  https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#basic-customisationsv
@@ -119,20 +103,6 @@ local snippet = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: formatting
 
--- local formatting = {
---   format = function(entry, vim_item)
---     vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
---     vim_item.menu = ({
---       buffer = "[Buffer]",
---       nvim_lsp = "[LSP]",
---       luasnip = "[LuaSnip]",
---       nvim_lua = "[Lua]",
---       latex_symbols = "[LaTeX]",
---     })[entry.source.name]
---     return vim_item
---   end
--- }
-
 local formatting = {
   format = function(entry, vim_item)
     vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
@@ -140,7 +110,6 @@ local formatting = {
     return vim_item
   end
 }
-
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup: lspkind
@@ -152,15 +121,12 @@ require('lspkind').init({
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup: cmp
 
--- vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-
 cmp.setup({
   snippet = snippet,
   mapping = mapping,
   sources = sources,
   formatting = formatting,
 })
-
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Completion: path and command line.

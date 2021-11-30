@@ -60,7 +60,6 @@ local keymap_list = {
 -- {{{ nvim-config : nvim-tree.lua
 --     https://github.com/kyazdani42/nvim-config
 
-g.nvim_tree_gitignore = 1
 g.nvim_tree_show_icons = {
   git = 1,
   folders = 1,
@@ -92,6 +91,7 @@ g.nvim_tree_icons = {
 }
 
 require'nvim-tree'.setup {
+
   disable_netrw       = true,
   hijack_netrw        = true,
   open_on_setup       = false,
@@ -108,6 +108,11 @@ require'nvim-tree'.setup {
   system_open = {
     cmd  = nil,
     args = {}
+  },
+  git = {
+    enable = true,
+    height = true,
+    timeout = 300,
   },
   view = {
     width = 27,

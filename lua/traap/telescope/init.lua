@@ -9,8 +9,8 @@ require('telescope').setup {
       '--column',
       '--smart-case'
     },
-    prompt_prefix = ' ',
-    selection_caret = ' ',
+    prompt_prefix = " ",
+    selection_caret = " ",
     entry_prefix = '  ',
     initial_mode = 'insert',
     selection_strategy = 'reset',
@@ -39,7 +39,6 @@ require('telescope').setup {
     file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
     grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
     qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
-    -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require 'telescope.previewers'.buffer_previewer_maker
   },
   extensions = {
