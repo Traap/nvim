@@ -4,6 +4,38 @@ local User = {}
 
 User = {
 
+-- {{{ language server base path.
+
+  -- ~/.local/share/nvim/lsp_servers/bash
+  -- ~/.local/share/nvim/lsp_servers/ccsls
+  -- ~/.local/share/nvim/lsp_servers/diagnosticls
+  -- ~/.local/share/nvim/lsp_servers/emmet_ls
+  -- ~/.local/share/nvim/lsp_servers/html
+  -- ~/.local/share/nvim/lsp_servers/jsonls
+  -- ~/.local/share/nvim/lsp_servers/latex
+  -- ~/.local/share/nvim/lsp_servers/solargraph
+  -- ~/.local/share/nvim/lsp_servers/sumenko_lua
+  -- ~/.local/share/nvim/lsp_servers/tsserver
+  -- ~/.local/share/nvim/lsp_servers/vim
+  -- ~/.local/share/nvim/lsp_servers/yaml
+
+  servers_and_programs = {
+    {name = 'bashls',       dir = 'bash'},
+    {name = 'cssls',        dir = 'ccsl'},
+    {name = 'diagnosticls', dir = 'diagnosticsl'},
+    {name = 'emmet_ls',     dir = 'emmet_ls'},
+    {name = 'html',         dir = 'html'},
+    {name = 'jsonls',       dir = 'jasonls'},
+    {name = 'solargraph',   dir = 'solargraph'},
+    {name = 'texlab',       dir = 'latex'},
+    {name = 'tsserver',     dir = 'tssver' },
+    {name = 'vimls',        dir = 'vim'},
+    {name = 'yamlls',       dir = 'yaml'},
+  },
+
+  language_server_path = '~/.local/share/nvim',
+
+-- ----------------------------------------------------------------------- }}}
 -- {{{ language server names.
 
   language_servers = {
