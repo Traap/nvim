@@ -6,5 +6,12 @@ for k, v in ipairs(t1) do
 end
 print()
 
--- Test output below using r!lua test.lua
+-- Test output below using r!lua test01.lua
+
+-- Test with t1
+-- 	1	a
+-- 	2	b
+-- 	3	c
+-- 	4	d
+-- 	5	e
 

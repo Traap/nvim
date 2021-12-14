@@ -12,5 +12,17 @@ for k0, v0 in pairs(t3) do
   print()
 end
 
--- Test output below using r!lua test.lua
+-- Test output below using r!lua test03.lua
 
+-- Test with t3
+--	1	other	#
+--	1	letter	g
+--	1	number	7
+
+--	2	letter	h
+--	2	number	8
+--	2	other	$
+
+--	3	number	9
+--	3	other	%
+--	3	letter	i
