@@ -111,6 +111,7 @@ use {'triglav/vim-visual-increment', opt = false}
 use {'vim-utils/vim-most-minimal-folds', opt = false}
 use {'xiyaowong/nvim-transparent', opt = false}
 use {'mechatroner/rainbow_csv', opt = false}
+use {'iamcco/markdown-preview.nvim', opt = false}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ VimTex

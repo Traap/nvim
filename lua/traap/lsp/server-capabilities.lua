@@ -12,7 +12,7 @@ local sumneko_binary    = require('traap/config').sumneko_binary
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Lsp capabilities
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("error")
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
