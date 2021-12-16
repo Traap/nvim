@@ -1,9 +1,10 @@
--- User Configuration items that are reusable through NeoVim.
+-- {{{ User Configuration items that are reusable through NeoVim.
 
 local User = {}
 
 User = {
 
+-- ------------------------------------------------------------------------- }}}
 -- {{{ language server base path.
 
   -- ~/.local/share/nvim/lsp_servers/bash
@@ -61,10 +62,10 @@ User = {
   sumneko_binary = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/Linux/lua-language-server",
 
 -- ----------------------------------------------------------------------- }}}
--- {{{ lsp kind icons.
+-- {{{ Lsp kind icons.
 
   lsp_kind_icons = {
-    Class         = "ﴯ",
+    Class         = "",
     Color         = "",
     Constant      = "",
     Constructor   = "",
@@ -80,9 +81,9 @@ User = {
     Method        = "",
     Module        = "",
     Operator      = "",
-    Property      = "ﰠ",
+    Property      = "",
     Reference     = "",
-    Snippet       = "",
+    Snippet       = " ",
     Struct        = "",
     Text          = "",
     TypeParameter = "",
@@ -119,7 +120,9 @@ display_border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
 
 
 -- ----------------------------------------------------------------------- }}}
-
+-- {{{ Return User table.
 }
 
 return User
+
+-- ------------------------------------------------------------------------- }}}

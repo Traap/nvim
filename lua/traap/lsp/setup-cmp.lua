@@ -3,14 +3,30 @@
 
 -- https://github.com/hrsh7th/nvim-cmp
 -- https://github.com/ThePrimeagen/.dotfiles
-
+-- https://github.com/LunarVim/Neovim-from-scratch
+--
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Alias to vim APis and other required packages.
 
-local vim =vim
+local vim = vim
 local api = vim.api
-local cmp = require'cmp'
-local lspkind = require("lspkind")
+
+local  cmp_ok, cmp = pcall(require, 'cmp')
+if not cmp_ok then return end
+
+local  lspkind_ok, lspkind = pcall(require, 'lspkind')
+if not lspkind_ok then return end
+
+local  luasnip_ok, luasnip = pcall(require, 'luasnip')
+if not luasnip_ok then return end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Define: check_backspace function
+
+local check_backspace = function()
+  local col = vim.fn.col "." - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: icons
@@ -20,7 +36,7 @@ local lspkind = require("lspkind")
 local kind_icons = require('traap/config').lsp_kind_icons
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define: mappings
+-- {{{ Define: keystroke mappings
 
 local mapping = {
   ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -32,6 +48,28 @@ local mapping = {
     c = cmp.mapping.close(),
   }),
   ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  ["<Tab>"] = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_next_item()
+    elseif check_backspace() then
+      fallback()
+    else
+      fallback()
+    end
+  end, {
+    "i",
+    "s",
+  }),
+  ["<S-Tab>"] = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item()
+    else
+      fallback()
+    end
+  end, {
+    "i",
+    "s",
+  }),
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -82,7 +120,7 @@ local formatting = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup: lspkind
 
-require('lspkind').init({
+lspkind.init({
   with_text = true,
 })
 
@@ -90,10 +128,21 @@ require('lspkind').init({
 -- {{{ Setup: cmp
 
 cmp.setup({
-  snippet = snippet,
-  mapping = mapping,
-  sources = sources,
   formatting = formatting,
+  mapping = mapping,
+  snippet = snippet,
+  sources = sources,
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
+  documentation = {
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  },
+  experimental = {
+    ghost_text = false,
+    native_menu = false,
+  },
 })
 
 -- ------------------------------------------------------------------------- }}}
