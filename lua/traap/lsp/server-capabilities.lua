@@ -81,19 +81,7 @@ local function config(_config)
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ lsp: Iterate over language servers.
-
-for _, server in ipairs(language_servers) do
-  require'lspconfig'[server].setup{config()}
-end
-
--- ------------------------------------------------------------------------- }}}
--- {{{ lsp: bash
-
-lspconfig.bashls.setup{}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ lsp: emmet-ls languages.
+-- {{{ config: emmet-ls
 
 configs.emmet_ls = {
   default_config = {
@@ -106,31 +94,63 @@ configs.emmet_ls = {
   };
 }
 
-lspconfig.emmet_ls.setup{ capabilities = capabilities; }
+-- lspconfig.emmet_ls.setup{ capabilities = capabilities; }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ lsp: sumneko_lua
+-- {{{ config: sumneko_lua
 
-lspconfig.sumneko_lua.setup(config({
-  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
+require'lspconfig'.sumneko_lua.setup {
   settings = {
     Lua = {
       runtime = {
-        version = "LuaJIT",
-        path = vim.split(package.path, ";"),
-    },
+        version = 'LuaJIT',
+        path = runtime_path,
+      },
       diagnostics = {
-        globals = { "vim" },
+        globals = {'vim'},
       },
       workspace = {
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-        },
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
       },
     },
   },
-}))
+}
+-- lspconfig.sumneko_lua.setup(config({
+--   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         version = "LuaJIT",
+--         path = vim.split(package.path, ";"),
+--       },
+--       diagnostics = {
+--         globals = { "vim" },
+--       },
+--       workspace = {
+--         library = {
+--           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+--           [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+--         },
+--       },
+--     },
+--   },
+-- }))
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ lsp: Iterate over language servers to enable capabilities.
+
+for _, server in ipairs(language_servers) do
+  -- require'lspconfig'[server].setup{config()}
+  -- require'lspconfig'[server].setup{}
+  require'lspconfig'[server].setup{ capabilities = capabilities; }
+end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Symbol outlines

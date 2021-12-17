@@ -57,7 +57,7 @@ use {'norcalli/snippets.nvim', opt  = false}
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Lua development
 
-use {'tjdevries/nlua.nvim', opt = false}
+-- use {'tjdevries/nlua.nvim', opt = false}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ LSP
