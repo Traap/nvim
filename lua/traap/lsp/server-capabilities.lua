@@ -4,6 +4,12 @@
 -- https://github.com/ThePrimeagen/.dotfiles
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ define lspconfig and config variables.
+
+local lspconfig = require 'lspconfig'
+local configs = require 'lspconfig/configs'
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Sumneko paths
 
 local sumneko_root_path = require('traap/config').sumneko_root_path
@@ -17,26 +23,6 @@ vim.lsp.set_log_level("error")
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
--- ------------------------------------------------------------------------- }}}
--- {{{ HTML languages.
---
---     Add the languages you use, see language support
-local lspconfig = require 'lspconfig'
-local configs = require 'lspconfig/configs'
-
-configs.ls_emmet = {
-  default_config = {
-    cmd = {'ls_emmet', '--stdio'},
-    filetypes = {'html', 'css', 'scss'},
-    root_dir = function(_)
-      return vim.loop.cwd()
-    end,
-    settings = {}
-  }
-}
-
-lspconfig.emmet_ls.setup{capabilities = capabilities}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Langauge Server List
@@ -102,16 +88,37 @@ for _, server in ipairs(language_servers) do
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ lsp: sumneko_lu
+-- {{{ lsp: bash
 
-require("lspconfig").sumneko_lua.setup(config({
+lspconfig.bashls.setup{}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ lsp: emmet-ls languages.
+
+configs.emmet_ls = {
+  default_config = {
+    cmd = {'emmet-ls', '--stdio'};
+    filetypes = {'html', 'css', 'blade'};
+    root_dir = function(_)
+      return vim.loop.cwd()
+    end;
+    settings = {};
+  };
+}
+
+lspconfig.emmet_ls.setup{ capabilities = capabilities; }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ lsp: sumneko_lua
+
+lspconfig.sumneko_lua.setup(config({
   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
   settings = {
     Lua = {
       runtime = {
         version = "LuaJIT",
         path = vim.split(package.path, ";"),
-     },
+    },
       diagnostics = {
         globals = { "vim" },
       },

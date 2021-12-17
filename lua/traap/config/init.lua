@@ -40,15 +40,15 @@ User = {
 -- {{{ language server names.
 
   language_servers = {
-    'bashls',
+    -- 'bashls',
     'cssls',
     'diagnosticls',
     'html',
     'jsonls',
-    'emmet_ls',
+    -- 'emmet_ls',
     'texlab',
     'tsserver',
-    'solargraph',
+    -- 'solargraph',
     'yamlls',
   },
 
@@ -56,10 +56,10 @@ User = {
 -- {{{ Lua language server paths.
 
   sumneko_root_path = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server",
+  sumneko_binary    = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/Linux/lua-language-server",
 
   -- Fix me.
   -- sumneko_binary = User.sumneko_root_path.."/bin/Linux/lua-language-server",
-  sumneko_binary = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/Linux/lua-language-server",
 
 -- ----------------------------------------------------------------------- }}}
 -- {{{ Lsp kind icons.
@@ -111,7 +111,7 @@ diagnostic_signs = {
 -- ----------------------------------------------------------------------- }}}
 -- {{{ Display boarders
 
-display_border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
+display_border = {border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'}},
 
 
 -- ----------------------------------------------------------------------- }}}

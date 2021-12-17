@@ -1,10 +1,9 @@
 -- {{{ Credits
 
-
 -- https://github.com/hrsh7th/nvim-cmp
 -- https://github.com/ThePrimeagen/.dotfiles
 -- https://github.com/LunarVim/Neovim-from-scratch
---
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Alias to vim APis and other required packages.
 
@@ -118,6 +117,11 @@ local formatting = {
 }
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Define: documentation borders.
+
+local documentation = require('traap/config').display_boarder
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Setup: lspkind
 
 lspkind.init({
@@ -136,9 +140,7 @@ cmp.setup({
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  },
+  documentation = documentation,
   experimental = {
     ghost_text = false,
     native_menu = false,
