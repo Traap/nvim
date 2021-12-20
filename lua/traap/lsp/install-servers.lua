@@ -1,5 +1,7 @@
-local lsp_installer = require('nvim-lsp-installer')
-local servers = require('traap/config').language_servers
+local  lsp_installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
+if not lsp_installer_ok then return end
+
+local  servers = require('traap/config').language_servers
 
 -- Automatically install the lanaguage server if supported by
 -- nvim-lsp-installer.

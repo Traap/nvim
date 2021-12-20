@@ -10,8 +10,11 @@ require'colorizer'.setup()
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
 
-local base16 = require('base16')
-base16(base16.themes('chalk'),true)
+local base16_ok, base16 = pcall(require, 'base16')
+if base_ok then
+  base16(base16.themes('chalk'),true)
+  vim.g.transparent_enabled = true
+end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Color contrasts pleasing to my eyes.

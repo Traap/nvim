@@ -6,7 +6,9 @@
 -- ------------------------------------------------------------------------- }}}
 -- {{{ define lspconfig and config variables.
 
-local lspconfig = require 'lspconfig'
+local  lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
+if not lspconfig_ok then return end
+
 local configs = require 'lspconfig/configs'
 
 -- ------------------------------------------------------------------------- }}}

@@ -1,8 +1,6 @@
 -- {{{ Packer startup function definition.
 
-local g = vim.g
-local packer = require('packer')
-
+packer = require('packer')
 return packer.startup(function(use)
 
 -- ------------------------------------------------------------------------- }}}
@@ -135,9 +133,8 @@ use {'Traap/vim-bundle-vimwiki', opt = false}
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Auto compile and install plugins when packer is bootstrapped.
 
-if g.nvim_bootstrapped == 1 then
-  packer.compile('plugin/packer_compiled.vim')
-  packer.install()
+if vim.g.nvim_bootstrapped == 1 then
+  packer.sync()
 end
 
 -- ------------------------------------------------------------------------- }}}
