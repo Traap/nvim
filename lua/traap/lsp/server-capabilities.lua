@@ -35,6 +35,7 @@ local language_servers = require('traap/config').language_servers
 -- {{{ function: on_attach
 
 local on_attach = function(client, bufnr)
+  print('on_attach')
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -148,11 +149,9 @@ require'lspconfig'.sumneko_lua.setup {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ lsp: Iterate over language servers to enable capabilities.
 
-for _, server in ipairs(language_servers) do
-  -- require'lspconfig'[server].setup{config()}
-  -- require'lspconfig'[server].setup{}
-  require'lspconfig'[server].setup{ capabilities = capabilities; }
-end
+-- for _, server in ipairs(language_servers) do
+--   require'lspconfig'[server].setup{ capabilities = capabilities; }
+-- end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Symbol outlines

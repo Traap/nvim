@@ -1,3 +1,6 @@
+local x = vim.fn.stdpath('data')
+print(x)
+
 -- Utilities first.
 require 'traap.utility'
 

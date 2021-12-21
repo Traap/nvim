@@ -61,7 +61,7 @@ use {'norcalli/snippets.nvim', opt  = false}
 -- {{{ LSP
 
 use {'neovim/nvim-lspconfig', opt = false}
-use {'williamboman/nvim-lsp-installer', opt = false}
+    use {'williamboman/nvim-lsp-installer', opt = false}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Profiling
