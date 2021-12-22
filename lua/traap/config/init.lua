@@ -15,20 +15,12 @@ User = {
     'jsonls',
     'emmet_ls',
     'pyright',
+    'rust',
     'texlab',
     'tsserver',
     'solargraph',
     'yamlls',
   },
-
--- ----------------------------------------------------------------------- }}}
--- {{{ Lua language server paths.
-
-  sumneko_root_path = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server",
-  sumneko_binary    = "/home/traap/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/Linux/lua-language-server",
-
-  -- Fix me.
-  -- sumneko_binary = User.sumneko_root_path.."/bin/Linux/lua-language-server",
 
 -- ----------------------------------------------------------------------- }}}
 -- {{{ Lsp kind icons.

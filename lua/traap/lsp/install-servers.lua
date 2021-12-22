@@ -11,7 +11,6 @@ if not lsp_installer_ok then return end
 
 lsp_installer.on_server_ready(function(server)
     local opts = {}
-      print('On Server Ready ' .. server.name)
     -- (optional) Customize the options passed to the server
     -- if server.name == "tsserver" then
     --     opts.root_dir = function() ... end
@@ -35,7 +34,6 @@ for _, name in pairs(servers) do
 
     -- Install language server.
     if not server:is_installed() then
-      print('Installing ' .. name)
       server:install()
     end
   end
