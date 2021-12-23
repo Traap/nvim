@@ -1,14 +1,16 @@
 -- {{{ nvim-lsp-installer check.
 
 local  lsp_installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
-if not lsp_installer_ok then return end
+if not lsp_installer_ok then
+  return
+end
 
 local vim = vim
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Register server handler and install server when necessary.
 
-local  servers = require('traap/config').language_servers
+local  servers = require('traap.config').language_servers
 
 for _, name in pairs(servers) do
   local ok, server = lsp_installer.get_server(name)
@@ -22,6 +24,7 @@ for _, name in pairs(servers) do
     -- Install language server.
     if not server:is_installed() then
       server:install()
+    else
     end
   end
 end

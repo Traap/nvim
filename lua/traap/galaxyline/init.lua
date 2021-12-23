@@ -226,8 +226,7 @@ table.insert(gls.right, {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
-    highlight = {colors.info_yellow,
-    colors.bg}
+    highlight = {colors.info_yellow, colors.bg}
   }
 })
 
@@ -302,7 +301,7 @@ table.insert(gls.right, {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ File tyle
+-- {{{ File type
 
 table.insert(gls.right, {
   BufferType = {

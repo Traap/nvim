@@ -40,7 +40,7 @@ use {'L3MON4D3/LuaSnip', opt = false}
 
 use {'kyazdani42/nvim-tree.lua', opt = false}
 use {'kyazdani42/nvim-web-devicons', opt = false}
-use {'glepnir/galaxyline.nvim', opt = false}
+use {'NTBBloodbath/galaxyline.nvim', opt = false}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Fuzzy finder
