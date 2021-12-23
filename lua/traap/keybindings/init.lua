@@ -23,7 +23,7 @@ u.keymap('n', '<leader>l', '<cmd>vertical resize +1<cr>')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Buffer selection
 
--- BuMake only the current buffer visible.
+-- Make only the current buffer visible.
 
 u.keymap('n', '<leader>oo', '<cmd>only<cr>')
 
@@ -161,5 +161,6 @@ u.keymap('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
 u.keymap('n', '<leader>fw', '<cmd>WikiFzfPages<cr>')
 u.keymap('n', '<leader>we', '<cmd>WikiExport<cr>')
 u.keymap('n', '<leader>wv', "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>")
+u.keymap('n', '<leader>il', 'y$v$<cr><cr>p0ys$_<cr><cr>')
 
 -- ------------------------------------------------------------------------- }}}
