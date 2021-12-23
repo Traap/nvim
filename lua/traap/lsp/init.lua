@@ -1,6 +1,7 @@
--- Setup language servers and completions.
+local status_ok, _ = pcall(require, 'lspconfig')
+if not status_ok then
+  return
+end
 
-require 'traap/lsp/install-servers'
-require 'traap/lsp/setup-cmp'
-require 'traap/lsp/server-capabilities'
-require 'traap/lsp/diagnostic-signs'
+require('traap.lsp.lsp-installer')
+require('traap.lsp.handlers').setup()
