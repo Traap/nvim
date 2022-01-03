@@ -76,6 +76,7 @@ use {'aklt/plantuml-syntax', opt = false}
 -- ------------------------------------------------------------------------- }}}
 -- {{{ neovim without Tpope?  No Way!!!
 
+use {'tpope/vim-characterize', opt = false}
 use {'tpope/vim-commentary', opt = false}
 use {'tpope/vim-dispatch', opt = false}
 use {'tpope/vim-endwise', opt = false}
