@@ -1,21 +1,18 @@
 local ts_config = require("nvim-treesitter.configs")
 
 ts_config.setup {
-    ensure_installed = {
-        "bash",
-        "css",
-        "html",
-        "javascript",
-        "json",
-        "latex",
-        "lua",
-        "python",
-        "ruby",
-        "typescript",
-        "yaml"
-    },
+    ensure_installed = 'maintained',
+    sync_install = false,
+    ignore_install = {''},
+    autopairs = {enable = true,},
     highlight = {
         enable = true,
-        use_languagetree = true
-    }
+        disable = {''},
+        additional_vim_regex_highlighting=true,
+    },
+    indent = {enable = true, disable = {'yaml'}},
+    context_commenting = {
+      enable = true,
+      enable_autocmd = false,
+    },
 }

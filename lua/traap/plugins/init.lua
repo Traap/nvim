@@ -35,7 +35,7 @@ use {'hrsh7th/cmp-nvim-lua', opt = false}
 use {'hrsh7th/cmp-path', opt = false}
 use {'f3fora/cmp-spell', opt = false}
 use {'onsails/lspkind-nvim', opt = false}
-use {'simrat39/symbols-outline.nvim'}
+-- use {'simrat39/symbols-outline.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easyalign & snippets
