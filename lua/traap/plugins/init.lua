@@ -102,6 +102,7 @@ use {'traap/vim-ripgrep', opt = false}
 -- {{{ Treesitter
 
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', opt = false}
+use {'romgrk/nvim-treesitter-context', opt = false}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Tmux
