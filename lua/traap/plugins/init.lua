@@ -6,7 +6,6 @@ if not packer_ok then return end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Packer startup function definition.
 
-packer = require('packer')
 return packer.startup(function(use)
 
 -- ------------------------------------------------------------------------- }}}
