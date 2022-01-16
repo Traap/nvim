@@ -1,2 +1,2 @@
-require('traap/utility/os-check')
-require('traap/utility/helpers')
+require('traap.utility.os-check')
+require('traap.utility.helpers')

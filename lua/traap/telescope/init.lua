@@ -1,4 +1,12 @@
-require('telescope').setup {
+-- {{{ Bail when requried packages are not loaded.
+
+local  telescope_ok, telescope = pcall(require, 'telescope')
+if not telescope_ok then return end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Setup telescope.
+
+telescope.setup {
   defaults = {
     vimgrep_arguments = {
       'rg',
@@ -48,4 +56,10 @@ require('telescope').setup {
     }
   }
 }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Load media files extensions.
+
 require('telescope').load_extension('media_files')
+
+-- ------------------------------------------------------------------------- }}}

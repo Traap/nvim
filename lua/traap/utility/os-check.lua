@@ -1,7 +1,5 @@
 -- {{{ Alias to vim APis.
 
-local    vim = vim
-local      g = vim.g
 local   trim = vim.fn.trim
 local system = vim.fn.system
 
@@ -27,7 +25,7 @@ if string.find(string.lower(uname.release),'wsl2') or
   uname.wsl = true
 end
 
-g.uname = uname
+vim.g.uname = uname
 
 
 -- ------------------------------------------------------------------------- }}}

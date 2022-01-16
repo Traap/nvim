@@ -1,4 +1,5 @@
--- Find more schemas here: https://www.schemastore.org/json/
+-- {{{ Find more schemas here: https://www.schemastore.org/json/
+
 local schemas = {
   {
     description = 'TypeScript compiler configuration file',
@@ -163,6 +164,9 @@ local schemas = {
   },
 }
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Options, settings, json, etc.
+
 local opts = {
   settings = {
     json = {
@@ -181,3 +185,5 @@ local opts = {
 }
 
 return opts
+
+-- ------------------------------------------------------------------------- }}}

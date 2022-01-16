@@ -1,5 +1,3 @@
-local vim = vim
-
 local M  = {}
 
 function M.keymap(mode, lhs, rhs, opts)

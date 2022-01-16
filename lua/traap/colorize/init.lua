@@ -5,12 +5,17 @@ local cmd = vim.cmd
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup colorizer.
 
-require'colorizer'.setup()
+local  colorizer_ok, colorizer = pcall(require, 'colorizer')
+if not colorizer_ok then return end
+
+colorizer.setup()
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
 
-local base16 = require('base16')
+local  base16_ok, base16 = pcall(require, 'base16')
+if not base16_ok then return end
+
 base16(base16.themes('chalk'),true)
 vim.g.transparent_enabled = true
 

@@ -1,7 +1,11 @@
 -- {{{ Requires and aliases
 
-local        gl = require('galaxyline')
-local condition = require('galaxyline.condition')
+local  gl_ok, gl = pcall(require, 'galaxyline')
+if not gl_ok then return end
+
+local  condition_ok, condition = pcall(require, 'galaxyline.condition')
+if not condition_ok then return end
+
 local       gls = gl.section
 
 local        api = vim.api

@@ -1,3 +1,12 @@
+-- {{{ Bail when requried packages are not loaded.
+
+local  config_ok, config = pcall(require, 'nvim-tree.config')
+if not config_ok then return end
+
+local  nvim_tree_ok, nvim_tree = pcall(require, 'nvim-tree')
+if not nvim_tree_ok then return end
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Alias to vim APis.
 
 local g = vim.g
@@ -11,7 +20,7 @@ map('n', '<c-n>',       '<cmd>NvimTreeToggle<cr>')
 map('n', '<leader>nr',  '<cmd>NvimTreeRefresh<cr>')
 map('n', '<leader>nf',  '<cmd>NvimTreeFindFile<cr>')
 
-local callback = require'nvim-tree.config'.nvim_tree_callback
+local callback = config.nvim_tree_callback
 
 local keymap_list = {
   { key = {"<CR>", "o", "<2-LeftMouse>"}, cb = callback("edit") },
@@ -58,7 +67,9 @@ g.nvim_tree_show_icons = {
   files = 1,
   folder_arrows = 1
 }
+
 g.nvim_tree_group_empty = 1
+
 g.nvim_tree_window_picker_exclude = {
   filetype = {
     "packer",
@@ -82,8 +93,7 @@ g.nvim_tree_icons = {
   }
 }
 
-require'nvim-tree'.setup {
-
+nvim_tree.setup {
   disable_netrw       = true,
   hijack_netrw        = true,
   open_on_setup       = false,

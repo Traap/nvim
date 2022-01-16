@@ -1,4 +1,10 @@
-local ts_config = require("nvim-treesitter.configs")
+-- {{{ Bail when requried packages are not loaded.
+
+local  ts_config_ok, ts_config = pcall(require, 'nvim-treesitter.configs')
+if not ts_config_ok then return end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Treesitter config setup.
 
 ts_config.setup {
     ensure_installed = 'maintained',
@@ -16,3 +22,5 @@ ts_config.setup {
       enable_autocmd = false,
     },
 }
+
+-- ------------------------------------------------------------------------- }}}

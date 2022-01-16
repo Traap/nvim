@@ -1,8 +1,6 @@
 -- {{{ Disable neovim builtin plugins I don't use.
 --     https://github.com/tjdevries/config_manager.git
 
-local vim = vim
-
 vim.g.loaded_gzip = 1
 vim.g.loaded_zip = 1
 vim.g.loaded_zipPlugin = 1
