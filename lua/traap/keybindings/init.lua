@@ -1,4 +1,4 @@
--- {{{ Alias to vim APis.
+-- {{{ Alias To vim APis.
 
 local keymap = require('traap.utility.helpers').keymap
 
@@ -106,7 +106,7 @@ keymap('n', '<Leader>gs', '<cmd>G<CR>')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ KJV verse lookup.
 
-keymap('n', 'gk', [[0mMvg_"ky<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
+keymap('n', 'gk', [[^"kyg$<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 keymap('n', 'gt', 'v)3>')
 
 -- ------------------------------------------------------------------------- }}}
