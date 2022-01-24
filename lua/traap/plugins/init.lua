@@ -39,6 +39,7 @@ use {'onsails/lspkind-nvim', opt = false}
 
 use {'junegunn/vim-easy-align', opt = false}
 use {'L3MON4D3/LuaSnip', opt = false}
+use {'rafamadriz/friendly-snippets', opt = false}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File manager
