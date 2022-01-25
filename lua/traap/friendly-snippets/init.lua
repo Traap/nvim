@@ -6,6 +6,10 @@ if not luasnip_ok then return end
 -- ------------------------------------------------------------------------- }}}}
 --  {{{ Enable snippets for languages I use.
 
+require('luasnip.loaders.from_vscode').load{}
+
 luasnip.filetype_extend("ruby", {"rails"})
+
+
 
 -- ------------------------------------------------------------------------- }}}}
