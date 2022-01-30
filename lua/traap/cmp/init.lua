@@ -9,7 +9,6 @@
 -- {{{ Alias to vim APis and other required packages.
 
 local vim = vim
-local api = vim.api
 
 local  cmp_ok, cmp = pcall(require, 'cmp')
 if not cmp_ok then return end
@@ -66,7 +65,7 @@ end
 --
 --  https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#basic-customisationsv
 
-local kind_icons = require('traap/config').lsp_kind_icons
+local kind_icons = require('traap.config').lsp_kind_icons
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: keystroke mappings
@@ -159,7 +158,7 @@ local formatting = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: documentation borders.
 
-local documentation = require('traap/config').display_boarder
+local documentation = require('traap.config').display_boarder
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup: lspkind

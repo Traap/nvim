@@ -67,6 +67,7 @@ vim.cmd([[
  -------------------------------------------------------------------------  }}}
 -- {{{ Find files using Telescope command-line suggar.
 
+keymap('n', '<leader>ld', '<cmd>Telescope diagnostics<cr>')
 keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
