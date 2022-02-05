@@ -8,48 +8,51 @@ if not telescope_ok then return end
 
 telescope.setup {
   defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
-    },
-    prompt_prefix = " ",
-    selection_caret = " ",
+    border = {},
+    borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+    buffer_previewer_maker = require 'telescope.previewers'.buffer_previewer_maker,
+    color_devicons = true,
     entry_prefix = '  ',
+    file_ignore_patterns = {},
+    file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
+    file_sorter = require 'telescope.sorters'.get_fuzzy_file,
+    generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
+    grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
     initial_mode = 'insert',
-    selection_strategy = 'reset',
-    sorting_strategy = 'descending',
-    layout_strategy = 'horizontal',
     layout_config = {
       horizontal = {
         mirror = false,
         preview_width = 0.5
       },
-      vertical = {
-        mirror = false
-      },
+      vertical = { mirror = false },
       width = 0.75
     },
-    file_sorter = require 'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
-    generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
-    -- path_display = true,
-    winblend = 0,
-    border = {},
-    borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
-    color_devicons = true,
-    use_less = true,
-    set_env = {['COLORTERM'] = 'truecolor'}, -- default = nil,
-    file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
+    layout_strategy = 'horizontal',
+    prompt_prefix = " ",
     qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
-    buffer_previewer_maker = require 'telescope.previewers'.buffer_previewer_maker
+    selection_caret = " ",
+    selection_strategy = 'reset',
+    set_env = {['COLORTERM'] = 'truecolor'},
+    sorting_strategy = 'descending',
+    use_less = true,
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--column',
+      '--line-number',
+      '--no-heading',
+      '--smart-case',
+      '--with-filename'
+    },
+    winblend = 0,
   },
   extensions = {
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = 'smart_case',
+    },
     media_files = {
       filetypes = {'pdf', 'png', 'webp', 'jpg', 'jpeg'},
       find_cmd = 'rg'

@@ -13,9 +13,6 @@ local vim = vim
 local  cmp_ok, cmp = pcall(require, 'cmp')
 if not cmp_ok then return end
 
-local  lspkind_ok, lspkind = pcall(require, 'lspkind')
-if not lspkind_ok then return end
-
 local  luasnip_ok, luasnip = pcall(require, 'luasnip')
 if not luasnip_ok then return end
 
@@ -159,13 +156,6 @@ local formatting = {
 -- {{{ Define: documentation borders.
 
 local documentation = require('traap.config').display_boarder
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Setup: lspkind
-
-lspkind.init({
-  with_text = true,
-})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup: cmp

@@ -53,6 +53,7 @@ use {'NTBBloodbath/galaxyline.nvim', opt = false}
 -- {{{ Fuzzy finder
 
 use {'nvim-telescope/telescope.nvim', opt = false}
+use {'nvim-telescope/telescope-fzf-native.nvim', opt = false}
 use {'nvim-lua/popup.nvim', opt = false}
 use {'nvim-lua/plenary.nvim', opt = false}
 use {'nvim-telescope/telescope-media-files.nvim', opt = false}
@@ -68,7 +69,8 @@ use {'norcalli/snippets.nvim', opt  = false}
 -- {{{ LSP
 
 use {'neovim/nvim-lspconfig', opt = false}
-    use {'williamboman/nvim-lsp-installer', opt = false}
+use {'williamboman/nvim-lsp-installer', opt = false}
+use {'jose-elias-alvarez/null-ls.nvim', opt = false}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Profiling
