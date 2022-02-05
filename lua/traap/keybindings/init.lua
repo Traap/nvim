@@ -11,8 +11,7 @@ vim.g.maplocalleader = [[ ]]
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Buffer resize
 
-keymap('n', '<leader>h', '<cmd>vertical resize -1<cr>')
-keymap('n', '<leader>j', '<cmd>resize +1<cr>')
+keymap('n', '<leader>h', '<cmd>vertical resize -1<cr>') keymap('n', '<leader>j', '<cmd>resize +1<cr>')
 keymap('n', '<leader>k', '<cmd>resize -1<cr>')
 keymap('n', '<leader>l', '<cmd>vertical resize +1<cr>')
 
