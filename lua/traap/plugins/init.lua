@@ -11,135 +11,134 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Packer can manage itself as an optional plugin.
 
-use {'wbthomason/packer.nvim', opt = false}
+use {'wbthomason/packer.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Color scheme
 
-use {'Traap/nvim-base16.lua', opt = false}
-use {'norcalli/nvim-colorizer.lua', opt = false}
+use {'Traap/nvim-base16.lua'}
+use {'norcalli/nvim-colorizer.lua'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Completion
 
-use {'hrsh7th/nvim-cmp', opt = false}
-use {'hrsh7th/cmp-buffer', opt = false}
-use {'hrsh7th/cmp-calc', opt = false}
-use {'hrsh7th/cmp-cmdline', opt = false}
-use {'hrsh7th/cmp-nvim-lsp', opt = false}
-use {'hrsh7th/cmp-nvim-lsp-document-symbol', opt = false}
-use {'hrsh7th/cmp-nvim-lua', opt = false}
-use {'hrsh7th/cmp-path', opt = false}
-use {'f3fora/cmp-spell', opt = false}
-use {'onsails/lspkind-nvim', opt = false}
-use {'saadparwaiz1/cmp_luasnip', opt = false}
+use {'hrsh7th/nvim-cmp'}
+use {'hrsh7th/cmp-buffer'}
+use {'hrsh7th/cmp-calc'}
+use {'hrsh7th/cmp-cmdline'}
+use {'hrsh7th/cmp-nvim-lsp'}
+use {'hrsh7th/cmp-nvim-lsp-document-symbol'}
+use {'hrsh7th/cmp-nvim-lua'}
+use {'hrsh7th/cmp-path'}
+use {'onsails/lspkind-nvim'}
+use {'saadparwaiz1/cmp_luasnip'}
 -- use {'simrat39/symbols-outline.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easyalign & snippets
 
-use {'junegunn/vim-easy-align', opt = false}
-use {'L3MON4D3/LuaSnip', opt = false}
-use {'rafamadriz/friendly-snippets', opt = false}
+use {'junegunn/vim-easy-align'}
+use {'L3MON4D3/LuaSnip'}
+use {'rafamadriz/friendly-snippets'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File manager
 
-use {'kyazdani42/nvim-tree.lua', opt = false}
-use {'kyazdani42/nvim-web-devicons', opt = false}
-use {'NTBBloodbath/galaxyline.nvim', opt = false}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Fuzzy finder
-
-use {'nvim-telescope/telescope.nvim', opt = false}
-use {'nvim-telescope/telescope-fzf-native.nvim', opt = false}
-use {'nvim-lua/popup.nvim', opt = false}
-use {'nvim-lua/plenary.nvim', opt = false}
-use {'nvim-telescope/telescope-media-files.nvim', opt = false}
-use {'nvim-telescope/telescope-snippets.nvim', opt = false}
-use {'norcalli/snippets.nvim', opt  = false}
+use {'kyazdani42/nvim-tree.lua'}
+use {'kyazdani42/nvim-web-devicons'}
+use {'NTBBloodbath/galaxyline.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Lua development
 
--- use {'tjdevries/nlua.nvim', opt = false}
+-- use {'tjdevries/nlua.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ LSP
 
-use {'neovim/nvim-lspconfig', opt = false}
-use {'williamboman/nvim-lsp-installer', opt = false}
-use {'jose-elias-alvarez/null-ls.nvim', opt = false}
+use {'neovim/nvim-lspconfig'}
+use {'williamboman/nvim-lsp-installer'}
+use {'jose-elias-alvarez/null-ls.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Profiling
 
-use {'tweekmonster/startuptime.vim', opt = false}
+use {'tweekmonster/startuptime.vim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ PlantUML
 
-use {'aklt/plantuml-syntax', opt = false}
+use {'aklt/plantuml-syntax'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ neovim without Tpope?  No Way!!!
 
-use {'tpope/vim-characterize', opt = false}
-use {'tpope/vim-commentary', opt = false}
-use {'tpope/vim-dispatch', opt = false}
-use {'tpope/vim-endwise', opt = false}
-use {'tpope/vim-fugitive', opt = false}
-use {'tpope/vim-repeat', opt = false}
-use {'tpope/vim-surround', opt = false}
-use {'tpope/vim-unimpaired', opt = false}
+use {'tpope/vim-characterize'}
+use {'tpope/vim-commentary'}
+use {'tpope/vim-dispatch'}
+use {'tpope/vim-endwise'}
+use {'tpope/vim-fugitive'}
+use {'tpope/vim-repeat'}
+use {'tpope/vim-surround'}
+use {'tpope/vim-unimpaired'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ RipGrep
 
-use {'traap/vim-ripgrep', opt = false}
+use {'traap/vim-ripgrep'}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Telescope
+
+use {'nvim-telescope/telescope.nvim'}
+use {'nvim-telescope/telescope-fzf-native.nvim'}
+use {'nvim-lua/popup.nvim'}
+use {'nvim-lua/plenary.nvim'}
+use {'nvim-telescope/telescope-media-files.nvim', run = 'make'}
+use {'nvim-telescope/telescope-snippets.nvim'}
+use {'norcalli/snippets.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Treesitter
 
-use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', opt = false}
-use {'romgrk/nvim-treesitter-context', opt = false}
+use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+use {'romgrk/nvim-treesitter-context'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Tmux
 
-use {'christoomey/vim-tmux-navigator', opt = false}
-use {'christoomey/vim-tmux-runner', opt = false}
+use {'christoomey/vim-tmux-navigator'}
+use {'christoomey/vim-tmux-runner'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Utility
 
-use {'sbdchd/neoformat', opt = false}
-use {'triglav/vim-visual-increment', opt = false}
-use {'vim-utils/vim-most-minimal-folds', opt = false}
-use {'xiyaowong/nvim-transparent', opt = false}
-use {'mechatroner/rainbow_csv', opt = false}
-use {'iamcco/markdown-preview.nvim', opt = false}
+use {'sbdchd/neoformat'}
+use {'triglav/vim-visual-increment'}
+use {'vim-utils/vim-most-minimal-folds'}
+use {'xiyaowong/nvim-transparent'}
+use {'mechatroner/rainbow_csv'}
+use {'iamcco/markdown-preview.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ VimTex
 
-use {'lervag/vimtex', opt = false}
+use {'lervag/vimtex'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Wiki.Vim
 
-use {'lervag/wiki.vim', opt = false}
-use {'dkarter/bullets.vim', opt = false}
-use {'lervag/wiki-ft.vim', opt = false}
+use {'lervag/wiki.vim'}
+use {'dkarter/bullets.vim'}
+use {'lervag/wiki-ft.vim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Zulu : Reuse Traap's vim bundles last.
 
-use {'Traap/vim-bundle-autocmd', opt = false}
-use {'Traap/vim-bundle-plantuml', opt = false}
-use {'Traap/vim-bundle-vimtex', opt = false}
-use {'Traap/vim-bundle-vimwiki', opt = false}
+use {'Traap/vim-bundle-autocmd'}
+use {'Traap/vim-bundle-plantuml'}
+use {'Traap/vim-bundle-vimtex'}
+use {'Traap/vim-bundle-vimwiki'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Auto compile and install plugins when packer is bootstrapped.
@@ -154,7 +153,7 @@ end
 -- end,
 --   {
 --     display = {
---       border = require('traap/config).display_boarder
+--       border = require('traap.config).display_boarder
 --     }
 --   }
 -- )
