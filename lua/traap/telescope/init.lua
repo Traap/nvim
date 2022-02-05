@@ -61,8 +61,15 @@ telescope.setup {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Load media files extensions.
+-- {{{ Load extensions.
 
-require('telescope').load_extension('media_files')
+local extensions = {
+  'fzf',
+  'media_files',
+}
+
+for _, name in ipairs(extensions) do
+  telescope.load_extension(name)
+end
 
 -- ------------------------------------------------------------------------- }}}

@@ -91,10 +91,10 @@ use {'traap/vim-ripgrep'}
 -- {{{ Telescope
 
 use {'nvim-telescope/telescope.nvim'}
-use {'nvim-telescope/telescope-fzf-native.nvim'}
+use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 use {'nvim-lua/popup.nvim'}
 use {'nvim-lua/plenary.nvim'}
-use {'nvim-telescope/telescope-media-files.nvim', run = 'make'}
+use {'nvim-telescope/telescope-media-files.nvim'}
 use {'nvim-telescope/telescope-snippets.nvim'}
 use {'norcalli/snippets.nvim'}
 
