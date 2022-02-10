@@ -65,6 +65,7 @@ telescope.setup {
 
 local extensions = {
   'fzf',
+  'luasnip',
   'media_files',
 }
 

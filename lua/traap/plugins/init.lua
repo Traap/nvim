@@ -32,14 +32,11 @@ use {'hrsh7th/cmp-nvim-lua'}
 use {'hrsh7th/cmp-path'}
 use {'onsails/lspkind-nvim'}
 use {'saadparwaiz1/cmp_luasnip'}
--- use {'simrat39/symbols-outline.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Easyalign & snippets
+-- {{{ Easyalign
 
 use {'junegunn/vim-easy-align'}
-use {'L3MON4D3/LuaSnip'}
-use {'rafamadriz/friendly-snippets'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File manager
@@ -88,15 +85,21 @@ use {'tpope/vim-unimpaired'}
 use {'traap/vim-ripgrep'}
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Snippets
+
+use {'L3MON4D3/LuaSnip'}
+use {'rafamadriz/friendly-snippets'}
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Telescope
 
 use {'nvim-telescope/telescope.nvim'}
 use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+use {'nvim-telescope/telescope-media-files.nvim'}
+use {'benfowler/telescope-luasnip.nvim'}
+
 use {'nvim-lua/popup.nvim'}
 use {'nvim-lua/plenary.nvim'}
-use {'nvim-telescope/telescope-media-files.nvim'}
-use {'nvim-telescope/telescope-snippets.nvim'}
-use {'norcalli/snippets.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Treesitter
