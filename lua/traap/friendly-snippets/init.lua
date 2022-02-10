@@ -10,6 +10,18 @@ require('luasnip.loaders.from_vscode').load{}
 
 luasnip.filetype_extend("ruby", {"rails"})
 
+local date = function() return {os.date('%Y-%m-%d')} end
 
+luasnip.snippets = {
+  all = {
+    luasnip.snippet({
+      trig = 'date',
+      namr = 'Date',
+      dscr = 'Date in the form of YYYY-MM-DD'
+    },{
+      luasnip.function_node(date, {}),
+    }),
+  }
+}
 
 -- ------------------------------------------------------------------------- }}}}
