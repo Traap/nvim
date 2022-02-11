@@ -164,8 +164,6 @@ keymap('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
 keymap('n', '<leader>fw', '<cmd>WikiFzfPages<cr>')
 keymap('n', '<leader>we', '<cmd>WikiExport<cr>')
 keymap('n', '<leader>wv', "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>")
--- keymap('n', '<leader>il', [[y$v$<cr><cr>p0ys$_o<cr><cr>]])
-keymap('n', '<leader>il', [[y$v$]])
-keymap('n', '<leader>pl', [[p0ys$_o<cr><cr>]])
+keymap('n', '<leader>il', "v$<cr><cr><cr>")
 
 -- ------------------------------------------------------------------------- }}}
