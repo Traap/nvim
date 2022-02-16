@@ -73,7 +73,7 @@ keymap('n', '<leader>fn', '<cmd>Telescope find_files cwd=~/git/nvim<cr>')
 keymap('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>')
 keymap('n', '<leader>fp', '<cmd>Telescope find_files cwd=~/.local/share/nvim/site/pack/packer<cr>')
 keymap('n', '<leader>fv', '<cmd>Telescope find_files cwd=~/git/vim<cr>')
-keymap('n', '<leader>fw', '<cmd>Telescope live_grep<cr>')
+keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 keymap('n', '<leader>ld', '<cmd>Telescope diagnostics<cr>')
 keymap('n', '<leader>mf', '<cmd>Telescope media_files<cr>')
 
