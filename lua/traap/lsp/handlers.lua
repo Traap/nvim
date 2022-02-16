@@ -3,8 +3,6 @@
 -- https://github.com/hackorum/nfs
 -- https://github.com/LunarVim/Neovim-From-Scratch
 
-local vim = vim
-
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
   return

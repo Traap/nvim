@@ -75,7 +75,6 @@ diagnostic_signs = {
 
 display_border = {border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'}},
 
-
 -- ----------------------------------------------------------------------- }}}
 -- {{{ Next user config items template
 

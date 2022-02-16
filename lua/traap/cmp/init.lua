@@ -108,14 +108,14 @@ local mapping = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define: source mappings.
+-- {{{ Define: source mappingsjjjjjjjjjjjju
 
 local source_mapping = {
-  buffer        = "[Buffer]",
-  latex_symbols = "[LaTeX]",
-  luasnip       = "[LuaSnip]",
   nvim_lsp      = "[LSP]",
-  nvim_lua      = "[Lua]",
+  luasnip       = "[Snippet]",
+  buffer        = "[Buffer]",
+  -- latex_symbols = "[LaTeX]",
+  -- nvim_lua      = "[Lua]",
   path          = "[Path]",
 }
 
@@ -123,13 +123,13 @@ local source_mapping = {
 -- {{{ Define: sources
 
 local sources = {
-  { name = "buffer",        keyword_length = 3, max_item_count = 10 },
-  { name = "calc",          keyword_length = 3, max_item_count = 10 },
-  { name = "latex_symbols", keyword_length = 3, max_item_count = 10 },
-  { name = "luasnip",       keyword_length = 2, max_item_count = 10 },
-  { name = "nvim_lsp",      keyword_length = 3, max_item_count = 10 },
-  { name = "nvim_lua",      keyword_length = 3, max_item_count = 10 },
-  { name = "path",          keyword_length = 3, max_item_count = 10 },
+  { name = "nvim_lsp",      keyword_length = 1, max_item_count = 10 },
+  { name = "luasnip",       keyword_length = 1, max_item_count = 10 },
+  { name = "buffer",        keyword_length = 1, max_item_count = 10 },
+  { name = "calc",          keyword_length = 1, max_item_count = 10 },
+  -- { name = "latex_symbols", keyword_length = 1, max_item_count = 10 },
+  { name = "nvim_lua",      keyword_length = 1, max_item_count = 10 },
+  { name = "path",          keyword_length = 5, max_item_count = 10 },
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -145,8 +145,9 @@ local snippet = {
 -- {{{ Define: formatting
 
 local formatting = {
+  fields = {'kind', 'abbr', 'menu'},
   format = function(entry, vim_item)
-    vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+    vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
     vim_item.menu = (source_mapping)[entry.source.name]
     return vim_item
   end
@@ -155,7 +156,7 @@ local formatting = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: documentation borders.
 
-local documentation = require('traap.config').display_boarder
+-- local documentation = require('traap.config').display_boarder
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup: cmp
@@ -163,7 +164,7 @@ local documentation = require('traap.config').display_boarder
 cmp.setup({
   completion = completion,
   confirm_opts = confirm_opts,
-  documentation = documentation,
+  documentation = {border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'}},
   experimental = experimental,
   formatting = formatting,
   mapping = mapping,
