@@ -113,6 +113,7 @@ keymap('n', 'gt', 'v)3>')
 -- {{{ Lua File.
 
 keymap('n', '<Leader>lf', [[<cmd>w<cr><cmd>luafile %<cr>]])
+keymap('n', '<leader>sv', '<cmd>luafile $MYVIMRC<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ nvim-tree
@@ -161,8 +162,8 @@ keymap('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
 -- ------------------------------------------------------------------------- }}}
 -- {{{ wiki.vim
 
-keymap('n', '<leader>w<leader>a', "<cmd>edit /home/traap/git/wiki/journal/Acronyms.md<cr>")
-keymap('n', '<leader>w<leader>b', "<cmd>edit /home/traap/git/wiki/journal/Backlog-items.md<cr>")
+keymap('n', '<leader>wa', "<cmd>edit /home/traap/git/wiki/journal/Acronyms.md<cr>")
+keymap('n', '<leader>wb', "<cmd>edit /home/traap/git/wiki/journal/Backlog.md<cr>")
 keymap('n', '<leader>fw', '<cmd>WikiFzfPages<cr>')
 keymap('n', '<leader>we', '<cmd>WikiExport<cr>')
 keymap('n', '<leader>wv', "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>")
