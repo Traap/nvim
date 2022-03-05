@@ -3,35 +3,36 @@
 --   https://github.com/kyazdani42/nvim-tree.lua
 
 vim.g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 1,
-  folder_arrows = 1
+  files         = 1,
+  folder_arrows = 1,
+  folders       = 1,
+  git           = 1,
 }
 
 vim.g.nvim_tree_group_empty = 1
 
-vim.g.nvim_tree_window_picker_exclude = {
-  filetype = {
-    'packer',
-    'qf',
-    'Trouble'
-  }
-}
-
 vim.g.nvim_tree_icons = {
-  default = '',
-  git= {
-    unstaged = '✗',
-    staged = '✓',
-    unmerged = '',
-    renamed = '➜',
-    untracked = '★'
+  default        = '',
+  folder         = {
+    arrow_closed = '',
+    arrow_open   = '',
+    default      = '',
+    empty        = '',
+    empty_open   = '',
+    open         = '',
+    symlink      = '',
+    symlink_open = '',
   },
-  folder = {
-    default = '',
-    open = ''
-  }
+  git            = {
+    deleted      = '',
+    ignored      = '◌',
+    renamed      = '➜',
+    staged       = '✓',
+    unmerged     = '',
+    unstaged     = '✗',
+    untracked    = '★',
+  },
+  symlink        = '',
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -80,48 +81,112 @@ local nvim_tree_keymap_list = {
   { key = '-',                            cb = callback('dir_up') },
   { key = 'q',                            cb = callback('close') },
   { key = 'g?',                           cb = callback('toggle_help') },
-  { key = '<C-t>', cb = "<cmd>lua require'telescope.builtin'.live_grep()<cr>"}
+  { key = '<C-t>', cb = "<cmd>lua require'telescope.builtin'.live_grep()<cr>"},
 }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup nvim tree.
 
 nvim_tree.setup {
-  disable_netrw       = true,
-  hijack_netrw        = true,
-  open_on_setup       = false,
-  open_on_tab         = false,
-  auto_close          = false,
-  hijack_cursor       = true,
-  update_cwd          = true,
+  auto_close                         = true,
+  auto_reload_on_write               = true,
+  disable_netrw                      = false,
+  hijack_cursor                      = true,
+  hijack_netrw                       = true,
+  hijack_unnamed_buffer_when_opening = false,
+  ignore_buffer_on_setup             = false,
+  open_on_setup                      = false,
+  open_on_tab                        = false,
+  update_cwd                         = true,
 
-  update_focused_file = {
-    enable = true,
-    update_cwd = true,
-    ignore_list = { 'fzf' }
+  actions      = {
+    change_dir = {
+      enable   = true,
+      global   = false,
+    },
+
+    open_file       = {
+      quit_on_open  = false,
+      resize_window = false,
+      window_picker = {
+        chars       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+        enable      = true,
+        exclude     = {
+          buftype   = {
+            'help',
+            'nofile',
+            'terminal',
+          },
+          filetype  = {
+            'git',
+            'diff',
+            'fugitive',
+            'fugitiveblame',
+            'notify',
+            'packer',
+            'qf',
+          },
+        }
+      }
+    },
   },
 
-  ignore_ft_on_setup = {'.git', 'node_modules', 'dist'},
-  system_open = {
-    cmd  = nil,
-    args = {}
+  diagnostics = {
+    enable    = false,
+    icons     = {
+      error   = '',
+      hint    = '',
+      info    = '',
+      warning = '',
+    },
   },
 
-  git = {
-    enable = true,
-    height = true,
+  filters    = {
+    custom   = {'.git'},
+    dotfiles = false,
+    exclude  = {}
+  },
+
+  git       = {
+    enable  = true,
+    height  = true,
+    ignore  = false,
     timeout = 300,
   },
 
-  view = {
-    width = 27,
-    side = 'right',
-    auto_resize = true,
-    mappings = {
-      custom_only = false,
-      list = nvim_tree_keymap_list
-    }
-  }
+  hijack_directories = {
+    auto_open        = true,
+    enable           = true,
+  },
+
+  ignore_ft_on_setup = {'dist', 'node_modules'},
+
+  system_open = {
+    cmd       = nil,
+    args      = {},
+  },
+
+  update_focused_file = {
+    enable            = true,
+    ignore_list       = {'fzf'},
+    update_cwd        = true,
+  },
+
+  view                          = {
+    auto_resize                 = true,
+    height                      = 27,
+    hide_root_folder            = false,
+    preserve_window_proportions = false,
+    mappings                    = {
+      custom_only               = false,
+      list                      = nvim_tree_keymap_list
+    },
+    number                      = false,
+    relativenumber              = false,
+    side                        = 'right',
+    signcolumn                  = 'yes',
+    width                       = 27,
+  },
 }
 
 -- ------------------------------------------------------------------------- }}}
