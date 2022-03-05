@@ -61,6 +61,7 @@ vim.cmd([[
   nmap ga <Plug>(EasyAlign)
   nmap <bar>     gaip*<bar>
   nmap <leader>0 gaip*,
+  nmap <leader>1 gaip=,
 ]])
 
  -------------------------------------------------------------------------  }}}
