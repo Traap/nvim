@@ -108,6 +108,16 @@ use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 use {'romgrk/nvim-treesitter-context'}
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Truble
+
+use {
+   'folke/trouble.nvim',
+    config = function()
+      require('trouble').setup {}
+    end
+  }
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Tmux
 
 use {'christoomey/vim-tmux-navigator'}
