@@ -11,7 +11,8 @@ vim.g.maplocalleader = [[ ]]
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Buffer resize
 
-keymap('n', '<leader>h', '<cmd>vertical resize -1<cr>') keymap('n', '<leader>j', '<cmd>resize +1<cr>')
+keymap('n', '<leader>h', '<cmd>vertical resize -1<cr>')
+keymap('n', '<leader>j', '<cmd>resize +1<cr>')
 keymap('n', '<leader>k', '<cmd>resize -1<cr>')
 keymap('n', '<leader>l', '<cmd>vertical resize +1<cr>')
 
@@ -52,6 +53,11 @@ keymap('n', '<leader>ws', "mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z")
 keymap('n', '<leader>cc', 'ggVGg_"+y')
 keymap('v', '<leader>cc', '"+y')
 keymap('n', '<leader>cv', '"+p')
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Display help in vertical buffer.
+
+keymap('n', '<leader>HH', '<cmd>silent vert bo help<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easy align
@@ -153,6 +159,27 @@ keymap('n', '<leader>dr',  '<cmd>VtrDetachRunner<cr>')
 keymap('n', '<leader>ar',  '<cmd>VtrReattachRunner<cr>')
 keymap('n', '<leader>cr',  '<cmd>VtrClearRunner<cr>')
 keymap('n', '<leader>fc',  '<cmd>VtrFlushCommand<cr>')
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Tmux Sessions
+
+-- Below are the tmux sessions I create and kill frequently.
+
+keymap('n', '<leader>tao',   '<cmd>Dispatch!ao ao<cr>')
+keymap('n', '<leader>tbash', '<cmd>Dispatch!ao bash<cr>')
+keymap('n', '<leader>tkjv',  '<cmd>Dispatch!ao kjv<cr>')
+keymap('n', '<leader>tssh',  '<cmd>Dispatch!ao ssh<cr>')
+keymap('n', '<leader>tsoup', '<cmd>Dispatch!ao soup<cr>')
+keymap('n', '<leader>tvim',  '<cmd>Dispatch!ao vim<cr>')
+keymap('n', '<leader>twiki', '<cmd>Dispatch!ao wiki<cr>')
+
+keymap('n', '<leader>kao',   '<cmd>Dispatch!tmux kill-session -t ao<cr>')
+keymap('n', '<leader>kbash', '<cmd>Dispatch!tmux kill-session -t bash<cr>')
+keymap('n', '<leader>kkjv',  '<cmd>Dispatch!tmux kill-session -t kjv<cr>')
+keymap('n', '<leader>kssh',  '<cmd>Dispatch!tmux kill-session -t ssh<cr>')
+keymap('n', '<leader>ksoup', '<cmd>Dispatch!tmux kill-session -t soup<cr>')
+keymap('n', '<leader>kvim',  '<cmd>Dispatch!tmux kill-session -t vim<cr>')
+keymap('n', '<leader>kwiki', '<cmd>Dispatch!tmux kill-session -t wiki<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ <Tab> to navigate the completion menu
