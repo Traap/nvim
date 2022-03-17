@@ -177,15 +177,14 @@ cmp.setup({
 
 cmp.setup.cmdline('/', {
   sources = {
-    {name = 'buffer'},
+    {name = 'buffer',  keyword_length = 3, max_item_count = 10 },
   }
 })
 
 cmp.setup.cmdline(':', {
-  sources = cmp.config.sources(
-    {{name = 'path'}},
-    {{name = 'cmdline'}}
-  )
+  sources = {
+    {name = 'cmdline',  keyword_length = 5, max_item_count = 10 },
+  }
 })
 
 -- ------------------------------------------------------------------------- }}}
