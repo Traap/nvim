@@ -43,7 +43,7 @@ local confirm_opts = {
 -- {{{ Define: experimental
 
 local experimental = {
-  ghost_text = false,
+  ghost_text = true,
   native_menu = false,
 }
 
@@ -173,17 +173,17 @@ cmp.setup({
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Completion: path and command line.
-
-cmp.setup.cmdline('/', {
-  sources = {
-    {name = 'buffer',  keyword_length = 3, max_item_count = 10 },
-  }
-})
+-- {{{ Completion: command line and path.
 
 cmp.setup.cmdline(':', {
   sources = {
-    {name = 'cmdline',  keyword_length = 5, max_item_count = 10 },
+    {name = 'cmdline', keyword_length = 4, max_item_count = 10}
+  }
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    {name = 'buffer', max_item_count = 10}
   }
 })
 

@@ -119,8 +119,8 @@ keymap('n', 'gt', 'v)3>')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Lua File.
 
-keymap('n', '<Leader>lf', [[<cmd>w<cr><cmd>luafile %<cr>]])
-keymap('n', '<leader>sv', '<cmd>luafile $MYVIMRC<cr>')
+keymap('n', '<leader><leader>l', [[<cmd>w<cr><cmd>luafile %<cr>]])
+keymap('n', '<leader><leader>s', [[<cmd>luafile $MYVIMRC<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ nvim-tree
