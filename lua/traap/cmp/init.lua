@@ -16,6 +16,8 @@ if not cmp_ok then return end
 local  luasnip_ok, luasnip = pcall(require, 'luasnip')
 if not luasnip_ok then return end
 
+require("luasnip/loaders/from_vscode").lazy_load()
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: check_backspace function
 
@@ -68,14 +70,21 @@ local kind_icons = require('traap.config').lsp_kind_icons
 -- {{{ Define: keystroke mappings
 
 local mapping = {
+  ["<C-j>"] = cmp.mapping.select_next_item(),
+  ["<C-k>"] = cmp.mapping.select_prev_item(),
+
   ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
   ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+
   ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+
   ['<C-y>'] = cmp.config.disable,
+
   ['<C-e>'] = cmp.mapping({
     i = cmp.mapping.abort(),
     c = cmp.mapping.close(),
   }),
+
   ['<CR>'] = cmp.mapping.confirm({ select = true }),
   ["<Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
@@ -93,6 +102,7 @@ local mapping = {
     "i",
     "s",
   }),
+
   ["<S-Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
       cmp.select_prev_item()

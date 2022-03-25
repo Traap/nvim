@@ -6,6 +6,8 @@ if not telescope_ok then return end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup telescope.
 
+local actions = require 'telescope.actions'
+
 telescope.setup {
   defaults = {
     border = {},
@@ -28,7 +30,23 @@ telescope.setup {
       width = 0.75
     },
     layout_strategy = 'horizontal',
-    prompt_prefix = " ",
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+      },
+
+      n = {
+        ["<esc>"] = actions.close,
+        ["<CR>"] = actions.select_default,
+
+        ["<C-x>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
+        ["j"] = actions.move_selection_next,
+        ["k"] = actions.move_selection_previous,
+      },
+    },
+    prompt_prefix = " ",
     qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
     selection_caret = " ",
     selection_strategy = 'reset',
@@ -65,7 +83,7 @@ telescope.setup {
 
 local extensions = {
   'fzf',
-  'luasnip',
+  -- 'luasnip',
   'media_files',
 }
 

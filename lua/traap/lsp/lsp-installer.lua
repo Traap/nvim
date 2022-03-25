@@ -5,26 +5,28 @@ if not lsp_installer_ok then
   return
 end
 
-local vim = vim
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Register server handler and install server when necessary.
 
-local  servers = require('traap.config').language_servers
+local use_lsp = require('traap.config').use_lsp
 
-for _, name in pairs(servers) do
-  local ok, server = lsp_installer.get_server(name)
-  if ok then
-    -- Register handler.
-    server:on_ready(function()
-      local opts = {}
-      server:setup(opts)
-    end)
+if use_lsp then
+  local servers = require('traap.config').language_servers
 
-    -- Install language server.
-    if not server:is_installed() then
-      server:install()
-    else
+  for _, name in pairs(servers) do
+    local ok, server = lsp_installer.get_server(name)
+    if ok then
+      -- Register handler.
+      server:on_ready(function()
+        local opts = {}
+        server:setup(opts)
+      end)
+
+      -- Install language server.
+      if not server:is_installed() then
+        server:install()
+      else
+      end
     end
   end
 end
