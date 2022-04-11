@@ -7,7 +7,7 @@ if not ts_config_ok then return end
 -- {{{ Treesitter config setup.
 
 ts_config.setup {
-    ensure_installed = 'maintained',
+    ensure_installed = 'all',
     sync_install = false,
     ignore_install = {''},
     autopairs = {enable = true,},

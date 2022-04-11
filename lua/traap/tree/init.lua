@@ -209,7 +209,6 @@ local view                    = {
 
 nvim_tree.setup {
   actions                            = actions,
-  auto_close                         = true,
   auto_reload_on_write               = true,
   diagnostics                        = diagnostics,
   disable_netrw                      = false,
