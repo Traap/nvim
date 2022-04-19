@@ -174,7 +174,7 @@ local formatting = {
 cmp.setup({
   completion = completion,
   confirm_opts = confirm_opts,
-  documentation = {border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'}},
+  window = { documentation = 'native'},
   experimental = experimental,
   formatting = formatting,
   mapping = mapping,
