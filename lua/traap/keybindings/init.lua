@@ -140,6 +140,12 @@ keymap('n', '<leader>gu', '<cmd>call GenerateUmlDiagram()<cr>')
 keymap('n', '<c-q>', '<cmd>qall!<cr>')
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Sorting
+
+-- Sort a list followed by a blank line.
+keymap('n', '<leader>ss', '0v)k$:sort<CR>')
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Stop search highlights.
 
 keymap('n', '<leader><space>', '<cmd>noh<CR>')
