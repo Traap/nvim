@@ -30,7 +30,7 @@ end
 -- {{{ Define: completion
 
 local completion = {
-  keyword_lenght = 3,
+  keyword_length = 3,
 }
 
 -- ------------------------------------------------------------------------- }}}
