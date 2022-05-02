@@ -65,10 +65,10 @@ local actions     = {
           'terminal',
         },
         filetype  = {
-          'git',
           'diff',
           'fugitive',
           'fugitiveblame',
+          'git',
           'notify',
           'packer',
           'qf',
@@ -92,7 +92,7 @@ local diagnostics = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define: filters
+-- {{{ Define: filtersheight
 
 local filters = {
   custom      = {'.git'},
@@ -105,7 +105,6 @@ local filters = {
 
 local  git = {
   enable   = true,
-  height   = true,
   ignore   = false,
   timeout  = 300,
 }
@@ -192,7 +191,6 @@ local update_focused_file = {
 -- {{{ Define: view
 
 local view                    = {
-  auto_resize                 = false,
   height                      = 27,
   hide_root_folder            = false,
   mappings                    = mappings,
