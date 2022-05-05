@@ -74,7 +74,7 @@ cmd([[
   augroup BackToNormalGroup
     autocmd!
     autocmd CursorHoldI * stopinsert
-    autocmd InsertEnter * let updaterestore=&updatetime | set updatetime=1000
+    autocmd InsertEnter * let updaterestore=&updatetime | set updatetime=2500
     autocmd InsertLeave * let &updatetime=updaterestore
   augroup END
 ]])
