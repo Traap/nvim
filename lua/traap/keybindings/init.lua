@@ -116,6 +116,9 @@ keymap('n', '<Leader>gs', '<cmd>G<CR>')
 keymap('n', 'gk', [[^"kyg$<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 keymap('n', 'gt', 'v)3>')
 
+keymap('n', '<leader>aa', [[ggdG<cmd>exec 'r!rake build:amber'<cr>]])
+keymap('n', '<leader>ab', [[ggdG<cmd>exec 'r!rubocop'<cr>]])
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Lua File.
 
