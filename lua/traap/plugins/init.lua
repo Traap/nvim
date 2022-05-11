@@ -4,6 +4,17 @@ local  packer_ok, packer = pcall(require, 'packer')
 if not packer_ok then return end
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Have packer use a popup window
+
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+}
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Packer startup function definition.
 
 return packer.startup(function(use)
