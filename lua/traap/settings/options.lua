@@ -69,12 +69,15 @@ g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Back to normal mode when input timer expiers.
+--
+--     I use a 30sec time because I am generally reading other documents when I
+--     making edits.
 
 cmd([[
   augroup BackToNormalGroup
     autocmd!
     autocmd CursorHoldI * stopinsert
-    autocmd InsertEnter * let updaterestore=&updatetime | set updatetime=7000
+    autocmd InsertEnter * let updaterestore=&updatetime | set updatetime=30000
     autocmd InsertLeave * let &updatetime=updaterestore
   augroup END
 ]])
