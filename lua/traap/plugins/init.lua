@@ -86,6 +86,7 @@ use {'tpope/vim-commentary'}
 use {'tpope/vim-dispatch'}
 use {'tpope/vim-endwise'}
 use {'tpope/vim-fugitive'}
+use {'tpope/vim-rails'}
 use {'tpope/vim-repeat'}
 use {'tpope/vim-surround'}
 use {'tpope/vim-unimpaired'}
