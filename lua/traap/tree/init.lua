@@ -1,41 +1,3 @@
--- {{{ These additional options must be set BEFORE calling require'nvim-tree'.
---
---   https://github.com/kyazdani42/nvim-tree.lua
-
-vim.g.nvim_tree_show_icons = {
-  files         = 1,
-  folder_arrows = 1,
-  folders       = 1,
-  git           = 1,
-}
-
-vim.g.nvim_tree_group_empty = 1
-
-vim.g.nvim_tree_icons = {
-  default        = '',
-  folder         = {
-    arrow_closed = '',
-    arrow_open   = '',
-    default      = '',
-    empty        = '',
-    empty_open   = '',
-    open         = '',
-    symlink      = '',
-    symlink_open = '',
-  },
-  git            = {
-    deleted      = '',
-    ignored      = '◌',
-    renamed      = '➜',
-    staged       = '✓',
-    unmerged     = '',
-    unstaged     = '✗',
-    untracked    = '★',
-  },
-  symlink        = '',
-}
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Bail when requried packages are not loaded.
 
 local  config_ok, config = pcall(require, 'nvim-tree.config')
@@ -100,6 +62,57 @@ local filters = {
   exclude     = {}
 }
 
+local renderer = {
+  add_trailing           = false,
+  group_empty            = false,
+  highlight_git          = false,
+  highlight_opened_files = "none",
+  icons                  = {
+    git_placement        = "before",
+    padding              = " ",
+    show                 = {
+      file               = true,
+      folder             = true,
+      folder_arrow       = true,
+      git                = true,
+    },
+    symlink_arrow        = " ➛ ",
+    webdev_colors        = true,
+    glyphs               = {
+      default            = '',
+      symlink            = "",
+      folder             = {
+        arrow_closed     = "",
+        arrow_open       = "",
+        default          = "",
+        empty            = "",
+        empty_open       = "",
+        open             = "",
+        symlink          = "",
+        symlink_open     = "",
+      },
+      git                = {
+        deleted          = "",
+        ignored          = "◌",
+        renamed          = "➜",
+        staged           = "✓",
+        unmerged         = "",
+        unstaged         = "✗",
+        untracked        = "★",
+      },
+    },
+  },
+  indent_markers         = {
+    enable               = false,
+    icons                = {
+      corner             = "└ ",
+      edge               = "│ ",
+      none               = "  ",
+    },
+  },
+  root_folder_modifier   = ":~",
+  special_files          = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+}
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: git
 
@@ -224,6 +237,7 @@ nvim_tree.setup {
   system_open                        = system_open,
   update_focused_file                = update_focused_file,
   view                               = view,
+  renderer                           = renderer,
 }
 
 -- ------------------------------------------------------------------------- }}}
