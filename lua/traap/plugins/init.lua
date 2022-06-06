@@ -25,6 +25,16 @@ return packer.startup(function(use)
 use {'wbthomason/packer.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Trouble
+
+use {
+   'folke/trouble.nvim',
+    config = function()
+      require('trouble').setup {}
+    end
+  }
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
 
 use {'Traap/nvim-base16.lua'}
@@ -119,16 +129,6 @@ use {'nvim-lua/plenary.nvim'}
 
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 use {'nvim-treesitter/nvim-treesitter-refactor'}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Truble
-
-use {
-   'folke/trouble.nvim',
-    config = function()
-      require('trouble').setup {}
-    end
-  }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Tmux
