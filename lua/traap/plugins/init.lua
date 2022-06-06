@@ -117,7 +117,8 @@ use {'nvim-lua/plenary.nvim'}
 -- {{{ Treesitter
 
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-use {'romgrk/nvim-treesitter-context'}
+use {'nvim-treesitter/nvim-treesitter-refactor'}
+-- use {'romgrk/nvim-treesitter-context'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Truble

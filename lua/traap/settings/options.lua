@@ -7,6 +7,7 @@ local opt = vim.opt
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Alphebetical listing of settings I like.
 
+opt.background = "dark"
 opt.clipboard = 'unnamedplus'
 opt.colorcolumn = '+1'
 opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
