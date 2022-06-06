@@ -20,7 +20,7 @@ local  base16_ok, base16 = pcall(require, 'base16')
 if not base16_ok then return end
 
 base16(base16.themes('chalk'),true)
-vim.g.transparent_enabled = true
+vim.g.transparent_enabled = false
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Color contrasts pleasing to my eyes.
