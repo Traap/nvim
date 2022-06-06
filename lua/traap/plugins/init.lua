@@ -25,10 +25,11 @@ return packer.startup(function(use)
 use {'wbthomason/packer.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Color scheme
+-- {{{ Colors
 
 use {'Traap/nvim-base16.lua'}
 use {'norcalli/nvim-colorizer.lua'}
+use {'p00f/nvim-ts-rainbow'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Completion

@@ -1,10 +1,10 @@
 -- {{{ Credits
---
+
 -- https://github.com/hrsh7th/nvim-cmp
 -- https://github.com/ThePrimeagen/.dotfiles
 -- https://github.com/LunarVim/Neovim-from-scratch
 -- https://github.com/Rafamadriz/NeoCode
---
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Alias to vim APis and other required packages.
 
@@ -86,22 +86,22 @@ local mapping = {
   }),
 
   ['<CR>'] = cmp.mapping.confirm({ select = true }),
+
   ["<Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
       cmp.select_next_item()
+    elseif luasnip.expandable() then
+      luasnip.expand()
     elseif luasnip.expand_or_jumpable() then
       luasnip.expand_or_jump()
-    elseif has_words_before() then
-      cmp.complete()
+    -- elseif has_words_before() then
+    --   cmp.complete()
     elseif check_backspace() then
       fallback()
     else
       fallback()
     end
-  end, {
-    "i",
-    "s",
-  }),
+  end, { "i", "s", }),
 
   ["<S-Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
@@ -111,10 +111,7 @@ local mapping = {
     else
       fallback()
     end
-  end, {
-    "i",
-    "s",
-  }),
+  end, { "i", "s", }),
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -164,9 +161,18 @@ local formatting = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define: documentation borders.
+-- {{{ Define: window
 
--- local documentation = require('traap.config').display_boarder
+local window = {
+  documentation = {
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
+  },
+  completion = {
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
+  },
+}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Setup: cmp
@@ -180,6 +186,7 @@ cmp.setup({
   mapping = mapping,
   snippet = snippet,
   sources = sources,
+  window = window,
 })
 
 -- ------------------------------------------------------------------------- }}}

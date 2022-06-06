@@ -1,9 +1,7 @@
 -- {{{ nvim-lsp-installer check.
 
 local  lsp_installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
-if not lsp_installer_ok then
-  return
-end
+if not lsp_installer_ok then return end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Register server handler and install server when necessary.

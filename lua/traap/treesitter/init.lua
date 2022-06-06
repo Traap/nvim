@@ -26,16 +26,17 @@ config.setup {
   indent = {enable = true, disable = {'yaml'}},
   playground = { enable = true, },
   rainbow = {
-    enable = true,
     colors = {
       "Gold",
       "Orchid",
       "DodgerBlue",
-      -- "Cornsilk",
-      -- "Salmon",
-      -- "LawnGreen",
+      "Cornsilk",
+      "Salmon",
+      "LawnGreen",
     },
     disable = { "html" },
+    enable = true,
+    extended_mode = true,
   },
   refactor = {
     highlight_current_scope = { enable = true },

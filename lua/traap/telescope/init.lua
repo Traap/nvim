@@ -7,6 +7,7 @@ if not telescope_ok then return end
 -- {{{ Setup telescope.
 
 local actions = require 'telescope.actions'
+telescope.load_extension "media_files"
 
 telescope.setup {
   defaults = {
@@ -42,10 +43,11 @@ telescope.setup {
 
         ["<C-x>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
-        ["j"] = actions.move_selection_next,
-        ["k"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k"] = actions.move_selection_previous,
       },
     },
+    path_display = { 'smart' },
     prompt_prefix = " ",
     qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
     selection_caret = " ",
