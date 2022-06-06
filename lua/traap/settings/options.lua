@@ -95,10 +95,3 @@ g.bullets_enabled_file_types = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ base16 chalk colors
-
--- g.transparent_enabled = true
--- local base16 = require 'base16'
--- base16(base16.themes('chalk'), true)
-
--- ------------------------------------------------------------------------- }}}
