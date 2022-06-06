@@ -8,10 +8,13 @@ local cmd = vim.cmd
 local  colorizer_ok, colorizer = pcall(require, 'colorizer')
 if not colorizer_ok then return end
 
-colorizer.setup()
+colorizer.setup{
+  '*',    -- Highlight all files, but customize some others.
+  '!vim', -- Exclude vim from highlighting.
+}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Colors
+-- {{{ base16 colors
 
 local  base16_ok, base16 = pcall(require, 'base16')
 if not base16_ok then return end
@@ -23,7 +26,7 @@ vim.g.transparent_enabled = true
 -- {{{ Color contrasts pleasing to my eyes.
 
 -- Clear items I want full control over.
--- cmd 'highlight clear ColorColumn'
+cmd 'highlight clear ColorColumn'
 cmd 'highlight clear Concel'
 cmd 'highlight clear CursorLine'
 cmd 'highlight clear Folded'

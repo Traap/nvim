@@ -119,7 +119,6 @@ use {'nvim-lua/plenary.nvim'}
 
 use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 use {'nvim-treesitter/nvim-treesitter-refactor'}
--- use {'romgrk/nvim-treesitter-context'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Truble
@@ -177,15 +176,8 @@ if vim.g.nvim_bootstrapped == 1 then
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Display boarders
+-- {{{ The END!
 
--- end,
---   {
---     display = {
---       border = require('traap.config).display_boarder
---     }
---   }
--- )
 end)
 
 -- ------------------------------------------------------------------------- }}}
