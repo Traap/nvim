@@ -22,6 +22,8 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Packer can manage itself as an optional plugin.
 
+use {'nvim-lua/plenary.nvim'}
+use {'ewis6991/impatient.nvim'}
 use {'wbthomason/packer.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
