@@ -22,8 +22,9 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Packer can manage itself as an optional plugin.
 
+use {'nvim-lua/popup.nvim'}
 use {'nvim-lua/plenary.nvim'}
-use {'ewis6991/impatient.nvim'}
+use {'lewis6991/impatient.nvim'}
 use {'wbthomason/packer.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
@@ -42,6 +43,7 @@ use {
 use {'Traap/nvim-base16.lua'}
 use {'norcalli/nvim-colorizer.lua'}
 use {'p00f/nvim-ts-rainbow'}
+use {'mechatroner/rainbow_csv'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Completion
@@ -123,8 +125,6 @@ use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 use {'nvim-telescope/telescope-media-files.nvim'}
 use {'benfowler/telescope-luasnip.nvim'}
 
-use {'nvim-lua/popup.nvim'}
-use {'nvim-lua/plenary.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Treesitter
@@ -145,7 +145,6 @@ use {'sbdchd/neoformat'}
 use {'triglav/vim-visual-increment'}
 use {'vim-utils/vim-most-minimal-folds'}
 use {'xiyaowong/nvim-transparent'}
-use {'mechatroner/rainbow_csv'}
 use {'iamcco/markdown-preview.nvim'}
 
 -- ------------------------------------------------------------------------- }}}

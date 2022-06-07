@@ -180,7 +180,6 @@ local window = {
 cmp.setup({
   completion = completion,
   confirm_opts = confirm_opts,
-  -- window = { documentation = 'native', max_width=50, max_height=10},
   experimental = experimental,
   formatting = formatting,
   mapping = mapping,
