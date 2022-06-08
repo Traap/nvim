@@ -118,6 +118,7 @@ local mapping = {
 -- {{{ Define: source mappings
 
 local source_mapping = {
+  spell         = "[Spell]",
   luasnip       = "[Snippet]",
   nvim_lsp      = "[LSP]",
   buffer        = "[Buffer]",
@@ -130,6 +131,7 @@ local source_mapping = {
 -- {{{ Define: sources
 
 local sources = {
+  { name = "spell",         keyword_length = 3, max_item_count = 10 },
   { name = "buffer",        keyword_length = 3, max_item_count = 10 },
   { name = "luasnip",       keyword_length = 1, max_item_count = 10 },
   { name = "nvim_lsp",      keyword_length = 2, max_item_count = 10 },
@@ -138,6 +140,12 @@ local sources = {
   { name = "nvim_lua",      keyword_length = 2, max_item_count = 10 },
   { name = "path",          keyword_length = 3, max_item_count = 10 },
 }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Define: spelling languages
+
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us' }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: snippet

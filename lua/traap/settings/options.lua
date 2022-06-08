@@ -5,7 +5,7 @@ local cmd = vim.cmd
 local opt = vim.opt
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Alphebetical listing of settings I like.
+-- {{{ Alphabetical listing of settings I like.
 
 opt.background = "dark"
 opt.clipboard = 'unnamedplus'
@@ -15,6 +15,7 @@ opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 opt.cursorline = true
 opt.expandtab = true
 opt.fillchars = 'fold: '
+opt.foldlevel = 20
 opt.foldmethod = 'marker'
 opt.hidden = true
 opt.ignorecase = true
