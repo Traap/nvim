@@ -21,12 +21,14 @@ M.setup = function()
   local signs = require('traap.config').diagnostic_signs
 
   for _, sign in pairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+    local name = sign.name
+    local icon = sign.text
+    vim.fn.sign_define(name, { text = icon, numhl = name, texthl = name })
   end
 
   local config = {
     float = {
-      border = 'rounded',
+      border = 'single',
       focusable = false,
       header = '',
       prefix = '',
@@ -34,22 +36,22 @@ M.setup = function()
       style = 'minimal',
     },
     severity_sort = true,
-    signs = {
-      active = signs,
-    },
+    signs = true,
     underline = true,
     update_in_insert = true,
-    virtual_text = false,
+    virtual_text = {
+        prefix = "",
+    },
   }
 
   vim.diagnostic.config(config)
 
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-    vim.lsp.handlers.hover, { border = 'rounded', }
+    vim.lsp.handlers.hover, { border = 'single', }
   )
 
   vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-    vim.lsp.handlers.signature_help, { border = 'rounded', }
+    vim.lsp.handlers.signature_help, { border = 'single', }
   )
 end
 

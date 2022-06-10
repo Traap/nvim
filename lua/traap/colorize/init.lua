@@ -1,4 +1,4 @@
--- {{{ Alias to vim APis.
+-- {{{ Alias to vim APIs.
 
 local cmd = vim.cmd
 
@@ -8,10 +8,23 @@ local cmd = vim.cmd
 local  colorizer_ok, colorizer = pcall(require, 'colorizer')
 if not colorizer_ok then return end
 
-colorizer.setup{
-  '*',    -- Highlight all files, but customize some others.
-  '!vim', -- Exclude vim from highlighting.
-}
+-- colorizer.setup{
+--   '*',    -- Highlight all files, but customize some others.
+--   '!vim', -- Exclude vim from highlighting.
+-- }
+
+colorizer.setup({ "*" }, {
+  RGB = true, -- #RGB hex codes
+  RRGGBB = true, -- #RRGGBB hex codes
+  names = false, -- "Name" codes like Blue oe blue
+  RRGGBBAA = true, -- #RRGGBBAA hex codes
+  rgb_fn = true, -- CSS rgb() and rgba() functions
+  hsl_fn = true, -- CSS hsl() and hsla() functions
+  css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+  css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+  -- Available modes: foreground, background, virtualtext
+  mode = "background", -- Set the display mode.)
+})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ base16 colors
@@ -20,7 +33,7 @@ local  base16_ok, base16 = pcall(require, 'base16')
 if not base16_ok then return end
 
 base16(base16.themes('chalk'),true)
-vim.g.transparent_enabled = false
+vim.g.transparent_enabled = true
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Color contrasts pleasing to my eyes.
@@ -43,7 +56,9 @@ cmd 'highlight DiffDelete    guifg=#ff75a0 gui=none'
 cmd 'highlight DiffText      guifg=#EBCB8B gui=none'
 cmd 'highlight Folded        guifg=#80a0ff gui=none'
 cmd 'highlight LineNbr       guifg=#2a2e36 gui=none'
-cmd 'highlight SpellBad      guibg=#DE6874 gui=undercurl'
-cmd 'highlight search        guibg=#BD77DC gui=none'
+-- cmd 'highlight SpellBad      guibg=#DE6874 gui=undercurl'
+cmd 'highlight SpellBad      guibg=#568BBF gui=undercurl'
+-- cmd 'highlight search        guibg=#BD77DC gui=none'
+cmd 'highlight search        guibg=#517F8D gui=none'
 
 -- ------------------------------------------------------------------------- }}}
