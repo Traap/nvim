@@ -56,9 +56,7 @@ cmd 'highlight DiffDelete    guifg=#ff75a0 gui=none'
 cmd 'highlight DiffText      guifg=#EBCB8B gui=none'
 cmd 'highlight Folded        guifg=#80a0ff gui=none'
 cmd 'highlight LineNbr       guifg=#2a2e36 gui=none'
--- cmd 'highlight SpellBad      guibg=#DE6874 gui=undercurl'
-cmd 'highlight SpellBad      guibg=#568BBF gui=undercurl'
--- cmd 'highlight search        guibg=#BD77DC gui=none'
-cmd 'highlight search        guibg=#517F8D gui=none'
+cmd 'highlight SpellBad      guibg=#DE6874 gui=undercurl'
+cmd 'highlight search        guibg=#BD77DC gui=none'
 
 -- ------------------------------------------------------------------------- }}}
