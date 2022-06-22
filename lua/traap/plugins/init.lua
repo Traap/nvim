@@ -61,9 +61,10 @@ return packer.startup(function(use)
   use {'f3fora/cmp-spell'}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Easyalign
+-- {{{ JuneGunn Easyalign and fzf.
 
   use {'junegunn/vim-easy-align'}
+  use {'junegunn/fzf.vim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File manager
