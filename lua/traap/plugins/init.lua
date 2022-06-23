@@ -166,7 +166,9 @@ return packer.startup(function(use)
 
   use {'Traap/vim-bundle-abbreviate'}
   use {'Traap/vim-bundle-autocmd'}
+  use {'Traap/vim-bundle-fzf'}
   use {'Traap/vim-bundle-plantuml'}
+  use {'Traap/vim-bundle-rainbow'}
   use {'Traap/vim-bundle-tmux-runner'}
   use {'Traap/vim-bundle-vimtex'}
   use {'Traap/vim-bundle-vimwiki'}
