@@ -64,6 +64,7 @@ return packer.startup(function(use)
 -- {{{ JuneGunn Easyalign and fzf.
 
   use {'junegunn/vim-easy-align'}
+  use {'junegunn/fzf'}
   use {'junegunn/fzf.vim'}
 
 -- ------------------------------------------------------------------------- }}}
@@ -107,11 +108,6 @@ return packer.startup(function(use)
   use {'tpope/vim-repeat'}
   use {'tpope/vim-surround'}
   use {'tpope/vim-unimpaired'}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ RipGrep
-
-  use {'traap/vim-ripgrep'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Snippets
