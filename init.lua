@@ -19,6 +19,7 @@ require 'traap.web-devicons'
 require 'traap.telescope'
 require 'traap.treesitter'
 require 'traap.friendly-snippets'
+require 'traap.which-key'
 
 -- Now colorize
 require 'traap.colorize'

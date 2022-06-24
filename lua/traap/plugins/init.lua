@@ -158,6 +158,11 @@ return packer.startup(function(use)
   use {'lervag/wiki-ft.vim'}
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Which-Key
+
+  use {'folke/which-key.nvim'}
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Zulu : Reuse Traap's vim bundles last.
 
   use {'Traap/vim-bundle-abbreviate'}
