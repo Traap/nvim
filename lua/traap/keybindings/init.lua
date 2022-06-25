@@ -199,11 +199,12 @@ keymap('n', '<Tab>',   'pumvisible() ? "\\<C-n>" : "\\<Tab>"',  {expr = true})
 -- ------------------------------------------------------------------------- }}}
 -- {{{ wiki.vim
 
+keymap('n', '<leader>il', "v$<cr><cr><cr>")
 keymap('n', '<leader>wa', "<cmd>edit /home/traap/git/wiki/journal/Acronyms.md<cr>")
 keymap('n', '<leader>wb', "<cmd>edit /home/traap/git/wiki/journal/Backlog.md<cr>")
-keymap('n', '<leader>fw', '<cmd>WikiFzfPages<cr>')
 keymap('n', '<leader>we', '<cmd>WikiExport<cr>')
+keymap('n', '<leader>wp', '<cmd>WikiFzfPages<cr>')
+keymap('n', '<leader>wt', '<cmd>WikiFzfTags<cr>')
 keymap('n', '<leader>wv', "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>")
-keymap('n', '<leader>il', "v$<cr><cr><cr>")
 
 -- ------------------------------------------------------------------------- }}}
