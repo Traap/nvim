@@ -6,7 +6,7 @@ local keymap = require('traap.utility.helpers').keymap
 -- {{{ Map leader to space
 
 vim.g.mapleader = [[ ]]
-vim.g.maplocalleader = [[ ]]
+vim.g.maplocalleader = [[\]]
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Items I have dont' know how to move to which-key.
