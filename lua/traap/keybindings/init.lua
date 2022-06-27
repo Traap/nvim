@@ -28,4 +28,22 @@ keymap('n', '<c-q>', '<cmd>qall!<cr>')
 -- Delete the current line.
 keymap('n', '-', 'dd')
 
+-- Author: Karl Yngve Lervåg
+--    See: https://github.com/lervag/dotnvim
+
+-- Close all fold except the current one.
+keymap('n', 'zv', 'zMzvzz')
+
+-- Close current fold when open. Always open next fold.
+keymap('n', 'zj', 'zcjzOzz')
+
+-- Close current fold when open. Always open previous fold.
+keymap('n', 'zk', 'zckzOzz')
+
+-- Toggle NvimTree
+keymap('n', '<c-n>','<cmd>NvimTreeToggle<cr>')
+
+-- Visual yank
+keymap('v', '<leader>cc', '"+y')
+
 -- ------------------------------------------------------------------------- }}}

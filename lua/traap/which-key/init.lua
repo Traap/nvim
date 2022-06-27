@@ -424,16 +424,6 @@ local mappings = {
   },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ z - Folds
-
-  z = {
-    name = 'Fold',
-    v = { 'zMzvzz', 'Close current fold.' },
-    j = { 'zcjzOzz', 'Close fold & open next.' },
-    k = { 'zckzOzz', 'Close fold & open previous.' },
-  },
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ H - Help
 
   H = {
@@ -487,6 +477,7 @@ local vopts = {
 local vmappings = {
   ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', "Comment" },
   s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
+  v = { '"+y', "Yank" },
 }
 
 -- ------------------------------------------------------------------------- }}}
