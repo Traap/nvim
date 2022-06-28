@@ -173,7 +173,7 @@ local mappings = {
   c = {
     name = "Copy & Paste",
     c = { 'ggVGg_"+y', "Yank buffer" },
-    v = { '+p', "Paste buffer" },
+    v = { '"+p', "Paste buffer" },
   },
 
 -- ------------------------------------------------------------------------- }}}
@@ -477,7 +477,6 @@ local vopts = {
 local vmappings = {
   ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', "Comment" },
   s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
-  v = { '"+y', "Yank" },
 }
 
 -- ------------------------------------------------------------------------- }}}
