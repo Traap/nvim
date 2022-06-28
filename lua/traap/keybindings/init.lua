@@ -9,7 +9,7 @@ vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[\]]
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Items I have dont' know how to move to which-key.
+-- {{{ Items I have not successfully moved into which-key.
 
 -- Easy align
 
@@ -22,11 +22,23 @@ vim.cmd([[
 ]])
 
 -- Quit now
-
 keymap('n', '<c-q>', '<cmd>qall!<cr>')
 
 -- Delete the current line.
 keymap('n', '-', 'dd')
+
+-- Toggle NvimTree
+keymap('n', '<c-n>','<cmd>NvimTreeToggle<cr>')
+
+-- Visual yank
+keymap('v', '<leader>cc', '"+y')
+
+-- Select (charwise) the contents of the current line, excluding indentation.
+keymap('n', 'vv', '^vg_')
+
+-- Select entire buffer
+keymap('n', 'vaa', 'ggvGg_')
+keymap('n', 'Vaa', 'ggVG')
 
 -- Author: Karl Yngve Lervåg
 --    See: https://github.com/lervag/dotnvim
@@ -39,11 +51,5 @@ keymap('n', 'zj', 'zcjzOzz')
 
 -- Close current fold when open. Always open previous fold.
 keymap('n', 'zk', 'zckzOzz')
-
--- Toggle NvimTree
-keymap('n', '<c-n>','<cmd>NvimTreeToggle<cr>')
-
--- Visual yank
-keymap('v', '<leader>cc', '"+y')
 
 -- ------------------------------------------------------------------------- }}}

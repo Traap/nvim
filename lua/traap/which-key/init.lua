@@ -117,7 +117,7 @@ local opts = {
 
 local m_opts = {
   mode = "n", -- NORMAL mode
-  prefix = "m",
+  prefix = "<m>",
   buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
@@ -129,7 +129,6 @@ local m_opts = {
 
 local m_mappings = {
   a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
-  c = { '"+y', "Yank" },
   h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
   j = { "<cmd>BookmarkNext<cr>", "Next" },
   k = { "<cmd>BookmarkPrev<cr>", "Prev" },
@@ -145,12 +144,59 @@ local m_mappings = {
 local mappings = {
 
   [" "] =  { "<cmd>nohlsearch<cr>", "No HL" },
-  ["Va"] = { 'V`', "Reselect Paste" },
-  ["Vb"] = { 'ggvG', "Select entire buffer." },
-  ["Vc"] = { 'ggvGg_', "Select entire buffer." },
-  ["Vd"] = { '^vg_', "Charwise" },
   ["e"] =  { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["q"] =  { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ H - Help
+
+  H = {
+    name = "Help",
+    H = { "<cmd>silent vert bo help<cr>", "Help in Vertical Split" },
+  },
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ P - Packer
+
+  p = {
+    name = "Packer",
+    c = { "<cmd>PackerCompile<cr>", "Compile" },
+    i = { "<cmd>PackerInstall<cr>", "Install" },
+    s = { "<cmd>PackerSync<cr>", "Sync" },
+    S = { "<cmd>PackerStatus<cr>", "Status" },
+    u = { "<cmd>PackerUpdate<cr>", "Update" },
+  },
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ S - SnipRun
+
+  S = {
+    name = "SnipRun",
+    c = { "<cmd>SnipClose<cr>", "Close" },
+    f = { "<cmd>%SnipRun<cr>", "Run File" },
+    i = { "<cmd>SnipInfo<cr>", "Info" },
+    m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
+    r = { "<cmd>SnipReset<cr>", "Reset" },
+    t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
+    x = { "<cmd>SnipTerminate<cr>", "Terminate" },
+  },
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ T - Treesitter
+
+  T = {
+    name = "Treesitter",
+    h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
+    p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
+  },
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ V - Linewise reselection of what you just pasted.
+
+  V = {
+    name = "Reselection",
+    V = { "V`]", "Pasted Block" },
+  },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ b - Buffers
@@ -314,18 +360,6 @@ local mappings = {
   },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ P - Packer
-
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ r - Repace
 
   r = {
@@ -342,8 +376,8 @@ local mappings = {
 
   s = {
     name = "Split & Sorts",
-    h = { "<cmd>split<cr>", "HSplit" },
-    v = { "<cmd>vsplit<cr>", "VSplit" },
+    h = { "<cmd>split<cr>", "Horizonal Split" },
+    v = { "<cmd>vsplit<cr>", "Vertical Split" },
 
     -- Sort a list followed by a blank line.
     s = { "0v)k$:sort<cr>", "Acronym Sort" },
@@ -421,37 +455,6 @@ local mappings = {
     t = { '<cmd>WikiFzfTags<cr>', 'Wiki FZF Tags'},
     v = { "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>", 'PDF Viwer'},
     z = { '<cmd>w<cr>', 'Write File' },
-  },
-
--- ------------------------------------------------------------------------- }}}
--- {{{ H - Help
-
-  H = {
-    name = "Help",
-    H = { "<cmd>silent vert bo help<cr>", "Help in Vertical Split" },
-  },
-
--- ------------------------------------------------------------------------- }}}
--- {{{ S - SnipRun
-
-  S = {
-    name = "SnipRun",
-    c = { "<cmd>SnipClose<cr>", "Close" },
-    f = { "<cmd>%SnipRun<cr>", "Run File" },
-    i = { "<cmd>SnipInfo<cr>", "Info" },
-    m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
-    r = { "<cmd>SnipReset<cr>", "Reset" },
-    t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
-    x = { "<cmd>SnipTerminate<cr>", "Terminate" },
-  },
-
--- ------------------------------------------------------------------------- }}}
--- {{{ T - Treesitter
-
-  T = {
-    name = "Treesitter",
-    h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
-    p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
   },
 
 -- ------------------------------------------------------------------------- }}}
