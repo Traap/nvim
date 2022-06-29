@@ -1,9 +1,10 @@
 -- {{{ Credits
 
--- https://github.com/hrsh7th/nvim-cmp
--- https://github.com/ThePrimeagen/.dotfiles
 -- https://github.com/LunarVim/Neovim-from-scratch
+-- https://github.com/LunarVim/nvim-basic-ide
 -- https://github.com/Rafamadriz/NeoCode
+-- https://github.com/ThePrimeagen/.dotfiles
+-- https://github.com/hrsh7th/nvim-cmp
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Alias to vim APis and other required packages.
@@ -23,7 +24,7 @@ require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
 -- ------------------------------------------------------------------------- }}}
@@ -63,8 +64,8 @@ local mapping = {
   ["<C-j>"] = cmp.mapping.select_next_item(),
   ["<C-k>"] = cmp.mapping.select_prev_item(),
 
-  ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-  ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+  ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
+  ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
 
   ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
 
@@ -75,7 +76,8 @@ local mapping = {
     c = cmp.mapping.close(),
   }),
 
-  ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  -- Do not explicitly select 'first' item when nothing is selected.
+  ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
   ["<Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
@@ -162,14 +164,8 @@ local formatting = {
 -- {{{ Define: window
 
 local window = {
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
-  },
-  completion = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
-  },
+  completion = cmp.config.window.bordered(),
+  documentation = cmp.config.window.bordered(),
 }
 
 -- ------------------------------------------------------------------------- }}}
