@@ -32,9 +32,9 @@ return packer.startup(function(use)
 
   use {
     'folke/trouble.nvim',
-    config = function()
-      require('trouble').setup {}
-    end
+      config = function()
+        require('trouble').setup {}
+      end
   }
 
 -- ------------------------------------------------------------------------- }}}
@@ -86,6 +86,19 @@ return packer.startup(function(use)
   use {'neovim/nvim-lspconfig'}
   use {'williamboman/nvim-lsp-installer'}
   use {'jose-elias-alvarez/null-ls.nvim'}
+  use {
+    'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup()
+      end
+  }
+  use {
+    'kosayoda/nvim-lightbulb',
+      config = function()
+        require('nvim-lightbulb').setup({autocmd = {enabled = true}})
+      end,
+      requires = 'antoinemadec/FixCursorHold.nvim',
+  }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Profiling
@@ -109,11 +122,6 @@ return packer.startup(function(use)
   use {'tpope/vim-repeat'}
   use {'tpope/vim-surround'}
   use {'tpope/vim-unimpaired'}
-  use {'lewis6991/gitsigns.nvim',
-        config = function()
-          require('gitsigns').setup()
-        end
-  }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Snippets
