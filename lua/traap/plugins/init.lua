@@ -109,6 +109,11 @@ return packer.startup(function(use)
   use {'tpope/vim-repeat'}
   use {'tpope/vim-surround'}
   use {'tpope/vim-unimpaired'}
+  use {'lewis6991/gitsigns.nvim',
+        config = function()
+          require('gitsigns').setup()
+        end
+  }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Snippets
