@@ -40,6 +40,9 @@ keymap('n', 'vv', '^vg_')
 keymap('n', 'vaa', 'ggvGg_')
 keymap('n', 'Vaa', 'ggVG')
 
+-- Save all files.
+keymap('n', '<F2>', '<cmd>wall<cr>')
+
 -- Author: Karl Yngve Lervåg
 --    See: https://github.com/lervag/dotnvim
 
