@@ -19,10 +19,11 @@ require 'traap.web-devicons'
 require 'traap.telescope'
 require 'traap.treesitter'
 require 'traap.friendly-snippets'
-require 'traap.which-key'
+require 'traap.alpha'
 
 -- Now colorize
 require 'traap.colorize'
 
 -- Take control of all keybindings.
+require 'traap.which-key'
 require 'traap.keybindings'

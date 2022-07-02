@@ -158,6 +158,7 @@ return packer.startup(function(use)
   use {'vim-utils/vim-most-minimal-folds'}
   use {'xiyaowong/nvim-transparent'}
   use {'iamcco/markdown-preview.nvim'}
+  use {'goolord/alpha-nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ VimTex
