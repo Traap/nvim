@@ -1,17 +1,7 @@
--- {{{ Alias to vim APIs.
-
-local cmd = vim.cmd
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Setup colorizer.
 
 local  colorizer_ok, colorizer = pcall(require, 'colorizer')
 if not colorizer_ok then return end
-
--- colorizer.setup{
---   '*',    -- Highlight all files, but customize some others.
---   '!vim', -- Exclude vim from highlighting.
--- }
 
 colorizer.setup(
   {"*"},
@@ -31,69 +21,79 @@ colorizer.setup(
 -- ------------------------------------------------------------------------- }}}
 -- {{{ base16 colors
 
-local  base16_ok, base16 = pcall(require, 'base16')
+local  base16_ok, b16 = pcall(require, 'base16')
 if not base16_ok then return end
 
-base16(base16.themes['chalk'], true)
+b16(b16.themes['chalk'], true)
 vim.g.transparent_enabled = false
 
-
--- local swapBoolean = function()
---    local c = vim.api.nvim_get_current_line()
---    local subs = c:match "true" and c:gsub("true", "false") or c:gsub("false", "true")
-
---    vim.api.nvim_set_current_line(subs)
--- end
-
-
 -- ------------------------------------------------------------------------- }}}
--- {{{ Color contrasts pleasing to my eyes.
-
--- Clear items I want full control over.
-cmd 'highlight clear Concel'
-cmd 'highlight clear CursorLine'
-cmd 'highlight clear Folded'
-cmd 'highlight clear SpellBad'
-cmd 'highlight clear SignColumn'
-
--- I use color 18 and 19, which will change when I switch base16 colorscemes.
--- cmd 'highlight Comment       guifg=#80a0ff gui=none'
-cmd 'highlight CursorlineNr  guifg=#e06c74 gui=none'
-cmd 'highlight DiffAdd       guifg=#7eca9c gui=none'
-cmd 'highlight DiffChange    guifg=#519ABA gui=none'
-cmd 'highlight DiffDelete    guifg=#ff75a0 gui=none'
-cmd 'highlight DiffText      guifg=#EBCB8B gui=none'
-cmd 'highlight Folded        guifg=#80a0ff gui=none'
-cmd 'highlight LineNbr       guifg=#2a2e36 gui=none'
-cmd 'highlight SpellBad      guibg=#DE6874 gui=undercurl'
-cmd 'highlight search        guibg=#BD77DC gui=none'
-
--- ------------------------------------------------------------------------- }}}
--- {{{ NextColorTheme
+-- {{{ Base16 support variables.
 
 local M  = {
   position = 0,
   names = require('base16').theme_names(),
 }
 
-function M.themeCount()
-  local count = 0
-  -- for _ in pairs(M.b16_names) do count = count + 1 end
-  return count
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Base16 color support functions.
+
+-- Clear items I want full control over.
+function M.clearColors()
+  vim.cmd 'highlight clear Concel'
+  vim.cmd 'highlight clear CursorLine'
+  vim.cmd 'highlight clear Folded'
+  vim.cmd 'highlight clear LinjNr'
+  vim.cmd 'highlight clear SpellBad'
+  vim.cmd 'highlight clear SignColumn'
 end
 
-function M.nextBase16Theme()
-  local b16 = require('base16')
-  M.position = (M.position % #M.names) + 1
-  -- if M.position >= M.themeCount() then
-  --   M.position = 0
-  -- end
+-- Regardless of theme, I can see the colors.
+function M.setColors()
+  vim.cmd 'highlight CursorlineNr  guifg=#e06c74 gui=none'
+  vim.cmd 'highlight DiffAdd       guifg=#7eca9c gui=none'
+  vim.cmd 'highlight DiffChange    guifg=#519ABA gui=none'
+  vim.cmd 'highlight DiffDelete    guifg=#ff75a0 gui=none'
+  vim.cmd 'highlight DiffText      guifg=#EBCB8B gui=none'
+  vim.cmd 'highlight Folded        guifg=#80a0ff gui=none'
+  vim.cmd 'highlight LineNr        guifg=#2a2e36 gui=none'
+  vim.cmd 'highlight SpellBad      guibg=#DE6874 gui=undercurl'
+  vim.cmd 'highlight search        guibg=#BD77DC gui=none'
+end
 
+function M.base16AdjustColors()
+  M.clearColors()
+  M.setColors()
+end
+
+function M.base16ActivateTheme()
   b16(b16.themes[M.names[M.position]], true)
+  M.base16AdjustColors()
 end
 
+function M.base16NextTheme()
+  M.position = (M.position % #M.names) + 1
+  if M.position >= #M.names then
+    M.position = 0
+  end
+  M.base16ActivateTheme()
+end
 
-vim.api.nvim_create_user_command("NextBase16Theme", M.nextBase16Theme, {})
+function M.base16PrevTheme()
+  M.position = (M.position % #M.names) - 1
+  if M.position < 0 then
+    M.position = #M.names
+  end
+  M.base16ActivateTheme()
+end
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Define commands and a
+
+vim.api.nvim_create_user_command("Base16NextTheme", M.base16NextTheme, {})
+vim.api.nvim_create_user_command("Base16PrevTheme", M.base16PrevTheme, {})
+
+M.base16AdjustColors()
 return M
+
 -- ------------------------------------------------------------------------- }}}
