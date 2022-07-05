@@ -40,8 +40,7 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
 
-   use {'norcalli/nvim-base16.lua'}
-  -- use {'Traap/nvim-base16.lua'}
+  use {'norcalli/nvim-base16.lua'}
   use {'norcalli/nvim-colorizer.lua'}
   use {'p00f/nvim-ts-rainbow'}
   use {'mechatroner/rainbow_csv'}
