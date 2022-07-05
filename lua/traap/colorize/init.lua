@@ -37,19 +37,14 @@ if not base16_ok then return end
 base16(base16.themes['chalk'], true)
 vim.g.transparent_enabled = false
 
-local names = base16.theme_names()
-local position = 1
-local cycleColorThemes = function()
-  position = (position % #names) + 1
-  base16(base16.themes[names[position]], true)
-end
 
-local swapBoolean = function()
-   local c = vim.api.nvim_get_current_line()
-   local subs = c:match "true" and c:gsub("true", "false") or c:gsub("false", "true")
+-- local swapBoolean = function()
+--    local c = vim.api.nvim_get_current_line()
+--    local subs = c:match "true" and c:gsub("true", "false") or c:gsub("false", "true")
 
-   vim.api.nvim_set_current_line(subs)
-end
+--    vim.api.nvim_set_current_line(subs)
+-- end
+
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Color contrasts pleasing to my eyes.
@@ -73,4 +68,32 @@ cmd 'highlight LineNbr       guifg=#2a2e36 gui=none'
 cmd 'highlight SpellBad      guibg=#DE6874 gui=undercurl'
 cmd 'highlight search        guibg=#BD77DC gui=none'
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ NextColorTheme
+
+local M  = {
+  position = 0,
+  names = require('base16').theme_names(),
+}
+
+function M.themeCount()
+  local count = 0
+  -- for _ in pairs(M.b16_names) do count = count + 1 end
+  return count
+end
+
+function M.nextBase16Theme()
+  local b16 = require('base16')
+  M.position = (M.position % #M.names) + 1
+  -- if M.position >= M.themeCount() then
+  --   M.position = 0
+  -- end
+
+  b16(b16.themes[M.names[M.position]], true)
+end
+
+
+vim.api.nvim_create_user_command("NextBase16Theme", M.nextBase16Theme, {})
+
+return M
 -- ------------------------------------------------------------------------- }}}

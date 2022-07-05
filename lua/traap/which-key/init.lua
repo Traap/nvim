@@ -128,13 +128,13 @@ local m_opts = {
 -- {{{ m_mappings
 
 local m_mappings = {
-  a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
-  h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
-  j = { "<cmd>BookmarkNext<cr>", "Next" },
-  k = { "<cmd>BookmarkPrev<cr>", "Prev" },
-  m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
-  s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
-  u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
+  -- a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
+  -- h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
+  -- j = { "<cmd>BookmarkNext<cr>", "Next" },
+  -- k = { "<cmd>BookmarkPrev<cr>", "Prev" },
+  -- m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
+  -- s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
+  -- u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
   x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
 }
 
@@ -184,11 +184,11 @@ local mappings = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ T - Treesitter
 
-  T = {
-    name = "Treesitter",
-    h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
-    p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
-  },
+  -- T = {
+  --   name = "Treesitter",
+  --   h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
+  --   p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
+  -- },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ V - Linewise reselection of what you just pasted.
@@ -225,18 +225,18 @@ local mappings = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ d - Debug
 
-  d = {
-    name = "Debug",
-    O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
-    b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
-    c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-    i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
-    l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
-    o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
-    r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
-    u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
-    x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
-  },
+  -- d = {
+  --   name = "Debug",
+  --   O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
+  --   b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+  --   c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+  --   i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
+  --   l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
+  --   o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
+  --   r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
+  --   u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
+  --   x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+  -- },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ f - Find
@@ -342,7 +342,8 @@ local mappings = {
   n = {
     name = "NvimTree",
     f = { "<cmd>NvimTreeFindFile<cr>", "Find file in Tree" },
-    r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
+    r = { "<cmd>NvimTreeRefresh<cr>",  "Refresh" },
+    t = { "<cmd>NextBase16Theme<cr>",  "Next Base16 Theme" },
   },
 
 -- ------------------------------------------------------------------------- }}}
