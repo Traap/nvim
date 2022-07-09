@@ -158,6 +158,7 @@ return packer.startup(function(use)
   use {'xiyaowong/nvim-transparent'}
   use {'iamcco/markdown-preview.nvim'}
   use {'goolord/alpha-nvim'}
+  use {'ekickx/clipboard-image.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ VimTex

@@ -24,21 +24,31 @@ colorizer.setup(
 local  base16_ok, b16 = pcall(require, 'base16')
 if not base16_ok then return end
 
-b16(b16.themes['chalk'], true)
-vim.g.transparent_enabled = false
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Base16 support variables.
 
 local M  = {
-  position = 0,
+  position = 42,
+  theme = 'chalk',
   names = require('base16').theme_names(),
+  changedTheme = false,
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Base16 color support functions.
+-- {{{ Transparent background.  TODO:  Make a toggle function.
 
--- Clear items I want full control over.
+vim.g.transparent_enabled = false
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Sort Themes
+
+function M.base16SortThemeNames()
+  table.sort(M.names)
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Clear items I want full control over.
+
 function M.clearColors()
   vim.cmd 'highlight clear Concel'
   vim.cmd 'highlight clear CursorLine'
@@ -48,7 +58,9 @@ function M.clearColors()
   vim.cmd 'highlight clear SignColumn'
 end
 
--- Regardless of theme, I can see the colors.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Regardless of theme, I can see the colors.
+
 function M.setColors()
   vim.cmd 'highlight CursorlineNr  guifg=#e06c74 gui=none'
   vim.cmd 'highlight DiffAdd       guifg=#7eca9c gui=none'
@@ -61,15 +73,30 @@ function M.setColors()
   vim.cmd 'highlight search        guibg=#BD77DC gui=none'
 end
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Clear and set colors.
+
 function M.base16AdjustColors()
   M.clearColors()
   M.setColors()
 end
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Activeate requested theme.
+
 function M.base16ActivateTheme()
-  b16(b16.themes[M.names[M.position]], true)
+  M.theme = M.names[M.position]
+  b16(b16.themes[M.theme], true)
   M.base16AdjustColors()
+  if (M.changedTheme) then
+    -- vim.api.nvim_echo({{M.theme, 'Normal'}}, false, {})
+    vim.api.nvim_notify(M.theme, 1, {})
+  end
+  M.changedTheme = true
 end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Next theme.
 
 function M.base16NextTheme()
   M.position = (M.position % #M.names) + 1
@@ -78,6 +105,9 @@ function M.base16NextTheme()
   end
   M.base16ActivateTheme()
 end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Previous theme.
 
 function M.base16PrevTheme()
   M.position = (M.position % #M.names) - 1
@@ -88,12 +118,14 @@ function M.base16PrevTheme()
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define commands and a
+-- {{{ Define commands and activeate theme.
 
 vim.api.nvim_create_user_command("Base16NextTheme", M.base16NextTheme, {})
 vim.api.nvim_create_user_command("Base16PrevTheme", M.base16PrevTheme, {})
 
-M.base16AdjustColors()
+M.base16SortThemeNames()
+M.base16ActivateTheme()
+
 return M
 
 -- ------------------------------------------------------------------------- }}}
