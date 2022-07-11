@@ -341,9 +341,11 @@ local mappings = {
 
   n = {
     name = "NvimTree",
+    b = { "<cmd>ToggleTransparancy<cr>",  "Toggle Transparency" },
     f = { "<cmd>NvimTreeFindFile<cr>", "Find file in Tree" },
-    n = { "<cmd>Base16NextTheme<cr>",  "Next Base16 Theme" },
-    p = { "<cmd>Base16PrevTheme<cr>",  "Prev Base16 Theme" },
+    k = { "<cmd>PickTheme<cr>",  "Pick Theme" },
+    n = { "<cmd>NextTheme<cr>",  "Next Theme" },
+    p = { "<cmd>PrevTheme<cr>",  "Prev Theme" },
     r = { "<cmd>NvimTreeRefresh<cr>",  "Refresh" },
   },
 

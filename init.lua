@@ -23,6 +23,7 @@ require 'traap.alpha'
 
 -- Now colorize
 require 'traap.colorize'
+require 'traap.colortheme'
 
 -- Take control of all keybindings.
 require 'traap.which-key'
