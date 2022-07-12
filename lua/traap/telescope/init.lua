@@ -85,12 +85,13 @@ telescope.setup {
 
 local extensions = {
   'fzf',
-  -- 'luasnip',
+  'luasnip',
   'media_files',
 }
 
 for _, name in ipairs(extensions) do
   telescope.load_extension(name)
 end
+-- telescope.load_extension('luasnip')
 
 -- ------------------------------------------------------------------------- }}}

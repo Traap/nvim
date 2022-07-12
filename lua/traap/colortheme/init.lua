@@ -10,7 +10,7 @@ local M  = {
   position = 42,
   theme = 'chalk',
   names = require('base16').theme_names(),
-  changedTheme = false,
+  themesAreNotSorted = true,
   transparent = false,
 }
 
@@ -18,20 +18,34 @@ local M  = {
 -- {{{ Sort Themes
 
 function M.base16SortThemeNames()
-  table.sort(M.names)
+  if (M.themesAreNotSorted) then
+    table.sort(M.names)
+    M.themesAreNotSorted = false
+  end
+  return M.names
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Record theme change and position.
+
+function M.base16SavePositionAndTheme(position)
+  M.position = position
+  M.theme = M.names[M.position]
+  vim.api.nvim_notify(M.theme, 1, {})
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Find Theme
 
 function M.base16SetAndActivateTheme(theme)
-  for position, name in pairs(M.names) do
-   if (name == theme) then
-      M.position = position
-      M.theme = theme
+  if (M.theme ~= theme) then
+    for position, name in pairs(M.names) do
+      if (name == theme) then
+        M.base16SavePositionAndTheme(position)
+      end
     end
+    M.base16ActivateTheme()
   end
-  M.base16ActivateTheme()
 end
 
 -- ------------------------------------------------------------------------- }}}
@@ -74,13 +88,8 @@ end
 
 function M.base16ActivateTheme()
   M.base16Transparancy()
-  M.theme = M.names[M.position]
   b16(b16.themes[M.theme], true)
   M.base16AdjustColors()
-  if (M.changedTheme) then
-    vim.api.nvim_notify(M.theme, 1, {})
-  end
-  M.changedTheme = true
 end
 
 -- ------------------------------------------------------------------------- }}}
@@ -106,22 +115,22 @@ end
 -- {{{ Next theme.
 
 function M.base16NextTheme()
-  M.position = (M.position % #M.names) + 1
-  if M.position >= #M.names then
-    M.position = 0
+  local position = (M.position % #M.names) + 1
+  if position >= #M.names then
+    position = 0
   end
-  M.base16ActivateTheme()
+  M.base16SetAndActiveTheme(M.names[position])
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Previous theme.
 
 function M.base16PrevTheme()
-  M.position = (M.position % #M.names) - 1
-  if M.position < 0 then
-    M.position = #M.names
+  local position = (M.position % #M.names) - 1
+  if position < 0 then
+    position = #M.names
   end
-  M.base16ActivateTheme()
+  M.base16SetAndActiveTheme(M.names[position])
 end
 
 -- ------------------------------------------------------------------------- }}}
@@ -148,7 +157,7 @@ function M.base16ListThemes(opts)
     end,
 
     finder = finders.new_table {
-      results = M.names
+      results = M.base16SortThemeNames()
     },
 
     prompt_title = "Themes",
@@ -175,7 +184,7 @@ cud("PrevTheme", M.base16PrevTheme, {})
 cud("PickTheme", M.base16PickTheme, {})
 cud("ToggleTransparancy", M.base16ToggleTransparancy, {})
 
-M.base16SortThemeNames()
+-- M.base16SortThemeNames()
 M.base16ActivateTheme()
 
 return M

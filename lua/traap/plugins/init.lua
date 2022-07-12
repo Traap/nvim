@@ -57,7 +57,6 @@ return packer.startup(function(use)
   use {'hrsh7th/cmp-nvim-lua'}
   use {'hrsh7th/cmp-path'}
   use {'onsails/lspkind-nvim'}
-  use {'saadparwaiz1/cmp_luasnip'}
   use {'f3fora/cmp-spell'}
 
 -- ------------------------------------------------------------------------- }}}
@@ -123,19 +122,11 @@ return packer.startup(function(use)
   use {'tpope/vim-unimpaired'}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Snippets
-
-  use {'L3MON4D3/LuaSnip'}
-  use {'rafamadriz/friendly-snippets'}
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Telescope
 
   use {'nvim-telescope/telescope.nvim'}
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
   use {'nvim-telescope/telescope-media-files.nvim'}
-  use {'benfowler/telescope-luasnip.nvim'}
-
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Treesitter
@@ -176,6 +167,14 @@ return packer.startup(function(use)
 -- {{{ Which-Key
 
   use {'folke/which-key.nvim'}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Snippets
+
+  use {'L3MON4D3/LuaSnip'}
+  use {'rafamadriz/friendly-snippets'}
+  use {'saadparwaiz1/cmp_luasnip'}
+  use {'benfowler/telescope-luasnip.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Zulu : Reuse Traap's vim bundles last.
