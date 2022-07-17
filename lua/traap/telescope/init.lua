@@ -1,4 +1,4 @@
--- {{{ Bail when requried packages are not loaded.
+-- {{{ Bail when requried packages are not loaded.q
 
 local  telescope_ok, telescope = pcall(require, 'telescope')
 if not telescope_ok then return end
@@ -87,11 +87,11 @@ local extensions = {
   'fzf',
   'luasnip',
   'media_files',
+  'notify',
 }
 
 for _, name in ipairs(extensions) do
   telescope.load_extension(name)
 end
--- telescope.load_extension('luasnip')
 
 -- ------------------------------------------------------------------------- }}}

@@ -30,11 +30,10 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Trouble
 
-  use {
-    'folke/trouble.nvim',
-      config = function()
-        require('trouble').setup {}
-      end
+  use {'folke/trouble.nvim',
+    config = function()
+      require('trouble').setup {}
+    end
   }
 
 -- ------------------------------------------------------------------------- }}}
@@ -84,18 +83,16 @@ return packer.startup(function(use)
   use {'neovim/nvim-lspconfig'}
   use {'williamboman/nvim-lsp-installer'}
   use {'jose-elias-alvarez/null-ls.nvim'}
-  use {
-    'lewis6991/gitsigns.nvim',
-      config = function()
-        require('gitsigns').setup()
-      end
+  use {'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
   }
-  use {
-    'kosayoda/nvim-lightbulb',
-      config = function()
-        require('nvim-lightbulb').setup({autocmd = {enabled = true}})
-      end,
-      requires = 'antoinemadec/FixCursorHold.nvim',
+  use {'kosayoda/nvim-lightbulb',
+    config = function()
+      require('nvim-lightbulb').setup({autocmd = {enabled = true}})
+    end,
+    requires = 'antoinemadec/FixCursorHold.nvim',
   }
 
 -- ------------------------------------------------------------------------- }}}
@@ -121,6 +118,13 @@ return packer.startup(function(use)
   use {'tpope/vim-surround'}
   use {'tpope/vim-unimpaired'}
 
+  -- use {
+  --   'tanvirtin/vgit.nvim',
+  --   config = function()
+  --     require('vgit').setup()
+  --   end,
+  -- }
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Telescope
 
@@ -143,13 +147,19 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Utility
 
+  use {'ekickx/clipboard-image.nvim'}
+  use {'goolord/alpha-nvim'}
+  use {'iamcco/markdown-preview.nvim'}
+  use {'nathom/filetype.nvim'}
   use {'sbdchd/neoformat'}
   use {'triglav/vim-visual-increment'}
   use {'vim-utils/vim-most-minimal-folds'}
   use {'xiyaowong/nvim-transparent'}
-  use {'iamcco/markdown-preview.nvim'}
-  use {'goolord/alpha-nvim'}
-  use {'ekickx/clipboard-image.nvim'}
+  use {'rcarriga/nvim-notify',
+    config = function()
+      vim.notify = require('notify')
+    end,
+  }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ VimTex

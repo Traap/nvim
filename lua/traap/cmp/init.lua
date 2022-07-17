@@ -123,14 +123,14 @@ local source_mapping = {
 -- {{{ Define: sources
 
 local sources = {
-  { name = "luasnip",       keyword_length = 1, max_item_count = 20 },
-  { name = "spell",         keyword_length = 3, max_item_count = 20 },
-  { name = "buffer",        keyword_length = 3, max_item_count = 20 },
-  { name = "nvim_lsp",      keyword_length = 2, max_item_count = 20 },
-  { name = "calc",          keyword_length = 3, max_item_count = 20 },
-  { name = "latex_symbols", keyword_length = 1, max_item_count = 20 },
-  { name = "nvim_lua",      keyword_length = 1, max_item_count = 20 },
-  { name = "path",          keyword_length = 3, max_item_count = 20 },
+  { name = "luasnip",       keyword_length = 1, max_item_count = 30 },
+  { name = "spell",         keyword_length = 2, max_item_count = 30 },
+  { name = "buffer",        keyword_length = 2, max_item_count = 30 },
+  { name = "nvim_lsp",      keyword_length = 2, max_item_count = 30 },
+  { name = "calc",          keyword_length = 2, max_item_count = 30 },
+  { name = "latex_symbols", keyword_length = 1, max_item_count = 30 },
+  { name = "nvim_lua",      keyword_length = 1, max_item_count = 30 },
+  { name = "path",          keyword_length = 3, max_item_count = 30 },
 }
 
 -- ------------------------------------------------------------------------- }}}
