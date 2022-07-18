@@ -6,8 +6,8 @@ if not whichkey_ok then return end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Map leader to space
 
--- vim.g.mapleader = [[ ]]
--- vim.g.maplocalleader = [[ ]]
+vim.g.mapleader = [[ ]]
+vim.g.maplocalleader = [[ ]]
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Basic Setup
@@ -156,6 +156,30 @@ local mappings = {
   },
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ L - LSP
+
+  L = {
+    name = "LSP",
+    F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
+    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+    R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
+    S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols", },
+    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
+    f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+    i = { "<cmd>LspInfo<cr>", "Info" },
+    j = { "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", "Next Diagnostic", },
+    k = { "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", "Prev Diagnostic", },
+    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    o = { "<cmd>SymbolsOutline<cr>", "Outline" },
+    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+    t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
+    w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics", },
+  },
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ P - Packer
 
   p = {
@@ -186,7 +210,7 @@ local mappings = {
 
   -- T = {
   --   name = "Treesitter",
-  --   h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
+  --   h = { "<cmd>TSHighlightCapturesUnderCursor<cr>",c "Highlight" },
   --   p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
   -- },
 
@@ -277,12 +301,6 @@ local mappings = {
       p = { "<cmd>Gist -b -p<cr>", "Create Private" },
     },
 
-    K = {
-      name = "KJV",
-      k = { [[^"kyg$<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]], "Get Verse" },
-      f = { [[<cmd>v)3><cr>]], "Format Verse" },
-    },
-
     S = {
       name = "Signs",
       R = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
@@ -313,27 +331,12 @@ local mappings = {
   },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ l - LSP
+-- {{{ k - KJV
 
-  l = {
-    name = "LSP",
-    F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
-    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-    R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
-    S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols", },
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
-    f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
-    i = { "<cmd>LspInfo<cr>", "Info" },
-    j = { "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", "Next Diagnostic", },
-    k = { "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", "Prev Diagnostic", },
-    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    o = { "<cmd>SymbolsOutline<cr>", "Outline" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
-    w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics", },
+  k = {
+    name = "KJV",
+      k = { [[^"kyg$<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]], "Get Verse" },
+      f = { [[<cmd>v)3><cr>]], "Format Verse" },
   },
 
 -- ------------------------------------------------------------------------- }}}
@@ -446,7 +449,7 @@ local mappings = {
   },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ w - Wiki &  Whitespace
+-- {{{ w - Wiki &  Whitespac
 
   w = {
     name = "Whitespace",
