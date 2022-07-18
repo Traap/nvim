@@ -226,8 +226,8 @@ local mappings = {
 -- {{{ a - Alpha
 
   a = {
-    name = "Alpha"
-    b = { "<cmd>Alpha<cr>", "Display Alpha Page" },
+    name = "Alpha",
+    a = { "<cmd>Alpha<cr>", "Display Alpha Page" },
   },
 
 -- ------------------------------------------------------------------------- }}}
