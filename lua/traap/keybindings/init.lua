@@ -19,6 +19,7 @@ vim.cmd([[
   nmap <bar>     gaip*<bar>
   nmap <leader>0 gaip*,
   nmap <leader>1 gaip=,
+  nmap <leader>2 gaip=<space>
 ]])
 
 -- Quit now
