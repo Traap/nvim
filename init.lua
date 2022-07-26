@@ -28,3 +28,6 @@ require 'traap.colortheme'
 -- Take control of all keybindings.
 require 'traap.which-key'
 require 'traap.keybindings'
+
+-- z : The last word in 1980 Webster's new collegiate dictionary.
+vim.cmd[[colorscheme tokyonight]]

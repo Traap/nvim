@@ -43,6 +43,7 @@ return packer.startup(function(use)
   use {'norcalli/nvim-colorizer.lua'}
   use {'p00f/nvim-ts-rainbow'}
   use {'mechatroner/rainbow_csv'}
+  use {'folke/tokyonight.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Completion
