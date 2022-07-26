@@ -8,7 +8,7 @@ if not base16_ok then return end
 
 local M  = {
   position = 42,
-  theme = 'chalk',
+  theme = 'dracula',
   names = require('base16').theme_names(),
   themesAreNotSorted = true,
   transparent = false,
