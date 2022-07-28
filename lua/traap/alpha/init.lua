@@ -32,7 +32,7 @@ dashboard.section.buttons.val = {
   dashboard.button("p", "  Plugins",             ":e ~/.config/nvim/lua/traap/plugins/init.lua <CR>"),
   dashboard.button("q", "  Quit Neovim",         ":qa<CR>"),
   dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-  dashboard.button("s", "  sxhkd",               ":e ~/.config/sxhkd/sxhkdrc <CR>"),
+  dashboard.button("s", "  sxhkd",               ":e ~/.config/bspwm/sxhkd/sxhkdrc <CR>"),
   dashboard.button("t", "  Find text",           ":Telescope live_grep <CR>"),
   dashboard.button("v", "  Resume",              ":e ~/git/wiki/personal/cv/cv.tex<CR>"),
   dashboard.button("w", "  WhichKey",            ":e ~/git/nvim/lua/traap/which-key/init.lua<CR>"),
