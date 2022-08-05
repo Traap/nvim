@@ -109,6 +109,7 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ neovim without Tpope?  No Way!!!
 
+  use {'kovetskiy/sxhkd-vim'}
   use {'tpope/vim-characterize'}
   use {'tpope/vim-commentary'}
   use {'tpope/vim-dispatch'}

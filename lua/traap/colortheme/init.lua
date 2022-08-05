@@ -11,7 +11,7 @@ local M  = {
   theme = 'chalk',
   names = require('base16').theme_names(),
   themesAreNotSorted = true,
-  transparent = true,
+  transparent = false,
 }
 
 -- ------------------------------------------------------------------------- }}}

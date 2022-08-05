@@ -22,6 +22,9 @@ vim.cmd([[
   nmap <leader>2 gaip=<space>
 ]])
 
+-- sxhkd filetype.
+keymap('n', '<c-s>', '<cmd>set filetype=sxhkd<cr>')
+
 -- Quit now
 keymap('n', '<c-q>', '<cmd>qall!<cr>')
 
