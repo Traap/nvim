@@ -1,4 +1,5 @@
 ACK
+ACR
 AILD
 AIP
 AKS
@@ -39,6 +40,7 @@ BS2
 BS3
 BTSTC
 BVA
+BWM
 Bartolo
 Base64
 Basedoc
@@ -105,6 +107,8 @@ Caftaz
 Centerium
 Cerner
 Chemin
+Choclatey
+Chocolatey
 Christophe
 Clavel
 Coldfire
@@ -152,6 +156,7 @@ DVT
 DVTDR
 DW
 DWG
+Dbeaver
 Dedan
 Deerwood
 DevOps
@@ -328,6 +333,7 @@ LOR
 LOV
 LSP
 LST
+LTS
 LUA
 LVP
 Labalm
@@ -461,7 +467,6 @@ PSK
 PSUR
 PVD
 PWA
-Pancho
 Parthasarathy
 Passang
 Patchability
@@ -471,10 +476,9 @@ Phut
 Pierrick
 PlanView
 PlantUML
-PlantUml
-Plantuml
 Pn
 PostgreSQL
+PowerShell
 Prizm
 Q1
 Q10
@@ -499,9 +503,11 @@ QRB
 QSR
 Qn
 Quals
+RBB
 RC2
 RCM
 RDMS
+RDP
 REQ
 RESTful
 RMF
@@ -645,6 +651,7 @@ WVD
 Warcraft
 Webserver
 Wifi
+WikiFzfTags
 Wroblewski
 XSDs
 Xfinity
@@ -663,6 +670,7 @@ cankerworm
 caterpiller
 choco
 ciphersuites
+cmd
 cmp
 commendeth
 config
@@ -678,6 +686,7 @@ dnd
 docTerm
 docTermPlural
 documentclass
+documention
 dvmp
 ePHI
 emp
@@ -689,7 +698,9 @@ feedback
 fkblue
 formulary
 fresenius
+fzf
 gahoward
+gitconfig
 gls
 glsentrylong
 gxp
@@ -727,6 +738,7 @@ mmHg
 mygroup
 nbr
 neomutt
+neovim
 newacronym
 newcommand
 newglossaryentry
@@ -776,6 +788,7 @@ twiki
 ucunuc
 uncommenting
 uninstall
+value
 vanisheth
 versionFile
 vm
@@ -796,18 +809,3 @@ xFinity
 yaml
 youtube
 μinstallers
-PowerShell
-Dbeaver
-Chocolatey
-fzf
-RBB
-ACR
-cmd
-neovim
-WikiFzfTags
-Choclatey
-gitconfig
-BWM
-LTS
-RDP
-value
