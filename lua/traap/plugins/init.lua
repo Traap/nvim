@@ -12,6 +12,7 @@ packer.init {
       return require("packer.util").float { border = "rounded" }
     end,
   },
+  max_jobs = 50,
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -22,19 +23,11 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Packer can manage itself as an optional plugin.
 
+  use {'wbthomason/packer.nvim'}
   use {'nvim-lua/popup.nvim'}
   use {'nvim-lua/plenary.nvim'}
   use {'lewis6991/impatient.nvim'}
-  use {'wbthomason/packer.nvim'}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Trouble
-
-  use {'folke/trouble.nvim',
-    config = function()
-      require('trouble').setup {}
-    end
-  }
+  use {'folke/trouble.nvim'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
@@ -84,15 +77,9 @@ return packer.startup(function(use)
   use {'neovim/nvim-lspconfig'}
   use {'williamboman/nvim-lsp-installer'}
   use {'jose-elias-alvarez/null-ls.nvim'}
-  use {'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
-  use {'kosayoda/nvim-lightbulb',
-    config = function()
-      require('nvim-lightbulb').setup({autocmd = {enabled = true}})
-    end,
+  use {'lewis6991/gitsigns.nvim' }
+  use {
+    'kosayoda/nvim-lightbulb',
     requires = 'antoinemadec/FixCursorHold.nvim',
   }
 
@@ -117,15 +104,9 @@ return packer.startup(function(use)
   use {'tpope/vim-fugitive'}
   use {'tpope/vim-rails'}
   use {'tpope/vim-repeat'}
-  use {'tpope/vim-surround'}
+  -- use {'tpope/vim-surround'}
   use {'tpope/vim-unimpaired'}
-
-  -- use {
-  --   'tanvirtin/vgit.nvim',
-  --   config = function()
-  --     require('vgit').setup()
-  --   end,
-  -- }
+  use {'kylechui/nvim-surround'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Telescope
@@ -158,15 +139,12 @@ return packer.startup(function(use)
   use {'triglav/vim-visual-increment'}
   use {'vim-utils/vim-most-minimal-folds'}
   use {'xiyaowong/nvim-transparent'}
+  use {'windwp/nvim-autopairs'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Notification.
 
-  use {'rcarriga/nvim-notify',
-    config = function()
-      vim.notify = require('notify')
-    end,
-  }
+  use {'rcarriga/nvim-notify'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ VimTex

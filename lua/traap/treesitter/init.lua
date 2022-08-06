@@ -6,6 +6,29 @@ if not config_ok then return end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Treesitter config setup.
 
+languages = {
+  'bash',
+  'c',
+  'c_sharp',
+  'comment',
+  'cpp',
+  'css',
+  'dockerfile',
+  'graphql',
+  'html',
+  'http',
+  'json',
+  'latex',
+  'lua',
+  'markdown',
+  'pascal',
+  'ruby',
+  'rust',
+  'sql',
+  'vim',
+  'yaml',
+}
+
 config.setup {
   autopairs = {enable = true,},
   autotag = {
@@ -16,7 +39,7 @@ config.setup {
     enable = true,
     enable_autocmd = false,
   },
-  ensure_installed = 'all',
+  ensure_installed = languages,
   highlight = {
     enable = true,
     disable = {'css', 'markdown'},

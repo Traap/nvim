@@ -21,7 +21,7 @@ opt.hidden = true
 opt.ignorecase = true
 opt.lazyredraw = true
 opt.listchars = {eol = '↲', tab = '▸ ', trail = '·'}
-opt.mouse = ''
+opt.mouse = 'a'
 opt.nrformats = {'alpha', 'octal', 'hex'}
 opt.number = true
 opt.numberwidth= 3

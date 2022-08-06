@@ -16,6 +16,7 @@ require 'traap.lsp'
 require 'traap.galaxyline'
 require 'traap.tree'
 require 'traap.web-devicons'
+
 require 'traap.telescope'
 require 'traap.treesitter'
 require 'traap.friendly-snippets'
@@ -29,5 +30,5 @@ require 'traap.colortheme'
 require 'traap.which-key'
 require 'traap.keybindings'
 
--- z : The last word in 1980 Webster's new collegiate dictionary.
--- vim.cmd[[colorscheme tokyonight]]
+-- zymurgy : The last word in 1980 Webster's new collegiate dictionary.
+require 'traap.zymurgy'
