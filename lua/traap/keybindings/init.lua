@@ -22,11 +22,14 @@ vim.cmd([[
   nmap <leader>2 gaip=<space>
 ]])
 
--- sxhkd filetype.
-keymap('n', '<c-s>', '<cmd>set filetype=sxhkd<cr>')
+-- Move to $GITHOME
+keymap('n', '<c-g>', '<cmd>cd $GITHOME<cr>')
 
 -- Quit now
 keymap('n', '<c-q>', '<cmd>qall!<cr>')
+
+-- sxhkd filetype.
+keymap('n', '<c-s>', '<cmd>set filetype=sxhkd<cr>')
 
 -- Delete the current line.
 keymap('n', '-', 'dd')
