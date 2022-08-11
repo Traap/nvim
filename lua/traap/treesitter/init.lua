@@ -23,7 +23,7 @@ languages = {
   'markdown',
   'pascal',
   'ruby',
-  'rust',
+  -- 'rust',
   'sql',
   'vim',
   'yaml',
