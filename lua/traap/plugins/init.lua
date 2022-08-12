@@ -12,7 +12,7 @@ packer.init {
       return require("packer.util").float { border = "rounded" }
     end,
   },
-  max_jobs = 10,
+  max_jobs = 20,
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -20,8 +20,8 @@ packer.init {
 
 return packer.startup(function(use)
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Packer can manage itself as an optional plugin.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Packer can manage itself as an optional plugin.
 
   use { 'wbthomason/packer.nvim' }
   use { 'nvim-lua/popup.nvim' }
@@ -29,16 +29,16 @@ return packer.startup(function(use)
   use { 'lewis6991/impatient.nvim' }
   use { 'folke/trouble.nvim' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Colors
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Colors
 
   use { 'norcalli/nvim-base16.lua' }
   use { 'norcalli/nvim-colorizer.lua' }
   use { 'mechatroner/rainbow_csv' }
   use { 'folke/tokyonight.nvim' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Completion
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Completion
 
   use { 'hrsh7th/nvim-cmp' }
   use { 'hrsh7th/cmp-buffer' }
@@ -51,27 +51,22 @@ return packer.startup(function(use)
   use { 'onsails/lspkind-nvim' }
   use { 'f3fora/cmp-spell' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ JuneGunn Easyalign and fzf.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ JuneGunn Easyalign and fzf.
 
   use { 'junegunn/vim-easy-align' }
   use { 'junegunn/fzf' }
   use { 'junegunn/fzf.vim' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ File manager
+-- ------------------------------------------------------------------------- }}}
+-- {{{ File manager
 
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'kyazdani42/nvim-web-devicons' }
   use { 'NTBBloodbath/galaxyline.nvim' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Lua development
-
-  -- use {'tjdevries/nlua.nvim'}
-
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ LSP
+-- ------------------------------------------------------------------------- }}}
+-- {{{ LSP
 
   use { 'neovim/nvim-lspconfig' }
   use { 'williamboman/nvim-lsp-installer' }
@@ -81,18 +76,18 @@ return packer.startup(function(use)
     requires = 'antoinemadec/FixCursorHold.nvim',
   }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Profiling
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Profiling
 
   use { 'tweekmonster/startuptime.vim' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ PlantUML
+-- ------------------------------------------------------------------------- }}}
+-- {{{ PlantUML
 
   use { 'aklt/plantuml-syntax' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ neovim without Tpope?  No Way!!!
+-- ------------------------------------------------------------------------- }}}
+-- {{{ neovim without Tpope?  No Way!!!
 
   use { 'kovetskiy/sxhkd-vim' }
   use { 'tpope/vim-characterize' }
@@ -102,84 +97,92 @@ return packer.startup(function(use)
   use { 'tpope/vim-fugitive' }
   use { 'tpope/vim-rails' }
   use { 'tpope/vim-repeat' }
-  -- use {'tpope/vim-surround'}
   use { 'tpope/vim-unimpaired' }
   use { 'kylechui/nvim-surround' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Telescope
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Telescope
 
-  use { 'nvim-telescope/telescope.nvim' }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use { 'nvim-telescope/telescope-media-files.nvim' }
+  use { 'nvim-telescope/telescope.nvim',
+    requires = {
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-media-files.nvim' },
+    }
+  }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Treesitter
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Treesitter
 
   use { 'nvim-treesitter/nvim-treesitter' }
 
-  use { 'nvim-treesitter/nvim-treesitter-refactor',
-    after = 'nvim-treesitter/nvim-treesitter'
+  -- use { 'p00f/nvim-ts-rainbow',
+  --   after = {
+  --     'nvim-treesitter/nvim-treesitter',
+  --   }
+  -- }
+
+  -- use { 'nvim-treesitter/nvim-treesitter-refactor',
+  --   after = {
+  --      'nvim-treesitter/nvim-treesitter',
+  --      'p00f/nvim-ts-rainbow',
+  --   }
+  -- }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Tmux
+
+  use { 'christoomey/vim-tmux-navigator',
+    requires = {'christoomey/vim-tmux-runner' }
   }
 
-  use { 'p00f/nvim-ts-rainbow',
-    after = {
-      'Traap/vim-bundle-vimwiki',
-      'nvim-treesitter/nvim-treesitter',
-    }
-  }
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Tmux
-
-  use { 'christoomey/vim-tmux-navigator' }
-  use { 'christoomey/vim-tmux-runner' }
-
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Utility
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Utility
 
   use { 'ekickx/clipboard-image.nvim' }
   use { 'goolord/alpha-nvim' }
   use { 'iamcco/markdown-preview.nvim' }
   use { 'moll/vim-bbye' }
-  -- use {'nathom/filetype.nvim'}
   use { 'sbdchd/neoformat' }
   use { 'triglav/vim-visual-increment' }
   use { 'vim-utils/vim-most-minimal-folds' }
   use { 'xiyaowong/nvim-transparent' }
   use { 'windwp/nvim-autopairs' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Notification.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Notification.
 
   use { 'rcarriga/nvim-notify' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ VimTex
+-- ------------------------------------------------------------------------- }}}
+-- {{{ VimTex
 
   use { 'lervag/vimtex' }
 
   -- ------------------------------------------------------------------------- }}}
-  -- {{{ Wiki.Vim
+-- {{{ Wiki.Vim
 
-  use { 'lervag/wiki.vim' }
-  use { 'dkarter/bullets.vim' }
-  use { 'lervag/wiki-ft.vim' }
+  use { 'lervag/wiki.vim',
+    requires = {
+      'dkarter/bullets.vim',
+      'lervag/wiki-ft.vim'
+    }
+  }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Which-Key
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Which-Key
 
   use { 'folke/which-key.nvim' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Snippets
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Snippets
 
   use { 'L3MON4D3/LuaSnip' }
   use { 'rafamadriz/friendly-snippets' }
   use { 'saadparwaiz1/cmp_luasnip' }
   use { 'benfowler/telescope-luasnip.nvim' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Zulu : Reuse Traap's vim bundles last.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Zulu : Reuse Traap's vim bundles last.
 
   use { 'Traap/vim-bundle-abbreviate' }
   use { 'Traap/vim-bundle-autocmd' }
@@ -190,15 +193,15 @@ return packer.startup(function(use)
   use { 'Traap/vim-bundle-vimtex' }
   use { 'Traap/vim-bundle-vimwiki' }
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Auto compile and install plugins when packer is bootstrapped.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Auto compile and install plugins when packer is bootstrapped.
 
   if vim.g.nvim_bootstrapped == 1 then
     packer.sync()
   end
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ The END!
+-- ------------------------------------------------------------------------- }}}
+-- {{{ The END!
 
 end)
 
