@@ -1,6 +1,6 @@
 -- {{{ Use protected call so we don't error on first use.
 
-local  packer_ok, packer = pcall(require, 'packer')
+local packer_ok, packer = pcall(require, 'packer')
 if not packer_ok then return end
 
 -- ------------------------------------------------------------------------- }}}
@@ -20,178 +20,185 @@ packer.init {
 
 return packer.startup(function(use)
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Packer can manage itself as an optional plugin.
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Packer can manage itself as an optional plugin.
 
-  use {'wbthomason/packer.nvim'}
-  use {'nvim-lua/popup.nvim'}
-  use {'nvim-lua/plenary.nvim'}
-  use {'lewis6991/impatient.nvim'}
-  use {'folke/trouble.nvim'}
+  use { 'wbthomason/packer.nvim' }
+  use { 'nvim-lua/popup.nvim' }
+  use { 'nvim-lua/plenary.nvim' }
+  use { 'lewis6991/impatient.nvim' }
+  use { 'folke/trouble.nvim' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Colors
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Colors
 
-  use {'norcalli/nvim-base16.lua'}
-  use {'norcalli/nvim-colorizer.lua'}
-  use {'p00f/nvim-ts-rainbow'}
-  use {'mechatroner/rainbow_csv'}
-  use {'folke/tokyonight.nvim'}
+  use { 'norcalli/nvim-base16.lua' }
+  use { 'norcalli/nvim-colorizer.lua' }
+  use { 'mechatroner/rainbow_csv' }
+  use { 'folke/tokyonight.nvim' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Completion
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Completion
 
-  use {'hrsh7th/nvim-cmp'}
-  use {'hrsh7th/cmp-buffer'}
-  use {'hrsh7th/cmp-calc'}
-  use {'hrsh7th/cmp-cmdline'}
-  use {'hrsh7th/cmp-nvim-lsp'}
-  use {'hrsh7th/cmp-nvim-lsp-document-symbol'}
-  use {'hrsh7th/cmp-nvim-lua'}
-  use {'hrsh7th/cmp-path'}
-  use {'onsails/lspkind-nvim'}
-  use {'f3fora/cmp-spell'}
+  use { 'hrsh7th/nvim-cmp' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/cmp-calc' }
+  use { 'hrsh7th/cmp-cmdline' }
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-nvim-lsp-document-symbol' }
+  use { 'hrsh7th/cmp-nvim-lua' }
+  use { 'hrsh7th/cmp-path' }
+  use { 'onsails/lspkind-nvim' }
+  use { 'f3fora/cmp-spell' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ JuneGunn Easyalign and fzf.
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ JuneGunn Easyalign and fzf.
 
-  use {'junegunn/vim-easy-align'}
-  use {'junegunn/fzf'}
-  use {'junegunn/fzf.vim'}
+  use { 'junegunn/vim-easy-align' }
+  use { 'junegunn/fzf' }
+  use { 'junegunn/fzf.vim' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ File manager
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ File manager
 
-  use {'kyazdani42/nvim-tree.lua'}
-  use {'kyazdani42/nvim-web-devicons'}
-  use {'NTBBloodbath/galaxyline.nvim'}
+  use { 'kyazdani42/nvim-tree.lua' }
+  use { 'kyazdani42/nvim-web-devicons' }
+  use { 'NTBBloodbath/galaxyline.nvim' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Lua development
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Lua development
 
--- use {'tjdevries/nlua.nvim'}
+  -- use {'tjdevries/nlua.nvim'}
 
--- ------------------------------------------------------------------------- }}}
--- {{{ LSP
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ LSP
 
-  use {'neovim/nvim-lspconfig'}
-  use {'williamboman/nvim-lsp-installer'}
-  use {'jose-elias-alvarez/null-ls.nvim'}
-  use {'lewis6991/gitsigns.nvim' }
-  use {
-    'kosayoda/nvim-lightbulb',
+  use { 'neovim/nvim-lspconfig' }
+  use { 'williamboman/nvim-lsp-installer' }
+  use { 'jose-elias-alvarez/null-ls.nvim' }
+  use { 'lewis6991/gitsigns.nvim' }
+  use { 'kosayoda/nvim-lightbulb',
     requires = 'antoinemadec/FixCursorHold.nvim',
   }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Profiling
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Profiling
 
-  use {'tweekmonster/startuptime.vim'}
+  use { 'tweekmonster/startuptime.vim' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ PlantUML
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ PlantUML
 
-  use {'aklt/plantuml-syntax'}
+  use { 'aklt/plantuml-syntax' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ neovim without Tpope?  No Way!!!
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ neovim without Tpope?  No Way!!!
 
-  use {'kovetskiy/sxhkd-vim'}
-  use {'tpope/vim-characterize'}
-  use {'tpope/vim-commentary'}
-  use {'tpope/vim-dispatch'}
-  use {'tpope/vim-endwise'}
-  use {'tpope/vim-fugitive'}
-  use {'tpope/vim-rails'}
-  use {'tpope/vim-repeat'}
+  use { 'kovetskiy/sxhkd-vim' }
+  use { 'tpope/vim-characterize' }
+  use { 'tpope/vim-commentary' }
+  use { 'tpope/vim-dispatch' }
+  use { 'tpope/vim-endwise' }
+  use { 'tpope/vim-fugitive' }
+  use { 'tpope/vim-rails' }
+  use { 'tpope/vim-repeat' }
   -- use {'tpope/vim-surround'}
-  use {'tpope/vim-unimpaired'}
-  use {'kylechui/nvim-surround'}
+  use { 'tpope/vim-unimpaired' }
+  use { 'kylechui/nvim-surround' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Telescope
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Telescope
 
-  use {'nvim-telescope/telescope.nvim'}
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-  use {'nvim-telescope/telescope-media-files.nvim'}
+  use { 'nvim-telescope/telescope.nvim' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-media-files.nvim' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Treesitter
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Treesitter
 
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use {'nvim-treesitter/nvim-treesitter-refactor'}
+  use { 'nvim-treesitter/nvim-treesitter' }
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Tmux
+  use { 'nvim-treesitter/nvim-treesitter-refactor',
+    after = 'nvim-treesitter/nvim-treesitter'
+  }
 
-  use {'christoomey/vim-tmux-navigator'}
-  use {'christoomey/vim-tmux-runner'}
+  use { 'p00f/nvim-ts-rainbow',
+    after = {
+      'Traap/vim-bundle-vimwiki',
+      'nvim-treesitter/nvim-treesitter',
+    }
+  }
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Tmux
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Utility
+  use { 'christoomey/vim-tmux-navigator' }
+  use { 'christoomey/vim-tmux-runner' }
 
-  use {'ekickx/clipboard-image.nvim'}
-  use {'goolord/alpha-nvim'}
-  use {'iamcco/markdown-preview.nvim'}
-  use {'moll/vim-bbye'}
-  use {'nathom/filetype.nvim'}
-  use {'sbdchd/neoformat'}
-  use {'triglav/vim-visual-increment'}
-  use {'vim-utils/vim-most-minimal-folds'}
-  use {'xiyaowong/nvim-transparent'}
-  use {'windwp/nvim-autopairs'}
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Utility
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Notification.
+  use { 'ekickx/clipboard-image.nvim' }
+  use { 'goolord/alpha-nvim' }
+  use { 'iamcco/markdown-preview.nvim' }
+  use { 'moll/vim-bbye' }
+  -- use {'nathom/filetype.nvim'}
+  use { 'sbdchd/neoformat' }
+  use { 'triglav/vim-visual-increment' }
+  use { 'vim-utils/vim-most-minimal-folds' }
+  use { 'xiyaowong/nvim-transparent' }
+  use { 'windwp/nvim-autopairs' }
 
-  use {'rcarriga/nvim-notify'}
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Notification.
 
--- ------------------------------------------------------------------------- }}}
--- {{{ VimTex
+  use { 'rcarriga/nvim-notify' }
 
-  use {'lervag/vimtex'}
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ VimTex
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Wiki.Vim
+  use { 'lervag/vimtex' }
 
-  use {'lervag/wiki.vim'}
-  use {'dkarter/bullets.vim'}
-  use {'lervag/wiki-ft.vim'}
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Wiki.Vim
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Which-Key
+  use { 'lervag/wiki.vim' }
+  use { 'dkarter/bullets.vim' }
+  use { 'lervag/wiki-ft.vim' }
 
-  use {'folke/which-key.nvim'}
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Which-Key
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Snippets
+  use { 'folke/which-key.nvim' }
 
-  use {'L3MON4D3/LuaSnip'}
-  use {'rafamadriz/friendly-snippets'}
-  use {'saadparwaiz1/cmp_luasnip'}
-  use {'benfowler/telescope-luasnip.nvim'}
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Snippets
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Zulu : Reuse Traap's vim bundles last.
+  use { 'L3MON4D3/LuaSnip' }
+  use { 'rafamadriz/friendly-snippets' }
+  use { 'saadparwaiz1/cmp_luasnip' }
+  use { 'benfowler/telescope-luasnip.nvim' }
 
-  use {'Traap/vim-bundle-abbreviate'}
-  use {'Traap/vim-bundle-autocmd'}
-  use {'Traap/vim-bundle-fzf'}
-  use {'Traap/vim-bundle-plantuml'}
-  use {'Traap/vim-bundle-rainbow'}
-  use {'Traap/vim-bundle-tmux-runner'}
-  use {'Traap/vim-bundle-vimtex'}
-  use {'Traap/vim-bundle-vimwiki'}
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Zulu : Reuse Traap's vim bundles last.
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Auto compile and install plugins when packer is bootstrapped.
+  use { 'Traap/vim-bundle-abbreviate' }
+  use { 'Traap/vim-bundle-autocmd' }
+  use { 'Traap/vim-bundle-fzf' }
+  use { 'Traap/vim-bundle-plantuml' }
+  use { 'Traap/vim-bundle-rainbow' }
+  use { 'Traap/vim-bundle-tmux-runner' }
+  use { 'Traap/vim-bundle-vimtex' }
+  use { 'Traap/vim-bundle-vimwiki' }
+
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Auto compile and install plugins when packer is bootstrapped.
 
   if vim.g.nvim_bootstrapped == 1 then
     packer.sync()
   end
 
--- ------------------------------------------------------------------------- }}}
--- {{{ The END!
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ The END!
 
 end)
 
