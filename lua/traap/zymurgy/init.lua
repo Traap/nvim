@@ -2,27 +2,29 @@
 
 -- Plugins listed in this file require minimal setup.
 
-local ok, lightbulb = pcall(require, 'nvim-lightbulb')
-if ok then
+local o0, lightbulb = pcall(require, 'nvim-lightbulb')
+if o0 then
   lightbulb.setup({autocmd = {enabled = true}})
 end
 
-local ok, trouble = pcall(require, 'trouble')
-if ok then
+local o1, trouble = pcall(require, 'trouble')
+if o1 then
   trouble.setup({})
 end
 
-local ok, gitsigns = pcall(require, 'gitsigns')
-if ok then
+local o2, gitsigns = pcall(require, 'gitsigns')
+if o2 then
   gitsigns.setup()
 end
 
-local ok, surround = pcall(require, 'nvim-surround')
-if ok then
+local o3, surround = pcall(require, 'nvim-surround')
+if o3 then
   surround.setup()
 end
 
-local ok, notify = pcall(require, 'notify')
-if ok then
+local o4, notify = pcall(require, 'notify')
+if o4 then
   vim.notify = notify
 end
+
+vim.cmd('colorscheme base16-tokyo-night-storm')

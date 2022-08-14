@@ -13,7 +13,7 @@ require 'traap.settings'
 -- Configure general plugins.
 require 'traap.cmp'
 require 'traap.lsp'
-require 'traap.galaxyline'
+require 'traap.lualine'
 require 'traap.tree'
 require 'traap.web-devicons'
 
@@ -24,7 +24,6 @@ require 'traap.alpha'
 
 -- Now colorize
 require 'traap.colorize'
-require 'traap.colortheme'
 
 -- Take control of all keybindings.
 require 'traap.which-key'

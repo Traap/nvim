@@ -7,12 +7,14 @@ local opt = vim.opt
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Alphabetical listing of settings I like.
 
-opt.background = "dark"
+-- opt.background = "dark"
 opt.clipboard = 'unnamedplus'
-opt.colorcolumn = '+1'
-opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
-opt.completeopt = {'menuone', 'noinsert', 'noselect'}
-opt.cursorline = true
+-- opt.colorcolumn = '+1'
+opt.colorcolumn = '99999'
+-- opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
+-- opt.completeopt = {'menuone', 'noinsert', 'noselect'}
+opt.completeopt = {'menuone', 'noselect'}
+opt.cursorline = false
 opt.expandtab = true
 opt.fillchars = 'fold: '
 opt.foldlevel = 20
@@ -24,7 +26,7 @@ opt.listchars = {eol = '↲', tab = '▸ ', trail = '·'}
 opt.mouse = 'a'
 opt.nrformats = {'alpha', 'octal', 'hex'}
 opt.number = true
-opt.numberwidth= 3
+opt.numberwidth = 3
 opt.relativenumber = true
 opt.scrolloff = 4
 opt.shiftround = true
@@ -41,7 +43,8 @@ opt.splitbelow = true
 opt.splitright = true
 opt.swapfile = false
 opt.termguicolors = true
-opt.textwidth = 80
+opt.timeoutlen = 250
+-- opt.textwidth = 80
 opt.virtualedit = {'block'}
 opt.wildmode = {'list', 'longest'}
 opt.wrap = false
@@ -57,28 +60,28 @@ g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Highlight on yank
 
-cmd([[
-  augroup YankGroup
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{on_visual = false}
-  augroup END
-]])
+-- cmd([[
+--   augroup YankGroup
+--     autocmd!
+--     autocmd TextYankPost * silent! lua vim.highlight.on_yank{on_visual = false}
+--   augroup END
+-- ]])
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Completion confirmation.
 
-g.completion_confirm_key = ""
-g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
+-- g.completion_confirm_key = ""
+-- g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Bullets
 
-g.bullets_enabled_file_types = {
-  'gitcommit',
-  'markdown',
-  'scratch',
-  'text',
-  'wiki'
-}
+-- g.bullets_enabled_file_types = {
+--   'gitcommit',
+--   'markdown',
+--   'scratch',
+--   'text',
+--   'wiki'
+-- }
 
 -- ------------------------------------------------------------------------- }}}

@@ -32,7 +32,7 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
 
-  use { 'norcalli/nvim-base16.lua' }
+  use { 'RRethy/nvim-base16'}
   use { 'norcalli/nvim-colorizer.lua' }
   use { 'mechatroner/rainbow_csv' }
   use { 'folke/tokyonight.nvim' }
@@ -63,8 +63,11 @@ return packer.startup(function(use)
 
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'kyazdani42/nvim-web-devicons' }
-  use { 'NTBBloodbath/galaxyline.nvim' }
-
+  -- use { 'NTBBloodbath/galaxyline.nvim' }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 -- ------------------------------------------------------------------------- }}}
 -- {{{ LSP
 
