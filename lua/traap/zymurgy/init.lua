@@ -27,4 +27,7 @@ if o4 then
   vim.notify = notify
 end
 
-vim.cmd('colorscheme base16-tokyo-night-storm')
+local o5, _ = pcall(require, 'base16-colorscheme')
+if o5 then
+  vim.cmd('colorscheme base16-tokyo-night-terminal-storm')
+end

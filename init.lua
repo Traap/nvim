@@ -4,10 +4,16 @@ require 'traap.bootstrap'
 -- Load my plugins.
 require 'traap.plugins'
 
+-- Set impatient.
+local ok, b16 = pcall(require, 'impatient')
+if ok then
+  b16.enable_profile()
+end
+
 -- Load utilities my plugins use.
 require 'traap.utility'
 
--- The Wild West! ... You have been warned1!!!
+-- The Wild West! ... You have been warned!!!
 require 'traap.settings'
 
 -- Configure general plugins.

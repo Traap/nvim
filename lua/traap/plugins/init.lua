@@ -1,5 +1,4 @@
 -- {{{ Use protected call so we don't error on first use.
-
 local packer_ok, packer = pcall(require, 'packer')
 if not packer_ok then return end
 
@@ -32,10 +31,9 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
 
-  use { 'RRethy/nvim-base16'}
+  use { 'RRethy/nvim-base16' }
   use { 'norcalli/nvim-colorizer.lua' }
   use { 'mechatroner/rainbow_csv' }
-  use { 'folke/tokyonight.nvim' }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Completion
@@ -62,8 +60,6 @@ return packer.startup(function(use)
 -- {{{ File manager
 
   use { 'kyazdani42/nvim-tree.lua' }
-  use { 'kyazdani42/nvim-web-devicons' }
-  -- use { 'NTBBloodbath/galaxyline.nvim' }
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -117,19 +113,6 @@ return packer.startup(function(use)
 -- {{{ Treesitter
 
   use { 'nvim-treesitter/nvim-treesitter' }
-
-  -- use { 'p00f/nvim-ts-rainbow',
-  --   after = {
-  --     'nvim-treesitter/nvim-treesitter',
-  --   }
-  -- }
-
-  -- use { 'nvim-treesitter/nvim-treesitter-refactor',
-  --   after = {
-  --      'nvim-treesitter/nvim-treesitter',
-  --      'p00f/nvim-ts-rainbow',
-  --   }
-  -- }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Tmux
