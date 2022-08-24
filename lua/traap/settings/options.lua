@@ -9,11 +9,9 @@ local opt = vim.opt
 
 -- opt.background = "dark"
 opt.clipboard = 'unnamedplus'
--- opt.colorcolumn = '+1'
-opt.colorcolumn = '99999'
--- opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
--- opt.completeopt = {'menuone', 'noinsert', 'noselect'}
-opt.completeopt = {'menuone', 'noselect'}
+opt.colorcolumn = '+1'
+opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
+opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 opt.cursorline = false
 opt.expandtab = true
 opt.fillchars = 'fold: '
@@ -44,10 +42,10 @@ opt.splitright = true
 opt.swapfile = false
 opt.termguicolors = true
 opt.timeoutlen = 250
--- opt.textwidth = 80
+opt.textwidth = 80
 opt.virtualedit = {'block'}
 opt.wildmode = {'list', 'longest'}
-opt.wrap = false
+opt.wrap = true
 cmd([[filetype plugin indent on]])
 cmd([[syntax enable]])
 
@@ -60,12 +58,12 @@ g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Highlight on yank
 
--- cmd([[
---   augroup YankGroup
---     autocmd!
---     autocmd TextYankPost * silent! lua vim.highlight.on_yank{on_visual = false}
---   augroup END
--- ]])
+cmd([[
+  augroup YankGroup
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{on_visual = false}
+  augroup END
+]])
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Completion confirmation.
@@ -76,12 +74,12 @@ g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Bullets
 
--- g.bullets_enabled_file_types = {
---   'gitcommit',
---   'markdown',
---   'scratch',
---   'text',
---   'wiki'
--- }
+g.bullets_enabled_file_types = {
+  'gitcommit',
+  'markdown',
+  'scratch',
+  'text',
+  'wiki'
+}
 
 -- ------------------------------------------------------------------------- }}}
