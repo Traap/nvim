@@ -6,27 +6,29 @@ if not config_ok then return end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Treesitter config setup.
 
-languages = {
+local languages = {
   'bash',
   'c',
   'c_sharp',
   'comment',
   'cpp',
-  'css',
   'dockerfile',
   'graphql',
   'html',
-  'http',
   'json',
-  'latex',
   'lua',
-  'markdown',
   'pascal',
   'ruby',
   -- 'rust',
   'sql',
   'vim',
   'yaml',
+}
+
+local disable = {
+  'css',
+  'latex',
+  'markdown',
 }
 
 config.setup {
@@ -42,7 +44,7 @@ config.setup {
   ensure_installed = languages,
   highlight = {
     enable = true,
-    disable = {'css', 'markdown'},
+    disable = disable,
     additional_vim_regex_highlighting=true,
   },
   ignore_install = {''},
