@@ -31,3 +31,14 @@ local o5, _ = pcall(require, 'base16-colorscheme')
 if o5 then
   vim.cmd('colorscheme base16-tokyo-night-terminal-storm')
 end
+
+local o6, transparent = pcall(require, 'transparent')
+if o6 then
+  transparent.setup({
+    enable = true,
+    -- extra_gropus = {
+    -- },
+    -- exclude = {
+    -- }
+  })
+end
