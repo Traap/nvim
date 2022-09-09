@@ -36,9 +36,13 @@ local o6, transparent = pcall(require, 'transparent')
 if o6 then
   transparent.setup({
     enable = true,
-    -- extra_gropus = {
-    -- },
-    -- exclude = {
-    -- }
+    extra_gropus = {
+      'Folded',
+    },
+    exclude = {
+      'Normal',
+    }
   })
 end
+
+vim.api.nvim_create_autocmd('ColorScheme', { command = 'highlight clear Folded'})

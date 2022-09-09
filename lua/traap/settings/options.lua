@@ -52,8 +52,8 @@ cmd([[syntax enable]])
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Completion confirmation.
 
-g.completion_confirm_key = ""
-g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
+-- g.completion_confirm_key = ""
+-- g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Highlight on yank
@@ -64,12 +64,6 @@ cmd([[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{on_visual = false}
   augroup END
 ]])
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Completion confirmation.
-
--- g.completion_confirm_key = ""
--- g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Bullets
