@@ -37,12 +37,16 @@ if o6 then
   transparent.setup({
     enable = true,
     extra_gropus = {
+      'Comment',
       'Folded',
+      'Normal',
     },
     exclude = {
-      'Normal',
+      'EndOfBuffer',
+      'NonText',
     }
   })
 end
 
+vim.g.transparent_enable = true
 vim.api.nvim_create_autocmd('ColorScheme', { command = 'highlight clear Folded'})
