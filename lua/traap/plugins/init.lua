@@ -1,4 +1,5 @@
 -- {{{ Use protected call so we don't error on first use.
+
 local packer_ok, packer = pcall(require, 'packer')
 if not packer_ok then return end
 
