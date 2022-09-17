@@ -24,7 +24,9 @@ end
 
 local o4, notify = pcall(require, 'notify')
 if o4 then
-  vim.notify = notify
+  notify.setup({
+    background_colour= "#000000",
+  })
 end
 
 local o5, _ = pcall(require, 'base16-colorscheme')
