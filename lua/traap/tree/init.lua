@@ -15,7 +15,7 @@ local actions     = {
     global        = false,
   },
   open_file       = {
-    quit_on_open  = false,
+    quit_on_open  = true,
     resize_window = false,
     window_picker = {
       chars       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
@@ -203,12 +203,25 @@ local update_focused_file = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: view
 
+local float = {
+  enable          = true,
+  open_win_config = {
+    relative      = "cursor",
+    border        = "rounded",
+    width         = 27,
+    height        = 27,
+    row           = 1,
+    col           = 1,
+  },
+}
+
 local view                    = {
-  height                      = 27,
+  adaptive_size               = false,
+  float                       = float,
   hide_root_folder            = false,
   mappings                    = mappings,
   number                      = false,
-  preserve_window_proportions = false,
+  preserve_window_proportions = true,
   relativenumber              = false,
   side                        = 'right',
   signcolumn                  = 'yes',
