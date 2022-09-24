@@ -3,12 +3,6 @@
 local keymap = require('traap.utility.helpers').keymap
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Map leader to space
-
-vim.g.mapleader = [[ ]]
-vim.g.maplocalleader = [[\]]
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Items I have not successfully moved into which-key.
 
 -- Easy align
@@ -35,7 +29,7 @@ keymap('n', '<c-s>', '<cmd>set filetype=sxhkd<cr>')
 keymap('n', '-', 'dd')
 
 -- Toggle NvimTree
-keymap('n', '<c-n>','<cmd>NvimTreeToggle<cr>')
+keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>')
 
 -- Visual yank
 keymap('v', '<leader>cc', '"+y')

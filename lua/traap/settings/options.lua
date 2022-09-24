@@ -1,8 +1,14 @@
 -- {{{ Alias to vim APis.
 
-local   g = vim.g
+local g = vim.g
 local cmd = vim.cmd
 local opt = vim.opt
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Map leader to space
+
+vim.g.mapleader = [[ ]]
+vim.g.maplocalleader = [[,]]
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Alphabetical listing of settings I like.
@@ -10,8 +16,8 @@ local opt = vim.opt
 -- opt.background = "dark"
 opt.clipboard = 'unnamedplus'
 opt.colorcolumn = '+1'
-opt.complete = {'.', 'w' , 'b', 'u', 't', 'i', 'kspell'}
-opt.completeopt = {'menuone', 'noinsert', 'noselect'}
+opt.complete = { '.', 'w', 'b', 'u', 't', 'i', 'kspell' }
+opt.completeopt = { 'menuone', 'noinsert', 'noselect' }
 opt.cursorline = false
 opt.expandtab = true
 opt.fillchars = 'fold: '
@@ -20,9 +26,9 @@ opt.foldmethod = 'marker'
 opt.hidden = true
 opt.ignorecase = true
 opt.lazyredraw = true
-opt.listchars = {eol = '↲', tab = '▸ ', trail = '·'}
+opt.listchars = { eol = '↲', tab = '▸ ', trail = '·' }
 opt.mouse = 'a'
-opt.nrformats = {'alpha', 'octal', 'hex'}
+opt.nrformats = { 'alpha', 'octal', 'hex' }
 opt.number = true
 opt.numberwidth = 3
 opt.relativenumber = true
@@ -36,15 +42,15 @@ opt.showmode = false
 opt.signcolumn = 'yes'
 opt.smartcase = true
 opt.smartindent = true
-opt.softtabstop =  2
+opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
 opt.swapfile = false
 opt.termguicolors = true
 opt.timeoutlen = 500
 opt.textwidth = 80
-opt.virtualedit = {'block'}
-opt.wildmode = {'list', 'longest'}
+opt.virtualedit = { 'block' }
+opt.wildmode = { 'list', 'longest' }
 opt.wrap = true
 cmd([[filetype plugin indent on]])
 cmd([[syntax enable]])

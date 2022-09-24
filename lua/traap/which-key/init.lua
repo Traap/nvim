@@ -1,21 +1,15 @@
 -- {{{ Bail when required packages are not loaded.
 
-local  whichkey_ok, whichkey = pcall(require, 'which-key')
+local whichkey_ok, whichkey = pcall(require, 'which-key')
 if not whichkey_ok then return end
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Map leader to space
-
-vim.g.mapleader = [[ ]]
-vim.g.maplocalleader = [[ ]]
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Basic Setup
 
 local setup = {
   plugins = {
-    marks = true,       -- shows a list of your marks on ' and `
-    registers = true,   -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+    marks = true, -- shows a list of your marks on ' and `
+    registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
     spelling = {
       -- enabling this will show Which Key when pressing z= to select spelling suggestions
       enabled = true,
@@ -27,13 +21,13 @@ local setup = {
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     presets = {
-      operators = true,    -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = true,      -- adds help for motions
+      operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+      motions = true, -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
-      windows = true,      -- default bindings on <c-w>
-      nav = true,          -- misc bindings to work with windows
-      z = true,            -- bindings for folds, spelling and others prefixed with z
-      g = true,            -- bindings for prefixed with g
+      windows = true, -- default bindings on <c-w>
+      nav = true, -- misc bindings to work with windows
+      z = true, -- bindings for folds, spelling and others prefixed with z
+      g = true, -- bindings for prefixed with g
     },
   },
 
@@ -50,19 +44,19 @@ local setup = {
 
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-    separator = "➜",  -- symbol used between a key and it's label
-    group = "+",      -- symbol prepended to a group
+    separator = "➜", -- symbol used between a key and it's label
+    group = "+", -- symbol prepended to a group
   },
 
   popup_mappings = {
     scroll_down = '<c-j>', -- binding to scroll down inside the pop-up
-    scroll_up = '<c-k>',   -- binding to scroll up inside the pop-up
+    scroll_up = '<c-k>', -- binding to scroll up inside the pop-up
   },
 
   window = {
-    border = "none",          -- none, single, double, shadow
-    position = "bottom",      -- bottom, top
-    margin = { 1, 0, 1, 0 },  -- extra window margin [top, right, bottom, left]
+    border = "none", -- none, single, double, shadow
+    position = "bottom", -- bottom, top
+    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
     winblend = 0
   },
@@ -70,8 +64,8 @@ local setup = {
   layout = {
     height = { min = 4, max = 25 }, -- min and max height of the columns
     width = { min = 20, max = 50 }, -- min and max width of the columns
-    spacing = 3,                    -- spacing between columns
-    align = "center",               -- align columns left, center or right
+    spacing = 3, -- spacing between columns
+    align = "center", -- align columns left, center or right
   },
 
   -- enable this to hide mappings for which you didn't specify a label
@@ -89,8 +83,8 @@ local setup = {
     "^ "
   },
 
-  show_help = true,          -- show help message on the command line when the pop-up is visible
-  triggers = "auto",         -- automatically setup triggers
+  show_help = true, -- show help message on the command line when the pop-up is visible
+  triggers = "auto", -- automatically setup triggers
   triggers_blacklist = {
     -- list of mode / prefixes that should never be hooked by Which Key this is
     -- mostly relevant for key maps that start with a native binding most people
@@ -106,10 +100,10 @@ local setup = {
 local opts = {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
-  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true,  -- use `silent` when creating keymaps
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true,  -- use `nowait` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -118,10 +112,10 @@ local opts = {
 local m_opts = {
   mode = "n", -- NORMAL mode
   prefix = "<m>",
-  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true,  -- use `silent` when creating keymaps
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true,  -- use `nowait` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -143,20 +137,20 @@ local m_mappings = {
 
 local mappings = {
 
-  [" "] =  { "<cmd>nohlsearch<cr>", "No HL" },
-  ["e"] =  { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["q"] =  { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
+  [" "] = { "<cmd>nohlsearch<cr>", "No HL" },
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ H - Help
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ H - Help
 
   H = {
     name = "Help",
     H = { "<cmd>silent vert bo help<cr>", "Help in Vertical Split" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ L - LSP
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ L - LSP
 
   L = {
     name = "LSP",
@@ -179,8 +173,8 @@ local mappings = {
     w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics", },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ P - Packer
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ P - Packer
 
   p = {
     name = "Packer",
@@ -191,8 +185,8 @@ local mappings = {
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ S - SnipRun
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ S - SnipRun
 
   S = {
     name = "SnipRun",
@@ -205,8 +199,8 @@ local mappings = {
     x = { "<cmd>SnipTerminate<cr>", "Terminate" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ T - Treesitter
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ T - Treesitter
 
   -- T = {
   --   name = "Treesitter",
@@ -214,24 +208,24 @@ local mappings = {
   --   p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
   -- },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ V - Linewise reselection of what you just pasted.
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ V - Linewise reselection of what you just pasted.
 
   V = {
     name = "Reselection",
     V = { "V`]", "Pasted Block" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ a - Alpha
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ a - Alpha
 
   a = {
     name = "Alpha",
     a = { "<cmd>Alpha<cr>", "Display Alpha Page" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ b - Buffers
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ b - Buffers
 
   b = {
     name = "Buffers",
@@ -240,13 +234,13 @@ local mappings = {
     h = { "<cmd>vertical resize -1<cr>", "Vertical resize -1" },
     j = { "<cmd>resize +1<cr>", "Horizontal resize +1" },
     k = { "<cmd>resize -1<cr>", "Horizondal resize -1" },
-    l = { "<cmd>vertical resize +1<cr>", "Vertical resize -1"},
+    l = { "<cmd>vertical resize +1<cr>", "Vertical resize -1" },
     m = { [[<cmd>luafile $MYVIMRC<cr>]], "Load $MYVIMRC" },
     x = { [[<cmd>w<cr><cmd>luafile %<cr>]], "Write & Luafile Buffer" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ c - Copy & Paste
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ c - Copy & Paste
 
   c = {
     name = "Copy & Paste",
@@ -254,8 +248,8 @@ local mappings = {
     v = { '"+p', "Paste buffer" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ d - Debug
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ d - Debug
 
   -- d = {
   --   name = "Debug",
@@ -270,32 +264,32 @@ local mappings = {
   --   x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
   -- },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ f - Find
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ f - Find
 
   f = {
     name = "Find",
     C = { '<cmd>Telescope commands<cr>', 'Command' },
     M = { '<cmd>Telescope man_pages<cr>', 'Man Pages' },
     R = { '<cmd>Telescope registers<cr>', 'Registers' },
-    b = { '<cmd>Telescope buffers<cr>', "Buffers"},
-    F = { '<cmd>Telescope media_files<cr>', 'Media files'},
+    b = { '<cmd>Telescope buffers<cr>', "Buffers" },
+    F = { '<cmd>Telescope media_files<cr>', 'Media files' },
     c = { '<cmd>Telescope colorscheme<cr>', 'Colorscheme' },
     d = { '<cmd>Telescope diagnostics<cr>', 'Diagnostics' },
     f = { '<cmd>Telescope find_files<cr>', "Find files" },
-    g = { '<cmd>Telescope live_grep<cr>', 'Find Text'},
+    g = { '<cmd>Telescope live_grep<cr>', 'Find Text' },
     h = { '<cmd>Telescope help_tags<cr>', "Help" },
     i = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", 'Media' },
     k = { '<cmd>Telescope keymaps<cr>', 'Keymaps' },
     l = { '<cmd>Telescope resume<cr>', 'Last Search' },
-    o = { '<cmd>Telescope oldfiles<cr>', 'Old files'},
-    p = { '<cmd>Telescope find_files cwd=~/.local/share/nvim/site/pack/packer<cr>',  ''},
+    o = { '<cmd>Telescope oldfiles<cr>', 'Old files' },
+    p = { '<cmd>Telescope find_files cwd=~/.local/share/nvim/site/pack/packer<cr>', '' },
     r = { '<cmd>Telescope oldfiles<cr>', 'Recent File' },
-    v = { '<cmd>Telescope find_files cwd=~/git/nvim<cr>', 'NeoVim'},
+    v = { '<cmd>Telescope find_files cwd=~/git/nvim<cr>', 'NeoVim' },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ g - git
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ g - git
 
   g = {
     name = "Git",
@@ -338,30 +332,30 @@ local mappings = {
     u = { "<cmd>call GenerateUmlDiagram()<cr>", "Status" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ k - KJV
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ k - KJV
 
   k = {
     name = "KJV",
-      k = { [[^"kyg$<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]], "Get Verse" },
-      f = { [[<cmd>v)3><cr>]], "Format Verse" },
+    k = { [[^"kyg$<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]], "Get Verse" },
+    f = { [[<cmd>v)3><cr>]], "Format Verse" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ n - NvimTree
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ n - NvimTree
 
   n = {
     name = "NvimTree",
-    b = { "<cmd>ToggleTransparancy<cr>",  "Toggle Transparency" },
+    b = { "<cmd>ToggleTransparancy<cr>", "Toggle Transparency" },
     f = { "<cmd>NvimTreeFindFile<cr>", "Find file in Tree" },
-    k = { "<cmd>PickTheme<cr>",  "Pick Theme" },
-    n = { "<cmd>NextTheme<cr>",  "Next Theme" },
-    p = { "<cmd>PrevTheme<cr>",  "Prev Theme" },
-    r = { "<cmd>NvimTreeRefresh<cr>",  "Refresh" },
+    k = { "<cmd>PickTheme<cr>", "Pick Theme" },
+    n = { "<cmd>NextTheme<cr>", "Next Theme" },
+    p = { "<cmd>PrevTheme<cr>", "Prev Theme" },
+    r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ o - Options
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ o - Options
 
   o = {
     name = "Options",
@@ -374,20 +368,20 @@ local mappings = {
     w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ r - Repace
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ r - Repace
 
   r = {
     name = "Replace & Ruby",
-    a = { [[ggdG<cmd>exec 'r!rake build:amber'<cr>]], "Build Amber"},
+    a = { [[ggdG<cmd>exec 'r!rake build:amber'<cr>]], "Build Amber" },
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-    p = { [[ggdG<cmd>exec 'r!rubocop'<cr>]], "Rubocop"},
+    p = { [[ggdG<cmd>exec 'r!rubocop'<cr>]], "Rubocop" },
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ s - Split & Sorts
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ s - Split & Sorts
 
   s = {
     name = "Split & Sorts",
@@ -398,46 +392,46 @@ local mappings = {
     s = { "0v)k$:sort<cr>", "Acronym Sort" },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ t - Terminal & Tmux
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ t - Terminal & Tmux
   t = {
     name = "Terminal & Tmux",
 
     c = {
       name = "Start Tmux",
-      a = {'<cmd>Dispatch!ao ao<cr>', 'AO'},
-      b = {'<cmd>Dispatch!ao bash<cr>', 'Bash'},
-      k = {'<cmd>Dispatch!ao kjv<cr>', 'KJV'},
-      s = {'<cmd>Dispatch!ao ssh<cr>', 'Ssh'},
-      p = {'<cmd>Dispatch!ao soup<cr>', 'Soup'},
-      v = {'<cmd>Dispatch!ao vim<cr>', 'Vim'},
-      w = {'<cmd>Dispatch!ao wiki<cr>', 'Wiki'},
+      a = { '<cmd>Dispatch!ao ao<cr>', 'AO' },
+      b = { '<cmd>Dispatch!ao bash<cr>', 'Bash' },
+      k = { '<cmd>Dispatch!ao kjv<cr>', 'KJV' },
+      s = { '<cmd>Dispatch!ao ssh<cr>', 'Ssh' },
+      p = { '<cmd>Dispatch!ao soup<cr>', 'Soup' },
+      v = { '<cmd>Dispatch!ao vim<cr>', 'Vim' },
+      w = { '<cmd>Dispatch!ao wiki<cr>', 'Wiki' },
     },
 
     k = {
       name = "Kill Tmux",
-      a = {'<cmd>Dispatch!tmux kill-session -t ao<cr>', 'AO'},
-      b = {'<cmd>Dispatch!tmux kill-session -t bash<cr>', 'Bash'},
-      k = {'<cmd>Dispatch!tmux kill-session -t kjv<cr>', 'KJV'},
-      s = {'<cmd>Dispatch!tmux kill-session -t ssh<cr>', 'Ssh'},
-      p = {'<cmd>Dispatch!tmux kill-session -t soup<cr>', 'Soup'},
-      v = {'<cmd>Dispatch!tmux kill-session -t vim<cr>', 'Vim'},
-      w = {'<cmd>Dispatch!tmux kill-session -t wiki<cr>', 'Wiki'},
+      a = { '<cmd>Dispatch!tmux kill-session -t ao<cr>', 'AO' },
+      b = { '<cmd>Dispatch!tmux kill-session -t bash<cr>', 'Bash' },
+      k = { '<cmd>Dispatch!tmux kill-session -t kjv<cr>', 'KJV' },
+      s = { '<cmd>Dispatch!tmux kill-session -t ssh<cr>', 'Ssh' },
+      p = { '<cmd>Dispatch!tmux kill-session -t soup<cr>', 'Soup' },
+      v = { '<cmd>Dispatch!tmux kill-session -t vim<cr>', 'Vim' },
+      w = { '<cmd>Dispatch!tmux kill-session -t wiki<cr>', 'Wiki' },
     },
 
     r = {
       name = 'Runner',
-      F = {'<cmd>VtrFocusRunner<cr>', 'Focus Runner'},
-      O = {'<cmd>VtrReorientRunner<cr>', 'Reorient Runner'},
-      R = {'<cmd>VtrResizeRunner<cr>', 'Resize Runner'},
-      S = {'<cmd>VtrSendFile!<cr>', 'Send File'},
-      a = {'<cmd>VtrReattachRunner<cr>', 'Reattah Runner'},
-      c = {'<cmd>VtrClearRunner<cr>', 'Clear Runner'},
-      f = {'<cmd>VtrFlushCommand<cr>', 'Flush Runner'},
-      k = {'<cmd>VtrKillRunner<cr>', 'Kill Runner'},
-      l = {'<cmd>VtrSendLinesToRunner<cr>', 'Sent Lines'},
-      o = {"<cmd>VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>", 'Open Runner'},
-      s = {'<cmd>VtrSendCommandToRunner<cr>', 'Send Command'},
+      F = { '<cmd>VtrFocusRunner<cr>', 'Focus Runner' },
+      O = { '<cmd>VtrReorientRunner<cr>', 'Reorient Runner' },
+      R = { '<cmd>VtrResizeRunner<cr>', 'Resize Runner' },
+      S = { '<cmd>VtrSendFile!<cr>', 'Send File' },
+      a = { '<cmd>VtrReattachRunner<cr>', 'Reattah Runner' },
+      c = { '<cmd>VtrClearRunner<cr>', 'Clear Runner' },
+      f = { '<cmd>VtrFlushCommand<cr>', 'Flush Runner' },
+      k = { '<cmd>VtrKillRunner<cr>', 'Kill Runner' },
+      l = { '<cmd>VtrSendLinesToRunner<cr>', 'Sent Lines' },
+      o = { "<cmd>VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>", 'Open Runner' },
+      s = { '<cmd>VtrSendCommandToRunner<cr>', 'Send Command' },
     },
 
     T = {
@@ -456,24 +450,24 @@ local mappings = {
     },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ w - Wiki &  Whitespac
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ w - Wiki &  Whitespac
 
   w = {
     name = "Whitespace",
-    a = { "<cmd>edit /home/traap/git/wiki/journal/Acronyms.md<cr>", 'Wiki Acronyms'},
-    b = { "<cmd>edit /home/traap/git/wiki/journal/Backlog.md<cr>", 'Wiki Backlog'},
-    e = { '<cmd>WikiExport<cr>', 'Wiki Export'},
-    p = { '<cmd>WikiFzfPages<cr>', 'Wiki FZF Pages'},
-    r = { '<cmd>%s/\r//g<cr>', "Strip Carriage Return"},
+    a = { "<cmd>edit /home/traap/git/wiki/journal/Acronyms.md<cr>", 'Wiki Acronyms' },
+    b = { "<cmd>edit /home/traap/git/wiki/journal/Backlog.md<cr>", 'Wiki Backlog' },
+    e = { '<cmd>WikiExport<cr>', 'Wiki Export' },
+    p = { '<cmd>WikiFzfPages<cr>', 'Wiki FZF Pages' },
+    r = { '<cmd>%s/\r//g<cr>', "Strip Carriage Return" },
     s = { "mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z", "Strip Trailing Whitespace" },
-    t = { '<cmd>WikiFzfTags<cr>', 'Wiki FZF Tags'},
-    v = { "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>", 'PDF Viwer'},
+    t = { '<cmd>WikiFzfTags<cr>', 'Wiki FZF Tags' },
+    v = { "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>", 'PDF Viwer' },
     z = { '<cmd>w<cr>', 'Write File' },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ End: mappings
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ End: mappings
 
 }
 
