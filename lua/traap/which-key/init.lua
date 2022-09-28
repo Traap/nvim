@@ -461,7 +461,7 @@ local mappings = {
     p = { '<cmd>WikiFzfPages<cr>', 'Wiki FZF Pages' },
     r = { '<cmd>%s/\r//g<cr>', "Strip Carriage Return" },
     s = { "mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z", "Strip Trailing Whitespace" },
-    t = { '<cmd>WikiFzfTags<cr>', 'Wiki FZF Tags' },
+    Z = { '<cmd>WikiFzfTags<cr>', 'Wiki FZF Tags' },
     v = { "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>", 'PDF Viwer' },
     z = { '<cmd>w<cr>', 'Write File' },
   },
