@@ -1,6 +1,6 @@
 -- {{{ Alias To vim APis.
 
-local keymap = require('traap.utility.helpers').keymap
+local keymap = require('traap.utility').keymap
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Items I have not successfully moved into which-key.
