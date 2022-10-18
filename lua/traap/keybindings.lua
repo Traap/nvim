@@ -40,6 +40,7 @@ keymap('n', 'vv', '^vg_')
 -- Select entire buffer
 keymap('n', 'vaa', 'ggvGg_')
 keymap('n', 'Vaa', 'ggVG')
+keymap('n', '<leader>V', "V`]")
 
 -- Save all files.
 keymap('n', '<F2>', '<cmd>wall<cr>')
@@ -55,5 +56,12 @@ keymap('n', 'zj', 'zcjzOzz')
 
 -- Close current fold when open. Always open previous fold.
 keymap('n', 'zk', 'zckzOzz')
+
+-- Keep the cursor in place while joining lines.
+keymap('n', 'J', "mzJ`z")
+keymap('n', '<leader>J', "myvipJ`ygq<cr>")
+
+-- Toggle [in]visible characters.
+keymap('n', '<leader>i', '<cmd>set list!<cr>')
 
 -- ------------------------------------------------------------------------- }}}
