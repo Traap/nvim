@@ -32,7 +32,7 @@ require 'traap.alpha'
 require 'traap.colorize'
 
 -- Take control of all keybindings.
-require 'traap.which-key'
+require 'traap.whichkey'
 require 'traap.keybindings'
 
 -- zymurgy : The last word in 1980 Webster's new collegiate dictionary.

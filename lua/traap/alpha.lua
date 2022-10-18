@@ -34,7 +34,7 @@ dashboard.section.buttons.val = {
   dashboard.button("s", "  sxhkd",               ":e ~/.config/sxhkd/sxhkdrc <CR>"),
   dashboard.button("t", "  Find text",           ":Telescope live_grep <CR>"),
   dashboard.button("v", "  Resume",              ":e ~/git/wiki/personal/cv/cv.tex<CR>"),
-  dashboard.button("w", "  WhichKey",            ":e ~/git/nvim/lua/traap/which-key.lua<CR>"),
+  dashboard.button("w", "  WhichKey",            ":e ~/git/nvim/lua/traap/whichkey.lua<CR>"),
 }
 
 local function footer()
