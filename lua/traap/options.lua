@@ -51,7 +51,7 @@ opt.timeoutlen = 500
 opt.textwidth = 80
 opt.virtualedit = { 'block' }
 opt.wildmode = { 'list', 'longest' }
-opt.wrap = true
+opt.wrap = false
 cmd([[filetype plugin indent on]])
 cmd([[syntax enable]])
 

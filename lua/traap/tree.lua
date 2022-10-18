@@ -202,9 +202,10 @@ local update_focused_file = {
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: view
+--     Note: Set float.enable = true to experiment a floating NvimTree.
 
 local float = {
-  enable          = true,
+  enable          = false,
   open_win_config = {
     relative      = "cursor",
     border        = "rounded",
