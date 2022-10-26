@@ -5,20 +5,13 @@
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Use protected call so we don't error on first use.
 
-local  status_ok, alpha = pcall(require, "alpha")
-if not status_ok then return end
+local  ok, alpha = pcall(require, "alpha")
+if not ok then return end
 
 -- ------------------------------------------------------------------------- }}}
 
 local dashboard = require("alpha.themes.dashboard")
-dashboard.section.header.val = {
-  [[                               __                ]],
-  [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-  [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-  [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-  [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-  [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
-}
+dashboard.section.header.val = {"N e o   V i m"}
 
 dashboard.section.buttons.val = {
   dashboard.button("a", "  Alpha",               ":e ~/.config/nvim/lua/traap/alpha.lua <CR>"),
@@ -38,11 +31,6 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
-  -- NOTE: requires the fortune-mod package to work
-  -- local handle = io.popen("fortune")
-  -- local fortune = handle:read("*a")
-  -- handle:close()
-  -- return fortune
   return "Https://GitHub.com/Traap/nvim"
 end
 
