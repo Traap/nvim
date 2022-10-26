@@ -89,15 +89,23 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ neovim without Tpope?  No Way!!!
 
-  use { 'kovetskiy/sxhkd-vim' }
+  use { 'tpope/gem-browse' }
+  use { 'tpope/vim-bundler' }
   use { 'tpope/vim-characterize' }
   use { 'tpope/vim-commentary' }
   use { 'tpope/vim-dispatch' }
   use { 'tpope/vim-endwise' }
+  use { 'tpope/vim-eunuch' }
   use { 'tpope/vim-fugitive' }
+  use { 'tpope/vim-projectionist' }
   use { 'tpope/vim-rails' }
+  use { 'tpope/vim-rake' }
+  use { 'tpope/vim-rbenv' }
   use { 'tpope/vim-repeat' }
+  -- use { 'tpope/vim-surround' }
   use { 'tpope/vim-unimpaired' }
+  use { 'tpope/vim-vinegar' }
+
   use { 'kylechui/nvim-surround' }
 
 -- ------------------------------------------------------------------------- }}}
@@ -128,12 +136,13 @@ return packer.startup(function(use)
   use { 'ekickx/clipboard-image.nvim' }
   use { 'goolord/alpha-nvim' }
   use { 'iamcco/markdown-preview.nvim' }
+  use { 'kovetskiy/sxhkd-vim' }
   use { 'moll/vim-bbye' }
   use { 'sbdchd/neoformat' }
   use { 'triglav/vim-visual-increment' }
   use { 'vim-utils/vim-most-minimal-folds' }
-  use { 'xiyaowong/nvim-transparent' }
   use { 'windwp/nvim-autopairs' }
+  use { 'xiyaowong/nvim-transparent' }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Notification.
