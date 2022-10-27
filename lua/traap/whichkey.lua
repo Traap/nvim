@@ -1,7 +1,7 @@
 -- {{{ Bail when required packages are not loaded.
 
-local whichkey_ok, whichkey = pcall(require, 'which-key')
-if not whichkey_ok then return end
+local  ok, whichkey = pcall(require, 'which-key')
+if not ok then return end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Basic Setup
@@ -142,25 +142,28 @@ local mappings = {
   ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
 
   -- ------------------------------------------------------------------------- }}}
-  -- {{{ H - Help
+-- {{{ H - Help
 
   H = {
     name = "Help",
     H = { "<cmd>silent vert bo help<cr>", "Help in Vertical Split" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ L - LSP
+-- ------------------------------------------------------------------------- }}}
+-- {{{ L - LSP
 
   L = {
     name = "LSP",
     F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
+    H = { "<cmd>IlluminationToggle<cr>", "Toggle Doc HL" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols", },
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    c = { "<cmd>lua require('user.lsp').server_capabilities()<cr>", "Get Capabilities" },
     d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
     f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+    h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     j = { "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", "Next Diagnostic", },
     k = { "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", "Prev Diagnostic", },
@@ -170,11 +173,13 @@ local mappings = {
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
+    u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
+    v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
     w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics", },
   },
 
   -- ------------------------------------------------------------------------- }}}
-  -- {{{ P - Packer
+-- {{{ P - Packer
 
   p = {
     name = "Packer",
@@ -185,8 +190,18 @@ local mappings = {
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ S - SnipRun
+-- ------------------------------------------------------------------------- }}}
+-- {{{ R - Spectre
+
+  R = {
+    name = "spectRe",
+    f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+    r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+    w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+  },
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ S - SnipRun
 
   S = {
     name = "SnipRun",
@@ -199,82 +214,67 @@ local mappings = {
     x = { "<cmd>SnipTerminate<cr>", "Terminate" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ T - Treesitter
+-- ------------------------------------------------------------------------- }}}
+-- {{{ T - Treesitter
 
-  -- T = {
+-- T = {
   --   name = "Treesitter",
   --   h = { "<cmd>TSHighlightCapturesUnderCursor<cr>",c "Highlight" },
   --   p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
   -- },
 
   -- ------------------------------------------------------------------------- }}}
-  -- {{{ V - Linewise reselection of what you just pasted.
+-- {{{ V - Linewise reselection of what you just pasted.
 
   V = {
     name = "Reselection",
     V = { "V`]", "Pasted Block" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ a - Alpha
+-- ------------------------------------------------------------------------- }}}
+-- {{{ a - Alpha
 
   a = {
     name = "Alpha",
     a = { "<cmd>Alpha<cr>", "Display Alpha Page" },
+    r = { "<cmd>VtrReattachRunner<cr>", "Reattach runner" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ b - Buffers
+-- ------------------------------------------------------------------------- }}}
+-- {{{ b - Buffer adjustments.
 
   b = {
     name = "Buffers",
-    b = { "<cmd>lua require('user.bfs').open()<cr>", "List" },
-    d = { "<cmd>Bdelete!", "Delete" },
-    h = { "<cmd>vertical resize -1<cr>", "Vertical resize -1" },
-    j = { "<cmd>resize +1<cr>", "Horizontal resize +1" },
-    k = { "<cmd>resize -1<cr>", "Horizondal resize -1" },
-    l = { "<cmd>vertical resize +1<cr>", "Vertical resize -1" },
-    m = { [[<cmd>luafile $MYVIMRC<cr>]], "Load $MYVIMRC" },
-    x = { [[<cmd>w<cr><cmd>luafile %<cr>]], "Write & Luafile Buffer" },
-  },
+    h = { [[<cmd>vertical resize -1<cr>]], "Vertical resize -1." },
+    j = { [[<cmd>resize +1<cr>]], "Horizontal resize +1." },
+    k = { [[<cmd>resize -1<cr>]], "Horizontal resize -1." },
+    l = { [[<cmd>vertical resize +1<cr>]], "Vertical resize +1." },
+    x = { [[<cmd>w<cr><cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]], "Reload lua file." },
+},
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ c - Copy & Paste
+-- ------------------------------------------------------------------------- }}}
+-- {{{ c - Copy & Paste
 
   c = {
     name = "Copy & Paste",
     c = { 'ggVGg_"+y', "Yank buffer" },
+    r = { "<cmd>VtrClearRunner<cr>", "Clear runner" },
     v = { '"+p', "Paste buffer" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ d - Debug
-
-  -- d = {
-  --   name = "Debug",
-  --   O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
-  --   b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
-  --   c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-  --   i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
-  --   l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
-  --   o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
-  --   r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
-  --   u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
-  --   x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
-  -- },
-
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ f - Find
+-- ------------------------------------------------------------------------- }}}
+-- {{{ f - Find
 
   f = {
     name = "Find",
     C = { '<cmd>Telescope commands<cr>', 'Command' },
-    M = { '<cmd>Telescope man_pages<cr>', 'Man Pages' },
-    R = { '<cmd>Telescope registers<cr>', 'Registers' },
-    b = { '<cmd>Telescope buffers<cr>', "Buffers" },
     F = { '<cmd>Telescope media_files<cr>', 'Media files' },
-    c = { '<cmd>Telescope colorscheme<cr>', 'Colorscheme' },
+    M = { '<cmd>Telescope man_pages<cr>', 'Man Pages' },
+    O = { '<cmd>Telescope oldfiles<cr>', 'Recent File' },
+    R = { '<cmd>Telescope registers<cr>', 'Registers' },
+    S = { '<cmd>Telescope colorscheme<cr>', 'Colorscheme' },
+    b = { '<cmd>Telescope buffers<cr>', "Buffers" },
+    c = { "<cmd>VtrFlushCommand<cr>", "Flush runner" },
     d = { '<cmd>Telescope diagnostics<cr>', 'Diagnostics' },
     f = { '<cmd>Telescope find_files<cr>', "Find files" },
     g = { '<cmd>Telescope live_grep<cr>', 'Find Text' },
@@ -284,12 +284,12 @@ local mappings = {
     l = { '<cmd>Telescope resume<cr>', 'Last Search' },
     o = { '<cmd>Telescope oldfiles<cr>', 'Old files' },
     p = { '<cmd>Telescope find_files cwd=~/.local/share/nvim/site/pack/packer<cr>', '' },
-    r = { '<cmd>Telescope oldfiles<cr>', 'Recent File' },
+    r = { "<cmd>VtrFocusRunner<cr>", "Focus runner" },
     v = { '<cmd>Telescope find_files cwd=~/git/nvim<cr>', 'NeoVim' },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ g - git
+-- ------------------------------------------------------------------------- }}}
+-- {{{ g - git
 
   g = {
     name = "Git",
@@ -332,17 +332,18 @@ local mappings = {
     u = { "<cmd>call GenerateUmlDiagram()<cr>", "Status" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ k - KJV
+-- ------------------------------------------------------------------------- }}}
+-- {{{ k - KJV
 
   k = {
     name = "KJV",
     k = { [[^"kyg$<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]], "Get Verse" },
     f = { [[<cmd>v)3><cr>]], "Format Verse" },
+    r = { "<cmd>VtrKillRunner<cr>", "Kill runner" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ n - NvimTree
+-- ------------------------------------------------------------------------- }}}
+-- {{{ n - NvimTree
 
   n = {
     name = "NvimTree",
@@ -354,37 +355,35 @@ local mappings = {
     r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ o - Options
+-- ------------------------------------------------------------------------- }}}
+-- {{{ o - Options
 
   o = {
     name = "Options",
     h = { '<cmd>chechhealth<cr>', "Check health" },
-    l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
     o = { '<cmd>only<cr>', "Only visible." },
-    r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
-    s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
-    t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
-    w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
+    r = { [[<cmd>VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>]], "Open runner" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ r - Repace
+-- ------------------------------------------------------------------------- }}}
+-- {{{ r - Repace
 
   r = {
-    name = "Replace & Ruby",
+    name = "Runners",
     a = { [[ggdG<cmd>exec 'r!rake build:amber'<cr>]], "Build Amber" },
-    f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
     p = { [[ggdG<cmd>exec 'r!rubocop'<cr>]], "Rubocop" },
-    r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-    w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+    r = { "<cmd>VtrResizeRunner<cr>", "Resize runner" },
+    R = { "<cmd>ReorientRunner<cr>", "Reorient runner" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ s - Split & Sorts
+-- ------------------------------------------------------------------------- }}}
+-- {{{ s - Split & Sorts
 
   s = {
     name = "Split & Sorts",
+    c = { "<cmd>VtrSendCommandToRunner<cr>", "Send command" },
+    f = { "<cmd>VtrSendFile!<cr>", "Send command" },
+    l = { "<cmd>VtrSendLinesToRunner<cr>", "Send command" },
     h = { "<cmd>split<cr>", "Horizonal Split" },
     v = { "<cmd>vsplit<cr>", "Vertical Split" },
 
@@ -392,8 +391,9 @@ local mappings = {
     s = { "0v)k$:sort<cr>", "Acronym Sort" },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ t - Terminal & Tmux
+-- ------------------------------------------------------------------------- }}}
+-- {{{ t - Terminal & Tmux
+
   t = {
     name = "Terminal & Tmux",
 
@@ -450,8 +450,8 @@ local mappings = {
     },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ w - Wiki &  Whitespac
+-- ------------------------------------------------------------------------- }}}
+-- {{{ w - Wiki &  Whitespa-c
 
   w = {
     name = "Whitespace",
@@ -466,8 +466,8 @@ local mappings = {
     z = { '<cmd>w<cr>', 'Write File' },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ End: mappings
+-- ------------------------------------------------------------------------- }}}
+-- {{{ End: mappings
 
 }
 
