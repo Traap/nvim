@@ -68,9 +68,14 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ LSP
 
-  use { 'neovim/nvim-lspconfig' }
-  use { 'williamboman/nvim-lsp-installer' }
-  use { 'jose-elias-alvarez/null-ls.nvim' }
+  use {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+    'jose-elias-alvarez/null-ls.nvim',
+    'jayp0521/mason-null-ls.nvim',
+  }
+
   use { 'lewis6991/gitsigns.nvim' }
   use { 'kosayoda/nvim-lightbulb',
     requires = 'antoinemadec/FixCursorHold.nvim',
