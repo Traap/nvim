@@ -4,7 +4,7 @@ local  ok, whichkey = pcall(require, 'which-key')
 if not ok then return end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Basic Setup
+-- {{{ Baic Setup
 
 local setup = {
   plugins = {
@@ -107,35 +107,12 @@ local opts = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ m_opts
-
-local m_opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<m>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ m_mappings
-
-local m_mappings = {
-  -- a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
-  -- h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
-  -- j = { "<cmd>BookmarkNext<cr>", "Next" },
-  -- k = { "<cmd>BookmarkPrev<cr>", "Prev" },
-  -- m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
-  -- s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
-  -- u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
-  x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
-}
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Begin: mappings
 
 local mappings = {
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ leader + 1 key
 
   [" "] = { "<cmd>nohlsearch<cr>", "No HL" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
@@ -191,39 +168,6 @@ local mappings = {
   },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ R - Spectre
-
-  R = {
-    name = "spectRe",
-    f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-    r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-    w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
-  },
-
--- ------------------------------------------------------------------------- }}}
--- {{{ S - SnipRun
-
-  S = {
-    name = "SnipRun",
-    c = { "<cmd>SnipClose<cr>", "Close" },
-    f = { "<cmd>%SnipRun<cr>", "Run File" },
-    i = { "<cmd>SnipInfo<cr>", "Info" },
-    m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
-    r = { "<cmd>SnipReset<cr>", "Reset" },
-    t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
-    x = { "<cmd>SnipTerminate<cr>", "Terminate" },
-  },
-
--- ------------------------------------------------------------------------- }}}
--- {{{ T - Treesitter
-
--- T = {
-  --   name = "Treesitter",
-  --   h = { "<cmd>TSHighlightCapturesUnderCursor<cr>",c "Highlight" },
-  --   p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
-  -- },
-
-  -- ------------------------------------------------------------------------- }}}
 -- {{{ V - Linewise reselection of what you just pasted.
 
   V = {
@@ -333,13 +277,40 @@ local mappings = {
   },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ k - KJV
+-- {{{ k - kill runner
 
   k = {
-    name = "KJV",
+    name = "Tmux",
     k = { [[^"kyg$<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]], "Get Verse" },
-    f = { [[<cmd>v)3><cr>]], "Format Verse" },
     r = { "<cmd>VtrKillRunner<cr>", "Kill runner" },
+  },
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ l - VimTex
+
+  l = {
+    name = "VimTex",
+    C = { "<Plug>(vimtex-clean-full)", "Full Clean" },
+    G = { "<Plug>(vimtex-status-all)", "Status All" },
+    I = { "<Plug>(vimtex-info-full)", "Info full" },
+    K = { "<Plug>(vimtex-stop-all)", "Stop all" },
+    L = { "<Plug>(vimtex-compile-selected)", "Compile selected file" },
+    T = { "<Plug>(vimtex-toc-toggle)", "Toggle TOC" },
+    X = { "<Plug>(vimtex-reload-state)", "Reload state" },
+    a = { "<Plug>(vimtex-context-menu)", "Context menu" },
+    c = { "<Plug>(vimtex-clean-full)", "Clean" },
+    e = { "<Plug>(vimtex-error)", "Errors" },
+    g = { "<Plug>(vimtex-status)", "Status" },
+    i = { "<Plug>(vimtex-info)", "Info" },
+    k = { "<Plug>(vimtex-stop)", "Stop" },
+    l = { "<Plug>(vimtex-compile)", "Compile" },
+    m = { "<Plug>(vimtex-impas-list)", "imaps list" },
+    o = { "<Plug>(vimtex-compile-output)", "Compile output" },
+    q = { "<Plug>(vimtex-log)", "Log" },
+    s = { "<Plug>(vimtex-toggle-main)", "Toggle Main" },
+    t = { "<Plug>(vimtex-toc_open)", "Open TOC" },
+    v = { "<Plug>(vimtex-view)", "View" },
+    x = { "<Plug>(vimtex-reload)", "Reload" },
   },
 
 -- ------------------------------------------------------------------------- }}}
@@ -347,11 +318,7 @@ local mappings = {
 
   n = {
     name = "NvimTree",
-    b = { "<cmd>ToggleTransparancy<cr>", "Toggle Transparency" },
     f = { "<cmd>NvimTreeFindFile<cr>", "Find file in Tree" },
-    k = { "<cmd>PickTheme<cr>", "Pick Theme" },
-    n = { "<cmd>NextTheme<cr>", "Next Theme" },
-    p = { "<cmd>PrevTheme<cr>", "Prev Theme" },
     r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
   },
 
@@ -451,7 +418,7 @@ local mappings = {
   },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ w - Wiki &  Whitespa-c
+-- {{{ w - Wiki &  Whitespace
 
   w = {
     name = "Whitespace",
@@ -472,11 +439,76 @@ local mappings = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ vopts
+-- {{{ gn_opts
 
-local vopts = {
-  mode = "v", -- VISUAL mode
-  prefix = "<leader>",
+local gn_opts = {
+	mode = "n", -- NORMAL mode
+	prefix = "g",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
+local gv_opts = {
+	mode = "v", -- NORMAL mode
+	prefix = "g",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ gn_mappings and gv_mappings
+
+local gn_mappings = {
+  k = {[[0mMvg_"ky :exec "r!kjv -b -w 65 -d" getreg("k")<cr>]], "Get KJV verse" },
+  f = { [[<cmd>v)3><cr>]], "Format Verse" },
+}
+
+local gv_mappings = {
+  k = {[["ky :exec "r!kjv -b -w 65 -d" getreg("k")<cr>]], "Get KJV verse" },
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ hn_opts
+
+local hn_opts = {
+	mode = "n", -- NORMAL mode
+	prefix = "<leader>",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
+local hv_opts = {
+	mode = "v", -- NORMAL mode
+	prefix = "<leader>",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ hn_mappings and hv_mappings
+
+local hn_mappings = {
+	["hh"] = {[[<cmd>vert bo help<cr>]], "Help in vertical split" },
+}
+
+local hv_mappings = {
+	["hh"] = {[["ky :exec "vert bo help" getreg("k")<cr>]], "Help vertical lookup." },
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ m_opts
+
+local m_opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "<m>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
@@ -484,11 +516,17 @@ local vopts = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ vmappings
+-- {{{ m_mappings
 
-local vmappings = {
-  ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', "Comment" },
-  s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
+local m_mappings = {
+  -- a = { "<cmd>BookmarkAnnotate<cr>", "Annotate" },
+  -- h = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
+  -- j = { "<cmd>BookmarkNext<cr>", "Next" },
+  -- k = { "<cmd>BookmarkPrev<cr>", "Prev" },
+  -- m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
+  -- s = { "<cmd>BookmarkShowAll<cr>", "Prev" },
+  -- u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
+  x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -496,7 +534,10 @@ local vmappings = {
 
 whichkey.setup(setup)
 whichkey.register(mappings, opts)
-whichkey.register(vmappings, vopts)
+whichkey.register(gn_mappings, gn_opts)
+whichkey.register(gv_mappings, gv_opts)
+whichkey.register(hn_mappings, hn_opts)
+whichkey.register(hv_mappings, hv_opts)
 whichkey.register(m_mappings, m_opts)
 
 -- ------------------------------------------------------------------------ }}}

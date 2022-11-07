@@ -138,6 +138,7 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Utility
 
+  use { 'ThePrimeagen/harpoon' }
   use { 'ekickx/clipboard-image.nvim' }
   use { 'goolord/alpha-nvim' }
   use { 'iamcco/markdown-preview.nvim' }

@@ -1,6 +1,9 @@
--- {{{ Alias To vim APis.
+-- {{{ Leader and maplocal
 
 local keymap = require('traap.utility').keymap
+
+vim.g.mapleader = [[ ]]
+vim.g.maplocalleader = [[,]]
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Items I have not successfully moved into which-key.

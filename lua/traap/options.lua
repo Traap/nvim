@@ -5,12 +5,6 @@ local cmd = vim.cmd
 local opt = vim.opt
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Map leader to space
-
-vim.g.mapleader = [[ ]]
-vim.g.maplocalleader = [[,]]
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Alphabetical listing of settings I like.
 
 -- opt.background = "dark"
