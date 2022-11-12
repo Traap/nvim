@@ -67,4 +67,8 @@ keymap('n', '<leader>J', "myvipJ`ygq<cr>")
 -- Toggle [in]visible characters.
 keymap('n', '<leader>i', '<cmd>set list!<cr>')
 
+-- Stay in indent mode.
+keymap('v', '<', '<gv')
+keymap('v', '>', '>gv')
+
 -- ------------------------------------------------------------------------- }}}
