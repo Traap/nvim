@@ -5,11 +5,6 @@ require 'traap.bootstrap'
 require 'traap.plugins'
 
 -- Set impatient.
-local ok, b16 = pcall(require, 'impatient')
-if ok then
-  b16.enable_profile()
-end
-
 require 'traap.utility'
 require 'traap.options'
 require 'traap.cmp'

@@ -61,6 +61,12 @@ if o7 then
   end
 end
 
+local o8, impatient = pcall(require, 'impatient')
+if o8 then
+  impatient .enable_profile()
+end
+
+
 vim.g.transparent_enable = true
 vim.api.nvim_create_autocmd('ColorScheme', { command = 'highlight clear Folded'})
 
