@@ -50,6 +50,17 @@ if o6 then
   })
 end
 
+local o7, npairs = pcall(require, 'nvim-autopairs')
+if o7 then
+  npairs.setup()
+
+  local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+  local ok, cmp pcall(require, 'cmp')
+  if ok then
+    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
+  end
+end
+
 vim.g.transparent_enable = true
 vim.api.nvim_create_autocmd('ColorScheme', { command = 'highlight clear Folded'})
 
