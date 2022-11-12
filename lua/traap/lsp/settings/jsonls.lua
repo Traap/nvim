@@ -1,4 +1,13 @@
--- {{{ Find more schemas here: https://www.schemastore.org/json/
+-- {{{ Load default schemas
+
+local default_schemas = nil
+local ok, jsonls_settings = pcall(require, "nlspsettings.jsonls")
+if ok then
+  default_schemas = jsonls_settings.get_default_schemas()
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Find more schemas here: https://www.schemastore.org/json/status_
 
 local schemas = {
   {

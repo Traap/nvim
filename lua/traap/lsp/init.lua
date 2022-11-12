@@ -1,11 +1,6 @@
-local  status_ok, _ = pcall(require, 'lspconfig')
-if not status_ok then return end
+local  ok, _ = pcall(require, 'lspconfig')
+if not ok then return end
 
-require('mason').setup()
-require('mason-lspconfig').setup()
-require('null-ls').setup()
-require('mason-null-ls').setup()
-
-require 'traap.lsp.lsp-signature'
--- require 'traap.lsp.lsp-installer'
-require('traap.lsp.handlers').setup()
+require 'traap.lsp.mason'
+require ('traap.lsp.handlers').setup()
+require 'traap.lsp.null-ls'

@@ -3,10 +3,8 @@
 -- https://github.com/hackorum/nfs
 -- https://github.com/LunarVim/Neovim-From-Scratch
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-  return
-end
+local  ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not ok then return end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Metatable M
@@ -21,57 +19,38 @@ M.setup = function()
   local signs = require('traap.config').diagnostic_signs
 
   for _, sign in pairs(signs) do
-    local name = sign.name
-    local icon = sign.text
-    vim.fn.sign_define(name, { text = icon, numhl = name, texthl = name })
+    vim.fn.sign_define(sign.name, {
+      texthl = sign.name,
+      text = sign.text,
+      numhl = ""
+    })
   end
 
   local config = {
     float = {
-      border = 'single',
-      focusable = false,
+      border = 'rounded',
+      focusable = true,
       header = '',
       prefix = '',
       source = 'always',
       style = 'minimal',
     },
     severity_sort = true,
-    signs = true,
+    signs = { active = signs},
     underline = true,
     update_in_insert = true,
-    virtual_text = {
-        prefix = "",
-    },
+    virtual_text = false,
   }
 
   vim.diagnostic.config(config)
 
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-    vim.lsp.handlers.hover, { border = 'single', }
+    vim.lsp.handlers.hover, { border = 'rounded', }
   )
 
   vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-    vim.lsp.handlers.signature_help, { border = 'single', }
+    vim.lsp.handlers.signature_help, { border = 'rounded', }
   )
-end
-
--- ------------------------------------------------------------------------- }}}
--- {{{ lsp_highlight_document.
-
-local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]],
-      false
-    )
-  end
 end
 
 -- ------------------------------------------------------------------------- }}}
@@ -110,19 +89,27 @@ end
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
-    client.server_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+  end
+
+  if client.name == "sumneko_lua" then
+    client.server_capabilities.documentFormattingProvider = false
   end
 
   lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  local status_ok, illuminate = pcall(require, "illuminate")
+  if not status_ok then
+    return
+  end
+  illuminate.on_attach(client)
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ capabilities
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Return Metatable M
