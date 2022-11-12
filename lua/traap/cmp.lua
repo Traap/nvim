@@ -9,8 +9,6 @@
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Alias to vim APis and other required packages.
 
-local vim = vim
-
 local  cmp_ok, cmp = pcall(require, 'cmp')
 if not cmp_ok then return end
 
@@ -86,8 +84,6 @@ local mapping = {
       luasnip.expand()
     elseif luasnip.expand_or_jumpable() then
       luasnip.expand_or_jump()
-    -- elseif has_words_before() then
-    --   cmp.complete()
     elseif check_backspace() then
       fallback()
     else
