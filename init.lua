@@ -1,4 +1,4 @@
--- Bootstrap Packer when needed. load utilty functions, and plugins.
+-- Initial configuration.
 require 'traap.bootstrap'
 require 'traap.utility'
 require 'traap.options'
