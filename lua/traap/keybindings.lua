@@ -5,10 +5,9 @@ local keymap = require('traap.utility').keymap
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[,]]
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Items I have not successfully moved into which-key.
 
--- Easy align
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Easy align
 
 vim.cmd([[
   xmap ga <Plug>(EasyAlign)
@@ -19,23 +18,11 @@ vim.cmd([[
   nmap <leader>2 gaip=<space>
 ]])
 
--- Move to $GITHOME
-keymap('n', '<c-g>', '<cmd>cd $GITHOME<cr>')
-
--- Quit now
-keymap('n', '<c-q>', '<cmd>qall!<cr>')
-
--- sxhkd filetype.
-keymap('n', '<c-s>', '<cmd>set filetype=sxhkd<cr>')
+-- ------------------------------------------------------------------------- }}}
+-- {{{ General mappings.
 
 -- Delete the current line.
 keymap('n', '-', 'dd')
-
--- Toggle NvimTree
-keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>')
-
--- Visual yank
-keymap('v', '<leader>cc', '"+y')
 
 -- Select (charwise) the contents of the current line, excluding indentation.
 keymap('n', 'vv', '^vg_')
@@ -47,6 +34,22 @@ keymap('n', '<leader>V', "V`]")
 
 -- Save all files.
 keymap('n', '<F2>', '<cmd>wall<cr>')
+
+-- Delete current buffer.
+keymap('n', 'Q', '<cmd>Bdelete!<cr>')
+
+-- Toggle [in]visible characters.
+keymap('n', '<leader>i', '<cmd>set list!<cr>')
+
+-- Stay in indent mode.
+keymap('v', '<', '<gv')
+keymap('v', '>', '>gv')
+
+-- Visual yank
+keymap('v', '<leader>cc', '"+y')
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Folding commands.
 
 -- Author: Karl Yngve Lervåg
 --    See: https://github.com/lervag/dotnvim
@@ -64,11 +67,19 @@ keymap('n', 'zk', 'zckzOzz')
 keymap('n', 'J', "mzJ`z")
 keymap('n', '<leader>J', "myvipJ`ygq<cr>")
 
--- Toggle [in]visible characters.
-keymap('n', '<leader>i', '<cmd>set list!<cr>')
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Shell commands.
 
--- Stay in indent mode.
-keymap('v', '<', '<gv')
-keymap('v', '>', '>gv')
+-- Execute the current line of test as a shell command.
+keymap('n', '<localleader>E', [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
+keymap('v', '<localleader>E', [["ky :exec "r!" getreg("k")<cr>]])
+
+-- ------------------------------------------------------------------------- }}}
+-- -- {{{ Control keys
+
+keymap('n', '<c-g>', '<cmd>cd $GITHOME<cr>')
+keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>')
+keymap('n', '<c-q>', '<cmd>qall!<cr>')
+keymap('n', '<c-s>', '<cmd>set filetype=sxhkd<cr>')
 
 -- ------------------------------------------------------------------------- }}}
