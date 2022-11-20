@@ -12,7 +12,6 @@ My *100% Pure Virgin Coconut Oil* neovim configuration done with Lua.
 
 I install or reset NeoVim using [resetNeoVim](https://github.com/Traap/dotfiles/blob/master/bin/resetNeoVim) which does the following.
 
-
 1. Force removes these folders:
   1. ~/.cache/nvim
   2. ~/.config/nvim
@@ -23,3 +22,8 @@ I install or reset NeoVim using [resetNeoVim](https://github.com/Traap/dotfiles/
 4. Creates ~/.config/nvim when needed.
 5. Establishes a symbolic link between ~/git/nvim and ~/.config/nvim
 6. Starts nvim to load plugins.
+
+### LunarVim Configuration
+This repository and [lvim](https://github.com/traap/lvim) are similar.  I use LunarVim
+defualts where they make since to me and do not conflict too
+much with configurations done here.
