@@ -1,8 +1,8 @@
--- {{{ User Configuration items that are reusable through NeoVim.
+-- {{{ Constants Configuration items that are reusable through NeoVim.
 
-local User = {}
+local Constants = {}
 
-User = {
+Constants = {
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ language server names.
@@ -100,9 +100,9 @@ visual_opts = {
 },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Return User table.
+-- {{{ Return Constants table.
 }
 
-return User
+return Constants
 
 -- ------------------------------------------------------------------------- }}}

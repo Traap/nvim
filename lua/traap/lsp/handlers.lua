@@ -16,7 +16,7 @@ local M = {}
 
 M.setup = function()
 
-  local signs = require('traap.config').diagnostic_signs
+  local signs = require('traap.constants').diagnostic_signs
 
   for _, sign in pairs(signs) do
     vim.fn.sign_define(sign.name, {

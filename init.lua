@@ -1,6 +1,6 @@
 -- Initial configuration.
 require 'traap.bootstrap'
-require 'traap.utility'
+require 'traap.functions'
 require 'traap.options'
 require 'traap.plugins'
 
