@@ -12,7 +12,7 @@ if not ok then return end
 local M = {}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ M.setup
+-- {{{ M.setup - signs,config, hover,and signature help.
 
 M.setup = function()
 
@@ -76,7 +76,7 @@ local function lsp_keymaps(bufnr)
   keymap(bufnr, 'n', 'gl',         [[<cmd>lua vim.diagnostic.open_float()<CR>]], opts)
 
   keymap(bufnr, 'n', 'gr',         [[<cmd>lua vim.lsp.buf.references()<CR>]], opts)
-
+  keymap(bufnr, 'n', 'gR',         [[<cmd>lua require('telescope.builtin').lsp_references()<CR>]], opts)
   keymap(bufnr, 'n', '[d',         [[<cmd>lua vim.diagnostic.goto_prev()<CR>]], opts)
   keymap(bufnr, 'n', ']d',         [[<cmd>lua vim.diagnostic.goto_next()<CR>]], opts)
 
@@ -97,6 +97,7 @@ M.on_attach = function(client, bufnr)
   end
 
   lsp_keymaps(bufnr)
+
   local status_ok, illuminate = pcall(require, "illuminate")
   if not status_ok then
     return

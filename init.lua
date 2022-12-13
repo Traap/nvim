@@ -1,6 +1,7 @@
 -- Initial configuration.
 require 'traap.bootstrap'
 require 'traap.functions'
+require 'traap.customize'
 require 'traap.options'
 require 'traap.plugins'
 
@@ -21,14 +22,14 @@ require 'traap.lualine'
 require 'traap.surround'
 require 'traap.telescope'
 require 'traap.transparent'
-require 'traap.tree'
+require 'traap.nvim-tree'
 require 'traap.treesitter'
 require 'traap.trouble'
 require 'traap.web-devicons'
 
 -- Take control of all keybindings.
 require 'traap.keybindings'
-require 'traap.whichkey'
+require 'traap.which-key'
 
 -- zymurgy : The last word in 1980 Webster's new collegiate dictionary.
 require 'traap.zymurgy'

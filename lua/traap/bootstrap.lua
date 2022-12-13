@@ -17,13 +17,14 @@ else
   vim.g.nvim_bootstrapped = 0
 end
 
-
--- Auto compile when there are changes in plugins.lua
-vim.cmd [[
-  augroup PackerConfig
-    autocmd!
-    autocmd BufWritePost /home/traap/git/nvim/lua/traap/plugins/init.lua source <afile> | PackerSync
-  augroup end
-]]
+-- Automatically source and re-compile packer whenever you save this init.lua
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd(
+  'BufWritePost', {
+    command = 'source <afile> | PackerSync',
+    group = packer_group,
+    pattern = vim.fn.expand '$MYVIMRC',
+    }
+)
 
 -- ------------------------------------------------------------------------- }}}

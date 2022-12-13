@@ -7,6 +7,18 @@ local  nvim_tree_ok, nvim_tree = pcall(require, 'nvim-tree')
 if not nvim_tree_ok then return end
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Use defaults or customzie this plugin.
+
+local customize = require('traap.customize').nvim_tree
+if not customize then
+  nvim_tree.setup{
+  filters = { custom = { '.git' }, },
+  view = { side = 'right' }
+  }
+  return
+end
+
+-- --------------------------------------------------------------------------}}}
 -- {{{ Define: actions
 
 local actions     = {

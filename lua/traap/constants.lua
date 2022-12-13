@@ -1,4 +1,4 @@
--- {{{ Constants Configuration items that are reusable through NeoVim.
+-- {{{ Constants Configuration itjkjems that are reusable through NeoVim.
 
 local Constants = {}
 
@@ -12,16 +12,16 @@ language_servers = {
   'bashls',
   'cssls',
   'diagnosticls',
+  'emmet_ls',
   'html',
   'jsonls',
-  'emmet_ls',
   'pyright',
-  -- 'rust',
-  'texlab',
-  -- 'tsserver',
+  'rust',
   'solargraph',
-  'yamlls',
   'sumneko_lua',
+  'texlab',
+  'tsserver',
+  'yamlls',
 },
 
 -- ------------------------------------------------------------------------- }}}
@@ -64,12 +64,12 @@ lsp_kind_icons = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Diagnostics Signs.
 
-  diagnostic_signs = {
-    {name = 'DiagnosticSignError', text = ''},
-    {name = 'DiagnosticSignHint',  text = ''},
-    {name = 'DiagnosticSignInfo',  text = ''},
-    {name = 'DiagnosticSignWarn',  text = ''},
-  },
+diagnostic_signs = {
+  {name = 'DiagnosticSignError', text = ''},
+  {name = 'DiagnosticSignHint',  text = ''},
+  {name = 'DiagnosticSignInfo',  text = ''},
+  {name = 'DiagnosticSignWarn',  text = ''},
+},
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Display boarders

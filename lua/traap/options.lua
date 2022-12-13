@@ -1,6 +1,5 @@
 -- {{{ Alphabetical listing of settings I like.
 
-
 local options = {
   clipboard = 'unnamedplus',
   colorcolumn = '+1',

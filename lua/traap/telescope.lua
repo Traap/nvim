@@ -4,6 +4,15 @@ local  telescope_ok, telescope = pcall(require, 'telescope')
 if not telescope_ok then return end
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Use defaults or customzie this plugin.
+
+local customize = require('traap.customize').telescope
+if not customize then
+  telescope.setup()
+  return
+end
+
+-- --------------------------------------------------------------------------}}}
 -- {{{ Setup telescope.
 
 local actions = require 'telescope.actions'
