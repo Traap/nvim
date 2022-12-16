@@ -60,7 +60,10 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File manager
 
-  use { 'kyazdani42/nvim-tree.lua' }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = { 'ahmedkhalf/project.nvim' },
+  }
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' }

@@ -186,14 +186,14 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     { name = 'path' }
   },{
-    { name = 'cmdline', keyword_length = 4, max_item_count = 10}
+    { name = 'cmdline', keyword_length = 4, max_item_count = 50}
   })
 })
 
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    {name = 'buffer', max_item_count = 10}
+    {name = 'buffer', max_item_count = 50}
   }
 })
 

@@ -262,8 +262,10 @@ nvim_tree.setup {
   update_cwd                         = true,
   system_open                        = system_open,
   update_focused_file                = update_focused_file,
-  view                               = view,
   renderer                           = renderer,
+  respect_buf_cwd                    = true,
+  sync_root_with_cwd                 = true,
+  view                               = view,
 }
 
 -- ------------------------------------------------------------------------- }}}
