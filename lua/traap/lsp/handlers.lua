@@ -1,11 +1,3 @@
--- {{{ Credits
-
--- https://github.com/hackorum/nfs
--- https://github.com/LunarVim/Neovim-From-Scratch
-
-local  ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not ok then return end
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Metatable M
 
@@ -106,11 +98,15 @@ M.on_attach = function(client, bufnr)
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ capabilities
+-- {{{ Capabilities
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+
+local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if ok then
+  M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Return Metatable M
