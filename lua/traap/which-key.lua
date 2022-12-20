@@ -420,23 +420,11 @@ local mappings = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ gn_opts
 
-local gn_opts = {
-	mode = "n", -- NORMAL mode
-	prefix = "g",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
-}
+local gn_opts = require('traap.constants').normal_opts
+gn_opts.prefix = 'g'
 
-local gv_opts = {
-	mode = "v", -- NORMAL mode
-	prefix = "g",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
-}
+local gv_opts = require('traap.constants').visual_opts
+gv_opts.prefix = 'g'
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ gn_mappings and gv_mappings
@@ -453,23 +441,11 @@ local gv_mappings = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ hn_opts
 
-local hn_opts = {
-	mode = "n", -- NORMAL mode
-	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
-}
+local hn_opts = require('traap.constants').normal_opts
+hn_opts.prefix = '<leader>'
 
-local hv_opts = {
-	mode = "v", -- NORMAL mode
-	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
-}
+local hv_opts = require('traap.constants').visual_opts
+hv_opts.prefix = '<leader>'
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ hn_mappings and hv_mappings
@@ -483,27 +459,14 @@ local hv_mappings = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ m_opts
-
-local m_opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<m>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ m_mappings
 
-local m_mappings = {
-  [","] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Harpoon Prev" },
-  ["."] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
-  [";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
-  m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
-  s = { "<cmd>Telescope harpoon marks<cr>", "Search Files" },
-  v = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon" },
+local harpoon_mappings = {
+  ['[h'] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Harpoon Prev" },
+  [']h'] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
+  ['h;'] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
+  ['hm'] = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
+  ['hs'] = { "<cmd>Telescope harpoon marks<cr>", "Search Files" },
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -515,6 +478,6 @@ whichkey.register(gn_mappings, gn_opts)
 whichkey.register(gv_mappings, gv_opts)
 whichkey.register(hn_mappings, hn_opts)
 whichkey.register(hv_mappings, hv_opts)
-whichkey.register(m_mappings, m_opts)
+whichkey.register(harpoon_mappings)
 
 -- ------------------------------------------------------------------------ }}}
