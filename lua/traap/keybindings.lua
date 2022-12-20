@@ -48,6 +48,9 @@ keymap('v', '>', '>gv')
 -- Visual yank
 keymap('v', '<leader>cc', '"+y')
 
+-- Obfuscate
+keymap('n', '<f3>', 'mmggg?G`m')
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
 
