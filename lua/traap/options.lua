@@ -1,6 +1,7 @@
 -- {{{ Alphabetical listing of settings I like.
 
 local options = {
+  breakindent = true,
   clipboard = 'unnamedplus',
   colorcolumn = '+1',
   complete = { '.', 'w', 'b', 'u', 't', 'i', 'kspell' },
@@ -36,6 +37,7 @@ local options = {
   termguicolors = true,
   timeoutlen = 500,
   textwidth = 80,
+  updatetime = 250,
   virtualedit = { 'block' },
   wildmode = { 'list', 'longest' },
   wrap = false,
@@ -50,12 +52,14 @@ vim.cmd([[filetype plugin indent on]])
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Highlight on yank
 
-vim.cmd([[
-  augroup YankGroup
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{on_visual = false}
-  augroup END
-]])
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Bullets

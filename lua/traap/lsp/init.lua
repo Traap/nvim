@@ -1,3 +1,4 @@
+-- require 'traap.lsp.lsp-zero'
 require 'traap.lsp.mason'
 require ('traap.lsp.handlers').setup()
 require 'traap.lsp.null-ls'

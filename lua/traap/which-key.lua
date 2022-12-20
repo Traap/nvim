@@ -276,6 +276,7 @@ local mappings = {
     p = { '<cmd>Telescope find_files cwd=~/.local/share/nvim/site/pack/packer<cr>', '' },
     r = { "<cmd>VtrFocusRunner<cr>", "Focus runner" },
     v = { '<cmd>Telescope find_files cwd=~/git/nvim<cr>', 'NeoVim' },
+    w = { '<cmd>Telescope grep_string<cr>', 'Find word'},
   },
 
 -- ------------------------------------------------------------------------- }}}

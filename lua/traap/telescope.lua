@@ -110,7 +110,7 @@ local extensions = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Telescope setup.
 
-telescope.setup({
+telescope.setup ({
   defaults = defaults,
   extensions = extensions,
 })

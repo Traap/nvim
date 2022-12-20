@@ -6,20 +6,26 @@ if not mok then return end
 local  aok, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if not aok then return end
 
+
 local  lok, lspconfig = pcall(require, 'lspconfig')
 if not lok then return end
+
+local  fok, fidget = pcall(require, 'fidget')
+if not fok then return end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ LSP servers to install
 
 local servers = {
+  'eslint',
   'jsonls',
   'omnisharp',
   'pyright',
   'solargraph',
   'sumneko_lua',
   'texlab',
-  'yamlls'
+  'tsserver',
+  'yamlls',
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -69,4 +75,5 @@ for _, server in pairs(servers) do
   lspconfig[server].setup(opts)
 end
 
+fidget.setup()
 -- ------------------------------------------------------------------------- }}}
