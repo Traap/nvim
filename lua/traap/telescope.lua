@@ -18,19 +18,12 @@ end
 local actions = require'telescope.actions'
 
 local mappings = {
-  i = {
-    ["<C-j>"] = actions.move_selection_next,
-    ["<C-k>"] = actions.move_selection_previous,
-  },
-
   n = {
     ["<esc>"] = actions.close,
     ["<CR>"]  = actions.select_default,
 
     ["<C-x>"] = actions.select_horizontal,
     ["<C-v>"] = actions.select_vertical,
-    ["<C-j>"] = actions.move_selection_next,
-    ["<C-k"]  = actions.move_selection_previous,
   },
 }
 

@@ -10,9 +10,6 @@ if not aok then return end
 local  lok, lspconfig = pcall(require, 'lspconfig')
 if not lok then return end
 
-local  fok, fidget = pcall(require, 'fidget')
-if not fok then return end
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ LSP servers to install
 
@@ -75,5 +72,4 @@ for _, server in pairs(servers) do
   lspconfig[server].setup(opts)
 end
 
-fidget.setup()
 -- ------------------------------------------------------------------------- }}}
