@@ -25,7 +25,6 @@ return packer.startup(function(use)
 
   use { 'wbthomason/packer.nvim' }
   use { 'nvim-lua/popup.nvim' }
-  use { 'nvim-lua/plenary.nvim' }
   use { 'lewis6991/impatient.nvim' }
   use { 'folke/trouble.nvim' }
 
@@ -37,18 +36,39 @@ return packer.startup(function(use)
   use { 'mechatroner/rainbow_csv' }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Completion
+-- {{{ Easy LSP with lsp-zero
 
-  use { 'hrsh7th/nvim-cmp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-calc' }
-  use { 'hrsh7th/cmp-cmdline' }
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-nvim-lsp-document-symbol' }
-  use { 'hrsh7th/cmp-nvim-lua' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'onsails/lspkind-nvim' }
-  use { 'f3fora/cmp-spell' }
+  use {
+    'neovim/nvim-lspconfig',
+    requires = {
+      -- LSP Support
+      {'williamboman/mason.nvim'},
+      {'williamboman/mason-lspconfig.nvim'},
+      {'jose-elias-alvarez/null-ls.nvim'},
+      {'jayp0521/mason-null-ls.nvim'},
+
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-calc' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-path' },
+      { 'onsails/lspkind-nvim' },
+      { 'f3fora/cmp-spell' },
+
+      -- Useful status updates for LSP
+     { 'j-hui/fidget.nvim' },
+
+      -- Snippets
+      { 'L3MON4D3/LuaSnip'},
+      { 'rafamadriz/friendly-snippets'},
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'benfowler/telescope-luasnip.nvim' },
+    }
+  }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ JuneGunn Easyalign and fzf.
@@ -60,21 +80,18 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File manager
 
-  use { 'kyazdani42/nvim-tree.lua' }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = { 'ahmedkhalf/project.nvim' },
+  }
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
--- ------------------------------------------------------------------------- }}}
--- {{{ LSP
 
-  use {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    'neovim/nvim-lspconfig',
-    'jose-elias-alvarez/null-ls.nvim',
-    'jayp0521/mason-null-ls.nvim',
-  }
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Git signs and lightbulb.
 
   use { 'lewis6991/gitsigns.nvim' }
   use { 'kosayoda/nvim-lightbulb',
@@ -97,7 +114,7 @@ return packer.startup(function(use)
   use { 'tpope/gem-browse' }
   use { 'tpope/vim-bundler' }
   use { 'tpope/vim-characterize' }
-  use { 'tpope/vim-commentary' }
+  -- use { 'tpope/vim-commentary' }
   use { 'tpope/vim-dispatch' }
   use { 'tpope/vim-endwise' }
   use { 'tpope/vim-eunuch' }
@@ -120,13 +137,29 @@ return packer.startup(function(use)
     requires = {
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'nvim-telescope/telescope-media-files.nvim' },
+      { 'nvim-lua/plenary.nvim' },
     }
   }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Treesitter
 
-  use { 'nvim-treesitter/nvim-treesitter' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
+  }
+
+  use {
+    'nvim-treesitter/playground',
+    after = 'nvim-treesitter',
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Tmux
@@ -149,6 +182,7 @@ return packer.startup(function(use)
   use { 'vim-utils/vim-most-minimal-folds' }
   use { 'windwp/nvim-autopairs' }
   use { 'xiyaowong/nvim-transparent' }
+  use { 'numToStr/Comment.nvim' }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Notification.
@@ -174,14 +208,6 @@ return packer.startup(function(use)
 -- {{{ Which-Key
 
   use { 'folke/which-key.nvim' }
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Snippets
-
-  use { 'L3MON4D3/LuaSnip' }
-  use { 'rafamadriz/friendly-snippets' }
-  use { 'saadparwaiz1/cmp_luasnip' }
-  use { 'benfowler/telescope-luasnip.nvim' }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Zulu : Reuse Traap's vim bundles last.

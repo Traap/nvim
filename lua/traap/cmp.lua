@@ -59,8 +59,8 @@ local kind_icons = require('traap.constants').lsp_kind_icons
 -- {{{ Define: keystroke mappings
 
 local mapping = {
-  ["<C-j>"] = cmp.mapping.select_next_item(),
-  ["<C-k>"] = cmp.mapping.select_prev_item(),
+  -- ["<C-j>"] = cmp.mapping.select_next_item(),
+  -- ["<C-k>"] = cmp.mapping.select_prev_item(),
 
   ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
   ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
@@ -186,14 +186,14 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     { name = 'path' }
   },{
-    { name = 'cmdline', keyword_length = 4, max_item_count = 10}
+    { name = 'cmdline', keyword_length = 4, max_item_count = 50}
   })
 })
 
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    {name = 'buffer', max_item_count = 10}
+    {name = 'buffer', max_item_count = 50}
   }
 })
 

@@ -4,69 +4,90 @@ local  telescope_ok, telescope = pcall(require, 'telescope')
 if not telescope_ok then return end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Setup telescope.
+-- {{{ Use defaults or customzie this plugin.
 
-local actions = require 'telescope.actions'
-telescope.load_extension "media_files"
+local customize = require('traap.customize').telescope
+if not customize then
+  telescope.setup()
+  return
+end
 
-telescope.setup {
-  defaults = {
-    border = {},
-    borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
-    buffer_previewer_maker = require 'telescope.previewers'.buffer_previewer_maker,
-    color_devicons = true,
-    entry_prefix = '  ',
-    file_ignore_patterns = {},
-    file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
-    file_sorter = require 'telescope.sorters'.get_fuzzy_file,
-    generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
-    grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
-    initial_mode = 'insert',
-    layout_config = {
-      horizontal = {
-        mirror = false,
-        preview_width = 0.5
-      },
-      vertical = { mirror = false },
-      width = 0.75
-    },
-    layout_strategy = 'horizontal',
-    mappings = {
-      i = {
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-      },
+-- --------------------------------------------------------------------------}}}
+-- {{{ Telescope mappings (keybindings)
 
-      n = {
-        ["<esc>"] = actions.close,
-        ["<CR>"] = actions.select_default,
+local actions = require'telescope.actions'
 
-        ["<C-x>"] = actions.select_horizontal,
-        ["<C-v>"] = actions.select_vertical,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k"] = actions.move_selection_previous,
-      },
-    },
-    path_display = { 'smart' },
-    prompt_prefix = " ",
-    qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
-    selection_caret = " ",
-    selection_strategy = 'reset',
-    set_env = {['COLORTERM'] = 'truecolor'},
-    sorting_strategy = 'descending',
-    use_less = true,
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--column',
-      '--line-number',
-      '--no-heading',
-      '--smart-case',
-      '--with-filename'
-    },
-    winblend = 0,
+local mappings = {
+  n = {
+    ["<esc>"] = actions.close,
+    ["<CR>"]  = actions.select_default,
+
+    ["<C-x>"] = actions.select_horizontal,
+    ["<C-v>"] = actions.select_vertical,
   },
-  extensions = {
+}
+
+-- --------------------------------------------------------------------------}}}
+-- {{{ Telescope layout_config
+
+local layout_config = {
+  vertical = {
+    height = 50,
+    preview_cutoff = 40,
+    prompt_position = 'bottom',
+    width = 0.5
+  },
+}
+
+local layout_strategy = 'vertical'
+
+-- --------------------------------------------------------------------------}}}
+-- {{{ Telescope ripgrep setup.
+
+local vimgrep_arguments = {
+  'rg',
+  '--color=never',
+  '--column',
+  '--line-number',
+  '--no-heading',
+  '--smart-case',
+  '--with-filename'
+}
+
+-- --------------------------------------------------------------------------}}}
+-- {{{ Telescope defaults
+
+local defaults = {
+  border = {},
+  borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+  buffer_previewer_maker = require 'telescope.previewers'.buffer_previewer_maker,
+  color_devicons = true,
+  entry_prefix = '  ',
+  file_ignore_patterns = {},
+  file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
+  file_sorter = require 'telescope.sorters'.get_fuzzy_file,
+  generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
+  grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
+  initial_mode = 'insert',
+  layout_config = layout_config,
+  layout_strategy = layout_strategy,
+  mappings = mappings,
+  path_display = { 'smart' },
+  prompt_prefix = " ",
+  qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
+  selection_caret = " ",
+  selection_strategy = 'reset',
+  set_env = {['COLORTERM'] = 'truecolor'},
+  sorting_strategy = 'descending',
+  use_less = true,
+  vimgrep_arguments = vimgrep_arguments,
+  winblend = 0,
+}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Telescope extensions.
+
+local extensions = {
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
@@ -78,19 +99,28 @@ telescope.setup {
       find_cmd = 'rg'
     }
   }
-}
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Telescope setup.
+
+telescope.setup ({
+  defaults = defaults,
+  extensions = extensions,
+})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Load extensions.
 
-local extensions = {
+-- telescope.load_extension "media_files"
+
+local ext_names = {
   'fzf',
   'luasnip',
   'media_files',
   'notify',
 }
 
-for _, name in ipairs(extensions) do
+for _, name in ipairs(ext_names) do
   telescope.load_extension(name)
 end
 

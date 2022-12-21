@@ -5,7 +5,6 @@ local keymap = require('traap.functions').keymap
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[,]]
 
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easy align
 
@@ -47,6 +46,9 @@ keymap('v', '>', '>gv')
 
 -- Visual yank
 keymap('v', '<leader>cc', '"+y')
+
+-- Obfuscate
+keymap('n', '<f3>', 'mmggg?G`m')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
