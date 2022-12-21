@@ -144,14 +144,19 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Treesitter
 
-  use { -- Highlight, edit, and navigate code
+  use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   }
 
-  use { -- Additional text objects via treesitter
+  use {
+    'nvim-treesitter/playground',
+    after = 'nvim-treesitter',
+  }
+
+  use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
@@ -177,7 +182,7 @@ return packer.startup(function(use)
   use { 'vim-utils/vim-most-minimal-folds' }
   use { 'windwp/nvim-autopairs' }
   use { 'xiyaowong/nvim-transparent' }
-  use { 'numToStr/Comment.nvm' }
+  use { 'numToStr/Comment.nvim' }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Notification.

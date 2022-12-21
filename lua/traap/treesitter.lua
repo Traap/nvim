@@ -67,13 +67,19 @@ config.setup {
 
   playground = { enable = true, },
 
+  query_linter = {
+    enable = true,
+    use_virtual_text = true,
+    lint_events = {'BufWrite', 'CursorHold'}
+  },
+
   rainbow = {
     colors = {
       "Gold",
       "Orchid",
       "DodgerBlue",
       "Cornsilk",
-      "Salmon",
+      "Salmokn",
       "LawnGreen",
     },
     disable = { "html" },
