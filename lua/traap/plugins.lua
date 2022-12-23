@@ -213,7 +213,6 @@ return packer.startup(function(use)
 -- {{{ Zulu : Reuse Traap's vim bundles last.
 
   use { 'Traap/vim-bundle-abbreviate' }
-  use { 'Traap/vim-bundle-autocmd' }
   use { 'Traap/vim-bundle-fzf' }
   use { 'Traap/vim-bundle-plantuml' }
   use { 'Traap/vim-bundle-rainbow' }
