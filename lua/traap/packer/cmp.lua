@@ -53,7 +53,7 @@ local experimental = {
 --
 --  https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#basic-customisationsv
 
-local kind_icons = require('traap.constants').lsp_kind_icons
+local kind_icons = require('traap.core.constants').lsp_kind_icons
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Define: keystroke mappings

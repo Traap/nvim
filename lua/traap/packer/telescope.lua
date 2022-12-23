@@ -6,7 +6,7 @@ if not telescope_ok then return end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Use defaults or customzie this plugin.
 
-local customize = require('traap.customize').telescope
+local customize = require('traap.core.customize').telescope
 if not customize then
   telescope.setup()
   return

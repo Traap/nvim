@@ -9,7 +9,7 @@ if not nvim_tree_ok then return end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Use defaults or customzie this plugin.
 
-local customize = require('traap.customize').nvim_tree
+local customize = require('traap.core.customize').nvim_tree
 if not customize then
   nvim_tree.setup{
   filters = { custom = { '.git' }, },

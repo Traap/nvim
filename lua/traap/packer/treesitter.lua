@@ -6,7 +6,7 @@ if not config_ok then return end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Use defaults or customzie this plugin.
 
-local customize = require('traap.customize').treesitter
+local customize = require('traap.core.customize').treesitter
 if not customize then
   config.setup()
   return

@@ -420,10 +420,10 @@ local mappings = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ gn_opts
 
-local gn_opts = require('traap.constants').normal_opts
+local gn_opts = require('traap.core.constants').normal_opts
 gn_opts.prefix = 'g'
 
-local gv_opts = require('traap.constants').visual_opts
+local gv_opts = require('traap.core.constants').visual_opts
 gv_opts.prefix = 'g'
 
 -- ------------------------------------------------------------------------- }}}
@@ -441,10 +441,10 @@ local gv_mappings = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ hn_opts
 
-local hn_opts = require('traap.constants').normal_opts
+local hn_opts = require('traap.core.constants').normal_opts
 hn_opts.prefix = '<leader>'
 
-local hv_opts = require('traap.constants').visual_opts
+local hv_opts = require('traap.core.constants').visual_opts
 hv_opts.prefix = '<leader>'
 
 -- ------------------------------------------------------------------------- }}}
