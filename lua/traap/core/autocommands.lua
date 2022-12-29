@@ -40,7 +40,10 @@ vim.api.nvim_create_autocmd(
   'BufWritePost', {
     command = 'source <afile> | PackerSync',
     group = packer_group,
-    pattern = vim.fn.expand '$MYVIMRC',
+    pattern = {
+      vim.fn.expand '$MYVIMRC',
+      vim.fn.expand '$GITHOME' .. '/lua/traap/core/plugins.lua',
+    },
   }
 )
 

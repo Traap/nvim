@@ -60,7 +60,7 @@ return packer.startup(function(use)
       { 'f3fora/cmp-spell' },
 
       -- Useful status updates for LSP
-     { 'j-hui/fidget.nvim' },
+      { 'j-hui/fidget.nvim' },
 
       -- Snippets
       { 'L3MON4D3/LuaSnip'},
@@ -114,7 +114,7 @@ return packer.startup(function(use)
   use { 'tpope/gem-browse' }
   use { 'tpope/vim-bundler' }
   use { 'tpope/vim-characterize' }
-  -- use { 'tpope/vim-commentary' }
+  use { 'tpope/vim-commentary' }
   use { 'tpope/vim-dispatch' }
   use { 'tpope/vim-endwise' }
   use { 'tpope/vim-eunuch' }
@@ -173,7 +173,7 @@ return packer.startup(function(use)
 
   use { 'ThePrimeagen/harpoon' }
   use { 'ekickx/clipboard-image.nvim' }
-  use { 'goolord/alpha-nvim' }
+  -- use { 'goolord/alpha-nvim' }
   use { 'iamcco/markdown-preview.nvim' }
   use { 'kovetskiy/sxhkd-vim' }
   use { 'moll/vim-bbye' }
@@ -182,7 +182,6 @@ return packer.startup(function(use)
   use { 'vim-utils/vim-most-minimal-folds' }
   use { 'windwp/nvim-autopairs' }
   use { 'xiyaowong/nvim-transparent' }
-  use { 'numToStr/Comment.nvim' }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Notification.

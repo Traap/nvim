@@ -6,7 +6,6 @@ require 'traap.core.options'
 require 'traap.core.plugins'
 
 -- Personalize plugins.
-require 'traap.packer.alpha'
 require 'traap.packer.autopairs'
 require 'traap.packer.cmp'
 require 'traap.packer.colorize'
@@ -31,7 +30,6 @@ require 'traap.lsp'
 
 -- Take control of all keybindings.
 require 'traap.keys.keybindings'
-require 'traap.keys.which-key'
 
 -- zymurgy : The last word in 1980 Webster's new collegiate dictionary.
 require 'traap.core.autocommands'
