@@ -16,10 +16,8 @@ require 'traap.packer.friendly-snippets'
 require 'traap.packer.gitsigns'
 require 'traap.packer.impatient'
 require 'traap.packer.lightbulb'
-require 'traap.packer.lualine'
 require 'traap.packer.surround'
 require 'traap.packer.telescope'
-require 'traap.packer.transparent'
 require 'traap.packer.nvim-tree'
 require 'traap.packer.treesitter'
 require 'traap.packer.trouble'
@@ -27,6 +25,10 @@ require 'traap.packer.web-devicons'
 
 -- Lsp
 require 'traap.lsp'
+
+-- Items that block
+-- require 'traap.packer.lualine'
+-- require 'traap.packer.transparent'
 
 -- Take control of all keybindings.
 require 'traap.keys.keybindings'

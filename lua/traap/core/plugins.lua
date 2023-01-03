@@ -44,8 +44,8 @@ return packer.startup(function(use)
       -- LSP Support
       {'williamboman/mason.nvim'},
       {'williamboman/mason-lspconfig.nvim'},
-      {'jose-elias-alvarez/null-ls.nvim'},
-      {'jayp0521/mason-null-ls.nvim'},
+      -- {'jose-elias-alvarez/null-ls.nvim'},
+      -- {'jayp0521/mason-null-ls.nvim'},
 
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },
@@ -53,10 +53,8 @@ return packer.startup(function(use)
       { 'hrsh7th/cmp-calc' },
       { 'hrsh7th/cmp-cmdline' },
       { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
-      { 'hrsh7th/cmp-nvim-lua' },
+      -- { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
       { 'hrsh7th/cmp-path' },
-      { 'onsails/lspkind-nvim' },
       { 'f3fora/cmp-spell' },
 
       -- Useful status updates for LSP
@@ -64,9 +62,9 @@ return packer.startup(function(use)
 
       -- Snippets
       { 'L3MON4D3/LuaSnip'},
-      { 'rafamadriz/friendly-snippets'},
+      -- { 'rafamadriz/friendly-snippets'},
       { 'saadparwaiz1/cmp_luasnip' },
-      { 'benfowler/telescope-luasnip.nvim' },
+      -- { 'benfowler/telescope-luasnip.nvim' },
     }
   }
 
@@ -87,7 +85,7 @@ return packer.startup(function(use)
 
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' }
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
 -- ------------------------------------------------------------------------- }}}
@@ -206,7 +204,7 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Which-Key
 
-  use { 'folke/which-key.nvim' }
+  -- use { 'folke/which-key.nvim' }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Zulu : Reuse Traap's vim bundles last.

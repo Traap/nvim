@@ -120,8 +120,8 @@ local ext_names = {
   'notify',
 }
 
-for _, name in ipairs(ext_names) do
-  telescope.load_extension(name)
-end
+-- for _, name in ipairs(ext_names) do
+--   telescope.load_extension(name)
+-- end
 
 -- ------------------------------------------------------------------------- }}}

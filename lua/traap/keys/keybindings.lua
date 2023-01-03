@@ -77,13 +77,6 @@ keymap('n', '<localleader>E', [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
 keymap('v', '<localleader>E', [["ky :exec "r!" getreg("k")<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
--- -- {{{ Control keys
-
-keymap('n', '<c-g>', '<cmd>cd $GITHOME<cr>')
-keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>')
-keymap('n', '<c-q>', '<cmd>qall!<cr>')
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
 
 keymap('n', '<leader><space>', '<cmd>nohlsearch<cr>')
@@ -203,10 +196,15 @@ keymap('n', '<leader>gp', '<cmd>G push<cr>')
 keymap('n', '<leader>gs', '<cmd>G<cr>')
 keymap('n', '<leader>gu', '<cmd>call GenerateUmlDiagram<cr>')
 
+keymap('n', 'gk',         [[0mMvg_"ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
+keymap('v', 'gk',         [["ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
+
+--  k = {[[0mMvg_"ky :exec "r!kjv -b -w 65 -d" getreg("k")<cr>]], "Get KJV verse" },
+--  k = {[["ky :exec "r!kjv -b -w 65 -d" getreg("k")<cr>]], "Get KJV verse" },
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ k - kill runner
 
-keymap('n', '<leader>kk', [[^"kyg$<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 keymap('n', '<leader>kr', '<cmd>VtrKillRunner<cr>')
 
 -- ------------------------------------------------------------------------- }}}
