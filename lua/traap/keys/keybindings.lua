@@ -77,6 +77,12 @@ keymap('n', '<localleader>E', [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
 keymap('v', '<localleader>E', [["ky :exec "r!" getreg("k")<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
+-- -- {{{ Control keys
+
+keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>')
+keymap('n', '<c-q>', '<cmd>qall!<cr>')
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
 
 keymap('n', '<leader><space>', '<cmd>nohlsearch<cr>')
