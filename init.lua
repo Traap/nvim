@@ -27,8 +27,8 @@ require 'traap.packer.web-devicons'
 require 'traap.lsp'
 
 -- Items that block
--- require 'traap.packer.lualine'
--- require 'traap.packer.transparent'
+require 'traap.packer.lualine'
+require 'traap.packer.transparent'
 
 -- Take control of all keybindings.
 require 'traap.keys.keybindings'
