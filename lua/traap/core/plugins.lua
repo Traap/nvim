@@ -44,8 +44,8 @@ return packer.startup(function(use)
       -- LSP Support
       {'williamboman/mason.nvim'},
       {'williamboman/mason-lspconfig.nvim'},
-      -- {'jose-elias-alvarez/null-ls.nvim'},
-      -- {'jayp0521/mason-null-ls.nvim'},
+      {'jose-elias-alvarez/null-ls.nvim'},
+      {'jayp0521/mason-null-ls.nvim'},
 
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },
@@ -53,7 +53,7 @@ return packer.startup(function(use)
       { 'hrsh7th/cmp-calc' },
       { 'hrsh7th/cmp-cmdline' },
       { 'hrsh7th/cmp-nvim-lsp' },
-      -- { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
+      { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
       { 'hrsh7th/cmp-path' },
       { 'f3fora/cmp-spell' },
 
@@ -62,9 +62,9 @@ return packer.startup(function(use)
 
       -- Snippets
       { 'L3MON4D3/LuaSnip'},
-      -- { 'rafamadriz/friendly-snippets'},
+      { 'rafamadriz/friendly-snippets'},
       { 'saadparwaiz1/cmp_luasnip' },
-      -- { 'benfowler/telescope-luasnip.nvim' },
+      { 'benfowler/telescope-luasnip.nvim' },
     }
   }
 
