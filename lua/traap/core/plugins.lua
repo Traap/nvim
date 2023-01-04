@@ -180,6 +180,7 @@ return packer.startup(function(use)
   use { 'vim-utils/vim-most-minimal-folds' }
   use { 'windwp/nvim-autopairs' }
   use { 'xiyaowong/nvim-transparent' }
+  use { 'ChristianChiarulli/nvim-ts-rainbow' }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Notification.
@@ -212,7 +213,6 @@ return packer.startup(function(use)
   use { 'Traap/vim-bundle-abbreviate' }
   use { 'Traap/vim-bundle-fzf' }
   use { 'Traap/vim-bundle-plantuml' }
-  use { 'Traap/vim-bundle-rainbow' }
   use { 'Traap/vim-bundle-tmux-runner' }
   use { 'Traap/vim-bundle-vimtex' }
   use { 'Traap/vim-bundle-vimwiki' }

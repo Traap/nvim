@@ -19,14 +19,13 @@ local languages = {
   'bash',
   'c',
   'c_sharp',
-  'comment',
   'cpp',
   'dockerfile',
   'graphql',
   'html',
   'json',
   'lua',
-  'pascal',
+  'python',
   'ruby',
   'rust',
   'sql',
@@ -85,6 +84,7 @@ config.setup {
     disable = { "html" },
     enable = true,
     extended_mode = true,
+    max_file_lines = 2000,
   },
 
   refactor = {
