@@ -19,10 +19,15 @@ transparent.setup({
   enable = true,
   extra_gropus = {
     'Comment',
+    'CursorLine',
+    'CursorLineNr',
+    'CursorLineSign',
     'Folded',
     'Normal',
+    'SignColumn',
   },
   exclude = {
+    'ColorColumn',
     'EndOfBuffer',
     'NonText',
   }
