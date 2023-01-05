@@ -1,14 +1,15 @@
--- {{{ ColorScheme
+-- {{{ Clear some items.
 
+-- #80a0ff
 local clear_group = vim.api.nvim_create_augroup('Clear', { clear = true})
 vim.api.nvim_create_autocmd(
   'BufEnter', {
-    command = 'highlight clear Folded | highlight ColorColumn ctermbg=18',
+    command = 'highlight clear Folded | highlight ColorColumn guibg=#202031',
     group = clear_group,
   }
 )
 
--- ---------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ csv
 
 local csv_group = vim.api.nvim_create_augroup('csv', { clear = true })
@@ -20,7 +21,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ---------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ json
 
 local json_group = vim.api.nvim_create_augroup('Json', { clear = true })
@@ -32,7 +33,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ---------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Packer
 
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
@@ -47,7 +48,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ---------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ PlantUML
 
 vim.api.nvim_create_autocmd(
@@ -71,7 +72,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ---------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ TeX
 
 local tex_group = vim.api.nvim_create_augroup('Tex', { clear = true })
@@ -83,7 +84,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ---------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Wiki
 
 local wiki_group = vim.api.nvim_create_augroup('Wiki', { clear = true })
@@ -95,7 +96,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ---------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ WhiteSpace
 
 local whitespace_group = vim.api.nvim_create_augroup('WhiteSpace', { clear = true })
@@ -106,4 +107,4 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- ---------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
