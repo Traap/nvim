@@ -1,11 +1,11 @@
 -- {{{ Clear some items.
 
 -- #80a0ff
-local clear_group = vim.api.nvim_create_augroup('Clear', { clear = true})
+local color_group = vim.api.nvim_create_augroup('Clear', { clear = true})
 vim.api.nvim_create_autocmd(
   'BufEnter', {
-    command = 'highlight clear Folded | highlight ColorColumn guibg=#202031',
-    group = clear_group,
+    command = 'highlight clear Folded | highlight ColorColumn guibg=#202031 | highlight LineNr guifg=#902090 | highlight LineNrAbove guifg=#787c99 | highlight LineNrBelow guifg=#787c99',
+    group = color_group,
   }
 )
 
