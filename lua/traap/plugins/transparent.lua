@@ -23,6 +23,7 @@ transparent.setup({
     'CursorLineNr',
     'CursorLineSign',
     'Folded',
+    'LineNr',
     'Normal',
     'SignColumn',
   },
