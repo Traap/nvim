@@ -1,6 +1,5 @@
 -- {{{ Clear some items.
 
--- #80a0ff
 local color_group = vim.api.nvim_create_augroup('Clear', { clear = true})
 vim.api.nvim_create_autocmd(
   'BufEnter', {
