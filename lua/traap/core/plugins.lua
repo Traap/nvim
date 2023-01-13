@@ -36,7 +36,7 @@ return packer.startup(function(use)
   use { 'mechatroner/rainbow_csv' }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ LSP
+-- {{{ LSP & DAP
 
   use {
     'neovim/nvim-lspconfig',
@@ -65,11 +65,16 @@ return packer.startup(function(use)
       { 'rafamadriz/friendly-snippets'},
       { 'saadparwaiz1/cmp_luasnip' },
       { 'benfowler/telescope-luasnip.nvim' },
+   }
+ }
+
+ use {
+   'mfussenegger/nvim-dap',
+   requires = {
+     {'rcarriga/nvim-dap-ui'},
+     {'theHamsta/nvim-dap-virtual-text'},
     }
   }
-
- use {'mfussenegger/nvim-dap'}
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ JuneGunn Easyalign and fzf.
 

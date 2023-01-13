@@ -8,7 +8,7 @@ local options = {
   completeopt = { 'menuone', 'noinsert', 'noselect' },
   cursorline = false,
   expandtab = true,
-  fillchars = 'fold: ',
+  fillchars = { fold = ' ', eob = ' ' },
   foldlevel = 20,
   foldmethod = 'marker',
   hidden = true,

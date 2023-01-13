@@ -77,6 +77,12 @@ keymap('n', '<localleader>E', [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
 keymap('v', '<localleader>E', [["ky :exec "r!" getreg("k")<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Control keys
+
+keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>')
+keymap('n', '<c-q>', '<cmd>qall!<cr>')
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
 
 keymap('n', '<leader><space>', '<cmd>nohlsearch<cr>')
@@ -131,6 +137,33 @@ keymap('n', '<leader>bx', [[<cmd>w<cr><cmd>luafile %<cr><cmd>echo "Sourced " . @
 keymap('n', '<leader>cc', 'ggVGg_"+y')
 keymap('n', '<leader>cr', '<cmd>VtrClearRunner<cr>')
 keymap('n', '<leader>cv', '"+p')
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ d - Debug Adapter Protocol (DAP).
+
+keymap('n', '<leader>dC', [[<cmd>lua require'dap'.run_to_cursor()<cr>]])
+keymap('n', '<leader>db', [[<cmd>lua require'dap'.step_back()<cr>]])
+keymap('n', '<leader>dc', [[<cmd>lua require'dap'.continue()<cr>]])
+keymap('n', '<leader>dd', [[<cmd>lua require'dap'.disconnect()<cr>]])
+keymap('n', '<leader>dg', [[<cmd>lua require'dap'.session()<cr>]])
+keymap('n', '<leader>di', [[<cmd>lua require'dap'.step_into()<cr>]])
+keymap('n', '<leader>dl', [[<cmd>lua require'dap'.open_logfile()<cr>]])
+keymap('n', '<leader>do', [[<cmd>lua require'dap'.step_over()<cr>]])
+keymap('n', '<leader>dp', [[<cmd>lua require'dap'.pause()<cr>]])
+keymap('n', '<leader>dq', [[<cmd>lua require'dap'.close()<cr>]])
+keymap('n', '<leader>dr', [[<cmd>lua require'dap'.repl.toggle()<cr>]])
+keymap('n', '<leader>ds', [[<cmd>lua require'dap'.continue()<cr>]])
+keymap('n', '<leader>dt', [[<cmd>lua require'dap'.toggle_breakpoint()<cr>]])
+keymap('n', '<leader>du', [[<cmd>lua require'dap'.step_out()<cr>]])
+
+-- Mimic Microsoft Visual Code / Studio products.
+keymap('n', '<F5>',  [[<cmd>lua require'dap'.continue()<cr>]])
+keymap('n', '<F10>', [[<cmd>lua require'dap'.step_over()<cr>]])
+keymap('n', '<F11>', [[<cmd>lua require'dap'.step_into()<cr>]])
+keymap('n', '<F12>', [[<cmd>lua require'dap'.step_out()<cr>]])
+
+-- DAPUI
+keymap('n', '<leader>dU', [[<cmd>lua require'dapui'.toggle()<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ f - Find
@@ -215,7 +248,7 @@ keymap('n', '<leader>nr', '<cmd>NvimTreeRefresh<cr>')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options
 
-keymap('n', '<leader>oh', '<cmd>chechhealth<cr>')
+keymap('n', '<leader>oh', '<cmd>checkhealth<cr>')
 keymap('n', '<leader>oo', '<cmd>only<cr>')
 keymap('n', '<leader>or', [[<cmd>VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>]])
 
