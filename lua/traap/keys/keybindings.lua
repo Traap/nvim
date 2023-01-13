@@ -77,12 +77,6 @@ keymap('n', '<localleader>E', [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
 keymap('v', '<localleader>E', [["ky :exec "r!" getreg("k")<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
--- -- {{{ Control keys
-
-keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>')
-keymap('n', '<c-q>', '<cmd>qall!<cr>')
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
 
 keymap('n', '<leader><space>', '<cmd>nohlsearch<cr>')
@@ -101,32 +95,6 @@ keymap('n', '<leader>Gp', '<cmd>Gist -b -p<cr>')
 -- {{{ H - Help
 
 keymap('n', '<leader>HH', '<cmd>silent vert bo help<cr>')
-
--- ------------------------------------------------------------------------- }}}
--- {{{ L - LSP
-
-keymap('n', '<leader>LF', '<cmd>LspToggleAutoFormat<cr>')
-keymap('n', '<leader>LH', '<cmd>IlluminationToggle<cr>')
-keymap('n', '<leader>LI', '<cmd>LspInstallInfo<cr>')
-keymap('n', '<leader>LR', '<cmd>TroubleToggle lsp_references<cr>')
-keymap('n', '<leader>LS', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>')
-keymap('n', '<leader>La', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-keymap('n', '<leader>Lc', '<cmd>lua require("traap.lsp").server_capabilities()<cr>')
-keymap('n', '<leader>Ld', '<cmd>TroubleToggle<cr>')
-keymap('n', '<leader>Lf', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>')
-keymap('n', '<leader>Lh', "<cmd>lua require('lsp-inlayhints').toggle()<cr>")
-keymap('n', '<leader>Li', '<cmd>LspInfo<cr>')
-keymap('n', '<leader>Lj', '<cmd>lua vim.diagnostic.goto_next({buffer=0})cr>')
-keymap('n', '<leader>Lk', '<cmd>lua vim.diagnostic.goto_prev({buffer=0})cr>')
-keymap('n', '<leader>Ll', '<cmd>lua vim.lsp.codelens.run()<cr>')
-keymap('n', '<leader>Lo', '<cmd>SymbolsOutline<cr>')
-keymap('n', '<leader>Lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>')
-keymap('n', '<leader>Lr', '<cmd>lua vim.lsp.buf.rename()<cr>')
-keymap('n', '<leader>Ls', '<cmd>Telescope lsp_document_symbols<cr>')
-keymap('n', '<leader>Lt', '<cmd>lua require("user.functions").toggle_diagnostics()<cr>')
-keymap('n', '<leader>Lu', '<cmd>LuaSnipUnlinkCurrent<cr>')
-keymap('n', '<leader>Lv', '<cmd>lua require("lsp_lines").toggle()<cr>')
-keymap('n', '<leader>Lw', '<cmd>Telescope lsp_workspace_diagnostics<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ V - Linewise reselection of what you just pasted.

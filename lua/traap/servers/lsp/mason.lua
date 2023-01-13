@@ -11,21 +11,6 @@ local  lok, lspconfig = pcall(require, 'lspconfig')
 if not lok then return end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ LSP servers to install
-
-local servers = {
-  'eslint',
-  'jsonls',
-  'omnisharp',
-  'pyright',
-  'solargraph',
-  'sumneko_lua',
-  'texlab',
-  'tsserver',
-  'yamlls',
-}
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ LSP settings
 
 local settings = {
@@ -44,10 +29,12 @@ local settings = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Configur mason and mason_lspconfig
 
+local language_servers = require('traap.core.constants').language_servers
+
 mason.setup(settings)
 
 mason_lspconfig.setup({
-  ensure_installed = servers,
+  ensure_installed = language_servers,
   automatic_installation = false,
 })
 
@@ -56,15 +43,15 @@ mason_lspconfig.setup({
 
 local opts = {}
 
-for _, server in pairs(servers) do
+for _, server in pairs(language_servers) do
   opts = {
-    on_attach = require('traap.lsp.handlers').on_attach,
-    capabilities = require('traap.lsp.handlers').capabilities,
+    on_attach = require('traap.servers.lsp.handlers').on_attach,
+    capabilities = require('traap.servers.lsp.handlers').capabilities,
   }
 
   server = vim.split(server, '@')[1]
 
-  local require_ok, conf_opts = pcall(require, 'traap.lsp.languages.' .. server)
+  local require_ok, conf_opts = pcall(require, 'traap.servers.lsp.servers.' .. server)
   if require_ok then
     opts = vim.tbl_deep_extend('force', conf_opts, opts)
   end

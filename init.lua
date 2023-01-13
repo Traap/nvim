@@ -23,8 +23,8 @@ require 'traap.plugins.treesitter'
 require 'traap.plugins.trouble'
 require 'traap.plugins.web-devicons'
 
--- Lsp
-require 'traap.lsp'
+-- Servers: DAP & LSP
+require 'traap.servers'
 
 -- Items that block
 require 'traap.plugins.lualine'

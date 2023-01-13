@@ -53,12 +53,14 @@ local function lsp_keymaps(bufnr)
   local keymap = vim.api.nvim_buf_set_keymap
 
   keymap(bufnr, 'n', '<leader>D',  [[<cmd>lua vim.lsp.buf.type_definition()<CR>]], opts)
+  keymap(bufnr, 'n', '<leader>K',  [[<cmd>lua vim.lsp.buf.signature_help()<CR>]], opts)
+  keymap(bufnr, 'n', '<leader>Q',  [[<cmd>lua vim.diagnostic.setloclist()<CR>]], opts)
+
+  keymap(bufnr, 'n', '<leader>aF',  [[<cmd>LspToggleAutoFormat<CR>]], opts)
+  keymap(bufnr, 'n', '<leader>af',  [[<cmd>lua vim.lsp.buf.formatting({ async = true })<CR>]], opts)
 
   keymap(bufnr, 'n', '<leader>ca', [[<cmd>lua vim.lsp.buf.code_action()<CR>]], opts)
   keymap(bufnr, 'n', '<leader>ds', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
-  keymap(bufnr, 'n', '<leader>f',  [[<cmd>lua vim.lsp.buf.formatting()<CR>]], opts)
-  keymap(bufnr, 'n', '<leader>k',  [[<cmd>lua vim.lsp.buf.signature_help()<CR>]], opts)
-  keymap(bufnr, 'n', '<leader>q',  [[<cmd>lua vim.diagnostic.setloclist()<CR>]], opts)
   keymap(bufnr, 'n', '<leader>rn', [[<cmd>lua vim.lsp.buf.rename()<CR>]], opts)
   keymap(bufnr, 'n', '<leader>ws', [[<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>]], opts)
 

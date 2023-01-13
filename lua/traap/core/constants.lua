@@ -1,11 +1,11 @@
--- {{{ Constants Configuration itjkjems that are reusable through NeoVim.
+-- {{{ Constants Configuration jkjems that are reusable through NeoVim.
 
 local Constants = {}
 
 Constants = {
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ language server names.
+-- {{{ Language Server Protocol (LSP) Names.
 
 use_lsp = true,
 language_servers = {
@@ -13,10 +13,12 @@ language_servers = {
   'cssls',
   'diagnosticls',
   'emmet_ls',
+  'eslint',
   'html',
   'jsonls',
+  'omnisharp',
   'pyright',
-  'rust',
+  -- 'rust',
   'solargraph',
   'sumneko_lua',
   'texlab',
@@ -25,7 +27,7 @@ language_servers = {
 },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Lsp kind icons.
+-- {{{ LSp kind icons.
 
 lsp_kind_icons = {
   Class         = "",
