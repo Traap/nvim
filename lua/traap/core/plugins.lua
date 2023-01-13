@@ -36,7 +36,7 @@ return packer.startup(function(use)
   use { 'mechatroner/rainbow_csv' }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Easy LSP with lsp-zero
+-- {{{ LSP
 
   use {
     'neovim/nvim-lspconfig',
@@ -67,6 +67,8 @@ return packer.startup(function(use)
       { 'benfowler/telescope-luasnip.nvim' },
     }
   }
+
+ use {'mfussenegger/nvim-dap'}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ JuneGunn Easyalign and fzf.
