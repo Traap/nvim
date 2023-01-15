@@ -1,4 +1,4 @@
--- {{{ Lazy setup
+-- {{{ Lazy setuj
 
 require('lazy').setup({
 
@@ -6,7 +6,7 @@ require('lazy').setup({
 -- {{{ Packer can manage itself as an optional plugin.
 
   'nvim-lua/popup.nvim',
-  'lewis6991/impatient.nvim',
+  -- 'lewis6991/impatient.nvim',
   'folke/trouble.nvim',
 
 -- ------------------------------------------------------------------------- }}}
@@ -16,70 +16,84 @@ require('lazy').setup({
   'norcalli/nvim-colorizer.lua',
   'mechatroner/rainbow_csv',
 
--- ------------------------------------------------------------------------- }}}
--- {{{ LSP & DAP
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ LSP
 
-  { 'neovim/nvim-lspconfig', dependencies = {
-    -- LSP Support
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
-    'jayp0521/mason-null-ls.nvim',
+  { 'neovim/nvim-lspconfig', 
+    event = 'VeryLazy', 
+    dependencies = {
+      -- LSP Support
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      --      'jose-elias-alvarez/null-ls.nvim',
+      --      'jayp0521/mason-null-ls:.nvim',
 
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-calc',
-    'hrsh7th/cmp-cmdline',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-nvim-lsp-document-symbol',
-    'hrsh7th/cmp-path',
-    'f3fora/cmp-spell',
+      -- Useful status updates for LSP
+      'j-hui/fidget.nvim',
 
-    -- Useful status updates for LSP
-    'j-hui/fidget.nvim',
-
-    -- Snippets
-    'L3MON4D3/LuaSnip',
-    'rafamadriz/friendly-snippets',
-    'saadparwaiz1/cmp_luasnip',
-    'benfowler/telescope-luasnip.nvim',
-   }
- },
-
-  { 'mfussenegger/nvim-dap', dependencies = {
-    'rcarriga/nvim-dap-ui',
-    'theHamsta/nvim-dap-virtual-text',
-    }
+      -- Snippets
+      'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets',
+      'saadparwaiz1/cmp_luasnip',
+      'benfowler/telescope-luasnip.nvim',
+    },
   },
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ DAP
+
+  { 'mfussenegger/nvim-dap', 
+    event = 'VeryLazy',
+    dependencies = {
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
+    },
+  },
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Autocompletion
+
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'hrsh7th/cmp-path',
+      'f3fora/cmp-spell',
+    },
+  },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ JuneGunn Easyalign and fzf.
 
-  'junegunn/vim-easy-align',
-  'junegunn/fzf',
-  'junegunn/fzf.vim',
+  { 'junegunn/vim-easy-align', event = 'VeryLazy' },
+  { 'junegunn/fzf', event = 'VeryLazy' },
+  { 'junegunn/fzf.vim', event = 'VeryLazy' },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File manager
 
-  { 'kyazdani42/nvim-tree.lua', dependencies = {
-    'ahmedkhalf/project.nvim',
-    }
+  { 'kyazdani42/nvim-tree.lua', event = 'VeryLazy',
+    dependencies = 'ahmedkhalf/project.nvim'
   },
 
-  { 'nvim-lualine/lualine.nvim', dependencies = {
-    'kyazdani42/nvim-web-devicons', opt = true }
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Satus line 
+
+  { 'nvim-lualine/lualine.nvim', event = 'VeryLazy',
+    dependencies = { 'kyazdani42/nvim-web-devicons', opt = true }
   },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Git signs and lightbulb.
 
-  'lewis6991/gitsigns.nvim',
-  { 'kosayoda/nvim-lightbulb', dependencies = {
-    'antoinemadec/FixCursorHold.nvim',
-    }
+  { 'lewis6991/gitsigns.nvim', event = 'VeryLazy' },
+  { 'kosayoda/nvim-lightbulb', event = 'VeryLazy',
+    dependencies = { 'antoinemadec/FixCursorHold.nvim', }
   },
 
 -- ------------------------------------------------------------------------- }}}
@@ -90,42 +104,44 @@ require('lazy').setup({
 -- ------------------------------------------------------------------------- }}}
 -- {{{ PlantUML
 
-  'aklt/plantuml-syntax',
+  { 'aklt/plantuml-syntax', event = 'VeryLazy' },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ neovim without Tpope?  No Way!!!
 
-  'tpope/gem-browse',
-  'tpope/vim-bundler',
-  'tpope/vim-characterize',
-  'tpope/vim-commentary',
-  'tpope/vim-dispatch',
-  'tpope/vim-endwise',
-  'tpope/vim-eunuch',
-  'tpope/vim-fugitive',
-  'tpope/vim-projectionist',
-  'tpope/vim-rails',
-  'tpope/vim-rake',
-  'tpope/vim-rbenv',
-  'tpope/vim-repeat',
-  -- 'tpope/vim-surround',
-  'tpope/vim-unimpaired',
-  'tpope/vim-vinegar',
+  { 'tpope/gem-browse', event = 'VeryLazy' },
+  { 'tpope/vim-bundler', event = 'VeryLazy' },
+  { 'tpope/vim-characterize', event = 'VeryLazy' },
+  { 'tpope/vim-commentary', event = 'VeryLazy' },
+  { 'tpope/vim-dispatch', event = 'VeryLazy' },
+  { 'tpope/vim-endwise', event = 'VeryLazy' },
+  { 'tpope/vim-eunuch', event = 'VeryLazy' },
+  { 'tpope/vim-fugitive', event = 'VeryLazy' },
+  { 'tpope/vim-projectionist', event = 'VeryLazy' },
+  { 'tpope/vim-rails', event = 'VeryLazy' },
+  { 'tpope/vim-rake', event = 'VeryLazy' },
+  { 'tpope/vim-rbenv', event = 'VeryLazy' },
+  { 'tpope/vim-repeat', event = 'VeryLazy' },
+  -- { 'tpope/vim-surround', event = 'VeryLazy' },
+  { 'tpope/vim-unimpaired', event = 'VeryLazy' },
+  { 'tpope/vim-vinegar', event = 'VeryLazy' },
 
-  'kylechui/nvim-surround',
+  { 'kylechui/nvim-surround', event = 'VeryLazy' },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Telescope
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Telescope
 
-  { 'nvim-telescope/telescope.nvim', dependencies = {
+  { 'nvim-telescope/telescope.nvim',
+    lazy=true,
+    dependencies = {
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       'nvim-telescope/telescope-media-files.nvim' ,
       'nvim-lua/plenary.nvim',
-    }
+    },
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Treesitter
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Treesitter
 
   {
     'nvim-treesitter/nvim-treesitter',
@@ -135,78 +151,66 @@ require('lazy').setup({
   },
 
   {
-    'nvim-treesitter/playground',
-    after = 'nvim-treesitter',
+    'nvim-treesitter/playground', after = 'nvim-treesitter',
   },
 
   {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
+    'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter',
   },
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Tmux
-
-  { 'christoomey/vim-tmux-navigator', dependencies =
-    'christoomey/vim-tmux-runner',
-  },
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Utility
-
-  'ThePrimeagen/harpoon',
-  'ekickx/clipboard-image.nvim',
-  -- 'goolord/alpha-nvim',
-  'iamcco/markdown-preview.nvim',
-  'kovetskiy/sxhkd-vim',
-  'moll/vim-bbye',
-  'sbdchd/neoformat',
-  'triglav/vim-visual-increment',
-  'vim-utils/vim-most-minimal-folds',
-  'windwp/nvim-autopairs',
-  'xiyaowong/nvim-transparent',
-  'ChristianChiarulli/nvim-ts-rainbow',
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Notification.
-
-  'rcarriga/nvim-notify',
-
--- ------------------------------------------------------------------------- }}}
--- {{{ VimTex
-
-  'lervag/vimtex',
 
   -- ------------------------------------------------------------------------- }}}
--- {{{ Wiki.Vim
+  -- {{{ Tmux
 
-  { 'lervag/wiki.vim', dependencies = {
-    'dkarter/bullets.vim',
-    'lervag/wiki-ft.vim'
-    }
+  { 'christoomey/vim-tmux-navigator', 
+    event = 'VeryLazy',
+    dependencies = 'christoomey/vim-tmux-runner',
   },
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Which-Key
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Utility
+
+  { 'ChristianChiarulli/nvim-ts-rainbow', event = 'BufEnter' },
+  { 'ThePrimeagen/harpoon',               event = 'BufEnter' },
+  { 'dkarter/bullets.vim',                event = 'BufEnter' },
+  { 'ekickx/clipboard-image.nvim',        event = 'BufEnter' },
+  { 'goolord/alpha-nvim',                 event = 'BufEnter' },
+  { 'iamcco/markdown-preview.nvim',       event = 'BufEnter' },
+  { 'kovetskiy/sxhkd-vim',                event = 'BufEnter' },
+  { 'moll/vim-bbye',                      event = 'BufEnter' },
+  { 'rcarriga/nvim-notify',               event = 'BufEnter' },
+  { 'sbdchd/neoformat',                   event = 'BufEnter' },
+  { 'triglav/vim-visual-increment',       event = 'BufEnter' },
+  { 'vim-utils/vim-most-minimal-folds',   event = 'BufEnter' },
+  { 'windwp/nvim-autopairs',              event = 'BufEnter' },
+  { 'xiyaowong/nvim-transparent',         event = 'BufEnter' },
+
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ VimTex
+
+  { 'lervag/vimtex', event = 'BufEnter' },
+
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Wiki.Vim
+
+  { 'lervag/wiki.vim', event = 'BufEnter',
+    dependencies = { 'lervag/wiki-ft.vim' }
+  },
+
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Which-Key
 
   -- 'folke/which-key.nvim',
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Zulu : Reuse Traap's vim bundles last.
+  -- ------------------------------------------------------------------------- }}}
+  -- {{{ Zulu : Reuse Traap's vim bundles last.
 
-  'Traap/vim-bundle-abbreviate',
-  'Traap/vim-bundle-fzf',
-  'Traap/vim-bundle-plantuml',
-  'Traap/vim-bundle-tmux-runner',
-  'Traap/vim-bundle-vimtex',
-  'Traap/vim-bundle-wiki.vim',
+  { 'Traap/vim-bundle-abbreviate', event = 'VeryLazy' },
+  { 'Traap/vim-bundle-fzf',        event = 'VeryLazy' },
+  { 'Traap/vim-bundle-plantuml',   event = 'VeryLazy' },
+  { 'Traap/vim-bundle-tmux-runner',event = 'VeryLazy' },
+  { 'Traap/vim-bundle-vimtex',     event = 'VeryLazy' },
+  { 'Traap/vim-bundle-wiki.vim',   event = 'VeryLazy' },
+  
 })
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Auto compile and install plugins when packer is bootstrapped.
-
--- if vim.g.nvim_bootstrapped == 1 then
---   lazy.
--- end
 
 -- ------------------------------------------------------------------------- }}}

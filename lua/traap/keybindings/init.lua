@@ -2,9 +2,6 @@
 
 local keymap = require('traap.core.functions').keymap
 
-vim.g.mapleader = [[ ]]
-vim.g.maplocalleader = [[,]]
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easy align
 
