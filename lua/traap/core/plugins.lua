@@ -5,20 +5,30 @@ require('lazy').setup({
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Packer can manage itself as an optional plugin.
 
-  'nvim-lua/popup.nvim',
+
+  { 'nvim-lua/popup.nvim' },
   { 'folke/trouble.nvim', config = true },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
 
-  'RRethy/nvim-base16',
-  { 'norcalli/nvim-colorizer.lua', event = VeryLazy, config = true},
-  'mechatroner/rainbow_csv',
+  { 'RRethy/nvim-base16',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme base16-tokyo-night-terminal-storm]])
+    end,
+  },
+
+
+  { 'norcalli/nvim-colorizer.lua', event = BufEnter, config = true},
+
+  { 'mechatroner/rainbow_csv', event = VaryLazy },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ DAP
 
-  { 'mfussenegger/nvim-dap', 
+  { 'mfussenegger/nvim-dap',
     event = 'VeryLazy',
     dependencies = {
       'rcarriga/nvim-dap-ui',
@@ -56,7 +66,7 @@ require('lazy').setup({
   { 'kyazdani42/nvim-tree.lua', event = 'VeryLazy' },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Satus line 
+-- {{{ Satus line
 
   { 'nvim-lualine/lualine.nvim', event = 'VeryLazy', config = true,
     dependencies = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -66,9 +76,9 @@ require('lazy').setup({
 -- {{{ Git signs and lightbulb.
 
   { 'lewis6991/gitsigns.nvim', event = 'VeryLazy', config = true},
-  { 'kosayoda/nvim-lightbulb', 
+  { 'kosayoda/nvim-lightbulb',
     event = 'VeryLazy',
-    opts = function() 
+    opts = function()
       return {
         { autocmd = {enabled = true }}
       }
@@ -141,7 +151,7 @@ require('lazy').setup({
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Tmux
 
-  { 'christoomey/vim-tmux-navigator', 
+  { 'christoomey/vim-tmux-navigator',
     event = 'VeryLazy',
     dependencies = 'christoomey/vim-tmux-runner',
   },
@@ -159,8 +169,8 @@ require('lazy').setup({
   { 'moll/vim-bbye',                      event = 'BufEnter' },
 
   { 'rcarriga/nvim-notify', event = 'BufEnter',
-    opts = function() 
-      return { 
+    opts = function()
+      return {
         {background_colour = "#000000"}
       }
     end,
@@ -172,11 +182,11 @@ require('lazy').setup({
   { 'windwp/nvim-autopairs',              event = 'BufEnter', config = true },
 
 ------------------------------------------------------------------------- }}}
--- {{{ Transparent 
+-- {{{ Transparent
 
   { 'xiyaowong/nvim-transparent',
     event = 'BufEnter',
-    opts = function () 
+    opts = function ()
       return {
         {
           enable = true,
@@ -197,19 +207,27 @@ require('lazy').setup({
           },
         }
       }
-    end, 
+    end,
   },
 
 ------------------------------------------------------------------------- }}}
 -- {{{ VimTex
 
-  { 'lervag/vimtex', event = 'BufEnter' },
+  { 'lervag/vimtex', event = 'BufEnter',
+     dependencies = { 'Traap/vim-bundle-vimtex'},
+  },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Wiki.Vim
 
-  { 'lervag/wiki.vim', event = 'BufEnter',
-    dependencies = { 'lervag/wiki-ft.vim' }
+  { 'lervag/wiki-ft.vim'},
+
+  { 'lervag/wiki.vim',
+    event = 'BufEnter',
+    cmd = 'WikiEnable',
+    dependencies = {
+      'Traap/vim-bundle-wiki.vim',
+    },
   },
 
 -- ------------------------------------------------------------------------- }}}
@@ -220,13 +238,11 @@ require('lazy').setup({
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Zulu : Reuse Traap's vim bundles last.
 
-  { 'Traap/vim-bundle-abbreviate', event = 'VeryLazy' },
-  { 'Traap/vim-bundle-fzf',        event = 'VeryLazy' },
-  { 'Traap/vim-bundle-plantuml',   event = 'VeryLazy' },
-  { 'Traap/vim-bundle-tmux-runner',event = 'VeryLazy' },
-  { 'Traap/vim-bundle-vimtex',     event = 'VeryLazy' },
-  { 'Traap/vim-bundle-wiki.vim',   event = 'VeryLazy' },
-  
+  { 'Traap/vim-bundle-abbreviate', event = 'BufEnter' },
+  { 'Traap/vim-bundle-fzf',        event = 'BufEnter' },
+  { 'Traap/vim-bundle-plantuml',   event = 'BufEnter' },
+  { 'Traap/vim-bundle-tmux-runner',event = 'BufEnter' },
+
 })
 
 -- ------------------------------------------------------------------------- }}}

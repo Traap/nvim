@@ -1,5 +1,4 @@
 require 'traap.plugins.cmp'
-require 'traap.plugins.colorscheme'
 require 'traap.plugins.telescope'
 require 'traap.plugins.nvim-tree'
 require 'traap.plugins.treesitter'
