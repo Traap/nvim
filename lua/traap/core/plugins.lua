@@ -54,7 +54,7 @@ require('lazy').setup({
 -- {{{ File manager
 
   { 'kyazdani42/nvim-tree.lua', event = 'VeryLazy',
-    dependencies = 'ahmedkhalf/project.nvim'
+    dependencies = { 'ahmedkhalf/project.nvim', config = true }
   },
 
 -- ------------------------------------------------------------------------- }}}
