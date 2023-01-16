@@ -18,12 +18,36 @@ require('lazy').setup({
     config = function()
       vim.cmd([[colorscheme base16-tokyo-night-terminal-storm]])
     end,
+    dependencies = {
+      { 'xiyaowong/nvim-transparent',
+        opts = function ()
+          return {
+            {
+              enable = true,
+              extra_gropus = {
+                'Comment',
+                'CursorLine',
+                'CursorLineNr',
+                'CursorLineSign',
+                'Folded',
+                'LineNr',
+                'Normal',
+                'SignColumn',
+              },
+              exclude = {
+                'ColorColumn',
+                'EndOfBuffer',
+                'NonText',
+              },
+            }
+          }
+        end,
+        cmd = 'TransparentToggle',
+      },
+      { 'norcalli/nvim-colorizer.lua', config = true},
+      { 'mechatroner/rainbow_csv'},
+    }
   },
-
-
-  { 'norcalli/nvim-colorizer.lua', event = BufEnter, config = true},
-
-  { 'mechatroner/rainbow_csv', event = VaryLazy },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ DAP
@@ -106,7 +130,7 @@ require('lazy').setup({
   { 'tpope/vim-dispatch', event = 'VeryLazy' },
   { 'tpope/vim-endwise', event = 'VeryLazy' },
   { 'tpope/vim-eunuch', event = 'VeryLazy' },
-  { 'tpope/vim-fugitive', event = 'VeryLazy' },
+  { 'tpope/vim-fugitive', event = 'BufEnter' },
   { 'tpope/vim-projectionist', event = 'VeryLazy' },
   { 'tpope/vim-rails', event = 'VeryLazy' },
   { 'tpope/vim-rake', event = 'VeryLazy' },
@@ -180,35 +204,6 @@ require('lazy').setup({
   { 'triglav/vim-visual-increment',       event = 'BufEnter' },
   { 'vim-utils/vim-most-minimal-folds',   event = 'BufEnter' },
   { 'windwp/nvim-autopairs',              event = 'BufEnter', config = true },
-
-------------------------------------------------------------------------- }}}
--- {{{ Transparent
-
-  { 'xiyaowong/nvim-transparent',
-    event = 'BufEnter',
-    opts = function ()
-      return {
-        {
-          enable = true,
-          extra_gropus = {
-            'Comment',
-            'CursorLine',
-            'CursorLineNr',
-            'CursorLineSign',
-            'Folded',
-            'LineNr',
-            'Normal',
-            'SignColumn',
-          },
-          exclude = {
-            'ColorColumn',
-            'EndOfBuffer',
-            'NonText',
-          },
-        }
-      }
-    end,
-  },
 
 ------------------------------------------------------------------------- }}}
 -- {{{ VimTex
