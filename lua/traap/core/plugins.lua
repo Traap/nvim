@@ -6,7 +6,7 @@ require('lazy').setup({
 -- {{{ Packer can manage itself as an optional plugin.
 
   'nvim-lua/popup.nvim',
-  'folke/trouble.nvim',
+  { 'folke/trouble.nvim', config = true },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
