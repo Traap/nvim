@@ -1,4 +1,4 @@
--- {{{ Lazy setuj
+-- {{{ Lazy setup
 
 require('lazy').setup({
 
@@ -6,38 +6,14 @@ require('lazy').setup({
 -- {{{ Packer can manage itself as an optional plugin.
 
   'nvim-lua/popup.nvim',
-  -- 'lewis6991/impatient.nvim',
   'folke/trouble.nvim',
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Colors
 
   'RRethy/nvim-base16',
-  'norcalli/nvim-colorizer.lua',
+  { 'norcalli/nvim-colorizer.lua', event = VeryLazy, config = true},
   'mechatroner/rainbow_csv',
-
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ LSP
-
-  { 'neovim/nvim-lspconfig', 
-    event = 'VeryLazy', 
-    dependencies = {
-      -- LSP Support
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      --      'jose-elias-alvarez/null-ls.nvim',
-      --      'jayp0521/mason-null-ls:.nvim',
-
-      -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
-
-      -- Snippets
-      'L3MON4D3/LuaSnip',
-      'rafamadriz/friendly-snippets',
-      'saadparwaiz1/cmp_luasnip',
-      'benfowler/telescope-luasnip.nvim',
-    },
-  },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ DAP
@@ -112,7 +88,7 @@ require('lazy').setup({
   { 'tpope/gem-browse', event = 'VeryLazy' },
   { 'tpope/vim-bundler', event = 'VeryLazy' },
   { 'tpope/vim-characterize', event = 'VeryLazy' },
-  { 'tpope/vim-commentary', event = 'VeryLazy' },
+  { 'tpope/vim-commentary', event = 'VeryLazy'},
   { 'tpope/vim-dispatch', event = 'VeryLazy' },
   { 'tpope/vim-endwise', event = 'VeryLazy' },
   { 'tpope/vim-eunuch', event = 'VeryLazy' },
@@ -128,8 +104,8 @@ require('lazy').setup({
 
   { 'kylechui/nvim-surround', event = 'VeryLazy' },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Telescope
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Telescope
 
   { 'nvim-telescope/telescope.nvim',
     lazy=true,
@@ -140,8 +116,8 @@ require('lazy').setup({
     },
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Treesitter
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Treesitter
 
   {
     'nvim-treesitter/nvim-treesitter',
@@ -158,16 +134,16 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter',
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Tmux
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Tmux
 
   { 'christoomey/vim-tmux-navigator', 
     event = 'VeryLazy',
     dependencies = 'christoomey/vim-tmux-runner',
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Utility
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Utility
 
   { 'ChristianChiarulli/nvim-ts-rainbow', event = 'BufEnter' },
   { 'ThePrimeagen/harpoon',               event = 'BufEnter' },
@@ -181,28 +157,28 @@ require('lazy').setup({
   { 'sbdchd/neoformat',                   event = 'BufEnter' },
   { 'triglav/vim-visual-increment',       event = 'BufEnter' },
   { 'vim-utils/vim-most-minimal-folds',   event = 'BufEnter' },
-  { 'windwp/nvim-autopairs',              event = 'BufEnter' },
+  { 'windwp/nvim-autopairs',              event = 'BufEnter', config = true },
   { 'xiyaowong/nvim-transparent',         event = 'BufEnter' },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ VimTex
+-- ------------------------------------------------------------------------- }}}
+-- {{{ VimTex
 
   { 'lervag/vimtex', event = 'BufEnter' },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Wiki.Vim
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Wiki.Vim
 
   { 'lervag/wiki.vim', event = 'BufEnter',
     dependencies = { 'lervag/wiki-ft.vim' }
   },
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Which-Key
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Which-Key
 
-  -- 'folke/which-key.nvim',
+-- 'folke/which-key.nvim',
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Zulu : Reuse Traap's vim bundles last.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Zulu : Reuse Traap's vim bundles last.
 
   { 'Traap/vim-bundle-abbreviate', event = 'VeryLazy' },
   { 'Traap/vim-bundle-fzf',        event = 'VeryLazy' },
