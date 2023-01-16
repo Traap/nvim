@@ -170,9 +170,37 @@ require('lazy').setup({
   { 'triglav/vim-visual-increment',       event = 'BufEnter' },
   { 'vim-utils/vim-most-minimal-folds',   event = 'BufEnter' },
   { 'windwp/nvim-autopairs',              event = 'BufEnter', config = true },
-  { 'xiyaowong/nvim-transparent',         event = 'BufEnter' },
 
--- ------------------------------------------------------------------------- }}}
+------------------------------------------------------------------------- }}}
+-- {{{ Transparent 
+
+  { 'xiyaowong/nvim-transparent',
+    event = 'BufEnter',
+    opts = function () 
+      return {
+        {
+          enable = true,
+          extra_gropus = {
+            'Comment',
+            'CursorLine',
+            'CursorLineNr',
+            'CursorLineSign',
+            'Folded',
+            'LineNr',
+            'Normal',
+            'SignColumn',
+          },
+          exclude = {
+            'ColorColumn',
+            'EndOfBuffer',
+            'NonText',
+          },
+        }
+      }
+    end, 
+  },
+
+------------------------------------------------------------------------- }}}
 -- {{{ VimTex
 
   { 'lervag/vimtex', event = 'BufEnter' },
