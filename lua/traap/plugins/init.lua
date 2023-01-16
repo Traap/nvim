@@ -1,6 +1,5 @@
 require 'traap.plugins.cmp'
 require 'traap.plugins.colorscheme'
-require 'traap.plugins.gitsigns'
 require 'traap.plugins.lightbulb'
 require 'traap.plugins.surround'
 require 'traap.plugins.telescope'
