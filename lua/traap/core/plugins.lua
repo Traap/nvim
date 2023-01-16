@@ -60,15 +60,21 @@ require('lazy').setup({
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Satus line 
 
-  { 'nvim-lualine/lualine.nvim', event = 'VeryLazy',
+  { 'nvim-lualine/lualine.nvim', event = 'VeryLazy', config = true,
     dependencies = { 'kyazdani42/nvim-web-devicons', opt = true }
   },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Git signs and lightbulb.
 
-  { 'lewis6991/gitsigns.nvim', event = 'VeryLazy' },
-  { 'kosayoda/nvim-lightbulb', event = 'VeryLazy',
+  { 'lewis6991/gitsigns.nvim', event = 'VeryLazy', config = true},
+  { 'kosayoda/nvim-lightbulb', 
+    event = 'VeryLazy',
+    opts = function() 
+      return {
+        { autocmd = {enabled = true }}
+      }
+    end,
     dependencies = { 'antoinemadec/FixCursorHold.nvim', }
   },
 
@@ -153,7 +159,15 @@ require('lazy').setup({
   { 'iamcco/markdown-preview.nvim',       event = 'BufEnter' },
   { 'kovetskiy/sxhkd-vim',                event = 'BufEnter' },
   { 'moll/vim-bbye',                      event = 'BufEnter' },
-  { 'rcarriga/nvim-notify',               event = 'BufEnter' },
+
+  { 'rcarriga/nvim-notify', event = 'BufEnter',
+    opts = function() 
+      return { 
+        {background_colour = "#000000"}
+      }
+    end,
+  },
+
   { 'sbdchd/neoformat',                   event = 'BufEnter' },
   { 'triglav/vim-visual-increment',       event = 'BufEnter' },
   { 'vim-utils/vim-most-minimal-folds',   event = 'BufEnter' },
