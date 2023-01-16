@@ -106,7 +106,7 @@ require('lazy').setup({
   { 'tpope/vim-unimpaired', event = 'VeryLazy' },
   { 'tpope/vim-vinegar', event = 'VeryLazy' },
 
-  { 'kylechui/nvim-surround', event = 'VeryLazy' },
+  { 'kylechui/nvim-surround', event = 'VeryLazy', config=true },
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Telescope
