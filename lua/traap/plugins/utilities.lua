@@ -1,8 +1,16 @@
 return {
   -- {{{ General startup
 
-  { 'tweekmonster/startuptime.vim', event = 'VimEnter' },
-  { 'nvim-lua/popup.nvim',          event = 'VimEnter' },
+  { 'dstein64/vim-startuptime',
+    cmd = 'StartupTime',
+    config = function()
+      vim.g.startuptime_tries = 10
+    end,
+  },
+
+  { 'nvim-lua/plenary.nvim', lazy = true },
+
+  { 'nvim-lua/popup.nvim', event = 'VimEnter' },
 
   { 'folke/trouble.nvim', event = 'VimEnter', 
      opts = {use_diagnostic_signs = true }
@@ -23,7 +31,7 @@ return {
   -- {{{ PlantUML
 
   { 'aklt/plantuml-syntax', 
-    event = 'BufEnter',
+    keys = '<leader>gu',
     dependencies = 'Traap/vim-bundle-plantuml',
   },
 
@@ -34,15 +42,15 @@ return {
   { 'tpope/vim-bundler',       event = 'BufEnter' },
   { 'tpope/vim-characterize',  event = 'BufEnter' },
   { 'tpope/vim-commentary',    event = 'BufEnter'},
-  { 'tpope/vim-dispatch',      event = 'BufEnter' },
+  { 'tpope/vim-dispatch',      event = 'VeryLazy' },
   { 'tpope/vim-endwise',       event = 'BufEnter' },
   { 'tpope/vim-eunuch',        event = 'BufEnter' },
   { 'tpope/vim-fugitive',      event = 'BufEnter' },
-  { 'tpope/vim-projectionist', event = 'BufEnter' },
-  { 'tpope/vim-rails',         event = 'BufEnter' },
-  { 'tpope/vim-rake',          event = 'BufEnter' },
-  { 'tpope/vim-rbenv',         event = 'BufEnter' },
-  { 'tpope/vim-repeat',        event = 'BufEnter' },
+  { 'tpope/vim-projectionist', event = 'VeryLazy' },
+  { 'tpope/vim-rails',         event = 'VeryLazy' },
+  { 'tpope/vim-rake',          event = 'VeryLazy' },
+  { 'tpope/vim-rbenv',         event = 'VeryLazy' },
+  { 'tpope/vim-repeat',        event = 'VeryLazy' },
 --  { 'tpope/vim-surround',      event = 'BufEnter' },
   { 'tpope/vim-unimpaired',    event = 'BufEnter' },
   { 'tpope/vim-vinegar',       event = 'BufEnter' },
@@ -53,7 +61,7 @@ return {
   -- {{{ Tmux
 
   { 'christoomey/vim-tmux-navigator',
-    event = 'BufEnter',
+    cmd = 'VtrOpenRunner',
     dependencies = {
       'christoomey/vim-tmux-runner',
       'Traap/vim-bundle-tmux-runner'
@@ -75,7 +83,7 @@ return {
   { 'rcarriga/nvim-notify', event = 'BufEnter',
     opts = function()
       return {
-        {background_colour = "#000000"}
+        {background_colour = '#000000'}
       }
     end,
   },
@@ -98,8 +106,7 @@ return {
   { 'lervag/wiki-ft.vim', lazy = false },
 
   { 'lervag/wiki.vim',
-    event = 'BufEnter',
-    cmd = 'WikiEnable',
+    cmd = 'WikiIndex',
     dependencies = {
       'Traap/vim-bundle-wiki.vim',
     },
@@ -119,7 +126,7 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Git signs and lightbulb.
 
-  { 'lewis6991/gitsigns.nvim', event = 'BufEnter', config = true},
+  { 'lewis6991/gitsigns.nvim', event = 'BufEnter', enable = true},
   { 'kosayoda/nvim-lightbulb',
     event = 'BufEnter',
     opts = { autocmd = {enabled = true } },
