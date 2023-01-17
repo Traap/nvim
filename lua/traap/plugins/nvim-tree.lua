@@ -1,7 +1,7 @@
 return {
   {
     "kyazdani42/nvim-tree.lua",
-    event = 'BufEnter',
+    cmd = 'NvimTreeToggle',
     opts = {
       filters = {
         custom = { ".git" },
