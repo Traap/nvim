@@ -7,6 +7,9 @@ return {
     end,
     dependencies = {
       { 'xiyaowong/nvim-transparent',
+        config = function()
+          vim.cmd([[TransparentEnable]])
+        end,
         opts = function ()
           return {
             {
@@ -29,7 +32,7 @@ return {
             }
           }
         end,
-        cmd = 'TransparentEnable',
+        event = 'VimEnter',
       },
       { 'norcalli/nvim-colorizer.lua', config = true},
       { 'mechatroner/rainbow_csv'},
