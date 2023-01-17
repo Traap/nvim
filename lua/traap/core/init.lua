@@ -1,5 +1,5 @@
-require 'traap.core.clipboard'
 require 'traap.core.bootstrap'
+require 'traap.core.clipboard'
 require 'traap.core.customize'
 require 'traap.core.functions'
 require 'traap.core.options'
