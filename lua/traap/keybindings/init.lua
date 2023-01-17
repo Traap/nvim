@@ -181,7 +181,6 @@ keymap('n', '<leader>fi', "<cmd>lua require('telescope').extensions.media_files.
 keymap('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
 keymap('n', '<leader>fl', '<cmd>Telescope resume<cr>')
 keymap('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>')
-keymap('n', '<leader>fp', '<cmd>find_files cwd=~/.local/share/nvim/site/pack/packer<cr>')
 keymap('n', '<leader>fr', '<cmd>VtrFocusRunner<cr>')
 keymap('n', '<leader>fw', '<cmd>Telescope grep_string<cr>')
 
@@ -252,11 +251,11 @@ keymap('n', '<leader>or', [[<cmd>VtrOpenRunner {'orientation': 'h', 'percentage'
 -- ------------------------------------------------------------------------- }}}
 -- {{{ p - Packer
 
-keymap('n', '<leader>pS', '<cmd>PackerStatus<cr>')
-keymap('n', '<leader>pc', '<cmd>PackerCompile<cr>')
-keymap('n', '<leader>pi', '<cmd>PackerInstall<cr>')
-keymap('n', '<leader>ps', '<cmd>PackerSync<cr>')
-keymap('n', '<leader>pu', '<cmd>PackerUpdate<cr>')
+keymap('n', '<leader>ph', '<cmd>Lazy home<cr>')
+keymap('n', '<leader>pl', '<cmd>Lazy log<cr>')
+keymap('n', '<leader>pp', '<cmd>Lazy profile<cr>')
+keymap('n', '<leader>ps', '<cmd>Lazy sync<cr>')
+keymap('n', '<leader>pu', '<cmd>Lazy update<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ r - Repace
