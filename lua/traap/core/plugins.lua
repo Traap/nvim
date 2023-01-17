@@ -42,7 +42,7 @@ require('lazy').setup({
             }
           }
         end,
-        cmd = 'TransparentToggle',
+        cmd = 'TransparentEnable',
       },
       { 'norcalli/nvim-colorizer.lua', config = true},
       { 'mechatroner/rainbow_csv'},
