@@ -58,12 +58,16 @@ return {
   { 'kylechui/nvim-surround', event = 'BufEnter', config=true },
 
   -------------------------------------------------------------------------- }}}
+  -- {{{ Navigate Vim Splits and Tmux pains. 
+
+  { 'christoomey/vim-tmux-navigator', event = 'BufEnter '},
+
+  -------------------------------------------------------------------------- }}}
   -- {{{ Tmux
 
-  { 'christoomey/vim-tmux-navigator',
+  { 'christoomey/vim-tmux-runner',
     cmd = 'VtrOpenRunner',
     dependencies = {
-      'christoomey/vim-tmux-runner',
       'Traap/vim-bundle-tmux-runner'
     },
   },
