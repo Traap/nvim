@@ -33,21 +33,21 @@ return {
   { 'tpope/gem-browse',        event = 'BufEnter' },
   { 'tpope/vim-bundler',       event = 'BufEnter' },
   { 'tpope/vim-characterize',  event = 'BufEnter' },
-  { 'tpope/vim-commentary',    event = 'InsertEnter'},
+  { 'tpope/vim-commentary',    event = 'BufEnter'},
   { 'tpope/vim-dispatch',      event = 'BufEnter' },
-  { 'tpope/vim-endwise',       event = 'InsertEnter' },
+  { 'tpope/vim-endwise',       event = 'BufEnter' },
   { 'tpope/vim-eunuch',        event = 'BufEnter' },
   { 'tpope/vim-fugitive',      event = 'BufEnter' },
   { 'tpope/vim-projectionist', event = 'BufEnter' },
   { 'tpope/vim-rails',         event = 'BufEnter' },
   { 'tpope/vim-rake',          event = 'BufEnter' },
   { 'tpope/vim-rbenv',         event = 'BufEnter' },
-  { 'tpope/vim-repeat',        event = 'InsertEnter' },
+  { 'tpope/vim-repeat',        event = 'BufEnter' },
 --  { 'tpope/vim-surround',      event = 'BufEnter' },
   { 'tpope/vim-unimpaired',    event = 'BufEnter' },
   { 'tpope/vim-vinegar',       event = 'BufEnter' },
 
-  { 'kylechui/nvim-surround', event = 'InsertEnter', config=true },
+  { 'kylechui/nvim-surround', event = 'BufEnter', config=true },
 
   -------------------------------------------------------------------------- }}}
   -- {{{ Tmux
