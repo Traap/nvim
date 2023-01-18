@@ -1,4 +1,3 @@
--- Telescope custimization.
 return {
   -- Telescope
   {
