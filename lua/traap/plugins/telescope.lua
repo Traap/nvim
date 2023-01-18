@@ -1,30 +1,29 @@
 -- Telescope custimization.
 return {
+  -- Telescope
   {
     'nvim-telescope/telescope.nvim',
-    event = 'BufEnter',
-    opts = function ()
-      return {
-        defaults = {
-          layout_strategy = 'horizontal',
-          layout_config = { prompt_position = 'top' },
-          winblend = 0,
-          sorting_strategy = 'ascending',
-        },
-      }
-    end,
-
-    dependencies = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      { 'nvim-telescope/telescope-media-files.nvim' },
+    event = 'VimEnter',
+    opts = {
+      defaults = {
+        borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+        layout_strategy = 'horizontal',
+        layout_config = { prompt_position = 'top' },
+        sorting_strategy = 'ascending',
+        winblend = 0,
+      },
     },
+  },
 
---    config = function(_, opts)
---      local telescope = require('telescope')
---      telescope.setup(opts)
---      telescope.load_extension('fzf')
---      telescope.load_extension({'pdf', 'png', 'jpg', 'jpeg'})
---    end,
+  -- Telescope fzf native
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = { { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
+    -- apply the config and additionally load fzf-native
+    config = function(_, opts)
+      local telescope = require('telescope')
+      telescope.setup(opts)
+      telescope.load_extension('fzf')
+    end,
   },
 }

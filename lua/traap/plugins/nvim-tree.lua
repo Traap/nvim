@@ -1,13 +1,13 @@
 return {
   {
-    "kyazdani42/nvim-tree.lua",
+    'kyazdani42/nvim-tree.lua',
     cmd = 'NvimTreeToggle',
     opts = {
       filters = {
-        custom = { ".git" },
+        custom = { '.git' },
       },
       view = {
-        side = "right",
+        side = 'right',
         width = 30,
       },
     },
