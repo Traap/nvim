@@ -63,6 +63,12 @@ lsp_kind_icons = {
   vsnip         = " ",
 },
 
+lsp_ensure_installed = {
+  'stylua',
+  'shellcheck',
+  'shfmt',
+  'flake8',
+},
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Diagnostics Signs.
 
@@ -99,6 +105,30 @@ visual_opts = {
   silent  = true,       -- use `silent` when creating keymaps
   noremap = true,       -- use `noremap` when creating keymaps
   nowait  = true,       -- use `nowait` when creating keymaps
+},
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Completion source mapping 
+
+source_mapping = {
+  spell         = "[Spell]",
+  luasnip       = "[Snippet]",
+  nvim_lsp      = "[LSP]",
+  buffer        = "[Buffer]",
+  latex_symbols = "[LaTeX]",
+  nvim_lua      = "[Lua]",
+  path          = "[Path]",
+},
+
+sources = {
+  { name = "luasnip",       keyword_length = 1, max_item_count = 30 },
+  { name = "spell",         keyword_length = 2, max_item_count = 30 },
+  { name = "buffer",        keyword_length = 2, max_item_count = 30 },
+  { name = "nvim_lsp",      keyword_length = 2, max_item_count = 30 },
+  { name = "calc",          keyword_length = 2, max_item_count = 30 },
+  { name = "latex_symbols", keyword_length = 1, max_item_count = 30 },
+  { name = "nvim_lua",      keyword_length = 1, max_item_count = 30 },
+  { name = "path",          keyword_length = 3, max_item_count = 30 },
 },
 
 -- ------------------------------------------------------------------------- }}}

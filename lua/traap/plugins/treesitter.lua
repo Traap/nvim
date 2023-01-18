@@ -2,6 +2,11 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = {
+      rainbow = { 
+        enable = true, 
+        extended_mode = true,
+        max_file_lines = 1500,
+      },
       ensure_installed = {
         'bash',
         'c',

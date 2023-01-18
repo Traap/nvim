@@ -1,7 +1,7 @@
 return {
   {
     'nvim-tree/nvim-web-devicons',
-    enabled = false,
+    enabled = true,
     event = 'VimEnter',
     config = true,
     opts = {

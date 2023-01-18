@@ -12,7 +12,7 @@ return {
 
   { 'nvim-lua/popup.nvim', event = 'VimEnter' },
 
-  { 'folke/trouble.nvim', event = 'VimEnter', 
+  { 'folke/trouble.nvim', event = 'VimEnter',
      opts = {use_diagnostic_signs = true }
   },
 
@@ -30,7 +30,7 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ PlantUML
 
-  { 'aklt/plantuml-syntax', 
+  { 'aklt/plantuml-syntax',
     keys = '<leader>gu',
     dependencies = 'Traap/vim-bundle-plantuml',
   },
@@ -38,13 +38,13 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ neovim without Tpope?  No Way!!!
 
-  { 'tpope/gem-browse',        event = 'BufEnter' },
-  { 'tpope/vim-bundler',       event = 'BufEnter' },
-  { 'tpope/vim-characterize',  event = 'BufEnter' },
-  { 'tpope/vim-commentary',    event = 'BufEnter'},
+  { 'tpope/gem-browse',        event = 'VeryLazy' },
+  { 'tpope/vim-bundler',       event = 'VeryLazy' },
+  { 'tpope/vim-characterize',  event = 'VeryLazy' },
+  { 'tpope/vim-commentary',    event = 'VeryLazy'},
   { 'tpope/vim-dispatch',      event = 'VeryLazy' },
-  { 'tpope/vim-endwise',       event = 'BufEnter' },
-  { 'tpope/vim-eunuch',        event = 'BufEnter' },
+  { 'tpope/vim-endwise',       event = 'InsertEnter' },
+  { 'tpope/vim-eunuch',        event = 'VeryLazy' },
   { 'tpope/vim-fugitive',      event = 'BufEnter' },
   { 'tpope/vim-projectionist', event = 'VeryLazy' },
   { 'tpope/vim-rails',         event = 'VeryLazy' },
@@ -52,13 +52,13 @@ return {
   { 'tpope/vim-rbenv',         event = 'VeryLazy' },
   { 'tpope/vim-repeat',        event = 'VeryLazy' },
 --  { 'tpope/vim-surround',      event = 'BufEnter' },
-  { 'tpope/vim-unimpaired',    event = 'BufEnter' },
-  { 'tpope/vim-vinegar',       event = 'BufEnter' },
+  { 'tpope/vim-unimpaired',    event = 'VeryLazy' },
+  { 'tpope/vim-vinegar',       event = 'VeryLazy' },
 
   { 'kylechui/nvim-surround', event = 'BufEnter', config=true },
 
   -------------------------------------------------------------------------- }}}
-  -- {{{ Navigate Vim Splits and Tmux pains. 
+  -- {{{ Navigate Vim Splits and Tmux pains.
 
   { 'christoomey/vim-tmux-navigator', event = 'BufEnter '},
 
@@ -75,14 +75,13 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Utility
 
-  { 'ChristianChiarulli/nvim-ts-rainbow', event = 'BufEnter' },
   { 'ThePrimeagen/harpoon',               event = 'BufEnter' },
-  { 'dkarter/bullets.vim',                event = 'BufEnter' },
-  { 'ekickx/clipboard-image.nvim',        event = 'BufEnter' },
-  { 'goolord/alpha-nvim',                 event = 'BufEnter' },
-  { 'iamcco/markdown-preview.nvim',       event = 'BufEnter' },
-  { 'kovetskiy/sxhkd-vim',                event = 'BufEnter' },
-  { 'moll/vim-bbye',                      event = 'BufEnter' },
+  { 'dkarter/bullets.vim',                event = 'InsertEnter' },
+  { 'ekickx/clipboard-image.nvim',        event = 'InsertEnter' },
+  { 'goolord/alpha-nvim',                 event = 'BufEnter', enable = false },
+  { 'iamcco/markdown-preview.nvim',       ft    = 'md' },
+  { 'kovetskiy/sxhkd-vim',                event = 'VeryLazy' },
+  { 'moll/vim-bbye',                      event = 'VeryLazy' },
 
   { 'rcarriga/nvim-notify', event = 'BufEnter',
     opts = function()
@@ -92,10 +91,10 @@ return {
     end,
   },
 
-  { 'sbdchd/neoformat',                   event = 'BufEnter' },
-  { 'triglav/vim-visual-increment',       event = 'BufEnter' },
+  { 'sbdchd/neoformat',                   event = 'VeryLazy' },
+  { 'triglav/vim-visual-increment',       event = 'VeryLazy' },
   { 'vim-utils/vim-most-minimal-folds',   event = 'BufEnter' },
-  { 'windwp/nvim-autopairs',              event = 'BufEnter', config = true },
+  { 'windwp/nvim-autopairs',              event = 'InsertEnter', config = true },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ VimTex

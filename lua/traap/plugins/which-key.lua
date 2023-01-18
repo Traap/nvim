@@ -1,3 +1,7 @@
 return {
-  {'folke/which-key.nvim', event = 'VimEnter', config = true },
+  {'folke/which-key.nvim', 
+    enable = false, 
+    event = 'VimEnter', 
+    config = true
+  },
 }

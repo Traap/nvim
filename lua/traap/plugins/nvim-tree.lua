@@ -1,7 +1,13 @@
 return {
   {
     'kyazdani42/nvim-tree.lua',
-    cmd = 'NvimTreeToggle',
+
+    cmd = {
+      'NvimTreeFindFile',
+      'NvimTreeRefresh',
+      'NvimTreeToggle', 
+    },
+
     opts = {
       filters = {
         custom = { '.git' },
