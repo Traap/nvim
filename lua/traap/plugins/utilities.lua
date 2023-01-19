@@ -132,6 +132,38 @@ return {
   },
 
   -------------------------------------------------------------------------- }}}
+  -- {{{ Telescope
+
+  -- Telescope
+  {
+    'nvim-telescope/telescope.nvim',
+    event = 'VimEnter',
+    opts = {
+      defaults = {
+        border= {},
+        borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+        layout_strategy = 'horizontal',
+        layout_config = { prompt_position = 'top' },
+        sorting_strategy = 'ascending',
+        winblend = 0,
+      },
+    },
+  },
+
+  -- Telescope fzf native
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+    },
+    config = function(_, opts)
+      local telescope = require('telescope')
+      telescope.setup(opts)
+      telescope.load_extension('fzf')
+    end,
+  },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ Tmux
 
   { 'christoomey/vim-tmux-runner',
