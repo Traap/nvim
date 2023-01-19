@@ -72,6 +72,29 @@ return {
   { 'christoomey/vim-tmux-navigator', event = 'BufEnter '},
 
   -------------------------------------------------------------------------- }}}
+  -- {{{ nvim-tree
+
+  {
+    'kyazdani42/nvim-tree.lua',
+
+    cmd = {
+      'NvimTreeFindFile',
+      'NvimTreeRefresh',
+      'NvimTreeToggle',
+    },
+
+    opts = {
+      filters = {
+        custom = { '.git' },
+      },
+      view = {
+        side = 'right',
+        width = 30,
+      },
+    },
+  },
+
+  -------------------------------------------------------------------------- }}}
   -- {{{ Tmux
 
   { 'christoomey/vim-tmux-runner',
