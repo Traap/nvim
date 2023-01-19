@@ -82,6 +82,13 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ Set colors
+
+  { 'ChristianChiarulli/nvim-ts-rainbow', event = 'VeryLazy' },
+  { 'mechatroner/rainbow_csv',            event = 'VimEnter' },
+  { 'norcalli/nvim-colorizer.lua',        event = 'VimEnter' },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ Utility
 
   { 'ThePrimeagen/harpoon',               event = 'BufEnter' },
