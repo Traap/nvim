@@ -54,7 +54,7 @@ return {
   { 'tpope/vim-dispatch',      event = 'VeryLazy' },
   { 'tpope/vim-endwise',       event = 'InsertEnter' },
   { 'tpope/vim-eunuch',        event = 'VeryLazy' },
-  { 'tpope/vim-fugitive',      event = 'VeryLazy' },
+  { 'tpope/vim-fugitive',      lazy = false, priority = 999},
   { 'tpope/vim-projectionist', event = 'VeryLazy' },
   { 'tpope/vim-rails',         event = 'VeryLazy' },
   { 'tpope/vim-rake',          event = 'VeryLazy' },
@@ -214,7 +214,7 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Set colors
 
-  { 'ChristianChiarulli/nvim-ts-rainbow', event = 'VeryLazy' },
+  { 'ChristianChiarulli/nvim-ts-rainbow', event = 'VimEnter' },
   { 'mechatroner/rainbow_csv',            event = 'VimEnter' },
   { 'norcalli/nvim-colorizer.lua',        event = 'VimEnter' },
 
