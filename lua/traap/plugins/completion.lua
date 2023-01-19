@@ -111,26 +111,33 @@ return {
         end,
       }
 
-
       local window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       }
+
+      cmp.setup.filetype('gitcommit', {
+        sources = cmp.config.sources({
+          { name = 'cmp_git' }
+        },{
+          { name = 'buffer' }
+        })
+      })
+
+      cmp.setup.cmdline({'/', '?'}, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          {name = 'buffer' }
+        }
+      })
 
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = 'path' }
         },{
-          { name = 'cmdline', keyword_length = 4, max_item_count = 10}
+          { name = 'cmdline' }
         })
-      })
-
-      cmp.setup.cmdline('/', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          {name = 'buffer', max_item_count = 10}
-        }
       })
 
       return {
@@ -138,7 +145,7 @@ return {
         confirm_opts = confirm_opts,
         experimental = experimental,
         formatting   = formatting,
-        -- mapping      = mapping,
+        mapping      = mapping,
         snippet      = snippet,
         sources      = sources,
         window       = window,
