@@ -28,6 +28,15 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ Lualine
+
+  {
+    'nvim-lualine/lualine.nvim',
+    event = 'VeryLazy',
+    config = true
+  },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ PlantUML
 
   { 'aklt/plantuml-syntax',
@@ -36,7 +45,7 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ neovim without Tpope?  No Way!!!
+  -- {{{ Neovim without Tpope?  No Way!!!
 
   { 'tpope/gem-browse',        event = 'VeryLazy' },
   { 'tpope/vim-bundler',       event = 'VeryLazy' },
@@ -45,7 +54,7 @@ return {
   { 'tpope/vim-dispatch',      event = 'VeryLazy' },
   { 'tpope/vim-endwise',       event = 'InsertEnter' },
   { 'tpope/vim-eunuch',        event = 'VeryLazy' },
-  { 'tpope/vim-fugitive',      event = 'BufEnter' },
+  { 'tpope/vim-fugitive',      event = 'VeryLazy' },
   { 'tpope/vim-projectionist', event = 'VeryLazy' },
   { 'tpope/vim-rails',         event = 'VeryLazy' },
   { 'tpope/vim-rake',          event = 'VeryLazy' },
