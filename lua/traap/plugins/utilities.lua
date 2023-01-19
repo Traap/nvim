@@ -106,11 +106,10 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Wiki.Vim
 
-  { 'lervag/wiki-ft.vim', lazy = false },
-
   { 'lervag/wiki.vim',
     cmd = 'WikiIndex',
     dependencies = {
+      'lervag/wiki-ft.vim',
       'Traap/vim-bundle-wiki.vim',
     },
   },
