@@ -9,6 +9,27 @@ vim.api.nvim_create_autocmd(
 )
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Close some filetypes with <q>.
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'qf',
+    'help',
+    'man',
+    'notify',
+    'lspinfo',
+    'spectre_panel',
+    'startuptime',
+    'tsplayground',
+    'PlenaryTestPopup',
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+  end,
+})
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ csv
 
 local csv_group = vim.api.nvim_create_augroup('csv', { clear = true })
@@ -19,6 +40,19 @@ vim.api.nvim_create_autocmd(
     pattern = '*.csv',
   }
 )
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Goto last location whenopening a buffer.
+
+vim.api.nvim_create_autocmd('BufReadPost', {
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Highlight on yank
@@ -84,6 +118,30 @@ vim.api.nvim_create_autocmd(
 )
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Reload file when necessay.
+
+vim.api.nvim_create_autocmd({ 'FocusGained','TermClose', 'TermLeave' }, { command = 'checktime' })
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Resize splits when window is resized.
+
+vim.api.nvim_create_autocmd({ 'VimResized' }, {
+  callback = function()
+    vim.cmd('tabdo wincmd =')
+  end,
+})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Set spelling for some file types.
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'gitcommit', 'markdown', 'wiki' },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ TeX
 
 local tex_group = vim.api.nvim_create_augroup('Tex', { clear = true })
@@ -101,7 +159,7 @@ vim.api.nvim_create_autocmd(
 local wiki_group = vim.api.nvim_create_augroup('Wiki', { clear = true })
 vim.api.nvim_create_autocmd(
   {'BufRead','BufNewFile'}, {
-    command = 'setlocal foldlevelstart=2 filetype=wiki | WikiEnable',
+    command = 'setlocal foldlevelstart=2 filetype=wiki',
     group = wiki_group,
     pattern = {'*.md', '*.markdown', '*.wiki'},
   }
