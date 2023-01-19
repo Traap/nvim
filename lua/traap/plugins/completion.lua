@@ -35,7 +35,7 @@ return {
       end
 
       local completion = {
-        keyword_length = 3,
+        keyword_length = 1,
       }
 
       local formatting = {
