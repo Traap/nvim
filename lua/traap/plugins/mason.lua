@@ -3,20 +3,50 @@ return {
 
   {
     'neovim/nvim-lspconfig',
-    cmd = 'Mason',
+    event = 'BufReadPre',
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/cmp-nvim-lsp'
     },
-    config = function()
-      local language_servers = require('traap.core.constants').language_servers
+
+    opts = {
+      diagnostics = {
+        underline = true,
+        update_in_insert = false,
+        virtual_text = { spacing = 4, prefix = '●' },
+        severity_sort = true,
+      },
+      autoformat = false,
+      format = {
+        formatting_options = nil,
+        timeout_ms = nil,
+      },
+      servers = require('traap.core.constants').language_servers,
+    },
+
+    config = function(plugin, opts)
       local lspconfig = require('lspconfig')
+      local handlers = require('trasp.servers.lsp.handlers')
+      local signs = require('traap.constants').diagnostics_signs
+      local servers = opts.servers
+
+      for name, icon in pairs(signs) do
+        name = 'DiagnosticSign' .. name
+        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
+      end
+      vim.diagnostic.config(opts.diagnostics)
+
+      require('mason-lspconfig').setup({
+        ensure_installed = vim.tbl_keys(servers)
+      })
 
       local xopts = {}
-      for _, server in pairs(language_servers) do
+      for _, server in pairs(opts.servers) do
         xopts = {
-          on_attach = require('traap.servers.lsp.handlers').on_attach,
-          capabilities = require('traap.servers.lsp.handlers').capabilities,
+          on_attach = handlers.on_attach,
+          capabilities = handlers.capabilities,
+          keymaps = handlers.lsp_keymaps,
         }
         server = vim.split(server, '@')[1]
         local ok, copts = pcall(require, 'traap.servers.lsp.servers' .. server)
@@ -25,6 +55,7 @@ return {
         end
         lspconfig[server].setup(xopts)
       end
+
     end,
   },
 
@@ -33,33 +64,42 @@ return {
 
   {
     'williamboman/mason.nvim',
-    dependencies = { 'neovim/nvim-lspconfig' },
-    opts = function()
-      return {
-        ui = {
-          border = 'none',
-          icons = {
-            package_installed = '◍',
-            package_pending = '◍',
-            package_uninstalled = '◍',
-          },
-        },
-        log_level = vim.log.levels.INFO,
-        max_concurrent_installers = 4,
-      }
+    cmd = 'Mason',
+    keys = { { '<leader>cm', '<cmd>Mason<cr> '}, },
+
+    opts = {
+      ensure_installed = require('traap.core.constants').language_servers,
+    },
+
+    config = function(plugin, opts)
+      require ('traap.servers.lsp.handlers').setup()
+      require('mason').setup(opts)
+      local mr = require('mason-registry')
+      for _, tool in ipairs(opts.ensure_installed) do
+        local p = mr.get_package(tool)
+        if not p:is_installed() then
+          p:install()
+        end
+      end
     end,
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ Mason-lspconfig
+  -- {{{ null-ls
 
   {
-    'williamboman/mason-lspconfig.nvim',
-    dependencies = { 'neovim/nvim-lspconfig' },
-    opts = {
-      ensure_installed = require('traap.core.constants').language_servers,
-      automatic_installation = true,
-    }
+    'jose-elias-alvarez/null-ls.nvim',
+    event = 'BufReadPre',
+    dependencies = { 'mason.nvim' },
+    opts = function()
+      local nls = require('null-ls')
+      return {
+        sources = {
+          nls.builtins.formatting.stylua,
+          nls.builtins.diagnostics.flake8,
+        },
+      }
+    end,
   },
 
   -- ----------------------------------------------------------------------- }}}

@@ -26,6 +26,13 @@ language_servers = {
   'yamlls',
 },
 
+lsp_ensure_installed = {
+  'stylua',
+  'shellcheck',
+  'shfmt',
+  'flake8',
+},
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ LSp kind icons.
 
@@ -63,12 +70,6 @@ lsp_kind_icons = {
   vsnip         = " ",
 },
 
-lsp_ensure_installed = {
-  'stylua',
-  'shellcheck',
-  'shfmt',
-  'flake8',
-},
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Diagnostics Signs.
 
@@ -101,14 +102,14 @@ visual_opts = {
   mode    = "v",        -- VISUAL mode
   prefix  = "<leader>", -- Override this value.
   buffer  = nil,        -- Global mappings. Specify a buffer number for buffer
-                        --   local mappings
+                        -- local mappings
   silent  = true,       -- use `silent` when creating keymaps
   noremap = true,       -- use `noremap` when creating keymaps
   nowait  = true,       -- use `nowait` when creating keymaps
 },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Completion source mapping 
+-- {{{ Completion source mapping
 
 source_mapping = {
   spell         = "[Spell]",
