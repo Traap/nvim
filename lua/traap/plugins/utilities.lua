@@ -17,6 +17,39 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ better vim.ui
+
+  { 'stevearc/dressing.nvim',
+    lazy = true,
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require('lazy').load({ plugins = { 'dressing.nvim' } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require('lazy').load({ plugins = { 'dressing.nvim' } })
+        return vim.ui.input(...)
+      end
+    end,
+  },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ Indent guides for Neovim
+
+ {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufReadPre",
+    opts = {
+      char = "│",
+      filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
+      show_trailing_blankline_indent = false,
+      show_current_context = false,
+    },
+  },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ JuneGunn Easyalign and fzf.
 
   { 'junegunn/vim-easy-align', event = 'BufEnter' },
@@ -72,6 +105,36 @@ return {
   { 'christoomey/vim-tmux-navigator', event = 'BufEnter '},
 
   -------------------------------------------------------------------------- }}}
+  -- {{{ Noice - (Nice, Noise, Notice)
+
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     lsp = {
+  --       override = {
+  --         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+  --         ["vim.lsp.util.stylize_markdown"] = true,
+  --       },
+  --     },
+  --     presets = {
+  --       bottom_search = true,
+  --       command_palette = true,
+  --       long_message_to_split = true,
+  --     },
+  --   },
+  --   stylua: ignore
+  --   keys = {
+  --     { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
+  --     { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
+  --     { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
+  --     { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
+  --     { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll forward" },
+  --     { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward"},
+  --   },
+  -- },
+
+  -------------------------------------------------------------------------- }}}
   -- {{{ nvim-tree
 
   {
@@ -99,9 +162,6 @@ return {
 
   {
     'nvim-tree/nvim-web-devicons',
-    enabled = true,
-    event = 'VimEnter',
-    config = true,
     opts = {
       override = {
         Dockerfile = {icon = '',  color = '#b8b5ff', name = 'Dockerfile'},
@@ -137,15 +197,22 @@ return {
   -- Telescope
   {
     'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
+    cmd = 'Telescope',
+    version = false,
+    keys = { '<leader>[', [[<cmd>Telescope find_files<cr>]]},
     opts = {
       defaults = {
-        border= {},
-        borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
-        layout_strategy = 'horizontal',
+        -- border= {},
+        -- borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
         layout_config = { prompt_position = 'top' },
+        layout_strategy = 'horizontal',
+        prompt_prefix = " ",
+        selection_caret = " ",
         sorting_strategy = 'ascending',
         winblend = 0,
+      },
+      pickers = {
+        colorscheme = { enable_preview = true, }
       },
     },
   },
@@ -178,7 +245,12 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    version = false,
+    build = ':TSUpdate',
+    event = 'BufReadPost',
     opts = {
+      highlight = { enable = true },
+      indent = { enable = true },
       rainbow = {
         enable = true,
         extended_mode = true,
@@ -216,7 +288,21 @@ return {
 
   { 'ChristianChiarulli/nvim-ts-rainbow', event = 'VimEnter' },
   { 'mechatroner/rainbow_csv',            event = 'VimEnter' },
-  { 'norcalli/nvim-colorizer.lua',        event = 'VimEnter' },
+  { 'norcalli/nvim-colorizer.lua', lazy=true,
+    opts = {
+      DEFAULT_OPTIONS = {
+        RGB      = true,         -- #RGB hex codes
+        RRGGBB   = true,         -- #RRGGBB hex codes
+        names    = true,         -- "Name" codes like Blue
+        RRGGBBAA = false,        -- #RRGGBBAA hex codes
+        rgb_fn   = false,        -- CSS rgb() and rgba() functions
+        hsl_fn   = false,        -- CSS hsl() and hsla() functions
+        css      = false,        -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn   = false,        -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        mode     = 'background', -- Set the display mode (background|foreground)
+      }
+    }
+  },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Set colorscheme
@@ -265,6 +351,20 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ Search & replace in multiple files.
+
+  {
+    "windwp/nvim-spectre",
+    keys = {
+      { "<leader>sr",
+        function()
+          require("spectre").open()
+        end, desc = "Replace in files (Spectre)"
+      },
+    },
+  },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ Utility
 
   { 'ThePrimeagen/harpoon',               event = 'BufEnter' },
@@ -276,11 +376,9 @@ return {
   { 'moll/vim-bbye',                      event = 'VeryLazy' },
 
   { 'rcarriga/nvim-notify', event = 'BufEnter',
-    opts = function()
-      return {
-        {background_colour = '#000000'}
-      }
-    end,
+    opts = {
+      background_colour = '#1b1b26',
+    }
   },
 
   { 'sbdchd/neoformat',                   event = 'VeryLazy' },
@@ -329,9 +427,44 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Git signs and lightbulb.
 
-  { 'lewis6991/gitsigns.nvim', event = 'BufEnter', enable = true},
+  { 'lewis6991/gitsigns.nvim',
+  event = 'BufReadPre',
+  opts = {
+    signs = {
+      add = { text = "▎" },
+      change = { text = "▎" },
+      delete = { text = "契" },
+      topdelete = { text = "契" },
+      changedelete = { text = "▎" },
+      untracked = { text = "▎" },
+    },
+
+    on_attach = function(buffer)
+      local gs = package.loaded.gitsigns
+
+      local function map(mode, l, r, desc)
+        vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+      end
+
+      -- stylua: ignore start
+      map("n", "]h", gs.next_hunk, "Next Hunk")
+      map("n", "[h", gs.prev_hunk, "Prev Hunk")
+      map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+      map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+      map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+      map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+      map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+      map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+      map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+      map("n", "<leader>ghd", gs.diffthis, "Diff This")
+      map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+      map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+    end,
+  },
+},
+
   { 'kosayoda/nvim-lightbulb',
-    event = 'BufEnter',
+    event = 'BufReadPre',
     opts = { autocmd = {enabled = true } },
     dependencies = { 'antoinemadec/FixCursorHold.nvim', }
   },

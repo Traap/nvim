@@ -1,10 +1,42 @@
 return {
+
+  -- {{{ LuaSnip
+
+  -- {
+  --   'L3MON4D3/LuaSnip',
+  --   keys = function()
+  --     return {}
+  --   end,
+  -- },
+
   {
-    "L3MON4D3/LuaSnip",
-    keys = function()
-      return {}
-    end,
+    'L3MON4D3/LuaSnip',
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      config = function()
+        require('luasnip.loaders.from_vscode').lazy_load()
+      end,
+    },
+    opts = {
+      history = true,
+      delete_check_events = 'TextChanged',
+    },
+    -- stylua: ignore
+    keys = {
+      {
+        '<tab>',
+        function()
+          return require('luasnip').jumpable(1) and '<Plug>luasnip-jump-next' or '<tab>'
+        end,
+        expr = true, silent = true, mode = 'i',
+      },
+      { '<tab>', function() require('luasnip').jump(1) end, mode = 's' },
+      { '<s-tab>', function() require('luasnip').jump(-1) end, mode = { 'i', 's' } },
+    },
   },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ nvim-
 
   {
     'hrsh7th/nvim-cmp',
@@ -18,6 +50,7 @@ return {
       'hrsh7th/cmp-nvim-lsp-document-symbol',
       'hrsh7th/cmp-path',
       'f3fora/cmp-spell',
+      'saadparwaiz1/cmp_luasnip',
     },
 
     opts = function()
@@ -27,11 +60,11 @@ return {
       local source_mapping = require('traap.core.constants').source_mapping
       local sources        = require('traap.core.constants').sources
 
-      require("luasnip/loaders/from_vscode").lazy_load()
+      require('luasnip/loaders/from_vscode').lazy_load()
 
       local check_backspace = function()
-        local col = vim.fn.col "." - 1
-        return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+        local col = vim.fn.col '.' - 1
+        return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
       end
 
       local completion = {
@@ -60,8 +93,8 @@ return {
       local kind_icons = require('traap.core.constants').lsp_kind_icons
 
       local mapping = {
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ['<C-j>'] = cmp.mapping.select_next_item(),
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
 
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
@@ -78,7 +111,7 @@ return {
         -- Do not explicitly select 'first' item when nothing is selected.
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
           elseif luasnip.expandable() then
@@ -92,9 +125,9 @@ return {
           else
             fallback()
           end
-        end, { "i", "s", }),
+        end, { 'i', 's', }),
 
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
           elseif luasnip.jumpable(-1) then
@@ -102,12 +135,12 @@ return {
           else
             fallback()
           end
-        end, { "i", "s", }),
+        end, { 'i', 's', }),
       }
 
       local snippet = {
         expand = function(args)
-          require("luasnip").lsp_expand(args.body)
+          require('luasnip').lsp_expand(args.body)
         end,
       }
 
@@ -152,4 +185,6 @@ return {
       }
     end,
   },
+
+  -- ----------------------------------------------------------------------- }}}
 }
