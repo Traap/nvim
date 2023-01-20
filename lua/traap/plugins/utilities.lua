@@ -8,8 +8,7 @@ return {
     end,
   },
 
-  { 'nvim-lua/plenary.nvim', lazy = true },
-
+  { 'nvim-lua/plenary.nvim', lazy = false},
   { 'nvim-lua/popup.nvim', event = 'VimEnter' },
 
   { 'folke/trouble.nvim', event = 'VimEnter',
@@ -39,11 +38,13 @@ return {
   -- {{{ Indent guides for Neovim
 
  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
+    'lukas-reineke/indent-blankline.nvim',
+    event = 'BufReadPre',
     opts = {
-      char = "│",
-      filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
+      char = '│',
+      filetype_exclude = {
+        'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy'
+      },
       show_trailing_blankline_indent = false,
       show_current_context = false,
     },
@@ -63,11 +64,7 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Lualine
 
-  {
-    'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
-    config = true
-  },
+  { 'nvim-lualine/lualine.nvim', event = 'VeryLazy', config = true },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ PlantUML
@@ -107,32 +104,7 @@ return {
   -------------------------------------------------------------------------- }}}
   -- {{{ Noice - (Nice, Noise, Notice)
 
-  -- {
-  --   "folke/noice.nvim",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     lsp = {
-  --       override = {
-  --         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-  --         ["vim.lsp.util.stylize_markdown"] = true,
-  --       },
-  --     },
-  --     presets = {
-  --       bottom_search = true,
-  --       command_palette = true,
-  --       long_message_to_split = true,
-  --     },
-  --   },
-  --   stylua: ignore
-  --   keys = {
-  --     { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-  --     { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-  --     { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
-  --     { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-  --     { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll forward" },
-  --     { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward"},
-  --   },
-  -- },
+  -- { 'folke/noice.nvim', event = 'VeryLazy', config = true },
 
   -------------------------------------------------------------------------- }}}
   -- {{{ nvim-tree
@@ -162,6 +134,13 @@ return {
 
   {
     'nvim-tree/nvim-web-devicons',
+
+    cmd = {
+      'NvimTreeFindFile',
+      'NvimTreeRefresh',
+      'NvimTreeToggle',
+    },
+
     opts = {
       override = {
         Dockerfile = {icon = '',  color = '#b8b5ff', name = 'Dockerfile'},
@@ -187,7 +166,7 @@ return {
         xz         = {icon = '',  color = '#EBCB8B', name = 'xz'},
         yaml       = {icon = '',  color = '#EBCB8B', name = 'xz'},
         zip        = {icon = '',  color = '#EBCB8B', name = 'zip'}
-      };
+      },
     },
   },
 
@@ -206,8 +185,8 @@ return {
         -- borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
         layout_config = { prompt_position = 'top' },
         layout_strategy = 'horizontal',
-        prompt_prefix = " ",
-        selection_caret = " ",
+        prompt_prefix = ' ',
+        selection_caret = ' ',
         sorting_strategy = 'ascending',
         winblend = 0,
       },
@@ -288,21 +267,7 @@ return {
 
   { 'ChristianChiarulli/nvim-ts-rainbow', event = 'VimEnter' },
   { 'mechatroner/rainbow_csv',            event = 'VimEnter' },
-  { 'norcalli/nvim-colorizer.lua', lazy=true,
-    opts = {
-      DEFAULT_OPTIONS = {
-        RGB      = true,         -- #RGB hex codes
-        RRGGBB   = true,         -- #RRGGBB hex codes
-        names    = true,         -- "Name" codes like Blue
-        RRGGBBAA = false,        -- #RRGGBBAA hex codes
-        rgb_fn   = false,        -- CSS rgb() and rgba() functions
-        hsl_fn   = false,        -- CSS hsl() and hsla() functions
-        css      = false,        -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn   = false,        -- Enable all CSS *functions*: rgb_fn, hsl_fn
-        mode     = 'background', -- Set the display mode (background|foreground)
-      }
-    }
-  },
+  { 'norcalli/nvim-colorizer.lua',        event = 'vimEnter', config = true },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Set colorscheme
@@ -354,12 +319,12 @@ return {
   -- {{{ Search & replace in multiple files.
 
   {
-    "windwp/nvim-spectre",
+    'windwp/nvim-spectre',
     keys = {
-      { "<leader>sr",
+      { '<leader>sr',
         function()
-          require("spectre").open()
-        end, desc = "Replace in files (Spectre)"
+          require('spectre').open()
+        end, desc = 'Replace in files (Spectre)'
       },
     },
   },
@@ -378,6 +343,7 @@ return {
   { 'rcarriga/nvim-notify', event = 'BufEnter',
     opts = {
       background_colour = '#1b1b26',
+      timeout = 10000,
     }
   },
 
@@ -431,12 +397,12 @@ return {
   event = 'BufReadPre',
   opts = {
     signs = {
-      add = { text = "▎" },
-      change = { text = "▎" },
-      delete = { text = "契" },
-      topdelete = { text = "契" },
-      changedelete = { text = "▎" },
-      untracked = { text = "▎" },
+      add = { text = '▎' },
+      change = { text = '▎' },
+      delete = { text = '契' },
+      topdelete = { text = '契' },
+      changedelete = { text = '▎' },
+      untracked = { text = '▎' },
     },
 
     on_attach = function(buffer)
@@ -447,18 +413,18 @@ return {
       end
 
       -- stylua: ignore start
-      map("n", "]h", gs.next_hunk, "Next Hunk")
-      map("n", "[h", gs.prev_hunk, "Prev Hunk")
-      map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-      map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-      map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-      map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-      map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-      map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
-      map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
-      map("n", "<leader>ghd", gs.diffthis, "Diff This")
-      map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
-      map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+      map('n', ']h', gs.next_hunk, 'Next Hunk')
+      map('n', '[h', gs.prev_hunk, 'Prev Hunk')
+      map({ 'n', 'v' }, '<leader>ghs', ':Gitsigns stage_hunk<CR>', 'Stage Hunk')
+      map({ 'n', 'v' }, '<leader>ghr', ':Gitsigns reset_hunk<CR>', 'Reset Hunk')
+      map('n', '<leader>ghS', gs.stage_buffer, 'Stage Buffer')
+      map('n', '<leader>ghu', gs.undo_stage_hunk, 'Undo Stage Hunk')
+      map('n', '<leader>ghR', gs.reset_buffer, 'Reset Buffer')
+      map('n', '<leader>ghp', gs.preview_hunk, 'Preview Hunk')
+      map('n', '<leader>ghb', function() gs.blame_line({ full = true }) end, 'Blame Line')
+      map('n', '<leader>ghd', gs.diffthis, 'Diff This')
+      map('n', '<leader>ghD', function() gs.diffthis('~') end, 'Diff This ~')
+      map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'GitSigns Select Hunk')
     end,
   },
 },

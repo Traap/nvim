@@ -10,26 +10,32 @@ return {
       'hrsh7th/cmp-nvim-lsp'
     },
 
-    opts = {
-      diagnostics = {
-        underline = true,
-        update_in_insert = false,
-        virtual_text = { spacing = 4, prefix = '●' },
-        severity_sort = true,
-      },
-      autoformat = false,
-      format = {
-        formatting_options = nil,
-        timeout_ms = nil,
-      },
-      servers = require('traap.core.constants').language_servers,
-    },
+    opts = function ()
+      servers = {}
+      for key, value in pairs(require('traap.core.constants').lsp_to_mason) do
+        table.insert(servers, value.lsp)
+      end
+
+      return {
+        diagnostics = {
+          underline = true,
+          update_in_insert = false,
+          virtual_text = { spacing = 4, prefix = '●' },
+          severity_sort = true,
+        },
+        autoformat = false,
+        format = {
+          formatting_options = nil,
+          timeout_ms = nil,
+        },
+        servers = servers
+      }
+    end,
 
     config = function(plugin, opts)
       local lspconfig = require('lspconfig')
-      local handlers = require('trasp.servers.lsp.handlers')
-      local signs = require('traap.constants').diagnostics_signs
-      local servers = opts.servers
+      local handlers = require('traap.servers.lsp.handlers')
+      local signs = require('traap.core.constants').diagnostic_signs
 
       for name, icon in pairs(signs) do
         name = 'DiagnosticSign' .. name
@@ -38,7 +44,7 @@ return {
       vim.diagnostic.config(opts.diagnostics)
 
       require('mason-lspconfig').setup({
-        ensure_installed = vim.tbl_keys(servers)
+        ensure_installed = opts.servers
       })
 
       local xopts = {}
@@ -67,16 +73,20 @@ return {
     cmd = 'Mason',
     keys = { { '<leader>cm', '<cmd>Mason<cr> '}, },
 
-    opts = {
-      ensure_installed = require('traap.core.constants').language_servers,
-    },
+    opts = function()
+      servers = {}
+      for key, value in pairs(require('traap.core.constants').lsp_to_mason) do
+        table.insert(servers, value.mason)
+      end
+      return { ensure_installed = servers }
+    end,
 
     config = function(plugin, opts)
       require ('traap.servers.lsp.handlers').setup()
       require('mason').setup(opts)
       local mr = require('mason-registry')
-      for _, tool in ipairs(opts.ensure_installed) do
-        local p = mr.get_package(tool)
+      for key, value in ipairs(opts.ensure_installed) do
+        local p = mr.get_package(value)
         if not p:is_installed() then
           p:install()
         end
