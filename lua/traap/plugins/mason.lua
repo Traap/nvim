@@ -11,8 +11,8 @@ return {
     },
 
     opts = function ()
-      servers = {}
-      for key, value in pairs(require('traap.core.constants').lsp_to_mason) do
+      local servers = {}
+      for _, value in pairs(require('traap.core.constants').lsp_to_mason) do
         table.insert(servers, value.lsp)
       end
 
@@ -32,7 +32,7 @@ return {
       }
     end,
 
-    config = function(plugin, opts)
+    config = function(_, opts)
       local lspconfig = require('lspconfig')
       local handlers = require('traap.servers.lsp.handlers')
       local signs = require('traap.core.constants').diagnostic_signs
@@ -74,8 +74,8 @@ return {
     keys = { { '<leader>cm', '<cmd>Mason<cr> '}, },
 
     opts = function()
-      servers = {}
-      for key, value in pairs(require('traap.core.constants').lsp_to_mason) do
+      local servers = {}
+      for _, value in pairs(require('traap.core.constants').lsp_to_mason) do
         table.insert(servers, value.mason)
       end
       return { ensure_installed = servers }
@@ -85,7 +85,7 @@ return {
       require ('traap.servers.lsp.handlers').setup()
       require('mason').setup(opts)
       local mr = require('mason-registry')
-      for key, value in ipairs(opts.ensure_installed) do
+      for _, value in ipairs(opts.ensure_installed) do
         local p = mr.get_package(value)
         if not p:is_installed() then
           p:install()
