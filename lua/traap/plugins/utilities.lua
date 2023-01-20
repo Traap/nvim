@@ -341,7 +341,8 @@ return {
   -- {{{ Wiki.Vim
 
   { 'lervag/wiki.vim',
-    cmd = 'WikiIndex',
+    cmd = {'WikiIndex', 'WikiJournal'},
+    ft = {'wiki'},
     dependencies = {
       'lervag/wiki-ft.vim',
       'Traap/vim-bundle-wiki.vim',
