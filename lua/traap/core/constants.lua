@@ -18,7 +18,6 @@ lsp_to_mason = {
   { lsp = 'jsonls',        mason = 'json-lsp' },
   { lsp = 'omnisharp',     mason = 'omnisharp' },
   { lsp = 'pyright',       mason = 'pyright' },
-  { lsp = 'pyright',       mason = 'pyright' },
   { lsp = 'rust_analyzer', mason = 'rust-analyzer' },
   { lsp = 'solargraph',    mason = 'solargraph' },
   { lsp = 'sumneko_lua',   mason = 'lua-language-server' },
