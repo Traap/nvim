@@ -84,4 +84,29 @@ return {
  },
 
  -- ------------------------------------------------------------------------ }}}
+  -- {{{ rust
+
+  { 'simrat39/rust-tools.nvim',
+    ft = 'rs',
+    config = true,
+    dependencies = {
+      'saecki/crates.nvim',
+      'nvim-lua/plenary.nvim',
+    },
+  },
+
+  { 'saecki/crates.nvim',
+    ft = 'rs',
+    opts = {
+      null_ls = {
+        enabled = true,
+        name = 'crates.nvim'
+      },
+      popup = {
+        border = 'rounded',
+      },
+    },
+  },
+
+ -- ------------------------------------------------------------------------ }}}
 }
