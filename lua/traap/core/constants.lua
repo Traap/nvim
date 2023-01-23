@@ -154,6 +154,7 @@ treesitter_languages = {
   'ruby',
   'rust',
   'sql',
+  'toml',
   'tsx',
   'typescript',
   'vim',
