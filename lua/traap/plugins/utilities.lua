@@ -77,24 +77,22 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Neovim without Tpope?  No Way!!!
 
-  { 'tpope/gem-browse',        event = 'VeryLazy' },
-  { 'tpope/vim-bundler',       event = 'VeryLazy' },
-  { 'tpope/vim-characterize',  event = 'VeryLazy' },
+  { 'tpope/gem-browse',        ft = {'rb'} },
+  { 'tpope/vim-bundler',       ft = {'rb'} },
   { 'tpope/vim-commentary',    event = 'VeryLazy'},
-  { 'tpope/vim-dispatch',      event = 'VeryLazy' },
+  -- { 'tpope/vim-dispatch',      event = 'VeryLazy' },
   { 'tpope/vim-endwise',       event = 'InsertEnter' },
   { 'tpope/vim-eunuch',        event = 'VeryLazy' },
   { 'tpope/vim-fugitive',      lazy = false, priority = 999},
-  { 'tpope/vim-projectionist', event = 'VeryLazy' },
-  { 'tpope/vim-rails',         event = 'VeryLazy' },
-  { 'tpope/vim-rake',          event = 'VeryLazy' },
-  { 'tpope/vim-rbenv',         event = 'VeryLazy' },
-  { 'tpope/vim-repeat',        event = 'VeryLazy' },
---  { 'tpope/vim-surround',      event = 'BufEnter' },
+  { 'tpope/vim-projectionist', ft = {'c', 'cpp', 'rb' } },
+  { 'tpope/vim-rails',         ft = 'rb' },
+  { 'tpope/vim-rake',          ft = 'rb' },
+  { 'tpope/vim-rbenv',         ft = 'rb' },
+  { 'tpope/vim-repeat',        event = 'InsertEnter' },
+--  { 'tpope/vim-surround',      event = 'InsertEnter' },
   { 'tpope/vim-unimpaired',    event = 'VeryLazy' },
-  { 'tpope/vim-vinegar',       event = 'VeryLazy' },
 
-  { 'kylechui/nvim-surround', event = 'BufEnter', config=true },
+  { 'kylechui/nvim-surround', event = 'InsertEnter', config = true },
 
   -------------------------------------------------------------------------- }}}
   -- {{{ Navigate Vim Splits and Tmux pains.
@@ -244,7 +242,7 @@ return {
   -- {{{ Set colors
 
   { 'ChristianChiarulli/nvim-ts-rainbow', event = 'VimEnter' },
-  { 'mechatroner/rainbow_csv',            event = 'VimEnter' },
+  { 'mechatroner/rainbow_csv',            ft =  {'csv', 'tsv' } },
   { 'norcalli/nvim-colorizer.lua',        event = 'vimEnter', config = true },
 
   -- ----------------------------------------------------------------------- }}}
@@ -333,7 +331,8 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ VimTex
 
-  { 'lervag/vimtex', event = 'BufEnter',
+  { 'lervag/vimtex',
+     ft={'tex', 'texx'},
      dependencies = { 'Traap/vim-bundle-vimtex'},
   },
 
@@ -356,17 +355,6 @@ return {
     enable = false,
     event = 'VimEnter',
     config = true
-  },
-
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ DAP
-
-  { 'mfussenegger/nvim-dap',
-    event = 'BufEnter',
-    dependencies = {
-      'rcarriga/nvim-dap-ui',
-      'theHamsta/nvim-dap-virtual-text',
-    },
   },
 
   -- ----------------------------------------------------------------------- }}}
