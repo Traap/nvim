@@ -11,6 +11,8 @@ return {
 
   {
     'L3MON4D3/LuaSnip',
+    event = 'InsertEnter',
+
     dependencies = {
       'rafamadriz/friendly-snippets',
       config = function()
@@ -21,22 +23,10 @@ return {
       history = true,
       delete_check_events = 'TextChanged',
     },
-    -- stylua: ignore
-    keys = {
-      {
-        '<tab>',
-        function()
-          return require('luasnip').jumpable(1) and '<Plug>luasnip-jump-next' or '<tab>'
-        end,
-        expr = true, silent = true, mode = 'i',
-      },
-      { '<tab>', function() require('luasnip').jump(1) end, mode = 's' },
-      { '<s-tab>', function() require('luasnip').jump(-1) end, mode = { 'i', 's' } },
-    },
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-
+  -- {{{ nvim-cmp
 
   {
     'hrsh7th/nvim-cmp',
@@ -62,10 +52,17 @@ return {
 
       require('luasnip/loaders/from_vscode').lazy_load()
 
-      local check_backspace = function()
-        local col = vim.fn.col '.' - 1
-        return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
+      local has_words_before = function()
+        -- Deprecated. (Devined in Lua 5.1/LuaJIT, current is Lua 5.4.)
+        -- But, the next line does not work without pack statement.
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
       end
+
+      -- local check_backspace = function()
+      --   local col = vim.fn.col '.' - 1
+      --   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
+      -- end
 
       local completion = {
         keyword_length = 1,
@@ -118,10 +115,10 @@ return {
             luasnip.expand()
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
-          -- elseif has_words_before() then
-          --   cmp.complete()
-          elseif check_backspace() then
+          elseif has_words_before() then
             fallback()
+          -- elseif check_backspace() then
+          --   fallback()
           else
             fallback()
           end
