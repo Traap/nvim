@@ -67,7 +67,7 @@ return {
   { 'nvim-lualine/lualine.nvim', event = 'VeryLazy', config = true },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ PlantUML
+  -- {{{ PlantUM
 
   { 'aklt/plantuml-syntax',
     keys = '<leader>gu',
