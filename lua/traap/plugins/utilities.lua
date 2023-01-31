@@ -102,7 +102,7 @@ return {
   -------------------------------------------------------------------------- }}}
   -- {{{ Noice - (Nice, Noise, Notice)
 
-  -- { 'folke/noice.nvim', event = 'VeryLazy', config = true },
+  { 'folke/noice.nvim', event = 'VeryLazy', config = true, dependencies = { 'MunifTanjim/nui.nvim', } },
 
   -------------------------------------------------------------------------- }}}
   -- {{{ nvim-tree
@@ -175,12 +175,8 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
-    version = false,
-    keys = { '<leader>[', [[<cmd>Telescope find_files<cr>]]},
     opts = {
       defaults = {
-        -- border= {},
-        -- borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
         layout_config = { prompt_position = 'top' },
         layout_strategy = 'horizontal',
         prompt_prefix = ' ',
