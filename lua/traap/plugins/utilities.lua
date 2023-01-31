@@ -327,7 +327,7 @@ return {
   -- {{{ Utility
 
   { 'ThePrimeagen/harpoon',               event = 'BufEnter' },
-  { 'dkarter/bullets.vim',                event = 'InsertEnter' },
+  { 'dkarter/bullets.vim',                lazy  = false },
   { 'ekickx/clipboard-image.nvim',        event = 'InsertEnter' },
   { 'goolord/alpha-nvim',                 event = 'BufEnter', enable = false },
   { 'iamcco/markdown-preview.nvim',       ft    = 'md' },
