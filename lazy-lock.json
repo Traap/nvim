@@ -43,6 +43,7 @@
   "nvim-tree.lua": { "branch": "master", "commit": "215b29bfad74518442621b9d0483a621483b066b" },
   "nvim-treesitter": { "branch": "master", "commit": "7ba61ca7f5fe48c95afa03a8298788b67207fd6d" },
   "nvim-ts-rainbow": { "branch": "master", "commit": "9ac0bebef99e9a107073794dfbff66356f0f35a0" },
+  "nvim-web-devicons": { "branch": "master", "commit": "a421d183ef37dfa13f51a5805bed2381aebf9080" },
   "plantuml-syntax": { "branch": "master", "commit": "667f94c6a9d1f8b1a1ec480560881f38960861b0" },
   "plenary.nvim": { "branch": "master", "commit": "9d81624fbcedd3dd43b38d7e13a1e7b3f873d8cd" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
@@ -77,6 +78,7 @@
   "vim-unimpaired": { "branch": "master", "commit": "efdc6475f7ea789346716dabf9900ac04ee8604a" },
   "vim-visual-increment": { "branch": "master", "commit": "0e55bb4054cdd5eefc0bb870f3e3c249673817cb" },
   "vimtex": { "branch": "master", "commit": "00484c8057d49fffa4524ae5c2c33cda34301666" },
+  "which-key.nvim": { "branch": "main", "commit": "16ed12a8493628c377606da2ebac50d80736ed37" },
   "wiki-ft.vim": { "branch": "master", "commit": "5d3624c1c88758a1db49b7b86ff930c54c6b2e42" },
   "wiki.vim": { "branch": "master", "commit": "3f22d19d6d31d6018ea296a808489d5c04d12b84" }
 }

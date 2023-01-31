@@ -61,8 +61,20 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ JuneGunn Easyalign and fzf.
 
-  { 'junegunn/vim-easy-align', event = 'BufEnter' },
-  { 'junegunn/fzf', event = 'BufEnter',
+  {
+    'junegunn/vim-easy-align',
+    enabled = function()
+      return require('traap.core.customize').vim_easy_align
+    end,
+    event = 'BufEnter',
+  },
+
+  {
+    'junegunn/fzf',
+    enabled = function()
+      return require('traap.core.customize').fzf
+    end,
+    event = 'BufEnter',
     dependencies = {
       'junegunn/fzf.vim',
       'Traap/vim-bundle-fzf',
@@ -72,7 +84,14 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Lualine
 
-  { 'nvim-lualine/lualine.nvim', event = 'VeryLazy', config = true },
+  {
+    'nvim-lualine/lualine.nvim',
+    enabled = function()
+      return require('traap.core.customize').lualine
+    end,
+    event = 'VeryLazy',
+    config = true
+  },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ PlantUML
