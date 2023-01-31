@@ -2,27 +2,8 @@ return {
 
   -- {{{ LuaSnip
 
-  -- {
-  --   'L3MON4D3/LuaSnip',
-  --   keys = function()
-  --     return {}
-  --   end,
-  -- },
-
   {
     'L3MON4D3/LuaSnip',
-    event = 'InsertEnter',
-
-    dependencies = {
-      'rafamadriz/friendly-snippets',
-      config = function()
-        require('luasnip.loaders.from_vscode').lazy_load()
-      end,
-    },
-    opts = {
-      history = true,
-      delete_check_events = 'TextChanged',
-    },
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -36,11 +17,12 @@ return {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-calc',
       'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-document-symbol',
       'hrsh7th/cmp-path',
       'f3fora/cmp-spell',
-      'saadparwaiz1/cmp_luasnip',
+      'saadparwaiz1/cmp_luasnip', dependencies = { 'L3MON4D3/LuaSnip' },
     },
 
     opts = function()
@@ -106,7 +88,7 @@ return {
         }),
 
         -- Do not explicitly select 'first' item when nothing is selected.
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
 
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
