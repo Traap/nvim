@@ -94,17 +94,39 @@ return {
 
   { 'kylechui/nvim-surround', event = 'InsertEnter', config = true },
 
-  -------------------------------------------------------------------------- }}}
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ Navigate Vim Splits and Tmux pains.
 
   { 'christoomey/vim-tmux-navigator', event = 'BufEnter '},
 
-  -------------------------------------------------------------------------- }}}
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ Noice - (Nice, Noise, Notice)
 
-  { 'folke/noice.nvim', event = 'VeryLazy', config = true, dependencies = { 'MunifTanjim/nui.nvim', } },
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
 
-  -------------------------------------------------------------------------- }}}
+    opts = {
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+        }
+      },
+    },
+
+    presets = {
+      bottom_search = true,
+      command_palette = true,
+      long_message_to_split = true,
+    },
+
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+  },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ nvim-tree
 
   {
