@@ -42,6 +42,23 @@ vim.api.nvim_create_autocmd(
 )
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ format options
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  callback = function()
+    vim.cmd([[ setlocal formatoptions+=c ]])
+    vim.cmd([[ setlocal formatoptions+=j ]])
+    vim.cmd([[ setlocal formatoptions+=n ]])
+    vim.cmd([[ setlocal formatoptions+=q ]])
+    vim.cmd([[ setlocal formatoptions+=r ]])
+    vim.cmd([[ setlocal formatoptions-=2 ]])
+    vim.cmd([[ setlocal formatoptions-=a ]])
+    vim.cmd([[ setlocal formatoptions-=o ]])
+    vim.cmd([[ setlocal formatoptions-=t ]])
+  end,
+})
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Goto last location whenopening a buffer.
 
 vim.api.nvim_create_autocmd('BufReadPost', {
@@ -81,17 +98,17 @@ vim.api.nvim_create_autocmd(
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Packer
 
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd(
-  'BufWritePost', {
-    command = 'source <afile> | PackerSync',
-    group = packer_group,
-    pattern = {
-      vim.fn.expand '$MYVIMRC',
-      vim.fn.expand '$GITHOME' .. '/lua/traap/core/plugins.lua',
-    },
-  }
-)
+-- local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+-- vim.api.nvim_create_autocmd(
+--   'BufWritePost', {
+--     command = 'source <afile> | PackerSync',
+--     group = packer_group,
+--     pattern = {
+--       vim.fn.expand '$MYVIMRC',
+--       vim.fn.expand '$GITHOME' .. '/lua/traap/core/plugins.lua',
+--     },
+--   }
+-- )
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ PlantUML
