@@ -1,7 +1,8 @@
 return {
   -- {{{ General startup
 
-  { 'dstein64/vim-startuptime',
+  {
+    'dstein64/vim-startuptime',
     cmd = 'StartupTime',
     config = function()
       vim.g.startuptime_tries = 10
@@ -18,7 +19,11 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ better vim.ui
 
-  { 'stevearc/dressing.nvim',
+  {
+    'stevearc/dressing.nvim',
+    enabled = function()
+      return require('traap.core.customize').dressing
+    end,
     lazy = true,
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
@@ -39,6 +44,9 @@ return {
 
  {
     'lukas-reineke/indent-blankline.nvim',
+    enabled = function()
+      return require('traap.core.customize').indent_blankline
+    end,
     event = 'BufReadPre',
     opts = {
       char = '│',
@@ -80,7 +88,6 @@ return {
   { 'tpope/gem-browse',        ft = {'rb'} },
   { 'tpope/vim-bundler',       ft = {'rb'} },
   { 'tpope/vim-commentary',    event = 'VeryLazy'},
-  -- { 'tpope/vim-dispatch',      event = 'VeryLazy' },
   { 'tpope/vim-endwise',       event = 'InsertEnter' },
   { 'tpope/vim-eunuch',        event = 'VeryLazy' },
   { 'tpope/vim-fugitive',      lazy = false, priority = 999},
@@ -102,35 +109,40 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Noice - (Nice, Noise, Notice)
 
-  -- {
-  --   'folke/noice.nvim',
-  --   event = 'VeryLazy',
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    enabled = function()
+      return require('traap.core.customize').noice
+    end,
+    opts = {
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+        }
+      },
+    },
 
-  --   opts = {
-  --     lsp = {
-  --       override = {
-  --         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-  --         ["vim.lsp.util.stylize_markdown"] = true,
-  --       }
-  --     },
-  --   },
+    presets = {
+      bottom_search = true,
+      command_palette = true,
+      long_message_to_split = true,
+    },
 
-  --   presets = {
-  --     bottom_search = true,
-  --     command_palette = true,
-  --     long_message_to_split = true,
-  --   },
-
-  --   dependencies = {
-  --     'MunifTanjim/nui.nvim',
-  --   },
-  -- },
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+  },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ nvim-tree
 
   {
     'kyazdani42/nvim-tree.lua',
+    enabled = function()
+      return require('traap.core.customize').nvim_tree
+    end,
 
     cmd = {
       'NvimTreeFindFile',
@@ -154,6 +166,9 @@ return {
 
   {
     'nvim-tree/nvim-web-devicons',
+    enabled = function()
+      return require('traap.core.customize').nvim_web_devicons
+    end,
 
     cmd = {
       'NvimTreeFindFile',
@@ -196,6 +211,9 @@ return {
   -- Telescope
   {
     'nvim-telescope/telescope.nvim',
+    enabled = function()
+      return require('traap.core.customize').telescope
+    end,
     cmd = 'Telescope',
     opts = {
       defaults = {
@@ -228,7 +246,12 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Tmux
 
-  { 'christoomey/vim-tmux-runner',
+  {
+    'christoomey/vim-tmux-runner',
+    enabled = function()
+      return require('traap.core.customize').vim_tmux_runner
+    end,
+
     cmd = 'VtrOpenRunner',
     dependencies = {
       'Traap/vim-bundle-tmux-runner'
@@ -240,6 +263,9 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    enabled = function()
+      return require('traap.core.customize').treesitter
+    end,
     version = false,
     build = ':TSUpdate',
     event = 'BufReadPost',
@@ -329,7 +355,15 @@ return {
   { 'ThePrimeagen/harpoon',               event = 'BufEnter' },
   { 'dkarter/bullets.vim',                lazy  = false },
   { 'ekickx/clipboard-image.nvim',        event = 'InsertEnter' },
-  { 'goolord/alpha-nvim',                 event = 'BufEnter', enable = false },
+
+  {
+    'goolord/alpha-nvim',
+    enabled = function()
+      return require('traap.core.customize').alpha
+    end,
+    event = 'BufEnter',
+  },
+
   { 'iamcco/markdown-preview.nvim',       ft    = 'md' },
   { 'kovetskiy/sxhkd-vim',                event = 'VeryLazy' },
   { 'moll/vim-bbye',                      event = 'VeryLazy' },
@@ -369,8 +403,11 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Which-key
 
-  {'folke/which-key.nvim',
-    enable = false,
+  {
+   'folke/which-key.nvim',
+    enabled = function()
+      return require('traap.core.customize').which_key
+    end,
     event = 'VimEnter',
     config = true
   },
