@@ -15,11 +15,13 @@ Customize = {
   noice             = false,
   nvim_tree         = true,
   nvim_web_devicons = false,
+  plantuml          = true,
   telescope         = true,
   transparent       = true,
   treesitter        = true,
   vim_tmux_runner   = true,
   which_key         = false,
+  wiki_vim          = true,
 }
 
 return Customize

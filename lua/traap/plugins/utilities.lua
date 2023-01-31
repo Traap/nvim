@@ -75,11 +75,17 @@ return {
   { 'nvim-lualine/lualine.nvim', event = 'VeryLazy', config = true },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ PlantUM
+  -- {{{ PlantUML
 
-  { 'aklt/plantuml-syntax',
-    keys = '<leader>gu',
-    dependencies = 'Traap/vim-bundle-plantuml',
+  {
+    'Traap/vim-bundle-plantuml',
+    ft='puml',
+    enabled = function()
+      return require('traap.core.customize').plantuml
+    end,
+    dependencies = {
+      'aklt/plantuml-syntax',
+    },
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -393,10 +399,11 @@ return {
 
   { 'lervag/wiki.vim',
     cmd = {'WikiIndex', 'WikiJournal'},
-    ft = {'wiki'},
+    ft = {'wiki', 'md', 'puml'},
     dependencies = {
       'lervag/wiki-ft.vim',
       'Traap/vim-bundle-wiki.vim',
+      'Traap/vim-bundle-plantuml',
     },
   },
 
