@@ -4,16 +4,38 @@ return {
   {
     'dstein64/vim-startuptime',
     cmd = 'StartupTime',
+    enabled = function()
+      return require('traap.core.customize').vim_startuptime
+    end,
     config = function()
       vim.g.startuptime_tries = 10
     end,
   },
 
-  { 'nvim-lua/plenary.nvim', lazy = false},
-  { 'nvim-lua/popup.nvim', event = 'VimEnter' },
+  {
+    'nvim-lua/plenary.nvim',
+    lazy = false,
+    enabled = function()
+      return require('traap.core.customize').plenary_nvim
+    end,
+  },
 
-  { 'folke/trouble.nvim', event = 'VimEnter',
-     opts = {use_diagnostic_signs = true }
+  {
+    'nvim-lua/popup.nvim',
+    event = 'VimEnter',
+    enabled = function()
+      return require('traap.core.customize').popup_nvim
+    end,
+  },
+
+
+  {
+    'folke/trouble.nvim',
+    event = 'VimEnter',
+    enabled = function()
+      return require('traap.core.customize').trouble_nvim
+    end,
+    opts = {use_diagnostic_signs = true }
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -87,7 +109,7 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     enabled = function()
-      return require('traap.core.customize').lualine
+      return require('traap.core.customize').nvim_lualine
     end,
     event = 'VeryLazy',
     config = true
@@ -100,7 +122,7 @@ return {
     'Traap/vim-bundle-plantuml',
     ft='puml',
     enabled = function()
-      return require('traap.core.customize').plantuml
+      return require('traap.core.customize').vim_bundle_plantuml
     end,
     dependencies = {
       'aklt/plantuml-syntax',
@@ -110,26 +132,130 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Neovim without Tpope?  No Way!!!
 
-  { 'tpope/gem-browse',        ft = {'rb'} },
-  { 'tpope/vim-bundler',       ft = {'rb'} },
-  { 'tpope/vim-commentary',    event = 'VeryLazy'},
-  { 'tpope/vim-endwise',       event = 'InsertEnter' },
-  { 'tpope/vim-eunuch',        event = 'VeryLazy' },
-  { 'tpope/vim-fugitive',      lazy = false, priority = 999},
-  { 'tpope/vim-projectionist', ft = {'c', 'cpp', 'rb' } },
-  { 'tpope/vim-rails',         ft = 'rb' },
-  { 'tpope/vim-rake',          ft = 'rb' },
-  { 'tpope/vim-rbenv',         ft = 'rb' },
-  { 'tpope/vim-repeat',        event = 'InsertEnter' },
---  { 'tpope/vim-surround',      event = 'InsertEnter' },
-  { 'tpope/vim-unimpaired',    event = 'VeryLazy' },
+  {
+    'tpope/gem-browse',
+    ft = {'rb'},
+    enabled = function()
+      return require('traap.core.customize').gem_browse
+    end,
+  },
 
-  { 'kylechui/nvim-surround', event = 'InsertEnter', config = true },
+  {
+    'tpope/vim-bundler',
+    ft = {'rb'},
+    enabled = function()
+      return require('traap.core.customize').vim_bundler
+    end,
+  },
+
+  {
+    'tpope/vim-commentary',
+    event = 'VeryLazy',
+    enabled = function()
+      return require('traap.core.customize').vim_commentary
+    end,
+  },
+
+  {
+    'tpope/vim-endwise',
+    event = 'InsertEnter',
+    enabled = function()
+      return require('traap.core.customize').vim_endwise
+    end,
+  },
+
+  {
+    'tpope/vim-eunuch',
+    event = 'VeryLazy',
+    enabled = function()
+      return require('traap.core.customize').vim_eunuch
+    end,
+  },
+
+  {
+    'tpope/vim-fugitive',
+    lazy = false,
+    priority = 999,
+    enabled = function()
+      return require('traap.core.customize').vim_fugitive
+    end,
+  },
+
+  {
+    'tpope/vim-projectionist',
+    ft = {'c', 'cpp', 'rb' },
+    enabled = function()
+      return require('traap.core.customize').vim_projectionist
+    end,
+  },
+
+  {
+    'tpope/vim-rails',
+    ft = 'rb',
+    enabled = function()
+      return require('traap.core.customize').vim_rails
+    end,
+  },
+
+  {
+    'tpope/vim-rake',
+    ft = 'rb',
+    enabled = function()
+      return require('traap.core.customize').vim_rake
+    end,
+  },
+
+  {
+    'tpope/vim-rbenv',
+    ft = 'rb',
+    enabled = function()
+      return require('traap.core.customize').vim_rbenv
+    end,
+  },
+
+  {
+    'tpope/vim-repeat',
+    event = 'InsertEnter',
+    enabled = function()
+      return require('traap.core.customize').vim_bundler
+    end,
+  },
+
+  {
+    'tpope/vim-surround',
+    event = 'InsertEnter',
+    enabled = function()
+      return require('traap.core.customize').vim_surround
+    end,
+  },
+
+  {
+    'tpope/vim-unimpaired',
+    event = 'VeryLazy',
+    enabled = function()
+      return require('traap.core.customize').vim_unimpaired
+    end,
+  },
+
+  {
+    'kylechui/nvim-surround',
+    event = 'InsertEnter',
+    config = true,
+    enabled = function()
+      return require('traap.core.customize').nvim_surround
+    end,
+  },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Navigate Vim Splits and Tmux pains.
 
-  { 'christoomey/vim-tmux-navigator', event = 'BufEnter '},
+  {
+    'christoomey/vim-tmux-navigator',
+    event = 'BufEnter',
+    enabled = function()
+      return require('traap.core.customize').vim_tmux_navigator
+    end,
+  },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Noice - (Nice, Noise, Notice)
@@ -138,7 +264,7 @@ return {
     'folke/noice.nvim',
     event = 'VeryLazy',
     enabled = function()
-      return require('traap.core.customize').noice
+      return require('traap.core.customize').noice_nvim
     end,
     opts = {
       lsp = {
@@ -288,12 +414,13 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    event = 'BufReadPost',
     enabled = function()
-      return require('traap.core.customize').treesitter
+      return require('traap.core.customize').nvim_treesitter
     end,
+
     version = false,
     build = ':TSUpdate',
-    event = 'BufReadPost',
     opts = {
       highlight = { enable = true },
       indent = { enable = true },
@@ -305,14 +432,43 @@ return {
       disable = {'latex'},
       ensure_installed = require('traap.core.constants').treesitter_languages
     },
+
+    dependencies = {
+      'mrjones2014/nvim-ts-rainbow',
+      enabled = function()
+        return require('traap.core.customize').nvim_ts_rainbow
+      end,
+    },
+
   },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Set colors
 
-  { 'ChristianChiarulli/nvim-ts-rainbow', event = 'VimEnter' },
-  { 'mechatroner/rainbow_csv',            ft =  {'csv', 'tsv' } },
-  { 'norcalli/nvim-colorizer.lua',        event = 'vimEnter', config = true },
+  {
+    'mrjones2014/nvim-ts-rainbow',
+    event = 'VimEnter',
+    enabled = function()
+      return require('traap.core.customize').nvim_ts_rainbow
+    end,
+  },
+
+  {
+    'mechatroner/rainbow_csv',
+    ft =  {'csv', 'tsv' },
+    enabled = function()
+      return require('traap.core.customize').rainbow_csv
+    end,
+  },
+
+  {
+    'NvChad/nvim-colorizer.lua',
+    event = 'VeryLazy',
+    config = true,
+    enabled = function()
+      return require('traap.core.customize').nvim_colorizer_lua
+    end,
+  },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Set colorscheme
@@ -320,6 +476,10 @@ return {
   { 'RRethy/nvim-base16',
     lazy = false,
     priority = 1000,
+
+    enabled = function()
+      return require('traap.core.customize').nvim_base16
+    end,
 
     config = function()
       vim.cmd([[colorscheme base16-tokyo-night-terminal-storm]])
@@ -365,6 +525,9 @@ return {
 
   {
     'windwp/nvim-spectre',
+    enabled = function()
+      return require('traap.core.customize').nvim_spectre
+    end,
     keys = {
       { '<leader>sr',
         function()
@@ -377,40 +540,117 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Utility
 
-  { 'ThePrimeagen/harpoon',               event = 'BufEnter' },
-  { 'dkarter/bullets.vim',                lazy  = false },
-  { 'ekickx/clipboard-image.nvim',        event = 'InsertEnter' },
+  {
+    'ThePrimeagen/harpoon',
+    event = 'BufEnter',
+    enabled = function()
+      return require('traap.core.customize').harpoon
+    end,
+  },
+
+  {
+    'dkarter/bullets.vim',
+    lazy  = false,
+    enabled = function()
+      return require('traap.core.customize').bullets_vim
+    end,
+  },
+
+  {
+    'ekickx/clipboard-image.nvim',
+    event = 'InsertEnter',
+    enabled = function()
+      return require('traap.core.customize').clipboard_image_nvim
+    end,
+  },
 
   {
     'goolord/alpha-nvim',
-    enabled = function()
-      return require('traap.core.customize').alpha
-    end,
     event = 'BufEnter',
+    enabled = function()
+      return require('traap.core.customize').alpha_nvim
+    end,
   },
 
-  { 'iamcco/markdown-preview.nvim',       ft    = 'md' },
-  { 'kovetskiy/sxhkd-vim',                event = 'VeryLazy' },
-  { 'moll/vim-bbye',                      event = 'VeryLazy' },
+  {
+    'iamcco/markdown-preview.nvim',
+    ft = 'md',
+    enabled = function()
+      return require('traap.core.customize').markdown_preview_nvim
+    end,
+  },
 
-  { 'rcarriga/nvim-notify', event = 'BufEnter',
+  {
+    'kovetskiy/sxhkd-vim',
+    event = 'VeryLazy',
+    enabled = function()
+      return require('traap.core.customize').sxhkd_vim
+    end,
+  },
+
+  {
+    'moll/vim-bbye',
+    event = 'VeryLazy',
+    enabled = function()
+      return require('traap.core.customize').vim_bbye
+    end,
+  },
+
+  {
+    'rcarriga/nvim-notify',
+    event = 'BufEnter',
+    enabled = function()
+      return require('traap.core.customize').nvim_notify
+    end,
     opts = {
       background_colour = '#1b1b26',
       timeout = 10000,
     }
   },
 
-  { 'sbdchd/neoformat',                   event = 'VeryLazy' },
-  { 'triglav/vim-visual-increment',       event = 'VeryLazy' },
-  { 'vim-utils/vim-most-minimal-folds',   event = 'BufEnter' },
-  { 'windwp/nvim-autopairs',              event = 'InsertEnter', config = true },
+  {
+    'sbdchd/neoformat',
+    event = 'VeryLazy',
+    enabled = function()
+      return require('traap.core.customize').neoformat
+    end,
+  },
+
+  {
+    'triglav/vim-visual-increment',
+    event = 'VeryLazy',
+    enabled = function()
+      return require('traap.core.customize').vim_visual_increment
+    end,
+  },
+
+  {
+    'vim-utils/vim-most-minimal-folds',
+    event = 'BufEnter',
+    enabled = function()
+      return require('traap.core.customize').vim_most_minimal_folds
+    end,
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    enabled = function()
+      return require('traap.core.customize').nvim_autopairs
+    end,
+    config = true,
+  },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ VimTex
 
-  { 'lervag/vimtex',
+  {
+    'lervag/vimtex',
      ft={'tex', 'texx'},
-     dependencies = { 'Traap/vim-bundle-vimtex'},
+    enabled = function()
+      return require('traap.core.customize').vimtex
+    end,
+    dependencies = { 'Traap/vim-bundle-vimtex'},
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -419,6 +659,9 @@ return {
   { 'lervag/wiki.vim',
     cmd = {'WikiIndex', 'WikiJournal'},
     ft = {'wiki', 'md', 'puml'},
+    enabled = function()
+      return require('traap.core.customize').wiki_vim
+    end,
     dependencies = {
       'lervag/wiki-ft.vim',
       'Traap/vim-bundle-wiki.vim',
@@ -432,7 +675,7 @@ return {
   {
    'folke/which-key.nvim',
     enabled = function()
-      return require('traap.core.customize').which_key
+      return require('traap.core.customize').which_key_nvim
     end,
     event = 'VimEnter',
     config = true
@@ -441,41 +684,46 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Git signs and lightbulb.
 
-  { 'lewis6991/gitsigns.nvim',
-  event = 'BufReadPre',
-  opts = {
-    signs = {
-      add = { text = '▎' },
-      change = { text = '▎' },
-      delete = { text = '契' },
-      topdelete = { text = '契' },
-      changedelete = { text = '▎' },
-      untracked = { text = '▎' },
-    },
-
-    on_attach = function(buffer)
-      local gs = package.loaded.gitsigns
-
-      local function map(mode, l, r, desc)
-        vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-      end
-
-      -- stylua: ignore start
-      map('n', ']h', gs.next_hunk, 'Next Hunk')
-      map('n', '[h', gs.prev_hunk, 'Prev Hunk')
-      map({ 'n', 'v' }, '<leader>ghs', ':Gitsigns stage_hunk<CR>', 'Stage Hunk')
-      map({ 'n', 'v' }, '<leader>ghr', ':Gitsigns reset_hunk<CR>', 'Reset Hunk')
-      map('n', '<leader>ghS', gs.stage_buffer, 'Stage Buffer')
-      map('n', '<leader>ghu', gs.undo_stage_hunk, 'Undo Stage Hunk')
-      map('n', '<leader>ghR', gs.reset_buffer, 'Reset Buffer')
-      map('n', '<leader>ghp', gs.preview_hunk, 'Preview Hunk')
-      map('n', '<leader>ghb', function() gs.blame_line({ full = true }) end, 'Blame Line')
-      map('n', '<leader>ghd', gs.diffthis, 'Diff This')
-      map('n', '<leader>ghD', function() gs.diffthis('~') end, 'Diff This ~')
-      map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'GitSigns Select Hunk')
+  {
+    'lewis6991/gitsigns.nvim',
+    event = 'BufReadPre',
+    enabled = function()
+      return require('traap.core.customize').gitsigns_nvim
     end,
+
+    opts = {
+      signs = {
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '契' },
+        topdelete = { text = '契' },
+        changedelete = { text = '▎' },
+        untracked = { text = '▎' },
+      },
+
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
+
+        -- stylua: ignore start
+        map('n', ']h', gs.next_hunk, 'Next Hunk')
+        map('n', '[h', gs.prev_hunk, 'Prev Hunk')
+        map({ 'n', 'v' }, '<leader>ghs', ':Gitsigns stage_hunk<CR>', 'Stage Hunk')
+        map({ 'n', 'v' }, '<leader>ghr', ':Gitsigns reset_hunk<CR>', 'Reset Hunk')
+        map('n', '<leader>ghS', gs.stage_buffer, 'Stage Buffer')
+        map('n', '<leader>ghu', gs.undo_stage_hunk, 'Undo Stage Hunk')
+        map('n', '<leader>ghR', gs.reset_buffer, 'Reset Buffer')
+        map('n', '<leader>ghp', gs.preview_hunk, 'Preview Hunk')
+        map('n', '<leader>ghb', function() gs.blame_line({ full = true }) end, 'Blame Line')
+        map('n', '<leader>ghd', gs.diffthis, 'Diff This')
+        map('n', '<leader>ghD', function() gs.diffthis('~') end, 'Diff This ~')
+        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'GitSigns Select Hunk')
+      end,
+    },
   },
-},
 
   { 'kosayoda/nvim-lightbulb',
     event = 'BufReadPre',
@@ -486,7 +734,13 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Zulu : Reuse Traap's vim bundles last.
 
-  { 'Traap/vim-bundle-abbreviate', event = 'BufEnter' },
+  {
+    'Traap/vim-bundle-abbreviate',
+    event = 'BufEnter',
+    enabled = function()
+      return require('traap.core.customize').vim_bundle_abbreviate
+    end,
+  },
 
   -- ----------------------------------------------------------------------- }}}
 }
