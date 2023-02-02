@@ -9,6 +9,7 @@ Constants = {
 
 lsp_to_mason = {
   { lsp = 'bashls',        mason = 'bash-language-server' },
+  { lsp = 'clangd',        mason = 'clangd' },
   { lsp = 'cssls',         mason = 'css-lsp' },
   { lsp = 'diagnosticls',  mason = 'diagnostic-languageserver' },
   { lsp = 'emmet_ls',      mason = 'emmet-ls' },
@@ -28,7 +29,7 @@ lsp_to_mason = {
 },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ LSp kind icons.
+-- {{{ LSP kind icons.
 
 lsp_kind_icons = {
   Class         = '',
