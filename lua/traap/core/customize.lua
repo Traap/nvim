@@ -10,7 +10,7 @@ local Customize = {}
 
 Customize = {
   alpha_nvim             = false,
-  bullets_vim            = false,
+  bullets_vim            = true,
   clipboard_image_nvim   = true,
   dressing               = false,
   fzf                    = true,
