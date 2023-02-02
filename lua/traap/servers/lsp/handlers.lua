@@ -1,21 +1,17 @@
--- ------------------------------------------------------------------------- }}}
 -- {{{ Metatable M
 
 local M = {}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ M.setup - signs,config, hover,and signature help.
+-- {{{ M.setup - signs, config, hover, and signature help.
 
 M.setup = function()
 
   local signs = require('traap.core.constants').diagnostic_signs
 
-  for _, sign in pairs(signs) do
-    vim.fn.sign_define(sign.name, {
-      texthl = sign.name,
-      text = sign.text,
-      numhl = ""
-    })
+  for name, icon in pairs(signs) do
+    name = 'DiagnosticSign' .. name
+    vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
   end
 
   local config = {
