@@ -14,7 +14,7 @@ lsp_to_mason = {
   { lsp = 'diagnosticls',  mason = 'diagnostic-languageserver' },
   { lsp = 'emmet_ls',      mason = 'emmet-ls' },
   { lsp = 'eslint',        mason = 'eslint-lsp' },
-  { lsp = 'gopls',         mason = 'gopls' },
+  -- { lsp = 'gopls',         mason = 'gopls' },
   { lsp = 'html',          mason = 'html-lsp' },
   { lsp = 'jsonls',        mason = 'json-lsp' },
   { lsp = 'omnisharp',     mason = 'omnisharp' },
