@@ -61,7 +61,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Goto last location whenopening a buffer.
+-- {{{ Goto last location when opening a buffer.
 
 vim.api.nvim_create_autocmd('BufReadPost', {
   callback = function()
