@@ -62,7 +62,9 @@ keymap('n', 'zj', 'zcjzOzz')
 -- Close current fold when open. Always open previous fold.
 keymap('n', 'zk', 'zckzOzz')
 
--- Keep the cursor in place while joining lines.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Keep the cursor in place while joining lines.
+
 keymap('n', 'J', "mzJ`z")
 keymap('n', '<leader>J', "myvipJ`ygq<cr>")
 
