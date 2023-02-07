@@ -25,5 +25,5 @@ I install or reset NeoVim using [resetNeoVim](https://github.com/Traap/dotfiles/
 
 ### LunarVim Configuration
 This repository and [lvim](https://github.com/traap/lvim) are similar.  I use LunarVim
-defualts where they make since to me and do not conflict too
+defaults where they make since to me and do not conflict too
 much with configurations done here.
