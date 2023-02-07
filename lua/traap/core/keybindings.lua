@@ -47,6 +47,10 @@ keymap('v', '<leader>cc', '"+y')
 -- Obfuscate
 keymap('n', '<f3>', 'mmggg?G`m')
 
+-- Alternative ESC key to avoid <Ctrl-[>.  Useful when a RCP is used to connect
+-- to a remote host.
+keymap('i', ';;', '<esc>')
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
 
