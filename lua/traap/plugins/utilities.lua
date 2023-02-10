@@ -603,8 +603,8 @@ return {
       return require('traap.core.customize').nvim_notify
     end,
     opts = {
-      background_colour = '#1b1b26',
-      timeout = 10000,
+      background_colour = '#1a1b26',
+      timeout = 1000,
     }
   },
 
