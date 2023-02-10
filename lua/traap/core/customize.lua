@@ -1,5 +1,7 @@
 local Customize = {}
 
+-- {{{ Customize documentation.
+
 -- Customize table is a plugin name and true or false.  Using nvim_tree as the
 -- example:
 --   true - plug is loaded
@@ -7,6 +9,9 @@ local Customize = {}
 --
 -- This is a quick way to determine when a customization is interfering with
 -- your expected behavior or two plugins are impacting with each other.
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Enable or disable plugins.
 
 Customize = {
   alpha_nvim             = false,
@@ -19,7 +24,7 @@ Customize = {
   harpoon                = true,
   indent_blankline       = true,
   neoformat              = false,
-  noice_nvim             = false,
+  noice_nvim             = true,
   nvim_colorizer_lua     = true,
   nvim_autopairs         = true,
   nvim_base16            = true,
@@ -63,5 +68,7 @@ Customize = {
   which_key_nvim         = false,
   wiki_vim               = true,
 }
+
+-- ------------------------------------------------------------------------- }}}
 
 return Customize
