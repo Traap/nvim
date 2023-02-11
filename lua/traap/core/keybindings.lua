@@ -81,10 +81,10 @@ keymap('n', '<localleader>E', [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
 keymap('v', '<localleader>E', [["ky :exec "r!" getreg("k")<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Control keys
+-- {{{ Quit all
 
-keymap('n', '<c-n>', '<cmd>NvimTreeToggle<cr>')
 keymap('n', '<c-q>', '<cmd>qall!<cr>')
+keymap('n', '<leader>qq', '<cmd>qall!<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
@@ -245,8 +245,20 @@ keymap('n', '<leader>lx', '<Plug>(vimtex-reload)')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ n - NvimTree
 
-keymap('n', '<leader>nf', '<cmd>NvimTreeFindFile<cr>')
-keymap('n', '<leader>nr', '<cmd>NvimTreeRefresh<cr>')
+if require('traap.core.customize').neo_tree_nvim or
+   require('traap.core.customize').nvim_tree then
+
+   -- nvim_tree takes precedence when both are true.
+   if require('traap.core.customize').nvim_tree then
+    keymap('n', '<c-n>',      '<cmd>NvimTreeToggle<cr>')
+    keymap('n', '<leader>nf', '<cmd>NvimTreeFindFile<cr>')
+    keymap('n', '<leader>nr', '<cmd>NvimTreeRefresh<cr>')
+  else
+    keymap('n', '<c-n>',      '<cmd>Neotree toggle<cr>')
+    keymap('n', '<leader>nf', '<cmd>Neotree focus<cr>')
+    keymap('n', '<leader>nr', '<cmd>Neotree show<cr>')
+  end
+end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options

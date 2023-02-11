@@ -24,6 +24,7 @@ Customize = {
   harpoon                = true,
   indent_blankline       = true,
   neoformat              = false,
+  neo_tree_nvim          = false,
   noice_nvim             = true,
   nvim_colorizer_lua     = true,
   nvim_autopairs         = true,
