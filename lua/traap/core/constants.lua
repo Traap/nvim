@@ -21,7 +21,7 @@ lsp_to_mason = {
   { lsp = 'pyright',       mason = 'pyright' },
   { lsp = 'rust_analyzer', mason = 'rust-analyzer' },
   { lsp = 'solargraph',    mason = 'solargraph' },
-  { lsp = 'sumneko_lua',   mason = 'lua-language-server' },
+  -- { lsp = 'lua_ls',        mason = 'lua-language-server' },
   { lsp = 'sqlls',         mason = 'sqlls' },
   { lsp = 'texlab',        mason = 'texlab' },
   { lsp = 'tsserver',      mason = 'typescript-language-server' },
