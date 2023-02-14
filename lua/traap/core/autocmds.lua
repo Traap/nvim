@@ -15,15 +15,19 @@ vim.api.nvim_create_autocmd('BufEnter', {
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
-    'qf',
+    'PlenaryTestPopup',
+    'alpha',
+    'dashboard',
+    'fugitive',
     'help',
-    'man',
-    'notify',
     'lspinfo',
+    'man',
+    'mason',
+    'notify',
+    'qf',
     'spectre_panel',
     'startuptime',
     'tsplayground',
-    'PlenaryTestPopup',
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
