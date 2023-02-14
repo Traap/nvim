@@ -28,6 +28,9 @@ return {
     dependencies = {
       { 'xiyaowong/nvim-transparent',
 
+        enabled = function()
+          return require('traap.core.customize').nvim_transparent
+        end,
         event = 'VimEnter',
 
         config = function()
