@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
     vim.cmd([[ highlight ColorColumn guibg=#202031 ]])
     vim.cmd([[ highlight LineNr guifg=#902090 ]])
     vim.cmd([[ highlight LineNrAbove guifg=#787c99 ]])
-    vim.cmd([[ highlight LineNrBelow guifg=#787c9 ]])
+    vim.cmd([[ highlight LineNrBelow guifg=#787c99 ]])
   end,
 })
 
