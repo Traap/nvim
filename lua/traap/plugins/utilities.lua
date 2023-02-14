@@ -10,6 +10,91 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ base16 tokyo night terminal storm
+
+  {
+    'RRethy/nvim-base16',
+    lazy = false,
+    priority = 1000,
+
+    enabled = function()
+      return require('traap.core.customize').nvim_base16
+    end,
+
+    config = function()
+      vim.cmd([[colorscheme base16-tokyo-night-terminal-storm]])
+    end,
+
+    dependencies = {
+      { 'xiyaowong/nvim-transparent',
+
+        event = 'VimEnter',
+
+        config = function()
+          vim.cmd([[TransparentEnable]])
+        end,
+
+        opts = function ()
+          return {
+            {
+              enable = true,
+              extra_gropus = {
+                'Comment',
+                'CursorLine',
+                'CursorLineNr',
+                'CursorLineSign',
+                'Folded',
+                'LineNr',
+                'Normal',
+                'SignColumn',
+              },
+              exclude = {
+                'ColorColumn',
+                'EndOfBuffer',
+                'NonText',
+              },
+            }
+          }
+        end,
+      },
+    }
+  },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ tokyonight
+
+  {
+    'folke/tokyonight.nvim',
+    enabled = function()
+      return require('traap.core.customize').tokyonight_nvim
+    end,
+    lazy = false,
+    priority = 1000,
+    opts = {
+      style = 'storm',
+      styles = {
+        sidebars = 'transparent',
+        floats = 'transparent',
+      }
+    },
+    config = function()
+      vim.cmd([[colorscheme tokyonight]])
+    end,
+  },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ catppuccin
+
+  {
+    'catppuccin/nvim',
+    enabled = function()
+      return require('traap.core.customize').catppuccin
+    end,
+    lazy = true,
+    name = 'catppuccin'
+  },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ bullets.nvim
 
   {
@@ -118,7 +203,7 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Indent guides for Neovim
 
- {
+  {
     'lukas-reineke/indent-blankline.nvim',
     enabled = function()
       return require('traap.core.customize').indent_blankline
@@ -183,17 +268,6 @@ return {
     end,
     config = function()
       vim.g.startuptime_tries = 10
-    end,
-  },
-
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ Plenary
-
-  {
-    'nvim-lua/plenary.nvim',
-    lazy = false,
-    enabled = function()
-      return require('traap.core.customize').plenary_nvim
     end,
   },
 
@@ -480,7 +554,10 @@ return {
       },
       window = {
         position = 'right',
-     },
+      },
+    },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
     },
   },
 
@@ -599,20 +676,23 @@ return {
         colorscheme = { enable_preview = true, }
       },
     },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim',
+    },
   },
 
-  -------------------------------------------------------------------------- }}}
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ Telescope fzf native
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'make',
+      config = function()
+        require('telescope').load_extension('fzf')
+      end,
     },
-    config = function(_, opts)
-      local telescope = require('telescope')
-      telescope.setup(opts)
-      telescope.load_extension('fzf')
-    end,
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -672,56 +752,6 @@ return {
     enabled = function()
       return require('traap.core.customize').rainbow_csv
     end,
-  },
-
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ base16 color scheme
-
-  { 'RRethy/nvim-base16',
-    lazy = false,
-    priority = 1000,
-
-    enabled = function()
-      return require('traap.core.customize').nvim_base16
-    end,
-
-    config = function()
-      vim.cmd([[colorscheme base16-tokyo-night-terminal-storm]])
-    end,
-
-    dependencies = {
-      { 'xiyaowong/nvim-transparent',
-
-        event = 'VimEnter',
-
-        config = function()
-          vim.cmd([[TransparentEnable]])
-        end,
-
-        opts = function ()
-          return {
-            {
-              enable = true,
-              extra_gropus = {
-                'Comment',
-                'CursorLine',
-                'CursorLineNr',
-                'CursorLineSign',
-                'Folded',
-                'LineNr',
-                'Normal',
-                'SignColumn',
-              },
-              exclude = {
-                'ColorColumn',
-                'EndOfBuffer',
-                'NonText',
-              },
-            }
-          }
-        end,
-      },
-    }
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -785,9 +815,9 @@ return {
     end,
     opts = {
       background_colour = '#1a1b26',
-      level = 2,
-      render = static,
-      timeout = 1000,
+      level = 3,
+      render = 'minimal',
+      timeout = 1500,
       top_down = false,
       max_height = function()
         return math.floor(vim.o.lines * 0.75)
@@ -836,7 +866,8 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Wiki.Vim
 
-  { 'lervag/wiki.vim',
+  {
+    'lervag/wiki.vim',
     cmd = {'WikiIndex', 'WikiJournal'},
     ft = {'wiki', 'md', 'puml'},
     enabled = function()
