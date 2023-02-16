@@ -1,3 +1,5 @@
 autoload/
 bundle/
 plugin/
+package-lock.json
+lazy-lock.json
