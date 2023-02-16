@@ -182,7 +182,10 @@ return packer.startup(function(use)
   use { 'vim-utils/vim-most-minimal-folds' }
   use { 'windwp/nvim-autopairs' }
   use { 'xiyaowong/nvim-transparent' }
-  use { 'ChristianChiarulli/nvim-ts-rainbow' }
+  use {
+    'ChristianChiarulli/nvim-ts-rainbow',
+    after = 'nvim-treesitter'
+  }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Notification.
