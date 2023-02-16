@@ -20,7 +20,7 @@ language_servers = {
   'pyright',
   -- 'rust',
   'solargraph',
-  'sumneko_lua',
+  'lua_ls',
   'texlab',
   'tsserver',
   'yamlls',
