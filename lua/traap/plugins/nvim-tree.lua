@@ -66,13 +66,16 @@ local diagnostics = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define: filtersheight
+-- {{{ Define: filters
 
 local filters = {
   custom      = {'.git'},
   dotfiles    = false,
   exclude     = {}
 }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Define: renderer
 
 local renderer = {
   add_trailing           = false,
@@ -132,14 +135,6 @@ local  git = {
   enable   = true,
   ignore   = false,
   timeout  = 300,
-}
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Define: ignore ft on setup
-
-local ignore_ft_on_setup = {
-  'dist',
-  'node_modules'
 }
 
 -- ------------------------------------------------------------------------- }}}
@@ -256,9 +251,6 @@ nvim_tree.setup {
   hijack_netrw                       = true,
   hijack_unnamed_buffer_when_opening = false,
   ignore_buffer_on_setup             = false,
-  ignore_ft_on_setup                 = ignore_ft_on_setup,
-  open_on_setup                      = false,
-  open_on_tab                        = false,
   update_cwd                         = true,
   system_open                        = system_open,
   update_focused_file                = update_focused_file,
