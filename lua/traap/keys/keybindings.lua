@@ -65,9 +65,17 @@ keymap('n', 'zj', 'zcjzOzz')
 -- Close current fold when open. Always open previous fold.
 keymap('n', 'zk', 'zckzOzz')
 
--- Keep the cursor in place while joining lines.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Keep the cursor in place while joining lines.
+
 keymap('n', 'J', "mzJ`z")
 keymap('n', '<leader>J', "myvipJ`ygq<cr>")
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Quit all
+
+keymap('n', '<c-q>', '<cmd>qall!<cr>')
+keymap('n', '<leader>qq', '<cmd>qall!<cr>')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Shell commands.
@@ -209,6 +217,7 @@ keymap('n', '<leader>lx', '<Plug>(vimtex-reload)')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ n - NvimTree
 
+keymap('n', '<c-n>',      '<cmd>NvimTreeToggle<cr>')
 keymap('n', '<leader>nf', '<cmd>NvimTreeFindFile<cr>')
 keymap('n', '<leader>nr', '<cmd>NvimTreeRefresh<cr>')
 
