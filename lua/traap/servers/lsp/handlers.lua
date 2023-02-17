@@ -1,37 +1,48 @@
+-- {{{ Acknowledgement and source
+--
+-- Acknowledgement:  Folke Lemaitre
+--           https://github.com/folke
+--
+-- Original work:
+-- https://github.com/LazyVim/LazyVim/blob/a0cf00c81b3a4a352cdc26c94112d9a5827881e1/lua/lazyvim/util/init.lua-
+--
+-- Original work was extracted and tailored to my specific needs.
+--
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Metatable M
 
 local M = {}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ M.on_attach
+-- {{{ M.has
 
-M.on_attach = function(client, bufnr)
-  if client.name == "tsserver" then
-    client.server_capabilities.documentFormattingProvider = false
-  end
-
-  if client.name == "lua_ls" then
-    client.server_capabilities.documentFormattingProvider = false
-  end
-
-  lsp_keymaps(bufnr)
-
-  local status_ok, illuminate = pcall(require, "illuminate")
-  if not status_ok then
-    return
-  end
-  illuminate.on_attach(client)
+function M.has(plugin)
+  return require("lazy.core.config").plugins[plugin] ~= nil
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Capabilities
+-- {{{ M.on_attach
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+function M.on_attach(on_attach)
+  vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+      local buffer = args.buf
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      on_attach(client, buffer)
+    end,
+  })
+end
 
-local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if ok then
-  M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+-- ------------------------------------------------------------------------- }}}
+-- {{{ M.opts
+
+function M.opts(name)
+  local plugin = require('lazy.core.config').plugins[name]
+  if not plugin then
+    return {}
+  end
+  local Plugin = require('lazy.core.plugin')
+  return Plugin.values(plugin, 'opts', false)
 end
 
 -- ------------------------------------------------------------------------- }}}
