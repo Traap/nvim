@@ -3,38 +3,6 @@
 local M = {}
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ M.setup - signs, config, hover, and signature help.
-
-M.setup = function()
-
-  local signs = require('traap.core.constants').diagnostic_signs
-
-  for name, icon in pairs(signs) do
-    name = 'DiagnosticSign' .. name
-    vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-  end
-
-  local config = {
-    float = {
-      border = 'rounded',
-      focusable = true,
-      header = '',
-      prefix = '',
-      source = 'always',
-      style = 'minimal',
-    },
-    severity_sort = true,
-    signs = { active = signs},
-    underline = true,
-    update_in_insert = true,
-    virtual_text = false,
-  }
-
-  vim.diagnostic.config(config)
-
-end
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ lsp_keymaps
 
 local function lsp_keymaps(bufnr)
