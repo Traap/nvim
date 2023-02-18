@@ -2,3 +2,5 @@ autoload/
 bundle/
 plugin/
 lazy-lock.json
+.luarc.json
+.neoconf.json
