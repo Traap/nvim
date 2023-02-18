@@ -1,3 +1,15 @@
+-- {{{ Acknowledgement and source
+--
+-- Acknowledgement:  Folke Lemaitre
+--           https://github.com/folke
+--
+-- Original work:
+-- https://github.com/LazyVim/LazyVim/blob/a0cf00c81b3a4a352cdc26c94112d9a5827881e1/lua/lazyvim/util/init.lua-
+--
+-- Original work was extracted and tailored to my specific needs.
+--
+-- ------------------------------------------------------------------------- }}}
+
 return {
   -- {{{ nvim-lspconfig
 
@@ -64,7 +76,9 @@ return {
 
       -- setup servers
       local servers = opts.servers
-      local capabilities = handlers.capabilities
+      local capabilities = require('cmp_nvim_lsp').default_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+      )
       local lspconfig = require('lspconfig')
 
       local function setup(server)
@@ -77,9 +91,9 @@ return {
             return
           end
         elseif opts.setup['*'] then
-          if opts.setup['*'](server, server_opts) then
-            return
-          end
+           if opts.setup['*'](server, server_opts) then
+             return
+           end
         end
         lspconfig[server].setup(server_opts)
       end
@@ -117,64 +131,15 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ null-ls
-
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    event = 'BufReadPre',
-    dependencies = { 'mason.nvim' },
-    opts = function()
-      local nls = require('null-ls')
-      return {
-        sources = {
-          nls.builtins.formatting.stylua,
-          nls.builtins.diagnostics.flake8,
-        },
-      }
-    end,
-  },
-
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ Mason
 
   {
     'williamboman/mason.nvim',
     cmd = 'Mason',
     keys = { { '<leader>cm', '<cmd>Mason<cr> ' } },
-
-    -- opts = function()
-    -- 	local servers = {}
-    -- 	for _, value in pairs(require('traap.core.constants').lsp_to_mason) do
-    -- 		table.insert(servers, value.mason)
-    -- 	end
-    -- 	return { ensure_installed = servers }
-    -- end,
-
-    -- config = function(plugin, opts)
-    -- 	require('traap.servers.lsp.handlers').setup()
-    -- 	require('mason').setup(opts)
-    -- 	local mr = require('mason-registry')
-    -- 	for _, value in ipairs(opts.ensure_installed) do
-    -- 		local p = mr.get_package(value)
-    -- 		if not p:is_installed() then
-    -- 			p:install()
-    -- 		end
-    -- 	end
-    -- end,
-
-    -- opts = {
-    --   ensure_installed = {
-    --     'stylua',
-    --     'shellcheck',
-    --     'shfmt',
-    --     'flake8'
-    --   },
-    -- },
-
     opts = {
       ensure_installed = require('traap.core.constants').mason_ensure_installed
     },
-
 
     config = function(plugin, opts)
       require('mason').setup(opts)
@@ -191,7 +156,31 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ fidget.nvim
 
-  { 'j-hui/fidget.nvim', event = 'VeryLazy', config = true },
+  {
+    'j-hui/fidget.nvim',
+    enabled = true,
+    event = 'VeryLazy',
+    config = true
+  },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ null-ls
+
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    enabled = true,
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = { 'mason.nvim' },
+    opts = function()
+      local nls = require('null-ls')
+      return {
+        sources = {
+          nls.builtins.formatting.stylua,
+          nls.builtins.diagnostics.flake8,
+        },
+      }
+    end,
+  },
 
   -- ----------------------------------------------------------------------- }}}
 }

@@ -9,8 +9,9 @@ Constants = {
 
 lua_ls = {
   Lua = {
-    workspace = { checkThirdParty = false },
+    diagnostics = { globals = { vim }, },
     telemetry = { enable = false },
+    workspace = { checkThirdParty = false },
   },
 },
 
