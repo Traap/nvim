@@ -8,7 +8,7 @@ end
 
 M.lsp_ensure_installed = function()
   local ensure_installed = {}
-  for _, value in pairs(require('traap.core.constants').lsp_to_mason) do
+  for _, value in pairs(require('config.constants').lsp_to_mason) do
     table.insert(ensure_installed, value.lsp)
   end
   return ensure_installed

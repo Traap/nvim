@@ -9,7 +9,6 @@
 -- Original work was extracted and tailored to my specific needs.
 --
 -- ------------------------------------------------------------------------- }}}
-
 return {
   -- {{{ nvim-lspconfig
 
@@ -67,7 +66,7 @@ return {
       end)
 
       -- diagnostics
-      local signs = require('traap.core.constants').diagnostic_signs
+      local signs = require('config.constants').diagnostic_signs
       for name, icon in pairs(signs) do
         name = 'DiagnosticSign' .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
@@ -138,7 +137,7 @@ return {
     cmd = 'Mason',
     keys = { { '<leader>cm', '<cmd>Mason<cr> ' } },
     opts = {
-      ensure_installed = require('traap.core.constants').mason_ensure_installed
+      ensure_installed = require('config.constants').mason_ensure_installed
     },
 
     config = function(plugin, opts)

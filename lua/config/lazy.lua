@@ -2,7 +2,7 @@
 
 require("lazy").setup({
 	spec = {
-		{ import = "traap.plugins" },
+		{ import = "plugins" },
 	},
 
 	defaults = {
