@@ -1,6 +1,6 @@
 -- {{{ Leader and maplocal
 
-local keymap = require('traap.core.functions').keymap
+local keymap = require('config.functions').keymap
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easy align
@@ -245,11 +245,11 @@ keymap('n', '<leader>lx', '<Plug>(vimtex-reload)')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ n - NvimTree
 
-if require('traap.core.customize').neo_tree_nvim or
-   require('traap.core.customize').nvim_tree then
+if require('config.customize').neo_tree_nvim or
+   require('config.customize').nvim_tree then
 
    -- nvim_tree takes precedence when both are true.
-   if require('traap.core.customize').nvim_tree then
+   if require('config.customize').nvim_tree then
     keymap('n', '<c-n>',      '<cmd>NvimTreeToggle<cr>')
     keymap('n', '<leader>nf', '<cmd>NvimTreeFindFile<cr>')
     keymap('n', '<leader>nr', '<cmd>NvimTreeRefresh<cr>')
