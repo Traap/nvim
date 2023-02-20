@@ -1,5 +1,50 @@
 return {
 
+  -- {{{ mason.nvi
+
+  {
+    'williamboman/mason.nvim',
+    cmd = 'Mason',
+    keys = { { '<leader>cm', '<cmd>Mason<cr> ' } },
+    opts = {
+      ensure_installed = {
+        'bash-language-server',
+        'clangd',
+        'css-lsp',
+        'emmet-ls',
+        'eslint-lsp',
+        'flake8',
+        'gopls',
+        'html-lsp',
+        'json-lsp',
+        'lua-language-server',
+        'omnisharp',
+        'pyright',
+        'rust-analyzer',
+        'shellcheck',
+        'shfmt',
+        'solargraph',
+        'sqlls',
+        'stylua',
+        'texlab',
+        'typescript-language-server',
+        'yaml-language-server',
+      },
+    },
+
+    config = function(plugin, opts)
+      require('mason').setup(opts)
+      local mr = require('mason-registry')
+      for _, value in ipairs(opts.ensure_installed) do
+        local p = mr.get_package(value)
+        if not p:is_installed() then
+          p:install()
+        end
+      end
+    end,
+  },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ nvim-lspconfig
 
   {
@@ -124,51 +169,6 @@ return {
       require("mason-lspconfig").setup_handlers({ setup })
     end,
   },
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-lspconfig
-
-  {
-    'williamboman/mason.nvim',
-    cmd = 'Mason',
-    keys = { { '<leader>cm', '<cmd>Mason<cr> ' } },
-    opts = {
-      ensure_installed = {
-        'bash-language-server',
-        'clangd',
-        'css-lsp',
-        'emmet-ls',
-        'eslint-lsp',
-        'flake8',
-        'gopls',
-        'html-lsp',
-        'json-lsp',
-        'lua-language-server',
-        'omnisharp',
-        'pyright',
-        'rust-analyzer',
-        'shellcheck',
-        'shfmt',
-        'solargraph',
-        'sqlls',
-        'stylua',
-        'texlab',
-        'typescript-language-server',
-        'yaml-language-server',
-      },
-    },
-
-    config = function(plugin, opts)
-      require('mason').setup(opts)
-      local mr = require('mason-registry')
-      for _, value in ipairs(opts.ensure_installed) do
-        local p = mr.get_package(value)
-        if not p:is_installed() then
-          p:install()
-        end
-      end
-    end,
-  },
-
   -- ----------------------------------------------------------------------- }}}
 
 }
