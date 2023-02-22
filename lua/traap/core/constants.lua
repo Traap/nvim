@@ -18,7 +18,7 @@ language_servers = {
   'jsonls',
   'omnisharp',
   'pyright',
-  -- 'rust',
+  'rust_analyzer',
   'solargraph',
   'lua_ls',
   'texlab',
@@ -27,7 +27,7 @@ language_servers = {
 },
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ LSp kind icons.
+-- {{{ LSP kind icons.
 
 lsp_kind_icons = {
   Class         = "",
