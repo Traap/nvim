@@ -6,7 +6,6 @@ if not mok then return end
 local  aok, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if not aok then return end
 
-
 local  lok, lspconfig = pcall(require, 'lspconfig')
 if not lok then return end
 
@@ -35,7 +34,7 @@ mason.setup(settings)
 
 mason_lspconfig.setup({
   ensure_installed = language_servers,
-  automatic_installation = false,
+  automatic_installation = true,
 })
 
 -- ------------------------------------------------------------------------- }}}
