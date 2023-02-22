@@ -210,7 +210,7 @@ return packer.startup(function(use)
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Which-Key
 
-  -- use { 'folke/which-key.nvim' }
+  use { 'folke/which-key.nvim', disabled = false }
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Zulu : Reuse Traap's vim bundles last.
