@@ -30,16 +30,9 @@ local mappings = {
 -- --------------------------------------------------------------------------}}}
 -- {{{ Telescope layout_config
 
-local layout_config = {
-  vertical = {
-    height = 50,
-    preview_cutoff = 40,
-    prompt_position = 'bottom',
-    width = 0.5
-  },
-}
+local layout_config = { prompt_position = "top" }
 
-local layout_strategy = 'vertical'
+local layout_strategy = 'horizontal'
 
 -- --------------------------------------------------------------------------}}}
 -- {{{ Telescope ripgrep setup.
@@ -88,17 +81,17 @@ local defaults = {
 -- {{{ Telescope extensions.
 
 local extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = 'smart_case',
-    },
-    media_files = {
-      filetypes = {'pdf', 'png', 'webp', 'jpg', 'jpeg'},
-      find_cmd = 'rg'
-    }
+  fzf = {
+    fuzzy = true,
+    override_generic_sorter = true,
+    override_file_sorter = true,
+    case_mode = 'smart_case',
+  },
+  media_files = {
+    filetypes = {'pdf', 'png', 'webp', 'jpg', 'jpeg'},
+    find_cmd = 'rg'
   }
+}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Telescope setup.
@@ -120,8 +113,8 @@ local ext_names = {
   'notify',
 }
 
--- for _, name in ipairs(ext_names) do
---   telescope.load_extension(name)
--- end
+for _, name in ipairs(ext_names) do
+  telescope.load_extension(name)
+end
 
 -- ------------------------------------------------------------------------- }}}
