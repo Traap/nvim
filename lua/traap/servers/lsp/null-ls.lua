@@ -3,10 +3,6 @@ if not ok then return end
 
 local formatting = null_ls.builtins.formatting
 
--- FIXME: Minimize warning information:
---        This function expects a maximum of 0 argument(s)
---        but instead it is receiving 1.
-
 local sources = {
   null_ls.builtins.completion.spell,
   null_ls.builtins.code_actions.gitsigns,
@@ -18,5 +14,28 @@ local sources = {
 
 
 null_ls.setup({
-  debug = false, sources = sources,
+  sources = sources,
+
+  on_attach = function(client)
+    if client.server_capabilities.document_formatting then
+
+      vim.cmd(
+        [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+      )
+
+      if client.server_capabilities.document_highlight then
+        vim.api.nvim_exec(
+          [[
+          augroup document_highlight
+            autocmd! * <buffer>
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+          augroup END
+         ]],
+         false
+        )
+      end
+    end
+  end
+
 })
