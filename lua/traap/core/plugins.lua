@@ -32,6 +32,7 @@ return packer.startup(function(use)
 -- {{{ Colors
 
   use { 'RRethy/nvim-base16' }
+  use { 'folke/tokyonight.nvim'}
   use { 'norcalli/nvim-colorizer.lua' }
   use { 'mechatroner/rainbow_csv' }
 
