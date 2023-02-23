@@ -1,7 +1,7 @@
 local  ok, _ = pcall(require, 'base16-colorscheme')
 if not ok then return end
 
--- Youtube: Telescope borders
+-- Youtube: Telescope borders change with colorscheme.
 function ColorScheme(color)
   local cs = require("traap.core.customize").colorscheme
 

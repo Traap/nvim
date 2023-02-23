@@ -15,7 +15,7 @@ local Customize = {}
 Customize = {
   -- Youtube: Experiment with two different Tokyo night colorschemes.
   colorscheme = {
-    base16 = false,
+    base16 = true,
     folke = true,
   },
   nvim_tree          = true,
