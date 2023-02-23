@@ -4,6 +4,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.cmd([[ highlight clear Folded ]])
     vim.cmd([[ highlight ColorColumn guibg=#202031 ]])
+
+    -- Youtube: Show number and relative number difference.
     vim.cmd([[ highlight LineNr guifg=#e0af68 ]])
     vim.cmd([[ highlight LineNrAbove guifg=#787c99 ]])
     vim.cmd([[ highlight LineNrBelow guifg=#787c99 ]])
@@ -13,6 +15,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Close some filetypes with <q>.
 
+-- Youtube: Found while converting to LazyVim.
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "PlenaryTestPopup",
@@ -83,7 +86,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Highlight on yank
 
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+local highlight_group = vim.api.nvim_create_augroup(
+  "YankHighlight", { clear = true }
+)
+
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
@@ -146,6 +152,7 @@ vim.api.nvim_create_autocmd(
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Reload file when necessay.
 
+-- Youtube: Found while converting to LazyVim.
 vim.api.nvim_create_autocmd(
   { "FocusGained", "TermClose", "TermLeave" }, { command = "checktime" }
 )
@@ -153,6 +160,7 @@ vim.api.nvim_create_autocmd(
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Resize splits when window is resized.
 
+-- Youtube: Found while converting to LazyVim.
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   callback = function()
     vim.cmd("tabdo wincmd =")

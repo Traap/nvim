@@ -1,5 +1,6 @@
 -- {{{ Bail when requried packages are not loaded.q
 
+-- Youtube: Small configuration item blocks.
 local  telescope_ok, telescope = pcall(require, 'telescope')
 if not telescope_ok then return end
 
@@ -48,15 +49,74 @@ local vimgrep_arguments = {
 }
 
 -- --------------------------------------------------------------------------}}}
+-- {{{ Telescope file_ignore_patterns
+
+-- Youtube:  Found browsing LunarVim source.
+local file_ignore_patterns = {
+  "%.7z",
+  "%.burp",
+  "%.bz2",
+  "%.cache",
+  "%.class",
+  "%.dll",
+  "%.docx",
+  "%.dylib",
+  "%.epub",
+  "%.exe",
+  "%.flac",
+  "%.ico",
+  "%.ipynb",
+  "%.jar",
+  "%.lock",
+  "%.met",
+  "%.mkv",
+  "%.mp4",
+  "%.otf",
+  "%.pdb",
+  "%.pdf",
+  "%.rar",
+  "%.sqlite3",
+  "%.svg",
+  "%.tar",
+  "%.tar.gz",
+  "%.ttf",
+  "%.webp",
+  "%.zip",
+  ".dart_tool/",
+  ".git/",
+  ".github/",
+  ".gradle/",
+  ".idea/",
+  ".settings/",
+  ".vale/",
+  ".vscode/",
+  "__pycache__/",
+  "__pycache__/*",
+  "build/",
+  "docs/",
+  "env/",
+  "gradle/",
+  "node_modules/",
+  "node_modules/*",
+  "smalljre_*/*",
+  "spell/*",
+  "target/",
+  "vendor/*",
+}
+
+-- --------------------------------------------------------------------------}}}
 -- {{{ Telescope defaults
 
 local defaults = {
   border = {},
+
+  -- Youtube:  Notice borderchars are defined.
   borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+
   buffer_previewer_maker = require 'telescope.previewers'.buffer_previewer_maker,
   color_devicons = true,
   entry_prefix = '  ',
-  file_ignore_patterns = {},
+  file_ignore_patterns = file_ignore_patterns,
   file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
   file_sorter = require 'telescope.sorters'.get_fuzzy_file,
   generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
@@ -66,6 +126,7 @@ local defaults = {
   layout_strategy = layout_strategy,
   mappings = mappings,
   path_display = { 'smart' },
+  pickers = { colorscheme = { enable_preview = true} },
   prompt_prefix = " ",
   qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
   selection_caret = " ",
@@ -96,6 +157,7 @@ local extensions = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Telescope setup.
 
+-- Youtube: Bringing it all together.
 telescope.setup ({
   defaults = defaults,
   extensions = extensions,

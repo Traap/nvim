@@ -3,18 +3,18 @@ if not ok then return end
 
 local formatting = null_ls.builtins.formatting
 
-local sources = {
-  null_ls.builtins.completion.spell,
-  null_ls.builtins.code_actions.gitsigns,
-  formatting.rubocop,
-  formatting.prettier.with({ extra_args = { "--no-simi", "--single-quote", "--jsx-single-quote" } }),
-  formatting.black.with({ extra_args = { "--fast" } }),
-  formatting.stylua,
-}
-
-
+-- Youtube: I didn't have null_ls setup correctly. VapourVim helped.
 null_ls.setup({
-  sources = sources,
+  sources = {
+    null_ls.builtins.completion.spell,
+    null_ls.builtins.code_actions.gitsigns,
+    formatting.rubocop,
+    formatting.prettier.with(
+      { extra_args = { "--no-simi", "--single-quote", "--jsx-single-quote" } }
+    ),
+    formatting.black.with({ extra_args = { "--fast" } }),
+    formatting.stylua,
+  },
 
   on_attach = function(client)
     if client.server_capabilities.document_formatting then

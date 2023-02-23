@@ -1,11 +1,20 @@
 local  ok, _ = pcall(require, 'base16-colorscheme')
 if not ok then return end
 
+-- Youtube: Telescope borders
 function ColorScheme(color)
-  color = color or 'base16-tokyo-night-terminal-storm'
+  local cs = require("traap.core.customize").colorscheme
+
+  local tokyonight = 'base16-tokyo-night-terminal-storm'
+
+  if cs.base16 then
+    tokyonight = 'base16-tokyo-night-terminal-storm'
+  elseif cs.folke then
+    tokyonight = 'tokyonight-storm'
+  end
+
+  color = color or tokyonight
   vim.cmd.colorscheme(color)
-  -- vim.api.nvim_set_hl(0, 'Normal', {bg = 'none'})
-  -- vim.api.nvim_set_hl(0, 'NormalFloat', {bg = 'none'})
 end
 
 ColorScheme()
