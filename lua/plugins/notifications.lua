@@ -1,52 +1,52 @@
 return {
-  -- {{{ dressing
+	-- {{{ dressing
 
-  {
-    "stevearc/dressing.nvim",
-    enabled = function()
-      return require("config.customize").dressing
-    end,
-    lazy = true,
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
-  },
+	{
+		"stevearc/dressing.nvim",
+		enabled = function()
+			return require("config.customize").dressing
+		end,
+		lazy = true,
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ Git signs and lightbulb.
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ Git signs and lightbulb.
 
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
-    enabled = function()
-      return require("config.customize").gitsigns_nvim
-    end,
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "BufReadPre",
+		enabled = function()
+			return require("config.customize").gitsigns_nvim
+		end,
 
-    opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "契" },
-        topdelete = { text = "契" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
-      },
+		opts = {
+			signs = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "契" },
+				topdelete = { text = "契" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
+			},
 
-      on_attach = function(buffer)
-        local gs = package.loaded.gitsigns
+			on_attach = function(buffer)
+				local gs = package.loaded.gitsigns
 
-        local function map(mode, l, r, desc)
-          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-        end
+				local function map(mode, l, r, desc)
+					vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+				end
 
         -- stylua: ignore start
         map('n', ']h', gs.next_hunk, 'Next Hunk')
@@ -61,92 +61,112 @@ return {
         map('n', '<leader>ghd', gs.diffthis, 'Diff This')
         map('n', '<leader>ghD', function() gs.diffthis('~') end, 'Diff This ~')
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'GitSigns Select Hunk')
-      end,
-    },
-  },
+			end,
+		},
+	},
 
-  {
-    "kosayoda/nvim-lightbulb",
-    event = "BufReadPre",
-    opts = { autocmd = { enabled = true } },
-    dependencies = { "antoinemadec/FixCursorHold.nvim" },
-  },
+	{
+		"kosayoda/nvim-lightbulb",
+		event = "BufReadPre",
+		opts = { autocmd = { enabled = true } },
+		dependencies = { "antoinemadec/FixCursorHold.nvim" },
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ Popup.nvim
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ Popup.nvim
 
-  {
-    "nvim-lua/popup.nvim",
-    event = "VimEnter",
-    enabled = function()
-      return require("config.customize").popup_nvim
-    end,
-  },
+	{
+		"nvim-lua/popup.nvim",
+		event = "VimEnter",
+		enabled = function()
+			return require("config.customize").popup_nvim
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-notify
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ nvim-notify
 
-  {
-    "rcarriga/nvim-notify",
-    event = "BufEnter",
-    enabled = function()
-      return require("config.customize").nvim_notify
-    end,
-    opts = {
-      background_colour = "#1a1b26",
-      level = 3,
-      render = "minimal",
-      timeout = 1500,
-      top_down = false,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.75)
-      end,
-    },
-  },
+	{
+		"rcarriga/nvim-notify",
+		event = "BufEnter",
+		enabled = function()
+			return require("config.customize").nvim_notify
+		end,
+		opts = {
+			background_colour = "#1a1b26",
+			level = 3,
+			render = "minimal",
+			timeout = 1500,
+			top_down = false,
+			max_height = function()
+				return math.floor(vim.o.lines * 0.75)
+			end,
+			max_width = function()
+				return math.floor(vim.o.columns * 0.75)
+			end,
+		},
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ Noice - (Nice, Noise, Notice)
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ Noice - (Nice, Noise, Notice)
 
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    enabled = function()
-      return require("config.customize").noice_nvim
-    end,
-    opts = {
-      lsp = {
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-        },
-      },
-    },
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		enabled = function()
+			return require("config.customize").noice_nvim
+		end,
 
-    presets = {
-      bottom_search = true,
-      command_palette = true,
-      long_message_to_split = true,
-    },
+		opts = {
+			presets = {
+				bottom_search = false,
+				command_palette = false,
+				long_message_to_split = true,
+			},
 
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
-  },
+			views = {
+				cmdline_popup = {
+					position = {
+						row = "50%",
+						col = "50%",
+					},
+					win_options = {
+						winhighlight = "NormalFloat:NormalFloat, FloatBorder:FloatBorder",
+					},
+				},
+			},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ trouble.nvim
+			routes = {
+				{
+					view = "notify",
+					filter = { event = "msg_showmode" },
+				},
+			},
 
-  {
-    "folke/trouble.nvim",
-    event = "VimEnter",
-    enabled = function()
-      return require("config.customize").trouble_nvim
-    end,
-    opts = { use_diagnostic_signs = true },
-  },
+			lsp = {
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+				},
+			},
+		},
 
-  -- ----------------------------------------------------------------------- }}}
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+	},
+
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ trouble.nvim
+
+	{
+		"folke/trouble.nvim",
+		event = "VimEnter",
+		enabled = function()
+			return require("config.customize").trouble_nvim
+		end,
+		opts = { use_diagnostic_signs = true },
+	},
+
+	-- ----------------------------------------------------------------------- }}}
 }
