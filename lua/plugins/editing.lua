@@ -1,187 +1,222 @@
 return {
-  -- {{{ bullets.nvim
+	-- {{{ Comment.nvim
 
-  {
-    "dkarter/bullets.vim",
-    lazy = false,
-    enabled = function()
-      return require("config.customize").bullets_vim
-    end,
-  },
+	{
+		"numToStr/Comment.nvim",
+		event = "VeryLazy",
+		enabled = function()
+			return require("config.customize").commentary_nvim
+		end,
+		opts = {
+			padding = true,
+			sticky = true,
+			ignore = nil,
+			toggler = {
+				line = "gcc",
+				block = "gbc",
+			},
+			opleader = {
+				line = "gc",
+				block = "gb",
+			},
+			extra = {
+				above = "gcO",
+				below = "gco",
+				eol = "gcA",
+			},
+			mappings = {
+				basic = true,
+				extra = true,
+			},
+			pre_hook = nil,
+			post_hook = nil,
+		},
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ clipboard-image.nvim
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ bullets.nvim
 
-  {
-    "ekickx/clipboard-image.nvim",
-    event = "InsertEnter",
-    enabled = function()
-      return require("config.customize").clipboard_image_nvim
-    end,
-  },
+	{
+		"dkarter/bullets.vim",
+		lazy = false,
+		enabled = function()
+			return require("config.customize").bullets_vim
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ neoformat
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ clipboard-image.nvim
 
-  {
-    "sbdchd/neoformat",
-    event = "VeryLazy",
-    enabled = function()
-      return require("config.customize").neoformat
-    end,
-  },
+	{
+		"ekickx/clipboard-image.nvim",
+		event = "InsertEnter",
+		enabled = function()
+			return require("config.customize").clipboard_image_nvim
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-autopairs
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ neoformat
 
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    enabled = function()
-      return require("config.customize").nvim_autopairs
-    end,
-    config = true,
-  },
+	{
+		"sbdchd/neoformat",
+		event = "VeryLazy",
+		enabled = function()
+			return require("config.customize").neoformat
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-spectre
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ nvim-autopairs
 
-  {
-    "windwp/nvim-spectre",
-    enabled = function()
-      return require("config.customize").nvim_spectre
-    end,
-    keys = {
-      {
-        "<leader>sr",
-        function()
-          require("spectre").open()
-        end,
-        desc = "Replace in files (Spectre)",
-      },
-    },
-  },
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		enabled = function()
+			return require("config.customize").nvim_autopairs
+		end,
+		config = true,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-surround
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ nvim-spectre
 
-  {
-    "kylechui/nvim-surround",
-    event = "InsertEnter",
-    config = true,
-    enabled = function()
-      return require("config.customize").nvim_surround
-    end,
-  },
+	{
+		"windwp/nvim-spectre",
+		enabled = function()
+			return require("config.customize").nvim_spectre
+		end,
+		keys = {
+			{
+				"<leader>sr",
+				function()
+					require("spectre").open()
+				end,
+				desc = "Replace in files (Spectre)",
+			},
+		},
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ vimtex
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ nvim-surround
 
-  {
-    "lervag/vimtex",
-    ft = { "tex", "texx" },
-    enabled = function()
-      return require("config.customize").vimtex
-    end,
-    dependencies = { "Traap/vim-bundle-vimtex" },
-  },
+	{
+		"kylechui/nvim-surround",
+		event = "InsertEnter",
+		config = true,
+		enabled = function()
+			return require("config.customize").nvim_surround
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ vim-bundle-plantuml
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ vimtex
 
-  {
-    "Traap/vim-bundle-plantuml",
-    ft = "puml",
-    enabled = function()
-      return require("config.customize").vim_bundle_plantuml
-    end,
-    dependencies = {
-      "aklt/plantuml-syntax",
-    },
-  },
+	{
+		"lervag/vimtex",
+		ft = { "tex", "texx" },
+		enabled = function()
+			return require("config.customize").vimtex
+		end,
+		dependencies = { "Traap/vim-bundle-vimtex" },
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ vim-commentary
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ vim-bundle-plantuml
 
-  {
-    "tpope/vim-commentary",
-    event = "VeryLazy",
-    enabled = function()
-      return require("config.customize").vim_commentary
-    end,
-  },
+	{
+		"Traap/vim-bundle-plantuml",
+		ft = "puml",
+		enabled = function()
+			return require("config.customize").vim_bundle_plantuml
+		end,
+		dependencies = {
+			"aklt/plantuml-syntax",
+		},
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ vim-easy-align
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ vim-commentary
 
-  {
-    "junegunn/vim-easy-align",
-    enabled = function()
-      return require("config.customize").vim_easy_align
-    end,
-    event = "BufEnter",
-  },
+	{
+		"tpope/vim-commentary",
+		event = "VeryLazy",
+		enabled = function()
+			return require("config.customize").vim_commentary
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ vim-endwise
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ vim-easy-align
 
-  {
-    "tpope/vim-endwise",
-    event = "InsertEnter",
-    enabled = function()
-      return require("config.customize").vim_endwise
-    end,
-  },
+	{
+		"junegunn/vim-easy-align",
+		enabled = function()
+			return require("config.customize").vim_easy_align
+		end,
+		event = "BufEnter",
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ vim-repeat
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ vim-endwise
 
-  {
-    "tpope/vim-repeat",
-    event = "InsertEnter",
-    enabled = function()
-      return require("config.customize").vim_bundler
-    end,
-  },
+	{
+		"tpope/vim-endwise",
+		event = "InsertEnter",
+		enabled = function()
+			return require("config.customize").vim_endwise
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ vim-surround
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ vim-repeat
 
-  {
-    "tpope/vim-surround",
-    event = "InsertEnter",
-    enabled = function()
-      return require("config.customize").vim_surround
-    end,
-  },
+	{
+		"tpope/vim-repeat",
+		event = "InsertEnter",
+		enabled = function()
+			return require("config.customize").vim_bundler
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ vim-unimpaired
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ vim-surround
 
-  {
-    "tpope/vim-unimpaired",
-    event = "VeryLazy",
-    enabled = function()
-      return require("config.customize").vim_unimpaired
-    end,
-  },
+	{
+		"tpope/vim-surround",
+		event = "InsertEnter",
+		enabled = function()
+			return require("config.customize").vim_surround
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ wiki.vim
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ vim-unimpaired
 
-  {
-    "lervag/wiki.vim",
-    cmd = { "WikiIndex", "WikiJournal" },
-    ft = { "wiki", "md", "puml" },
-    enabled = function()
-      return require("config.customize").wiki_vim
-    end,
-    dependencies = {
-      "lervag/wiki-ft.vim",
-      "Traap/vim-bundle-wiki.vim",
-      "Traap/vim-bundle-plantuml",
-    },
-  },
+	{
+		"tpope/vim-unimpaired",
+		event = "VeryLazy",
+		enabled = function()
+			return require("config.customize").vim_unimpaired
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ wiki.vim
+
+	{
+		"lervag/wiki.vim",
+		cmd = { "WikiIndex", "WikiJournal" },
+		ft = { "wiki", "md", "puml" },
+		enabled = function()
+			return require("config.customize").wiki_vim
+		end,
+		dependencies = {
+			"lervag/wiki-ft.vim",
+			"Traap/vim-bundle-wiki.vim",
+			"Traap/vim-bundle-plantuml",
+		},
+	},
+
+	-- ----------------------------------------------------------------------- }}}
 }
