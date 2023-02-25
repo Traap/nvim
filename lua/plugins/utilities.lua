@@ -119,4 +119,41 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ zen-mode.nvim
+
+	{
+		"folke/zen-mode.nvim",
+		enabled = function()
+			return require("config.customize").zen_mode_nvim
+		end,
+		opts = {
+			window = {
+				width = 0.5,
+				height = 0.85,
+				options = {
+					colorcolumn = "",
+					cursorcolumn = false,
+					cursorline = false,
+					number = true,
+					relativenumber = true,
+				},
+			},
+			plugins = {
+				enabled = true,
+				options = {
+					ruler = false,
+					showmd = true,
+				},
+				twilight = { enabled = false },
+				gitsigns = { enabled = false },
+				tmux = { enabled = false },
+				alacritty = {
+					enabled = true,
+					font = "15",
+				},
+			},
+		},
+	},
+
+	-- ----------------------------------------------------------------------- }}}
 }

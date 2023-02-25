@@ -251,6 +251,7 @@ end
 keymap("n", "<leader>oh", "<cmd>checkhealth<cr>")
 keymap("n", "<leader>oo", "<cmd>only<cr>")
 keymap("n", "<leader>or", [[<cmd>VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>]])
+keymap("n", "<leader>oz", [[<cmd>lua require("zen-mode").toggle()<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ p - Packer
