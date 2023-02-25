@@ -92,16 +92,6 @@ keymap("n", "<leader>qq", "<cmd>qall!<cr>")
 keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ G - Gist
-
-keymap("n", "<leader>Ga", "<cmd>Gist -b -a<cr>")
-keymap("n", "<leader>Gd", "<cmd>Gist -d<cr>")
-keymap("n", "<leader>Gf", "<cmd>Gist -f<cr>")
-keymap("n", "<leader>Gg", "<cmd>Gist -b<cr>")
-keymap("n", "<leader>Gl", "<cmd>Gist -l<cr>")
-keymap("n", "<leader>Gp", "<cmd>Gist -b -p<cr>")
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ H - Help
 
 keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>")
