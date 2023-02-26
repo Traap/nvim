@@ -14,7 +14,7 @@ local Customize = {}
 -- {{{ Enable or disable plugins.
 
 Customize = {
-	alpha_nvim = true,
+	alpha_nvim = false,
 	bullets_vim = true,
 	catppuccin = true,
 	clipboard_image_nvim = true,
@@ -34,7 +34,7 @@ Customize = {
 	nvim_lualine = true,
 	nvim_notify = true,
 	nvim_spectre = true,
-	nvim_transparent = true,
+	nvim_transparent = false,
 	nvim_tree = false,
 	nvim_treesitter = true,
 	nvim_ts_rainbow = true,
