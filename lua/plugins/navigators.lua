@@ -1,39 +1,39 @@
 return {
-  -- {{{ vim-tmux-navigator
+	-- {{{ vim-tmux-navigator
 
-  {
-    "christoomey/vim-tmux-navigator",
-    event = "BufEnter",
-    enabled = function()
-      return require("config.customize").vim_tmux_navigator
-    end,
-  },
+	{
+		"christoomey/vim-tmux-navigator",
+		event = { "BufReadPost", "BufNewFile" },
+		enabled = function()
+			return require("config.customize").vim_tmux_navigator
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ vim-tmux-runner
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ vim-tmux-runner
 
-  {
-    "christoomey/vim-tmux-runner",
-    enabled = function()
-      return require("config.customize").vim_tmux_runner
-    end,
+	{
+		"christoomey/vim-tmux-runner",
+		enabled = function()
+			return require("config.customize").vim_tmux_runner
+		end,
 
-    cmd = "VtrOpenRunner",
-    dependencies = {
-      "Traap/vim-bundle-tmux-runner",
-    },
-  },
+		cmd = "VtrOpenRunner",
+		dependencies = {
+			"Traap/vim-bundle-tmux-runner",
+		},
+	},
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ harpoon
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ harpoon
 
-  {
-    "ThePrimeagen/harpoon",
-    event = "BufEnter",
-    enabled = function()
-      return require("config.customize").harpoon
-    end,
-  },
+	{
+		"ThePrimeagen/harpoon",
+		event = { "BufReadPost", "BufNewFile" },
+		enabled = function()
+			return require("config.customize").harpoon
+		end,
+	},
 
-  -- ----------------------------------------------------------------------- }}}
+	-- ----------------------------------------------------------------------- }}}
 }

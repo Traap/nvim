@@ -28,7 +28,7 @@ return {
 
 	{
 		"moll/vim-bbye",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").vim_bbye
 		end,
@@ -39,7 +39,7 @@ return {
 
 	{
 		"tpope/vim-eunuch",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").vim_eunuch
 		end,

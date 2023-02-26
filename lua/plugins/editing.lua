@@ -3,7 +3,7 @@ return {
 
 	{
 		"numToStr/Comment.nvim",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").commentary_nvim
 		end,
@@ -38,7 +38,7 @@ return {
 
 	{
 		"dkarter/bullets.vim",
-		lazy = false,
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").bullets_vim
 		end,
@@ -49,7 +49,7 @@ return {
 
 	{
 		"ekickx/clipboard-image.nvim",
-		event = "InsertEnter",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").clipboard_image_nvim
 		end,
@@ -60,7 +60,7 @@ return {
 
 	{
 		"sbdchd/neoformat",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").neoformat
 		end,
@@ -71,7 +71,7 @@ return {
 
 	{
 		"windwp/nvim-autopairs",
-		event = "InsertEnter",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").nvim_autopairs
 		end,
@@ -102,7 +102,7 @@ return {
 
 	{
 		"kylechui/nvim-surround",
-		event = "InsertEnter",
+		event = { "BufReadPost", "BufNewFile" },
 		config = true,
 		enabled = function()
 			return require("config.customize").nvim_surround
@@ -140,7 +140,7 @@ return {
 
 	{
 		"tpope/vim-commentary",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").vim_commentary
 		end,
@@ -151,10 +151,10 @@ return {
 
 	{
 		"junegunn/vim-easy-align",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").vim_easy_align
 		end,
-		event = "BufEnter",
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -162,7 +162,7 @@ return {
 
 	{
 		"tpope/vim-endwise",
-		event = "InsertEnter",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").vim_endwise
 		end,
@@ -173,9 +173,9 @@ return {
 
 	{
 		"tpope/vim-repeat",
-		event = "InsertEnter",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_bundler
+			return require("config.customize").vim_repeat
 		end,
 	},
 
@@ -184,7 +184,7 @@ return {
 
 	{
 		"tpope/vim-surround",
-		event = "InsertEnter",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").vim_surround
 		end,
@@ -195,7 +195,7 @@ return {
 
 	{
 		"tpope/vim-unimpaired",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
 			return require("config.customize").vim_unimpaired
 		end,
