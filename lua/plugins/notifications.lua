@@ -1,10 +1,12 @@
+Customize = require("config.customize")
+
 return {
 	-- {{{ dressing
 
 	{
 		"stevearc/dressing.nvim",
 		enabled = function()
-			return require("config.customize").dressing
+			return Customize.dressing
 		end,
 		lazy = true,
 		init = function()
@@ -28,7 +30,7 @@ return {
 		"lewis6991/gitsigns.nvim",
 		event = "BufReadPre",
 		enabled = function()
-			return require("config.customize").gitsigns_nvim
+			return Customize.gitsigns_nvim
 		end,
 
 		opts = {
@@ -79,7 +81,7 @@ return {
 		"nvim-lua/popup.nvim",
 		event = "VimEnter",
 		enabled = function()
-			return require("config.customize").popup_nvim
+			return Customize.popup_nvim
 		end,
 	},
 
@@ -90,7 +92,7 @@ return {
 		"rcarriga/nvim-notify",
 		event = "BufEnter",
 		enabled = function()
-			return require("config.customize").nvim_notify
+			return Customize.nvim_notify
 		end,
 		opts = {
 			background_colour = "#1a1b26",
@@ -114,7 +116,7 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		enabled = function()
-			return require("config.customize").noice_nvim
+			return Customize.noice_nvim
 		end,
 
 		opts = {
@@ -156,7 +158,7 @@ return {
 		"folke/trouble.nvim",
 		event = "VimEnter",
 		enabled = function()
-			return require("config.customize").trouble_nvim
+			return Customize.trouble_nvim
 		end,
 		opts = { use_diagnostic_signs = true },
 	},

@@ -1,3 +1,5 @@
+Customize = require("config.customize")
+
 return {
 	-- {{{ JuneGunn fzf.
 
@@ -5,7 +7,7 @@ return {
 		"junegunn/fzf",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").fzf
+			return Customize.fzf
 		end,
 		dependencies = {
 			"junegunn/fzf.vim",
@@ -20,7 +22,7 @@ return {
 		"tpope/vim-projectionist",
 		ft = { "c", "cpp", "rb" },
 		enabled = function()
-			return require("config.customize").vim_projectionist
+			return Customize.vim_projectionist
 		end,
 	},
 
@@ -30,7 +32,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		enabled = function()
-			return require("config.customize").telescope
+			return Customize.telescope
 		end,
 		cmd = "Telescope",
 		keys = false,

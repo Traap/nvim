@@ -1,3 +1,5 @@
+Customize = require("config.customize")
+
 return {
 	-- {{{ Comment.nvim
 
@@ -5,7 +7,7 @@ return {
 		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").commentary_nvim
+			return Customize.commentary_nvim
 		end,
 		opts = {
 			padding = true,
@@ -40,7 +42,7 @@ return {
 		"dkarter/bullets.vim",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").bullets_vim
+			return Customize.bullets_vim
 		end,
 	},
 
@@ -51,7 +53,7 @@ return {
 		"ekickx/clipboard-image.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").clipboard_image_nvim
+			return Customize.clipboard_image_nvim
 		end,
 	},
 
@@ -62,7 +64,7 @@ return {
 		"sbdchd/neoformat",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").neoformat
+			return Customize.neoformat
 		end,
 	},
 
@@ -73,7 +75,7 @@ return {
 		"windwp/nvim-autopairs",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").nvim_autopairs
+			return Customize.nvim_autopairs
 		end,
 		config = true,
 	},
@@ -84,7 +86,7 @@ return {
 	{
 		"windwp/nvim-spectre",
 		enabled = function()
-			return require("config.customize").nvim_spectre
+			return Customize.nvim_spectre
 		end,
 		keys = {
 			{
@@ -105,7 +107,7 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		config = true,
 		enabled = function()
-			return require("config.customize").nvim_surround
+			return Customize.nvim_surround
 		end,
 	},
 
@@ -116,7 +118,7 @@ return {
 		"lervag/vimtex",
 		ft = { "tex", "texx" },
 		enabled = function()
-			return require("config.customize").vimtex
+			return Customize.vimtex
 		end,
 		dependencies = { "Traap/vim-bundle-vimtex" },
 	},
@@ -128,7 +130,7 @@ return {
 		"Traap/vim-bundle-plantuml",
 		ft = "puml",
 		enabled = function()
-			return require("config.customize").vim_bundle_plantuml
+			return Customize.vim_bundle_plantuml
 		end,
 		dependencies = {
 			"aklt/plantuml-syntax",
@@ -142,7 +144,7 @@ return {
 		"tpope/vim-commentary",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_commentary
+			return Customize.vim_commentary
 		end,
 	},
 
@@ -153,7 +155,7 @@ return {
 		"junegunn/vim-easy-align",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_easy_align
+			return Customize.vim_easy_align
 		end,
 	},
 
@@ -164,7 +166,7 @@ return {
 		"tpope/vim-endwise",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_endwise
+			return Customize.vim_endwise
 		end,
 	},
 
@@ -175,7 +177,7 @@ return {
 		"tpope/vim-repeat",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_repeat
+			return Customize.vim_repeat
 		end,
 	},
 
@@ -186,7 +188,7 @@ return {
 		"tpope/vim-surround",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_surround
+			return Customize.vim_surround
 		end,
 	},
 
@@ -197,7 +199,7 @@ return {
 		"tpope/vim-unimpaired",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_unimpaired
+			return Customize.vim_unimpaired
 		end,
 	},
 
@@ -209,7 +211,7 @@ return {
 		cmd = { "WikiIndex", "WikiJournal" },
 		ft = { "wiki", "md", "puml" },
 		enabled = function()
-			return require("config.customize").wiki_vim
+			return Customize.wiki_vim
 		end,
 		dependencies = {
 			"lervag/wiki-ft.vim",

@@ -1,3 +1,5 @@
+Customize = require("config.customize")
+
 return {
 	-- {{{ base16 tokyo night terminal storm
 
@@ -6,7 +8,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		enabled = function()
-			return require("config.customize").nvim_base16
+			return Customize.nvim_base16
 		end,
 
 		config = function()
@@ -22,7 +24,7 @@ return {
 		lazy = true,
 		event = "VimEnter",
 		enabled = function()
-			return require("config.customize").nvim_transparent
+			return Customize.nvim_transparent
 		end,
 		opts = {
 			enable = true,
@@ -53,7 +55,7 @@ return {
 	{
 		"folke/tokyonight.nvim",
 		enabled = function()
-			return require("config.customize").tokyonight_nvim
+			return Customize.tokyonight_nvim
 		end,
 		lazy = false,
 		opts = {
@@ -71,7 +73,7 @@ return {
 	{
 		"catppuccin/nvim",
 		enabled = function()
-			return require("config.customize").catppuccin
+			return Customize.catppuccin
 		end,
 		lazy = true,
 		name = "catppuccin",
@@ -85,7 +87,7 @@ return {
 		event = "VeryLazy",
 		config = true,
 		enabled = function()
-			return require("config.customize").nvim_colorizer_lua
+			return Customize.nvim_colorizer_lua
 		end,
 	},
 
@@ -95,7 +97,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").nvim_treesitter
+			return Customize.nvim_treesitter
 		end,
 
 		version = false,
@@ -124,7 +126,7 @@ return {
 		"mrjones2014/nvim-ts-rainbow",
 		event = "BufReadPost",
 		enabled = function()
-			return require("config.customize").nvim_ts_rainbow
+			return Customize.nvim_ts_rainbow
 		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
@@ -138,7 +140,7 @@ return {
 		"mechatroner/rainbow_csv",
 		ft = { "csv", "tsv" },
 		enabled = function()
-			return require("config.customize").rainbow_csv
+			return Customize.rainbow_csv
 		end,
 	},
 
@@ -149,7 +151,7 @@ return {
 		"kovetskiy/sxhkd-vim",
 		event = "VeryLazy",
 		enabled = function()
-			return require("config.customize").sxhkd_vim
+			return Customize.sxhkd_vim
 		end,
 	},
 

@@ -230,7 +230,7 @@ keymap("n", "<leader>lv", "<Plug>(vimtex-view)")
 keymap("n", "<leader>lx", "<Plug>(vimtex-reload)")
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ n - NvimTree
+-- {{{ n - File explorers
 
 if require("config.customize").neo_tree_nvim or require("config.customize").nvim_tree then
 	-- nvim_tree takes precedence when both are true.
@@ -243,6 +243,10 @@ if require("config.customize").neo_tree_nvim or require("config.customize").nvim
 		keymap("n", "<leader>nf", "<cmd>Neotree focus<cr>")
 		keymap("n", "<leader>nr", "<cmd>Neotree show<cr>")
 	end
+end
+
+if require("config.customize").noice_nvim then
+	keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
 end
 
 -- ------------------------------------------------------------------------- }}}

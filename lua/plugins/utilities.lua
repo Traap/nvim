@@ -1,3 +1,5 @@
+Customize = require("config.customize")
+
 return {
 	-- {{{ startup time
 
@@ -5,7 +7,7 @@ return {
 		"dstein64/vim-startuptime",
 		cmd = "StartupTime",
 		enabled = function()
-			return require("config.customize").vim_startuptime
+			return Customize.vim_startuptime
 		end,
 		config = function()
 			vim.g.startuptime_tries = 10
@@ -19,7 +21,7 @@ return {
 		"tpope/vim-bundler",
 		ft = { "rb" },
 		enabled = function()
-			return require("config.customize").vim_bundler
+			return Customize.vim_bundler
 		end,
 	},
 
@@ -30,7 +32,7 @@ return {
 		"moll/vim-bbye",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_bbye
+			return Customize.vim_bbye
 		end,
 	},
 
@@ -41,7 +43,7 @@ return {
 		"tpope/vim-eunuch",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_eunuch
+			return Customize.vim_eunuch
 		end,
 	},
 
@@ -53,7 +55,7 @@ return {
 		lazy = false,
 		priority = 999,
 		enabled = function()
-			return require("config.customize").vim_fugitive
+			return Customize.vim_fugitive
 		end,
 	},
 
@@ -64,7 +66,7 @@ return {
 		"tpope/vim-rails",
 		ft = "rb",
 		enabled = function()
-			return require("config.customize").vim_rails
+			return Customize.vim_rails
 		end,
 	},
 
@@ -75,7 +77,7 @@ return {
 		"tpope/vim-rake",
 		ft = "rb",
 		enabled = function()
-			return require("config.customize").vim_rake
+			return Customize.vim_rake
 		end,
 	},
 
@@ -86,7 +88,7 @@ return {
 		"tpope/vim-rbenv",
 		ft = "rb",
 		enabled = function()
-			return require("config.customize").vim_rbenv
+			return Customize.vim_rbenv
 		end,
 	},
 
@@ -96,7 +98,7 @@ return {
 	{
 		"akinsho/toggleterm.nvim",
 		enabled = function()
-			return require("config.customize").toggleterm_nvim
+			return Customize.toggleterm_nvim
 		end,
 		version = "*",
 		opts = {
@@ -124,7 +126,7 @@ return {
 	{
 		"folke/zen-mode.nvim",
 		enabled = function()
-			return require("config.customize").zen_mode_nvim
+			return Customize.zen_mode_nvim
 		end,
 		opts = {
 			window = {

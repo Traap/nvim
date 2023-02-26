@@ -1,3 +1,5 @@
+Customize = require("config.customize")
+
 return {
 	-- {{{ alpha-nvim
 
@@ -5,7 +7,7 @@ return {
 		"goolord/alpha-nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").alpha_nvim
+			return Customize.alpha_nvim
 		end,
 	},
 
@@ -16,7 +18,7 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").indent_blankline
+			return Customize.indent_blankline
 		end,
 		opts = {
 			char = "│",
@@ -40,7 +42,7 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		enabled = function()
-			return require("config.customize").nvim_lualine
+			return Customize.nvim_lualine
 		end,
 		event = "VeryLazy",
 		config = true,
@@ -53,7 +55,7 @@ return {
 		"iamcco/markdown-preview.nvim",
 		ft = "md",
 		enabled = function()
-			return require("config.customize").markdown_preview_nvim
+			return Customize.markdown_preview_nvim
 		end,
 	},
 
@@ -63,7 +65,7 @@ return {
 	{
 		"nvim-tree/nvim-web-devicons",
 		enabled = function()
-			return require("config.customize").nvim_web_devicons
+			return Customize.nvim_web_devicons
 		end,
 
 		cmd = {
@@ -108,7 +110,7 @@ return {
 		"vim-utils/vim-most-minimal-folds",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = function()
-			return require("config.customize").vim_most_minimal_folds
+			return Customize.vim_most_minimal_folds
 		end,
 	},
 
@@ -119,7 +121,7 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		enabled = function()
-			return require("config.customize").which_key_nvim
+			return Customize.which_key_nvim
 		end,
 		keys = false,
 	},
