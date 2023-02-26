@@ -254,7 +254,7 @@ keymap("n", "<leader>or", [[<cmd>VtrOpenRunner {'orientation': 'h', 'percentage'
 keymap("n", "<leader>oz", [[<cmd>lua require("zen-mode").toggle()<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ p - Packer
+-- {{{ p - Package manager
 
 keymap("n", "<leader>ph", "<cmd>Lazy home<cr>")
 keymap("n", "<leader>pl", "<cmd>Lazy log<cr>")
