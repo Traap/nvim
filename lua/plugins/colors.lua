@@ -15,7 +15,7 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ base16 tokyo night terminal storm
+	-- {{{ nvim-transpartent
 
 	{
 		"xiyaowong/nvim-transparent",
