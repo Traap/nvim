@@ -117,11 +117,11 @@ return {
 
 	{
 		"folke/which-key.nvim",
-		cmd = "WhichKey",
+		event = "VeryLazy",
 		enabled = function()
 			return require("config.customize").which_key_nvim
 		end,
-		config = true,
+		keys = false,
 	},
 
 	-- ----------------------------------------------------------------------- }}}
