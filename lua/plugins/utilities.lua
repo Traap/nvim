@@ -1,20 +1,6 @@
 Customize = require("config.customize")
 
 return {
-	-- {{{ startup time
-
-	{
-		"dstein64/vim-startuptime",
-		cmd = "StartupTime",
-		enabled = function()
-			return Customize.vim_startuptime
-		end,
-		config = function()
-			vim.g.startuptime_tries = 10
-		end,
-	},
-
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ vim-bundler
 
 	{
