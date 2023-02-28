@@ -118,6 +118,7 @@ return {
 		enabled = function()
 			return Customize.noice_nvim
 		end,
+		keys = false,
 
 		opts = {
 			presets = {
