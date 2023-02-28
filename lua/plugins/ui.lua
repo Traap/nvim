@@ -37,18 +37,6 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ Lualine
-
-	{
-		"nvim-lualine/lualine.nvim",
-		enabled = function()
-			return Customize.nvim_lualine
-		end,
-		event = "VeryLazy",
-		config = true,
-	},
-
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ markdown-perview.nvim
 
 	{

@@ -1,7 +1,8 @@
 Customize = require("config.customize")
 
 return {
-	-- {{{ Disable LazyVim plugins I don't use.
+	-- {{{ Disable LazyVim plugins I don't use or use LazyVim defaults.
+	--     As an example, I the default LazyVim implementation for lualine.
 
 	{ "RRethy/vim-illuminate", enabled = Customize.vim_illuminate },
 	{ "SmiteshP/nvim-navic", enabled = Customize.nvim_navic },
@@ -14,7 +15,7 @@ return {
 	{ "folke/neodev.nvim", enabled = Customize.neodev_nvim },
 	{ "folke/noeconf.nvim", enabled = Customize.neoconf_nvim },
 	{ "ggandor/leap.nvim", enabled = Customize.leap_nvim },
-	{ "ggandor/flit.nvim", enabled = Customize.flit_nvim },
+	{ "nvim-lualine/lualine.nvim", enabled = Customize.nvim_lualine },
 
 	-- ----------------------------------------------------------------------- }}}
 }
