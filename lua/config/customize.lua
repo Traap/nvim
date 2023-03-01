@@ -14,7 +14,7 @@ local Customize = {}
 -- {{{ Enable or disable plugins.
 
 Customize = {
-	alpha_nvim = true,
+	alpha_nvim = false,
 	bufferline_nvim = false,
 	bullets_vim = true,
 	catppuccin = true,
@@ -59,6 +59,7 @@ Customize = {
 	rainbow_csv = true,
 	sxhkd_nvim = true,
 	telescope = true,
+	todo_comments_nvim = true,
 	toggleterm_nvim = true,
 	tokyonight_nvim = true,
 	trouble_nvim = true,
@@ -85,7 +86,7 @@ Customize = {
 	vim_unimpaired = true,
 	vim_visual_increment = true,
 	vimtex = true,
-	which_key_nvim = true,
+	which_key_nvim = false,
 	wiki_vim = true,
 	zen_mode_nvim = true,
 	crates_nvim = true,
