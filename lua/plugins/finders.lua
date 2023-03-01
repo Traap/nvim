@@ -69,4 +69,19 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ todo-comments.nvim
+	{
+		"folke/todo-comments.nvim",
+		endabled = function()
+			return Customize.todo_comments_nvim
+		end,
+		opts = function(_, opts)
+			opts.merge_keywords = true
+			opts.keywords = {
+				YOUTUBE = { icon = " ", color = "hint", alt = { "youtube" } },
+			}
+		end,
+	},
+
+	-- ----------------------------------------------------------------------- }}}
 }
