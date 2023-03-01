@@ -211,7 +211,8 @@ if Customize.telescope then
 	Keymap("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
 end
 
--- Youtube: Define keybinding to quickly find Youtube markers.
+-- Define keybinding to quickly find Youtube: and
+-- Url: markers.
 if Customize.todo_comments_nvim then
 	Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
 end
