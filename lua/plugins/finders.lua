@@ -70,16 +70,31 @@ return {
 
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ todo-comments.nvim
+	--
+	--     URL: https://fontawesome.com/v3/icon/youtube
+	--     Unicodes:
+	--       Youtube -> F167
+	--       Cloud -> F0C2
+
 	{
 		"folke/todo-comments.nvim",
 		endabled = function()
 			return Customize.todo_comments_nvim
 		end,
 
+		-- Youtube: Agument keywords to include Youtube. Ctrl-V u F167
 		opts = function(_, opts)
 			opts.merge_keywords = true
 			opts.keywords = {
 				Youtube = { icon = " ", color = "#ff0000" },
+				-- Youtube: Test 1 -> Now add URL. Ctrl-V u F0C2
+				-- URL: Test 1
+				-- URL = { icon = " ", color = "#7711FF" },
+
+				-- Youtube: Test 2 & 3 -> Add alternative text.
+				-- Url: Test 2
+				-- url: Test 3
+				URL = { icon = " ", color = "#7711FF", alt = { "Url", "url" } },
 			}
 		end,
 	},
