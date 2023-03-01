@@ -103,6 +103,17 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ virtcolumn.nvim
+
+	{
+		"xiyaowong/virtcolumn.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		enabled = function()
+			return Customize.virtcolumn_nvim
+		end,
+	},
+
+	-- ----------------------------------------------------------------------- }}}
 	-- {{{ Which-key
 
 	{

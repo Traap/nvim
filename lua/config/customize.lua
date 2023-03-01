@@ -86,6 +86,7 @@ Customize = {
 	vim_unimpaired = true,
 	vim_visual_increment = true,
 	vimtex = true,
+	virtcolumn_nvim = true,
 	which_key_nvim = false,
 	wiki_vim = true,
 	zen_mode_nvim = true,

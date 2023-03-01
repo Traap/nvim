@@ -1,9 +1,16 @@
+Customize = require("config.customize")
 -- {{{ Clear items that make transparency look bad.
 
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()
 		vim.cmd([[ highlight clear Folded ]])
-		vim.cmd([[ highlight ColorColumn guibg=#202031 ]])
+
+		if Customize.virtcolumn_nvim then
+			vim.cmd([[ highlight ColorColumn guibg=#292d42 ]])
+		else
+			vim.cmd([[ highlight ColorColumn guibg=#202031 ]])
+		end
+
 		vim.cmd([[ highlight LineNr guifg=#e0af68 ]])
 		vim.cmd([[ highlight LineNrAbove guifg=#787c99 ]])
 		vim.cmd([[ highlight LineNrBelow guifg=#787c99 ]])
