@@ -75,10 +75,11 @@ return {
 		endabled = function()
 			return Customize.todo_comments_nvim
 		end,
+
 		opts = function(_, opts)
 			opts.merge_keywords = true
 			opts.keywords = {
-				YOUTUBE = { icon = " ", color = "hint", alt = { "youtube" } },
+				Youtube = { icon = " ", color = "#ff0000" },
 			}
 		end,
 	},
