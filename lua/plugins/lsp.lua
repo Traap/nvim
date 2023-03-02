@@ -1,5 +1,6 @@
-return {
+Constants = require("config.constants")
 
+return {
 	-- {{{ mason.nvim
 
 	{
@@ -7,32 +8,10 @@ return {
 		cmd = "Mason",
 		keys = { { "<leader>cm", "<cmd>Mason<cr> " } },
 		opts = {
-			ensure_installed = {
-				"bash-language-server",
-				"clangd",
-				"css-lsp",
-				"emmet-ls",
-				"eslint-lsp",
-				"flake8",
-				"gopls",
-				"html-lsp",
-				"json-lsp",
-				"lua-language-server",
-				"omnisharp",
-				"pyright",
-				"rust-analyzer",
-				"shellcheck",
-				"shfmt",
-				"solargraph",
-				"sqlls",
-				"stylua",
-				"texlab",
-				"typescript-language-server",
-				"yaml-language-server",
-			},
+			ensure_installed = Constants.ensure_installed.mason,
 		},
 
-		config = function(plugin, opts)
+		config = function(_, opts)
 			require("mason").setup(opts)
 			local mr = require("mason-registry")
 			for _, value in ipairs(opts.ensure_installed) do
@@ -92,7 +71,6 @@ return {
 				},
 			},
 
-			---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
 			setup = {
 				-- example to setup with typescript.nvim
 				-- tsserver = function(_, opts)
