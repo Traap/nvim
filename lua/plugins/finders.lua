@@ -1,3 +1,4 @@
+Constants = require("config.constants")
 Customize = require("config.customize")
 
 return {
@@ -87,10 +88,7 @@ return {
 
 		opts = function(_, opts)
 			opts.merge_keywords = true
-			opts.keywords = {
-				Youtube = { icon = " ", color = "#ff0000" },
-				URL = { icon = " ", color = "#7711FF", alt = { "Url", "url" } },
-			}
+			opts.keywords = Constants.icons.keywords
 		end,
 	},
 
