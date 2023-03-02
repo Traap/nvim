@@ -1,4 +1,5 @@
 Constants = require("config.constants")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ mason.nvim
@@ -6,6 +7,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
+		enabled = Is_Enabled("mason.nvim"),
 		keys = { { "<leader>cm", "<cmd>Mason<cr> " } },
 		opts = {
 			ensure_installed = Constants.ensure_installed.mason,
@@ -29,6 +31,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
+		enabled = Is_Enabled("nvim-lspconfig"),
 		opts = function(_, opts)
 			opts.servers = {
 				jsonls = {},

@@ -1,15 +1,15 @@
-Constants = require("config.constants")
 Customize = require("config.customize")
+Constants = require("config.constants")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ nvim-dap
 
 	{
 		"mfussenegger/nvim-dap",
-		ft = { "rb", "rs" },
-		enabled = function()
-			return Customize.nvim_dap
-		end,
+		ft = { "c", "cpp", "go", "rb", "rs" },
+		enabled = Is_Enabled("nvim-dap"),
+		config = true,
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 			"theHamsta/nvim-dap-virtual-text",
@@ -17,61 +17,85 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ nvim-dap-go
+
+	{
+		"leoluz/nvim-dap-go",
+		ft = { "go" },
+		enabled = Is_Enabled("nvim-dap-go"),
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+		config = true,
+		-- opts = {
+		-- 	dap_configurations = {
+		-- 		{
+		-- 			type = "go",
+		-- 			name = "Attach remote",
+		-- 			mode = "remote",
+		-- 			request = "attach",
+		-- 		},
+		-- 	},
+		-- 	delve = {
+		-- 		initialize_timeout_sec = 20,
+		-- 		port = "${port}",
+		-- 	},
+		-- },
+	},
+
+	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-dap-ui
 
 	{
 		"rcarriga/nvim-dap-ui",
-		ft = { "rb", "rs" },
+		ft = { "c", "cpp", "go", "rb", "rs" },
 		keys = "<leader>dU",
+		enabled = Is_Enabled("nvim-dap-ui"),
+		config = true,
+		-- opts = {
+		-- 	expand_lines = true,
 
-		enabled = function()
-			return Customize.nvim_dap_ui
-		end,
+		-- 	icons = Constants.icons.dap,
 
-		opts = {
-			expand_lines = true,
+		-- 	mappings = {
+		-- 		expand = { "<CR>", "<2-LeftMouse>" },
+		-- 		open = "o",
+		-- 		remove = "d",
+		-- 		edit = "e",
+		-- 		repl = "r",
+		-- 		toggle = "t",
+		-- 	},
 
-			icons = Constants.icons.dap,
+		-- 	layouts = {
+		-- 		{
+		-- 			elements = {
+		-- 				{ id = "scopes", size = 0.33 },
+		-- 				{ id = "breakpoints", size = 0.17 },
+		-- 				{ id = "stacks", size = 0.25 },
+		-- 				{ id = "watches", size = 0.25 },
+		-- 			},
+		-- 			size = 0.33,
+		-- 			position = "right",
+		-- 		},
+		-- 		{
+		-- 			elements = {
+		-- 				{ id = "repl", size = 0.50 },
+		-- 				{ id = "console", size = 0.50 },
+		-- 			},
+		-- 			size = 0.25,
+		-- 			position = "bottom",
+		-- 		},
+		-- 	},
 
-			mappings = {
-				expand = { "<CR>", "<2-LeftMouse>" },
-				open = "o",
-				remove = "d",
-				edit = "e",
-				repl = "r",
-				toggle = "t",
-			},
-
-			layouts = {
-				{
-					elements = {
-						{ id = "scopes", size = 0.33 },
-						{ id = "breakpoints", size = 0.17 },
-						{ id = "stacks", size = 0.25 },
-						{ id = "watches", size = 0.25 },
-					},
-					size = 0.33,
-					position = "right",
-				},
-				{
-					elements = {
-						{ id = "repl", size = 0.50 },
-						{ id = "console", size = 0.50 },
-					},
-					size = 0.25,
-					position = "bottom",
-				},
-			},
-
-			floating = {
-				max_height = 0.9,
-				max_width = 0.5,
-				border = vim.g.border_chars,
-				mappings = {
-					close = { "q", "<Esc>" },
-				},
-			},
-		},
+		-- 	floating = {
+		-- 		max_height = 0.9,
+		-- 		max_width = 0.5,
+		-- 		border = vim.g.border_chars,
+		-- 		mappings = {
+		-- 			close = { "q", "<Esc>" },
+		-- 		},
+		-- 	},
+		-- },
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -79,34 +103,31 @@ return {
 
 	{
 		"theHamsta/nvim-dap-virtual-text",
-		enabled = function()
-			return Customize.nvim_dap_virtual_text
-		end,
-		opts = {
-			enabled = true,
-			enabled_commands = false,
-			highlight_changed_variables = true,
-			highlight_new_as_changed = true,
-			commented = false,
-			show_stop_reason = true,
-			virt_text_pos = "eol",
-			all_frames = false,
-		},
+		enabled = Is_Enabled("nvim-dap-virtual-text"),
+		config = true,
+		-- opts = {
+		-- 	enabled = true,
+		-- 	enabled_commands = false,
+		-- 	highlight_changed_variables = true,
+		-- 	highlight_new_as_changed = true,
+		-- 	commented = false,
+		-- 	show_stop_reason = true,
+		-- 	virt_text_pos = "eol",
+		-- 	all_frames = false,
+		-- },
 	},
 
 	-- ------------------------------------------------------------------------ }}}
-	-- {{{ rust-tools.nvim
+	-- {{{ telescope-dap.nvim
 
 	{
-		"simrat39/rust-tools.nvim",
-		enabled = function()
-			return Customize.rust_tools_nvim
-		end,
-		ft = "rs",
+		"nvim-telescope/telescope-dap.nvim",
+		enabled = Is_Enabled("telescope-dap.nvim"),
+		ft = { "c", "cpp", "go", "rb", "rs" },
 		dependencies = {
-			"saecki/crates.nvim",
-			"nvim-lua/plenary.nvim",
+			"mfussenegger/nvim-dap",
 		},
+		config = true,
 	},
 
 	-- ------------------------------------------------------------------------ }}}
@@ -114,9 +135,7 @@ return {
 
 	{
 		"saecki/crates.nvim",
-		enabled = function()
-			return Customize.crates_nvim
-		end,
+		enabled = Is_Enabled("crates.nvim"),
 		ft = "rs",
 		opts = {
 			null_ls = {

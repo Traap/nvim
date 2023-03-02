@@ -1,14 +1,16 @@
 Constants = require("config.constants")
 Customize = require("config.customize")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ LuaSnip
 
 	{
 		"L3MON4D3/LuaSnip",
-		keys = function()
-			return {}
-		end,
+		event = "InsertEnter",
+		enabled = Is_Enabled("LuaSnip"),
+		keys = false,
+    config = true,
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -17,6 +19,7 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
+		enabled = Is_Enabled("nvim-cmp"),
 
 		dependencies = {
 			"hrsh7th/cmp-buffer",
@@ -38,7 +41,7 @@ return {
 			local source_mapping = Constants.completion.source_mapping
 			local sources = Constants.completion.sources
 
-			require("luasnip/loaders/from_vscode").lazy_load()
+			require("luasnip.loaders.from_vscode").lazy_load()
 
 			local has_words_before = function()
 				-- Deprecated. (Devined in Lua 5.1/LuaJIT, current is Lua 5.4.)

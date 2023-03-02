@@ -1,4 +1,4 @@
-Customize = require("config.customize")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ gem-browse
@@ -6,9 +6,7 @@ return {
 	{
 		"tpope/gem-browse",
 		ft = { "rb" },
-		enabled = function()
-			return Customize.gem_browse
-		end,
+		enabled = Is_Enabled("gem-browse"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -16,9 +14,7 @@ return {
 
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		enabled = function()
-			return Customize.neo_tree_nvim
-		end,
+		enabled = Is_Enabled("neo-tree.nvim"),
 		cmd = "Neotree",
 		deactivate = function()
 			vim.cmd([[Neotree close]])
@@ -53,9 +49,7 @@ return {
 
 	{
 		"kyazdani42/nvim-tree.lua",
-		enabled = function()
-			return Customize.nvim_tree
-		end,
+		enabled = Is_Enabled("nvim-tree"),
 
 		cmd = {
 			"NvimTreeFindFile",

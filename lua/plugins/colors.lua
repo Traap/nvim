@@ -1,14 +1,13 @@
 Customize = require("config.customize")
 Constants = require("config.constants")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ nvim-base16
 
 	{
 		"RRethy/nvim-base16",
-		enabled = function()
-			return Customize.nvim_base16
-		end,
+		enabled = Is_Enabled("nvim-base16"),
 		lazy = false,
 		priority = 1000,
 
@@ -22,9 +21,7 @@ return {
 
 	{
 		"folke/tokyonight.nvim",
-		enabled = function()
-			return Customize.tokyonight_nvim
-		end,
+		enabled = Is_Enabled("tokyonight.nvim"),
 		lazy = false,
 		opts = {
 			style = "night",
@@ -40,9 +37,7 @@ return {
 
 	{
 		"catppuccin/nvim",
-		enabled = function()
-			return Customize.catppuccin
-		end,
+		enabled = Is_Enabled("catppuccin"),
 		lazy = true,
 		name = "catppuccin",
 	},
@@ -52,9 +47,7 @@ return {
 
 	{
 		"NvChad/nvim-colorizer.lua",
-		enabled = function()
-			return Customize.nvim_colorizer_lua
-		end,
+		enabled = Is_Enabled("nvim-colorizer.lua"),
 		event = "VeryLazy",
 		config = true,
 	},
@@ -64,9 +57,7 @@ return {
 
 	{
 		"xiyaowong/nvim-transparent",
-		enabled = function()
-			return Customize.nvim_transparent
-		end,
+		enabled = Is_Enabled("nvim-transparent"),
 		lazy = true,
 		event = "VimEnter",
 		opts = {
@@ -97,9 +88,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.nvim_treesitter
-		end,
+		enabled = Is_Enabled("nvim-treesitter"),
 		version = false,
 		build = ":TSUpdate",
 
@@ -139,9 +128,7 @@ return {
 	{
 		"mrjones2014/nvim-ts-rainbow",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.nvim_ts_rainbow
-		end,
+		enabled = Is_Enabled("nvim-ts-rainbow"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -150,9 +137,7 @@ return {
 	{
 		"mechatroner/rainbow_csv",
 		ft = { "csv", "tsv" },
-		enabled = function()
-			return Customize.rainbow_csv
-		end,
+		enabled = Is_Enabled("rainbow_csv"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -161,9 +146,7 @@ return {
 	{
 		"kovetskiy/sxhkd-vim",
 		event = "VeryLazy",
-		enabled = function()
-			return Customize.sxhkd_vim
-		end,
+		enabled = Is_Enabled("sxhkd-vim"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}

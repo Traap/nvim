@@ -5,9 +5,7 @@ return {
 
 	{
 		"stevearc/dressing.nvim",
-		enabled = function()
-			return Customize.dressing
-		end,
+		enabled = Is_Enabled("dressing"),
 		lazy = true,
 		init = function()
 			---@diagnostic disable-next-line: duplicate-set-field
@@ -29,9 +27,7 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufReadPre",
-		enabled = function()
-			return Customize.gitsigns_nvim
-		end,
+		enabled = Is_Enabled("gitsigns.nvim"),
 
 		opts = {
 			signs = {
@@ -80,9 +76,7 @@ return {
 	{
 		"nvim-lua/popup.nvim",
 		event = "VimEnter",
-		enabled = function()
-			return Customize.popup_nvim
-		end,
+		enabled = Is_Enabled("popup.nvim"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -91,9 +85,7 @@ return {
 	{
 		"rcarriga/nvim-notify",
 		event = "BufEnter",
-		enabled = function()
-			return Customize.nvim_notify
-		end,
+		enabled = Is_Enabled("nvim-notify"),
 		opts = {
 			background_colour = "#1a1b26",
 			level = 3,
@@ -115,9 +107,7 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		enabled = function()
-			return Customize.noice_nvim
-		end,
+		enabled = Is_Enabled("noice.nvim"),
 		keys = false,
 
 		opts = {
@@ -158,9 +148,7 @@ return {
 	{
 		"folke/trouble.nvim",
 		event = "VimEnter",
-		enabled = function()
-			return Customize.trouble_nvim
-		end,
+		enabled = Is_Enabled("trouble.nvim"),
 		opts = { use_diagnostic_signs = true },
 	},
 

@@ -2,11 +2,12 @@
 
 Customize = require("config.customize")
 Keymap = require("config.functions").keymap
+Is_Enabled = require("config.functions").is_enabled
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Bdelete
 
-if Customize.vim_easy_align then
+if Is_Enabled("vim-easy-align") then
 	vim.cmd([[
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
@@ -20,7 +21,7 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easy align
 
-if Customize.vim_easy_align then
+if Is_Enabled("vim-easy-align") then
 	vim.cmd([[
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
@@ -49,7 +50,7 @@ Keymap("n", "<leader>V", "V`]")
 Keymap("n", "<F2>", "<cmd>wall<cr>")
 
 -- Delete current buffer.
-if Customize.vim_bbye then
+if Is_Enabled("vim-bbye") then
 	Keymap("n", "Q", "<cmd>Bdelete!<cr>")
 end
 
@@ -159,7 +160,7 @@ Keymap("n", "<leader>VV", "V`]")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ S - Gitsigns
 
-if Customize.gitsigns_nvim then
+if Is_Enabled("gitsigns.nvim") then
 	Keymap("n", "<leader>SR", '<cmd>lua require "gitsigns".reset_hunk()<cr>')
 	Keymap("n", "<leader>SS", '<cmd>lua require "gitsigns".stage_hunk()<cr>')
 	Keymap("n", "<leader>Sd", "<cmd>Gitsigns diffthis HEAD<cr>")
@@ -173,7 +174,7 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ a - Alpha
 
-if Customize.alpha_nvim then
+if Is_Enabled("alpha-nvim") then
 	Keymap("n", "<leader>aa", "<cmd>Alpha<cr>")
 end
 
@@ -192,14 +193,14 @@ Keymap("n", "<leader>bx", [[<cmd>w<cr><cmd>luafile %<cr><cmd>echo "Sourced " . @
 Keymap("n", "<leader>cc", 'ggVGg_"+y')
 Keymap("n", "<leader>cv", '"+p')
 
-if Customize.vim_tmux_runner then
+if Is_Enabled("vim-tmux-runner") then
 	Keymap("n", "<leader>cr", "<cmd>VtrClearRunner<cr>")
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ d - Debug Adapter Protocol (DAP).
 
-if Customize.nvim_dap then
+if Is_Enabled("nvim-dap") then
 	Keymap("n", "<leader>dC", [[<cmd>lua require'dap'.run_to_cursor()<cr>]])
 	Keymap("n", "<leader>db", [[<cmd>lua require'dap'.step_back()<cr>]])
 	Keymap("n", "<leader>dc", [[<cmd>lua require'dap'.continue()<cr>]])
@@ -221,14 +222,14 @@ if Customize.nvim_dap then
 	Keymap("n", "<F12>", [[<cmd>lua require'dap'.step_out()<cr>]])
 end
 
-if Customize.nvim_dap_ui then
+if Is_Enabled("nvim-dap-ui") then
 	Keymap("n", "<leader>dU", [[<cmd>lua require'dapui'.toggle()<cr>]])
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ f - Find
 
-if Customize.telescope then
+if Is_Enabled("telescope.nvim") then
 	Keymap("n", "<leader>fC", "<cmd>Telescope commands<cr>")
 	Keymap("n", "<leader>fF", "<cmd>Telescope media_files<cr>")
 	Keymap("n", "<leader>fM", "<cmd>Telescope man_pages<cr>")
@@ -249,11 +250,11 @@ end
 
 -- Define keybinding to quickly find Youtube: and
 -- Url: markers.
-if Customize.todo_comments_nvim then
+if Is_Enabled("todo-comments.nvim") then
 	Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
 end
 
-if Customize.vim_tmux_runner then
+if Is_Enabled("vim-tmux-runner") then
 	Keymap("n", "<leader>fc", "<cmd>VtrFlushCommand<cr>")
 	Keymap("n", "<leader>fr", "<cmd>VtrFocusRunner<cr>")
 end
@@ -261,13 +262,13 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - git
 
-if Customize.telescope then
+if Is_Enabled("telescope.nvim") then
 	Keymap("n", "<leader>gC", "<cmd>Telescope git_commits<cr>")
 	Keymap("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
 	Keymap("n", "<leader>go", "<cmd>Telescope git_status<cr>")
 end
 
-if Customize.vim_fugitive then
+if Is_Enabled("vim-fugitive") then
 	Keymap("n", "<leader>gP", "<cmd>G pull<cr>")
 	Keymap("n", "<leader>gc", "<cmd>G commmit<cr>")
 	Keymap("n", "<leader>gd", "<cmd>G diff<cr>")
@@ -277,7 +278,7 @@ if Customize.vim_fugitive then
 	Keymap("n", "<leader>gs", "<cmd>G<cr>")
 end
 
-if Customize.vim_bundle_plantuml then
+if Is_Enabled("vim-bundle-plantuml") then
 	Keymap("n", "<leader>gu", "<cmd>call GenerateUmlDiagram<cr>")
 end
 
@@ -287,14 +288,14 @@ Keymap("v", "gk", [["ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 -- ------------------------------------------------------------------------- }}}
 -- {{{ k - kill runner
 
-if Customize.vim_tmux_runner then
+if Is_Enabled("vim-tmux-runner") then
 	Keymap("n", "<leader>kr", "<cmd>VtrKillRunner<cr>")
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ l - VimTex
 
-if Customize.vimtex then
+if Is_Enabled("vimtex") then
 	Keymap("n", "<leader>lC", "<Plug>(vimtex-clean-full)")
 	Keymap("n", "<leader>lG", "<Plug>(vimtex-status-all)")
 	Keymap("n", "<leader>lI", "<Plug>(vimtex-info-full)")
@@ -321,9 +322,9 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ n - File explorers
 
-if Customize.neo_tree_nvim or Customize.nvim_tree then
+if Is_Enabled("neo-tree.nvim") or Is_Enabled("nvim-tree") then
 	-- nvim_tree takes precedence when both are true.
-	if Customize.nvim_tree then
+	if Is_Enabled("nvim-tree") then
 		Keymap("n", "<c-n>", "<cmd>NvimTreeToggle<cr>")
 		Keymap("n", "<leader>nf", "<cmd>NvimTreeFindFile<cr>")
 		Keymap("n", "<leader>nr", "<cmd>NvimTreeRefresh<cr>")
@@ -334,7 +335,7 @@ if Customize.neo_tree_nvim or Customize.nvim_tree then
 	end
 end
 
-if Customize.noice_nvim then
+if Is_Enabled("noice.nvim") then
 	Keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
 end
 
@@ -344,11 +345,11 @@ end
 Keymap("n", "<leader>oh", "<cmd>checkhealth<cr>")
 Keymap("n", "<leader>oo", "<cmd>only<cr>")
 
-if Customize.vim_tmux_runner then
+if Is_Enabled("vim-tmux-runner") then
 	Keymap("n", "<leader>or", [[<cmd>VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>]])
 end
 
-if Customize.zen_mode_nvim then
+if Is_Enabled("zen-mode.nvim") then
 	Keymap("n", "<leader>oz", [[<cmd>lua require("zen-mode").toggle()<cr>]])
 end
 
@@ -364,7 +365,7 @@ Keymap("n", "<leader>pu", "<cmd>Lazy update<cr>")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ r - Runners
 
-if Customize.vim_tmux_runner then
+if Is_Enabled("vim-tmux-runner") then
 	Keymap("n", "<leader>rr", "<cmd>VtrResizeRunner<cr>")
 	Keymap("n", "<leader>rR", "ReorientRunner<cr>")
 end
@@ -372,7 +373,7 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ s - Split & Sorts
 
-if Customize.vim_tmux_runner then
+if Is_Enabled("vim-tmux-runner") then
 	Keymap("n", "<leader>sc", "<cmd>VtrSendCommandToRunner<cr>")
 	Keymap("n", "<leader>sf", "<cmd>VtrSendCommandToRunner<cr>")
 	Keymap("n", "<leader>sl", "<cmd>VtrSendLinesToRunner<cr>")
@@ -385,7 +386,7 @@ Keymap("n", "<leader>ss", "0v)k$:sort<cr>")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ t - Terminals
 
-if Customize.vim_tmux_runner then
+if Is_Enabled("vim-tmux-runner") then
 	Keymap("n", "<leader>tC", "<cmd>VtrFlushCommand<cr>")
 	Keymap("n", "<leader>tF", "<cmd>VtrFocusRunner<cr>")
 	Keymap("n", "<leader>tL", "<cmd>VtrSendLinesToRunner<<cr>")
@@ -398,7 +399,7 @@ if Customize.vim_tmux_runner then
 	Keymap("n", "<leader>ts", "<cmd>VtrSendCommandToRunner<cr>")
 end
 
-if Customize.toggleterm_nvim then
+if Is_Enabled("toggleterm.nvim") then
 	Keymap("n", "<leader>tf", [[<cmd>lua Customize.toggleterm.float()<cr>]])
 	Keymap("n", "<leader>tl", [[<cmd>lua Customize.toggleterm.lazygit()<cr>]])
 	Keymap("n", "<leader>tm", [[<cmd>lua Customize.toggleterm.neomutt()<cr>]])

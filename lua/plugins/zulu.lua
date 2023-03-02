@@ -1,6 +1,5 @@
 -- Zulu should be the last file loaded by lazy.
-
-Customize = require("config.customize")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ vim-bundle-abbreviate
@@ -8,10 +7,7 @@ return {
 	{
 		"Traap/vim-bundle-abbreviate",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.vim_bundle_abbreviate
-			-- return require("config.customize").vim_bundle_abbreviate
-		end,
+		enabled = Is_Enabled("vim-bundle-abbreviate"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}

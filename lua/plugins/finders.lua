@@ -1,15 +1,14 @@
 Constants = require("config.constants")
 Customize = require("config.customize")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ JuneGunn fzf.
 
 	{
-		"junegunn/fzf",
+		"junegunn/fzf.vim",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.fzf
-		end,
+		enabled = Is_Enabled("fzf.vim"),
 		dependencies = {
 			"junegunn/fzf.vim",
 			"Traap/vim-bundle-fzf",
@@ -22,9 +21,7 @@ return {
 	{
 		"tpope/vim-projectionist",
 		ft = { "c", "cpp", "rb" },
-		enabled = function()
-			return Customize.vim_projectionist
-		end,
+		enabled = Is_Enabled("vim-projectionist"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -32,9 +29,7 @@ return {
 
 	{
 		"nvim-telescope/telescope.nvim",
-		enabled = function()
-			return Customize.telescope
-		end,
+		enabled = Is_Enabled("telescope.nvim"),
 		cmd = "Telescope",
 		keys = false,
 		opts = {
@@ -59,14 +54,13 @@ return {
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ Telescope fzf native
 	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-			config = function()
-				require("telescope").load_extension("fzf")
-			end,
-		},
+		"nvim-telescope/telescope-fzf-native.nvim",
+		enabled = Is_Enabled("telescope-fzf-native.nvim"),
+		cmd = "Telescope",
+		build = "make",
+		config = function()
+			require("telescope").load_extension("fzf")
+		end,
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -82,10 +76,7 @@ return {
 
 	{
 		"folke/todo-comments.nvim",
-		endabled = function()
-			return Customize.todo_comments_nvim
-		end,
-
+		enabled = Is_Enabled("todo-comments.nvim"),
 		opts = function(_, opts)
 			opts.merge_keywords = true
 			opts.keywords = Constants.icons.keywords

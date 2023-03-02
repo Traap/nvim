@@ -1,5 +1,5 @@
 Constants = require("config.constants")
-Customize = require("config.customize")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ alpha-nvim
@@ -7,9 +7,7 @@ return {
 	{
 		"goolord/alpha-nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.alpha_nvim
-		end,
+		enabled = Is_Enabled("alpha-nvim"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -18,9 +16,7 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.indent_blankline
-		end,
+		enabled = Is_Enabled("indent-blankline"),
 		opts = {
 			char = "│",
 			filetype_exclude = {
@@ -43,9 +39,7 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		ft = "md",
-		enabled = function()
-			return Customize.markdown_preview_nvim
-		end,
+		enabled = Is_Enabled("markdown-preview.nvim"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -53,10 +47,7 @@ return {
 
 	{
 		"nvim-tree/nvim-web-devicons",
-		enabled = function()
-			return Customize.nvim_web_devicons
-		end,
-
+		enabled = Is_Enabled("nvim-web-devicons"),
 		cmd = {
 			"NvimTreeFindFile",
 			"NvimTreeRefresh",
@@ -74,9 +65,7 @@ return {
 	{
 		"vim-utils/vim-most-minimal-folds",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.vim_most_minimal_folds
-		end,
+		enabled = Is_Enabled("vim-most-minimal-folds"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -85,9 +74,7 @@ return {
 	{
 		"xiyaowong/virtcolumn.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.virtcolumn_nvim
-		end,
+		enabled = Is_Enabled("virtcolumn.nvim"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -96,9 +83,7 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		enabled = function()
-			return Customize.which_key_nvim
-		end,
+		enabled = Is_Enabled("which-key.nvim"),
 		keys = false,
 	},
 

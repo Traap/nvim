@@ -1,3 +1,5 @@
+Customzie = require("config.customize")
+
 local M = {}
 
 function M.keymap(mode, lhs, rhs, opts)
@@ -6,12 +8,8 @@ function M.keymap(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- M.lsp_ensure_installed = function()
---   local ensure_installed = {}
---   for _, value in pairs(require('config.constants').lsp_to_mason) do
---     table.insert(ensure_installed, value.lsp)
---   end
---   return ensure_installed
--- end
+function M.is_enabled(plugin)
+	return Customize.plugins[plugin].enabled
+end
 
 return M

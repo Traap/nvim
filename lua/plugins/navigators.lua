@@ -1,4 +1,4 @@
-Customize = require("config.customize")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ vim-tmux-navigator
@@ -6,9 +6,7 @@ return {
 	{
 		"christoomey/vim-tmux-navigator",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.vim_tmux_navigator
-		end,
+		enabled = Is_Enabled("vim-tmux-navigator"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -16,9 +14,7 @@ return {
 
 	{
 		"christoomey/vim-tmux-runner",
-		enabled = function()
-			return Customize.vim_tmux_runner
-		end,
+		enabled = Is_Enabled("vim-tmux-runner"),
 
 		cmd = "VtrOpenRunner",
 		dependencies = {
@@ -32,9 +28,8 @@ return {
 	{
 		"ThePrimeagen/harpoon",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.harpoon
-		end,
+		enabled = Is_Enabled("harpoon"),
+		config = true,
 	},
 
 	-- ----------------------------------------------------------------------- }}}

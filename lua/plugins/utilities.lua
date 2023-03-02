@@ -1,4 +1,4 @@
-Customize = require("config.customize")
+Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ vim-bundler
@@ -6,9 +6,7 @@ return {
 	{
 		"tpope/vim-bundler",
 		ft = { "rb" },
-		enabled = function()
-			return Customize.vim_bundler
-		end,
+		enabled = Is_Enabled("vim-bundler"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -17,9 +15,7 @@ return {
 	{
 		"moll/vim-bbye",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.vim_bbye
-		end,
+		enabled = Is_Enabled("vim-bbye"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -28,9 +24,7 @@ return {
 	{
 		"tpope/vim-eunuch",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = function()
-			return Customize.vim_eunuch
-		end,
+		enabled = Is_Enabled("vim-eunuch"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -40,9 +34,7 @@ return {
 		"tpope/vim-fugitive",
 		lazy = false,
 		priority = 999,
-		enabled = function()
-			return Customize.vim_fugitive
-		end,
+		enabled = Is_Enabled("vim-fugitive"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -51,9 +43,7 @@ return {
 	{
 		"tpope/vim-rails",
 		ft = "rb",
-		enabled = function()
-			return Customize.vim_rails
-		end,
+		enabled = Is_Enabled("vim-rails"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -62,9 +52,7 @@ return {
 	{
 		"tpope/vim-rake",
 		ft = "rb",
-		enabled = function()
-			return Customize.vim_rake
-		end,
+		enabled = Is_Enabled("vim-rake"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -73,9 +61,7 @@ return {
 	{
 		"tpope/vim-rbenv",
 		ft = "rb",
-		enabled = function()
-			return Customize.vim_rbenv
-		end,
+		enabled = Is_Enabled("vim-rbenv"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -83,9 +69,7 @@ return {
 
 	{
 		"akinsho/toggleterm.nvim",
-		enabled = function()
-			return Customize.toggleterm_nvim
-		end,
+		enabled = Is_Enabled("toggleterm.nvim"),
 		version = "*",
 		opts = {
 			size = 13,
@@ -111,9 +95,7 @@ return {
 
 	{
 		"folke/zen-mode.nvim",
-		enabled = function()
-			return Customize.zen_mode_nvim
-		end,
+		enabled = Is_Enabled("zen-mode.nvim"),
 		opts = {
 			window = {
 				width = 0.5,
