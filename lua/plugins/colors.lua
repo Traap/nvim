@@ -1,4 +1,5 @@
 Customize = require("config.customize")
+Constants = require("config.constants")
 
 return {
 	-- {{{ nvim-base16
@@ -108,11 +109,7 @@ return {
 			context_commenting = { enable = true, enable_autocmd = false },
 			highlight = {
 				enable = true,
-				disable = {
-					"css",
-					"latex",
-					"markdown",
-				},
+				disable = Constants.disabled.treesitter,
 				additional_vim_regex_highlighting = true,
 			},
 			indent = { enable = true, disable = { "yml", "yaml" } },
@@ -121,17 +118,10 @@ return {
 				enable = true,
 				extended_mode = true,
 				max_file_lines = 1500,
-				colors = {
-					"Gold",
-					"Orchid",
-					"DodgerBlue",
-					"Cornsilk",
-					"Salmon",
-					"LawnGreen",
-				},
+				colors = Constants.colors.rainbow,
 			},
 			disable = { "latex" },
-			ensure_installed = require("config.constants").treesitter_languages,
+			ensure_installed = Constants.ensure_installed.treesitter,
 		},
 
 		config = function(_, opts)
