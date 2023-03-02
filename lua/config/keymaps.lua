@@ -116,6 +116,42 @@ Keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
 Keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>")
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ L - LSP
+
+-- TODO: Finish implementing LSP keybindings.  Some plugins are not installed.
+
+-- LSP
+Keymap("n", "<leader>LF", "<cmd>LspToggleAutoFormat<cr>")
+Keymap("n", "<leader>Li", "<cmd>LspInfo<cr>")
+
+-- LuaSnipUnlinkCurrent
+Keymap("n", "<leader>Lu", "<cmd>LuaSnipUnlinkCurrent<cr>")
+
+-- SymoblsOutline
+Keymap("n", "<leader>Lo", "<cmd>SymbolsOutline<cr>")
+
+--Telescope
+Keymap("n", "<leader>LS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
+Keymap("n", "<leader>Ls", "<cmd>Telescope lsp_document_symbols<cr>")
+
+-- Trouble
+Keymap("n", "<leader>LR", "<cmd>TroubleToggle lsp_references<cr>")
+Keymap("n", "<leader>Ld", "<cmd>TroubleToggle<cr>")
+
+-- vim.diagnostic
+Keymap("n", "<leader>Lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})cr>")
+Keymap("n", "<leader>Lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})cr>")
+
+-- vim.lsp
+Keymap("n", "<leader>Ll", "<cmd>lua vim.lsp.codelens.run()<cr>")
+Keymap("n", "<leader>Lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>")
+
+-- vim.lsp.buf
+Keymap("n", "<leader>La", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+Keymap("n", "<leader>Lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>")
+Keymap("n", "<leader>Lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ V - Linewise reselection of what you just pasted.
 
 Keymap("n", "<leader>VV", "V`]")
