@@ -1,3 +1,4 @@
+Constants = require("config.constants")
 Customize = require("config.customize")
 
 return {
@@ -33,9 +34,9 @@ return {
 		opts = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			local kind_icons = require("config.constants").lsp_kind_icons
-			local source_mapping = require("config.constants").source_mapping
-			local sources = require("config.constants").sources
+			local kind_icons = Constants.icons.lsp_kinds
+			local source_mapping = Constants.completion.source_mapping
+			local sources = Constants.completion.sources
 
 			require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -47,11 +48,6 @@ return {
 				return col ~= 0
 					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			end
-
-			-- local check_backspace = function()
-			--   local col = vim.fn.col '.' - 1
-			--   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
-			-- end
 
 			local completion = {
 				keyword_length = 1,
@@ -75,8 +71,6 @@ return {
 				ghost_text = true,
 				native_menu = false,
 			}
-
-			local kind_icons = require("config.constants").lsp_kind_icons
 
 			local mapping = {
 				["<C-j>"] = cmp.mapping.select_next_item(),
