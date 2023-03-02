@@ -1,202 +1,202 @@
--- {{{ Constants Configuration items that are reusable through NeoVim.
-
 local Constants = {}
+
+-- {{{ Begin Constants table.  These are items used through out Neovim.
 
 Constants = {
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Language Server Protocol (LSP) Names.
+	-- ------------------------------------------------------------------------- }}}
+	-- {{{ Language Server Protocol (LSP) Names.
 
-lua_ls = {
-  Lua = {
-    workspace = { checkThirdParty = false },
-    telemetry = { enable = false },
-  },
-},
+	lua_ls = {
+		Lua = {
+			workspace = { checkThirdParty = false },
+			telemetry = { enable = false },
+		},
+	},
 
-lsp_to_mason = {
-  { lsp = "bashls", mason = "bash-language-server" },
-  { lsp = "clangd", mason = "clangd" },
-  { lsp = "cssls", mason = "css-lsp" },
-  -- { lsp = 'diagnosticls',  mason = 'diagnostic-languageserver' },
-  { lsp = "emmet_ls", mason = "emmet-ls" },
-  { lsp = "eslint", mason = "eslint-lsp" },
-  { lsp = "gopls", mason = "gopls" },
-  { lsp = "html", mason = "html-lsp" },
-  { lsp = "jsonls", mason = "json-lsp" },
-  { lsp = lua_ls, mason = "lua-language-server" },
-  { lsp = "omnisharp", mason = "omnisharp" },
-  { lsp = "pyright", mason = "pyright" },
-  { lsp = "rust_analyzer", mason = "rust-analyzer" },
-  { lsp = "solargraph", mason = "solargraph" },
-  { lsp = "sqlls", mason = "sqlls" },
-  { lsp = "texlab", mason = "texlab" },
-  { lsp = "tsserver", mason = "typescript-language-server" },
-  { lsp = "yamlls", mason = "yaml-language-server" },
-},
+	ensure_installed = {
+		lsp_config = {
+			"bashls",
+			"clangd",
+			"cssls",
+			"diagnosticls",
+			"emmet_ls",
+			"eslint",
+			"gopls",
+			"html",
+			"jsonls",
+			"lua_ls",
+			"omnisharp",
+			"pyright",
+			"rust_analyzer",
+			"solargraph",
+			"sqlls",
+			"texlab",
+			"tsserver",
+			"yamlls",
+		},
+		mason = {
+			"bash-language-server",
+			"clangd",
+			"css-lsp",
+			"emmet-ls",
+			"eslint-lsp",
+			"flake8",
+			"gopls",
+			"html-lsp",
+			"json-lsp",
+			"lua-language-server",
+			"omnisharp",
+			"pyright",
+			"rust-analyzer",
+			"shellcheck",
+			"shfmt",
+			"solargraph",
+			"sqlls",
+			"stylua",
+			"texlab",
+			"typescript-language-server",
+			"yaml-language-server",
+		},
+	},
 
-mason_ensure_installed = {
-  'bash-language-server',
-  'clangd',
-  'css-lsp',
-  'emmet-ls',
-  'eslint-lsp',
-  'flake8',
-  'gopls',
-  'html-lsp',
-  'json-lsp',
-  'lua-language-server',
-  'omnisharp',
-  'pyright',
-  'rust-analyzer',
-  'shellcheck',
-  'shfmt',
-  'solargraph',
-  'sqlls',
-  'stylua',
-  'texlab',
-  'typescript-language-server',
-  'yaml-language-server',
-},
+	-- ------------------------------------------------------------------------- }}}
+	-- {{{ icons
 
--- ------------------------------------------------------------------------- }}}
--- {{{ LSP kind icons.
+	icons = {
+		lsp_kinds = {
+			Class = "",
+			Color = "",
+			Constant = "",
+			Constructor = "",
+			Enum = "",
+			EnumMember = "",
+			Event = "",
+			Field = "",
+			File = "",
+			Folder = "",
+			Function = "",
+			Interface = "",
+			Keyword = "",
+			Method = "",
+			Module = "",
+			Operator = "",
+			Property = "",
+			Reference = "",
+			Snippet = " ",
+			Struct = "",
+			Text = "",
+			TypeParameter = "",
+			Unit = "",
+			Value = "",
+			Variable = "",
+			buffer = "﬘ ",
+			calc = " ",
+			nvim_lsp = " ",
+			path = " ",
+			spell = " ",
+			vsnip = " ",
+		},
+		diagnostic = {
+			Error = "",
+			Hint = "",
+			Info = "",
+			Warn = "",
+		},
+		git = {
+			added = " ",
+			modified = " ",
+			removed = " ",
+		},
+	},
 
-lsp_kind_icons = {
-  Class = "",
-  Color = "",
-  Constant = "",
-  Constructor = "",
-  Enum = "",
-  EnumMember = "",
-  Event = "",
-  Field = "",
-  File = "",
-  Folder = "",
-  Function = "",
-  Interface = "",
-  Keyword = "",
-  Method = "",
-  Module = "",
-  Operator = "",
-  Property = "",
-  Reference = "",
-  Snippet = " ",
-  Struct = "",
-  Text = "",
-  TypeParameter = "",
-  Unit = "",
-  Value = "",
-  Variable = "",
-  buffer = "﬘ ",
-  calc = " ",
-  nvim_lsp = " ",
-  path = " ",
-  spell = " ",
-  vsnip = " ",
-},
+	-- ------------------------------------------------------------------------- }}}
+	-- {{{ Display boarders
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Diagnostics Signs.
+	display_border = { border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" } },
 
-diagnostic_signs = {
-  Error = "",
-  Hint = "",
-  Info = "",
-  Warn = "",
-},
+	-- ------------------------------------------------------------------------- }}}
+	-- {{{ keybinding options
 
-git_signs = {
-  added = " ",
-  modified = " ",
-  removed = " ",
-},
+	keybind_opts = {
+		normal = {
+			mode = "n", -- NORMAL mode
+			prefix = "<leader>", -- Override this value.
+			buffer = nil, -- Global mappings. Specify a buffer number for buffer
+			--   local mappings
+			silent = true, -- use `silent` when creating keymaps
+			noremap = true, -- use `noremap` when creating keymaps
+			nowait = true, -- use `nowait` when creating keymaps
+		},
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Display boarders
+		visual = {
+			mode = "v", -- VISUAL mode
+			prefix = "<leader>", -- Override this value.
+			buffer = nil, -- Global mappings. Specify a buffer number for buffer
+			-- local mappings
+			silent = true, -- use `silent` when creating keymaps
+			noremap = true, -- use `noremap` when creating keymaps
+			nowait = true, -- use `nowait` when creating keymaps
+		},
+	},
 
-display_border = { border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" } },
+	-- ------------------------------------------------------------------------- }}}
+	-- {{{ Completion source mapping
 
--- ------------------------------------------------------------------------- }}}
--- {{{ keybinding options
+	completion = {
+		source_mapping = {
+			buffer = "[Buffer]",
+			latex_symbols = "[LaTeX]",
+			luasnip = "[Snippet]",
+			nvim_lsp = "[LSP]",
+			nvim_lua = "[Lua]",
+			path = "[Path]",
+			spell = "[Spell]",
+		},
 
-normal_opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>", -- Override this value.
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer
-  --   local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-},
+		sources = {
+			{ name = "buffer", keyword_length = 2, max_item_count = 30 },
+			{ name = "calc", keyword_length = 2, max_item_count = 30 },
+			{ name = "latex_symbols", keyword_length = 1, max_item_count = 30 },
+			{ name = "luasnip", keyword_length = 1, max_item_count = 30 },
+			{ name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
+			{ name = "nvim_lua", keyword_length = 1, max_item_count = 30 },
+			{ name = "path", keyword_length = 3, max_item_count = 30 },
+			{ name = "spell", keyword_length = 2, max_item_count = 30 },
+		},
+	},
+	-- ------------------------------------------------------------------------- }}}
+	-- {{{ Treesitter
 
-visual_opts = {
-  mode = "v", -- VISUAL mode
-  prefix = "<leader>", -- Override this value.
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer
-  -- local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-},
+	treesitter_languages = {
+		"bash",
+		"c",
+		"c_sharp",
+		"cpp",
+		"dockerfile",
+		"help",
+		"html",
+		"javascript",
+		"json",
+		"lua",
+		"markdown",
+		"markdown_inline",
+		"python",
+		"query",
+		"regex",
+		"ruby",
+		"rust",
+		"sql",
+		"toml",
+		"tsx",
+		"typescript",
+		"vim",
+		"yaml",
+	},
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Completion source mapping
-
-source_mapping = {
-  spell = "[Spell]",
-  luasnip = "[Snippet]",
-  nvim_lsp = "[LSP]",
-  buffer = "[Buffer]",
-  latex_symbols = "[LaTeX]",
-  nvim_lua = "[Lua]",
-  path = "[Path]",
-},
-
-sources = {
-  { name = "luasnip", keyword_length = 1, max_item_count = 30 },
-  { name = "spell", keyword_length = 2, max_item_count = 30 },
-  { name = "buffer", keyword_length = 2, max_item_count = 30 },
-  { name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
-  { name = "calc", keyword_length = 2, max_item_count = 30 },
-  { name = "latex_symbols", keyword_length = 1, max_item_count = 30 },
-  { name = "nvim_lua", keyword_length = 1, max_item_count = 30 },
-  { name = "path", keyword_length = 3, max_item_count = 30 },
-},
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Treesitter
-
-treesitter_languages = {
-  "bash",
-  "c",
-  "c_sharp",
-  "cpp",
-  "dockerfile",
-  "help",
-  "html",
-  "javascript",
-  "json",
-  "lua",
-  "markdown",
-  "markdown_inline",
-  "python",
-  "query",
-  "regex",
-  "ruby",
-  "rust",
-  "sql",
-  "toml",
-  "tsx",
-  "typescript",
-  "vim",
-  "yaml",
-},
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Return Constants table.
+	-- ------------------------------------------------------------------------- }}}
+	-- {{{ End Constants table.
 }
+-- ------------------------------------------------------------------------- }}}
 
 return Constants
-
--- ------------------------------------------------------------------------- }}}
