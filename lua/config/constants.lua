@@ -91,7 +91,7 @@ Constants = {
 	-- ------------------------------------------------------------------------- }}}
 	-- {{{ Languages lsp_config, mason, and treesitter ensures are disabled.
 
-	diabled = {
+	disabled = {
 		lsp_config = {},
 		mason = {},
 		treesitter = {
