@@ -3,17 +3,6 @@ Customize = require("config.customize")
 Is_Enabled = require("config.functions").is_enabled
 
 return {
-	-- {{{ LuaSnip
-
-	{
-		"L3MON4D3/LuaSnip",
-		event = "InsertEnter",
-		enabled = Is_Enabled("LuaSnip"),
-		keys = false,
-    config = true,
-	},
-
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-cmp
 
 	{
@@ -26,12 +15,11 @@ return {
 			"hrsh7th/cmp-calc",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lua",
-			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lsp-document-symbol",
+			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"f3fora/cmp-spell",
 			"saadparwaiz1/cmp_luasnip",
-			dependencies = { "L3MON4D3/LuaSnip" },
 		},
 
 		opts = function()
@@ -44,7 +32,7 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load()
 
 			local has_words_before = function()
-				-- Deprecated. (Devined in Lua 5.1/LuaJIT, current is Lua 5.4.)
+				-- Deprecated. (Defined in Lua 5.1/LuaJIT, current is Lua 5.4.)
 				-- But, the next line does not work without pack statement.
 				unpack = unpack or table.unpack
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
