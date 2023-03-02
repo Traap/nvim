@@ -4,8 +4,11 @@ Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ nvim-cmp
+	--     TODO: Try to improve nexted folds behavior.
 
 	{
+		-- {{{ Events and dependencies
+
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		enabled = Is_Enabled("nvim-cmp"),
@@ -22,14 +25,17 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 		},
 
-		opts = function()
+		-- --------------------------------------------------------------------- }}}
+		-- {{{ opts function overfides LazyVim default behavior.
+
+		opts = function(_, opts)
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			local kind_icons = Constants.icons.lsp_kinds
-			local source_mapping = Constants.completion.source_mapping
-			local sources = Constants.completion.sources
 
-			require("luasnip.loaders.from_vscode").lazy_load()
+			-- ------------------------------------------------------------------- }}}
+			-- {{{ has_words_before function
+			--     Determines when words are present before the cursor.
+			--     <Tab> and <S-Tab> m
 
 			local has_words_before = function()
 				-- Deprecated. (Defined in Lua 5.1/LuaJIT, current is Lua 5.4.)
@@ -40,33 +46,38 @@ return {
 					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			end
 
+			-- ------------------------------------------------------------------- }}}
+			-- {{{ Completion length and keywords.
+
 			local completion = {
+				completeopt = "menu,nenuone,noinsert",
 				keyword_length = 1,
 			}
+
+			-- ------------------------------------------------------------------- }}}
+			-- {{{ Formatting fileds, icons, and source_mapping
 
 			local formatting = {
 				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)
-					vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-					vim_item.menu = (source_mapping)[entry.source.name]
+					vim_item.kind = string.format("%s", Constants.icons.lsp_kinds[vim_item.kind])
+					vim_item.menu = (Constants.completion.source_mapping)[entry.source.name]
 					return vim_item
 				end,
 			}
+
+			-- ------------------------------------------------------------------- }}}
+			-- {{{ Confirmaiton option
 
 			local confirm_opts = {
 				behavior = cmp.ConfirmBehavior.Replace,
 				select = false,
 			}
 
-			local experimental = {
-				ghost_text = true,
-				native_menu = false,
-			}
+			-- ------------------------------------------------------------------- }}}
+			-- {{{ keybind mappings
 
 			local mapping = {
-				["<C-j>"] = cmp.mapping.select_next_item(),
-				["<C-k>"] = cmp.mapping.select_prev_item(),
-
 				["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 
@@ -82,6 +93,9 @@ return {
 				-- Do not explicitly select 'first' item when nothing is selected.
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 
+				-- Next
+				["<C-j>"] = cmp.mapping.select_next_item(),
+				["<C-n>"] = cmp.mapping.select_next_item(),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
@@ -94,6 +108,9 @@ return {
 					end
 				end, { "i", "s" }),
 
+				-- Previoius
+				["<C-k>"] = cmp.mapping.select_prev_item(),
+				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
@@ -105,16 +122,16 @@ return {
 				end, { "i", "s" }),
 			}
 
-			local snippet = {
-				expand = function(args)
-					require("luasnip").lsp_expand(args.body)
-				end,
-			}
+			-- ------------------------------------------------------------------- }}}
+			-- {{{ Add boarders to completion windows.
 
 			local window = {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
 			}
+
+			-- ------------------------------------------------------------------- }}}
+			-- {{{ Setup filetype and cmdline preferences.
 
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
@@ -140,16 +157,17 @@ return {
 				}),
 			})
 
-			return {
-				completion = completion,
-				confirm_opts = confirm_opts,
-				experimental = experimental,
-				formatting = formatting,
-				mapping = mapping,
-				snippet = snippet,
-				sources = sources,
-				window = window,
-			}
+			-- ------------------------------------------------------------------- }}}
+			-- {{{ Update the function argument opts with local choices made.
+
+			opts.completion = completion
+			opts.confirm_opts = confirm_opts
+			opts.formatting = formatting
+			opts.mapping = mapping
+			opts.sources = Constants.completion.sources
+			opts.window = window
+
+			-- ------------------------------------------------------------------- }}}
 		end,
 	},
 
