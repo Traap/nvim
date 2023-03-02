@@ -105,6 +105,11 @@ Constants = {
 	-- {{{ icons
 
 	icons = {
+		dap = {
+			expanded = "",
+			collapsed = "",
+			circular = "",
+		},
 		diagnostic = {
 			Error = "",
 			Hint = "",

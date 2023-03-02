@@ -1,3 +1,4 @@
+Constants = require("config.constants")
 Customize = require("config.customize")
 
 return {
@@ -30,11 +31,7 @@ return {
 		opts = {
 			expand_lines = true,
 
-			icons = {
-				expanded = "",
-				collapsed = "",
-				circular = "",
-			},
+			icons = Constants.icons.dap,
 
 			mappings = {
 				expand = { "<CR>", "<2-LeftMouse>" },
