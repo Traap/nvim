@@ -10,17 +10,6 @@ return {
 		opts = {
 			ensure_installed = Constants.ensure_installed.mason,
 		},
-
-		config = function(_, opts)
-			require("mason").setup(opts)
-			local mr = require("mason-registry")
-			for _, value in ipairs(opts.ensure_installed) do
-				local p = mr.get_package(value)
-				if not p:is_installed() then
-					p:install()
-				end
-			end
-		end,
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -60,7 +49,6 @@ return {
 			servers = {
 				jsonls = {},
 				lua_ls = {
-					-- mason = false, -- set to false if you don't want this server to be installed with mason
 					settings = {
 						Lua = {
 							completion = { callSnippet = "Replace" },
