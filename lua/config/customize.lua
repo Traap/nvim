@@ -1,7 +1,6 @@
 local Customize = {}
 
 -- {{{ Customize documentation.
-
 -- Customize table is a plugin name and true or false.  Using nvim_tree as the
 -- example:
 --   true - plug is loaded
@@ -11,13 +10,14 @@ local Customize = {}
 -- your expected behavior or two plugins are impacting with each other.
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Enable or disable plugins.
 
 Customize = {
+	-- {{{ Enable or disable plugins.
+
 	plugins = {
 		["Comment.nvim"] = { enabled = false },
 		["LuaSnip"] = { enabled = true },
-		["alpha-nvim"] = { enabled = false },
+		["alpha-nvim"] = { enabled = true },
 		["bufferline.nvim"] = { enabled = false },
 		["bullets.vim"] = { enabled = true },
 		["catppuccin"] = { enabled = true },
@@ -107,9 +107,24 @@ Customize = {
 		["wiki-ft.vim"] = { enabled = true },
 		["zen-mode.nvim"] = { enabled = true },
 	},
-}
 
--- ------------------------------------------------------------------------- }}}
+	-- ------------------------------------------------------------------------- }}}
+	-- {{{ Debug Adapter Protocol (DAP) debuggers
+
+	debuggers = {
+		["bash"] = { enabled = false },
+		["dart"] = { enabled = false },
+		["go"] = { enabled = true },
+		["haskell"] = { enabled = false },
+		["java"] = { enabled = false },
+		["lldb"] = { enabled = false },
+		["lua"] = { enabled = true },
+		["python"] = { enabled = false },
+		["ruby"] = { enabled = true },
+	},
+
+	-- ------------------------------------------------------------------------- }}}
+}
 -- {{{ Toggle terminals
 
 Customize.toggleterm = {

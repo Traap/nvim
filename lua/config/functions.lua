@@ -12,4 +12,8 @@ function M.is_enabled(plugin)
 	return Customize.plugins[plugin].enabled
 end
 
+function M.is_debugger(debugger)
+	return Customize.debuggers[debugger].enabled
+end
+
 return M

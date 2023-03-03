@@ -1,5 +1,3 @@
--- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#Ruby
-
 local dok, dap = pcall(require, "dap")
 if not dok then
 	return
