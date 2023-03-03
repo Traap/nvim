@@ -3,6 +3,38 @@ Constants = require("config.constants")
 Is_Enabled = require("config.functions").is_enabled
 
 return {
+	-- {{{ mason-nvim-dap.nvim
+
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		enabled = Is_Enabled("mason-nvim-dap.nvim"),
+		event = "VeryLazy",
+		opts = function(_, opts)
+			opts.automatic_setup = true
+			opts.ensure_installed = {
+				"bash-debug-adapter",
+				-- "chrome-debug-adapter",
+				-- "codelldb",
+				"cpptools",
+				-- "dart-debug-adapter",
+				"debugpy",
+				"delve",
+				"elixir-ls",
+				-- "firefox-debug-adapter",
+				"java-debug-adapter",
+				-- "java-test",
+				-- "js-debug-adapter",
+				-- "kotlin-debug-adapter",
+				-- "mockdebug",
+				-- "netcoredbg",
+				-- "node-debug2-adapter",
+				-- "php-debug-adapter",
+				-- "puppet-editor-services",
+			}
+		end,
+	},
+
+	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-dap
 
 	{
@@ -24,6 +56,7 @@ return {
 		enabled = Is_Enabled("nvim-dap-ui"),
 		event = "VeryLazy",
 		keys = "<leader>dU",
+		config = true,
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -45,9 +78,6 @@ return {
 	},
 
 	-- ------------------------------------------------------------------------ }}}
-
-	-- Languages
-
 	-- {{{ crates.nvim
 
 	{
@@ -88,6 +118,16 @@ return {
 				port = "${port}",
 			},
 		},
+	},
+
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ nvim-dap-python
+	{
+		"mfussenegger/nvim-dap-python",
+		enabled = Is_Enabled("nvim-dap-python"),
+		dependencies = { "mfussenegger/nvim-dap" },
+		ft = { "py" },
+		opts = {},
 	},
 
 	-- ----------------------------------------------------------------------- }}}
