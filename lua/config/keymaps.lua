@@ -1,8 +1,10 @@
 -- {{{ Global definitions
 
 Customize = require("config.customize")
-Keymap = require("config.functions").keymap
-Is_Enabled = require("config.functions").is_enabled
+Functions = require("config.functions")
+Keymap = Functions.keymap
+Is_Enabled = Functions.is_enabled
+
 Dap = require("dap")
 
 -- ------------------------------------------------------------------------- }}}
@@ -249,7 +251,7 @@ if Is_Enabled("telescope.nvim") then
 	Keymap("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
 end
 
--- Define keybinding to quickly find Youtube: and
+-- Define keybindiVtrFlushCommandng to quickly find Youtube: and
 -- Url: markers.
 if Is_Enabled("todo-comments.nvim") then
 	Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
@@ -259,6 +261,9 @@ if Is_Enabled("vim-tmux-runner") then
 	Keymap("n", "<leader>fc", "<cmd>VtrFlushCommand<cr>")
 	Keymap("n", "<leader>fr", "<cmd>VtrFocusRunner<cr>")
 end
+
+Keymap("v", "<leader>f", "<cmd>lua Functions.surround_selected_text()<cr>")
+Keymap("v", "<leader>t", "<cmd>lua Functions.hello_world()<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - git

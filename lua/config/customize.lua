@@ -17,7 +17,7 @@ Customize = {
 	plugins = {
 		["Comment.nvim"] = { enabled = false },
 		["LuaSnip"] = { enabled = true },
-		["alpha-nvim"] = { enabled = true },
+		["alpha-nvim"] = { enabled = false },
 		["bufferline.nvim"] = { enabled = false },
 		["bullets.vim"] = { enabled = true },
 		["catppuccin"] = { enabled = true },
