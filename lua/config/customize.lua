@@ -51,6 +51,7 @@ Customize = {
 		["nvim-dap"] = { enabled = true },
 		["nvim-dap-go"] = { enabled = true },
 		["nvim-dap-python"] = { enabled = true },
+		["nvim-dap-ruby"] = { enabled = true },
 		["nvim-dap-ui"] = { enabled = true },
 		["nvim-dap-virtual-text"] = { enabled = true },
 		["nvim-lspconfig"] = { enabled = true },
@@ -119,10 +120,10 @@ Customize = {
 		["go"] = { enabled = true },
 		["haskell"] = { enabled = false },
 		["java"] = { enabled = false },
-		["lldb"] = { enabled = false },
 		["lua"] = { enabled = true },
-		["python"] = { enabled = false },
+		["python"] = { enabled = true },
 		["ruby"] = { enabled = true },
+		["rust"] = { enabled = false },
 	},
 
 	-- ------------------------------------------------------------------------- }}}

@@ -8,30 +8,31 @@ return {
 	{
 		"jay-babu/mason-nvim-dap.nvim",
 		enabled = Is_Enabled("mason-nvim-dap.nvim"),
-		event = "VeryLazy",
-		opts = function(_, opts)
-			opts.automatic_setup = true
-			opts.ensure_installed = {
-				"bash-debug-adapter",
-				-- "chrome-debug-adapter",
-				-- "codelldb",
-				"cpptools",
-				-- "dart-debug-adapter",
-				"debugpy",
-				"delve",
-				"elixir-ls",
-				-- "firefox-debug-adapter",
-				"java-debug-adapter",
-				-- "java-test",
-				-- "js-debug-adapter",
-				-- "kotlin-debug-adapter",
-				-- "mockdebug",
-				-- "netcoredbg",
-				-- "node-debug2-adapter",
-				-- "php-debug-adapter",
-				-- "puppet-editor-services",
-			}
-		end,
+		ft = { "go", "py", "rb" },
+		config = true,
+		-- opts = function(_, opts)
+		-- 	opts.automatic_setup = true
+		-- 	opts.ensure_installed = {
+		-- 		"bash-debug-adapter",
+		-- 		"chrome-debug-adapter",
+		-- 		"codelldb",
+		-- 		"cpptools",
+		-- 		"dart-debug-adapter",
+		-- 		"debugpy",
+		-- 		"delve",
+		-- 		"elixir-ls",
+		-- 		"firefox-debug-adapter",
+		-- 		"java-debug-adapter",
+		-- 		"java-test",
+		-- 		"js-debug-adapter",
+		-- 		"kotlin-debug-adapter",
+		-- 		"mockdebug",
+		-- 		"netcoredbg",
+		-- 		"node-debug2-adapter",
+		-- 		"php-debug-adapter",
+		-- 		"puppet-editor-services",
+		-- 	}
+		-- end,
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -40,9 +41,10 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		enabled = Is_Enabled("nvim-dap"),
-		event = "VeryLazy",
+		ft = { "go", "py", "rb" },
 		dependencies = {
 			"nvim-telescope/telescope-dap.nvim",
+			"jay-babu/mason-nvim-dap.nvim",
 			"rcarriga/nvim-dap-ui",
 			"theHamsta/nvim-dap-virtual-text",
 		},
@@ -54,8 +56,7 @@ return {
 	{
 		"rcarriga/nvim-dap-ui",
 		enabled = Is_Enabled("nvim-dap-ui"),
-		event = "VeryLazy",
-		keys = "<leader>dU",
+		ft = { "go", "py", "rb" },
 		config = true,
 	},
 
@@ -65,7 +66,8 @@ return {
 	{
 		"theHamsta/nvim-dap-virtual-text",
 		enabled = Is_Enabled("nvim-dap-virtual-text"),
-		event = "VeryLazy",
+		ft = { "go", "py", "rb" },
+		config = true,
 	},
 
 	-- ------------------------------------------------------------------------ }}}
@@ -74,7 +76,8 @@ return {
 	{
 		"nvim-telescope/telescope-dap.nvim",
 		enabled = Is_Enabled("telescope-dap.nvim"),
-		event = "VeryLazy",
+		ft = { "go", "py", "rb" },
+		config = true,
 	},
 
 	-- ------------------------------------------------------------------------ }}}
@@ -84,10 +87,10 @@ return {
 		"saecki/crates.nvim",
 		enabled = Is_Enabled("crates.nvim"),
 		dependencies = { "mfussenegger/nvim-dap" },
+		event = "VeryLazy",
 		ft = { "rs" },
 		opts = {
 			null_ls = {
-				enabled = true,
 				name = "crates.nvim",
 			},
 			popup = {
@@ -103,21 +106,23 @@ return {
 		"leoluz/nvim-dap-go",
 		enabled = Is_Enabled("nvim-dap-go"),
 		dependencies = { "mfussenegger/nvim-dap" },
+		event = "VeryLazy",
 		ft = { "go" },
-		opts = {
-			dap_configurations = {
-				{
-					type = "go",
-					name = "Attach remote",
-					mode = "remote",
-					request = "attach",
-				},
-			},
-			delve = {
-				initialize_timeout_sec = 20,
-				port = "${port}",
-			},
-		},
+		config = true,
+		-- opts = {
+		-- 	dap_configurations = {
+		-- 		{
+		-- 			type = "go",
+		-- 			name = "Attach remote",
+		-- 			mode = "remote",
+		-- 			request = "attach",
+		-- 		},
+		-- 	},
+		-- 	delve = {
+		-- 		initialize_timeout_sec = 20,
+		-- 		port = "${port}",
+		-- 	},
+		-- },
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -126,8 +131,20 @@ return {
 		"mfussenegger/nvim-dap-python",
 		enabled = Is_Enabled("nvim-dap-python"),
 		dependencies = { "mfussenegger/nvim-dap" },
+		event = "VeryLazy",
 		ft = { "py" },
-		opts = {},
+		-- config = true,
+	},
+
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ nvim-dap-ruby
+	{
+		"suketa/nvim-dap-ruby",
+		enabled = Is_Enabled("nvim-dap-ruby"),
+		dependencies = { "mfussenegger/nvim-dap" },
+		event = "VeryLazy",
+		ft = { "rb" },
+		config = true,
 	},
 
 	-- ----------------------------------------------------------------------- }}}
