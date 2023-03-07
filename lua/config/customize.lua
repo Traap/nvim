@@ -43,7 +43,7 @@ Customize = {
 		["neoconf.nvim"] = { enabled = false },
 		["neodev.nvim"] = { enabled = false },
 		["neoformat"] = { enabled = false },
-		["noice.nvim"] = { enabled = false },
+		["noice.nvim"] = { enabled = true },
 		["nvim-autopairs"] = { enabled = true },
 		["nvim-base16"] = { enabled = false },
 		["nvim-cmp"] = { enabled = true },

@@ -4,5 +4,5 @@ vim.g.maplocalleader = [[,]]
 require("config.bootstrap")
 require("config.lazy")
 
--- Starting DAP experiments.
+-- Setup debuggers that do not have nvim-dap plugins.
 require("dbg")
