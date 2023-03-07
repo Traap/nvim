@@ -5,4 +5,4 @@ require("config.bootstrap")
 require("config.lazy")
 
 -- Starting DAP experiments.
-require("debug")
+require("dbg")

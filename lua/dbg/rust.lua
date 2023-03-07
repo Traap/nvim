@@ -13,8 +13,7 @@ dap.adapters.codelldb = {
 	type = "server",
 	port = "${port}",
 	executable = {
-		-- CHANGE THIS to your path!
-		command = "/absolute/path/to/codelldb/extension/adapter/codelldb",
+		command = "codelldb",
 		args = { "--port", "${port}" },
 	},
 }
