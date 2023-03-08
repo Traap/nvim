@@ -7,23 +7,34 @@ if not dok then
 end
 
 dap.adapters.codelldb = {
-	type = "executable",
-	command = "codelldb",
 	name = "codelldb",
+
+	type = "executable",
+	port = "13000",
+	host = "localhost",
+	executable = {
+		command = "codelldb",
+		args = { "--port", "${port}" },
+	},
 }
 
-dap.configurations.rust = {
+dap.adapters.c = dap.adapters.codelldb
+dap.adapters.cpp = dap.adapters.codelldb
+dap.adapters.rust = dap.adapters.codelldb
+
+dap.configurations.c = {
 	{
 		name = "Launch",
 		type = "codelldb",
 		request = "launch",
-		program = function()
-			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug", "file")
-			-- return vim.fn.getcwd() .. "/target/debug/"
-		end,
+		-- program = function()
+		-- 	return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+		-- end,
 		cwd = "${workspaceFolder}",
 		stopOnEntry = false,
-		args = {},
 		runInTerminal = false,
 	},
 }
+
+dap.configurations.cpp = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.c
