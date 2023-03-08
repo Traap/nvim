@@ -1,6 +1,7 @@
-_README_
-  Date: 2023-03-07 22:21
+ _README_
+   Date: 2023-03-07
 
-These code fragments are not used.  They represent concepts I may implement.
+These code fragments are not sourced when Neovim starts.  They represent
+concepts I may implement, or _snippets_ I used when creating Youtube content.
 
 --Traap
