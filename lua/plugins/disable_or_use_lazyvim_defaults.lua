@@ -16,7 +16,6 @@ return {
 	{ "folke/neodev.nvim", enabled = Is_Enabled("neodev.nvim") },
 	{ "ggandor/flit.nvim", enabled = Is_Enabled("flit.nvim") },
 	{ "ggandor/leap.nvim", enabled = Is_Enabled("leap.nvim") },
-	{ "nvim-lualine/lualine.nvim", enabled = Is_Enabled("lualine.nvim") },
 
 	-- ----------------------------------------------------------------------- }}}
 }
