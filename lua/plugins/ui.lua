@@ -2,59 +2,59 @@ Constants = require("config.constants")
 Is_Enabled = require("config.functions").is_enabled
 
 return {
-	-- {{{ alpha-nvim
+  -- {{{ alpha-nvim
 
-	{
-		"goolord/alpha-nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("alpha-nvim"),
-	},
+  {
+    "goolord/alpha-nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = Is_Enabled("alpha-nvim"),
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ dressing
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ dressing
 
-	{
-		"stevearc/dressing.nvim",
-		enabled = Is_Enabled("dressing"),
-		lazy = true,
-		init = function()
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.select = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.select(...)
-			end
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.input = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.input(...)
-			end
-		end,
-	},
+  {
+    "stevearc/dressing.nvim",
+    enabled = Is_Enabled("dressing"),
+    lazy = true,
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end,
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ Git signs and lightbulb.
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ Git signs and lightbulb.
 
-	{
-		"lewis6991/gitsigns.nvim",
-		event = "BufReadPre",
-		enabled = Is_Enabled("gitsigns.nvim"),
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufReadPre",
+    enabled = Is_Enabled("gitsigns.nvim"),
 
-		opts = {
-			signs = {
-				add = { text = "▎" },
-				change = { text = "▎" },
-				delete = { text = "契" },
-				topdelete = { text = "契" },
-				changedelete = { text = "▎" },
-				untracked = { text = "▎" },
-			},
+    opts = {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "契" },
+        topdelete = { text = "契" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
 
-			on_attach = function(buffer)
-				local gs = package.loaded.gitsigns
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
 
-				local function map(mode, l, r, desc)
-					vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-				end
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
 
         -- stylua: ignore start
         map('n', ']h', gs.next_hunk, 'Next Hunk')
@@ -69,200 +69,202 @@ return {
         map('n', '<leader>ghd', gs.diffthis, 'Diff This')
         map('n', '<leader>ghD', function() gs.diffthis('~') end, 'Diff This ~')
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'GitSigns Select Hunk')
-			end,
-		},
-	},
+      end,
+    },
+  },
 
-	{
-		"kosayoda/nvim-lightbulb",
-		event = "BufReadPre",
-		opts = { autocmd = { enabled = true } },
-		dependencies = { "antoinemadec/FixCursorHold.nvim" },
-	},
+  {
+    "kosayoda/nvim-lightbulb",
+    event = "BufReadPre",
+    opts = { autocmd = { enabled = true } },
+    dependencies = { "antoinemadec/FixCursorHold.nvim" },
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ Indent guides for Neovim
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ Indent guides for Neovim
 
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("indent-blankline"),
-		opts = {
-			char = "│",
-			filetype_exclude = {
-				"help",
-				"alpha",
-				"dashboard",
-				"neo-tree",
-				"Trouble",
-				"lazy",
-				"mason",
-			},
-			show_trailing_blankline_indent = false,
-			show_current_context = false,
-		},
-	},
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = Is_Enabled("indent-blankline"),
+    opts = {
+      char = "│",
+      filetype_exclude = {
+        "help",
+        "alpha",
+        "dashboard",
+        "neo-tree",
+        "Trouble",
+        "lazy",
+        "mason",
+      },
+      show_trailing_blankline_indent = false,
+      show_current_context = false,
+    },
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ markdown-perview.nvim
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ markdown-perview.nvim
 
-	{
-		"iamcco/markdown-preview.nvim",
-		ft = "md",
-		enabled = Is_Enabled("markdown-preview.nvim"),
-	},
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = "md",
+    enabled = Is_Enabled("markdown-preview.nvim"),
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ noice.nvim - Noice - (Nice, Noise, Notice)
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ noice.nvim - Noice - (Nice, Noise, Notice)
 
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		enabled = Is_Enabled("noice.nvim"),
-		keys = false,
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    enabled = Is_Enabled("noice.nvim"),
+    keys = false,
 
-		opts = {
-			presets = {
-				bottom_search = false,
-				command_palette = true,
-				long_message_to_split = true,
-			},
+    opts = {
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        long_message_to_split = true,
+        inc_rename = false,
+        lsp_doc_border = false,
+      },
 
-			cmdline_popup = {
-				views = {
-					position = {
-						row = "50%",
-						col = "50%",
-					},
-					win_options = {
-						winhighlight = "NormalFloat:NormalFloat, FloatBorder:FloatBorder",
-					},
-				},
-			},
+      cmdline_popup = {
+        views = {
+          position = {
+            row = "50%",
+            col = "50%",
+          },
+          win_options = {
+            winhighlight = "NormalFloat:NormalFloat, FloatBorder:FloatBorder",
+          },
+        },
+      },
 
-			lsp = {
-				progress = {
-					view = "notify",
-				},
-				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = false,
-					["vim.lsp.util.stylize_markdown"] = false,
-					["cmp.entry.get_documentation"] = false,
-				},
-			},
+      lsp = {
+        progress = {
+          view = "notify",
+        },
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+          ["vim.lsp.util.stylize_markdown"] = false,
+          ["cmp.entry.get_documentation"] = false,
+        },
+      },
 
-			routes = {
+      routes = {
 
-				-- Youtube: Enable / disable fidget
-				{
-					filter = {
-						event = "msg_show",
-						kind = "",
-					},
-					opts = { skip = true },
-				},
+        -- Youtube: Enable / disable fidget
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+          },
+          opts = { skip = true },
+        },
 
-				-- Youtube: Enable / disable warn
-				{
-					filter = {
-						event = "msg_show",
-						kind = "wmsg",
-					},
-					opts = { skip = true },
-				},
-			},
-		},
+        -- Youtube: Enable / disable warn
+        {
+          filter = {
+            event = "msg_show",
+            kind = "wmsg",
+          },
+          opts = { skip = true },
+        },
+      },
+    },
 
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
-	},
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ nvim-notify
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ nvim-notify
 
-	{
-		"rcarriga/nvim-notify",
-		event = "BufEnter",
-		enabled = Is_Enabled("nvim-notify"),
-		opts = {
-			background_colour = "#1a1b26",
-			level = 3,
-			render = "minimal",
-			timeout = 1500,
-			top_down = false,
-			max_height = function()
-				return math.floor(vim.o.lines * 0.75)
-			end,
-			max_width = function()
-				return math.floor(vim.o.columns * 0.75)
-			end,
-		},
-	},
+  {
+    "rcarriga/nvim-notify",
+    event = "BufEnter",
+    enabled = Is_Enabled("nvim-notify"),
+    opts = {
+      background_colour = "#1a1b26",
+      level = 3,
+      render = "minimal",
+      timeout = 1500,
+      top_down = false,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.75)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.75)
+      end,
+    },
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ nvim-web-devicons
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ nvim-web-devicons
 
-	{
-		"nvim-tree/nvim-web-devicons",
-		enabled = Is_Enabled("nvim-web-devicons"),
-		cmd = {
-			"NvimTreeFindFile",
-			"NvimTreeRefresh",
-			"NvimTreeToggle",
-		},
+  {
+    "nvim-tree/nvim-web-devicons",
+    enabled = Is_Enabled("nvim-web-devicons"),
+    cmd = {
+      "NvimTreeFindFile",
+      "NvimTreeRefresh",
+      "NvimTreeToggle",
+    },
 
-		opts = {
-			override = Constants.icons.web_devicons,
-		},
-	},
+    opts = {
+      override = Constants.icons.web_devicons,
+    },
+  },
 
-	-------------------------------------------------------------------------- }}}
-	-- {{{ Popup.nvim
+  -------------------------------------------------------------------------- }}}
+  -- {{{ Popup.nvim
 
-	{
-		"nvim-lua/popup.nvim",
-		event = "VimEnter",
-		enabled = Is_Enabled("popup.nvim"),
-	},
+  {
+    "nvim-lua/popup.nvim",
+    event = "VimEnter",
+    enabled = Is_Enabled("popup.nvim"),
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ trouble.nvim
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ trouble.nvim
 
-	{
-		"folke/trouble.nvim",
-		event = "VimEnter",
-		enabled = Is_Enabled("trouble.nvim"),
-		opts = { use_diagnostic_signs = true },
-	},
+  {
+    "folke/trouble.nvim",
+    event = "VimEnter",
+    enabled = Is_Enabled("trouble.nvim"),
+    opts = { use_diagnostic_signs = true },
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ vim-most-minimal-folds
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ vim-most-minimal-folds
 
-	{
-		"vim-utils/vim-most-minimal-folds",
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("vim-most-minimal-folds"),
-	},
+  {
+    "vim-utils/vim-most-minimal-folds",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = Is_Enabled("vim-most-minimal-folds"),
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ virtcolumn.nvim
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ virtcolumn.nvim
 
-	{
-		"xiyaowong/virtcolumn.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("virtcolumn.nvim"),
-	},
+  {
+    "xiyaowong/virtcolumn.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = Is_Enabled("virtcolumn.nvim"),
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ Which-key
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ Which-key
 
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		enabled = Is_Enabled("which-key.nvim"),
-		keys = false,
-	},
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    enabled = Is_Enabled("which-key.nvim"),
+    keys = false,
+  },
 
-	-- ----------------------------------------------------------------------- }}}
+  -- ----------------------------------------------------------------------- }}}
 }

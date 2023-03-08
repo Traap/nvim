@@ -4,29 +4,6 @@ Is_Enabled = require("config.functions").is_enabled
 
 return {
 
-  -- {{{ mason-nvim-dap.nvim
-
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    cmd = "Mason",
-    enabled = true,
-    enabled = Is_Enabled("mason-nvim-dap.nvim"),
-    opts = {
-      automatic_setup = true,
-      ensure_installed = {
-        "codelldb",
-        "debugpy",
-        "delve",
-        "java-debug-adapter",
-        "java-test",
-        "js-debug-adapter",
-        "netconfigdb",
-        "node-debug2-adapter",
-      },
-    },
-  },
-
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ nvim-dap
   {
     "mfussenegger/nvim-dap",
@@ -50,51 +27,51 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ nvim-dap-ui
 
-  -- {
-  --   "rcarriga/nvim-dap-ui",
-  --   enabled = Is_Enabled("nvim-dap-ui"),
-  --   ft = { "go", "py", "rb" },
-  --   config = true,
-  -- },
+  {
+    "rcarriga/nvim-dap-ui",
+    enabled = Is_Enabled("nvim-dap-ui"),
+    ft = { "go", "py", "rb" },
+    config = true,
+  },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ nvim-dap-virtual-text
 
-  -- {
-  --   "theHamsta/nvim-dap-virtual-text",
-  --   enabled = Is_Enabled("nvim-dap-virtual-text"),
-  --   ft = { "go", "py", "rb" },
-  --   config = true,
-  -- },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    enabled = Is_Enabled("nvim-dap-virtual-text"),
+    ft = { "go", "py", "rb" },
+    config = true,
+  },
 
   -- ------------------------------------------------------------------------ }}}
   -- {{{ telescope-dap.nvim
 
-  -- {
-  -- "nvim-telescope/telescope-dap.nvim",
-  -- enabled = Is_Enabled("telescope-dap.nvim"),
-  -- ft = { "go", "py", "rb" },
-  -- config = true,
-  -- },
+  {
+    "nvim-telescope/telescope-dap.nvim",
+    enabled = Is_Enabled("telescope-dap.nvim"),
+    ft = { "go", "py", "rb" },
+    config = true,
+  },
 
   -- ------------------------------------------------------------------------ }}}
   -- {{{ crates.nvim
 
-  -- {
-  --   "saecki/crates.nvim",
-  --   enabled = Is_Enabled("crates.nvim"),
-  --   dependencies = { "mfussenegger/nvim-dap" },
-  --   event = "VeryLazy",
-  --   ft = { "rs" },
-  --   opts = {
-  --     null_ls = {
-  --       name = "crates.nvim",
-  --     },
-  --     popup = {
-  --       border = "rounded",
-  --     },
-  --   },
-  -- },
+  {
+    "saecki/crates.nvim",
+    enabled = Is_Enabled("crates.nvim"),
+    dependencies = { "mfussenegger/nvim-dap" },
+    event = "VeryLazy",
+    ft = { "rs" },
+    opts = {
+      null_ls = {
+        name = "crates.nvim",
+      },
+      popup = {
+        border = "rounded",
+      },
+    },
+  },
 
   -- ------------------------------------------------------------------------ }}}
   -- {{{ nvim-dap-go
