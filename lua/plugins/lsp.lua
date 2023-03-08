@@ -15,7 +15,7 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-lspconfig
+  -- {{{ nvim-lspconfi
 
   {
     "neovim/nvim-lspconfig",
@@ -56,7 +56,7 @@ return {
                 },
               },
               diagnostics = {
-                -- enable = false,
+                enable = false,
                 groupSeverity = {
                   strong = "Warning",
                   strict = "Warning",
