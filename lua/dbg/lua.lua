@@ -2,24 +2,19 @@
 
 local ok, dap = pcall(require, "dap")
 if not ok then
-	return
-end
-
-dap.adapters.nlua = function(callback, config)
-	callback({ type = "server", host = config.host, port = config.port })
+  return
 end
 
 dap.configurations.lua = {
-	{
-		type = "nlua",
-		request = "attach",
-		name = "Attach to running Neovim instance",
-		host = function()
-			return "127.0.0.1"
-		end,
-		port = function()
-			local val = 54231
-			return val
-		end,
-	},
+  type = "nlua",
+  requiest = "attach",
+  name = "Attach to running Neovim instance",
 }
+
+dap.adapters.nlua = function(callback, config)
+  callback({
+    type = "server",
+    host = config.host or "127.0.0.1",
+    port = config.port or 8086,
+  })
+end
