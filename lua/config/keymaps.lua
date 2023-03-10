@@ -193,7 +193,7 @@ Keymap(
 )
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ c - Copy & Paste
+-- {{{ c - Copy & Paste & tmux
 
 Keymap("n", "<leader>cc", 'ggVGg_"+y')
 Keymap("n", "<leader>cv", '"+p')
@@ -239,7 +239,7 @@ if Is_Enabled("nvim-dap-ui") then
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ f - Find
+-- {{{ f - Find & tmxu
 
 if Is_Enabled("telescope.nvim") then
   Keymap("n", "<leader>fC", "<cmd>Telescope commands<cr>")
@@ -275,6 +275,7 @@ if Is_Enabled("vim-tmux-runner") then
   Keymap("n", "<leader>fr", "<cmd>VtrFocusRunner<cr>")
 end
 
+-- TODO: Write the implementations.
 Keymap("v", "<leader>f", "<cmd>lua Functions.surround_selected_text()<cr>")
 Keymap("v", "<leader>t", "<cmd>lua Functions.hello_world()<cr>")
 
