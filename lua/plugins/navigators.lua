@@ -1,36 +1,35 @@
 Is_Enabled = require("config.functions").is_enabled
 
 return {
-	-- {{{ vim-tmux-navigator
+  -- {{{ vim-tmux-navigator
 
-	{
-		"christoomey/vim-tmux-navigator",
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("vim-tmux-navigator"),
-	},
+  {
+    "christoomey/vim-tmux-navigator",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = Is_Enabled("vim-tmux-navigator"),
+  },
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ vim-tmux-runner
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ vim-tmux-runner
 
-	{
-		"christoomey/vim-tmux-runner",
-		enabled = Is_Enabled("vim-tmux-runner"),
+  {
+    "christoomey/vim-tmux-runner",
+    enabled = Is_Enabled("vim-tmux-runner"),
+    event = "VeryLazy",
+    dependencies = {
+      "Traap/vim-bundle-tmux-runner",
+    },
+  },
 
-		cmd = "VtrOpenRunner",
-		dependencies = {
-			"Traap/vim-bundle-tmux-runner",
-		},
-	},
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ harpoon
 
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ harpoon
+  {
+    "ThePrimeagen/harpoon",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = Is_Enabled("harpoon"),
+    config = true,
+  },
 
-	{
-		"ThePrimeagen/harpoon",
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("harpoon"),
-		config = true,
-	},
-
-	-- ----------------------------------------------------------------------- }}}
+  -- ----------------------------------------------------------------------- }}}
 }
