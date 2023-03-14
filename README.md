@@ -11,7 +11,7 @@ I clone or pull Neovim source code and build it using [resetNeovim](https://gith
 Backups are not done. *You have been warned.*
 
 Here's what happens:
-1. Use [switchNeovim](https://github.com/Traap/dotfiles/blob/master/bin/switchNeovim) switchNeovim to switch to my Neovim configuration.
+1. Use [switchNeovim](https://github.com/Traap/dotfiles/blob/master/bash/bin/switchNeovim) switchNeovim to switch to my Neovim configuration.
 2. User [bnvim](https://github.com/Traap/dotfiles/blob/master/bin/bnvim) to rebuild Neovim from source.
 3. Bootstrap Neovim.
 
