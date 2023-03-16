@@ -1,5 +1,7 @@
 Constants = require("config.constants")
-Is_Enabled = require("config.functions").is_enabled
+local functions = require("config.functions")
+Is_Enabled = functions.is_enabled
+Use_Defaults = functions.use_plugin_defaults
 
 return {
   -- {{{ alpha-nvim
@@ -87,20 +89,26 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
     enabled = Is_Enabled("indent-blankline"),
-    opts = {
-      char = "│",
-      filetype_exclude = {
-        "help",
-        "alpha",
-        "dashboard",
-        "neo-tree",
-        "Trouble",
-        "lazy",
-        "mason",
-      },
-      show_trailing_blankline_indent = false,
-      show_current_context = false,
-    },
+    opts = function(_, opts)
+      if Use_Defaults("indent-blankline") then
+        -- Use LazyVim default setup.
+        opts = {}
+      else
+        -- Use my customizations.
+        opts.char = "│"
+        opts.filetype_exclude = {
+          "help",
+          "alpha",
+          "dashboard",
+          "neo-tree",
+          "Trouble",
+          "lazy",
+          "mason",
+        }
+        opts.show_trailing_blankline_indent = false
+        opts.show_current_context = false
+      end
+    end,
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -110,16 +118,19 @@ return {
     "nvim-lualine/lualine.nvim",
     enabled = Is_Enabled("lualine.nvim"),
     opts = function(_, opts)
-      -- Youtube: 2nd true -> false
-      if true == true then
+      if Use_Defaults("lualine.nvim") then
+        -- Use LazyVim default setup.
+        opts = {}
+      else
+        -- Use my customizations.
         opts.options = {
           icons_enabled = true,
           theme = "auto",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {
-            statusline = {},
             winbar = {},
+            statusline = {},
           },
           ignore_focus = {},
           always_divide_middle = true,
@@ -153,9 +164,6 @@ return {
         opts.winbar = {}
         opts.inactive_winbar = {}
         opts.extensions = {}
-      else
-        -- Use default LazyVim setup.
-        opts = {}
       end
     end,
   },
@@ -177,60 +185,62 @@ return {
     event = "VeryLazy",
     enabled = Is_Enabled("noice.nvim"),
     keys = false,
+    opts = function(_, opts)
+      if Use_Defaults("noice.nvim") then
+        -- Use LazyVim default setup.
+        opts = {}
+      else
+        -- Use my customizations.
+        opts.presets = {
+          bottom_search = false,
+          command_palette = true,
+          long_message_to_split = true,
+          inc_rename = false,
+          lsp_doc_border = true,
+        }
 
-    opts = {
-      presets = {
-        bottom_search = false,
-        command_palette = true,
-        long_message_to_split = true,
-        inc_rename = false,
-        lsp_doc_border = true,
-      },
-
-      cmdline_popup = {
-        views = {
-          position = {
-            row = "50%",
-            col = "50%",
+        opts.cmdline_popup = {
+          views = {
+            position = {
+              row = "50%",
+              col = "50%",
+            },
+            win_options = {
+              winhighlight = "NormalFloat:NormalFloat, FloatBorder:FloatBorder",
+            },
           },
-          win_options = {
-            winhighlight = "NormalFloat:NormalFloat, FloatBorder:FloatBorder",
+        }
+
+        opts.lsp = {
+          progress = {
+            view = "notify",
           },
-        },
-      },
-
-      lsp = {
-        progress = {
-          view = "notify",
-        },
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
-          ["vim.lsp.util.stylize_markdown"] = false,
-          ["cmp.entry.get_documentation"] = false,
-        },
-      },
-
-      routes = {
-
-        -- Youtube: Enable / disable fidget
-        {
-          filter = {
-            event = "msg_show",
-            kind = "",
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+            ["vim.lsp.util.stylize_markdown"] = false,
+            ["cmp.entry.get_documentation"] = false,
           },
-          opts = { skip = true },
-        },
+        }
 
-        -- Youtube: Enable / disable warn
-        {
-          filter = {
-            event = "msg_show",
-            kind = "wmsg",
+        opts.routes = {
+          {
+            filter = {
+              event = "msg_show",
+              kind = "",
+            },
+            opts = { skip = true },
           },
-          opts = { skip = true },
-        },
-      },
-    },
+
+          {
+            filter = {
+              event = "msg_show",
+              kind = "wmsg",
+            },
+            opts = { skip = true },
+          },
+        }
+      end
+    end,
 
     dependencies = {
       "MunifTanjim/nui.nvim",
