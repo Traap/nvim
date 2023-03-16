@@ -264,8 +264,6 @@ if Is_Enabled("telescope.nvim") then
   Keymap("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
 end
 
--- Define keybind quickly find Youtube: and
--- Url: markers.
 if Is_Enabled("todo-comments.nvim") then
   Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
 end
