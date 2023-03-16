@@ -258,7 +258,7 @@ if Is_Enabled("telescope.nvim") then
     "<leader>fi",
     "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>"
   )
-  Keymap("n", "<leader>fk", "<cmd>Telescope Keymaps<cr>")
+  Keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>")
   Keymap("n", "<leader>fl", "<cmd>Telescope resume<cr>")
   Keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>")
   Keymap("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
