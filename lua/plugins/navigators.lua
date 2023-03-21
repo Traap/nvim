@@ -1,9 +1,9 @@
 Is_Enabled = require("config.functions").is_enabled
+In_Tmux = require("config.functions").in_tmux
 
 return {
   -- {{{ vim-tmux-navigator
 
-  -- Youtube: <c-h,j,k,l> between Tmux, NeoVim, and Vim splits.
   {
     "christoomey/vim-tmux-navigator",
     event = { "BufReadPost", "BufNewFile" },
@@ -13,14 +13,19 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ vim-tmux-runner
 
-  -- Youtube: Open tmux split and send commands.
   {
     "christoomey/vim-tmux-runner",
-    enabled = Is_Enabled("vim-tmux-runner"),
+    enabled = Is_Enabled("vim-tmux-runner") and In_Tmux(),
     event = "VeryLazy",
     dependencies = {
       "Traap/vim-bundle-tmux-runner",
     },
+  },
+
+  {
+    "Traap/vim-bundle-tmux-runner",
+    enabled = Is_Enabled("vim-bundle-tmux-runner") and In_Tmux(),
+    event = "VeryLazy",
   },
 
   -- ----------------------------------------------------------------------- }}}
