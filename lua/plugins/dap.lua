@@ -8,7 +8,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     enabled = Is_Enabled("nvim-dap"),
-    ft = Constants.file_types,
+    event = Constants.file_types,
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -17,7 +17,7 @@ return {
   {
     "rcarriga/nvim-dap-ui",
     enabled = Is_Enabled("nvim-dap-ui"),
-    ft = Constants.file_types,
+    event = Constants.file_types,
     opts = {
       controls = {
         element = "repl",
@@ -109,7 +109,7 @@ return {
   {
     "theHamsta/nvim-dap-virtual-text",
     enabled = Is_Enabled("nvim-dap-virtual-text"),
-    ft = Constants.file_types,
+    event = Constants.file_types,
     config = true,
     dependencies = { "mfussenegger/nvim-dap" },
   },
@@ -131,7 +131,7 @@ return {
   {
     "nvim-telescope/telescope-dap.nvim",
     enabled = Is_Enabled("telescope-dap.nvim"),
-    ft = Constants.file_types,
+    event = Constants.file_types,
     config = true,
     dependencies = { "mfussenegger/nvim-dap" },
   },

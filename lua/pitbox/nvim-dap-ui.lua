@@ -3,7 +3,7 @@
   {
     "rcarriga/nvim-dap-ui",
     enabled = Is_Enabled("nvim-dap-ui"),
-    ft = Constants.file_types,
+    event = Constants.file_types,
     opts = {
       controls = {
         element = "repl",
