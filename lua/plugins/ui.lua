@@ -270,23 +270,6 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-web-devicons
-
-  {
-    "nvim-tree/nvim-web-devicons",
-    enabled = Is_Enabled("nvim-web-devicons"),
-    cmd = {
-      "NvimTreeFindFile",
-      "NvimTreeRefresh",
-      "NvimTreeToggle",
-    },
-
-    opts = {
-      override = Constants.icons.web_devicons,
-    },
-  },
-
-  -------------------------------------------------------------------------- }}}
   -- {{{ Popup.nvim
 
   {

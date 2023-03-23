@@ -69,4 +69,16 @@ return {
   },
 
   -------------------------------------------------------------------------- }}}
+  -- {{{ nvim-web-devicons
+
+  {
+    "nvim-tree/nvim-web-devicons",
+    enabled = Is_Enabled("nvim-web-devicons")
+      and (Is_Enabled("nvim-tree") or Is_Enabled("lualine.nvim")),
+    opts = {
+      override = Constants.icons.web_devicons,
+    },
+  },
+
+  -------------------------------------------------------------------------- }}}
 }
