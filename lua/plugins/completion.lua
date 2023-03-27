@@ -32,33 +32,7 @@ return {
       local cmp = require("cmp")
       local luasnip = require("luasnip")
 
-      -- ------------------------------------------------------------------- }}}
-      -- {{{ has_words_before function
-      --     Determines when words are present before the cursor.
-      --     <Tab> and <S-Tab> m
-
-      local has_words_before = function()
-        -- Deprecated. (Defined in Lua 5.1/LuaJIT, current is Lua 5.4.)
-        -- But, the next line does not work without pack statement.
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0
-          and vim.api
-              .nvim_buf_get_lines(0, line - 1, line, true)[1]
-              :sub(col, col)
-              :match("%s")
-            == nil
-      end
-
-      -- ------------------------------------------------------------------- }}}
-      -- {{{ Completion length and keywords.
-
-      local completion = {
-        completeopt = "menu,nenuone,noinsert",
-        keyword_length = 1,
-      }
-
-      -- ------------------------------------------------------------------- }}}
+    -- --------------------------------------------------------------------- }}}
       -- {{{ Formatting fileds, icons, and source_mapping
 
       local formatting = {
@@ -80,54 +54,6 @@ return {
       }
 
       -- ------------------------------------------------------------------- }}}
-      -- {{{ keybind mappings
-
-      local mapping = {
-        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-
-        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-
-        ["<C-y>"] = cmp.config.disable,
-
-        ["<C-e>"] = cmp.mapping({
-          i = cmp.mapping.abort(),
-          c = cmp.mapping.close(),
-        }),
-
-        -- Do not explicitly select 'first' item when nothing is selected.
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-
-        -- Next
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-
-        -- Previoius
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      }
-
-      -- ------------------------------------------------------------------- }}}
       -- {{{ Add boarders to completion windows.
 
       local window = {
@@ -140,9 +66,8 @@ return {
 
       cmp.setup.filetype("gitcommit", {
         sources = cmp.config.sources({
-          { name = "cmp_git" },
-        }, {
           { name = "buffer" },
+          { name = "cmp_git" },
         }),
       })
 
@@ -157,7 +82,6 @@ return {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = "path" },
-        }, {
           { name = "cmdline" },
         }),
       })
@@ -165,10 +89,8 @@ return {
       -- ------------------------------------------------------------------- }}}
       -- {{{ Update the function argument opts with local choices made.
 
-      opts.completion = completion
       opts.confirm_opts = confirm_opts
       opts.formatting = formatting
-      opts.mapping = mapping
       opts.sources = Constants.completion.sources
       opts.window = window
 
