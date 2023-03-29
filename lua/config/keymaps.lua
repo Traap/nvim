@@ -253,6 +253,7 @@ if Is_Enabled("telescope.nvim") then
   Keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
   Keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
   Keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+  Keymap("n", "<leader>fm", "<cmd>Telescope marks<cr>")
   Keymap(
     "n",
     "<leader>fi",
