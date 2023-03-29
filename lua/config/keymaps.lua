@@ -276,7 +276,6 @@ end
 
 -- TODO: Write the implementations.
 Keymap("v", "<leader>f", "<cmd>lua Functions.surround_selected_text()<cr>")
-Keymap("v", "<leader>t", "<cmd>lua Functions.hello_world()<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - git
