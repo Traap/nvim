@@ -108,7 +108,7 @@ Customize = {
     ["vim-visual-increment"] = { enabled = true },
     ["vimtex"] = { enabled = true },
     ["virtcolumn.nvim"] = { enabled = true },
-    ["which-key.nvim"] = { enabled = false },
+    ["which-key.nvim"] = { enabled = true },
     ["wiki.vim"] = { enabled = true },
     ["wiki-ft.vim"] = { enabled = true },
     ["zen-mode.nvim"] = { enabled = true },
