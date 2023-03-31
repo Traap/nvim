@@ -16,7 +16,6 @@ end
 -- {{{ Transparenbt custom setup.
 
 transparent.setup({
-  enable = true,
   extra_gropus = {
     'Comment',
     'CursorLine',
@@ -27,7 +26,7 @@ transparent.setup({
     'Normal',
     'SignColumn',
   },
-  exclude = {
+  exclude_groups = {
     'ColorColumn',
     'EndOfBuffer',
     'NonText',
