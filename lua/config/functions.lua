@@ -22,7 +22,7 @@ function M.in_tmux()
   return os.getenv("TMUX") ~= nil
 end
 
--- Youtube: Use LazyVim defaults
+-- Youtube: Use LazyVim defaults?
 function M.use_plugin_defaults(plugin)
   return Customize.plugins[plugin].defaults or false
 end

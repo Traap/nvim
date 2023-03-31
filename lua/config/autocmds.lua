@@ -67,10 +67,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Disable autoformat for some file types.
+-- {{{ Disable autoformat for all file types.
+-- TODO: Figure out why spaces are replaced with tabs.  Looks like null-ls?
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "csv", "md", "sh", "tex", "wiki" },
+  pattern = { "*", "csv", "md", "sh", "tex", "wiki" },
   group = augroup("no_autoformat"),
   callback = function()
     vim.b.autoformat = false
@@ -78,7 +79,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ format options
+-- {{{ Format options
 
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
