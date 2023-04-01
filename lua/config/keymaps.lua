@@ -6,7 +6,7 @@ Keymap = Functions.keymap
 Is_Enabled = Functions.is_enabled
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Bdelete
+;-- {{{ Bdelete
 
 if Is_Enabled("vim-easy-align") then
   vim.cmd([[
@@ -68,10 +68,11 @@ Keymap("v", "<leader>cc", '"+y')
 -- Obfuscate
 Keymap("n", "<f3>", "mmggg?G`m")
 
+-- Youtube: nvims: Demonstrate nvims does a pull.
 -- Alternative ESC key to avoid <Ctrl-[>.  Useful when a RCP is used to connect
 -- to a remote host.
-Keymap("i", ";;", "<esc>")
-Keymap("c", ";;", "<esc>")
+-- Keymap("i", ";;", "<esc>")
+-- Keymap("c", ";;", "<esc>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
