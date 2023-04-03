@@ -1,4 +1,4 @@
-My *Blazing Fast* Neovim configuration.
+Traap's *Blazing Fast* Neovim configuration.
 
 ### Credits
 * [Folke Lamaitre](https:/github.com/folke)
@@ -6,15 +6,9 @@ My *Blazing Fast* Neovim configuration.
 
 ### Linux Bash Installation
 
-I clone or pull Neovim source code and build it using [resetNeovim](https://github.com/Traap/dotfiles/blob/master/bin/resetNeovim).
-
-Backups are not done. *You have been warned.*
-
-Here's what happens:
-1. Use [switchNeovim](https://github.com/Traap/dotfiles/blob/master/bash/bin/switchNeovim) switchNeovim to switch to my Neovim configuration.
-2. User [bnvim](https://github.com/Traap/dotfiles/blob/master/bin/bnvim) to rebuild Neovim from source.
-3. Bootstrap Neovim.
-
-### LunarVim Configuration
-This repository and [lvim](https://github.com/traap/lvim) are similar.  I use LunarVim defaults where they make
-since to me and do not conflict too much with configurations done here.
+[resetNeovim](https://github.com/Traap/dotfiles/blob/master/bin/resetNeovim) does the following:
+1. Uses [bnvim](https://github.com/Traap/dotfiles/blob/master/bin/bnvim) to clone or pull Neovim sources and build them.
+2. Bootstrap Neovim.
+3. Uses "[switchNeovim](https://github.com/Traap/dotfiles/blob/master/bash/bin/switchNeovim) traap" to switch to my Neovim configuration.
+4. Backups are not done.
+5. *You have been warned.*
