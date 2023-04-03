@@ -12,3 +12,6 @@ Traap's *Blazing Fast* Neovim configuration.
 ### Notes
 1. Backups are not done.
 2. *You have been warned.*
+
+### Extra credit
+Try [nvims](https://github.com/Traap/dotfiles/blob/master/bash/bin/nvims) to safely experiment with multiple Neovim configurations.
