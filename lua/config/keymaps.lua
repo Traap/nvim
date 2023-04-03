@@ -6,20 +6,6 @@ Keymap = Functions.keymap
 Is_Enabled = Functions.is_enabled
 
 -- ------------------------------------------------------------------------- }}}
-;-- {{{ Bdelete
-
-if Is_Enabled("vim-easy-align") then
-  vim.cmd([[
-    xmap ga <Plug>(EasyAlign)
-    nmap ga <Plug>(EasyAlign)
-    nmap <bar>     gaip*<bar>
-    nmap <leader>0 gaip*,
-    nmap <leader>1 gaip=,
-    nmap <leader>2 gaip=<space>
-  ]])
-end
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Easy align
 
 if Is_Enabled("vim-easy-align") then
@@ -50,10 +36,6 @@ Keymap("n", "<leader>V", "V`]")
 -- Save all files.
 Keymap("n", "<F2>", "<cmd>wall<cr>")
 
--- Delete current buffer.
-if Is_Enabled("vim-bbye") then
-  Keymap("n", "Q", "<cmd>Bdelete!<cr>")
-end
 
 -- Toggle [in]visible characters.
 Keymap("n", "<leader>i", "<cmd>set list!<cr>")
@@ -67,6 +49,9 @@ Keymap("v", "<leader>cc", '"+y')
 
 -- Obfuscate
 Keymap("n", "<f3>", "mmggg?G`m")
+
+-- <leader>x conflicts with LazyVim
+Keymap("n", "<leader>X", "<Plug>(bullets-toggle-checkbox)")
 
 -- Youtube: nvims: Demonstrate nvims does a pull.
 -- Alternative ESC key to avoid <Ctrl-[>.  Useful when a RCP is used to connect
@@ -98,19 +83,26 @@ Keymap("n", "<leader>J", "myvipJ`ygq<cr>")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Shell commands.
 
--- Execute the current line of test as a shell command.
+-- Execute the current line of text as a shell command.
 Keymap("n", "<localleader>E", [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
 Keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Quit all
+-- {{{ Q/q - Quit
 
+-- Quit all
 Keymap("n", "<c-q>", "<cmd>qall!<cr>")
 Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
 
--- ------------------------------------------------------------------------- }}}
--- {{{ leader + space
+-- Delete current buffer.
 
+if Is_Enabled("vim-bbye") then
+  Keymap("n", "Q", "<cmd>Bdelete!<cr>")
+end
+
+-- ------------------------------------------------------------------------- }}}
+
+-- {{{ leader + space
 Keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
 
 -- ------------------------------------------------------------------------- }}}
