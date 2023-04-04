@@ -56,8 +56,8 @@ Keymap("n", "<leader>X", "<Plug>(bullets-toggle-checkbox)")
 -- Youtube: nvims: Demonstrate nvims does a pull.
 -- Alternative ESC key to avoid <Ctrl-[>.  Useful when a RCP is used to connect
 -- to a remote host.
--- Keymap("i", ";;", "<esc>")
--- Keymap("c", ";;", "<esc>")
+Keymap("i", ";;", "<esc>")
+Keymap("c", ";;", "<esc>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
