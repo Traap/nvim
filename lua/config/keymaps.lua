@@ -101,7 +101,6 @@ if Is_Enabled("vim-bbye") then
 end
 
 -- ------------------------------------------------------------------------- }}}
-
 -- {{{ leader + space
 Keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
 
@@ -347,6 +346,7 @@ if Is_Enabled("neo-tree.nvim") or Is_Enabled("nvim-tree") then
 end
 
 if Is_Enabled("noice.nvim") then
+  Keymap("n", "<leader>ne", "<cmd>NoiceErrors<cr>")
   Keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
 end
 
