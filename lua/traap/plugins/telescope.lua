@@ -110,7 +110,6 @@ local file_ignore_patterns = {
 local defaults = {
   border = {},
 
-  -- Youtube:  Notice borderchars are defined.
   borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 
   buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
@@ -157,7 +156,6 @@ local extensions = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Telescope setup.
 
--- Youtube: Bringing it all together.
 telescope.setup({
   defaults = defaults,
   extensions = extensions,
