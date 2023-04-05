@@ -28,6 +28,15 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ vim-dispatch
+
+  {
+    "tpope/vim-dispatch",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = Is_Enabled("vim-dispatch"),
+  },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ vim-fugitive
 
   {

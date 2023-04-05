@@ -92,6 +92,7 @@ Customize = {
     ["vim-easy-align"] = { enabled = true },
     ["vim-endwise"] = { enabled = true },
     ["vim-eunuch"] = { enabled = true },
+    ["vim-dispatch"] = { enabled = true },
     ["vim-fugitive"] = { enabled = true },
     ["vim-illuminate"] = { enabled = false },
     ["vim-most-minimal-folds"] = { enabled = true },
