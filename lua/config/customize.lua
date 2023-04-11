@@ -57,7 +57,7 @@ Customize = {
     ["nvim-dap-virtual-text"] = { enabled = true },
     ["nvim-lspconfig"] = { enabled = true },
     ["nvim-navic"] = { enabled = false },
-    ["nvim-notify"] = { enabled = true },
+    ["nvim-notify"] = { enabled = true, defaults = false },
     ["nvim-spectre"] = { enabled = true },
     ["nvim-surround"] = { enabled = true },
     ["nvim-transparent"] = { enabled = false },
