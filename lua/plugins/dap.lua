@@ -4,11 +4,12 @@ Is_Enabled = require("config.functions").is_enabled
 
 return {
 
-  -- {{{ nvim-dap
   {
+    -- {{{ nvim-dap
     "mfussenegger/nvim-dap",
     enabled = Is_Enabled("nvim-dap"),
     event = "User TraapFile",
+    config = require("plugins.configs.nvim-dap-ui")
   },
 
   -- ----------------------------------------------------------------------- }}}

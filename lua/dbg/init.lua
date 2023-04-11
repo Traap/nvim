@@ -1,4 +1,4 @@
-require("dbg.listeners")
+-- require("dbg.listeners")
 require("dbg.bash")
 require("dbg.codelldb")
 require("dbg.dart")
