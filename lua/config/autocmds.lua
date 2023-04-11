@@ -1,4 +1,6 @@
 Customize = require("config.customize")
+Functions = require("config.functions")
+
 -- {{{ Create autogroup.
 --     NOTE: Found in lazy.vim auto commands.
 
@@ -75,6 +77,32 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   group = augroup("no_autoformat"),
   callback = function()
     vim.b.autoformat = false
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "wtf" },
+  group = augroup("wtf"),
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ File or GitFile Events
+--     TODO: Found in AstroNvim autocmds.lua and adaptated to my needs.
+
+vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
+  group = augroup("file_user_events"),
+  callback = function(args)
+    local nofile = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+    if not (vim.fn.expand "%" == "" or nofile == "nofile") then
+      Functions.event "File"
+      local gitcmd = 'git -C "' .. vim.fn.expand "%:p:h" .. '" rev-parse'
+      if Functions.cmd(gitcmd , false) then
+        Functions.event "GitFile"
+      end
+    end
   end,
 })
 
