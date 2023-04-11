@@ -38,9 +38,9 @@ return {
 
   {
     "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
-    enabled = Is_Enabled("gitsigns.nvim"),
-
+    event = "User TraapGitFile",
+    enabled = Is_Enabled("gitsigns.nvim") and vim.fn.executable == 1,
+    ft = "gitcommit",
     opts = {
       signs = {
         add = { text = "▎" },
@@ -116,6 +116,7 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
+    event = "User TraapFile",
     enabled = Is_Enabled("lualine.nvim"),
     opts = function(_, opts)
       if Use_Defaults("lualine.nvim") then

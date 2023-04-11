@@ -8,7 +8,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     enabled = Is_Enabled("nvim-dap"),
-    event = Constants.file_types,
+    event = "User TraapFile",
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -109,7 +109,7 @@ return {
   {
     "theHamsta/nvim-dap-virtual-text",
     enabled = Is_Enabled("nvim-dap-virtual-text"),
-    event = Constants.file_types,
+    event = "User TraapFile",
     config = true,
     dependencies = { "mfussenegger/nvim-dap" },
   },
@@ -131,7 +131,7 @@ return {
   {
     "nvim-telescope/telescope-dap.nvim",
     enabled = Is_Enabled("telescope-dap.nvim"),
-    event = Constants.file_types,
+    event = "User TraapFile",
     config = true,
     dependencies = { "mfussenegger/nvim-dap" },
   },

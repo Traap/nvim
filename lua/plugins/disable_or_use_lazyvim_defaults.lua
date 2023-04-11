@@ -3,7 +3,7 @@ Is_Enabled = require("config.functions").is_enabled
 
 return {
   -- {{{ Disable LazyVim plugins I don't use or use LazyVim defaults. As an
-  -- example, I use the default LazyVim implementation for lualine.
+  -- example, I use the default LazyVim implementation for null-ls.nvim.
 
   { "RRethy/vim-illuminate", enabled = Is_Enabled("vim-illuminate") },
   { "SmiteshP/nvim-navic", enabled = Is_Enabled("nvim-navic") },

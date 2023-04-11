@@ -107,7 +107,7 @@ return {
     enabled = Is_Enabled("zen-mode.nvim"),
     opts = {
       window = {
-        width = 0.5,
+        width = 0.65,
         height = 0.85,
         options = {
           colorcolumn = "",

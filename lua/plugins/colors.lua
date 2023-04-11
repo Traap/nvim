@@ -47,9 +47,8 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "User TraapFile",
     enabled = Is_Enabled("nvim-colorizer.lua"),
-    event = "VeryLazy",
     config = true,
   },
 
@@ -88,7 +87,7 @@ return {
   -- {{{ nvim-treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "User TraapFile",
     enabled = Is_Enabled("nvim-treesitter"),
     version = false,
     build = ":TSUpdate",

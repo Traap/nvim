@@ -19,7 +19,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "User TraapFile",
     enabled = Is_Enabled("nvim-lspconfig"),
     opts = function(_, opts)
       opts.servers = {
