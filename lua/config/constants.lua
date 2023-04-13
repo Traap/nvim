@@ -67,7 +67,6 @@ Constants = {
       "c_sharp",
       "cpp",
       "dockerfile",
-      "help",
       "html",
       "javascript",
       "json",
