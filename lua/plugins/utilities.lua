@@ -41,8 +41,7 @@ return {
 
   {
     "tpope/vim-fugitive",
-    -- lazy = false,
-    event = "BufEnter",
+    event = "User TraapGitFile",
     enabled = Is_Enabled("vim-fugitive"),
   },
 
