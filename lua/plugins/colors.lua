@@ -48,7 +48,7 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
-    event = "User TraapFile",
+    event = { "BufReadPost", "BufNewFile" },
     enabled = Is_Enabled("nvim-colorizer.lua"),
     config = true,
   },
