@@ -24,23 +24,18 @@ return {
     "folke/tokyonight.nvim",
     enabled = Is_Enabled("tokyonight.nvim"),
     lazy = false,
-    opts = {
-      style = "night",
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
-  },
-
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ catppuccin/nvim
-
-  {
-    "catppuccin/nvim",
-    enabled = Is_Enabled("catppuccin"),
-    lazy = true,
-    name = "catppuccin",
+    opts = function(_, opts)
+      if Use_Defaults("tokyonight.nvim") then
+        -- Use LazyVim default setup.
+        opts = opts
+      else
+        opts.style = "night"
+        opts.styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        }
+      end
+    end,
   },
 
   -- ----------------------------------------------------------------------- }}}
@@ -50,7 +45,6 @@ return {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPost", "BufNewFile" },
     enabled = Is_Enabled("nvim-colorizer.lua"),
-    config = true,
   },
 
   -- ----------------------------------------------------------------------- }}}
