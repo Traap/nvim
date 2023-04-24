@@ -8,6 +8,7 @@ return {
   { "RRethy/vim-illuminate", enabled = Is_Enabled("vim-illuminate") },
   { "SmiteshP/nvim-navic", enabled = Is_Enabled("nvim-navic") },
   { "akinsho/bufferline.nvim", enabled = Is_Enabled("bufferline.nvim") },
+  { "catppuccin/nvim", enabled = Is_Enabled("catppuccin"), },
   { "echasnovski/mini.ai", enabled = Is_Enabled("mini-ai") },
   { "echasnovski/mini.comment", enabled = Is_Enabled("mini-comment") },
   { "echasnovski/mini.indentscope", enabled = Is_Enabled("mini-indentscope") },
@@ -18,7 +19,11 @@ return {
   { "folke/trouble.nvim", enabled = Is_Enabled("trouble.nvim"), },
   { "ggandor/flit.nvim", enabled = Is_Enabled("flit.nvim") },
   { "ggandor/leap.nvim", enabled = Is_Enabled("leap.nvim") },
+  { "goolord/alpha-nvim", enabled = Is_Enabled("alpha-nvim") },
+  { "jay-babu/mason-nvim-dap.nvim", enabled = Is_Enabled("mason-nvim-dap.nvim") },
   { "jose-elias-alvarez/null-ls.nvim", enabled = Is_Enabled("null-ls.nvim") },
+  { "mfussenegger/nvim-dap", enabled = Is_Enabled("nvim-dap") },
+  { "stevearc/dressing.nvim", enabled = Is_Enabled("dressing") },
 
   -- ----------------------------------------------------------------------- }}}
 }
