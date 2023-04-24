@@ -83,6 +83,7 @@ Constants = {
       "tsx",
       "typescript",
       "vim",
+      "vimdoc",
       "yaml",
     },
   },
