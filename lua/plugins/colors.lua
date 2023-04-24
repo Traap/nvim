@@ -1,6 +1,7 @@
 Customize = require("config.customize")
 Constants = require("config.constants")
 Is_Enabled = require("config.functions").is_enabled
+Use_Defaults = require("config.functions").use_plugin_defaults
 
 return {
   -- {{{ nvim-base16
@@ -87,35 +88,36 @@ return {
   -- {{{ nvim-treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "User TraapFile",
     enabled = Is_Enabled("nvim-treesitter"),
-    version = false,
-    build = ":TSUpdate",
-
-    opts = {
-      autopairs = { enable = true },
-      autotag = { enable = true, disable = { "xml" } },
-      context_commenting = { enable = true, enable_autocmd = false },
-      highlight = {
-        enable = true,
-        disable = Constants.disabled.treesitter,
-        additional_vim_regex_highlighting = true,
-      },
-      indent = { enable = true, disable = { "yml", "yaml" } },
-      playground = { enable = true },
-      rainbow = {
-        enable = true,
-        extended_mode = true,
-        max_file_lines = 1500,
-        colors = Constants.colors.rainbow,
-      },
-      disable = { "latex" },
-      ensure_installed = Constants.ensure_installed.treesitter,
-    },
-
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+    opts = function(_, opts)
+      if Use_Defaults("nvim-treesitter") then
+        -- Use LazyVim default setup.
+        opts = opts
+      else
+        -- Use my customizations.
+        opts.autopairs = { enable = true }
+        opts.autotag = { enable = true, disable = { "xml" } }
+        opts.context_commenting = { enable = true, enable_autocmd = false }
+        opts.highlight = {
+          enable = true,
+          disable = Constants.disabled.treesitter,
+          additional_vim_regex_highlighting = true,
+        }
+        opts.indent = { enable = true, disable = { "yml", "yaml" } }
+        opts.rainbow = {
+          enable = true,
+          extended_mode = true,
+          max_file_lines = 1500,
+          colors = Constants.colors.rainbow,
+        }
+        opts.disable = { "latex" }
+        opts.ensure_installed = Constants.ensure_installed.treesitter
+      end
     end,
+
+    -- config = function(_, opts)
+    --   require("nvim-treesitter.configs").setup(opts)
+    -- end,
 
     dependencies = {
       "mrjones2014/nvim-ts-rainbow",
