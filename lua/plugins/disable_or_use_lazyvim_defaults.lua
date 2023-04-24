@@ -15,6 +15,7 @@ return {
   { "echasnovski/mini.surround", enabled = Is_Enabled("mini-surround") },
   { "folke/neoconf.nvim", enabled = Is_Enabled("neoconf.nvim") },
   { "folke/neodev.nvim", enabled = Is_Enabled("neodev.nvim") },
+  { "folke/trouble.nvim", enabled = Is_Enabled("trouble.nvim"), },
   { "ggandor/flit.nvim", enabled = Is_Enabled("flit.nvim") },
   { "ggandor/leap.nvim", enabled = Is_Enabled("leap.nvim") },
   { "jose-elias-alvarez/null-ls.nvim", enabled = Is_Enabled("null-ls.nvim") },

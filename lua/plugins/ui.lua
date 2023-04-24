@@ -279,16 +279,6 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ trouble.nvim
-
-  {
-    "folke/trouble.nvim",
-    event = "VimEnter",
-    enabled = Is_Enabled("trouble.nvim"),
-    opts = { use_diagnostic_signs = true },
-  },
-
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ vim-most-minimal-folds
 
   {
