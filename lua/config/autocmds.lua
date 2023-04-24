@@ -7,11 +7,12 @@ Functions = require("config.functions")
 local function augroup(name)
   return vim.api.nvim_create_augroup("nvimtraap_" .. name, { clear = true })
 end
---
+
 -- -------------------------------------------------------------------------- }}}
 -- {{{ Clear items that make transparency look bad.
 
 vim.api.nvim_create_autocmd("BufEnter", {
+  group = augroup("transparency"),
   callback = function()
     vim.cmd([[ highlight clear Folded ]])
 
@@ -31,30 +32,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- {{{ Close some filetypes with <q>.
 --     NOTE:  Built into Lazy.vim but I extend the pattern.
 
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("close_with_q"),
-  pattern = {
-    "PlenaryTestPopup",
-    "alpha",
-    "dashboard",
-    "fugitive",
-    "help",
-    "lspinfo",
-    "man",
-    "mason",
-    "notify",
-    "qf",
-    "spectre_panel",
-    "startuptime",
-    "tsplayground",
-  },
+  vim.api.nvim_create_autocmd("FileType", {
+    group = augroup("close_with_q"),
+    pattern = { "fugitive" },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set(
-      "n",
-      "q",
-      "<cmd>close<cr>",
-      { buffer = event.buf, silent = true }
+      "n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true }
     )
   end,
 })
@@ -73,20 +57,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -- TODO: Figure out why spaces are replaced with tabs.  Looks like null-ls?
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "*", "csv", "md", "sh", "tex", "wiki" },
+  pattern = { "*", "csv", "md", "sh", "tex", "wiki", "wtf" },
   group = augroup("no_autoformat"),
   callback = function()
     vim.b.autoformat = false
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "wtf" },
-  group = augroup("wtf"),
-  callback = function()
-    vim.b.autoformat = false
-  end,
-})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ File or GitFile Events
@@ -124,33 +101,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Goto last location when opening a buffer.
---     NOTE:  Built into Lazy.vim
-
--- vim.api.nvim_create_autocmd("BufReadPost", {
---   group = augroup("last_loc")
---   callback = function()
---     local mark = vim.api.nvim_buf_get_mark(0, '"')
---     local lcount = vim.api.nvim_buf_line_count(0)
---     if mark[1] > 0 and mark[1] <= lcount then
---       pcall(vim.api.nvim_win_set_cursor, 0, mark)
---     end
---   end,
--- })
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Highlight on yank
---     NOTE:  Built into Lazy.vim
-
--- vim.api.nvim_create_autocmd("TextYankPost", {
---   augroup("highlight_yank")
---   callback = function()
---     vim.highlight.on_yank()
---   end,
---   pattern = "*",
--- })
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ json
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
@@ -176,25 +126,6 @@ vim.api.nvim_create_autocmd("BufLeave", {
   command = "call ClearUmlLaunchFlag()",
   pattern = { "*.puml", "*.wsd" },
 })
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Reload file when necessay.
---      NOTE:  Built into Lazy.vim
-
-vim.api.nvim_create_autocmd(
-  { "FocusGained", "TermClose", "TermLeave" },
-  { command = "checktime" }
-)
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Resize splits when window is resized.
---      NOTE:  Built into Lazy.vim
-
--- vim.api.nvim_create_autocmd({ "VimResized" }, {
---   callback = function()
---     vim.cmd("tabdo wincmd =")
---   end,
--- })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Set spelling for some file types.
