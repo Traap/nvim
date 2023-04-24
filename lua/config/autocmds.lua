@@ -85,18 +85,24 @@ vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Format options
+-- TODO:  Is this really needed?
+
 
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
-    vim.cmd([[ setlocal formatoptions+=c ]])
-    vim.cmd([[ setlocal formatoptions+=j ]])
-    vim.cmd([[ setlocal formatoptions+=n ]])
-    vim.cmd([[ setlocal formatoptions+=q ]])
-    vim.cmd([[ setlocal formatoptions+=r ]])
-    vim.cmd([[ setlocal formatoptions-=2 ]])
-    vim.cmd([[ setlocal formatoptions-=a ]])
-    vim.cmd([[ setlocal formatoptions-=o ]])
-    vim.cmd([[ setlocal formatoptions-=t ]])
+
+    -- Add these options.
+    vim.cmd([[ setlocal formatoptions+=c ]]) -- Autowrap comments
+    vim.cmd([[ setlocal formatoptions+=j ]]) -- Join comment lines when possible
+    vim.cmd([[ setlocal formatoptions+=n ]]) -- Format recognizing numbered lists
+    vim.cmd([[ setlocal formatoptions+=q ]]) -- Allow format with gq
+    vim.cmd([[ setlocal formatoptions+=r ]]) -- Insert autocomment leader
+
+    -- Remove these options.
+    vim.cmd([[ setlocal formatoptions-=2 ]]) -- Use 2nd line indent when formatting
+    vim.cmd([[ setlocal formatoptions-=a ]]) -- Automatic paragraph formatting
+    vim.cmd([[ setlocal formatoptions-=o ]]) -- Automatic insert comment leader when 'o' or 'O'
+    vim.cmd([[ setlocal formatoptions-=t ]]) -- Auto wrap with text width
   end,
 })
 
