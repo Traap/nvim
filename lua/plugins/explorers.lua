@@ -1,4 +1,5 @@
 Is_Enabled = require("config.functions").is_enabled
+Use_Defaults = require("config.functions").use_plugin_defaults
 
 return {
   -- {{{ gem-browse
@@ -15,30 +16,16 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     enabled = Is_Enabled("neo-tree.nvim"),
-    cmd = "Neotree",
-    deactivate = function()
-      vim.cmd([[Neotree close]])
-    end,
-    -- keys = function() return {} end,
     keys = false,
-    init = function()
-      vim.g.neo_tree_remove_legacy_commands = 1
-      if vim.fn.argc() == 1 then
-        local stat = vim.loop.fs_stat(vim.fn.argv(0))
-        if stat and stat.type == "directory" then
-          require("neo-tree")
-        end
+    opts = function(_, opts)
+        -- Use LazyVim default setup.
+      if Use_Defaults("neo-tree.nvim") then
+        opts = opts
+      else
+        opts.filesystem = { bind_to_cwd = false, follow_current_file = true, }
+        opts.window = { position = "right", }
       end
     end,
-    opts = {
-      filesystem = {
-        bind_to_cwd = false,
-        follow_current_file = true,
-      },
-      window = {
-        position = "right",
-      },
-    },
   },
 
   -------------------------------------------------------------------------- }}}
