@@ -41,7 +41,7 @@ return {
 
   {
     "tpope/vim-fugitive",
-    event = "VeryLazy",
+    lazy = false,
     enabled = Is_Enabled("vim-fugitive"),
   },
 
