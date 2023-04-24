@@ -9,9 +9,7 @@ return {
     cmd = "Mason",
     enabled = Is_Enabled("mason.nvim"),
     keys = { { "<leader>cm", "<cmd>Mason<cr> " } },
-    opts = {
-      ensure_installed = Constants.ensure_installed.mason,
-    },
+    opts = { ensure_installed = Constants.ensure_installed.mason, },
   },
 
   -- ----------------------------------------------------------------------- }}}
