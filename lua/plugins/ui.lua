@@ -8,7 +8,6 @@ return {
 
   {
     "goolord/alpha-nvim",
-    event = { "BufReadPost", "BufNewFile" },
     enabled = Is_Enabled("alpha-nvim"),
   },
 
@@ -131,7 +130,7 @@ return {
           section_separators = { left = "", right = "" },
           disabled_filetypes = {
             winbar = {},
-            statusline = {},
+            statusline = { "alpha", "dashboard" },
           },
           ignore_focus = {},
           always_divide_middle = true,
