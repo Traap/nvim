@@ -57,7 +57,6 @@ return {
 
   {
     "nvim-tree/nvim-web-devicons",
-    event = "User TraapFile",
     enabled = Is_Enabled("nvim-web-devicons")
       and (Is_Enabled("nvim-tree") or Is_Enabled("lualine.nvim")),
     opts = {
