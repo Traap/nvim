@@ -4,35 +4,6 @@ Is_Enabled = functions.is_enabled
 Use_Defaults = functions.use_plugin_defaults
 
 return {
-  -- {{{ alpha-nvim
-
-  {
-    "goolord/alpha-nvim",
-    enabled = Is_Enabled("alpha-nvim"),
-  },
-
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ dressing
-
-  {
-    "stevearc/dressing.nvim",
-    enabled = Is_Enabled("dressing"),
-    lazy = true,
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
-  },
-
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ Git signs and lightbulb.
 
   {
@@ -73,6 +44,9 @@ return {
       end,
     },
   },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ Lightbulb
 
   {
     "kosayoda/nvim-lightbulb",
@@ -188,33 +162,19 @@ return {
     opts = function(_, opts)
       if Use_Defaults("noice.nvim") then
         -- Use LazyVim default setup.
-        opts = {}
+        opts = opts
       else
         -- Use my customizations.
         opts.presets = {
           bottom_search = false,
-          command_palette = true,
-          long_message_to_split = true,
-          inc_rename = false,
           lsp_doc_border = true,
         }
 
         opts.cmdline_popup = {
-          views = {
-            position = {
-              row = "50%",
-              col = "50%",
-            },
-            win_options = {
-              winhighlight = "NormalFloat:NormalFloat, FloatBorder:FloatBorder",
-            },
-          },
+          views = { position = { row = "50%", col = "50%"  } },
         }
 
         opts.lsp = {
-          progress = {
-            view = "notify",
-          },
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
             ["vim.lsp.util.stylize_markdown"] = false,
@@ -252,21 +212,17 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    event = "BufEnter",
     enabled = Is_Enabled("nvim-notify"),
-    opts = {
-      background_colour = "#1a1b26",
-      level = 3,
-      render = "minimal",
-      timeout = 1500,
-      top_down = false,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.75)
-      end,
-    },
+    opts = function(_, opts)
+      if Use_Defaults("nvim-notify") then
+        -- Use LazyVim default setup.
+        opts = opts
+      else
+        opts.background_colour = "#1a1b26"
+        opts.timeout = 1500
+        opts.top_down = false
+      end
+    end,
   },
 
   -- ----------------------------------------------------------------------- }}}
