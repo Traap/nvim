@@ -37,7 +37,7 @@ return {
 
   {
     "lewis6991/gitsigns.nvim",
-    event = "User TraapGitFile",
+    event = { "BufReadPost", "BufNewFile" },
     enabled = Is_Enabled("gitsigns.nvim") and vim.fn.executable == 1,
     ft = "gitcommit",
     opts = {
@@ -115,12 +115,12 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
-    event = "User TraapFile",
+    event = 'VeryLazy' ,
     enabled = Is_Enabled("lualine.nvim"),
     opts = function(_, opts)
       if Use_Defaults("lualine.nvim") then
         -- Use LazyVim default setup.
-        opts = {}
+        opts = opts
       else
         -- Use my customizations.
         opts.options = {

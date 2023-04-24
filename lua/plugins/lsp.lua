@@ -17,8 +17,8 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    event = "User TraapFile",
     enabled = Is_Enabled("nvim-lspconfig"),
+    event = { "BufReadPost", "BufNewFile" },
     opts = function(_, opts)
       opts.servers = {
         ansiblels = {},
