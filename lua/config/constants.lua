@@ -171,8 +171,7 @@ Constants = {
     },
     keywords = {
       Youtube = { icon = " ", color = "#ff0000" },
-      -- FIXME: Disable until next Youtube video is done.
-      -- URL = { icon = " ", color = "#7711FF", alt = { "Url", "url" } },
+      URL = { icon = " ", color = "#7711FF", alt = { "Url", "url" } },
     },
     web_devicons = {
       Dockerfile = { icon = "", color = "#b8b5ff", name = "Dockerfile" },
