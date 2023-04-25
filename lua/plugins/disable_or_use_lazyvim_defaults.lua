@@ -5,6 +5,7 @@ return {
   -- {{{ Disable LazyVim plugins I don't use or use LazyVim defaults. As an
   -- example, I use the default LazyVim implementation for null-ls.nvim.
 
+  { "MunifTanjim/nui.nvim", enabled = Is_Enabled("nui.nvim") },
   { "RRethy/vim-illuminate", enabled = Is_Enabled("vim-illuminate") },
   { "SmiteshP/nvim-navic", enabled = Is_Enabled("nvim-navic") },
   { "akinsho/bufferline.nvim", enabled = Is_Enabled("bufferline.nvim") },

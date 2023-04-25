@@ -44,6 +44,7 @@ Customize = {
     ["neodev.nvim"] = { enabled = true },
     ["neoformat"] = { enabled = false },
     ["noice.nvim"] = { enabled = true, defaults = false },
+    ["nui.nvim"] = { enabled = true },
     ["null-ls.nvim"] = { enabled = true },
     ["nvim-autopairs"] = { enabled = true },
     ["nvim-base16"] = { enabled = false },
