@@ -268,7 +268,6 @@ if Is_Enabled("telescope.nvim") then
   Keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>")
   Keymap("n", "<leader>fl", "<cmd>Telescope resume<cr>")
   Keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>")
-  -- Youtube: Add Telescope planets keymap.
   Keymap("n", "<leader>fp", "<cmd>Telescope planets<cr>")
   Keymap("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
 end

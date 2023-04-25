@@ -31,9 +31,13 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ harpoon
 
+  -- Youtube: load Harpoon when an keybinding is pressed.
   {
     "ThePrimeagen/harpoon",
-    event = { "BufReadPost", "BufNewFile" },
+    keys = {
+      "<leader>ha",
+      "<leader>hu",
+    },
     enabled = Is_Enabled("harpoon"),
     opts = {
       global_settings = {
@@ -47,7 +51,6 @@ return {
     },
     config = function(_, opts)
       require("harpoon").setup(opts)
-
       local mark = require("harpoon.mark")
       local ui = require("harpoon.ui")
       vim.keymap.set("n", "<leader>ha", mark.add_file)
