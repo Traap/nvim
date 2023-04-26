@@ -73,6 +73,15 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ vim-speeddating
+
+  {
+    "tpope/vim-speeddating",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = Is_Enabled("vim-speeddating"),
+  },
+
+  -- ----------------------------------------------------------------------- }}}
   -- {{{ toggleterm.nvim
 
   {

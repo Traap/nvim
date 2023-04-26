@@ -102,6 +102,7 @@ Customize = {
     ["vim-rake"] = { enabled = true },
     ["vim-rbenv"] = { enabled = true },
     ["vim-repeat"] = { enabled = true },
+    ["vim-speeddating"] = { enabled = true },
     ["vim-startuptime"] = { enabled = true },
     ["vim-surround"] = { enabled = false },
     ["vim-tmux-navigator"] = { enabled = true },
