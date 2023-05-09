@@ -18,6 +18,16 @@ Constants = {
   -- {{{ Languages lsp_config, mason, and treesitter ensures are installed.
 
   ensure_installed = {
+    dap = {
+      "codelldb",
+      "debugpy",
+      "delve",
+      "java-debug-adapter",
+      "java-test",
+      "js-debug-adapter",
+      "netconfigdb",
+      "node-debug2-adapter",
+    },
     lsp_config = {
       "bashls",
       "clangd",
