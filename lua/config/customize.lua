@@ -54,7 +54,7 @@ Customize = {
     ["nvim-dap-go"] = { enabled = true },
     ["nvim-dap-python"] = { enabled = true },
     ["nvim-dap-ruby"] = { enabled = true },
-    ["nvim-dap-ui"] = { enabled = true },
+    ["nvim-dap-ui"] = { enabled = true, defaults = false },
     ["nvim-dap-virtual-text"] = { enabled = true },
     ["nvim-lspconfig"] = { enabled = true },
     ["nvim-navic"] = { enabled = true },
