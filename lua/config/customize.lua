@@ -61,7 +61,7 @@ Customize = {
     ["nvim-notify"] = { enabled = true, defaults = false },
     ["nvim-spectre"] = { enabled = true },
     ["nvim-surround"] = { enabled = true },
-    ["nvim-transparent"] = { enabled = false },
+    ["nvim-transparent"] = { enabled = true },
     ["nvim-tree"] = { enabled = false },
     ["nvim-treesitter"] = { enabled = true, defaults = true },
     ["nvim-ts-rainbow"] = { enabled = true },

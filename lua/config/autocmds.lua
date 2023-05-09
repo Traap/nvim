@@ -15,6 +15,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = augroup("transparency"),
   callback = function()
     vim.cmd([[ highlight clear Folded ]])
+    vim.cmd([[ highlight Folded guibg=comment ]])
+
+    vim.cmd([[ highlight clear CursorLineFold ]])
+    vim.cmd([[ highlight CursorLineFold guifg=#e0af68 ]])
 
     if Customize.virtcolumn_nvim then
       vim.cmd([[ highlight ColorColumn guibg=#292d42 ]])
