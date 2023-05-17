@@ -28,7 +28,8 @@ Customize = {
     ["fzf.vim"] = { enabled = true },
     ["gem-browse"] = { enabled = true },
     ["gitsigns.nvim"] = { enabled = true },
-    ["harpoon"] = { enabled = true },
+    -- Youtube: Show harpoon can be disabled.
+    ["harpoon"] = { enabled = true, defaults=false},
     ["indent-blankline"] = { enabled = true, defaults = false },
     ["leap.nvim"] = { enabled = false },
     ["markdown-preview.nvim"] = { enabled = true },
@@ -48,7 +49,8 @@ Customize = {
     ["null-ls.nvim"] = { enabled = true },
     ["nvim-autopairs"] = { enabled = true },
     ["nvim-base16"] = { enabled = false },
-    ["nvim-cmp"] = { enabled = true },
+    -- TODO: Fugture Youtube video content.
+    ["nvim-cmp"] = { enabled = true , defaults = false },
     ["nvim-colorizer.lua"] = { enabled = true },
     ["nvim-dap"] = { enabled = true },
     ["nvim-dap-go"] = { enabled = true },
