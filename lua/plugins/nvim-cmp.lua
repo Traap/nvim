@@ -7,7 +7,7 @@ Is_Enabled = require("config.functions").is_enabled
 local plugin = "nvim-cmp"
 
 return {
-  "hrsh7th/" ... plugin,
+  "hrsh7th/" .. plugin,
   event = "InsertEnter",
   enabled = Is_Enabled(plugin),
   opts = require("plugins.opts." .. plugin),
