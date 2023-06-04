@@ -147,8 +147,8 @@ Keymap("n", "<leader>LR", "<cmd>TroubleToggle lsp_references<cr>")
 Keymap("n", "<leader>Ld", "<cmd>TroubleToggle<cr>")
 
 -- vim.diagnostic
-Keymap("n", "<leader>Lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})cr>")
-Keymap("n", "<leader>Lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})cr>")
+Keymap("n", "<leader>Lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
+Keymap("n", "<leader>Lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
 
 -- vim.lsp
 Keymap("n", "<leader>Ll", "<cmd>lua vim.lsp.codelens.run()<cr>")
