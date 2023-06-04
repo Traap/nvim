@@ -58,6 +58,30 @@ return function(_, opts)
     end
 
     -- --------------------------------------------------------------------- }}}
+    -- {{{ formatting
+
+    local kind_icons = Constants.icons.lsp_kinds
+
+    local source_mapping = {
+      spell         = "[Spell]",
+      luasnip       = "[Snippet]",
+      nvim_lsp      = "[LSP]",
+      buffer        = "[Buffer]",
+      latex_symbols = "[LaTeX]",
+      nvim_lua      = "[Lua]",
+      path          = "[Path]",
+    }
+
+    local formatting = {
+      fields = {'kind', 'abbr', 'menu'},
+      format = function(entry, vim_item)
+        vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
+        vim_item.menu = (source_mapping)[entry.source.name]
+        return vim_item
+      end
+    }
+
+    -- ------------------------------------------------------------------------- }}}
     -- {{{ Snippets
 
     local snippet = {
@@ -68,14 +92,11 @@ return function(_, opts)
     -- {{{ Mappings
 
     local mapping = {
-      ["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
-      ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
-
-      ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-      ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-
       ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+      ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+
       ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+      ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
 
       ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
@@ -115,6 +136,7 @@ return function(_, opts)
     -- {{{ Update the function argument opts with local choices made.
 
     opts.confirm_opts = confirm_opts
+    opts.formatting = formatting
     opts.mapping = mapping
     opts.snippet = snippet
     opts.sources = Constants.completion.sources
