@@ -67,6 +67,7 @@ Customize = {
     ["nvim-ts-rainbow"] = { enabled = true },
     ["nvim-unimpaired"] = { enabled = true },
     ["nvim-web-devicons"] = { enabled = true },
+    ["oil.nvim"] = { enabled = true, defaults = true },
     ["one-small-step-for-vimkind"] = { enabled = false },
     ["lualine.nvim"] = { enabled = true, defaults = false },
     ["plenary.nvim"] = { enabled = true },
