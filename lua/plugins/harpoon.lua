@@ -1,35 +1,72 @@
-Is_Enabled = require("config.functions").is_enabled
-In_Tmux = require("config.functions").in_tmux
+local functions = require("config.functions")
+Is_Enabled = functions.is_enabled
+Use_Defaults = functions.use_plugin_defaults
 
 -- Youtube: load Harpoon when an keybinding is pressed.
 
+local plugin = "harpoon"
+
 return {
-  "ThePrimeagen/harpoon",
+  -- {{{ Define the Harpoon lazy.vim specificaiton.
+
+  "ThePrimeagen/" .. plugin,
+  enabled = Is_Enabled(plugin),
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ Define events to load Harpoon.
+
   keys = {
-    "<leader>ha",
-    "<leader>hu",
+    "<a-1>",
+    "<a-2>",
+    "<a-3>",
+    "<a-4>",
+    "<a-5>",
+    "<a-6>",
+    "<a-7>",
+    "<a-8>",
   },
-  enabled = Is_Enabled("harpoon"),
-  opts = {
-    global_settings = {
-      save_on_toggle = false,
-      save_on_change = true,
-      enter_on_sendcmd = false,
-      tmux_autoclose_windows = false,
-      excluded_filetypes = { "harpoon" },
-      mark_branch = false,
-    },
-  },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ Use Harpoon defaults or my customizations.
+
+  opts = function(_, opts)
+    if Use_Defaults(plugin) then
+      opts = opts
+    else
+      opts.global_settings = {
+        save_on_toggle = false,
+        save_on_change = true,
+        enter_on_sendcmd = false,
+        tmux_autoclose_windows = false,
+        excluded_filetypes = { plugin, "alpha", "dashboard", "gitcommit" },
+        mark_branch = false,
+      }
+    end
+  end,
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ Configure harpoon.
+
   config = function(_, opts)
     require("harpoon").setup(opts)
-    local mark = require("harpoon.mark")
-    local ui = require("harpoon.ui")
-    vim.keymap.set("n", "<leader>ha", mark.add_file)
-    vim.keymap.set("n", "<leader>hu", ui.toggle_quick_menu)
+    local mark = require(plugin .. ".mark")
+    local ui = require(plugin .. ".ui")
 
-    vim.keymap.set("n", "<A-1>", function() ui.nav_file(1) end)
-    vim.keymap.set("n", "<A-2>", function() ui.nav_file(2) end)
-    vim.keymap.set("n", "<A-3>", function() ui.nav_file(3) end)
-    vim.keymap.set("n", "<A-4>", function() ui.nav_file(4) end)
+    -- Harpoon marked files 1 through 4.
+    vim.keymap.set("n", "<a-1>", function() ui.nav_file(1) end)
+    vim.keymap.set("n", "<a-2>", function() ui.nav_file(2) end)
+    vim.keymap.set("n", "<a-3>", function() ui.nav_file(3) end)
+    vim.keymap.set("n", "<a-4>", function() ui.nav_file(4) end)
+
+    -- Harpoon next and previous.
+    vim.keymap.set("n", "<a-5>", function() ui.nav_next() end)
+    vim.keymap.set("n", "<a-6>", function() ui.nav_prev() end)
+
+    -- Harpoon user interface.
+    vim.keymap.set("n", "<a-7>", ui.toggle_quick_menu)
+    vim.keymap.set("n", "<a-8>", mark.add_file)
+
   end,
+
+  -- ----------------------------------------------------------------------- }}}
 }

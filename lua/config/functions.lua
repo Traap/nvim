@@ -10,12 +10,13 @@ function M.keymap(mode, lhs, rhs, opts)
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ B oooolean helopers
+-- {{{ Boolean helpers
 
 local function _error_handler(err)
   require("notify")(err)
 end
 
+-- Youtube:  Check enabled flag in Customize.plugins table.
 local function _is_enabled(plugin)
   return Customize.plugins[plugin].enabled
 end
@@ -36,6 +37,7 @@ function M.in_tmux()
   return os.getenv("TMUX") ~= nil
 end
 
+-- Youtube:  Check defaults in Customize.plugins table.
 function M.use_plugin_defaults(plugin)
   return Customize.plugins[plugin].defaults or false
 end

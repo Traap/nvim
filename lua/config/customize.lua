@@ -28,6 +28,8 @@ Customize = {
     ["fzf.vim"] = { enabled = true },
     ["gem-browse"] = { enabled = true },
     ["gitsigns.nvim"] = { enabled = true },
+
+-- Youtube: Enable harpoon but do not use defaults.
     ["harpoon"] = { enabled = true, defaults=false},
     ["indent-blankline"] = { enabled = true, defaults = false },
     ["leap.nvim"] = { enabled = false },
