@@ -3,18 +3,6 @@ Customize = require("config.customize")
 Is_Enabled = require("config.functions").is_enabled
 
 return {
-  -- {{{ JuneGunn fzf.
-
-  {
-    "junegunn/fzf.vim",
-    event = { "BufReadPost", "BufNewFile" },
-    enabled = Is_Enabled("fzf.vim"),
-    dependencies = {
-      "junegunn/fzf.vim",
-      "Traap/vim-bundle-fzf",
-    },
-  },
-
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Telescope
 
