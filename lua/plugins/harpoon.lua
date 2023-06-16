@@ -48,7 +48,7 @@ return {
   -- {{{ Configure harpoon.
 
   config = function(_, opts)
-    require("harpoon").setup(opts)
+    require(plugin).setup(opts)
     local mark = require(plugin .. ".mark")
     local ui = require(plugin .. ".ui")
 
