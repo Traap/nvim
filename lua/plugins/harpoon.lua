@@ -2,8 +2,6 @@ local functions = require("config.functions")
 Is_Enabled = functions.is_enabled
 Use_Defaults = functions.use_plugin_defaults
 
--- Youtube: load Harpoon when an keybinding is pressed.
-
 local plugin = "harpoon"
 
 return {

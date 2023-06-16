@@ -28,9 +28,7 @@ Customize = {
     ["fzf.vim"] = { enabled = true },
     ["gem-browse"] = { enabled = true },
     ["gitsigns.nvim"] = { enabled = true },
-
--- Youtube: Enable harpoon but do not use defaults.
-    ["harpoon"] = { enabled = true, defaults=false},
+    ["harpoon"] = { enabled = true, defaults = false},
     ["indent-blankline"] = { enabled = true, defaults = false },
     ["leap.nvim"] = { enabled = false },
     ["markdown-preview.nvim"] = { enabled = true },
@@ -63,7 +61,7 @@ Customize = {
     ["nvim-notify"] = { enabled = true, defaults = false },
     ["nvim-spectre"] = { enabled = true },
     ["nvim-surround"] = { enabled = true },
-    ["nvim-transparent"] = { enabled = true },
+    ["nvim-transparent"] = { enabled = false },
     ["nvim-tree"] = { enabled = false },
     ["nvim-treesitter"] = { enabled = true, defaults = true },
     ["nvim-ts-rainbow"] = { enabled = true },
