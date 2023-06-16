@@ -63,20 +63,4 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ todo-comments.nvim
-  --
-  --     Unicodes:
-  --       Youtube -> F167
-  --       Cloud -> F0C2
-
-  {
-    "folke/todo-comments.nvim",
-    enabled = Is_Enabled("todo-comments.nvim"),
-    opts = function(_, opts)
-      opts.merge_keywords = true
-      opts.keywords = Constants.icons.keywords
-    end,
-  },
-
-  -- ----------------------------------------------------------------------- }}}
 }
