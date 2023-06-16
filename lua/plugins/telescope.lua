@@ -1,45 +1,34 @@
-Constants = require("config.constants")
-Customize = require("config.customize")
-Is_Enabled = require("config.functions").is_enabled
+local functions = require("config.functions")
+Is_Enabled = functions.is_enabled
+Use_Defaults = functions.use_plugin_defaults
+
+local plugin = "telescope.nvim"
 
 return {
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ Telescope
+  "nvim-telescope/" .. plugin,
+  enabled = Is_Enabled(plugin),
+  cmd = "Telescope",
+  keys = false,
 
-  {
-    "nvim-telescope/telescope.nvim",
-    enabled = Is_Enabled("telescope.nvim"),
-    cmd = "Telescope",
-    keys = false,
-    opts = {
-      defaults = {
+  opts = function(_, opts)
+    if Use_Defaults(plugin) then
+      opts = opts
+    else
+      opts. defaults = {
         layout_config = { prompt_position = "top" },
         layout_strategy = "horizontal",
         prompt_prefix = " ",
         selection_caret = " ",
         sorting_strategy = "ascending",
         winblend = 0,
-      },
-      pickers = {
+      }
+      opts.pickers = {
         colorscheme = { enable_preview = true },
-      },
-    },
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-    },
-  },
+      }
+    end
+  end,
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ Telescope fzf native
-  {
+  dependencies = {
     "nvim-telescope/telescope-fzf-native.nvim",
-    enabled = Is_Enabled("telescope-fzf-native.nvim"),
-    cmd = "Telescope",
-    build = "make",
-    config = function()
-      require("telescope").load_extension("fzf")
-    end,
   },
-
-  -- ----------------------------------------------------------------------- }}}
 }
