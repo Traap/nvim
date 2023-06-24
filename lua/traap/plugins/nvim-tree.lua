@@ -146,51 +146,6 @@ local hijack_directories = {
 }
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Define: key mappings
-
-local callback = config.nvim_tree_callback
-
-local keymap = {
-  { key = {'<CR>', 'o', '<2-LeftMouse>'}, cb = callback('edit') },
-  { key = {'<2-RightMouse>', '<C-}>'},    cb = callback('cd') },
-  { key = '-',                            cb = callback('dir_up') },
-  { key = '<',                            cb = callback('prev_sibling') },
-  { key = '<BS>',                         cb = callback('close_node') },
-  { key = '<C->',                         cb = callback('full_rename') },
-  { key = '<S-CR>',                       cb = callback('close_node') },
-  { key = '<Tab>',                        cb = callback('preview') },
-  { key = '>',                            cb = callback('next_sibling') },
-  { key = 'H',                            cb = callback('toggle_dotfiles') },
-  { key = 'I',                            cb = callback('toggle_ignored') },
-  { key = 'J',                            cb = callback('last_sibling') },
-  { key = 'K',                            cb = callback('first_sibling') },
-  { key = 'P',                            cb = callback('parent_node') },
-  { key = 'R',                            cb = callback('refresh') },
-  { key = 'Y',                            cb = callback('copy_path') },
-  { key = '[c',                           cb = callback('prev_git_item') },
-  { key = ']c',                           cb = callback('next_git_item') },
-  { key = 'a',                            cb = callback('create') },
-  { key = 'c',                            cb = callback('copy') },
-  { key = 'd',                            cb = callback('remove') },
-  { key = 'g?',                           cb = callback('toggle_help') },
-  { key = 'gy',                           cb = callback('copy_absolute_path') },
-  { key = 'p',                            cb = callback('paste') },
-  { key = 'q',                            cb = callback('close') },
-  { key = 'r',                            cb = callback('rename') },
-  { key = 's',                            cb = callback('split') },
-  { key = 't',                            cb = callback('tabnew') },
-  { key = 'v',                            cb = callback('vsplit') },
-  { key = 'x',                            cb = callback('cut') },
-  { key = 'y',                            cb = callback('copy_name') },
-  { key = '<C-t>', cb = "<cmd>lua require'telescope.builtin'.live_grep()<cr>"},
-}
-
-local mappings = {
-  custom_only  = false,
-  list         = keymap,
-}
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Define: system open
 
 local system_open = {
@@ -227,7 +182,6 @@ local view                    = {
   adaptive_size               = false,
   float                       = float,
   hide_root_folder            = false,
-  mappings                    = mappings,
   number                      = false,
   preserve_window_proportions = true,
   relativenumber              = false,
@@ -250,7 +204,6 @@ nvim_tree.setup {
   hijack_directories                 = hijack_directories,
   hijack_netrw                       = true,
   hijack_unnamed_buffer_when_opening = false,
-  ignore_buffer_on_setup             = false,
   update_cwd                         = true,
   system_open                        = system_open,
   update_focused_file                = update_focused_file,
