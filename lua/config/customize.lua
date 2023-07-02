@@ -82,7 +82,7 @@ Customize = {
     ["toggleterm.nvim"] = { enabled = true, defaults = true },
     ["tokyonight.nvim"] = { enabled = true, defaults = false },
     ["trouble.nvim"] = { enabled = true, defaults = true },
-    ["vim-bbye"] = { enabled = true, defaults = true },
+    ["vim-bbye"] = { enabled = false, defaults = true },
     ["vim-bundle-abbreviate"] = { enabled = true, defaults = true },
     ["vim-bundle-fzf"] = { enabled = true, defaults = true },
     ["vim-bundle-plantuml"] = { enabled = true, defaults = true },
