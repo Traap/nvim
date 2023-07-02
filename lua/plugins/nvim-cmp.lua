@@ -1,4 +1,3 @@
-Constants = require("config.constants")
 Customize = require("config.customize")
 Is_Enabled = require("config.functions").is_enabled
 
@@ -8,7 +7,14 @@ return {
   "hrsh7th/" .. plugin,
   event = {"InsertEnter"},
   enabled = Is_Enabled(plugin),
-  opts = require("plugins.opts." .. plugin),
+  opts = function(_, opts)
+    if Use_Defaults(plugin) then
+      opts = opts
+    else
+      opts = require("plugins.opts." .. plugin)
+    end
+  end,
+
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-calc",
