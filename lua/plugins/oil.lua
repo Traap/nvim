@@ -7,10 +7,11 @@ local plugin = "oil.nvim"
 
 return {
   "stevearc/" .. plugin,
-  lazy = false,
+  cmd = "Oil",
+  keys = { { "<leader>no", "<cmd>Oil<cr>", desc = "Oil buffer" } },
   enabled = Is_Enabled(plugin),
 
-  -- {{{ Options
+  -- {{{ Option
   opts = function(_, opts)
     if Use_Defaults(plugin) then
       opts = opts
