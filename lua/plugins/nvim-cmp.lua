@@ -2,8 +2,6 @@ Constants = require("config.constants")
 Customize = require("config.customize")
 Is_Enabled = require("config.functions").is_enabled
 
--- {{{ nvim-cmp
-
 local plugin = "nvim-cmp"
 
 return {
@@ -23,7 +21,3 @@ return {
     "saadparwaiz1/cmp_luasnip",
   }
 }
-
-
--- This
--- ------------------------------------------------------------------------- }}}
