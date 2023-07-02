@@ -3,17 +3,17 @@ local functions = require("config.functions")
 Is_Enabled = functions.is_enabled
 Use_Defaults = functions.use_plugin_defaults
 
+local plugin = "noice.nvim"
+
 return {
-  "folke/noice.nvim",
+  "folke/" .. plugin,
   event = "VeryLazy",
-  enabled = Is_Enabled("noice.nvim"),
+  enabled = Is_Enabled(plugin),
   keys = false,
   opts = function(_, opts)
-    if Use_Defaults("noice.nvim") then
-      -- Use LazyVim default setup.
+    if Use_Defaults(plugin) then
       opts = opts
     else
-      -- Use my customizations.
       opts.presets = {
         bottom_search = false,
         lsp_doc_border = true,
