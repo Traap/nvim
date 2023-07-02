@@ -71,31 +71,6 @@ Constants = {
       "typescript-language-server",
       "yaml-language-server",
     },
-    treesitter = {
-      "bash",
-      "c",
-      "c_sharp",
-      "cpp",
-      "dockerfile",
-      "html",
-      "javascript",
-      "json",
-      "lua",
-      "markdown",
-      "markdown_inline",
-      "python",
-      "query",
-      "regex",
-      "ruby",
-      "rust",
-      "sql",
-      "toml",
-      "tsx",
-      "typescript",
-      "vim",
-      "vimdoc",
-      "yaml",
-    },
   },
 
   -- ------------------------------------------------------------------------- }}}
@@ -212,20 +187,6 @@ Constants = {
   },
 
   -- ------------------------------------------------------------------------- }}}
-  -- {{{ Rainbow colors
-
-  colors = {
-    rainbow = {
-      "Gold",
-      "Orchid",
-      "DodgerBlue",
-      "Cornsilk",
-      "Salmon",
-      "LawnGreen",
-    },
-  },
-
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ Display boarders
 
   display_border = {
