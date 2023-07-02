@@ -2,6 +2,7 @@
 
 Customize = require("config.customize")
 Functions = require("config.functions")
+ToggleTerm = require("config.toggleterm")
 Keymap = Functions.keymap
 Is_Enabled = Functions.is_enabled
 
@@ -436,10 +437,10 @@ if Is_Enabled("vim-tmux-runner") then
 end
 
 if Is_Enabled("toggleterm.nvim") then
-  Keymap("n", "<leader>Tf", [[<cmd>lua Customize.toggleterm.float()<cr>]])
-  Keymap("n", "<leader>Tl", [[<cmd>lua Customize.toggleterm.lazygit()<cr>]])
-  Keymap("n", "<leader>Tm", [[<cmd>lua Customize.toggleterm.neomutt()<cr>]])
-  Keymap("n", "<leader>Tr", [[<cmd>lua Customize.toggleterm.ranger()<cr>]])
+  Keymap("n", "<leader>Tb", [[<cmd>lua ToggleTerm.bashtop()<cr>]])
+  Keymap("n", "<leader>Tl", [[<cmd>lua ToggleTerm.lazygit()<cr>]])
+  Keymap("n", "<leader>Tm", [[<cmd>lua ToggleTerm.neomutt()<cr>]])
+  Keymap("n", "<leader>Tr", [[<cmd>lua ToggleTerm.ranger()<cr>]])
 end
 
 -- ------------------------------------------------------------------------- }}}
