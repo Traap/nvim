@@ -29,7 +29,7 @@ function M.is_enabled(plugin)
 end
 
 function M.is_debugger(debugger)
-  return Customize.debuggers[debugger].enabled
+  return requrie("config.debuggers").Debuggers[debugger].enabled
 end
 
 function M.in_tmux()
