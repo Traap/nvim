@@ -844,3 +844,6 @@ RCC
 SCADA
 YTD
 MTD
+Lifecycles
+Ansible
+cmake
