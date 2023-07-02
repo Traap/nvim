@@ -1,4 +1,4 @@
-return function(_, opts) {
+return function(_, opts)
   -- {{{ opts function begins and overrides LazyVim default behavior.
 
   local cmp = require("cmp")
@@ -139,4 +139,4 @@ return function(_, opts) {
   opts.window = window
 
   -- ----------------------------------------------------------------------- }}}
-}
+end

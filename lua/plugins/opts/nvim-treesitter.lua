@@ -1,4 +1,4 @@
-return function(_, opts) {
+return function(_, opts)
   opts.autopairs = { enable = true }
   opts.autotag = { enable = true, disable = { "xml" } }
   opts.context_commenting = { enable = true, enable_autocmd = false }
@@ -23,5 +23,5 @@ return function(_, opts) {
     "bash", "c", "c_sharp", "cpp", "dockerfile", "html", "javascript", "json",
     "lua", "markdown", "markdown_inline", "python", "query", "regex", "ruby",
     "rust", "sql", "toml", "tsx", "typescript", "vim", "vimdoc", "yaml",
-  },
-}
+  }
+end
