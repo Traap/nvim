@@ -10,7 +10,7 @@ return {
   event = 'VeryLazy' ,
   enabled = Is_Enabled(plugin),
   opts = function(_, opts)
-    if Use_Defaults("lualine.nvim") then
+    if Use_Defaults(plugin) then
       opts = opts
     else
       opts.options = {
