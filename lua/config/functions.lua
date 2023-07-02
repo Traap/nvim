@@ -41,30 +41,5 @@ function M.use_plugin_defaults(plugin)
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Surround selected text
-
--- TODO: This prototype is broken.
--- function M.surround_selected_text()
---   -- Get current buffer.
---   local bufnr = vim.api.nvim_get_current_buf()
-
---   -- Get the start and end positions of the visual selection
---   local sline = vim.api.nvim_buf_get_mark(bufnr, "<")
---   local eline = vim.api.nvim_buf_get_mark(bufnr, ">")
-
---   -- NOTE: 1) Relativenumbers cause grief. 2) Marks seam to move around.  Values
---   -- reported trough etxt and stxt don't make sense.
-
---   local start = sline[1] - 1
---   local finish = eline[1] + 1
-
---   local etxt = { "-- finish: " .. finish }
---   vim.api.nvim_buf_set_lines(bufnr, finish, finish, false, etxt)
-
---   local stxt = { "-- start: " .. start }
---   vim.api.nvim_buf_set_lines(bufnr, start, start, false, stxt)
--- end
-
--- ------------------------------------------------------------------------- }}}
 
 return M
