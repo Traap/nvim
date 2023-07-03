@@ -87,6 +87,7 @@ Keymap("n", "<leader>kwiki", "<cmd>Dispatch! tmux kill-session -t wiki<cr>")
 -- {{{ Q/q - Quit
 
 -- Quit all
+Keymap("n", "<c-q>", "<cmd>qall!<cr>")
 Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
 
 -- ------------------------------------------------------------------------- }}}
@@ -139,13 +140,6 @@ Keymap("n", "<leader>Lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 -- {{{ V - Linewise reselection of what you just pasted.
 
 Keymap("n", "<leader>VV", "V`]")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ a - Alpha
-
-if Is_Enabled("alpha-nvim") then
-  Keymap("n", "<leader>aa", "<cmd>Alpha<cr>")
-end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ b - Buffer adjustments.
