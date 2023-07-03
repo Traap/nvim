@@ -137,10 +137,6 @@ Keymap("n", "<leader>cc", 'ggVGg_"+y')
 
 -- ------------------------------------------------------------------------- }}}
 
-if Is_Enabled("nvim-dap-ui") then
-  Keymap("n", "<leader>dU", [[<cmd>lua require("dapui").toggle()<cr>]])
-end
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - KJV commands
 

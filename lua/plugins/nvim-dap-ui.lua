@@ -2,6 +2,10 @@ require("config.globals")
 
 local plugin = 'nvim-dap-ui'
 
+if Is_Enabled(plugin) then
+  Keymap("n", "<leader>dU", [[<cmd>lua require("dapui").toggle()<cr>]])
+end
+
 return {
   "rcarriga/" .. plugin,
   enabled = Is_Enabled(plugin),
