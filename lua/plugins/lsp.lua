@@ -2,18 +2,7 @@ Constants = require("config.constants")
 Is_Enabled = require("config.functions").is_enabled
 
 return {
-  -- {{{ mason.nvim
-
-  {
-    "williamboman/mason.nvim",
-    cmd = "Mason",
-    enabled = Is_Enabled("mason.nvim"),
-    keys = { { "<leader>cm", "<cmd>Mason<cr> " } },
-    opts = { ensure_installed = Constants.ensure_installed.mason, },
-  },
-
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-lspconfi
+  -- {{{ nvim-lspconfig
 
   {
     "neovim/nvim-lspconfig",
