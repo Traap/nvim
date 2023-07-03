@@ -2,8 +2,11 @@
 
 Constants = require("config.constants")
 Customize = require("config.customize")
+
 Is_Enabled = require("config.functions").is_enabled
 In_Tmux = require("config.functions").in_tmux
+
+Keymap = require("config.functions").keymap
 
 Use_Default_Opts =   require("config.functions").use_default_opts
 Use_Default_Config = require("config.functions").use_default_config

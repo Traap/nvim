@@ -1,5 +1,7 @@
 require("config.globals")
 
+ToggleTerm = require("config.toggleterm")
+
 local plugin = "toggleterm.nvim"
 
 return {
@@ -17,10 +19,9 @@ return {
     direction = "horizontal",
   },
   keys = {
-    {
-      "<leader>Tf",
-      "<leader>Tl",
-      "<leader>Tr",
-    },
+    {"<leader>Tb", "<cmd>lua ToggleTerm.bashtop()<cr>", "Bashtop"},
+    {"<leader>Tl", "<cmd>lua ToggleTerm.lazygit()<cr>", "Bashtop"},
+    {"<leader>Tm", "<cmd>lua ToggleTerm.neomutt()<cr>", "Bashtop"},
+    {"<leader>Tr", "<cmd>lua ToggleTerm.ranger()<cr>", "Bashtop"},
   },
 }

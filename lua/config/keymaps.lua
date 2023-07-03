@@ -1,14 +1,6 @@
 -- {{{ Global definitions
 
-Customize = require("config.customize")
-Functions = require("config.functions")
-ToggleTerm = require("config.toggleterm")
-Keymap = Functions.keymap
-Is_Enabled = Functions.is_enabled
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Easy align
-
+require("config.globals")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ General mappings.
@@ -348,16 +340,6 @@ Keymap("n", "<leader>pu", "<cmd>Lazy update<cr>")
 Keymap("n", "<leader>sh", "<cmd>split<cr>")
 Keymap("n", "<leader>sv", "<cmd>vsplit<cr>")
 Keymap("n", "<leader>ss", "0v)k$:sort<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ t - Terminals
-
-if Is_Enabled("toggleterm.nvim") then
-  Keymap("n", "<leader>Tb", [[<cmd>lua ToggleTerm.bashtop()<cr>]])
-  Keymap("n", "<leader>Tl", [[<cmd>lua ToggleTerm.lazygit()<cr>]])
-  Keymap("n", "<leader>Tm", [[<cmd>lua ToggleTerm.neomutt()<cr>]])
-  Keymap("n", "<leader>Tr", [[<cmd>lua ToggleTerm.ranger()<cr>]])
-end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ w - Whitespace
