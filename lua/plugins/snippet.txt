@@ -1,0 +1,21 @@
+require("config.globals")
+
+local plugin = "plugin-name"
+
+return {
+  "github-repository/" .. plugin,
+  enabled = Is_Enabled(plugin),
+
+  cmd = {},
+  event = {},
+  key = {},
+  lazy = true,
+
+  opts = function(_, opts)
+    if Use_Defaults(plugin) then
+      opts = opts
+    else
+      opts = {}
+    end
+  end,
+}

@@ -1,0 +1,33 @@
+require("config.globals")
+
+local plugin = "plugin-name"
+
+return {
+  "github-repository/" .. plugin,
+  enabled = Is_Enabled(plugin),
+
+  cmd = {},
+  event = {},
+  keys = {},
+  lazy = true,
+
+  opts = function(_, opts)
+    if Use_Defaults(plugin) then
+      opts = opts
+    else
+      opts = {}
+    end
+  end,
+
+  -- Run configuraiton.
+  -- config = true,
+
+  -- Use a function
+  config = function(_, opts)
+    require(plugin).setup(opts)
+  end,
+
+  -- config = {
+  --   name = '123'
+  -- }
+}
