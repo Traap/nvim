@@ -1,6 +1,6 @@
+Customize = require("config.customize")
 Is_Enabled = require("config.functions").is_enabled
-
--- {{{ nvim-surround
+Use_Defaults = require("config.functions").use_plugin_defaults
 
 local plugin = "nvim-surround"
 
@@ -10,5 +10,3 @@ return {
   enabled = Is_Enabled(plugin),
   config = true,
 }
-
--- ------------------------------------------------------------------------- }}}

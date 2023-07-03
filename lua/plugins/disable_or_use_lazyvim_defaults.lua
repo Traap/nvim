@@ -1,9 +1,15 @@
----@type boolean
+Customize = require("config.customize")
 Is_Enabled = require("config.functions").is_enabled
+Use_Defaults = require("config.functions").use_plugin_defaults
+
+-- {{{ Disable or Use documentation.
+--
+-- Disable LazyVim plugins I don't use or use LazyVim defaults. As an
+-- example, I use the default LazyVim implementation for null-ls.nvim.
+--
+-- ----------------------------------------------------------------------- }}}
 
 return {
-  -- {{{ Disable LazyVim plugins I don't use or use LazyVim defaults. As an
-  -- example, I use the default LazyVim implementation for null-ls.nvim.
 
   { "MunifTanjim/nui.nvim", enabled = Is_Enabled("nui.nvim") },
   { "RRethy/vim-illuminate", enabled = Is_Enabled("vim-illuminate") },
@@ -25,6 +31,4 @@ return {
   { "jose-elias-alvarez/null-ls.nvim", enabled = Is_Enabled("null-ls.nvim") },
   { "mfussenegger/nvim-dap", enabled = Is_Enabled("nvim-dap") },
   { "stevearc/dressing.nvim", enabled = Is_Enabled("dressing") },
-
-  -- ----------------------------------------------------------------------- }}}
 }

@@ -1,7 +1,6 @@
 Customize = require("config.customize")
-local functions = require("config.functions")
-Is_Enabled = functions.is_enabled
-Use_Defaults = functions.use_plugin_defaults
+Is_Enabled = require("config.functions").is_enabled
+Use_Defaults = require("config.functions").use_plugin_defaults
 
 return {
   "rcarriga/nvim-notify",
@@ -11,7 +10,7 @@ return {
       opts = opts
     else
       opts.background_colour = "#1a1b26"
-      opts.timeout = 1500
+      opts.timeout = 1000
       opts.top_down = false
     end
   end,
