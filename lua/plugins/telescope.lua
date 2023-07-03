@@ -2,7 +2,7 @@ require("config.globals")
 
 local plugin = "telescope.nvim"
 
--- {{{ Telescope keymaps
+-- {{{ keymaps
 
 if Is_Enabled(plugin) then
   local cmdT = "<cmd>Telescope "
@@ -38,7 +38,7 @@ if Is_Enabled(plugin) then
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Telescope specification.
+-- {{{ lazy.nvim specification.
 
 return {
   "nvim-telescope/" .. plugin,
