@@ -428,30 +428,10 @@ if Is_Enabled("toggleterm.nvim") then
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ w - Wiki &  Whitespace
+-- {{{ w - Whitespace
 
-Keymap(
-  "n",
-  "<leader>wa",
-  "<cmd>edit /home/traap/git/wiki/journal/Acronyms.md<cr>"
-)
-Keymap(
-  "n",
-  "<leader>wb",
-  "<cmd>edit /home/traap/git/wiki/journal/Backlog.md<cr>"
-)
-Keymap("n", "<leader>we", "<cmd>WikiExport<cr>")
-Keymap("n", "<leader>wi", "<cmd>WikiIndex<cr>")
-Keymap("n", "<leader>wp", "<cmd>WikiFzfPages<cr>")
-Keymap("n", "<leader>wr", "<cmd>%s/\r//g<cr>")
-Keymap("n", "<leader>wt", "mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z")
-Keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
-Keymap("n", "<leader>wZ", "<cmd>WikiFzfTags<cr>")
-Keymap("n", "<leader>wv", "<cmd><cr>")
-Keymap(
-  "n",
-  "<leader>wz",
-  "<cmd>execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &<cr>"
-)
+  Keymap("n", "<leader>wr", "<cmd>%s/\r//g<cr>")
+  Keymap("n", "<leader>wt", "mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z")
+  Keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
 
 -- ------------------------------------------------------------------------- }}}
