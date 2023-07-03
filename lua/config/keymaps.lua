@@ -166,8 +166,8 @@ Keymap("n", "<leader>ss", "0v)k$:sort<cr>")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ w - Whitespace
 
-  Keymap("n", "<leader>wr", "<cmd>%s/\r//g<cr>")
-  Keymap("n", "<leader>wt", "mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z")
-  Keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
+Keymap("n", "<leader>wr", "<cmd>%s/\r//g<cr>")
+Keymap("n", "<leader>wt", "mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z")
+Keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
 
 -- ------------------------------------------------------------------------- }}}
