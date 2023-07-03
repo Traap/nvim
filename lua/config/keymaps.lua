@@ -144,14 +144,6 @@ Keymap("n", "gk", [[0mMvg_"ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 Keymap("v", "gk", [["ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ n - File explorers
-
-if Is_Enabled("noice.nvim") then
-  Keymap("n", "<leader>ne", "<cmd>NoiceErrors<cr>")
-  Keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
-end
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options
 
 Keymap("n", "<leader>oh", "<cmd>checkhealth<cr>")
