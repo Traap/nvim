@@ -7,7 +7,7 @@ return {
   enabled = Is_Enabled(plugin),
 
   opts = function(_, opts)
-    if Use_Defaults(plugin) then
+    if Use_Default_Opts(plugin) then
       opts = opts
     else
       opts = require("plugins.opts.nvim-treesitter")

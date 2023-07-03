@@ -7,7 +7,7 @@ return {
   enabled = Is_Enabled(plugin),
   event = Constants.file_types,
   opts = function(_, opts)
-    if Use_Defaults(plugin) then
+    if Use_Default_Opts(plugin) then
       opts = opts
     else
       opts.automatic_setup = true

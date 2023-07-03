@@ -7,7 +7,7 @@ return {
   enabled = Is_Enabled(plugin),
   cmd = { "NvimTreeFindFile", "NvimTreeRefresh", "NvimTreeToggle", },
   opts = function(_, opts)
-    if Use_Defaults(plugin) then
+    if Use_Default_Opts(plugin) then
       opts = opts
     else
       opts.filters = { custom = { ".git" }, }

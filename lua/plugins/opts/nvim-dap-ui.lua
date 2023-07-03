@@ -1,5 +1,5 @@
 return function(_, opts)
-  if Use_Defaults("nvim-dap-ui") then
+  if Use_Default_Opts("nvim-dap-ui") then
     -- Use LazyVim default setup.
     opts = opts
   else

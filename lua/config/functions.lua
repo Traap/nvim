@@ -29,15 +29,23 @@ function M.is_enabled(plugin)
 end
 
 function M.is_debugger(debugger)
-  return requrie("config.debuggers").Debuggers[debugger].enabled
+  return require("config.debuggers").Debuggers[debugger].enabled
 end
 
 function M.in_tmux()
   return os.getenv("TMUX") ~= nil
 end
 
-function M.use_plugin_defaults(plugin)
+function M.use_default_opts(plugin)
   return Customize.plugins[plugin].defaults or false
+end
+
+function M.use_default_config(plugin)
+  return Customize.plugins[plugin].config or false
+end
+
+function M.use_defaults_keys(plugin)
+  return Customize.plugins[plugin].keys or false
 end
 
 -- ------------------------------------------------------------------------- }}}
