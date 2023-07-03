@@ -249,15 +249,6 @@ if Is_Enabled("telescope.nvim") then
   Keymap("n", "<leader>go", "<cmd>Telescope git_status<cr>")
 end
 
-if Is_Enabled("vim-fugitive") then
-  Keymap("n", "<leader>gP", "<cmd>G pull<cr>")
-  Keymap("n", "<leader>gc", "<cmd>G commmit<cr>")
-  Keymap("n", "<leader>gd", "<cmd>G diff<cr>")
-  Keymap("n", "<leader>gl", "<cmd>G log<cr>")
-  Keymap("n", "<leader>gh", "<cmd>vert bo help fugitive<cr>")
-  Keymap("n", "<leader>gp", "<cmd>G push<cr>")
-  Keymap("n", "<leader>gs", "<cmd>G<cr>")
-end
 
 if Is_Enabled("vim-bundle-plantuml") then
   Keymap("n", "<leader>gu", "<cmd>call GenerateUmlDiagram<cr>")
