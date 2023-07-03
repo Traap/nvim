@@ -9,5 +9,4 @@ require("config.globals")
 
 return {
   { "catppuccin/nvim", enabled = Is_Enabled("catppuccin"), },
-  { "stevearc/dressing.nvim", enabled = Is_Enabled("dressing") },
 }

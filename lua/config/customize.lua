@@ -1,5 +1,4 @@
 local Customize = {}
-
 -- {{{ Customize documentation.
 --
 -- Customize table is a plugin name and true or false.  Using nvim_tree as the
@@ -22,7 +21,7 @@ Customize = {
     ["catppuccin"] = { enabled = true, defaults = true },
     ["clipboard-image.nvim"] = { enabled = true, defaults = true },
     ["crates.nvim"] = { enabled = true, defaults = true },
-    ["dressing"] = { enabled = true, defaults = true },
+    ["dressing.nvim"] = { enabled = true, defaults = true },
     ["flit.nvim"] = { enabled = true, defaults = true },
     ["fzf.vim"] = { enabled = true, defaults = true },
     ["gem-browse"] = { enabled = true, defaults = true },
