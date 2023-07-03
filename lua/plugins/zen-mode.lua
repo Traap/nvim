@@ -2,6 +2,10 @@ require("config.globals")
 
 local plugin = "zen-mode.nvim"
 
+if Is_Enabled(plugin) then
+  Keymap("n", "<leader>oz", [[<cmd>lua require("zen-mode").toggle()<cr>]])
+end
+
 return {
   "folke/" .. plugin,
   enabled = Is_Enabled(plugin),

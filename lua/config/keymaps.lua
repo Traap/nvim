@@ -234,11 +234,6 @@ end
 Keymap("n", "<leader>oh", "<cmd>checkhealth<cr>")
 Keymap("n", "<leader>oo", "<cmd>only<cr>")
 
-
-if Is_Enabled("zen-mode.nvim") then
-  Keymap("n", "<leader>oz", [[<cmd>lua require("zen-mode").toggle()<cr>]])
-end
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ p - Package manager
 
