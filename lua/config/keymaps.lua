@@ -174,10 +174,6 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - KJV commands
 
-if Is_Enabled("vim-bundle-plantuml") then
-  Keymap("n", "<leader>gu", "<cmd>call GenerateUmlDiagram<cr>")
-end
-
 Keymap("n", "gk", [[0mMvg_"ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 Keymap("v", "gk", [["ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 
