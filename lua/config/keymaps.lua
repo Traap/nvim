@@ -172,14 +172,7 @@ if Is_Enabled("nvim-dap-ui") then
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ f - Find
-
-if Is_Enabled("todo-comments.nvim") then
-  Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
-end
-
--- ------------------------------------------------------------------------- }}}
--- {{{ g - git
+-- {{{ g - KJV commands
 
 if Is_Enabled("vim-bundle-plantuml") then
   Keymap("n", "<leader>gu", "<cmd>call GenerateUmlDiagram<cr>")

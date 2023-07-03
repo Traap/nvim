@@ -2,6 +2,10 @@ require("config.globals")
 
 local plugin = "todo-comments.nvim"
 
+if Is_Enabled(plugin) then
+  Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
+end
+
 return {
   "folke/" .. plugin,
   enabled = Is_Enabled(plugin),
