@@ -6,13 +6,13 @@ local plugin = "mason.nvim"
 return {
   "williamboman/" .. plugin,
   cmd = "Mason",
-  enabled = Is_Enabled("mason.nvim"),
+  enabled = Is_Enabled(plugin),
   keys = { { "<leader>cm", "<cmd>Mason<cr> " }},
   opts = function(_, opts)
     if Use_Defaults(plugin) then
       opts = opts
     else
-      opts = {
+      opts.ensure_installed = {
         "bash-language-server",
         "clangd",
         "css-lsp",

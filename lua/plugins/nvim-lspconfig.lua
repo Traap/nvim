@@ -1,14 +1,16 @@
 Constants = require("config.constants")
 Is_Enabled = require("config.functions").is_enabled
 
-return {
-  -- {{{ nvim-lspconfig
+local plugin = "nvim-lspconfig"
 
-  {
-    "neovim/nvim-lspconfig",
-    enabled = Is_Enabled("nvim-lspconfig"),
-    event = { "BufReadPost", "BufNewFile" },
-    opts = function(_, opts)
+return {
+  "neovim/" .. plugin,
+  enabled = Is_Enabled(plugin),
+  event = { "BufReadPost", "BufNewFile" },
+  opts = function(_, opts)
+    if Use_Defaults(plugin) then
+      opts = opts
+    else
       opts.servers = {
         ansiblels = {},
         astro = {},
@@ -25,7 +27,6 @@ return {
         svelte = {},
         tsserver = {},
         yamlls = {},
-
         lua_ls = {
           single_file_support = true,
           settings = {
@@ -89,8 +90,6 @@ return {
           },
         },
       }
-    end,
-  },
-
-  -- ----------------------------------------------------------------------- }}}
+    end
+  end,
 }
