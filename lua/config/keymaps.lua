@@ -90,12 +90,6 @@ Keymap("n", "<leader>kwiki", "<cmd>Dispatch! tmux kill-session -t wiki<cr>")
 Keymap("n", "<c-q>", "<cmd>qall!<cr>")
 Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
 
--- Delete current buffer.
-
-if Is_Enabled("vim-bbye") then
-  Keymap("n", "Q", "<cmd>Bdelete!<cr>")
-end
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
 
