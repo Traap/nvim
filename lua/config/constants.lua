@@ -122,10 +122,6 @@ Constants = {
       modified = " ",
       removed = " ",
     },
-    keywords = {
-      Youtube = { icon = " ", color = "#ff0000" },
-      URL = { icon = " ", color = "#7711FF", alt = { "Url", "url" } },
-    },
   },
 
   -- ------------------------------------------------------------------------- }}}
