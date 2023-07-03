@@ -1,5 +1,4 @@
-Customize = require("config.customize")
-Is_Enabled = require("config.functions").is_enabled
+require("config.globals")
 
 local plugin = "fzf.vim"
 
