@@ -9,7 +9,7 @@ require("config.globals")
 
 return {
 
-  { "MunifTanjim/nui.nvim", enabled = Is_Enabled("nui.nvim") },
+  -- { "MunifTanjim/nui.nvim", enabled = Is_Enabled("nui.nvim") },
   { "RRethy/vim-illuminate", enabled = Is_Enabled("vim-illuminate") },
   { "SmiteshP/nvim-navic", enabled = Is_Enabled("nvim-navic") },
   { "akinsho/bufferline.nvim", enabled = Is_Enabled("bufferline.nvim") },
