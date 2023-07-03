@@ -39,7 +39,7 @@ Customize = {
     ["mini.pairs"] = { enabled = false, defaults = true },
     ["mini.surround"] = { enabled = false, defaults = true },
     ["neo-tree.nvim"] = { enabled = true, defaults = false },
-    ["neoconf.nvim"] = { enabled = false, defaults = true },
+    ["neoconf.nvim"] = { enabled = true, defaults = true },
     ["neodev.nvim"] = { enabled = true, defaults = true },
     ["neoformat"] = { enabled = false, defaults = true },
     ["noice.nvim"] = { enabled = true, defaults = false },
