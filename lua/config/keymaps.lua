@@ -9,16 +9,6 @@ Is_Enabled = Functions.is_enabled
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Easy align
 
-if Is_Enabled("vim-easy-align") then
-  vim.cmd([[
-    xmap ga <Plug>(EasyAlign)
-    nmap ga <Plug>(EasyAlign)
-    nmap <bar>     gaip*<bar>
-    nmap <leader>0 gaip*,
-    nmap <leader>1 gaip=,
-    nmap <leader>2 gaip=<space>
-  ]])
-end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ General mappings.
