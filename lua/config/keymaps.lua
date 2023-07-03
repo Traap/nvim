@@ -87,7 +87,6 @@ Keymap("n", "<leader>kwiki", "<cmd>Dispatch! tmux kill-session -t wiki<cr>")
 -- {{{ Q/q - Quit
 
 -- Quit all
-Keymap("n", "<c-q>", "<cmd>qall!<cr>")
 Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
 
 -- ------------------------------------------------------------------------- }}}
