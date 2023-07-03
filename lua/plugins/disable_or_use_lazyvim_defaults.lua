@@ -8,7 +8,6 @@ require("config.globals")
 -- ----------------------------------------------------------------------- }}}
 
 return {
-  { "SmiteshP/nvim-navic", enabled = Is_Enabled("nvim-navic") },
   { "akinsho/bufferline.nvim", enabled = Is_Enabled("bufferline.nvim") },
   { "catppuccin/nvim", enabled = Is_Enabled("catppuccin"), },
   { "echasnovski/mini.ai", enabled = Is_Enabled("mini-ai") },
