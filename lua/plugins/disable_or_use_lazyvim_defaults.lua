@@ -9,7 +9,6 @@ require("config.globals")
 
 return {
   { "catppuccin/nvim", enabled = Is_Enabled("catppuccin"), },
-  { "echasnovski/mini.pairs", enabled = Is_Enabled("mini.pairs") },
   { "echasnovski/mini.surround", enabled = Is_Enabled("mini.surround") },
   { "folke/neoconf.nvim", enabled = Is_Enabled("neoconf.nvim") },
   { "folke/neodev.nvim", enabled = Is_Enabled("neodev.nvim") },
