@@ -9,7 +9,6 @@ require("config.globals")
 
 return {
   { "catppuccin/nvim", enabled = Is_Enabled("catppuccin"), },
-  { "echasnovski/mini.comment", enabled = Is_Enabled("mini.comment") },
   { "echasnovski/mini.indentscope", enabled = Is_Enabled("mini.indentscope") },
   { "echasnovski/mini.pairs", enabled = Is_Enabled("mini.pairs") },
   { "echasnovski/mini.surround", enabled = Is_Enabled("mini.surround") },

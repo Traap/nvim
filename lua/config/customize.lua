@@ -34,7 +34,7 @@ Customize = {
     ["mason.nvim"] = { enabled = true, defaults = true },
     ["mason-nvim-dap.nvim"] = { enabled = true, },
     ["mini.ai"] = { enabled = true, defaults = true },
-    ["mini.comment"] = { enabled = false, defaults = true },
+    ["mini.comment"] = { enabled = true, defaults = true },
     ["mini.indentscope"] = { enabled = false, defaults = true },
     ["mini.pairs"] = { enabled = false, defaults = true },
     ["mini.surround"] = { enabled = false, defaults = true },
