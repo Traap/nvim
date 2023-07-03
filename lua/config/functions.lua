@@ -37,15 +37,15 @@ function M.in_tmux()
 end
 
 function M.use_default_opts(plugin)
-  return Customize.plugins[plugin].defaults or false
+  return Customize.plugins[plugin].default.opts or false
 end
 
 function M.use_default_config(plugin)
-  return Customize.plugins[plugin].config or false
+  return Customize.plugins[plugin].default.config or false
 end
 
-function M.use_defaults_keys(plugin)
-  return Customize.plugins[plugin].keys or false
+function M.use_default_keys(plugin)
+  return Customize.plugins[plugin].default.keys or false
 end
 
 -- ------------------------------------------------------------------------- }}}
