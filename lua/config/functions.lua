@@ -28,10 +28,6 @@ function M.is_enabled(plugin)
   return status and enabled
 end
 
-function M.is_debugger(debugger)
-  return require("config.debuggers").Debuggers[debugger].enabled
-end
-
 function M.in_tmux()
   return os.getenv("TMUX") ~= nil
 end
