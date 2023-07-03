@@ -8,7 +8,6 @@ require("config.globals")
 -- ----------------------------------------------------------------------- }}}
 
 return {
-  { "RRethy/vim-illuminate", enabled = Is_Enabled("vim-illuminate") },
   { "SmiteshP/nvim-navic", enabled = Is_Enabled("nvim-navic") },
   { "akinsho/bufferline.nvim", enabled = Is_Enabled("bufferline.nvim") },
   { "catppuccin/nvim", enabled = Is_Enabled("catppuccin"), },

@@ -96,7 +96,7 @@ Customize = {
     ["vim-eunuch"] = { enabled = true, defaults = true },
     ["vim-dispatch"] = { enabled = true, defaults = true },
     ["vim-fugitive"] = { enabled = true, defaults = true },
-    ["vim-illuminate"] = { enabled = false, defaults = true },
+    ["vim-illuminate"] = { enabled = true, defaults = true },
     ["vim-most-minimal-folds"] = { enabled = true, defaults = true },
     ["vim-projectionist"] = { enabled = true, defaults = true },
     ["vim-rails"] = { enabled = true, defaults = true },
