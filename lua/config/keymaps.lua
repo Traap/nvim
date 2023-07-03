@@ -19,7 +19,6 @@ Keymap("n", "<leader>V", "V`]")
 -- Save all files.
 Keymap("n", "<F2>", "<cmd>wall<cr>")
 
-
 -- Toggle [in]visible characters.
 Keymap("n", "<leader>i", "<cmd>set list!<cr>")
 
@@ -115,10 +114,6 @@ Keymap("n", "<leader>Lu", "<cmd>LuaSnipUnlinkCurrent<cr>")
 -- SymoblsOutline
 Keymap("n", "<leader>Lo", "<cmd>SymbolsOutline<cr>")
 
---Telescope
-Keymap("n", "<leader>LS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
-Keymap("n", "<leader>Ls", "<cmd>Telescope lsp_document_symbols<cr>")
-
 -- Trouble
 Keymap("n", "<leader>LR", "<cmd>TroubleToggle lsp_references<cr>")
 Keymap("n", "<leader>Ld", "<cmd>TroubleToggle<cr>")
@@ -198,44 +193,12 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ f - Find
 
-if Is_Enabled("telescope.nvim") then
-  Keymap("n", "<leader>fC", "<cmd>Telescope commands<cr>")
-  Keymap("n", "<leader>fF", "<cmd>Telescope media_files<cr>")
-  Keymap("n", "<leader>fM", "<cmd>Telescope man_pages<cr>")
-  Keymap("n", "<leader>fO", "<cmd>Telescope oldfiles<cr>")
-  Keymap("n", "<leader>fR", "<cmd>Telescope registers<cr>")
-  Keymap("n", "<leader>fS", "<cmd>Telescope colorscheme<cr>")
-  Keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-  Keymap("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
-  Keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-  Keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
-  Keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
-  Keymap("n", "<leader>fm", "<cmd>Telescope marks<cr>")
-  Keymap(
-    "n",
-    "<leader>fi",
-    "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>"
-  )
-  Keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>")
-  Keymap("n", "<leader>fl", "<cmd>Telescope resume<cr>")
-  Keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>")
-  Keymap("n", "<leader>fp", "<cmd>Telescope planets<cr>")
-  Keymap("n", "<leader>fw", "<cmd>Telescope grep_string<cr>")
-end
-
 if Is_Enabled("todo-comments.nvim") then
   Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - git
-
-if Is_Enabled("telescope.nvim") then
-  Keymap("n", "<leader>gC", "<cmd>Telescope git_commits<cr>")
-  Keymap("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
-  Keymap("n", "<leader>go", "<cmd>Telescope git_status<cr>")
-end
-
 
 if Is_Enabled("vim-bundle-plantuml") then
   Keymap("n", "<leader>gu", "<cmd>call GenerateUmlDiagram<cr>")
