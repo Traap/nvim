@@ -146,19 +146,10 @@ Keymap("v", "gk", [["ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 -- ------------------------------------------------------------------------- }}}
 -- {{{ n - File explorers
 
-if Is_Enabled("neo-tree.nvim") or Is_Enabled("nvim-tree") then
-  -- nvim_tree takes precedence when both are true.
-  if Is_Enabled("nvim-tree") then
-    Keymap("n", "<c-n>", "<cmd>NvimTreeToggle<cr>")
-    Keymap("n", "<leader>nf", "<cmd>NvimTreeFindFile<cr>")
-    Keymap("n", "<leader>nr", "<cmd>NvimTreeRefresh<cr>")
-  else
-    Keymap("n", "<c-n>", "<cmd>Neotree toggle<cr>")
-    Keymap("n", "<leader>nf", "<cmd>Neotree focus<cr>")
-    Keymap("n", "<leader>nr", "<cmd>Neotree show<cr>")
-  end
+if Is_Enabled("noice.nvim") then
+  Keymap("n", "<leader>ne", "<cmd>NoiceErrors<cr>")
+  Keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
 end
-
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options
