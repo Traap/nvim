@@ -166,22 +166,6 @@ Keymap("n", "<leader>Lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 Keymap("n", "<leader>VV", "V`]")
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ S - Gitsigns
-
-if Is_Enabled("gitsigns.nvim") then
-  Keymap("n", "<leader>SR", '<cmd>lua require "gitsigns".reset_hunk()<cr>')
-  Keymap("n", "<leader>SS", '<cmd>lua require "gitsigns".stage_hunk()<cr>')
-  Keymap("n", "<leader>Sb", '<cmd>lua require "gitsigns".blame_line()<cr>')
-  Keymap("n", "<leader>SB", '<cmd>lua require "gitsigns".blame_line({full=true})<cr>')
-  Keymap("n", "<leader>Sd", "<cmd>Gitsigns diffthis HEAD<cr>")
-  Keymap("n", "<leader>Sh", '<cmd>lua require "gitsigns".undo_stage_hunk()<cr>')
-  Keymap("n", "]h", '<cmd>lua require "gitsigns".next_hunk()<cr>')
-  Keymap("n", "[h", '<cmd>lua require "gitsigns".prev_hunk()<cr>')
-  Keymap("n", "<leader>Sp", '<cmd>lua require "gitsigns".preview_hunk()<cr>')
-  Keymap("n", "<leader>Sr", '<cmd>lua require "gitsigns".reset_buffer()<cr>')
-end
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ a - Alpha
 
 if Is_Enabled("alpha-nvim") then
