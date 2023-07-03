@@ -159,10 +159,6 @@ if Is_Enabled("neo-tree.nvim") or Is_Enabled("nvim-tree") then
   end
 end
 
-if Is_Enabled("noice.nvim") then
-  Keymap("n", "<leader>ne", "<cmd>NoiceErrors<cr>")
-  Keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
-end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options

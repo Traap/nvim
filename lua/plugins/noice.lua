@@ -2,6 +2,11 @@ require("config.globals")
 
 local plugin = "noice.nvim"
 
+if Is_Enabled(plugin) then
+  Keymap("n", "<leader>ne", "<cmd>NoiceErrors<cr>")
+  Keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
+end
+
 return {
   "folke/" .. plugin,
   event = "VeryLazy",
