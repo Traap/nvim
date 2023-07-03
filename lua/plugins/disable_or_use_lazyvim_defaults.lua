@@ -9,7 +9,6 @@ require("config.globals")
 
 return {
   { "catppuccin/nvim", enabled = Is_Enabled("catppuccin"), },
-  { "folke/neoconf.nvim", enabled = Is_Enabled("neoconf.nvim") },
   { "folke/neodev.nvim", enabled = Is_Enabled("neodev.nvim") },
   { "ggandor/flit.nvim", enabled = Is_Enabled("flit.nvim") },
   { "ggandor/leap.nvim", enabled = Is_Enabled("leap.nvim") },
