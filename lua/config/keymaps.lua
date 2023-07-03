@@ -186,14 +186,9 @@ Keymap(
 )
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ c - Copy & Paste & tmux
+-- {{{ c - Copy & Paste
 
 Keymap("n", "<leader>cc", 'ggVGg_"+y')
-Keymap("n", "<leader>cv", '"+p')
-
-if Is_Enabled("vim-tmux-runner") then
-  Keymap("n", "<leader>cr", "<cmd>VtrClearRunner<cr>")
-end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ D/d - Debug Adapter Protocol (DAP).
@@ -232,7 +227,7 @@ if Is_Enabled("nvim-dap-ui") then
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ f - Find & tmux
+-- {{{ f - Find
 
 if Is_Enabled("telescope.nvim") then
   Keymap("n", "<leader>fC", "<cmd>Telescope commands<cr>")
@@ -263,10 +258,6 @@ if Is_Enabled("todo-comments.nvim") then
   Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
 end
 
-if Is_Enabled("vim-tmux-runner") then
-  Keymap("n", "<leader>fc", "<cmd>VtrFlushCommand<cr>")
-  Keymap("n", "<leader>fr", "<cmd>VtrFocusRunner<cr>")
-end
 
 -- TODO: Write the implementations.
 Keymap("v", "<leader>f", "<cmd>lua Functions.surround_selected_text()<cr>")
@@ -296,13 +287,6 @@ end
 
 Keymap("n", "gk", [[0mMvg_"ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 Keymap("v", "gk", [["ky <cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
-
--- ------------------------------------------------------------------------- }}}
--- {{{ k - kill runner
-
-if Is_Enabled("vim-tmux-runner") then
-  Keymap("n", "<leader>kr", "<cmd>VtrKillRunner<cr>")
-end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ l - VimTex
@@ -358,13 +342,6 @@ end
 Keymap("n", "<leader>oh", "<cmd>checkhealth<cr>")
 Keymap("n", "<leader>oo", "<cmd>only<cr>")
 
-if Is_Enabled("vim-tmux-runner") then
-  Keymap(
-    "n",
-    "<leader>or",
-    [[<cmd>VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>]]
-  )
-end
 
 if Is_Enabled("zen-mode.nvim") then
   Keymap("n", "<leader>oz", [[<cmd>lua require("zen-mode").toggle()<cr>]])
@@ -380,23 +357,7 @@ Keymap("n", "<leader>ps", "<cmd>Lazy sync<cr>")
 Keymap("n", "<leader>pu", "<cmd>Lazy update<cr>")
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ r - Runners
-
-if Is_Enabled("vim-tmux-runner") then
-  Keymap("n", "<leader>ra", "<cmd>VtrReattachRunner<cr>")
-  Keymap("n", "<leader>rr", "<cmd>VtrResizeRunner<cr>")
-  Keymap("n", "<leader>rR", "<cmd>VtrReorientRunner<cr>")
-end
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ s - Split & Sorts
-
-if Is_Enabled("vim-tmux-runner") then
-  Keymap("n", "<leader>sc", "<cmd>VtrSendCommandToRunner<cr>")
-  Keymap("n", "<leader>sf", "<cmd>VtrSendFile<cr>")
-  Keymap("n", "<leader>sl", "<cmd>VtrSendLinesToRunner<cr>")
-  Keymap("v", "<leader>sl", "<cmd>VtrSendLinesToRunner<cr>")
-end
 
 Keymap("n", "<leader>sh", "<cmd>split<cr>")
 Keymap("n", "<leader>sv", "<cmd>vsplit<cr>")
@@ -404,21 +365,6 @@ Keymap("n", "<leader>ss", "0v)k$:sort<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ t - Terminals
-
--- TODO:  Decide whether or not to keep these duplicate commands.
-if Is_Enabled("vim-tmux-runner") then
-  Keymap("n", "<leader>tC", "<cmd>VtrClearRunner<cr>")
-  Keymap("n", "<leader>tF", "<cmd>VtrFocusRunner<cr>")
-  Keymap("n", "<leader>tR", "<cmd>VtrReorientRunner<cr>")
-  Keymap("n", "<leader>tr", "<cmd>VtrResizeRunner<cr>")
-  Keymap("n", "<leader>ta", "<cmd>VtrReattachRunner<cr>")
-  Keymap("n", "<leader>tc", "<cmd>VtrFlushCommand<cr>")
-  Keymap("n", "<leader>tf", "<cmd>VtrSendFile!<cr>")
-  Keymap("n", "<leader>tk", "<cmd>VtrKillRunner<cr>")
-  Keymap("n", "<leader>tl", "<cmd>VtrSendLinesToRunner<<cr>")
-  Keymap("n", "<leader>to", "<cmd>VtrOpenRunner<cr>")
-  Keymap("n", "<leader>ts", "<cmd>VtrSendCommandToRunner<cr>")
-end
 
 if Is_Enabled("toggleterm.nvim") then
   Keymap("n", "<leader>Tb", [[<cmd>lua ToggleTerm.bashtop()<cr>]])
