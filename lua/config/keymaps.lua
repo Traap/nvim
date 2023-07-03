@@ -248,10 +248,6 @@ if Is_Enabled("todo-comments.nvim") then
   Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
 end
 
-
--- TODO: Write the implementations.
-Keymap("v", "<leader>f", "<cmd>lua Functions.surround_selected_text()<cr>")
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - git
 
