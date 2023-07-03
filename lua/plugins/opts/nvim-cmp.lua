@@ -54,9 +54,45 @@ return function(_, opts)
   end
 
   -- --------------------------------------------------------------------- }}}
+  -- {{{ lsp kind icons
+
+  local kind_icons = {
+    Class = "",
+    Color = "",
+    Constant = "",
+    Constructor = "",
+    Enum = "",
+    EnumMember = "",
+    Event = "",
+    Field = "",
+    File = "",
+    Folder = "",
+    Function = "",
+    Interface = "",
+    Keyword = "",
+    Method = "",
+    Module = "",
+    Operator = "",
+    Property = "",
+    Reference = "",
+    Snippet = " ",
+    Struct = "",
+    Text = "",
+    TypeParameter = "",
+    Unit = "",
+    Value = "",
+    Variable = "",
+    buffer = "﬘ ",
+    calc = " ",
+    nvim_lsp = " ",
+    path = " ",
+    spell = " ",
+    vsnip = " ",
+  }
+
+  -- --------------------------------------------------------------------- }}}
   -- {{{ formatting
 
-  local kind_icons = Constants.icons.lsp_kinds
 
   local source_mapping = {
     spell         = "[Spell]",
@@ -129,13 +165,27 @@ return function(_, opts)
   }
 
   -- --------------------------------------------------------------------- }}}
+  -- {{{ Sources
+
+  local sources = {
+    { name = "buffer", keyword_length = 2, max_item_count = 30 },
+    { name = "calc", keyword_length = 2, max_item_count = 30 },
+    { name = "latex_symbols", keyword_length = 1, max_item_count = 30 },
+    { name = "luasnip", keyword_length = 1, max_item_count = 30 },
+    { name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
+    { name = "nvim_lua", keyword_length = 1, max_item_count = 30 },
+    { name = "path", keyword_length = 3, max_item_count = 30 },
+    { name = "spell", keyword_length = 2, max_item_count = 30 },
+  }
+
+  -- --------------------------------------------------------------------- }}}
   -- {{{ Update the function argument opts with local choices made.
 
   opts.confirm_opts = confirm_opts
   opts.formatting = formatting
   opts.mapping = mapping
   opts.snippet = snippet
-  opts.sources = Constants.completion.sources
+  opts.sources = sources
   opts.window = window
 
   -- ----------------------------------------------------------------------- }}}

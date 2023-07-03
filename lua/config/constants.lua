@@ -84,39 +84,6 @@ Constants = {
       Info = "",
       Warn = "",
     },
-    lsp_kinds = {
-      Class = "",
-      Color = "",
-      Constant = "",
-      Constructor = "",
-      Enum = "",
-      EnumMember = "",
-      Event = "",
-      Field = "",
-      File = "",
-      Folder = "",
-      Function = "",
-      Interface = "",
-      Keyword = "",
-      Method = "",
-      Module = "",
-      Operator = "",
-      Property = "",
-      Reference = "",
-      Snippet = " ",
-      Struct = "",
-      Text = "",
-      TypeParameter = "",
-      Unit = "",
-      Value = "",
-      Variable = "",
-      buffer = "﬘ ",
-      calc = " ",
-      nvim_lsp = " ",
-      path = " ",
-      spell = " ",
-      vsnip = " ",
-    },
     git = {
       added = " ",
       modified = " ",
@@ -156,31 +123,6 @@ Constants = {
     },
   },
 
-  -- ----------------------------------------------------------------------- }}}
-  -- {{{ Completion source mapping
-
-  completion = {
-    source_mapping = {
-      buffer = "[Buffer]",
-      latex_symbols = "[LaTeX]",
-      luasnip = "[Snippet]",
-      nvim_lsp = "[LSP]",
-      nvim_lua = "[Lua]",
-      path = "[Path]",
-      spell = "[Spell]",
-    },
-
-    sources = {
-      { name = "buffer", keyword_length = 2, max_item_count = 30 },
-      { name = "calc", keyword_length = 2, max_item_count = 30 },
-      { name = "latex_symbols", keyword_length = 1, max_item_count = 30 },
-      { name = "luasnip", keyword_length = 1, max_item_count = 30 },
-      { name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
-      { name = "nvim_lua", keyword_length = 1, max_item_count = 30 },
-      { name = "path", keyword_length = 3, max_item_count = 30 },
-      { name = "spell", keyword_length = 2, max_item_count = 30 },
-    },
-  },
   -- ----------------------------------------------------------------------- }}}
   -- {{{ End Constants table.
 }
