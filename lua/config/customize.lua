@@ -74,7 +74,7 @@ Customize                          = {
     ["rainbow_csv"]                = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["rust-tools.nvim"]            = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["sxhkd-vim"]                  = { enabled = false, default = { opts = true, config = true, keys = true }},
-    ["telescope.nvim"]             = { enabled = true,  default = { opts = true, config = true, keys = true }},
+    ["telescope.nvim"]             = { enabled = true,  default = { opts = false, config = true, keys = true }},
     ["telescope-dap.nvim"]         = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["telescope-fzf-native.nvim"]  = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["todo-comments.nvim"]         = { enabled = true,  default = { opts = true, config = true, keys = true }},
