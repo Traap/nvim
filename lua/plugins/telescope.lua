@@ -4,7 +4,7 @@ local plugin = "telescope.nvim"
 
 -- {{{ keymaps
 
-if Is_Enabled(plugin) then
+if Is_Enabled(plugin) and not Use_Default_Keys(plugin) then
   local cmdT = "<cmd>Telescope "
   local cmdL = "<cmd>lua require('telescope')."
 
@@ -48,7 +48,7 @@ return {
     if Use_Default_Opts(plugin) then
       opts = opts
     else
-      opts. defaults = {
+      opts.defaults = {
         layout_config = { prompt_position = "top" },
         layout_strategy = "horizontal",
         prompt_prefix = " ",
