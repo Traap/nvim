@@ -1,7 +1,7 @@
 Traap's *Blazing Fast* Neovim configuration.
 
 ### Credits
-* [Folke Lamaitre](https:/github.com/folke)
+* [Folke Lamaitre](https://github.com/folke)
 * [LazyVim](https://github.com/LazyVim/LazyVim)
 
 ### Linux Bash Installation
