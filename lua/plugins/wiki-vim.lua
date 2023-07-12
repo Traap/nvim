@@ -2,6 +2,16 @@ require("config.globals")
 
 local plugin = "wiki.vim"
 
+if vim.fn.empty(os.getenv("WSL_DISTRO_NAME")) ~= 0 then
+  PDF_VIEWER = "okular"
+else
+  PDF_VIEWER = "SumatraPDF.exe"
+end
+
+VIEWER_COMMAND = "<cmd><execute '!'" .. PDF_VIEWER .. " " .. os.getenv("WIKIHOME") .. "/printed/" .. vim.fn.expand('%:p:t:r').. ".pdf' &'<cr>"
+
+print(VIEWER_COMMAND)
+
 return {
   "lervag/" .. plugin,
   cmd = { "WikiIndex", "WikiJournal" },
@@ -13,12 +23,12 @@ return {
     "Traap/vim-bundle-wiki.vim",
   },
   keys = {
-   {"<leader>wa", "<cmd>edit /home/traap/git/wiki/journal/Acronyms.md<cr>", "Wiki Acronyms"},
-   {"<leader>wb", "<cmd>edit /home/traap/git/wiki/journal/Backlog.md<cr>", "Wiki Backlog"},
-   {"<leader>we", "<cmd>WikiExport<cr>", "Wiki Export"},
-   {"<leader>wi", "<cmd>WikiIndex<cr>", "Wiki Index"},
-   {"<leader>wj", "<cmd>WikiJournal<cr>", "Wiki Journal"},
-   {"<leader>wp", "<cmd>WikiFzfPages<cr>", "Wiki FzF Pages"},
-   {"<leader>wv", "<cmd><execute !g.traap_pdf_viewer g.wiki_root/printed/api.expand('%:p:t:r').pdf &cr>", "Wiki View PDF"},
+    {"<leader>wa", "<cmd>edit " .. os.getenv("WIKIHOME") .. "/journal/Acronyms.md<cr>", "Wiki Acronyms"},
+    {"<leader>wb", "<cmd>edit " .. os.getenv("WIKIHOME") .. "/journal/Backlog.md<cr>", "Wiki Backlog"},
+    {"<leader>we", "<cmd>WikiExport<cr>", "Wiki Export"},
+    {"<leader>wi", "<cmd>WikiIndex<cr>", "Wiki Index"},
+    {"<leader>wj", "<cmd>WikiJournal<cr>", "Wiki Journal"},
+    {"<leader>wp", "<cmd>WikiFzfPages<cr>", "Wiki FzF Pages"},
+    {"<leader>wv", VIEWER_COMMAND, "Wiki View PDF"},
   }
 }
