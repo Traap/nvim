@@ -44,6 +44,27 @@ function M.use_default_keys(plugin)
   return Customize.plugins[plugin].default.keys or false
 end
 
+-- FIX: Parse pagename correctly.
+function M.page_viewer()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local pagename = vim.api.nvim_buf_get_name(bufnr)
+  local command = "<cmd>!"..PDF_VIEWER.." "..os.getenv("WIKIHOME").."/printed/"..pagename..".pdf<cr>"
+  M.log_error(command)
+  return command
+end
+
+
+function M.log_error(errorMessage)
+  local log_file = io.open("/home/traap/neovim.log", 'a')
+
+  if log_file then
+    log_file:write(errorMessage .. "\n")
+    log_file:close()
+  else
+    print("Error opening log file!")
+  end
+
+end
 -- ------------------------------------------------------------------------- }}}
 
 return M

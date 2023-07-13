@@ -1,14 +1,23 @@
 local Customize                    = {}
 -- {{{ Customize documentation.
 --
--- Customize table is a plugin name and true or false.  Using nvim_tree as the
--- example:
---   true - plug is loaded
---  false - plugin is NOT loaded.
---
--- This is a quick way to determine when a customization is interfering with
--- your expected behavior or two plugins are impacting with each other.
+-- Customize table provide fine-grained control over how plugins are
+-- initialized:
 
+--  enabled:
+--      true - plug is loaded
+--     false - plugin is NOT loaded.
+--  default:
+--    opts:
+--      true - default options are used.
+--     false - You set the options.
+--    config:
+--      true - default configurations are used.
+--     false - You set the configuration.
+--    keys:
+--      true - default plugins keys are used.
+--     false - you set the keys
+--
 -- ------------------------------------------------------------------------- }}}
 
 Customize                          = {
@@ -74,7 +83,7 @@ Customize                          = {
     ["rainbow_csv"]                = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["rust-tools.nvim"]            = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["sxhkd-vim"]                  = { enabled = false, default = { opts = true, config = true, keys = true }},
-    ["telescope.nvim"]             = { enabled = true,  default = { opts = false, config = true, keys = false }},
+    ["telescope.nvim"]             = { enabled = true,  default = { opts = true, config = true, keys = false }},
     ["telescope-dap.nvim"]         = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["telescope-fzf-native.nvim"]  = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["todo-comments.nvim"]         = { enabled = true,  default = { opts = true, config = true, keys = true }},

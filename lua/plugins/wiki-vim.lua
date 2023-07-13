@@ -2,15 +2,16 @@ require("config.globals")
 
 local plugin = "wiki.vim"
 
-if vim.fn.empty(os.getenv("WSL_DISTRO_NAME")) ~= 0 then
-  PDF_VIEWER = "okular"
-else
-  PDF_VIEWER = "SumatraPDF.exe"
+if Is_Enabled(plugin) then
+  if vim.fn.empty(os.getenv("WSL_DISTRO_NAME")) ~= 0 then
+    PDF_VIEWER = "okular"
+  else
+    PDF_VIEWER = "SumatraPDF.exe"
+  end
+
+  Keymap("n", "<leader>wv", '<cmd>lua Page_Viewer()<cr>')
+
 end
-
-VIEWER_COMMAND = "<cmd><execute '!'" .. PDF_VIEWER .. " " .. os.getenv("WIKIHOME") .. "/printed/" .. vim.fn.expand('%:p:t:r').. ".pdf' &'<cr>"
-
-print(VIEWER_COMMAND)
 
 return {
   "lervag/" .. plugin,
@@ -29,6 +30,5 @@ return {
     {"<leader>wi", "<cmd>WikiIndex<cr>", "Wiki Index"},
     {"<leader>wj", "<cmd>WikiJournal<cr>", "Wiki Journal"},
     {"<leader>wp", "<cmd>WikiFzfPages<cr>", "Wiki FzF Pages"},
-    {"<leader>wv", VIEWER_COMMAND, "Wiki View PDF"},
   }
 }

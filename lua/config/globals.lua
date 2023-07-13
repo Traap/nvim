@@ -11,3 +11,5 @@ Keymap = require("config.functions").keymap
 Use_Default_Opts =   require("config.functions").use_default_opts
 Use_Default_Config = require("config.functions").use_default_config
 Use_Default_Keys =   require("config.functions").use_default_keys
+
+Page_Viewer =   require("config.functions").page_viewer
