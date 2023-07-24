@@ -15,7 +15,7 @@ return {
       local cmp = require("cmp")
       local luasnip = require("luasnip")
 
-      -- --------------------------------------------------------------------- }}}
+      -- ------------------------------------------------------------------- }}}
       -- {{{ Confirmaiton optioq
 
       local confirm_opts = {
@@ -23,15 +23,19 @@ return {
         select = false,
       }
 
-      -- --------------------------------------------------------------------- }}}
+      -- ------------------------------------------------------------------- }}}
       -- {{{ Add boarders to completion windows.
 
+      local border_opts = {
+        border = "rounded",
+        winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+      }
       local window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(border_opts),
+        documentation = cmp.config.window.bordered(border_opts),
       }
 
-      -- --------------------------------------------------------------------- }}}
+      -- ------------------------------------------------------------------- }}}
       -- {{{ Setup filetype and cmdline preferences.
 
       cmp.setup.filetype("gitcommit", {
@@ -56,15 +60,7 @@ return {
         }),
       })
 
-      -- --------------------------------------------------------------------- }}}
-      -- {{{ Check for backspace
-
-      local check_backspace = function()
-        local col = vim.fn.col "." - 1
-        return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-      end
-
-      -- ------------------------------------------------------------------------- }}}
+      -- ------------------------------------------------------------------- }}}
       -- {{{ Has words before
 
       local function has_words_before()
@@ -72,7 +68,7 @@ return {
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
       end
 
-      -- --------------------------------------------------------------------- }}}
+      -- ------------------------------------------------------------------- }}}
       -- {{{ lsp kind icons
 
       local kind_icons = {
@@ -109,9 +105,8 @@ return {
         vsnip = " ",
       }
 
-      -- --------------------------------------------------------------------- }}}
-      -- {{{ formatting
-
+      -- ------------------------------------------------------------------- }}}
+      -- {{{ source_mappign and formatting
 
       local source_mapping = {
         buffer        = "[Buffer]",
@@ -156,7 +151,7 @@ return {
 
         ["<C-y>"] = cmp.config.disable,
 
-        ["<CR>"] = cmp.mapping.confirm { select = false },
+        ["<CR>"] = cmp.mapping.confirm { select = true },
 
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
@@ -167,13 +162,11 @@ return {
             luasnip.expand_or_jump()
           elseif has_words_before() then
             cmp.complete()
-          elseif check_backspace then
-            fallback()
           else
             fallback()
           end
         end, { "i", "s" }),
-
+-- th
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
