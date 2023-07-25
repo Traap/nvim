@@ -1,4 +1,4 @@
-require("config.globals")
+require("config.traap.globals")
 
 local plugin = "gitsigns.nvim"
 

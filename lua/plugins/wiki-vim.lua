@@ -1,5 +1,5 @@
+require("config.traap.globals")
 
-require("config.globals")
 local plugin = "wiki.vim"
 
 return {

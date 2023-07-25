@@ -1,4 +1,4 @@
-require("config.globals")
+require("config.traap.globals")
 
 -- Note: The plugin name is 'nvim'.  Horrible name!  Let's see why: I'm going
 -- to use the nvim plugin.  What does nvim mean?  If I mention alpha or mini.ui

@@ -1,4 +1,4 @@
-Customzie = require("config.customize")
+Customzie = require("config.traap.customize")
 local M = {}
 
 -- {{{ keymap helper

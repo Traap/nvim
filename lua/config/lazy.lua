@@ -1,4 +1,4 @@
--- {{{ My personal Lazy setup.
+--  Traap's personal Lazy setup.
 
 require("lazy").setup({
 	spec = {
@@ -28,8 +28,6 @@ require("lazy").setup({
 		rtp = {
 			disabled_plugins = {
 				"gzip",
-				-- "matchit",
-				-- "matchparen",
 				"netrwPlugin",
 				"tarPlugin",
 				"tohtml",

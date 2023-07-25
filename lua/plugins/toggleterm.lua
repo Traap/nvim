@@ -1,6 +1,6 @@
-require("config.globals")
+require("config.traap.globals")
 
-ToggleTerm = require("config.toggleterm")
+ToggleTerm = require("config.traap.toggleterm")
 
 local plugin = "toggleterm.nvim"
 

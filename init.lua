@@ -3,5 +3,5 @@ vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[,]]
 
 -- Use my bootstrap method.  Then hand things over to Lazy.
-require("config.bootstrap")
+require("config.traap.bootstrap")
 require("config.lazy")
