@@ -44,6 +44,13 @@ return {
   "nvim-telescope/" .. plugin,
   enabled = Is_Enabled(plugin),
   cmd = "Telescope",
+
+  keys = function()
+    if not Use_Default_Keys(plugin) then
+      return { keys = false }
+    end
+  end,
+
   opts = function(_, opts)
     if Use_Default_Opts(plugin) then
       opts = opts
