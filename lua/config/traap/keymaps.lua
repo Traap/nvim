@@ -68,7 +68,10 @@ Keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]])
 
 -- Quit all
 Keymap("n", "<c-q>", "<cmd>qall!<cr>")
-Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
+
+-- TODO: Experiment without <leader>qq and start using <c-q>.  Use rightside
+-- keyboard <ctrl> key.
+-- Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
