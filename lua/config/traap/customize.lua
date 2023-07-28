@@ -33,7 +33,7 @@ Customize                          = {
     ["dressing.nvim"]              = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["flash.nvim"]                 = { enabled = false,  default = { opts = true, config = true, keys = true }},
     ["flit.nvim"]                  = { enabled = false,  default = { opts = true, config = true, keys = true }},
-    ["friendly-snippets"]          = { enabled = false, default = { opts = true, config = true, keys = true }},
+    ["friendly-snippets"]          = { enabled = true, default = { opts = true, config = true, keys = true }},
     ["fzf.vim"]                    = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["gem-browse"]                 = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["gitsigns.nvim"]              = { enabled = true,  default = { opts = false, config = true, keys = false }},
