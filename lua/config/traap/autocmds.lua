@@ -9,13 +9,13 @@ local function augroup(name)
 end
 
 -- -------------------------------------------------------------------------- }}}
--- {{{ Clear items that make transparency look bad.
+-- {{{ Color tweeks when entering a buffer or when colorscheme change.
 
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
   group = augroup("transparency"),
   callback = function()
     vim.cmd([[ highlight clear Folded ]])
-    vim.cmd([[ highlight Folded guibg=comment ]])
+    vim.cmd([[ highlight Folded guibg=comment guifg=comment ]])
 
     vim.cmd([[ highlight clear CursorLineFold ]])
     vim.cmd([[ highlight CursorLineFold guifg=#e0af68 ]])
