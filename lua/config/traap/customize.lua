@@ -71,6 +71,7 @@ Customize                          = {
     ["nvim-notify"]                = { enabled = true,  default = { opts = false, config = true, keys = true }},
     ["nvim-spectre"]               = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["nvim-surround"]              = { enabled = true,  default = { opts = true, config = true, keys = true }},
+    ["nvim-toggler"]               = { enabled = true, default = { opts = true, config = false, keys = true }},
     ["nvim-transparent"]           = { enabled = true, default = { opts = true, config = true, keys = true }},
     ["nvim-tree"]                  = { enabled = false, default = { opts = true, config = true, keys = true }},
     ["nvim-treesitter"]            = { enabled = true,  default = { opts = true, config = true, keys = true }},
