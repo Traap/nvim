@@ -30,7 +30,6 @@ vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Close some filetypes with <q>.
---     NOTE:  Built into Lazy.vim but I extend the pattern.
 
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
