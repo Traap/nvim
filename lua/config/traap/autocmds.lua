@@ -1,5 +1,4 @@
-Customize = require("config.traap.customize")
-Functions = require("config.traap.functions")
+require("config.traap.globals")
 
 -- {{{ Create autogroup.
 --     NOTE: Found in lazy.vim auto commands.
@@ -20,7 +19,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
     vim.cmd([[ highlight clear CursorLineFold ]])
     vim.cmd([[ highlight CursorLineFold guifg=#e0af68 ]])
 
-    if Customize.virtcolumn_nvim then
+    if Is_Enabled("virtcolumn.nvim")  then
       vim.cmd([[ highlight ColorColumn guibg=#292d42 ]])
     else
       vim.cmd([[ highlight ColorColumn guibg=#202031 ]])

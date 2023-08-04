@@ -1,7 +1,5 @@
 require("config.traap.globals")
 
-ToggleTerm = require("config.traap.toggleterm")
-
 local plugin = "toggleterm.nvim"
 
 return {
