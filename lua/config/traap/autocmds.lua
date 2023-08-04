@@ -13,17 +13,14 @@ end
 vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
   group = augroup("transparency"),
   callback = function()
-    vim.cmd([[ highlight clear Folded ]])
-    vim.cmd([[ highlight Folded guibg=comment guifg=comment ]])
-
-    vim.cmd([[ highlight clear CursorLineFold ]])
-    vim.cmd([[ highlight CursorLineFold guifg=#e0af68 ]])
-
     if Is_Enabled("virtcolumn.nvim")  then
       vim.cmd([[ highlight ColorColumn guibg=#292d42 ]])
     else
       vim.cmd([[ highlight ColorColumn guibg=#202031 ]])
     end
+
+    vim.cmd([[ highlight clear Folded ]])
+    vim.cmd([[ highlight Folded guibg=comment guifg=#6a79b3 ]])
 
     vim.cmd([[ highlight LineNr guifg=#e0af68 ]])
     vim.cmd([[ highlight LineNrAbove guifg=#787c99 ]])
@@ -35,9 +32,9 @@ vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
 -- {{{ Close some filetypes with <q>.
 --     NOTE:  Built into Lazy.vim but I extend the pattern.
 
-  vim.api.nvim_create_autocmd("FileType", {
-    group = augroup("close_with_q"),
-    pattern = { "fugitive" },
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("close_with_q"),
+  pattern = { "fugitive" },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set(
