@@ -2,28 +2,30 @@ require("config.traap.globals")
 
 local plugin = "nvim-toggler"
 
-if Is_Enabled(plugin) and not Use_Default_Keys(plugin) then
-  local cmdL = "<cmd> lua require('nvim-toggler').toggle<cr>"
-  Keymap("n", "<leader>tn", cmdL)
-  Keymap("v", "<leader>tn", cmdL)
-end
-
 return {
   "nguyenvukhang/" .. plugin,
   enabled = Is_Enabled(plugin),
   event = {"BufReadPost", "BufNewFile"},
+
+  init = function()
+    if not Use_Default_Keys(plugin) then
+      local toggler = require(plugin)
+      vim.keymap.set({'n', 'v'}, '<leader>tn', toggler.toggle)
+    end
+  end,
+
   config = function(_, opts)
-    local toggle = require(plugin)
+    local toggler = require(plugin)
     if Use_Default_Config(plugin) then
-      toggle.setup(opts)
+      toggler.setup(opts)
     else
-      toggle.setup({
+      toggler.setup({
         inverses = {
           [">="] = "<=",
-          ["<="] = "<=",
           [">"] = "<",
-          ["<"] = ">",
-        }
+        },
+        remove_default_keybinds = true,
+        remvoe_default_inverses = false,
       })
     end
   end,
