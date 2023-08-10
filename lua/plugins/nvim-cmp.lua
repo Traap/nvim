@@ -16,23 +16,25 @@ return {
       local luasnip = require("luasnip")
 
       -- ------------------------------------------------------------------- }}}
-      -- {{{ Confirmaiton optioq
+      -- {{{ Confirmaiton optio
 
       local confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
+        select = true,
       }
 
       -- ------------------------------------------------------------------- }}}
       -- {{{ Add boarders to completion windows.
 
-      local border_opts = {
-        border = "rounded",
-        winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-      }
       local window = {
-        completion = cmp.config.window.bordered(border_opts),
-        documentation = cmp.config.window.bordered(border_opts),
+        completion = {
+          border = "rounded",
+          winhighlight = 'Normal:Pmenu,FloatBorder:Comment,CursorLine:PmenuSel,Search:Pmenu',
+        },
+        documentation = {
+          border = "rounded",
+          winhighlight = 'Normal:Pmenu,FloatBorder:Comment,CursorLine:PmenuSel,Search:Pmenu',
+        },
       }
 
       -- ------------------------------------------------------------------- }}}
