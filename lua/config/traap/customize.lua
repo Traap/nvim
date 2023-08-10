@@ -121,7 +121,7 @@ Customize                          = {
     ["vim-visual-increment"]       = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["vimtex"]                     = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["virtcolumn.nvim"]            = { enabled = true,  default = { opts = true, config = true, keys = true }},
-    ["which-key.nvim"]             = { enabled = false,  default = { opts = true, config = true, keys = true }},
+    ["which-key.nvim"]             = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["wiki.vim"]                   = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["wiki-ft.vim"]                = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["zen-mode.nvim"]              = { enabled = true,  default = { opts = true, config = true, keys = true }},
