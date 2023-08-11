@@ -9,6 +9,8 @@ end
 
 -- -------------------------------------------------------------------------- }}}
 -- {{{ Color tweeks when entering a buffer or when colorscheme change.
+--
+--     https://image-color-picker.com/rgb-color-picker
 
 vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
   group = augroup("transparency"),
@@ -26,7 +28,6 @@ vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
     vim.cmd([[ highlight LineNrAbove guifg=#787c99 ]])
     vim.cmd([[ highlight LineNrBelow guifg=#787c99 ]])
 
-      -- vim.cmd([[ highlight TelescopeBorder guifg=#757187 ]])
       vim.cmd([[ highlight TelescopeBorder guifg=#5f5c6d ]])
   end,
 })
