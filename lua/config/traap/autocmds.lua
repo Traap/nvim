@@ -26,7 +26,8 @@ vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
     vim.cmd([[ highlight LineNrAbove guifg=#787c99 ]])
     vim.cmd([[ highlight LineNrBelow guifg=#787c99 ]])
 
-      vim.cmd([[ highlight TelescopeBorder guifg=#0067aF ]])
+      -- vim.cmd([[ highlight TelescopeBorder guifg=#757187 ]])
+      vim.cmd([[ highlight TelescopeBorder guifg=#5f5c6d ]])
   end,
 })
 
