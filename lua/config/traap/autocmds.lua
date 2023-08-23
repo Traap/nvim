@@ -12,7 +12,7 @@ end
 --
 --     https://image-color-picker.com/rgb-color-picker
 
-vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
+vim.api.nvim_create_autocmd({"VimEnter", "BufEnter", "ColorScheme"}, {
   group = augroup("transparency"),
   callback = function()
     if Is_Enabled("virtcolumn.nvim")  then
