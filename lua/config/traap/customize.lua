@@ -87,7 +87,7 @@ Customize                          = {
     ["telescope.nvim"]             = { enabled = true,  default = { opts = false, config = true, keys = false }},
     ["telescope-dap.nvim"]         = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["telescope-fzf-native.nvim"]  = { enabled = true,  default = { opts = true, config = true, keys = true }},
-    ["todo-comments.nvim"]         = { enabled = true,  default = { opts = true, config = true, keys = true }},
+    ["todo-comments.nvim"]         = { enabled = true,  default = { opts = false, config = true, keys = true }},
     ["toggleterm.nvim"]            = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["tokyonight.nvim"]            = { enabled = true,  default = { opts = false, config = true, keys = true }},
     ["trouble.nvim"]               = { enabled = true,  default = { opts = true, config = true, keys = true }},

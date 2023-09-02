@@ -3,7 +3,8 @@ require("config.traap.globals")
 local plugin = "todo-comments.nvim"
 
 if Is_Enabled(plugin) then
-  Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords=Youtube,URL<cr>")
+  local keywords = 'YouTube,Youtube,URL,Url'
+  Keymap("n", "<leader>fy", "<cmd>TodoTelescope keywords="..keywords.."<cr>")
 end
 
 return {
@@ -15,8 +16,8 @@ return {
     else
       opts.merge_keywords = true
       opts.keywords = {
-        Youtube = { icon = " ", color = "#ff0000" },
-        URL = { icon = " ", color = "#7711FF", alt = { "Url", "url" } },
+        YouTube = { icon = " ", color = "#ff0000", alt = {"youtube", "Youtube"}},
+        -- URL = { icon = " ", color = "#7711FF", alt = { "Url", "url" } },
       }
     end
   end,
