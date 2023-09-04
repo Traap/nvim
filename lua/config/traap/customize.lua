@@ -1,9 +1,9 @@
 local Customize                    = {}
 -- {{{ Customize documentation.
 --
--- Customize table provide fine-grained control over how plugins are
--- initialized:
-
+-- TODO:  -> YouTube Customize table provide fine-grained control over how
+-- plugins are initialized:
+--
 --  enabled:
 --      true - plug is loaded
 --     false - plugin is NOT loaded.

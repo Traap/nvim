@@ -1,4 +1,4 @@
--- My plugin customizations reuire the following global values.
+-- TODO: -> YouTube My plugin customizations require the following global values.
 
 Constants = require("config.traap.constants")
 Customize = require("config.traap.customize")
