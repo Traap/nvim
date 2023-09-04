@@ -13,12 +13,12 @@ return {
       opts = opts
     else
       opts.signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "契"},
-        topdelete = { text = "契"},
+        add          = { text = "▎" },
+        change       = { text = "▎" },
         changedelete = { text = "▎" },
-        untracked = { text = "▎" },
+        delete       = { text = '_' },
+        topdelete    = { text = '‾' },
+        untracked    = { text = "▎" },
       }
       opts.current_line_blame = true
       opts.current_line_blame_formatter = " <author>, <author_time:%Y-%m-%d> - <summary>"
