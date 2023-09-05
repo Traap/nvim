@@ -1,7 +1,7 @@
 local Customize                    = {}
 -- {{{ Customize documentation.
 --
--- TODO:  -> YouTube Customize table provide fine-grained control over how
+-- YouTube: Customize table provide fine-grained control over how
 -- plugins are initialized:
 --
 --  enabled:

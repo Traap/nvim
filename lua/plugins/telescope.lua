@@ -4,7 +4,7 @@ local plugin = "telescope.nvim"
 
 -- {{{ keymaps
 
--- TODO: -> YouTube Discuss using Is_Enabled.
+-- YouTube: Discuss using Is_Enabled.
 
 if Is_Enabled(plugin) and not Use_Default_Keys(plugin) then
   local cmdT = "<cmd>Telescope "
