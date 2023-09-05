@@ -57,7 +57,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Disable autoformat for all file types.
--- TODO: Figure out why spaces are replaced with tabs.  Looks like null-ls?
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "*", "csv", "md", "sh", "tex", "wiki", "wtf" },
