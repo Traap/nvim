@@ -42,7 +42,7 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ lazy.nvim specification.
 
--- Todo: ->  YouTube Example Use_Default_Keys and Use_Default_opts
+-- YouTube: Example Use_Default_Keys and Use_Default_opts
 
 return {
   "nvim-telescope/" .. plugin,
