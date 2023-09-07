@@ -16,7 +16,7 @@ return {
       local luasnip = require("luasnip")
 
       -- ------------------------------------------------------------------- }}}
-      -- {{{ Confirmaiton optio
+      -- {{{ Confirmaiton options
 
       local confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
