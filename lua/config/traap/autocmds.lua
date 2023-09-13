@@ -100,18 +100,15 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ PlantUML
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  command = "call InitUmlSettings()",
-  pattern = { "*.puml", "*.wsd" },
-})
-
 vim.api.nvim_create_autocmd("BufWritePost", {
-  command = "call GenerateUmlDiagram()",
+  command = "PlantUmlAssemble",
+  group = augroup("plantuml_assemble"),
   pattern = { "*.puml", "*.wsd" },
 })
 
 vim.api.nvim_create_autocmd("BufLeave", {
-  command = "call ClearUmlLaunchFlag()",
+  command = "PlantUmlClear",
+  group = augroup("plantuml_clear"),
   pattern = { "*.puml", "*.wsd" },
 })
 
