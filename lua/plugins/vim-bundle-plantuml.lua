@@ -11,5 +11,4 @@ return {
   "Traap/" .. plugin,
   event = "VeryLazy",
   enabled = Is_Enabled(plugin),
-  priority = 30,
 }
