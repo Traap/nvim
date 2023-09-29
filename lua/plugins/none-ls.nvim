@@ -1,9 +1,9 @@
 require("config.traap.globals")
 
-local plugin = "null-ls.nvim"
+local plugin = "none-ls.nvim"
 
 return {
-  "jose-elias-alvarez/" .. plugin,
+  "nvimtools/" .. plugin,
   enabled = Is_Enabled(plugin),
   opts = function(_, opts)
     if Use_Default_Opts(plugin) then
