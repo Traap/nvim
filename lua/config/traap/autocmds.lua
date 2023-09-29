@@ -28,7 +28,11 @@ vim.api.nvim_create_autocmd({"VimEnter", "BufEnter", "ColorScheme"}, {
     vim.cmd([[ highlight LineNrAbove guifg=#787c99 ]])
     vim.cmd([[ highlight LineNrBelow guifg=#787c99 ]])
 
-      vim.cmd([[ highlight TelescopeBorder guifg=#5f5c6d ]])
+    vim.cmd([[ highlight TelescopeBorder guifg=#5f5c6d ]])
+
+    vim.opt.pumblend=0
+    vim.cmd([[ highlight Pmenu guibg=comment ]])
+
   end,
 })
 
