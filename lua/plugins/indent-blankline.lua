@@ -11,8 +11,8 @@ return {
     if Use_Default_Opts(plugin) then
       opts = {}
     else
-      opts.char = "│"
-      opts.filetype_exclude = {
+      opts.indent.char = "│"
+      opts.exclude.filetypes = {
         "help",
         "alpha",
         "dashboard",
@@ -21,8 +21,6 @@ return {
         "lazy",
         "mason",
       }
-      opts.show_trailing_blankline_indent = false
-      opts.show_current_context = false
     end
   end,
 }
