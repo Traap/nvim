@@ -10,7 +10,7 @@ return {
   init = function()
     if not Use_Default_Keys(plugin) then
       local toggler = require(plugin)
-      vim.keymap.set({'n', 'v'}, '<leader>tn', toggler.toggle)
+      vim.keymap.set({'n', 'v'}, '<leader>tn', toggler.toggle, { noremap = true, silent = true, desc = "Toggle operand"})
     end
   end,
 
