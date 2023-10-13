@@ -1,4 +1,4 @@
-local Customize                    = {}
+local Customize = {}
 -- {{{ Customize documentation.
 --
 -- YouTube: Customize table provide fine-grained control over how
@@ -19,6 +19,7 @@ local Customize                    = {}
 --     false - you set the keys
 --
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Customzie table
 
 Customize                          = {
   plugins                          = {
@@ -132,4 +133,5 @@ Customize                          = {
   },
 }
 
+-- ------------------------------------------------------------------------- }}}
 return Customize
