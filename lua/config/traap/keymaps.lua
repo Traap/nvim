@@ -3,6 +3,17 @@
 require("config.traap.globals")
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Disable LazyVim keybindsings
+
+-- Delete the current line.
+Keymap("n", "<A-j", "")
+Keymap("n", "<A-k", "")
+Keymap("i", "<A-j", "")
+Keymap("i", "<A-k", "")
+Keymap("v", "<A-j", "")
+Keymap("v", "<A-k", "")
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ General mappings.
 
 -- Delete the current line.
