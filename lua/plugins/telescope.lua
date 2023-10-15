@@ -4,8 +4,6 @@ local plugin = "telescope.nvim"
 
 -- {{{ keymaps
 
--- YouTube: Discuss using Is_Enabled.
-
 if Is_Enabled(plugin) and not Use_Default_Keys(plugin) then
   local cmdT = "<cmd>Telescope "
   local cmdL = "<cmd>lua require('telescope')."
@@ -41,8 +39,6 @@ end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ lazy.nvim specification.
-
--- YouTube: Example Use_Default_Keys and Use_Default_opts
 
 return {
   "nvim-telescope/" .. plugin,
