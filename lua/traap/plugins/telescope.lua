@@ -26,7 +26,12 @@ local mappings = {
 
     ["<C-x>"] = actions.select_horizontal,
     ["<C-v>"] = actions.select_vertical,
+
   },
+  i = {
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+  }
 }
 
 -- --------------------------------------------------------------------------}}}
