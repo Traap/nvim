@@ -62,7 +62,7 @@ return {
       opts.defaults = {
         layout_config = { prompt_position = "top" },
         layout_strategy = "horizontal",
-        prompt_prefix = " ",
+        prompt_prefix = " ",
         selection_caret = " ",
         sorting_strategy = "ascending",
         winblend = 0,
