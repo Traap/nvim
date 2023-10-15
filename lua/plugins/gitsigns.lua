@@ -4,7 +4,8 @@ local plugin = "gitsigns.nvim"
 
 return {
   "lewis6991/" .. plugin,
-  event = { "BufReadPost", "BufNewFile" },
+  -- event = { "BufReadPost", "BufNewFile" },
+  event = "LazyFile",
   enabled = Is_Enabled(plugin),
   -- ft = "gitcommit",
 

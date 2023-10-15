@@ -78,6 +78,7 @@ Customize                          = {
     ["nvim-transparent"]           = { enabled = true, default = { opts = true, config = true, keys = true }},
     ["nvim-tree"]                  = { enabled = false, default = { opts = true, config = true, keys = true }},
     ["nvim-treesitter"]            = { enabled = true,  default = { opts = true, config = true, keys = true }},
+    ["nvim-treesitter-context"]    = { enabled = false,  default = { opts = true, config = true, keys = true }},
     ["nvim-ts-rainbow"]            = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["nvim-unimpaired"]            = { enabled = true,  default = { opts = true, config = true, keys = true }},
     ["nvim-web-devicons"]          = { enabled = true,  default = { opts = true, config = true, keys = true }},
