@@ -4,6 +4,6 @@ local plugin = "vim-tmux-navigator"
 
 return {
   "christoomey/" .. plugin,
-  event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled("vim-tmux-navigator"),
+  enabled = Is_Enabled(plugin) and In_Tmux(),
+  event =  "VeryLazy",
 }
