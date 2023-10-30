@@ -13,11 +13,6 @@ Keymap("i", "<A-k", "")
 Keymap("v", "<A-j", "")
 Keymap("v", "<A-k", "")
 
--- Keymap("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>")
--- Keymap("n", "<c-j>", "<cmd>TmuxNavigateDown<cr>")
--- Keymap("n", "<c-k>", "<cmd>TmuxNavigateUp<cr>")
--- Keymap("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>")
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ General mappings.
 
