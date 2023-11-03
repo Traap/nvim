@@ -33,7 +33,7 @@ return {
       opts.ensure_installed = {
         "bash", "c", "c_sharp", "cpp", "dockerfile", "html", "javascript",
         "json", "lua", "markdown", "markdown_inline", "python", "query",
-        "regex", "ruby", "rust", "sql", "toml", "tsx", "typescript", "vim",
+        "regex", "ruby", "sql", "toml", "tsx", "typescript", "vim",
         "vimdoc", "yaml",
       }
     end
