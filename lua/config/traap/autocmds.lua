@@ -120,7 +120,8 @@ vim.api.nvim_create_autocmd("BufLeave", {
 -- {{{ Set spelling for some file types.
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "gitcommit", "markdown", "wiki" },
+  -- pattern = { "gitcommit", "markdown", "wiki" },
+  pattern = "*",
   callback = function()
     vim.opt_local.spell = true
   end,
