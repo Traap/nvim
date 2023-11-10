@@ -19,7 +19,8 @@ return {
       -- {{{ Confirmaiton options
 
       local confirm_opts = {
-        behavior = cmp.ConfirmBehavior.Replace,
+        behavior = cmp.ConfirmBehavior.Select,
+        -- behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       }
 
@@ -111,6 +112,7 @@ return {
       -- {{{ source_mappign and formatting
 
       local source_mapping = {
+        spell         = "[Spell]",
         buffer        = "[Buffer]",
         calc          = "[calc]",
         latex_symbols = "[LaTeX]",
@@ -118,7 +120,6 @@ return {
         nvim_lsp      = "[LSP]",
         nvim_lua      = "[Lua]",
         path          = "[Path]",
-        spell         = "[Spell]",
       }
 
       local formatting = {
@@ -144,30 +145,20 @@ return {
         ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
         ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
 
-        -- TODO: Soon to remove.
         ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
         ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
 
-        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-        ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-
-        ["<C-c"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-
-        ["<C-e>"] = cmp.mapping { i = cmp.mapping.abort(), c = cmp.mapping.close() },
-
-        ["<C-y>"] = cmp.config.disable,
+        ["<C-c>"] = cmp.mapping.abort(),
 
         ["<CR>"] = cmp.mapping.confirm { select = true },
 
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
+          if cmp.visible() and has_words_before() then
             cmp.select_next_item()
           elseif luasnip.expandable() then
             luasnip.expand()
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
           else
             fallback()
           end
@@ -186,8 +177,8 @@ return {
 
       -- --------------------------------------------------------------------- }}}
       -- {{{ Sources
-
       local sources = {
+        { name = "spell", keyword_length = 4, max_item_count = 30 },
         { name = "buffer", keyword_length = 2, max_item_count = 30 },
         { name = "calc", keyword_length = 2, max_item_count = 30 },
         { name = "latex_symbols", keyword_length = 1, max_item_count = 30 },
@@ -195,7 +186,6 @@ return {
         { name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
         { name = "nvim_lua", keyword_length = 1, max_item_count = 30 },
         { name = "path", keyword_length = 3, max_item_count = 30 },
-        { name = "spell", keyword_length = 2, max_item_count = 30 },
       }
 
       -- --------------------------------------------------------------------- }}}
