@@ -125,7 +125,7 @@ return {
         ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
         ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
 
-        ["<C-c>"] = cmp.mapping.abort(),
+        ["<C-c>"] = cmp.mapping { i = cmp.mapping.abort(), c = cmp.mapping.close() },
 
         ["<CR>"] = cmp.mapping.confirm { select = true },
 
@@ -179,14 +179,14 @@ return {
       -- {{{ Sources
 
       local sources = {
-        { name = "spell", keyword_length = 3, max_item_count = 10 },
-        { name = "buffer", keyword_length = 3, max_item_count = 10 },
-        { name = "calc", keyword_length = 3, max_item_count = 10 },
-        { name = "latex_symbols", keyword_length = 1, max_item_count = 10 },
-        { name = "luasnip", keyword_length = 3, max_item_count = 10 },
-        { name = "nvim_lsp", keyword_length = 3, max_item_count = 10 },
-        { name = "nvim_lua", keyword_length = 3, max_item_count = 10 },
-        { name = "path", keyword_length = 3, max_item_count = 20 },
+        { name = "spell",         keyword_length = 3, max_item_count = 10, priority = 1000 },
+        { name = "buffer",        keyword_length = 3, max_item_count = 10, prioirty = 500 },
+        { name = "calc",          keyword_length = 3, max_item_count = 10, priority = 250 },
+        { name = "latex_symbols", keyword_length = 1, max_item_count = 10, prioirty = 300 },
+        { name = "luasnip",       keyword_length = 1, max_item_count = 10, prioirty = 325},
+        { name = "nvim_lsp",      keyword_length = 1, max_item_count = 10, priority = 900},
+        { name = "nvim_lua",      keyword_length = 1, max_item_count = 10, priority = 800 },
+        { name = "path",          keyword_length = 3, max_item_count = 20, prioirty = 250 },
       }
 
       -- --------------------------------------------------------------------- }}}
