@@ -186,7 +186,7 @@ return {
         { name = "buffer",        keyword_length = 3, max_item_count = 10, prioirty = 500 },
         { name = "calc",          keyword_length = 3, max_item_count = 10, priority = 250 },
         { name = "latex_symbols", keyword_length = 1, max_item_count = 10, prioirty = 300 },
-        { name = "luasnip",       keyword_length = 1, max_item_count = 10, prioirty = 325},
+        { name = "luasnip",       keyword_length = 1, max_item_count = 10, prioirty = 825},
         { name = "nvim_lsp",      keyword_length = 1, max_item_count = 10, priority = 900},
         { name = "nvim_lua",      keyword_length = 1, max_item_count = 10, priority = 800 },
         { name = "path",          keyword_length = 3, max_item_count = 20, prioirty = 250 },
