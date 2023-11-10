@@ -62,7 +62,7 @@ return {
         sources = cmp.config.sources({
           { name = "path" },
         },{
-          { name = "cmdline" },
+          { name = "cmdline" , option = { ignore_cmds = { 'Man',"!'" }}},
         }),
       })
 
@@ -182,7 +182,7 @@ return {
       -- {{{ Sources
 
       local sources = {
-        { name = "spell",         keyword_length = 3, max_item_count = 10, priority = 1000 },
+        { name = "spell",         keyword_length = 4, max_item_count = 10, priority = 450 },
         { name = "buffer",        keyword_length = 3, max_item_count = 10, prioirty = 500 },
         { name = "calc",          keyword_length = 3, max_item_count = 10, priority = 250 },
         { name = "latex_symbols", keyword_length = 1, max_item_count = 10, prioirty = 300 },
