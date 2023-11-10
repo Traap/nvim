@@ -4,7 +4,7 @@ local plugin = "nvim-cmp"
 
 return {
   "hrsh7th/" .. plugin,
-  event = {"InsertEnter"},
+  event = {"InsertEnter", "CmdLineEnter"},
   enabled = Is_Enabled(plugin),
   opts = function(_, opts)
     if Use_Default_Opts(plugin) then
@@ -60,6 +60,7 @@ return {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = "path" },
+        },{
           { name = "cmdline" },
         }),
       })
