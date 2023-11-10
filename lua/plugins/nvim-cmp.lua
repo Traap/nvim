@@ -19,8 +19,8 @@ return {
       -- {{{ Confirmaiton options
 
       local confirm_opts = {
-        behavior = cmp.ConfirmBehavior.Select,
-        -- behavior = cmp.ConfirmBehavior.Replace,
+        -- behavior = cmp.ConfirmBehavior.Select,
+        behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       }
 
@@ -109,29 +109,6 @@ return {
       }
 
       -- ------------------------------------------------------------------- }}}
-      -- {{{ source_mappign and formatting
-
-      local source_mapping = {
-        spell         = "[Spell]",
-        buffer        = "[Buffer]",
-        calc          = "[calc]",
-        latex_symbols = "[LaTeX]",
-        luasnip       = "[Snippet]",
-        nvim_lsp      = "[LSP]",
-        nvim_lua      = "[Lua]",
-        path          = "[Path]",
-      }
-
-      local formatting = {
-        fields = {'kind', 'abbr', 'menu'},
-        format = function(entry, vim_item)
-          vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
-          vim_item.menu = (source_mapping)[entry.source.name]
-          return vim_item
-        end
-      }
-
-      -- ------------------------------------------------------------------------- }}}
       -- {{{ Snippets
 
       local snippet = {
@@ -176,16 +153,40 @@ return {
       }
 
       -- --------------------------------------------------------------------- }}}
+      -- {{{ Source mapping and formatting
+
+      local source_mapping = {
+        spell         = "[Spell]",
+        buffer        = "[Buffer]",
+        calc          = "[calc]",
+        latex_symbols = "[LaTeX]",
+        luasnip       = "[Snippet]",
+        nvim_lsp      = "[LSP]",
+        nvim_lua      = "[Lua]",
+        path          = "[Path]",
+      }
+
+      local formatting = {
+        fields = {'kind', 'abbr', 'menu'},
+        format = function(entry, vim_item)
+          vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
+          vim_item.menu = (source_mapping)[entry.source.name]
+          return vim_item
+        end
+      }
+
+      -- ------------------------------------------------------------------------- }}}
       -- {{{ Sources
+
       local sources = {
-        { name = "spell", keyword_length = 4, max_item_count = 30 },
-        { name = "buffer", keyword_length = 2, max_item_count = 30 },
-        { name = "calc", keyword_length = 2, max_item_count = 30 },
-        { name = "latex_symbols", keyword_length = 1, max_item_count = 30 },
-        { name = "luasnip", keyword_length = 1, max_item_count = 30 },
-        { name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
-        { name = "nvim_lua", keyword_length = 1, max_item_count = 30 },
-        { name = "path", keyword_length = 3, max_item_count = 30 },
+        { name = "spell", keyword_length = 3, max_item_count = 10 },
+        { name = "buffer", keyword_length = 3, max_item_count = 10 },
+        { name = "calc", keyword_length = 3, max_item_count = 10 },
+        { name = "latex_symbols", keyword_length = 1, max_item_count = 10 },
+        { name = "luasnip", keyword_length = 3, max_item_count = 10 },
+        { name = "nvim_lsp", keyword_length = 3, max_item_count = 10 },
+        { name = "nvim_lua", keyword_length = 3, max_item_count = 10 },
+        { name = "path", keyword_length = 3, max_item_count = 20 },
       }
 
       -- --------------------------------------------------------------------- }}}
@@ -199,6 +200,15 @@ return {
       opts.window = window
 
       -- ----------------------------------------------------------------------- }}}
+    end
+  end,
+
+  config = function(_, opts)
+    if not Use_Default_Config(plugin) then
+      for _, source in ipairs(opts.sources) do
+        source.group_index = source.group_index or 1
+      end
+      require("cmp").setup(opts)
     end
   end,
 
