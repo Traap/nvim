@@ -26,18 +26,14 @@ return {
   -- {{{ Use Harpoon defaults or my customizations.
 
   opts = function(_, opts)
-    if Use_Default_Opts(plugin) then
-      opts = opts
-    else
-      opts.global_settings = {
-        save_on_toggle = false,
-        save_on_change = true,
-        enter_on_sendcmd = false,
-        tmux_autoclose_windows = false,
-        excluded_filetypes = { plugin, "alpha", "dashboard", "gitcommit" },
-        mark_branch = false,
-      }
-    end
+    opts.global_settings = {
+      save_on_toggle = false,
+      save_on_change = true,
+      enter_on_sendcmd = false,
+      tmux_autoclose_windows = false,
+      excluded_filetypes = { plugin, "alpha", "dashboard", "gitcommit" },
+      mark_branch = false,
+    }
   end,
 
   -- ----------------------------------------------------------------------- }}}

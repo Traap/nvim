@@ -6,10 +6,13 @@ return {
   "SmiteshP/" .. plugin,
   enabled = Is_Enabled(plugin),
   opts = function(_, opts)
-    if Use_Default_Opts(plugin) then
-      opts = opts
-    else
-      opts = {}
-    end
+    opts = {
+      lsp = { auto_attach = true, },
+
+    }
+  end,
+
+  config = function(_, opts)
+    require(plugin).setup(opts)
   end,
 }

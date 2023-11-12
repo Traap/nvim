@@ -34,6 +34,7 @@ local options = {
   splitbelow = true,
   splitright = true,
   swapfile = false,
+  tabstop = 4,
   termguicolors = true,
   timeoutlen = 450,
   textwidth = 80,

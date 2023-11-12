@@ -21,16 +21,4 @@ function M.in_tmux()
   return os.getenv("TMUX") ~= nil
 end
 
-function M.use_default_opts(plugin)
-  return Customize.plugins[plugin].default.opts or false
-end
-
-function M.use_default_config(plugin)
-  return Customize.plugins[plugin].default.config or false
-end
-
-function M.use_default_keys(plugin)
-  return Customize.plugins[plugin].default.keys or false
-end
-
 return M

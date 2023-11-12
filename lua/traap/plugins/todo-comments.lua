@@ -10,15 +10,12 @@ end
 return {
   "folke/" .. plugin,
   enabled = Is_Enabled(plugin),
+
   opts = function(_, opts)
-    if Use_Default_Opts(plugin) then
-      opts = opts
-    else
-      opts.merge_keywords = true
-      opts.keywords = {
-        YouTube = { icon = " ", color = "#ff0000", alt = {"youtube", "Youtube"}},
-        -- URL = { icon = " ", color = "#7711FF", alt = { "Url", "url" } },
-      }
-    end
+    opts.merge_keywords = true
+    opts.keywords = {
+      YouTube = { icon = " ", color = "#ff0000", alt = {"youtube", "Youtube"}},
+      -- URL = { icon = " ", color = "#7711FF", alt = { "Url", "url" } },
+    }
   end,
 }

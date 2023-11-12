@@ -10,13 +10,6 @@ local plugin = "nvim"
 return {
   name .. "/" .. plugin,
   enabled = Is_Enabled(name),
-  lazy = true,
-
-  opts = function(_, opts)
-    if Use_Default_Opts(plugin) then
-      opts = opts
-    else
-      opts = {}
-    end
-  end,
+  name = "catppuccin",
+  priority = 1000,
 }

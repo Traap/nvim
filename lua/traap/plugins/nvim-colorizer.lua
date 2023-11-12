@@ -12,5 +12,5 @@ return {
   "NvChad/" .. plugin,
   event = { "BufReadPre", "BufNewFile" },
   enabled = Is_Enabled(plugin),
-  config = Use_Default_Config(plugin)
+  config = true, 
 }

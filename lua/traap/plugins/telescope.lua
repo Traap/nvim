@@ -4,7 +4,7 @@ local plugin = "telescope.nvim"
 
 -- {{{ keymaps
 
-if Is_Enabled(plugin) and not Use_Default_Keys(plugin) then
+if Is_Enabled(plugin) then
   local cmdT = "<cmd>Telescope "
   local cmdL = "<cmd>lua require('telescope')."
 
@@ -45,35 +45,25 @@ return {
   enabled = Is_Enabled(plugin),
   cmd = "Telescope",
 
-  keys = function()
-    if not Use_Default_Keys(plugin) then
-      return { keys = false }
-    end
-  end,
-
   opts = function(_, opts)
-    if Use_Default_Opts(plugin) then
-      opts = opts
-    else
-      local actions = require("telescope.actions")
-      opts.defaults = {
-        layout_config = { prompt_position = "top" },
-        layout_strategy = "horizontal",
-        mappings = {
-          i = {
-            ["<c-j>"] = actions.move_selection_next,
-            ["<c-k>"] = actions.move_selection_previous,
-          },
+    local actions = require("telescope.actions")
+    opts.defaults = {
+      layout_config = { prompt_position = "top" },
+      layout_strategy = "horizontal",
+      mappings = {
+        i = {
+          ["<c-j>"] = actions.move_selection_next,
+          ["<c-k>"] = actions.move_selection_previous,
         },
-        prompt_prefix = " ",
-        selection_caret = " ",
-        sorting_strategy = "ascending",
-        winblend = 0,
-      }
-      opts.pickers = {
-        colorscheme = { enable_preview = true },
-      }
-    end
+      },
+      prompt_prefix = " ",
+      selection_caret = " ",
+      sorting_strategy = "ascending",
+      winblend = 0,
+    }
+    opts.pickers = {
+      colorscheme = { enable_preview = true },
+    }
   end,
 
   dependencies = {
