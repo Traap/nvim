@@ -5,5 +5,4 @@ return {
   "folke/" .. plugin,
   event = "VeryLazy",
   enabled = Is_Enabled(plugin),
-  keys = false,
 }

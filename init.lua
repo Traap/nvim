@@ -6,8 +6,8 @@ vim.g.maplocalleader = [[,]]
 require("traap.core.bootstrap")
 
 -- My setup.
-require("traap.config.autocmds")
 require("traap.config.options")
+require("traap.config.autocmds")
 require("traap.config.keymaps")
 
 --  Minimzl lazy setup.
@@ -41,3 +41,4 @@ require("lazy").setup({
     },
   },
 })
+vim.cmd("colorscheme tokyonight-night")
