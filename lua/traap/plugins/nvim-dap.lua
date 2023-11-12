@@ -34,4 +34,7 @@ end
 return {
   "mfussenegger/" .. plugin,
   enabled = Is_Enabled(plugin),
+  dependencies = {
+    "rcarriage/nvim-dap-ui"
+  },
 }

@@ -44,7 +44,7 @@ Customize                          = {
     ["nvim-dap-ui"]                = { enabled = true  },
     ["nvim-dap-virtual-text"]      = { enabled = true  },
     ["nvim-lightbulb"]             = { enabled = true  },
-    ["nvim-lspconfig"]             = { enabled = true  },
+    ["nvim-lspconfig"]             = { enabled = true },
     ["nvim-navic"]                 = { enabled = true  },
     ["nvim-notify"]                = { enabled = true  },
     ["nvim-spectre"]               = { enabled = true  },
