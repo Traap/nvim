@@ -5,8 +5,7 @@ local plugin = "nvim-web-devicons"
 return {
   "nvim-tree/" .. plugin,
 
-  enabled = Is_Enabled(plugin) and
-    (Is_Enabled("nvim-tree") or Is_Enabled("lualine.nvim")),
+  enabled = Is_Enabled(plugin),
 
   opts = function(_, opts)
     if Use_Default_Opts(plugin) then

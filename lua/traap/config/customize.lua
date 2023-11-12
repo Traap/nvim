@@ -57,7 +57,7 @@ Customize                          = {
     ["nvim-lightbulb"]             = { enabled = true,  default = { opts = false, config = true,  keys = true }},
     ["nvim-lspconfig"]             = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["nvim-navic"]                 = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
-    ["nvim-notify"]                = { enabled = false,  default = { opts = false, config = true,  keys = true }},
+    ["nvim-notify"]                = { enabled = true,  default = { opts = false, config = true,  keys = true }},
     ["nvim-spectre"]               = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["nvim-surround"]              = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["nvim-toggler"]               = { enabled = true,  default = { opts = true,  config = false, keys = false }},
