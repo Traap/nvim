@@ -76,8 +76,15 @@ return {
     end
   end,
 
+  config = function(_, opts)
+    local telescope = require("telescope")
+    telescope.setup(opts)
+    telescope.load_extension("noice")
+  end,
+
   dependencies = {
     "nvim-telescope/telescope-fzf-native.nvim",
+    "folke/noice.nvim",
   },
 }
 
