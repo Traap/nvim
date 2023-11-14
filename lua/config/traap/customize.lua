@@ -39,7 +39,7 @@ Customize                          = {
     ["harpoon"]                    = { enabled = true,  default = { opts = false, config = true,  keys = true }},
     ["indent-blankline"]           = { enabled = true,  default = { opts = false, config = true,  keys = true }},
     ["leap.nvim"]                  = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
-    ["lualine.nvim"]               = { enabled = true,  default = { opts = false, config = true,  keys = true }},
+    ["lualine.nvim"]               = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["markdown-preview.nvim"]      = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["mason-nvim-dap.nvim"]        = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["mason.nvim"]                 = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
