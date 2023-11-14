@@ -1,11 +1,10 @@
 require("traap.core.globals")
 
-local plugin = "nvim-treesitter"
-
 return {
-  "nvim-treesitter/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "nvim-treesitter/nvim-treesitter",
+  enabled = true,
   event = "VeryLazy",
+  build = ":TSUpdate",
 
   opts = function(_, opts)
     opts.autopairs = { enable = true }
@@ -38,5 +37,6 @@ return {
 
   dependencies = {
     "mrjones2014/nvim-ts-rainbow",
+    "nvim-treesitter/nvim-treesitter-textobjects"
   },
 }

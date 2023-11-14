@@ -45,6 +45,16 @@ return {
   enabled = Is_Enabled(plugin),
   cmd = "Telescope",
 
+  dependencies = {
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      cond = function()
+        return vim.fn.executable 'make' == 1
+      end,
+    },
+  },
+
   opts = function(_, opts)
     local actions = require("telescope.actions")
     opts.defaults = {
@@ -70,6 +80,12 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-fzf-native.nvim",
   },
+
+  config = function(_, opts)
+    local telescope = require("telescope")
+    telescope.setup(opts)
+    pcall(telescope.load_extension, 'fzf')
+  end,
 }
 
 -- ------------------------------------------------------------------------- }}}

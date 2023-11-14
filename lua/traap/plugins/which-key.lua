@@ -1,8 +1,11 @@
-require("traap.core.globals")
-
-local plugin = "which-key.nvim"
 return {
-  "folke/" .. plugin,
-  event = "VeryLazy",
-  enabled = Is_Enabled(plugin),
+  "folke/which-key.nvim",
+  enabled = true,
+  opts = {
+    plugins = { spelling = true }
+  },
+  config = function(_, opts)
+    local wk = require("which-key")
+    wk.setup(opts)
+  end,
 }
