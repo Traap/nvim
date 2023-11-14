@@ -45,7 +45,30 @@ return {
         {
           filter = {
             event = "msg_show",
+            kind = "emsg",
+            any = {
+              { find = "No fold found" },
+              { find = "Pattern not found" },
+            },
+          },
+          opts = { skip = true },
+        },
+
+        {
+          filter = {
+            event = "msg_show",
             kind = "wmsg",
+          },
+          opts = { skip = true },
+        },
+
+        {
+          filter = {
+            event = "msg_show",
+            kind = "echo",
+            -- any = {
+            --   { find = "EasyAlign" },
+            -- },
           },
           opts = { skip = true },
         },
