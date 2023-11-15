@@ -9,6 +9,21 @@ return {
 
   opts = {
     servers = {
+      ansiblels = {},
+      astro = {},
+      bashls = {},
+      clangd = {},
+      cssls = {},
+      denols = false,
+      dockerls = {},
+      gopls = {},
+      html = {},
+      jsonls = {},
+      marksman = {},
+      pyright = {},
+      svelte = {},
+      tsserver = {},
+      yamlls = {},
       lua_ls = {
         Lua = {
           workspace = {
@@ -111,7 +126,11 @@ return {
     local mcfg = require("mason-lspconfig")
 
     mcfg.setup(opts)
-    mcfg.setup{ ensure_installed = opts.servers }
+
+    mcfg.setup{
+      ensure_installed = vim.tbl_keys(opts.servers)
+    }
+
     mcfg.setup_handlers {
       function(server_name)
         require("lspconfig")[server_name].setup{
