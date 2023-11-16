@@ -1,7 +1,7 @@
 return {
   "williamboman/mason-lspconfig.nvim",
   enable = true,
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
 
   dependencies = {
     "williamboman/mason.nvim",

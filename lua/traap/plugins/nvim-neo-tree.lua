@@ -8,7 +8,7 @@ return {
 
   keys = {
     {"<c-n>", "<cmd>Neotree toggle<cr>"},
-    {"<c-nf>", "<cmd>Neotree focus<cr>"},
+    {"<leader>nf", "<cmd>Neotree focus<cr>"},
   },
 
   opts = function(_, opts)
