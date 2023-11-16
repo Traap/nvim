@@ -149,9 +149,16 @@ Keymap("n", "<leader>ss", "0v)k$:sort<cr>")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ w - Whitespace
 
-Keymap("n", "<leader>wr", "<cmd>%s/\r//g<cr>")
-Keymap("n", "<leader>wt", "mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z")
+-- Remove Windoz line ending.
+Keymap("n", "<leader>wr", [[mz<cmd>%s/\r//g<cr><cmd>let @/=''<cr>`z]])
+
+-- Convert tab to 2 spaces.
+Keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]])
+
+-- Remove line ending white space.
 Keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
-Keymap("n", "<leader>wx", "<cmd>g/^\\s*$/d<cr>")
+
+-- Delete empty lines.
+Keymap("n", "<leader>wx", [[mz<cmd>g/^\s*$/d<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
