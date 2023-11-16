@@ -41,7 +41,23 @@ vim.api.nvim_create_autocmd({"VimEnter", "BufEnter", "ColorScheme"}, {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
-  pattern = { "fugitive" },
+  pattern = {
+    "PlenaryTestPopup",
+    "checkhealth",
+    "fugitive",
+    "help",
+    "lspinfo",
+    "man",
+    "neotest-output",
+    "neotest-output-panel",
+    "neotest-summary",
+    "notify",
+    "qf",
+    "query",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+  },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set(
@@ -51,11 +67,25 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ csv
+-- {{{ Create dir when saving a file when an intermediate directory is missing.
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = augroup("auto_create_dir"),
+  callback = function(event)
+    if event.match:match("^%w%w+://") then
+      return
+    end
+    local file = vim.loop.fs_realpath(event.match) or event.match
+    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
+})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ csv settings.
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  command = "setlocal filetype=csv nowrap textwidth=0",
   group = augroup("csv"),
+  command = "setlocal filetype=csv nowrap textwidth=0",
   pattern = "*.csv",
 })
 
@@ -63,8 +93,8 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -- {{{ Disable autoformat for all file types.
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "*", "csv", "md", "sh", "tex", "wiki", "wtf" },
   group = augroup("no_autoformat"),
+  pattern = { "*", "csv", "md", "sh", "tex", "wiki", "wtf" },
   callback = function()
     vim.b.autoformat = false
   end,
@@ -93,64 +123,113 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ json
+-- {{{ Go to last location when opening a buffer
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = augroup("last_loc"),
+  callback = function(event)
+    local exclude = { "gitcommit" }
+    local buf = event.buf
+    if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].lazyvim_last_loc then
+      return
+    end
+    vim.b[buf].lazyvim_last_loc = true
+    local mark = vim.api.nvim_buf_get_mark(buf, '"')
+    local lcount = vim.api.nvim_buf_line_count(buf)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Highlight on yank
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = augroup("highlight_yank"),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+-- ------------------------------------------------------------------------- }}}
+-- {{{ json syntax match
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  command = [[syntax match Comment +\/\/.\+$+]],
   group = augroup("json"),
+  command = [[syntax match Comment +\/\/.\+$+]],
   pattern = "*.json",
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ PlantUML
+-- {{{ PlantUML automatic commands.
 
 vim.api.nvim_create_autocmd("BufWritePost", {
-  command = "PlantUmlAssemble",
   group = augroup("plantuml_assemble"),
+  command = "PlantUmlAssemble",
   pattern = { "*.puml", "*.wsd" },
 })
 
 vim.api.nvim_create_autocmd("BufLeave", {
-  command = "PlantUmlClear",
   group = augroup("plantuml_clear"),
+  command = "PlantUmlClear",
   pattern = { "*.puml", "*.wsd" },
+})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Resize splits after window resize.
+
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  group = augroup("resize_splits"),
+  callback = function()
+    local current_tab = vim.fn.tabpagenr()
+    vim.cmd("tabdo wincmd =")
+    vim.cmd("tabnext " .. current_tab)
+  end,
+})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Remove trailing WhiteSpace
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  command = [[%s/\s\+$//e]],
+  group = augroup("whitespace"),
 })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Set spelling for some file types.
 
 vim.api.nvim_create_autocmd("FileType", {
-  -- pattern = { "gitcommit", "markdown", "wiki" },
-  pattern = "*",
+  group = augroup("wrap_spell"),
+  pattern = { "gitcommit", },
   callback = function()
     vim.opt_local.spell = true
+    vim.opt_local.wrap = true
   end,
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ TeX
+-- {{{ Set TeX files types.
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  command = "setlocal filetype=tex",
   group = augroup("tex"),
-  pattern = { "*.tex", "*.bbl", "*.bib", "*.texx", "*.texb", "*.cls" },
+  command = "setlocal filetype=tex",
+  pattern = {
+    "*.bbl",
+    "*.bib",
+    "*.cls",
+    "*.tex",
+    "*.texb",
+    "*.texx",
+  },
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Wiki
+-- {{{ Set Wiki file types and enable wiki.
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  command = "setlocal foldlevelstart=2 filetype=wiki | WikiEnable",
   group = augroup("wiki"),
+  command = "setlocal foldlevelstart=2 filetype=wiki | WikiEnable",
   pattern = { "*.md", "*.markdown", "*.wiki" },
-})
-
--- ------------------------------------------------------------------------- }}}
--- {{{ WhiteSpace
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  command = [[%s/\s\+$//e]],
-  group = augroup("whitespace"),
 })
 
 -- ------------------------------------------------------------------------- }}}
