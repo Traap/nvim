@@ -155,10 +155,13 @@ Keymap("n", "<leader>wr", [[mz<cmd>%s/\r//g<cr><cmd>let @/=''<cr>`z]])
 -- Convert tab to 2 spaces.
 Keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]])
 
--- Remove line ending white space.
+-- Remove line end trailing white space.
 Keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
 
 -- Delete empty lines.
-Keymap("n", "<leader>wx", [[mz<cmd>g/^\s*$/d<cr>]])
+vim.api.nvim_set_keymap(
+  "n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>",
+  { noremap = true, silent = true }
+)
 
 -- ------------------------------------------------------------------------- }}}
