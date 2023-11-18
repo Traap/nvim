@@ -54,7 +54,7 @@ Customize                          = {
     ["neoformat"]                  = { enabled = false, default = { opts = true,  config = true,  keys = true }},
     ["noice.nvim"]                 = { enabled = true,  default = { opts = false, config = true,  keys = true }},
     ["none-ls.nvim"]               = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
-    ["nui.nvim"]                   = { enabled = true,  default = { eopts = true, config = true,  keys = true }},
+    ["nui.nvim"]                   = { enabled = true,  default = { opts = true,  config  = true, keys = true }},
     ["nvim-autopairs"]             = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["nvim-base16"]                = { enabled = false, default = { opts = true,  config = true,  keys = true }},
     ["nvim-cmp"]                   = { enabled = true,  default = { opts = false, config = false, keys = true }},
