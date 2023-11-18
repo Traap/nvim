@@ -1,11 +1,7 @@
-require("traap.core.globals")
-
-local plugin = "dressing.nvim"
-
 return {
-  "stevearc/" .. plugin,
+  "stevearc/dressing.nvim",
   lazy = true,
-  enabled = Is_Enabled(plugin),
+  enabled = true,
   init = function()
     ---@diagnostic disable-next-line: duplicate-set-field
     vim.ui.select = function(...)

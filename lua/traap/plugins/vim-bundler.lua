@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-bundler"
-
 return {
-  "tpope/" .. plugin,
+  "tpope/vim-bundler",
   event = { "BufEnter *.rb" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

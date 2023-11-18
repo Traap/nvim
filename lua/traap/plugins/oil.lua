@@ -1,12 +1,8 @@
-require("traap.core.globals")
-
-local plugin = "oil.nvim"
-
 return {
-  "stevearc/" .. plugin,
+  "stevearc/oil.nvim",
   cmd = "Oil",
   keys = { { "<leader>no", "<cmd>Oil<cr>", desc = "Oil buffer" } },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 
   -- {{{ Option
   opts = function(_, opts)

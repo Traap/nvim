@@ -1,11 +1,7 @@
-require("traap.core.globals")
-
-local plugin = "nvim-cmp"
-
 return {
-  "hrsh7th/" .. plugin,
+  "hrsh7th/nvim-cmp",
   event = {"InsertEnter", "CmdLineEnter"},
-  enabled = Is_Enabled(plugin),
+  enabled = true,
   opts = function(_, opts)
     -- {{{ opts function begins and overrides LazyVim default behavior.
 

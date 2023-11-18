@@ -1,10 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "toggleterm.nvim"
-
 return {
-  "akinsho/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "akinsho/toggleterm.nvim",
+  enabled = true,
   version = "*",
   opts = {
     size = 13,

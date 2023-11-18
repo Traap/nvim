@@ -1,10 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "none-ls.nvim"
-
 return {
-  "nvimtools/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "nvimtools/none-ls.nvim",
+  enabled = true,
   event = "VeryLazy",
   config = true,
 }

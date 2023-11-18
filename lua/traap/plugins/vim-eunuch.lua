@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-eunuch"
-
 return {
-  "tpope/" .. plugin,
+  "tpope/vim-eunuch",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

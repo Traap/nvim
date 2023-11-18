@@ -1,9 +1,7 @@
-require("traap.core.globals")
-
 local plugin = "vim-bundle-vimtex"
 
 return {
-  "Traap/" .. plugin,
+  "Traap/vim-bundle-vimtex",
   ft = {"tex", "texx"},
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

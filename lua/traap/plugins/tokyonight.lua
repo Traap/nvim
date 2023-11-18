@@ -1,10 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "tokyonight.nvim"
-
 return {
-  "folke/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "folke/tokyonight.nvim",
+  enabled = true,
   lazy = false,
   priority = 1000,
   opts = function(_, opts)

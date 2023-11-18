@@ -1,10 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "nvim-surround"
-
 return {
-  "kylechui/" .. plugin,
+  "kylechui/nvim-surround",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
   config = true,
 }

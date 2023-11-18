@@ -1,12 +1,8 @@
-require("traap.core.globals")
-
-local plugin = "harpoon"
-
 return {
   -- {{{ Define the Harpoon lazy.vim specificaiton.
 
-  "ThePrimeagen/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "ThePrimeagen/harpoon",
+  enabled = true,
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Define events to load Harpoon.
@@ -31,7 +27,7 @@ return {
       save_on_change = true,
       enter_on_sendcmd = false,
       tmux_autoclose_windows = false,
-      excluded_filetypes = { plugin, "alpha", "dashboard", "gitcommit" },
+      excluded_filetypes = { "harpoon", "alpha", "dashboard", "gitcommit" },
       mark_branch = false,
     }
   end,
@@ -40,9 +36,9 @@ return {
   -- {{{ Configure harpoon.
 
   config = function(_, opts)
-    require(plugin).setup(opts)
-    local mark = require(plugin .. ".mark")
-    local ui = require(plugin .. ".ui")
+    require("harpoon").setup(opts)
+    local mark = require("harpoon" .. ".mark")
+    local ui = require("harpoon" .. ".ui")
 
     -- Harpoon marked files 1 through 4.
     vim.keymap.set("n", "<a-1>", function() ui.nav_file(1) end)

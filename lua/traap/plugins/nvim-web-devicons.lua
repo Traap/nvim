@@ -1,11 +1,7 @@
-require("traap.core.globals")
-
-local plugin = "nvim-web-devicons"
-
 return {
-  "nvim-tree/" .. plugin,
+  "nvim-tree/nvim-web-devicons",
 
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 
   opts = function(_, opts)
     opts.override = {

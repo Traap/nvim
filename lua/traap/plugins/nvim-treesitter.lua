@@ -1,5 +1,3 @@
-require("traap.core.globals")
-
 return {
   "nvim-treesitter/nvim-treesitter",
   enabled = true,

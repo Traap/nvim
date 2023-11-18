@@ -1,16 +1,15 @@
-require("traap.core.globals")
-
-local plugin = "wiki.vim"
-
 return {
-  "lervag/" .. plugin,
+  "lervag/wiki.vim",
+  enabled = true,
+
   cmd = { "WikiIndex", "WikiJournal" },
   ft = { "wiki", "md" },
-  enabled = Is_Enabled(plugin),
+
   dependencies = {
     "lervag/wiki-ft.vim",
     "Traap/vim-bundle-wiki.vim",
   },
+
   keys = {
     {"<leader>wb", "<cmd>edit " .. os.getenv("WIKIHOME") .. "/journal/Backlog.md<cr>", "Wiki Backlog"},
     {"<leader>wa", "<cmd>edit " .. os.getenv("WIKIHOME") .. "/journal/Acronyms.md<cr>", "Wiki Acronyms"},
@@ -19,6 +18,6 @@ return {
     {"<leader>wi", "<cmd>WikiIndex<cr>", "Wiki Index"},
     {"<leader>wj", "<cmd>WikiJournal<cr>", "Wiki Journal"},
     {"<leader>wp", "<cmd>WikiFzfPages<cr>", "Wiki FzF Pages"},
-    {"<leader>wv", "<cmd> lua Page_Viewer()<cr>"}
+    {"<leader>wv", "<cmd>lua Page_Viewer()<cr>"}
   }
 }

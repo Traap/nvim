@@ -1,11 +1,7 @@
-require("traap.core.globals")
-
-local plugin = "lualine.nvim"
-
 return {
-  "nvim-lualine/" .. plugin,
+  "nvim-lualine/lualine.nvim",
   event = 'VeryLazy' ,
-  enabled = Is_Enabled(plugin),
+  enabled = true,
   opts = function(_, opts)
     opts.options = {
       icons_enabled = true,

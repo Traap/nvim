@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-rake"
-
 return {
-  "tpope/" .. plugin,
+  "tpope/vim-rake",
   event = { "BufEnter *.rb", "BufEnter Rakefile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

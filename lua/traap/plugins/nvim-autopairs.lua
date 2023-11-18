@@ -1,11 +1,7 @@
-require("traap.core.globals")
-
-local plugin = "nvim-autopairs"
-
 return {
-  "windwp/" .. plugin,
+  "windwp/nvim-autopairs",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
   opts = {
     check_ts = true,
     ts_config = { java = false },

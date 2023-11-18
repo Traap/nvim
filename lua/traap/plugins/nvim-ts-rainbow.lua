@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "nvim-ts-rainbow"
-
 return {
-  "mrjones2014/" .. plugin,
+  "mrjones2014/nvim-ts-rainbow" ,
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

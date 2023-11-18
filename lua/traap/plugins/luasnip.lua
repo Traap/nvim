@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "LuaSnip"
-
 return {
-  "L3MON4D3/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "L3MON4D3/LuaSnip",
+  enabled = true,
   build = "make install_jsregexp",
 }

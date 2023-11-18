@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-speeddating"
-
 return {
-  "tpope/" .. plugin,
+  "tpope/vim-speeddating",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

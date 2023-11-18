@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-commentary"
-
 return {
-  "tpope/" .. plugin,
+  "tpope/vim-commentary",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "gem-browse"
-
 return {
-  "tpope/" .. plugin,
+  "tpope/gem-browse",
   event = { "BufEnter *.rb", "BufEnter *.gemspec", "BufEnter Gemfile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

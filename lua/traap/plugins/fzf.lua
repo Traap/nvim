@@ -1,10 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "fzf.vim"
-
 return {
-    "junegunn/" .. plugin,
+    "junegunn/fzf.vim",
     event = { "BufReadPost", "BufNewFile" },
-    enabled = Is_Enabled(plugin),
+    enabled = true,
     dependencies = { "Traap/vim-bundle-fzf" },
 }

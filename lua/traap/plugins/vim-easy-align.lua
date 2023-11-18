@@ -1,20 +1,14 @@
-require("traap.core.globals")
-
-local plugin = "vim-easy-align"
-
-if Is_Enabled(plugin) then
-  vim.cmd([[
-    xmap ga <Plug>(EasyAlign)
-    nmap ga <Plug>(EasyAlign)
-    nmap <bar>     gaip*<bar>
-    nmap <leader>0 gaip*,
-    nmap <leader>1 gaip=,
-    nmap <leader>2 gaip=<space>
-    ]])
-end
-
 return {
-  "junegunn/" .. plugin,
+  "junegunn/vim-easy-align",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
+
+  config = function()
+    vim.cmd([[silent xmap ga <Plug>(EasyAlign)]])
+    vim.cmd([[silent nmap ga <Plug>(EasyAlign)]])
+    vim.cmd([[silent nmap <bar>     gaip*<bar>]])
+    vim.cmd([[silent nmap <leader>0 gaip*,]])
+    vim.cmd([[silent nmap <leader>1 gaip=,]])
+    vim.cmd([[silent nmap <leader>2 gaip=<space>]])
+  end,
 }

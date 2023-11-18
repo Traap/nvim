@@ -1,11 +1,7 @@
-require("traap.core.globals")
-
-local plugin = "nvim-spectre"
-
 return {
-  "nvim-pack/" .. plugin,
+  "nvim-pack/nvim-spectre",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
   keys = {
     {
       "<leader>sr",

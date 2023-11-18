@@ -1,16 +1,11 @@
-require("traap.core.globals")
-
-local plugin = 'nvim-dap-ui'
-
-if Is_Enabled(plugin) then
-  Keymap("n", "<leader>dU", [[<cmd>lua require("dapui").toggle()<cr>]])
-end
-
 return {
-  "rcarriga/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "rcarriga/nvim-dap-ui",
+  enabled = true,
   event = Constants.file_types,
   dependencies = { "mfussenegger/nvim-dap" },
+  keys = {
+    {"<leader>dU", [[<cmd>lua require("dapui").toggle()<cr>]]},
+  },
 
   -- {{{ options
 

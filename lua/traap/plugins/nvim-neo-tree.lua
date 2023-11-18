@@ -1,10 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "neo-tree.nvim"
-
 return {
-  "nvim-neo-tree/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "nvim-neo-tree/neo-tree.nvim",
+  enable = true,
 
   keys = {
     {"<c-n>", "<cmd>Neotree toggle<cr>"},

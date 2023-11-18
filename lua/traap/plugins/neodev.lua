@@ -1,8 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "neodev.nvim"
 return {
-  "folke/" .. plugin,
+  "folke/neodev.nvim",
   event = "VeryLazy",
   enabled = true,
   opts = {},

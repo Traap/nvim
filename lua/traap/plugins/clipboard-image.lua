@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "clipboard-image.nvim"
-
 return {
-  "ekickx/" .. plugin,
+  "ekickx/clipboard-image.nvim",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

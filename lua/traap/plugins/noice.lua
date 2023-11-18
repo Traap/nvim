@@ -1,16 +1,12 @@
 require("traap.core.globals")
 
-local plugin = "noice.nvim"
-
-if Is_Enabled(plugin) then
-  Keymap("n", "<leader>ne", "<cmd>NoiceErrors<cr>")
-  Keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
-end
+Keymap("n", "<leader>ne", "<cmd>NoiceErrors<cr>")
+Keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
 
 return {
-  "folke/" .. plugin,
+  "folke/noice.nvim",
   event = "VeryLazy",
-  enabled = Is_Enabled(plugin),
+  enabled = true,
   keys = false,
 
   opts = function(_, opts)
@@ -43,7 +39,30 @@ return {
       {
         filter = {
           event = "msg_show",
+          kind = "emsg",
+          any = {
+            { find = "No fold found" },
+            { find = "Pattern not found" },
+          },
+        },
+        opts = { skip = true },
+      },
+
+      {
+        filter = {
+          event = "msg_show",
           kind = "wmsg",
+        },
+        opts = { skip = true },
+      },
+
+      {
+        filter = {
+          event = "msg_show",
+          kind = "echo",
+          -- any = {
+          --   { find = "EasyAlign" },
+          -- },
         },
         opts = { skip = true },
       },

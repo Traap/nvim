@@ -1,11 +1,8 @@
-require("traap.core.globals")
-
-local plugin = "vim-tmux-runner"
-
 return {
-  "christoomey/" .. plugin,
-  enabled = Is_Enabled(plugin) and In_Tmux(),
+  "christoomey/vim-tmux-runner",
+  enabled = true and In_Tmux(),
   event = "VeryLazy",
+
   keys = {
     {"<leader>tC", "<cmd>VtrClearRunner<cr>", "Clear Tmux Runner"},
     {"<leader>tF", "<cmd>VtrFocusRunner<cr>", "Focus Tmux Runner"},

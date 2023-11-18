@@ -4,7 +4,6 @@ local plugin = "telescope.nvim"
 
 -- {{{ keymaps
 
-if Is_Enabled(plugin) then
   local cmdT = "<cmd>Telescope "
   local cmdL = "<cmd>lua require('telescope')."
 
@@ -35,14 +34,13 @@ if Is_Enabled(plugin) then
 
   Keymap("n", "<leader>LS", cmdT .. "lsp_dynamic_workspace_symbols<cr>")
   Keymap("n", "<leader>Ls", cmdT .. "lsp_document_symbols<cr>")
-end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ lazy.nvim specification.
 
 return {
-  "nvim-telescope/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "nvim-telescope/telescope.nvim",
+  enabled = true,
   cmd = "Telescope",
 
   dependencies = {
@@ -75,11 +73,6 @@ return {
       colorscheme = { enable_preview = true },
     }
   end,
-
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope-fzf-native.nvim",
-  },
 
   config = function(_, opts)
     local telescope = require("telescope")

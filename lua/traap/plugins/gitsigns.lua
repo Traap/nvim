@@ -1,11 +1,7 @@
-require("traap.core.globals")
-
-local plugin = "gitsigns.nvim"
-
 return {
-  "lewis6991/" .. plugin,
+  "lewis6991/gitsigns.nvim",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 
   opts = function(_, opts)
     opts.signs = {

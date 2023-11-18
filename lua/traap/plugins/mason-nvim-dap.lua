@@ -1,10 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "mason-nvim-dap.nvim"
-
 return {
-  "jay-babu/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "jay-babu/mason-nvim-dap.nvim",
+  enabled = true,
   event = Constants.file_types,
   opts = function(_, opts)
     opts.automatic_setup = true

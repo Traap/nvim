@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-rbenv"
-
 return {
-  "tpope/" .. plugin,
+  "tpope/vim-rbenv",
   event = { "BufEnter *.rb" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

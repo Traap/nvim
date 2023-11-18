@@ -1,11 +1,7 @@
-require("traap.core.globals")
-
-local plugin = "nvim-lightbulb"
-
 return {
-  "kosayoda/" .. plugin,
+  "kosayoda/nvim-lightbulb",
   event = "BufReadPre",
-  enabled = Is_Enabled(plugin),
+  enabled = true,
   dependencies = { "antoinemadec/FixCursorHold.nvim" },
   opts = function(_, opts)
     opts.autocmd = { enabled = true }

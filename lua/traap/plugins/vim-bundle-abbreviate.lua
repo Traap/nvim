@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-bundle-abbreviate"
-
 return {
-  "Traap/" .. plugin,
+  "Traap/vim-bundle-abbreviate",
   event = "InsertEnter",
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

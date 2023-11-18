@@ -1,12 +1,8 @@
-require("traap.core.globals")
-
-local plugin = 'indent-blankline'
-
 return {
-  "lukas-reineke/" .. plugin .. ".nvim",
+  "lukas-reineke/indent-blankline.nvim",
 
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 
   main = "ibl",
 

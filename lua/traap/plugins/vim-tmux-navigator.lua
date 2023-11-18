@@ -1,11 +1,8 @@
-require("traap.core.globals")
-
-local plugin = "vim-tmux-navigator"
-
 return {
-  "christoomey/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "christoomey/vim-tmux-navigator",
+  enabled = true,
   event =  "VeryLazy",
+
   keys = {
     {"<c-h>", "<cmd>TmuxNavigateLeft<cr>", "Navigate Window Left"},
     {"<c-j>", "<cmd>TmuxNavigateDown<cr>", "Navigate Window Down"},

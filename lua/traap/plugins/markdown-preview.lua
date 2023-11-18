@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "markdown-preview.nvim"
-
 return {
-  "iamcco/" .. plugin ,
+  "iamcco/markdown-preview.nvim",
   ft = "md",
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

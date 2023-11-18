@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-most-minimal-folds"
-
 return {
-  "vim-utils/" .. plugin,
+  "vim-utils/vim-most-minimal-folds",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

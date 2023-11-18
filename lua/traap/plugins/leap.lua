@@ -1,10 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "leap.nvim"
-
 return {
-  "ggandor/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "ggandor/leap.nvim",
+  enabled = true,
   keys = {
     { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
     { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },

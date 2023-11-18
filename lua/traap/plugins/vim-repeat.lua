@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-repeat"
-
 return {
-  "tpope/" .. plugin,
+  "tpope/vim-repeat",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

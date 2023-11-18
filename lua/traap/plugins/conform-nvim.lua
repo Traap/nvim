@@ -1,9 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "conform"
 return {
-  "stevearc/" .. plugin .. ".nvim",
-  enabled = Is_Enabled(plugin..".nvim"),
+  "stevearc/conform.nvim",
+  enabled = true,
 
   event = { "BufReadPre", "BufNewFile" },
 

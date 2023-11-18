@@ -1,19 +1,18 @@
-require("traap.core.globals")
-
-local plugin = "nvim-toggler"
-
 return {
-  "nguyenvukhang/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "nguyenvukhang/nvim-toggler",
+  enabled = true,
   event = {"BufReadPost", "BufNewFile"},
 
   init = function()
-    local toggler = require(plugin)
-    vim.keymap.set({'n', 'v'}, '<leader>tn', toggler.toggle, { noremap = true, silent = true, desc = "Toggle operand"})
+    local toggler = require("nvim-toggler")
+    vim.keymap.set( {'n', 'v'},
+      '<leader>tn', toggler.toggle,
+      { noremap = true, silent = true, desc = "Toggle operand"}
+    )
   end,
 
   config = function(_, opts)
-    local toggler = require(plugin)
+    local toggler = require("nvim-toggler")
     toggler.setup({
       inverses = {
         [">="] = "<=",

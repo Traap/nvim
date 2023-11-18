@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "rainbow_csv"
-
 return {
-  "mechatroner/" .. plugin,
+  "mechatroner/rainbow_csv",
   ft = { "csv", "tsv" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

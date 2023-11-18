@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "plantuml-syntax"
-
 return {
-  "aklt/" .. plugin,
+  "aklt/plantuml-syntax",
   event = "VeryLazy",
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }

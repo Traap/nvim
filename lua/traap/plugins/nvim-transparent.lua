@@ -1,10 +1,6 @@
-require("traap.core.globals")
-
-local plugin = "nvim-transparent"
-
 return {
-    "xiyaowong/" .. plugin,
-    enabled = Is_Enabled(plugin),
+    "xiyaowong/nvim-transparent",
+    enabled = true,
     lazy = true,
     event = "VimEnter",
 

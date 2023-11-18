@@ -3,4 +3,5 @@ return {
   branch = 'v3.x',
   lazy = true,
   config = false,
+  enable = true,
 }

@@ -1,18 +1,14 @@
-require("traap.core.globals")
-
-local plugin = "dashboard-nvim"
-
 return {
-  "nvimdev/" .. plugin,
+  "nvimdev/dashboard-nvim",
   event = "VimEnter",
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 
   keys = {
     {"<leader>aa", "<cmd>Dashboard<cr>", desc = "Dashboard display"}
   },
 
   opts = function()
-    local logo = [[Powered by lazy.nvim and configured by Traap]]
+    local logo = [[Configured by Traap and powered by lazy.nvim.]]
 
     logo = string.rep("\n", 8) .. logo .. "\n\n"
 

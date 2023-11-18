@@ -1,9 +1,5 @@
-require("traap.core.globals")
-
-local plugin = "vim-projectionist"
-
 return {
-  "tpope/" .. plugin,
+  "tpope/vim-projectionist",
   ft = { "c", "cpp", "rb" },
-  enabled = Is_Enabled(plugin),
+  enabled = true,
 }
