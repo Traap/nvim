@@ -1,4 +1,3 @@
-Customzie = require("traap.config.customize")
 local M = {}
 
 function M.keymap(mode, lhs, rhs, opts)
