@@ -1,4 +1,3 @@
-Customzie = require("traap.config.customize")
 local M = {}
 
 -- Use PDF_VIEWER to view pdf document of prior WikiExport.  WikiExports are
