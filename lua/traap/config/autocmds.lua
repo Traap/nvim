@@ -4,7 +4,7 @@ require("traap.core.globals")
 --     NOTE: Found in lazy.vim auto commands.
 
 local function augroup(name)
-  return vim.api.nvim_create_augroup("nvimtraap_" .. name, { clear = true })
+  return vim.api.nvim_create_augroup("traap_" .. name, { clear = true })
 end
 
 -- -------------------------------------------------------------------------- }}}
@@ -15,11 +15,7 @@ end
 vim.api.nvim_create_autocmd({"VimEnter", "BufEnter", "ColorScheme"}, {
   group = augroup("transparency"),
   callback = function()
-    if Is_Enabled("virtcolumn.nvim")  then
-      vim.cmd([[ highlight ColorColumn guibg=#292d42 ]])
-    else
-      vim.cmd([[ highlight ColorColumn guibg=#202031 ]])
-    end
+    vim.cmd([[ highlight ColorColumn guibg=#292d42 ]])
 
     vim.cmd([[ highlight clear Folded ]])
     vim.cmd([[ highlight Folded guibg=comment guifg=#6a79b3 ]])
