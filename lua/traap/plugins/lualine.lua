@@ -2,7 +2,43 @@ return {
   "nvim-lualine/lualine.nvim",
   event = 'VeryLazy' ,
   enabled = true,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+
   opts = function(_, opts)
+    local function show_macro_recording()
+      local recording_register = vim.fn.reg_recording()
+      if recording_register == "" then
+        return ""
+      else
+        return "Recording @" .. recording_register
+      end
+    end
+
+    vim.api.nvim_create_autocmd("RecordingEnter", {
+      callback = function()
+        require("lualine").refresh({
+          place = {"statusline"},
+        })
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("RecordingLeave", {
+      callback = function()
+        local timer = vim.loop.new_timer()
+        timer:start(
+        50,
+        0,
+        vim.schedule_wrap(function()
+          require("lualine").refresh({
+            place = {"statusline"},
+          })
+        end)
+        )
+      end,
+    })
+
     opts.options = {
       icons_enabled = true,
       theme = "auto",
@@ -26,7 +62,8 @@ return {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = { "filename" },
-      lualine_x = { "encoding", "fileformat", "filetype" },
+
+      lualine_x = { show_macro_recording, "encoding", "fileformat", "filetype" },
       lualine_y = { "progress" },
       lualine_z = { "location" },
     }
