@@ -1,4 +1,3 @@
-Customzie = require("traap.config.customize")
 local M = {}
 
 local function _error_handler(err)
