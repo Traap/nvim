@@ -8,4 +8,9 @@ return {
     opts.style = "night"
     opts.styles = { sidebars = "transparent", floats = "transparent", }
   end,
+
+  config = function(_, opts)
+    require("tokyonight").setup(opts)
+    vim.cmd.colorscheme("tokyonight-night")
+  end,
 }
