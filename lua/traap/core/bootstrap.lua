@@ -1,4 +1,4 @@
--- {{{ Auto install lazy.nvim when needed.
+-- Auto install lazy.nvim when needed.
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -14,5 +14,3 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
-
--- ------------------------------------------------------------------------- }}}

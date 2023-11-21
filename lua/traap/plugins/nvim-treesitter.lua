@@ -1,7 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   enabled = true,
-  event = "VeryLazy",
+  event = {"BufReadPost", "BufNewFile"},
   build = ":TSUpdate",
 
   opts = function(_, opts)
@@ -35,6 +35,7 @@ return {
 
   dependencies = {
     "mrjones2014/nvim-ts-rainbow",
-    "nvim-treesitter/nvim-treesitter-textobjects"
+    "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
 }

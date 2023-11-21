@@ -1,6 +1,5 @@
 require("traap.core.globals")
 
-local plugin = "telescope.nvim"
 
 -- {{{ keymaps
 
@@ -45,6 +44,7 @@ return {
 
   dependencies = {
     { "nvim-lua/plenary.nvim" },
+    { "exosyphon/telescope-color-picker.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
       cond = function()
