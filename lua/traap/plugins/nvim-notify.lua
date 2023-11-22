@@ -3,8 +3,8 @@ return {
   enabled = true,
 
   opts = function(_, opts)
-    opts.background_colour = "#1a1b26"
+    opts.background_colour = "NotifyBackground"
     opts.timeout = 1000
-    opts.top_down = false
+    opts.top_down = true
   end,
 }
