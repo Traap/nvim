@@ -1,5 +1,5 @@
 return {
   "nvim-treesitter/nvim-treesitter-context",
-  enabled = true,
+  enabled = false,
   event = {"BufReadPost", "BufNewFile"},
 }
