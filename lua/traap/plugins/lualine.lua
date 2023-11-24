@@ -51,7 +51,7 @@ return {
       lualine_b = {},
       lualine_c = { "filename" },
 
-      lualine_x = { "fileformat", "filetype" },
+      lualine_x = {},
       lualine_y = {},
       lualine_z = {},
     }
