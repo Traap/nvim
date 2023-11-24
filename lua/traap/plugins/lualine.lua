@@ -8,7 +8,7 @@ return {
   opts = function(_, opts)
     opts.options = {
       icons_enabled = true,
-      theme = "tokyonight-night",
+      theme = "tokyonight",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
