@@ -16,6 +16,11 @@ require("lazy").setup({
 
   checker = { enabled = true },
 
+  change_detection = {
+    enable = true,
+    notify = false,
+  },
+
   performance = {
     cache = { enabled = true, },
     rtp = {
@@ -28,5 +33,10 @@ require("lazy").setup({
         "zipPlugin",
       },
     },
+  },
+
+  ui = {
+    border = "rounded",
+    title = "lazy.nvim",
   },
 })
