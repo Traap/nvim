@@ -14,37 +14,22 @@ return {
   },
 
   config  = function()
-    local implementation = 0
-    if implementation == 0 then
+    -- default, medium, large
+    local implementation = "large"
+
+    if implementation == "default" then
       -- {{{ Default implementation.
 
       require("noice").setup({})
 
       -- ------------------------------------------------------------------------}}}
-    elseif implementation == 1 then
+    elseif implementation == "medium" then
       -- {{{ Medium implementation.
 
       require("noice").setup({
         cmdline = {
           enabled =true,
           view = "cmdline_popup",
-          format = {
-            cmdline = { pattern = "^:", icon = "󰘳", lang = "vim" },
-            search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex", title = "" },
-            search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" , title = "" },
-            filter = { pattern = "^:%s*!", icon = "", lang = "bash" },
-            lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
-            help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
-            input = {}
-          },
-        },
-
-        lsp = {
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
-          },
         },
 
         presets = {
@@ -61,41 +46,44 @@ return {
 
         routes = {
           { filter = {
-              event = "msg_show",
-              kind = "",
-              any = {
-                { find = "Prompt" },
-                { find = "No lines in buffer" },
-                { find = "line" },
-                { find = "lines" },
-              },
+            event = "msg_show",
+            kind = "echo",
+            any = {
+              { find = "Prompt" },
+              { find = "No lines in buffer" },
+              { find = "line" },
+              { find = "lines" },
             },
-            opts = { skip = true },
           },
+          opts = { skip = true },
+        },
 
-          { filter = {
-              event = "msg_show",
-              kind = "emsg",
-              any = {
-                { find = "No fold found" },
-                { find = "Pattern not found" },
-              },
-            },
-            opts = { skip = true },
+        { filter = {
+          event = "msg_show",
+          kind = "emsg",
+          any = {
+            -- E490
+            { find = "No fold found" },
+            -- E486
+            { find = "Pattern not found" },
           },
+        },
+        opts = { skip = true },
+      },
 
-          { filter = {
-              event = "msg_show",
-              kind = "wmsg",
-            },
-            opts = { skip = true },
-          },
-        }
-      })
+      { filter = {
+        event = "msg_show",
+        kind = "wmsg",
+      },
+      opts = { skip = true },
+    },
+  },
 
-      -- ------------------------------------------------------------------------}}}
-    else
-      -- {{{ Huge impelmentation.
+})
+
+-- ------------------------------------------------------------------------}}}
+    elseif implementation == "large" then
+      -- {{{ Huge implementation.
 
       require("noice").setup({
         cmdline = {
@@ -277,35 +265,36 @@ return {
               width = 30
             }
           },
-
           cmdline_popup = {
+            position = {
+              row = "40%",
+              col = "50%",
+            },
+            size = {
+              width = "50%",
+              height = "auto",
+            },
+            border = {
+              style = "rounded",
+              padding = { 0, 1 },
+            },
+            scrollbar = false,
+            win_options = {
+              winhighlight = {
+                Normal = "Normal",
+                FloatBorder = "TelescopeBorder"
+              },
+            },
+          },
+
+          popupmenu = {
             relative = "editor",
             position = {
               row = "40%",
               col = "50%",
             },
             size = {
-              width = 60,
-              height = "auto",
-            },
-            border = {
-              style = "rounded",
-            },
-            win_options = {
-              winhighlight = {
-                Normal = "MessageArea",
-                FloatBorder = "NoiceCmdlinePrompt"
-              },
-            },
-          },
-
-          popupmenu = {
-            position = {
-              row = "50%",
-              col = "50%",
-            },
-            size = {
-              width = 60,
+              width = "100%",
               height = "auto",
             },
             border = {
@@ -314,38 +303,61 @@ return {
             },
             win_options = {
               winhighlight = {
-                Normal = "NoiceNormal",
-                FloatBorder = "NoiceConfirmBorder"
+                Normal = "Normal",
+                FloatBorder = "TelescopeBorder"
               },
             },
           },
         },
 
         routes = {
-          {
-            filter = {
-              event = "msg_show",
-              kind = "emsg",
-              any = {
-                { find = "No fold found" },
-                { find = "Pattern not found" },
-              },
-            },
-            opts = { skip = true },
-          },
 
-          {
-            filter = {
-              event = "msg_show",
-              kind = "wmsg",
+          { filter = {
+            event = "msg_show",
+            kind = "",
+            any = {
+              { find = "Prompt" },
+              { find = "No lines in buffer" },
+              { find = "line" },
+              { find = "lines" },
             },
-            opts = { skip = true },
           },
-
+          opts = { skip = true },
         },
-      })
+
+        { filter = {
+          event = "msg_show",
+          kind = "emsg",
+          any = {
+            -- E490
+            { find = "No fold found" },
+            -- E486
+            { find = "Pattern not found" },
+          },
+        },
+        opts = { skip = true },
+      },
+
+      { filter = {
+        event = "msg_show",
+        kind = "wmsg",
+      },
+      opts = { skip = true },
+    },
+  },
+})
+
+-- ------------------------------------------------------------------------}}}
+    else
+      -- {{{ Default is the catch all
+
+      require("noice").setup({})
 
       -- ------------------------------------------------------------------------}}}
     end
+
+
   end,
+
+
 }
