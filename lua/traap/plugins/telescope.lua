@@ -1,41 +1,4 @@
-require("traap.core.globals")
-
-
--- {{{ keymaps
-
-  local cmdT = "<cmd>Telescope "
-  local cmdL = "<cmd>lua require('telescope')."
-
-  Keymap("n", "<leader>fC", cmdT .. "commands<cr>")
-  Keymap("n", "<leader>fF", cmdT .. "media_files<cr>")
-  Keymap("n", "<leader>fM", cmdT .. "man_pages<cr>")
-  Keymap("n", "<leader>fO", cmdT .. "oldfiles<cr>")
-  Keymap("n", "<leader>fR", cmdT .. "registers<cr>")
-  Keymap("n", "<leader>fS", cmdT .. "colorscheme<cr>")
-
-  Keymap("n", "<leader>fb", cmdT .. "buffers<cr>")
-  Keymap("n", "<leader>fd", cmdT .. "diagnostics<cr>")
-  Keymap("n", "<leader>ff", cmdT .. "find_files<cr>")
-  Keymap("n", "<leader>fg", cmdT .. "live_grep<cr>")
-  Keymap("n", "<leader>fh", cmdT .. "help_tags<cr>")
-
-  Keymap("n", "<leader>fi", cmdL .. "extensions.media_files.media_files()<cr>")
-  Keymap("n", "<leader>fk", cmdT .. "keymaps<cr>")
-  Keymap("n", "<leader>fl", cmdT .. "resume<cr>")
-  Keymap("n", "<leader>fm", cmdT .. "marks<cr>")
-  Keymap("n", "<leader>fo", cmdT .. "oldfiles<cr>")
-  Keymap("n", "<leader>fp", cmdT .. "planets<cr>")
-  Keymap("n", "<leader>fw", cmdT .. "grep_string<cr>")
-
-  Keymap("n", "<leader>gC", cmdT .. "git_commits<cr>")
-  Keymap("n", "<leader>gb", cmdT .. "git_branches<cr>")
-  Keymap("n", "<leader>go", cmdT .. "git_status<cr>")
-
-  Keymap("n", "<leader>LS", cmdT .. "lsp_dynamic_workspace_symbols<cr>")
-  Keymap("n", "<leader>Ls", cmdT .. "lsp_document_symbols<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ lazy.nvim specification.
+-- lazy.nvim specification.
 
 return {
   "nvim-telescope/telescope.nvim",
@@ -43,15 +6,50 @@ return {
   cmd = "Telescope",
 
   dependencies = {
-    { "nvim-lua/plenary.nvim" },
-    { "exosyphon/telescope-color-picker.nvim" },
-    { "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      cond = function()
-        return vim.fn.executable 'make' == 1
-      end,
-    },
+    "nvim-lua/plenary.nvim",
+    "exosyphon/telescope-color-picker.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
+    "nvim-telescope/telescope-fzf-native.nvim",
   },
+
+  -- {{{ keymaps
+
+  keys = function()
+    local cmdT = "<cmd>Telescope "
+    local cmdL = "<cmd>lua require('telescope')."
+    return {
+      {"<leader>fC", cmdT .. "commands<cr>"},
+      {"<leader>fF", cmdT .. "media_files<cr>"},
+      {"<leader>fM", cmdT .. "man_pages<cr>"},
+      {"<leader>fO", cmdT .. "oldfiles<cr>"},
+      {"<leader>fR", cmdT .. "registers<cr>"},
+      {"<leader>fS", cmdT .. "colorscheme<cr>"},
+
+      {"<leader>fb", cmdT .. "buffers<cr>"},
+      {"<leader>fd", cmdT .. "diagnostics<cr>"},
+      {"<leader>ff", cmdT .. "find_files<cr>"},
+      {"<leader>fg", cmdT .. "live_grep<cr>"},
+      {"<leader>fh", cmdT .. "help_tags<cr>"},
+
+      {"<leader>fi", cmdL .. "extensions.media_files.media_files()<cr>"},
+      {"<leader>fk", cmdT .. "keymaps<cr>"},
+      {"<leader>fl", cmdT .. "resume<cr>"},
+      {"<leader>fm", cmdT .. "marks<cr>"},
+      {"<leader>fo", cmdT .. "oldfiles<cr>"},
+      {"<leader>fp", cmdT .. "planets<cr>"},
+      {"<leader>fw", cmdT .. "grep_string<cr>"},
+
+      {"<leader>gC", cmdT .. "git_commits<cr>"},
+      {"<leader>gb", cmdT .. "git_branches<cr>"},
+      {"<leader>go", cmdT .. "git_status<cr>"},
+
+      {"<leader>LS", cmdT .. "lsp_dynamic_workspace_symbols<cr>"},
+      {"<leader>Ls", cmdT .. "lsp_document_symbols<cr>"},
+    }
+  end,
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ opts
 
   opts = function(_, opts)
     local actions = require("telescope.actions")
@@ -72,13 +70,24 @@ return {
     opts.pickers = {
       colorscheme = { enable_preview = true },
     }
+    opts.extensions = {
+      file_browser = {
+        hijack_netrw = true,
+      },
+    }
   end,
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ config
 
   config = function(_, opts)
     local telescope = require("telescope")
+
     telescope.setup(opts)
-    pcall(telescope.load_extension, 'fzf')
+    telescope.load_extension("fzf")
+    telescope.load_extension("colors")
+    telescope.load_extension("file_browser")
   end,
 }
 
--- ------------------------------------------------------------------------- }}}
+  -- ----------------------------------------------------------------------- }}}

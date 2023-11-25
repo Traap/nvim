@@ -13,19 +13,48 @@ end
 --     https://image-color-picker.com/rgb-color-picker
 
 vim.api.nvim_create_autocmd({"VimEnter", "BufEnter", "ColorScheme"}, {
-  group = augroup("transparency"),
+  group = augroup("colors"),
   callback = function()
-    vim.cmd([[ highlight ColorColumn guibg=#292d42 ]])
 
-    vim.cmd([[ highlight clear Folded ]])
-    vim.cmd([[ highlight Folded guibg=comment guifg=#6a79b3 ]])
+    -- Folds
+    -- vim.cmd([[ highlight clear Folded ]])
+    vim.api.nvim_set_hl(0, "Folded", {fg="#6a79b3"})
 
-    vim.cmd([[ highlight LineNr guifg=#e0af68 ]])
-    vim.cmd([[ highlight LineNrAbove guifg=#787c99 ]])
-    vim.cmd([[ highlight LineNrBelow guifg=#787c99 ]])
+    -- Line numbers
+    vim.api.nvim_set_hl(0, "LineNr",      {fg="#e0af68"})
+    vim.api.nvim_set_hl(0, "ColorColumn", {bg="#3b4261"})
+    vim.api.nvim_set_hl(0, "LineNrAbove", {fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "LineNrBelow", {fg="#7aa2f7"})
 
-    vim.cmd([[ highlight TelescopeBorder guifg=#5f5c6d ]])
+    -- Telescope boarders
+    vim.api.nvim_set_hl(0, "TelescopeBorder",        { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "TelescopePromptBorder",  { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg="#3b4261"})
 
+    -- Float boarder
+    vim.api.nvim_set_hl(0, "FloatBorder",                       { fg="#7aa2f7"})
+
+    -- Noice boarders
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopup",                 { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder",           { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCalculator", { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline",    { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderFilter",     { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderHelp",       { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NoiceConfirmBorder",                { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NoicePopupBorder",                  { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NoicePopupmenuBorder",              { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NoiceSplitBorder",                  { fg="#7aa2f7"})
+
+    -- Notify boarders
+    vim.api.nvim_set_hl(0, "NotifyDEBUGBorder",                 { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NotifyERRORBorder",                 { fg="#ff0000"})
+    vim.api.nvim_set_hl(0, "NotifyINFOBorder",                  { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NotifyTRACEBorder",                 { fg="#7aa2f7"})
+    vim.api.nvim_set_hl(0, "NotifyWARNBorder",                  { fg="#e0af68"})
+
+    -- Pmenu
     vim.opt.pumblend=0
     vim.cmd([[ highlight Pmenu guibg=comment ]])
 
@@ -57,7 +86,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set(
-      "n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true }
+    "n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true }
     )
   end,
 })

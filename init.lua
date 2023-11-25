@@ -12,7 +12,8 @@ require("traap.config.keymaps")
 require("traap.config.lazy")
 
 -- Set colorschme.
-vim.cmd.colorscheme("tokyonight-night")
 
 -- LSP configure.
 require("traap.lsp.servers")
+vim.cmd("colorscheme tokyonight-moon")
+
