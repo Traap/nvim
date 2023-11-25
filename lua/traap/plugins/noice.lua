@@ -14,11 +14,10 @@ return {
   },
 
   config  = function()
-    -- default, medium, large
-    local implementation = "large"
-
-    if implementation == "default" then
-      -- {{{ Default implementation.
+    -- TODO: Your choices are: small, medium, large
+    local implementation = "medium"
+    if implementation == "small" then
+      -- {{{ Small implementation.
 
       require("noice").setup({})
 
@@ -28,10 +27,12 @@ return {
 
       require("noice").setup({
         cmdline = {
-          enabled =true,
+          enabled = true,
           view = "cmdline_popup",
+          format = {
+            cmdline = { pattern = "^:", icon = "󰳟", lang = "vim" },
+          },
         },
-
         presets = {
           bottom_search = false,
         },
@@ -355,9 +356,5 @@ return {
 
       -- ------------------------------------------------------------------------}}}
     end
-
-
   end,
-
-
 }

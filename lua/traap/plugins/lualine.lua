@@ -6,6 +6,37 @@ return {
   },
 
   opts = function(_, opts)
+    local function show_macro_recording()
+      local recording_register = vim.fn.reg_recording()
+      if recording_register == "" then
+        return ""
+      else
+        return "Recording @" .. recording_register
+      end
+    end
+
+    vim.api.nvim_create_autocmd("RecordingEnter", {
+      callback = function()
+        require("lualine").refresh({
+          place = {"statusline"},
+        })
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("RecordingLeave", {
+      callback = function()
+        local timer = vim.loop.new_timer()
+        timer:start(
+        50,
+        0,
+        vim.schedule_wrap(function()
+          require("lualine").refresh({
+            place = {"statusline"},
+          })
+        end)
+        )
+      end,
+    })
     opts.options = {
       icons_enabled = true,
       theme = "tokyonight",
@@ -30,18 +61,19 @@ return {
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = { "filename" },
 
+      -- : Noice expierment
+      -- lualine_x = {
+      --   { -- Recording macro
+      --     require("noice").api.status.mode.get,
+      --     cond = require("noice").api.status.mode.has,
+      --     color = { fg = "#ff9e64" },
+      --   },
 
-      lualine_x = {
-        { -- Recording macro
-          require("noice").api.status.mode.get,
-          cond = require("noice").api.status.mode.has,
-          color = { fg = "#ff9e64" },
-        },
-
-        {
-          "progress"
-        },
-      },
+      --   {
+      --     "progress"
+      --   },
+      -- },
+      lualine_x = {show_macro_recording, "progress" },
       lualine_y = { "fileformat", "filetype" },
       lualine_z = { "encoding" },
     }
