@@ -15,4 +15,4 @@ require("traap.config.lazy")
 vim.cmd("colorscheme tokyonight-moon")
 
 -- LSP configure.
-require("traap.ls.servers")
+require("traap.lsp.servers")

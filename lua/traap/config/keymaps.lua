@@ -120,6 +120,15 @@ Keymap("n", "<leader>cc", 'ggVGg_"+y')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - KJV commands
 
+vim.api.nvim_set_keymap('x', 'gk',
+  [[:lua require("traap.core.functions.KJV").insert_verse_from_visual_selection()<cr>]],
+  { noremap = true, silent = true, desc = "Insert verse from visual selection" }
+)
+
+vim.api.nvim_set_keymap('n', 'gk',
+  [[:lua require("traap.core.functions.KJV").insert_verse_from_line()<cr>]],
+  { noremap = true, silent = true, desc = "Insert verse from line" }
+)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options
