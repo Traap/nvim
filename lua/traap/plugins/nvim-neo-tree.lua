@@ -7,8 +7,8 @@ return {
   },
 
   keys = {
-    {"<c-n>", "<cmd>Neotree toggle<cr>"},
-    {"<leader>nf", "<cmd>Neotree focus<cr>"},
+    {"<c-n>", "<cmd>Neotree toggle<cr>", "Neotree toggle"},
+    {"<leader>nf", "<cmd>Neotree focus<cr>", "Neotree focus"},
   },
 
   opts = function(_, opts)
