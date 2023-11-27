@@ -120,9 +120,6 @@ Keymap("n", "<leader>cc", 'ggVGg_"+y')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - KJV commands
 
-Keymap("n", "gk", [[^mmvg_"ky<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>'mddi- v}gq]])
-Keymap("v", "gk", [["ky<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
-Keymap("n", "gK", [[^vg_"ky<cmd>exec 'r!kjv -b -d -w 65' getreg('k')<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options
