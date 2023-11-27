@@ -1,6 +1,10 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   enable = true,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim"
+  },
 
   keys = {
     {"<c-n>", "<cmd>Neotree toggle<cr>"},
@@ -15,6 +19,4 @@ return {
     opts.window = { position = "right", }
   end,
 
-  dependencies = {
-  }
 }
