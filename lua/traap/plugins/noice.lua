@@ -63,10 +63,8 @@ return {
           event = "msg_show",
           kind = "emsg",
           any = {
-            -- E490
-            { find = "No fold found" },
-            -- E486
-            { find = "Pattern not found" },
+            { find = "E490" }, -- No fold found
+            { find = "E486" }, --  Pattern not found
           },
         },
         opts = { skip = true },
