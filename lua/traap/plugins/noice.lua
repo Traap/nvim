@@ -15,11 +15,25 @@ return {
 
   config  = function()
     -- TODO: Your choices are: small, medium, large
-    local implementation = "medium"
+    local implementation = "small"
     if implementation == "small" then
       -- {{{ Small implementation.
 
-      require("noice").setup({})
+      require("noice").setup({
+        routes = {
+          {
+            filter = {
+              event = "msg_show",
+              kind = "emsg",
+              any = {
+                { find = "E486" }, -- Pattern not found
+                { find = "E490" }, -- No fold found
+              },
+            },
+            opts = { skip = true },
+          },
+        },
+      })
 
       -- ------------------------------------------------------------------------}}}
     elseif implementation == "medium" then
@@ -63,8 +77,8 @@ return {
           event = "msg_show",
           kind = "emsg",
           any = {
+            { find = "E486" }, -- Pattern not found
             { find = "E490" }, -- No fold found
-            { find = "E486" }, --  Pattern not found
           },
         },
         opts = { skip = true },
