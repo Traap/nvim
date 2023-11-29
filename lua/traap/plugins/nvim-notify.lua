@@ -1,6 +1,6 @@
 return {
   "rcarriga/nvim-notify",
-  enabled = true,
+  enabled = false,
 
   opts = function(_, opts)
     opts.background_colour = "NotifyBackground"
