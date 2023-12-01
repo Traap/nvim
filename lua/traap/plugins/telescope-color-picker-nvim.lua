@@ -9,4 +9,8 @@ return {
   keys = {
     { "<leader>uC", "<cmd>Telescope colors<cr>", { desc = "Telescope Color Picker"} },
   },
+
+  config = function()
+    require("telescope").load_extension("colors")
+  end,
 }

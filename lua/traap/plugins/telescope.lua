@@ -7,9 +7,6 @@ return {
 
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "exosyphon/telescope-color-picker.nvim",
-    "nvim-telescope/telescope-file-browser.nvim",
-    "nvim-telescope/telescope-fzf-native.nvim",
   },
 
   -- {{{ keymaps
@@ -82,11 +79,7 @@ return {
 
   config = function(_, opts)
     local telescope = require("telescope")
-
     telescope.setup(opts)
-    telescope.load_extension("fzf")
-    telescope.load_extension("colors")
-    telescope.load_extension("file_browser")
   end,
 }
 
