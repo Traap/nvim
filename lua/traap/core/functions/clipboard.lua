@@ -8,7 +8,7 @@ if in_wsl then
   vim.g.clipboard = {
     name = 'wsl clipboard',
     copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
-    paste = { ["+"] = { "nvim_paste" }, ["*"] = { "nvim_paste" } },
+    paste = { ["+"] = { "nvim-paste" }, ["*"] = { "nvim-paste" } },
     cache_enabled = true
   }
 end
