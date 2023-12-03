@@ -1,5 +1,5 @@
 return {
-  "dfendr/clipboard-image.nvim",
+  "Traap/clipboard-image.nvim",
   event = { "BufReadPost", "BufNewFile" },
   enabled = true,
 
@@ -10,8 +10,8 @@ return {
   config = function()
     require("clipboard-image").setup({
       default  = {
-        img_dir = {"images", "%:p:h:t", "%:t:r"},
-        img_dir_txt = {"images", "%:p:h:t", "%:t:r"},
+        img_dir     = {"images", "%:t:r"},
+        img_dir_txt = {"images", "%:t:r"},
         img_name = function ()
           vim.fn.inputsave()
           local name = vim.fn.input('Name: ')
