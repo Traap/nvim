@@ -13,3 +13,6 @@ require("mason-lspconfig").setup(Lsp.opts)
 -- Configure lua_ls
 local lua_opts = lsp_zero.nvim_lua_ls()
 require("lspconfig").lua_ls.setup(lua_opts)
+
+-- Lsp popups use borders.
+require('lspconfig.ui.windows').default_options.border = 'single'
