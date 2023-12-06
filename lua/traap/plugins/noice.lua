@@ -24,7 +24,6 @@ return {
       },
     }
 
-
     -- --------------------------------------------------------------------- }}}
     -- {{{ messages
 
@@ -38,9 +37,31 @@ return {
     }
 
     -- --------------------------------------------------------------------- }}}
+    -- {{{ popupmenu
+
+    opts.popupmenu = {
+      enabled = true,
+      backend = "nui",
+      -- kind_icons = {},
+    }
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ redirect
+
+    opts.redirect  = {
+      view = "mini",
+      filter = { event = "msg_show" },
+    }
+
+    -- --------------------------------------------------------------------- }}}
     -- {{{ presets
 
-    opts.presets = { bottom_search = false, }
+    opts.presets = {
+      bottom_search = false,
+      command_palette = false,
+      long_message_to_split = false,
+      inc_rename = true,
+      lsp_doc_border = true,
+    }
 
     -- --------------------------------------------------------------------- }}}
     -- {{{ views
@@ -53,14 +74,6 @@ return {
     -- {{{ routes
 
     opts.routes = {
-      {
-        filter = {
-          event = "msg_show",
-          kind = "",
-        },
-        opts = { skip = true },
-      },
-
       {
         filter = {
           event = "msg_show",
@@ -94,8 +107,8 @@ return {
         },
         opts = { skip = true },
       },
-
     }
+
     -- --------------------------------------------------------------------- }}}
   end,
 }
