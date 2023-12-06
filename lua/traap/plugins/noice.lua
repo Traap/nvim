@@ -14,14 +14,27 @@ return {
   },
 
   opts = function(_, opts)
-    -- {{{ cmdline
+    -- {{{ lsp
 
-    opts.cmdline = {
-      enabled = true,
-      view = "cmdline_popup",
-      format = {
-        cmdline = { pattern = "^:", icon = "󰳟", lang = "vim" },
+    opts.lsp = {
+      override = {
+        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        ["vim.lsp.util.stylize_markdown"] = true,
+        ["cmp.entry.get_documentation"] = true,
       },
+    }
+
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ messages
+
+    opts.messagres = {
+      enabled = true,
+      view = "mini",
+      view_error = "mini",
+      view_warn = "mini",
+      view_history = "messages",
+      view_search = "virtualtext",
     }
 
     -- --------------------------------------------------------------------- }}}
