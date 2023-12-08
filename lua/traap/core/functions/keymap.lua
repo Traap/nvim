@@ -1,9 +1,11 @@
 local M = {}
 
+-- keymaps are silent and noremap by default
 function M.keymap(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-  options = vim.tbl_deep_extend("force", options, opts or {})
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  opts = opts or {}
+  opts.silent = opts.silent ~= false
+  opts.noremap = opts.noremap ~= false
+  vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
 end
 
 return M
