@@ -25,7 +25,4 @@ return {
     {      "<F11>", [[<cmd>lua require("dap").step_into()<cr>]] },
     {      "<F12>", [[<cmd>lua require("dap").step_out()<cr>]] },
   },
-  dependencies = {
-    "rcarriage/nvim-dap-ui"
-  },
 }
