@@ -16,6 +16,14 @@ return {
   opts = function(_, opts)
     -- {{{ lsp
 
+    opts.notify = {
+      enabled = true,
+      view = "notify"
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ lsp
+
     opts.lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -67,7 +75,15 @@ return {
     -- {{{ views
 
     opts.views = {
-      mini = { win_options = { winblend = 0, }, },
+      mini = {
+        win_options = {
+          winblend = 0,
+        },
+        border = {
+          style = "none",
+          padding = {0, 1},
+        }
+      },
     }
 
     -- --------------------------------------------------------------------- }}}
@@ -93,8 +109,8 @@ return {
           event = "msg_show",
           kind = "emsg",
           any = {
-            { find = "No fold found" },
-            { find = "Pattern not found" },
+            { find = "E490: No fold found" },
+            { find = "E486: Pattern not found" },
           },
         },
         opts = { skip = true },
