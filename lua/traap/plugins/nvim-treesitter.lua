@@ -32,10 +32,4 @@ return {
       "vimdoc", "yaml",
     }
   end,
-
-  dependencies = {
-    "mrjones2014/nvim-ts-rainbow",
-    "nvim-treesitter/nvim-treesitter-context",
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  },
 }
