@@ -14,15 +14,18 @@ return {
   },
 
   opts = function(_, opts)
-    -- {{{ lsp
+    -- {{{ Commands
 
-    opts.notify = {
-      enabled = true,
-      view = "notify"
+    opts.commands = {
+      all = {
+        view = "split",
+        opts = { enter = true, format = "details" },
+        filter = {},
+      },
     }
 
     -- --------------------------------------------------------------------- }}}
-    -- {{{ lsp
+    -- {{{ LSP
 
     opts.lsp = {
       override = {
@@ -33,9 +36,9 @@ return {
     }
 
     -- --------------------------------------------------------------------- }}}
-    -- {{{ messages
+    -- {{{ Messages
 
-    opts.messagres = {
+    opts.messages  = {
       enabled = true,
       view = "mini",
       view_error = "mini",
@@ -45,7 +48,15 @@ return {
     }
 
     -- --------------------------------------------------------------------- }}}
-    -- {{{ popupmenu
+    -- {{{ Notify
+
+    opts.notify = {
+      enabled = true,
+      view = "notify"
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Popupmenu
 
     opts.popupmenu = {
       enabled = true,
@@ -53,15 +64,7 @@ return {
       -- kind_icons = {},
     }
     -- --------------------------------------------------------------------- }}}
-    -- {{{ redirect
-
-    opts.redirect  = {
-      view = "mini",
-      filter = { event = "msg_show" },
-    }
-
-    -- --------------------------------------------------------------------- }}}
-    -- {{{ presets
+    -- {{{ Presets
 
     opts.presets = {
       bottom_search = false,
@@ -72,22 +75,15 @@ return {
     }
 
     -- --------------------------------------------------------------------- }}}
-    -- {{{ views
+    -- {{{ Redirect
 
-    opts.views = {
-      mini = {
-        win_options = {
-          winblend = 0,
-        },
-        border = {
-          style = "none",
-          padding = {0, 1},
-        }
-      },
+    opts.redirect  = {
+      view = "mini",
+      filter = { event = "msg_show" },
     }
 
     -- --------------------------------------------------------------------- }}}
-    -- {{{ routes
+    -- {{{ Routes
 
     opts.routes = {
       {
@@ -122,6 +118,38 @@ return {
           kind = "wmsg",
         },
         opts = { skip = true },
+      },
+
+      {
+        filter = {
+          event = "notify",
+          kind = "No fold found",
+        },
+        opts = { skip = true },
+      },
+
+      {
+        filter = {
+          event = "notify",
+          kind = "No information available",
+        },
+        opts = { skip = true },
+      },
+
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Views
+
+    opts.views = {
+      mini = {
+        win_options = {
+          winblend = 0,
+        },
+        border = {
+          style = "none",
+          padding = {0, 1},
+        }
       },
     }
 
