@@ -2,18 +2,19 @@ require("config.traap.globals")
 
 local plugin = "vim-fugitive"
 
-if Is_Enabled(plugin) then
-  Keymap("n", "<leader>gP", "<cmd>G pull<cr>")
-  Keymap("n", "<leader>gc", "<cmd>G commmit<cr>")
-  Keymap("n", "<leader>gd", "<cmd>G diff<cr>")
-  Keymap("n", "<leader>gl", "<cmd>G log<cr>")
-  Keymap("n", "<leader>gh", "<cmd>vert bo help fugitive<cr>")
-  Keymap("n", "<leader>gp", "<cmd>G push<cr>")
-  Keymap("n", "<leader>gs", "<cmd>G<cr>")
-end
-
 return {
   "tpope/" .. plugin,
-  lazy = false,
   enabled = Is_Enabled(plugin),
+  cmd = "G",
+  keys = {
+    {"<leader>gP", "<cmd>G pull<cr>"},
+    {"<leader>gc", "<cmd>G commmit<cr>"},
+    {"<leader>gd", "<cmd>G diff<cr>"},
+    {"<leader>gl", "<cmd>G log<cr>"},
+    {"<leader>gh", "<cmd>vert bo help fugitive<cr>"},
+    {"<leader>gp", "<cmd>G push<cr>"},
+    {"<leader>gs", "<cmd>G<cr>"},
+    {"gl", "<cmd>diffgit //2<cl>"}, -- Chose left side,
+    {"gh", "<cmd>diffgit //3<cl>"}, -- Chose right size
+  },
 }
