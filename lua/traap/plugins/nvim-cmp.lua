@@ -22,11 +22,13 @@ return {
     local window = {
       completion = {
         border = "rounded",
-        winhighlight = 'Normal:Pmenu,FloatBorder:Comment,CursorLine:PmenuSel,Search:Pmenu',
+        winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:Pmenu',
+        scrollbar = false,
       },
       documentation = {
         border = "rounded",
-        winhighlight = 'Normal:Pmenu,FloatBorder:Comment,CursorLine:PmenuSel,Search:Pmenu',
+        winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:Pmenu',
+        scrollbar = false,
       },
     }
 
