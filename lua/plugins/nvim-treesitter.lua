@@ -5,6 +5,7 @@ local plugin = "nvim-treesitter"
 return {
   "nvim-treesitter/" .. plugin,
   enabled = Is_Enabled(plugin),
+  event = {"BufReadPost", "BufNewFile"},
 
   opts = function(_, opts)
     if Use_Default_Opts(plugin) then
@@ -38,8 +39,4 @@ return {
       }
     end
   end,
-
-  dependencies = {
-    "mrjones2014/nvim-ts-rainbow",
-  },
 }

@@ -6,4 +6,7 @@ return {
   "mrjones2014/" .. plugin,
   event = { "BufReadPost", "BufNewFile" },
   enabled = Is_Enabled(plugin),
+  dependency = {
+    "nvim-treesitter/nvim-treesitter",
+  },
 }
