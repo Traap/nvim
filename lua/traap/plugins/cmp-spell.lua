@@ -1,7 +1,7 @@
 return {
-  "L3MON4D3/LuaSnip",
+  "f3fora/cmp-spell",
   enabled = true,
-  build = "make install_jsregexp",
+  event = {"BufReadPost", "BufNewFile"},
   dependency = {
     "hrsh7th/nvim-cmp",
   },

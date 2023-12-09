@@ -1,7 +1,7 @@
 return {
-  "L3MON4D3/LuaSnip",
+  "hrsh7th/cmp-cmdline",
   enabled = true,
-  build = "make install_jsregexp",
+  event = {"InsertEnter", "CmdLineEnter"},
   dependency = {
     "hrsh7th/nvim-cmp",
   },

@@ -1,7 +1,7 @@
 return {
-  "L3MON4D3/LuaSnip",
+  "saadparwaiz1/cmp_luasnip",
   enabled = true,
-  build = "make install_jsregexp",
+  event = {"BufReadPost", "BufNewFile"},
   dependency = {
     "hrsh7th/nvim-cmp",
   },
