@@ -4,6 +4,6 @@ local plugin = "plantuml-syntax"
 
 return {
   "aklt/" .. plugin,
-  event = "VeryLazy",
+  event = {"BufReadPost", "BufNewFile"},
   enabled = Is_Enabled(plugin),
 }
