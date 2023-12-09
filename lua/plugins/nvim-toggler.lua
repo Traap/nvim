@@ -7,13 +7,6 @@ return {
   enabled = Is_Enabled(plugin),
   event = {"BufReadPost", "BufNewFile"},
 
-  init = function()
-    if not Use_Default_Keys(plugin) then
-      local toggler = require(plugin)
-      vim.keymap.set({'n', 'v'}, '<leader>tn', toggler.toggle, { noremap = true, silent = true, desc = "Toggle operand"})
-    end
-  end,
-
   config = function(_, opts)
     local toggler = require(plugin)
     if Use_Default_Config(plugin) then
@@ -25,8 +18,13 @@ return {
           [">"] = "<",
         },
         remove_default_keybinds = true,
-        remvoe_default_inverses = false,
+        remove_default_inverses = false,
       })
+
+      vim.keymap.set( {'n', 'v'},
+        '<leader>tn', toggler.toggle,
+        { noremap = true, silent = true, desc = "Toggle operand"}
+      )
     end
   end,
 }
