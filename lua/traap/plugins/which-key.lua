@@ -1,7 +1,8 @@
 return {
   "folke/which-key.nvim",
   enabled = true,
-  event = {"InsertEnter", "CmdLineEnter"},
+  -- event = {"InsertEnter", "CmdLineEnter"},
+  event = "VeryLazy",
 
   opts = {
     plugins = { spelling = true }
