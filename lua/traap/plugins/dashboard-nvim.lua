@@ -10,13 +10,12 @@ return {
   opts = function()
     local logo = [[Configured by Traap and powered by lazy.nvim.]]
 
-    logo = string.rep("\n", 8) .. logo .. "\n\n"
+    logo = string.rep("\n", 5) .. logo .. "\n\n"
 
     local opts = {
       theme = "doom",
       hide = {
-        -- this is taken care of by lualine
-        -- enabling this messes up the actual laststatus setting after loading a file
+        -- Lualine controls status line.
         statusline = false,
       },
 
