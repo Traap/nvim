@@ -29,7 +29,7 @@ Customize                          = {
     ["clipboard-image.nvim"]       = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["crates.nvim"]                = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["dashboard-nvim"]             = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
-    ["dressing.nvim"]              = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
+    ["dressing.nvim"]              = { enabled = false,  default = { opts = true,  config = true,  keys = true }},
     ["flash.nvim"]                 = { enabled = false, default = { opts = true,  config = true,  keys = true }},
     ["flit.nvim"]                  = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
     ["friendly-snippets"]          = { enabled = true,  default = { opts = true,  config = true,  keys = true }},
