@@ -1,7 +1,10 @@
 return {
   "tpope/vim-fugitive",
-  lazy = false,
+  -- lazy = false,
+  -- event = {"BufWinEnter"},
   enabled = true,
+
+  cmd = "G",
 
   keys = {
     {"<leader>gP", "<cmd>G pull<cr>"},
