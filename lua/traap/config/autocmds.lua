@@ -21,7 +21,6 @@ vim.api.nvim_create_autocmd({"VimEnter", "BufEnter", "ColorScheme"}, {
     -- #7aa2f7
 
     -- Folds
-    -- vim.cmd([[ highlight clear Folded ]])
     vim.api.nvim_set_hl(0, "Folded", {fg="#6a79b3"})
 
     -- Line numbers
@@ -37,11 +36,11 @@ vim.api.nvim_create_autocmd({"VimEnter", "BufEnter", "ColorScheme"}, {
     vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg="#3b4261"})
 
     -- Lsp boarders
-    vim.api.nvim_set_hl(0, "LspInfoBorder",                     { fg="#3b4261"})
-    vim.api.nvim_set_hl(0, "LspFloatWinBorder",                 { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "LspInfoBorder",     { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "LspFloatWinBorder", { fg="#3b4261"})
 
     -- Float boarder
-    vim.api.nvim_set_hl(0, "FloatBorder",                       { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "FloatBorder", { fg="#3b4261"})
 
     -- Noice boarders
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopup",                 { fg="#3b4261"})
@@ -56,15 +55,17 @@ vim.api.nvim_create_autocmd({"VimEnter", "BufEnter", "ColorScheme"}, {
     vim.api.nvim_set_hl(0, "NoiceSplitBorder",                  { fg="#3b4261"})
 
     -- Notify boarders
-    vim.api.nvim_set_hl(0, "NotifyDEBUGBorder",                 { fg="#3b4261"})
-    vim.api.nvim_set_hl(0, "NotifyERRORBorder",                 { fg="#ff0000"})
-    vim.api.nvim_set_hl(0, "NotifyINFOBorder",                  { fg="#3b4261"})
-    vim.api.nvim_set_hl(0, "NotifyTRACEBorder",                 { fg="#3b4261"})
-    vim.api.nvim_set_hl(0, "NotifyWARNBorder",                  { fg="#e0af68"})
+    vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg="#ff0000"})
+    vim.api.nvim_set_hl(0, "NotifyINFOBorder",  { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "NotifyWARNBorder",  { fg="#e0af68"})
 
     -- Pmenu
-    vim.opt.pumblend=0
-    vim.cmd([[ highlight Pmenu guibg=comment ]])
+    vim.api.nvim_set_hl(0, "Pmenu", { blend=100 } )
+    vim.api.nvim_set_hl(0, "PmenuSel",      { fg="#e0af68", bg="#3b4261" } )
+    vim.api.nvim_set_hl(0, "PmenuKindSel",  { fg="#e0af68", bg="#3b4261" } )
+    vim.api.nvim_set_hl(0, "PmenuEstraSel", { fg="#e0af68", bg="#3b4261" } )
 
   end,
 })
