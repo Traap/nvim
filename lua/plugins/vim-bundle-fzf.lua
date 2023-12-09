@@ -4,6 +4,6 @@ local plugin = "vim-bundle-fzf"
 
 return {
   "Traap/" .. plugin,
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile" },
   enabled = Is_Enabled(plugin),
 }
