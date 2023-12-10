@@ -1,6 +1,12 @@
 return {
   "williamboman/mason.nvim",
   enable = true,
+  event = {"BufReadPost", "BufNewFile"},
+
+  dependencies = {
+    'VonHeikemen/lsp-zero.nvim',
+  },
+
   keys = {
     { "<leader>cm", "<cmd>Mason<cr>", "Mason toggle" },
   },

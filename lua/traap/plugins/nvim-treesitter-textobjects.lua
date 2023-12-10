@@ -2,7 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   enabled = true,
   event = {"BufReadPost", "BufNewFile"},
-  dependency = {
+  dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },
 }

@@ -2,6 +2,7 @@ return {
   "nvim-tree/nvim-web-devicons",
 
   enabled = true,
+  event = {"BufReadPost", "BufNewFile"},
 
   opts = function(_, opts)
     opts.override = {

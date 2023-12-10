@@ -2,7 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter-context",
   enabled = false,
   event = {"BufReadPost", "BufNewFile"},
-  dependency = {
+  dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },
 }

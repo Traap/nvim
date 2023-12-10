@@ -2,7 +2,7 @@ return {
   "mrjones2014/nvim-ts-rainbow" ,
   enabled = true,
   event = { "BufReadPost", "BufNewFile" },
-  dependency = {
+  dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },
 }

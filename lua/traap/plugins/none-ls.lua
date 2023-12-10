@@ -1,6 +1,6 @@
 return {
   "nvimtools/none-ls.nvim",
   enabled = true,
-  event = "VeryLazy",
+  event = {"BufReadPost", "BufNewFile"},
   config = true,
 }

@@ -1,6 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  enable = true,
+  enabled = true,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim"

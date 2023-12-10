@@ -1,8 +1,8 @@
 return {
   "hrsh7th/cmp-nvim-lsp-document-symbol",
-  enabled = true,
+  enabled = false,
   event = {"BufReadPost", "BufNewFile"},
-  dependency = {
+  dependencies = {
     "hrsh7th/nvim-cmp",
   },
 }

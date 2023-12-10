@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope-file-browser.nvim",
-  enable = true,
+  enabled = true,
 
   dependencies = {
     "nvim-telescope/telescope.nvim"

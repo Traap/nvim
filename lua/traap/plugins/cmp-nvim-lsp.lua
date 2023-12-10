@@ -1,8 +1,8 @@
 return {
   "hrsh7th/cmp-nvim-lsp",
-  enabled = true,
+  enabled = false,
   event = {"BufReadPost", "BufNewFile"},
-  dependency = {
-    "hrsh7th/nvim-cmp",
+  dependencies = {
+    "neovim/nvim-lspconfig",
   },
 }

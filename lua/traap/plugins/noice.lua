@@ -10,7 +10,7 @@ return {
 
   dependencies = {
     "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
+    -- "rcarriga/nvim-notify",
   },
 
   opts = function(_, opts)
@@ -52,10 +52,81 @@ return {
     -- {{{ LSP
 
     opts.lsp = {
+      progress = {
+        enable = true,
+        format = "lsp_progress",
+        format_done = "lsp_progress_done",
+        throttle = 1000 / 30,
+        view = "mini",
+      },
+
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
+        ["textdocument.signatureHelp"] = false,
+      },
+
+      hover = {
+        enable = false,
+        silent = false,
+        view = nil,
+        opts = {},
+      },
+
+      signature = {
+        enable = false,
+        auto_open = {
+          enable = true,
+          trigger = true,
+          luasnip = true,
+          throttle = 50,
+        },
+        view = nill,
+        opts = {},
+      },
+
+      message = {
+        enabled = true,
+        view = "mini",
+        opts = {},
+      },
+
+      documentation = {
+        view = "hover",
+        opts = {
+          lang = "markdown",
+          replace = true,
+          render = "plain",
+          format = { "{message}" },
+          win_options = { concealcursor = "n", conceallevel = 3 },
+        },
+      },
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Health
+
+    opts.health = {
+      checker = true,
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Markdown
+
+    opts.markdown = {
+      hover = {
+        ["|(%S-)|"] = vim.cmd.help,
+        ["%[.-%]%((%S-)%)"] = require("noice.util").open,
+      },
+
+      highlights = {
+        ["|%S-|"] = "@text.reference",
+        ["@%S+"] = "@parameter",
+        ["^%s*(Parameters:)"] = "@text.title",
+        ["^%s*(Return:)"] = "@text.title",
+        ["^%s*(See also:)"] = "@text.title",
+        ["{%S-}"] = "@parameter",
       },
     }
 
@@ -75,7 +146,7 @@ return {
     -- {{{ Notify
 
     opts.notify = {
-      enabled = true,
+      enabled = false,
       view = "notify"
     }
 
@@ -164,16 +235,16 @@ return {
     }
 
     -- --------------------------------------------------------------------- }}}
+    -- {{{ Smart move
+
+    opts.smart_move = {
+      enable = true,
+      excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
+    }
+    -- --------------------------------------------------------------------- }}}
     -- {{{ Views
 
     opts.views = {
-      -- cmdline_popup = {
-      --   win_options = {
-      --     winblend = 0,
-      --   },
-      --   scrollbar = false,
-      -- },
-
       mini = {
         win_options = {
           winblend = 0,

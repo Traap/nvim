@@ -1,6 +1,9 @@
 return {
   "folke/neodev.nvim",
-  event = "VeryLazy",
   enabled = true,
+  event = {"BufReadPost", "BufNewFile"},
+  dependencies = {
+    "neovim/nvim-lspconfig",
+  },
   opts = {},
 }

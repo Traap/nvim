@@ -1,6 +1,6 @@
 return {
   "exosyphon/telescope-color-picker.nvim",
-  enable = true,
+  enabled = true,
 
   dependencies = {
     "nvim-telescope/telescope.nvim",

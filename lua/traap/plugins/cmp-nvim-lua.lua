@@ -1,8 +1,8 @@
 return {
   "hrsh7th/cmp-nvim-lua",
-  enabled = true,
+  enabled = false,
   event = {"BufReadPost", "BufNewFile"},
-  dependency = {
+  dependencies = {
     "hrsh7th/nvim-cmp",
   },
 }
