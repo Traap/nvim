@@ -4,8 +4,8 @@ local plugin = "nvim-cmp"
 
 return {
   "hrsh7th/" .. plugin,
-  event = {"InsertEnter", "CmdLineEnter"},
   enabled = Is_Enabled(plugin),
+  event = {"InsertEnter", "CmdLineEnter"},
   opts = function(_, opts)
     if Use_Default_Opts(plugin) then
       opts = opts
@@ -214,16 +214,4 @@ return {
       require("cmp").setup(opts)
     end
   end,
-
-  dependencies = {
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-calc",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-path",
-    "f3fora/cmp-spell",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-nvim-lsp-document-symbol",
-    "hrsh7th/cmp-nvim-lsp",
-    "saadparwaiz1/cmp_luasnip",
-  }
 }
