@@ -1,5 +1,5 @@
 return {
-  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-nvim-lua",
   enabled = true,
   event = {"BufReadPost", "BufNewFile"},
   dependency = {
