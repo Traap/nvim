@@ -2,77 +2,197 @@ require("config.traap.globals")
 
 local plugin = "noice.nvim"
 
-if Is_Enabled(plugin) then
-  Keymap("n", "<leader>ne", "<cmd>NoiceErrors<cr>")
-  Keymap("n", "<leader>nh", "<cmd>NoiceHistory<cr>")
-end
-
 return {
   "folke/" .. plugin,
   event = "VeryLazy",
   enabled = Is_Enabled(plugin),
-  keys = false,
+
+  keys = {
+    {"<leader>ne", "<cmd>NoiceErrors<cr>"},
+    {"<leader>nh", "<cmd>NoiceHistory<cr>"}
+  },
+
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+  },
+
   opts = function(_, opts)
     if Use_Default_Opts(plugin) then
       opts = opts
     else
-      opts.presets = {
-        bottom_search = false,
-        lsp_doc_border = true,
-      }
-
-      opts.cmdline_popup = {
-        views = { position = { row = "50%", col = "50%"  } },
-      }
-
-      opts.lsp = {
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
-      }
-
-      opts.routes = {
-        {
-          filter = {
-            event = "msg_show",
-            kind = "",
+    -- {{{ Cmdline
+    opts.cmdline = {
+      enabled = true,
+      view = "cmdline_popup",
+      opts = {
+        cmdline_popup = {
+          win_options = {
+            winblend = 0,
           },
-          opts = { skip = true },
+          scrollbar = false,
         },
+      },
+      format = {
+        cmdline = { pattern = "^:", icon = "$", lang = "vim" },
+        search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+        search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+        filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
+        lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
+        help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+        input = {},
+      },
+    }
 
-        {
-          filter = {
-            event = "msg_show",
-            kind = "emsg",
-            any = {
-              { find = "No fold found" },
-              { find = "Pattern not found" },
-            },
-          },
-          opts = { skip = true },
-        },
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Commands
 
-        {
-          filter = {
-            event = "msg_show",
-            kind = "wmsg",
-          },
-          opts = { skip = true },
-        },
+    opts.commands = {
+      all = {
+        view = "split",
+        opts = { enter = true, format = "details" },
+        filter = {},
+      },
+    }
 
-        {
-          filter = {
-            event = "msg_show",
-            kind = "echo",
-            -- any = {
-            --   { find = "EasyAlign" },
-            -- },
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ LSP
+
+    opts.lsp = {
+      override = {
+        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        ["vim.lsp.util.stylize_markdown"] = true,
+        ["cmp.entry.get_documentation"] = true,
+      },
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Messages
+
+    opts.messages  = {
+      enabled = true,
+      view = "mini",
+      view_error = "mini",
+      view_warn = "mini",
+      view_history = "messages",
+      view_search = "virtualtext",
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Notify
+
+    opts.notify = {
+      enabled = true,
+      view = "notify"
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Popupmenu
+
+    opts.popupmenu = {
+      enabled = true,
+      backend = "nui",
+      scrollbar = false,
+      -- kind_icons = {},
+    }
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Presets
+
+    opts.presets = {
+      bottom_search = false,
+      command_palette = false,
+      long_message_to_split = false,
+      inc_rename = true,
+      lsp_doc_border = true,
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Redirect
+
+    opts.redirect  = {
+      view = "mini",
+      filter = { event = "msg_show" },
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Routes
+
+    opts.routes = {
+      {
+        filter = {
+          event = "msg_show",
+          kind = "echo",
+          any = {
+            { find = "Prompt" },
+            { find = "No lines in buffer" },
+            { find = "line" },
+            { find = "lines" },
           },
-          opts = { skip = true },
         },
-      }
-    end
+        opts = { skip = true },
+      },
+
+      {
+        filter = {
+          event = "msg_show",
+          kind = "emsg",
+          any = {
+            { find = "E490: No fold found" },
+            { find = "E486: Pattern not found" },
+          },
+        },
+        opts = { skip = true },
+      },
+
+      {
+        filter = {
+          event = "msg_show",
+          kind = "wmsg",
+        },
+        opts = { skip = true },
+      },
+
+      {
+        filter = {
+          event = "notify",
+          kind = "No fold found",
+        },
+        opts = { skip = true },
+      },
+
+      {
+        filter = {
+          event = "notify",
+          kind = "No information available",
+        },
+        opts = { skip = true },
+      },
+
+    }
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ Views
+
+    opts.views = {
+      -- cmdline_popup = {
+      --   win_options = {
+      --     winblend = 0,
+      --   },
+      --   scrollbar = false,
+      -- },
+
+      mini = {
+        win_options = {
+          winblend = 0,
+        },
+        border = {
+          style = "none",
+          padding = {0, 1},
+        }
+      },
+    }
+
+    -- --------------------------------------------------------------------- }}}
+   end
   end,
 }
