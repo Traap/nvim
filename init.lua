@@ -12,4 +12,4 @@ require("traap.config.keymaps")
 require("traap.config.lazy")
 
 -- LSP configure.
--- require("traap.lsp.servers")
+require("traap.lsp.servers")

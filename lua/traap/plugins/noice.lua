@@ -64,26 +64,14 @@ return {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
-        ["textdocument.signatureHelp"] = false,
       },
 
       hover = {
-        enable = false,
-        silent = false,
-        view = nil,
-        opts = {},
+        enable = true,
       },
 
       signature = {
-        enable = false,
-        auto_open = {
-          enable = true,
-          trigger = true,
-          luasnip = true,
-          throttle = 50,
-        },
-        view = nill,
-        opts = {},
+        enable = true,
       },
 
       message = {
