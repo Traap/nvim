@@ -11,6 +11,7 @@ return {
   },
 
   keys = {
+    {"<leader>pw", "<cmd>edit " .. os.getenv("WIKIHOME") .. "/index.md<cr>", "Personal Wiki"},
     {"<leader>wb", "<cmd>edit " .. os.getenv("WIKIHOME") .. "/journal/Backlog.md<cr>", "Wiki Backlog"},
     {"<leader>wa", "<cmd>edit " .. os.getenv("WIKIHOME") .. "/journal/Acronyms.md<cr>", "Wiki Acronyms"},
     {"<leader>wk", "<cmd>edit " .. os.getenv("WORKHOME") .. "/wiki/index.md<cr>", "Work Wiki"},
