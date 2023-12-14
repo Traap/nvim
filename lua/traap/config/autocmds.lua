@@ -262,7 +262,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = augroup("wiki"),
-  command = "setlocal foldlevelstart=2 filetype=wiki | WikiEnable",
+  command = "setlocal foldlevelstart=2 filetype=wiki",
   pattern = { "*.md", "*.markdown", "*.wiki" },
 })
 
