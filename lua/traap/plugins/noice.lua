@@ -187,35 +187,34 @@ return {
       {
         filter = {
           event = "msg_show",
-          kind = "emsg",
-          any = {
-            { find = "E490: No fold found" },
-            { find = "E486: Pattern not found" },
-          },
+          find = "E490: No fold found",
         },
         opts = { skip = true },
       },
+
+
+      {
+        filter = {
+          event = "msg_show",
+          find = ".*Pattern not found.*$",
+        },
+        opts = { skip = true },
+      },
+
+
+      {
+        filter = {
+          event = "msg_show",
+          kind = "",
+        },
+        opts = { skip = true },
+      },
+
 
       {
         filter = {
           event = "msg_show",
           kind = "wmsg",
-        },
-        opts = { skip = true },
-      },
-
-      {
-        filter = {
-          event = "notify",
-          kind = "No fold found",
-        },
-        opts = { skip = true },
-      },
-
-      {
-        filter = {
-          event = "notify",
-          kind = "No information available",
         },
         opts = { skip = true },
       },
@@ -234,6 +233,8 @@ return {
 
     opts.views = {
       mini = {
+        align = "message-right",
+        -- position = { col = 5 },
         win_options = {
           winblend = 0,
         },
