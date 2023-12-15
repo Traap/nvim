@@ -1,8 +1,9 @@
 return {
-  "hrsh7th/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "hrsh7th/cmp-buffer",
+  enabled = true,
   event = {"BufReadPost", "BufNewFile"},
-  dependency = {
+  dependencies = {
     "hrsh7th/nvim-cmp",
   },
 }
+

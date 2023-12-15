@@ -1,8 +1,9 @@
 return {
-  "hrsh7th/" .. plugin,
-  enabled = Is_Enabled(plugin),
+  "hrsh7th/cmp-nvim-lsp",
+  enabled = true,
   event = {"BufReadPost", "BufNewFile"},
-  dependency = {
-    "hrsh7th/nvim-cmp",
+  dependencies = {
+    "neovim/nvim-lspconfig",
   },
 }
+
