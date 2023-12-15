@@ -1,5 +1,10 @@
 Traap's *Blazing Fast* Neovim configuration.
 
+## v0.9.5-lazyvim branch
+This branch is here to support switching Neovim environments.  The branch uses
+both lazy.nvim and LazyVim plugins.  I will only make patches when and if
+needed.
+
 ### Credits
 * [Folke Lamaitre](https://github.com/folke)
 * [LazyVim](https://github.com/LazyVim/LazyVim)
