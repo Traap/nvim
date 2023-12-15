@@ -1,0 +1,25 @@
+require("traap.core.globals")
+
+local plugin = "plugin-name"
+
+return {
+  "github-repository/" .. plugin,
+  enabled = Is_Enabled(plugin),
+
+  cmd = {},
+  event = {},
+  keys = {},
+  lazy = true,
+
+  opts = function(_, opts) 
+    -- your options. 
+  end,
+
+  -- Run configuraiton.
+  -- config = true,
+
+  -- Use a function
+  config = function(_, opts)
+    require(plugin).setup(opts)
+  end,
+}

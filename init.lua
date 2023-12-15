@@ -2,6 +2,14 @@
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[,]]
 
--- Use my bootstrap method.  Then hand things over to Lazy.
-require("config.traap.bootstrap")
-require("config.lazy")
+-- Bootstrap using lazy.nvim package manager.
+require("traap.core.bootstrap")
+
+-- Personalize Neovim.
+require("traap.config.options")
+require("traap.config.autocmds")
+require("traap.config.keymaps")
+require("traap.config.lazy")
+
+-- LSP configure.
+require("traap.lsp.servers")
