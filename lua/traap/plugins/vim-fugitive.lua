@@ -14,7 +14,7 @@ return {
     {"<leader>gh", "<cmd>vert bo help fugitive<cr>"},
     {"<leader>gp", "<cmd>G push<cr>"},
     {"<leader>gs", "<cmd>G<cr>"},
-    {"gl", "<cmd>diffget //2<cr>"}, -- Chose left side,
-    {"gh", "<cmd>diffget //3<cr>"}, -- Chose right size
+    {"gh", "<cmd>diffget //2<cr>"}, -- Chose left side,
+    {"gl", "<cmd>diffget //3<cr>"}, -- Chose right size
   },
 }

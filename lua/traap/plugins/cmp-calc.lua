@@ -2,7 +2,7 @@ return {
   "hrsh7th/cmp-calc",
   enabled = true,
   event = {"BufReadPost", "BufNewFile"},
-  dependency = {
+  dependencies = {
     "hrsh7th/nvim-cmp",
   },
 }
