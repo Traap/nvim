@@ -10,7 +10,7 @@ return {
   opts = function()
     local logo = [[Configured by Traap and powered by lazy.nvim.]]
 
-    logo = string.rep("\n", 5) .. logo .. "\n\n"
+    logo = string.rep("\n", 4) .. logo .. "\n\n"
 
     local opts = {
       theme = "doom",
