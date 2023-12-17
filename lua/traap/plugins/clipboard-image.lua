@@ -1,7 +1,7 @@
 return {
   "Traap/clipboard-image.nvim",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = true,
+  enabled = false,
 
   keys = {
     {"<leader>pi", "<cmd>PasteImg<cr>", "Save and Past Image"}
