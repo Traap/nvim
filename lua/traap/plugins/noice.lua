@@ -153,7 +153,7 @@ return {
     opts.presets = {
       bottom_search = false,
       command_palette = false,
-      long_message_to_split = false,
+      long_message_to_split = true,
       inc_rename = true,
       lsp_doc_border = true,
     }
@@ -201,14 +201,14 @@ return {
         opts = { skip = true },
       },
 
-
-      {
-        filter = {
-          event = "msg_show",
-          kind = "",
-        },
-        opts = { skip = true },
-      },
+      -- YouTube: enable and disable this block to show the wild side.
+      -- {
+      --   filter = {
+      --     event = "msg_show",
+      --     kind = "",
+      --   },
+      --   opts = { skip = true },
+      -- },
 
 
       {
