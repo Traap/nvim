@@ -35,11 +35,11 @@ local options = {
   splitbelow = true,
   splitright = true,
   swapfile = false,
-  tabstop = 4,
+  tabstop = 2,
   termguicolors = true,
-  timeoutlen = 350,
+  timeoutlen = 200,
   textwidth = 80,
-  updatetime = 350,
+  updatetime = 500,
   virtualedit = { "block" },
   wildmode = { "list", "longest" },
   wrap = false,
@@ -51,6 +51,7 @@ end
 
 vim.cmd[[set termguicolors]]
 vim.cmd([[filetype plugin indent on]])
+
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Bullets
