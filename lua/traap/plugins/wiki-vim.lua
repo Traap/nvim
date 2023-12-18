@@ -5,11 +5,6 @@ return {
   cmd = { "WikiIndex", "WikiJournal" },
   ft = { "wiki", "md" },
 
-  dependencies = {
-    "lervag/wiki-ft.vim",
-    "Traap/vim-bundle-wiki.vim",
-  },
-
   keys = {
     {"<leader>pw", "<cmd>edit " .. os.getenv("WIKIHOME") .. "/index.md<cr>", "Personal Wiki"},
     {"<leader>wb", "<cmd>edit " .. os.getenv("WIKIHOME") .. "/journal/Backlog.md<cr>", "Wiki Backlog"},
