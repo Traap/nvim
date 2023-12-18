@@ -1,44 +1,28 @@
 return {
   "HakonHarnes/img-clip.nvim",
   enabled = true,
-  cmd = "PasteImage",
+  event = {"BufReadPost", "BufNewFile"},
+
   opts = {
-    -- directory path to save images to, can be relative (cwd or current file)
-    -- or absolute
+    debug = false,
     dir_path = "images",
-
-    -- file name format (see lua.org/pil/22.1.html)
     file_name = "%Y-%m-%d-%H-%M-%S",
-
-    -- encode spaces and special characters in file path
     url_encode_path = false,
-
-    -- expands dir_path to an absolute path
     use_absolute_path = false,
-
-    -- ask user for file name before saving, leave empty to use default
+    relative_to_current_file = true,
     prompt_for_file_name = true,
-
-    -- show dir_path in prompt when prompting for file name
-    show_dir_path_in_prompt = false,
-
-    -- jump to cursor position in template after pasting
+    show_dir_path_in_prompt = true,
     use_cursor_in_template = true,
-
-    -- enter insert mode after pasting the markup code
     insert_mode_after_paste = true,
-
-    -- make dir_path relative to current file rather than the cwd
-    relative_to_current_file = false,
-
-    -- embed image as base64 string instead of saving to file
     embed_image_as_base64 = false,
-
-    -- max size of base64 string in KB
     max_base64_size = 10,
-
-    -- default template
     template = "$FILE_PATH",
+    drag_and_drop = {
+      enabled = false,
+      insert_mode = false,
+      copy_images = false,
+      download_images = true,
+    },
 
     asciidoc = {
       template = 'image::$FILE_PATH[width=80%, alt="$CURSOR"]',
