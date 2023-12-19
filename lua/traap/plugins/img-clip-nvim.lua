@@ -4,24 +4,37 @@ return {
   event = {"BufReadPost", "BufNewFile"},
 
   opts = {
-    debug = false,
-    dir_path = "images",
-    file_name = "%Y-%m-%d-%H-%M-%S",
-    url_encode_path = false,
-    use_absolute_path = false,
-    relative_to_current_file = true,
-    prompt_for_file_name = true,
-    show_dir_path_in_prompt = true,
-    use_cursor_in_template = true,
-    insert_mode_after_paste = true,
-    embed_image_as_base64 = false,
-    max_base64_size = 10,
-    template = "$FILE_PATH",
-    drag_and_drop = {
-      enabled = false,
-      insert_mode = false,
-      copy_images = false,
-      download_images = true,
+    default = {
+      debug = false,
+
+      -- YouTube: 1st - Adjust dir_path
+      dir_path = function()
+        return "images/" .. vim.fn.expand("%:t:r")
+      end,
+
+      file_name = "%Y-%m-%d-%H-%M-%S",
+      url_encode_path = false,
+      use_absolute_path = false,
+
+      -- YouTube: 2nd - Toggle relative_to_current_file.
+      relative_to_current_file = true,
+      prompt_for_file_name = true,
+
+      -- YouTube: 3rd - Toggle show_dir_path_in_prompt
+      show_dir_path_in_prompt = true,
+
+      use_cursor_in_template = true,
+      insert_mode_after_paste = true,
+      embed_image_as_base64 = false,
+      max_base64_size = 10,
+      template = "$FILE_PATH",
+
+      drag_and_drop = {
+        enabled = false,
+        insert_mode = false,
+        copy_images = false,
+        download_images = true,
+      },
     },
 
     asciidoc = {
