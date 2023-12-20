@@ -15,6 +15,10 @@ return {
       hide_inactive_statusline = true,
       lualine_bold = true,
     }
+
+    opts.on_colors = function(colors)
+      colors.border = "#3b4261"
+    end
   end,
 
   config = function(_, opts)
