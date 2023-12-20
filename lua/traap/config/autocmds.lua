@@ -11,8 +11,9 @@ end
 --
 --     https://image-color-picker.com/rgb-color-picker
 
-vim.api.nvim_create_autocmd({"VimEnter", "BufEnter", "ColorScheme"}, {
+vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
   group = augroup("colors"),
+  pattern = {"*"},
   callback = function()
 
     -- NOTE: Tokyonigh colors.
