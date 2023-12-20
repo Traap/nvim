@@ -82,12 +82,6 @@ return {
       lualine_z = { "encoding" },
     }
 
-    opts.symbols = {
-      modified = ' ●',
-      alternate_file = '#',
-      directory =  '',
-    }
-
     opts.tabline = {}
     opts.winbar = {}
     opts.inactive_winbar = {}
