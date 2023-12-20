@@ -7,7 +7,14 @@ return {
   opts = function(_, opts)
     opts.transparent = true
     opts.style = "night"
-    opts.styles = { sidebars = "transparent", floats = "transparent", }
+    opts.styles = {
+      comments = { italic = true },
+      keywords = { italic = true },
+      sidebars = "transparent",
+      floats = "transparent",
+      hide_inactive_statusline = true,
+      lualine_bold = true,
+    }
   end,
 
   config = function(_, opts)

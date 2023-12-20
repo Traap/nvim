@@ -1,8 +1,7 @@
 return {
     "xiyaowong/nvim-transparent",
-    enabled = true,
-    lazy = true,
-    event = "VimEnter",
+    enabled = false,
+    event = "VeryLazy",
 
     opts = {
       enable = true,
