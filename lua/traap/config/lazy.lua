@@ -2,6 +2,7 @@
 
 require("lazy").setup({
   spec = {
+    { import = "traap.plugins.colorscheme" },
     { import = "traap.plugins.ui" },
     { import = "traap.plugins.util" },
     { import = "traap.plugins.tmux" },
