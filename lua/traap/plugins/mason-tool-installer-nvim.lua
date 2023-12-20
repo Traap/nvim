@@ -1,6 +1,6 @@
 return {
-  "williamboman/mason-lspconfig.nvim",
-  enabled = true,
+  "WhoIsSethDaniel/mason-tool-installer.nvim",
+  enable = true,
   event = "VeryLazy",
   dependencies = {
     "williamboman/mason.nvim",

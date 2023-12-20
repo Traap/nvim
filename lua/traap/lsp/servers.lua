@@ -27,18 +27,21 @@ require('mason-lspconfig').setup({
     "emmet_ls",
     "gopls",
     "html",
-    "java_language_server",
     "jsonls",
     "lemminx",
     "lua_ls",
     "pyright",
-    "rust-analyzer",
+    "rubocop",
+    "rust_analyzer",
     "solargraph",
     "sqlls",
     "texlab",
     "tsserver",
-    "ymlls",
+    "yamlls",
   },
+
+  automatic_installation = true,
+
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
@@ -46,4 +49,10 @@ require('mason-lspconfig').setup({
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
   },
+})
+
+require("mason-tool-installer").setup({
+  "prettier",
+  "stylua",
+  "sql-formatter",
 })
