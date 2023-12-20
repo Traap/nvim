@@ -22,7 +22,6 @@ require('mason').setup({
 require('mason-lspconfig').setup({
   ensure_installed = {
     "bashls",
-    "charp_ls",
     "clangd",
     "emmet_ls",
     "gopls",
