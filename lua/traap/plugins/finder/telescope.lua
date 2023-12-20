@@ -8,8 +8,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-
-  -- {{{ keymaps
+-- {{{ keymaps
 
   keys = function()
     local cmdT = "<cmd>Telescope "
