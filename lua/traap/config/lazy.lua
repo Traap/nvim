@@ -2,7 +2,14 @@
 
 require("lazy").setup({
   spec = {
-    { import = "traap.plugins" },
+    { import = "traap.plugins.ui" },
+    { import = "traap.plugins.util" },
+    { import = "traap.plugins.tmux" },
+    { import = "traap.plugins.finder" },
+    { import = "traap.plugins.syntax" },
+    { import = "traap.plugins.lsp" },
+    { import = "traap.plugins.cmp" },
+    { import = "traap.plugins.dap" },
   },
 
   defaults = {
