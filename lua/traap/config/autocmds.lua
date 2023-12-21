@@ -286,3 +286,30 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Hide colorcolumn
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup("hide_cursorcolumn"),
+  pattern = {
+    "PlenaryTestPopup",
+    "checkhealth",
+    "fugitive",
+    "help",
+    "lazy",
+    "lspinfo",
+    "man",
+    "mason",
+    "neotest-output",
+    "neotest-output-panel",
+    "neotest-summary",
+    "notify",
+    "qf",
+    "query",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+  },
+  command = "setlocal colorcolumn=0"
+})
+
+-- ------------------------------------------------------------------------- }}}
