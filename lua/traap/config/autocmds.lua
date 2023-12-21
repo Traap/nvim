@@ -128,7 +128,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = augroup("no_autoformat"),
-  pattern = { "*", "csv", "md", "sh", "tex", "wiki", "wtf" },
+  pattern = { "*", "csv", "sh", "tex", "wtf" },
   callback = function()
     vim.b.autoformat = false
   end,
@@ -152,7 +152,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
     -- Remove these options.
     vim.cmd([[ setlocal formatoptions-=2 ]]) -- Use 2nd line indent when formatting
-    vim.cmd([[ setlocal formatoptions-=a ]]) -- Automatic paragraph formatting
     vim.cmd([[ setlocal formatoptions-=o ]]) -- Automatic insert comment leader when 'o' or 'O'
   end,
 })
