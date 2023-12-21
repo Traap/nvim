@@ -1,5 +1,5 @@
 return {
   "tpope/vim-unimpaired",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = false,
+  enabled = true,
 }
