@@ -11,12 +11,12 @@ end
 --
 --     https://image-color-picker.com/rgb-color-picker
 
-vim.api.nvim_create_autocmd({"BufEnter", "ColorScheme"}, {
+vim.api.nvim_create_autocmd({"BufWinEnter", "ColorScheme"}, {
   group = augroup("colors"),
   pattern = {"*"},
   callback = function()
 
-    -- NOTE: Tokyonigh colors.
+    -- NOTE: Tokyonight-night colors.
     -- #3b4261
     -- #7aa2f7
 
