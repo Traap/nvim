@@ -3,6 +3,7 @@ return {
   enabled = true,
   lazy = false,
   priority = 1000,
+
   opts = function(_, opts)
     opts.transparent = true
     opts.style = "night"
@@ -11,5 +12,6 @@ return {
 
   config = function(_, opts)
     require("tokyonight").setup(opts)
+    vim.cmd.colorscheme 'tokonight-night'
   end,
 }
