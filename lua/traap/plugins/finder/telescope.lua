@@ -51,7 +51,11 @@ return {
   opts = function(_, opts)
     local actions = require("telescope.actions")
     opts.defaults = {
-      layout_config = { prompt_position = "top" },
+      layout_config = {
+        prompt_position = "top",
+        height = 0.7,
+        width = 0.7,
+      },
       layout_strategy = "horizontal",
       mappings = {
         i = {
