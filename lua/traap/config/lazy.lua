@@ -31,7 +31,10 @@ require("lazy").setup({
     keymaps = false,
   },
 
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = {
+    missing = true,
+    colorscheme = { "tokyonight", "habamax" }
+  },
 
   checker = { enabled = true },
 
@@ -76,6 +79,7 @@ require("lazy").setup({
   },
 
   ui = {
+    size = { width = 0.7, height = 0.7 },
     border = "rounded",
     title = "lazy.nvim",
   },
