@@ -11,7 +11,7 @@ end
 --
 --     https://image-color-picker.com/rgb-color-picker
 
-vim.api.nvim_create_autocmd({"BufWinEnter", "ColorScheme"}, {
+vim.api.nvim_create_autocmd({"BufWinEnter", "ColorScheme" }, {
   group = augroup("colors"),
   pattern = {"*"},
   callback = function()
