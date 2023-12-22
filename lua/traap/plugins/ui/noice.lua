@@ -8,11 +8,6 @@ return {
     {"<leader>nh", "<cmd>NoiceHistory<cr>"}
   },
 
-  dependencies = {
-    "MunifTanjim/nui.nvim",
-    -- "rcarriga/nvim-notify",
-  },
-
   opts = function(_, opts)
     -- {{{ Cmdline
     opts.cmdline = {
@@ -173,16 +168,28 @@ return {
       {
         filter = {
           event = "msg_show",
-          kind = "echo",
           any = {
-            { find = "Prompt" },
-            { find = "No lines in buffer" },
-            { find = "line" },
-            { find = "lines" },
+            { find = "%d+L, %d+B" },
+            { find = "; after #%d+" },
+            { find = "; before #%d+" },
           },
         },
-        opts = { skip = true },
+        view = "mini",
       },
+
+      -- {
+      --   filter = {
+      --     event = "msg_show",
+      --     kind = "echo",
+      --     any = {
+      --       { find = "Prompt" },
+      --       { find = "No lines in buffer" },
+      --       { find = "line" },
+      --       { find = "lines" },
+      --     },
+      --   },
+      --   opts = { skip = true },
+      -- },
 
       {
         filter = {

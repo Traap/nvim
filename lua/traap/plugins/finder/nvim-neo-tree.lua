@@ -1,10 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   enabled = true,
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim"
-  },
 
   keys = {
     {"<c-n>", "<cmd>Neotree toggle<cr>", "Neotree toggle"},
