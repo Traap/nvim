@@ -196,6 +196,34 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Hide colorcolumn
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup("hide_cursorcolumn"),
+  pattern = {
+    "PlenaryTestPopup",
+    "checkhealth",
+    "fugitive",
+    "gitcommit",
+    "help",
+    "lazy",
+    "lspinfo",
+    "man",
+    "mason",
+    "neotest-output",
+    "neotest-output-panel",
+    "neotest-summary",
+    "notify",
+    "qf",
+    "query",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+  },
+  command = "setlocal colorcolumn=0"
+})
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Highlight on yank
 
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -283,33 +311,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = augroup("wiki"),
   command = "setlocal foldlevelstart=2 filetype=wiki",
   pattern = { "*.md", "*.markdown", "*.wiki" },
-})
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Hide colorcolumn
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = augroup("hide_cursorcolumn"),
-  pattern = {
-    "PlenaryTestPopup",
-    "checkhealth",
-    "fugitive",
-    "help",
-    "lazy",
-    "lspinfo",
-    "man",
-    "mason",
-    "neotest-output",
-    "neotest-output-panel",
-    "neotest-summary",
-    "notify",
-    "qf",
-    "query",
-    "spectre_panel",
-    "startuptime",
-    "tsplayground",
-  },
-  command = "setlocal colorcolumn=0"
 })
 
 -- ------------------------------------------------------------------------- }}}
