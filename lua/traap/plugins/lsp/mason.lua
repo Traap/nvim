@@ -1,7 +1,7 @@
 return {
   "williamboman/mason.nvim",
   enable = true,
-  event = "VeryLazy",
+  cmd = {"Mason", "MasonInstall", "MasonInstall", "MasonUpdate"},
   dependencies = {
     'neovim/nvim-lspconfig',
   },

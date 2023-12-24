@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = 'VeryLazy',
+  event = {"InsertEnter", "CmdLineEnter"},
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },

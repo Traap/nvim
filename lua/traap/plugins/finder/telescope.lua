@@ -3,12 +3,13 @@
 return {
   "nvim-telescope/telescope.nvim",
   enabled = true,
-  event = "VeryLazy",
+  cmd = {"Telescope"},
 
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
--- {{{ keymaps
+
+  -- {{{ keymaps
 
   keys = function()
     local cmdT = "<cmd>Telescope "
