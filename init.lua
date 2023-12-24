@@ -6,14 +6,9 @@ vim.g.maplocalleader = [[,]]
 require("traap.core.bootstrap")
 
 -- Personalize Neovim.
+require("traap.config.lazy")
 require("traap.config.options")
 require("traap.config.autocmds")
 require("traap.config.keymaps")
-require("traap.config.lazy")
 
--- Defer treesitter until after first render.
-require("traap.core.treesitter")
-
--- LSP configure.
-require("traap.lsp.servers")
-
+vim.cmd("colorscheme tokyonight-night")
