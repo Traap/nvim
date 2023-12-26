@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd({"BufWinEnter", "ColorScheme" }, {
     vim.api.nvim_set_hl(0, "LspInfoBorder",     { fg="#3b4261"})
     vim.api.nvim_set_hl(0, "LspFloatWinBorder", { fg="#3b4261"})
 
-    -- Float
+    -- Neovim
     vim.api.nvim_set_hl(0, "FloatBorder", { fg="#3b4261"})
 
     -- Noice
