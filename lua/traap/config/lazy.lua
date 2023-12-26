@@ -2,7 +2,6 @@
 
 require("lazy").setup({
   spec = {
-    { import = "traap.plugins.colorscheme" },
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		{ import = "lazyvim.plugins.extras.dap.core" },
 		{ import = "lazyvim.plugins.extras.lang.clangd" },
@@ -13,15 +12,14 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.rust" },
 		{ import = "lazyvim.plugins.extras.lang.tailwind" },
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "traap.plugins.colorscheme" },
+    { import = "traap.plugins.disabled" },
     { import = "traap.plugins.ui" },
     { import = "traap.plugins.util" },
     { import = "traap.plugins.tmux" },
     { import = "traap.plugins.finder" },
     { import = "traap.plugins.syntax" },
     { import = "traap.plugins.cmp" },
-    -- { import = "traap.plugins.dap" },
-    { import = "traap.plugins.disabled" },
+    { import = "traap.plugins.colorscheme" },
   },
 
   defaults = {
@@ -79,7 +77,7 @@ require("lazy").setup({
   },
 
   ui = {
-    size = { width = 0.7, height = 0.7 },
+    size = { width = 0.75, height = 0.75 },
     border = "rounded",
     title = "lazy.nvim",
   },
