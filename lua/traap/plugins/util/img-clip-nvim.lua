@@ -30,9 +30,9 @@ return {
       template = "$FILE_PATH",
 
       drag_and_drop = {
-        enabled = false,
-        insert_mode = false,
-        copy_images = false,
+        enabled = true,
+        insert_mode = true,
+        copy_images = true,
         download_images = true,
       },
     },
