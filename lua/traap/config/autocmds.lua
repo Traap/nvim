@@ -247,7 +247,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = augroup("lspinfo_border"),
   pattern = {
-    "lazy",
     "lspinfo",
     "mason",
   },
