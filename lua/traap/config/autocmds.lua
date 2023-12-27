@@ -114,7 +114,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set(
-    "n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true }
+      "n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true }
     )
   end,
 })
@@ -239,6 +239,19 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = augroup("json"),
   command = [[syntax match Comment +\/\/.\+$+]],
   pattern = "*.json",
+})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ lspinfo
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup("lspinfo_border"),
+  pattern = {
+    "lspinfo",
+  },
+  callback = function()
+    require("lspconfig.ui.windows").default_options.border = "rounded"
+  end,
 })
 
 -- ------------------------------------------------------------------------- }}}

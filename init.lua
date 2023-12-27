@@ -13,4 +13,3 @@ require("traap.config.keymaps")
 
 -- Finalize ui customizations.
 vim.cmd("colorscheme tokyonight-night")
-require("lspconfig.ui.windows").default_options.border = "rounded"
