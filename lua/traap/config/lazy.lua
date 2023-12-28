@@ -19,7 +19,6 @@ require("lazy").setup({
     { import = "traap.plugins.finder" },
     { import = "traap.plugins.syntax" },
     { import = "traap.plugins.cmp" },
-    { import = "traap.plugins.colorscheme" },
   },
 
   defaults = {

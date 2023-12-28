@@ -12,4 +12,4 @@ require("traap.config.autocmds")
 require("traap.config.keymaps")
 
 -- Finalize ui customizations.
-vim.cmd("colorscheme tokyonight-night")
+-- vim.cmd("colorscheme tokyonight-night")
