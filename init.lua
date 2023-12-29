@@ -10,6 +10,3 @@ require("traap.config.lazy")
 require("traap.config.options")
 require("traap.config.autocmds")
 require("traap.config.keymaps")
-
--- Finalize ui customizations.
--- vim.cmd("colorscheme tokyonight-night")
