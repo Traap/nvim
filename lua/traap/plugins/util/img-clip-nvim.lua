@@ -23,20 +23,23 @@ return {
       -- YouTube: 3rd - Toggle show_dir_path_in_prompt
       show_dir_path_in_prompt = true,
 
-      use_cursor_in_template = true,
+      use_cursor_in_template = false,
       insert_mode_after_paste = true,
       embed_image_as_base64 = false,
       max_base64_size = 10,
       template = "$FILE_PATH",
 
+      -- YouTube: 4th - Toggle show_dir_path_in_prompt
       drag_and_drop = {
-        enabled = true,
+        enabled = false,
         insert_mode = true,
         copy_images = true,
         download_images = true,
       },
     },
 
+
+    -- YouTube: 0th - Quickly cover file types.
     asciidoc = {
       template = 'image::$FILE_PATH[width=80%, alt="$CURSOR"]',
     },
