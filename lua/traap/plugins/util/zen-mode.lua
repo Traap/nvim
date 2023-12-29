@@ -3,7 +3,7 @@ return {
   enabled = true,
 
   keys = {
-    {"<leader>oz", [[<cmd>lua require("zen-mode").toggle()<cr>]]},
+    {"<leader>oz", [[<cmd>lua require("zen-mode").toggle()<cr>]], desc = "Zen mode" },
   },
 
 
