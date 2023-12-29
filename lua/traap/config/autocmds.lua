@@ -23,6 +23,9 @@ vim.api.nvim_create_autocmd({"BufWinEnter", "ColorScheme" }, {
     -- Cmp
     vim.api.nvim_set_hl(0, "CmpDocumentationBorder", { fg="#3b4261"})
 
+    -- Harpoon
+    vim.api.nvim_set_hl(0, "HarpoonBorder", { fg="#3b4261"})
+
     -- LspSaga
     vim.api.nvim_set_hl(0, "LspSagaSignatureHelpBorder", { fg="#3b4261"})
     vim.api.nvim_set_hl(0, "LspSagaCodeActionBorder", { fg="#3b4261"})
@@ -98,6 +101,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "PlenaryTestPopup",
     "checkhealth",
     "fugitive",
+    "git",
     "help",
     "lspinfo",
     "man",
@@ -204,6 +208,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "PlenaryTestPopup",
     "checkhealth",
     "fugitive",
+    "git",
     "gitcommit",
     "help",
     "lazy",
