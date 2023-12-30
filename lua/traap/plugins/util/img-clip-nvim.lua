@@ -29,7 +29,7 @@ return {
       max_base64_size = 10,
       template = "$FILE_PATH",
 
-      -- YouTube: 4th - Toggle show_dir_path_in_prompt
+      -- YouTube: 4th - Drag and drop
       drag_and_drop = {
         enabled = false,
         insert_mode = true,
@@ -37,7 +37,6 @@ return {
         download_images = true,
       },
     },
-
 
     -- YouTube: 0th - Quickly cover file types.
     asciidoc = {
