@@ -28,6 +28,9 @@ require("lazy").setup({
     { import = "traap.plugins.syntax" },
     { import = "traap.plugins.cmp" },
     { import = "traap.plugins.vimtex" },
+
+    -- Now hookup unit testing.
+    { import = "traap.plugins.utest" },
   },
 
   defaults = {

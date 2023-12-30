@@ -1,6 +1,6 @@
-local ToggleTerm = {}
+-- local ToggleTerm = {}
 
-ToggleTerm = {
+local ToggleTerm = {
 
   bashtop = function()
     local Terminal = require("toggleterm.terminal").Terminal

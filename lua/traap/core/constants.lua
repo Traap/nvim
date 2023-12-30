@@ -1,6 +1,6 @@
-local Constants = {}
+-- local Constants = {}
 
-Constants = {
+local Constants = {
   file_types = {
     "BufEnter *.c",
     "BufEnter *.cpp",

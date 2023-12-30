@@ -3,35 +3,40 @@ return {
   enabled = true,
   event = {"BufReadPost", "BufNewFile"},
 
+  keys = {
+    {"<leader>pi", "<cmd>PasteImage<cr>", desc = "Save and Paste Image"},
+  },
+
   opts = {
     default = {
+      -- YouTube: 1st - Almost self explanitory settings
       debug = false,
+      insert_mode_after_paste = true,
+      template = "$FILE_PATH",
+      url_encode_path = true,
+      use_cursor_in_template = true,
 
-      -- YouTube: 1st - Adjust dir_path
+      -- YouTube: 2nd - Adjust dir_path
       dir_path = function()
         return "images/" .. vim.fn.expand("%:t:r")
       end,
-
       file_name = "%Y-%m-%d-%H-%M-%S",
-      url_encode_path = true,
+
+      -- YouTube: 3rd - Toggle relative_to_current_file.
       use_absolute_path = false,
-
-      -- YouTube: 2nd - Toggle relative_to_current_file.
       relative_to_current_file = true,
-      prompt_for_file_name = false,
 
-      -- YouTube: 3rd - Toggle show_dir_path_in_prompt
-      show_dir_path_in_prompt = true,
+      -- YouTube: 4th - Toggle show_dir_path_in_prompt
+      prompt_for_file_name = true,
+      show_dir_path_in_prompt = false,
 
-      use_cursor_in_template = true,
-      insert_mode_after_paste = true,
+      -- YouTube: 5th - base64
       embed_image_as_base64 = true,
       max_base64_size = 10,
-      template = "$FILE_PATH",
 
-      -- YouTube: 4th - Drag and drop
+      -- YouTube: 6th - Drag and drop
       drag_and_drop = {
-        enabled = true,
+        enabled = false,
         insert_mode = true,
         copy_images = true,
         download_images = true,
@@ -95,9 +100,5 @@ return {
       template = "![$CURSOR]($FILE_PATH)",
     },
 
-  },
-
-  keys = {
-    {"<leader>pi", "<cmd>PasteImage<cr>", desc = "Save and Paste Image"},
   },
 }

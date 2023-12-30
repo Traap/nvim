@@ -3,7 +3,7 @@ return {
   enabled = true,
   event = {"BufReadPost", "BufNewFile"},
 
-  config = function(_, opts)
+  config = function()
     local toggler = require("nvim-toggler")
 
     toggler.setup({
