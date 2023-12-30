@@ -13,6 +13,9 @@ Constants = {
     "BufEnter *.rs",
     "BufEnter *.ts",
   },
+
+  colorscheme = "tokyonight",
 }
+
 
 return Constants

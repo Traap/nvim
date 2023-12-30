@@ -3,6 +3,8 @@
 require("lazy").setup({
   spec = {
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+
+    -- LazyVim plugins I Use.
 		{ import = "lazyvim.plugins.extras.dap.core" },
 		{ import = "lazyvim.plugins.extras.lang.clangd" },
 		{ import = "lazyvim.plugins.extras.lang.go" },
@@ -12,7 +14,12 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.rust" },
 		{ import = "lazyvim.plugins.extras.lang.tailwind" },
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
+
+    -- LazyVim plugins I don't use.
     { import = "traap.plugins.disabled" },
+
+    -- Now tell lazy.nvim about my customizations.
+    { import = "traap.plugins.colorscheme" },
     { import = "traap.plugins.ui" },
     { import = "traap.plugins.util" },
     { import = "traap.plugins.tmux" },

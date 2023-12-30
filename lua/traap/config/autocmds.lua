@@ -16,9 +16,7 @@ vim.api.nvim_create_autocmd({"BufWinEnter", "ColorScheme" }, {
   pattern = {"*"},
   callback = function()
 
-    -- NOTE: Tokyonight-night colors.
-    -- #3b4261
-    -- #7aa2f7
+    -- NOTE: RGB values found in Tokyonight-night colors.
 
     -- Cmp
     vim.api.nvim_set_hl(0, "CmpDocumentationBorder", { fg="#3b4261"})
