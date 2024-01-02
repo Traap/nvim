@@ -4,24 +4,26 @@ return {
   lazy = false,
   priority = 1000,
 
-  opts = function(_, opts)
-    opts.transparent = false
-    opts.style = "night"
-    opts.styles = {
-      comments = { italic = true },
-      keywords = { italic = true },
-      sidebars = "transparent",
-      floats = "transparent",
-      hide_inactive_statusline = true,
-      lualine_bold = true,
-    }
+  -- TODO: 2024.01.01. Decide if tokyonight needs custimiztion.
 
-    opts.on_colors = function(colors)
-      colors.border = "#3b4261"
-    end
-  end,
+  -- opts = function(_, opts)
+  --   opts.transparent = false
+  --   opts.style = "night"
+  --   opts.styles = {
+  --     comments = { italic = true },
+  --     keywords = { italic = true },
+  --     sidebars = "transparent",
+  --     floats = "transparent",
+  --     hide_inactive_statusline = true,
+  --     lualine_bold = true,
+  --   }
 
-  config = function(_, opts)
-    require("tokyonight").setup(opts)
-  end,
+  --   opts.on_colors = function(colors)
+  --     colors.border = "#3b4261"
+  --   end
+  -- end,
+
+  -- config = function(_, opts)
+  --   require("tokyonight").setup(opts)
+  -- end,
 }
