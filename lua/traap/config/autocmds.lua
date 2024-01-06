@@ -324,9 +324,15 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Set Wiki file types and enable wiki.
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
   group = augroup("wiki"),
   command = "setlocal foldlevelstart=2 filetype=wiki",
+  pattern = { "*.md", "*.markdown", "*.wiki" },
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  group = augroup("wiki_lcd"),
+  command = "silent! lcd %:p:h",
   pattern = { "*.md", "*.markdown", "*.wiki" },
 })
 

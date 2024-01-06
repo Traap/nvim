@@ -208,7 +208,7 @@ return {
         opts = { skip = true },
       },
 
-      -- YouTube: enable and disable this block to show the wild side.
+      -- TODO: enable and disable this block to show the wild side.
       -- {
       --   filter = {
       --     event = "msg_show",
