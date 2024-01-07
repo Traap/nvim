@@ -330,10 +330,4 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = { "*.md", "*.markdown", "*.wiki" },
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  group = augroup("wiki_lcd"),
-  command = "silent! lcd %:p:h",
-  pattern = { "*.md", "*.markdown", "*.wiki" },
-})
-
 -- ------------------------------------------------------------------------- }}}
