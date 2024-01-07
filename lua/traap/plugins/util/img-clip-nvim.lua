@@ -31,7 +31,7 @@ return {
       show_dir_path_in_prompt = true,
 
       -- YouTube: 5th - base64
-      embed_image_as_base64 = true,
+      embed_image_as_base64 = false,
       max_base64_size = 10,
 
       -- YouTube: 6th - Drag and drop
