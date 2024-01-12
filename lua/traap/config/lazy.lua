@@ -22,7 +22,7 @@ require("lazy").setup({
     { import = "traap.plugins.colorscheme" },
     { import = "traap.plugins.ui" },
     { import = "traap.plugins.util" },
-    { import = "traap.plugins.tmux" },
+    { import = "traap.plugins.terminal" },
     { import = "traap.plugins.wiki" },
     { import = "traap.plugins.finder" },
     { import = "traap.plugins.syntax" },
