@@ -2,7 +2,12 @@
 
 require("lazy").setup({
   spec = {
-		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+		{ "LazyVim/LazyVim", import = "lazyvim.plugins",
+       opts = {
+        defaults = { keymaps = false, },
+        colorscheme = 'tokyonight',
+      },
+    },
 
     -- LazyVim plugins I Use.
 		{ import = "lazyvim.plugins.extras.dap.core" },
