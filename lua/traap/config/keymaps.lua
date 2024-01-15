@@ -164,7 +164,9 @@ Keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]])
 -- Remove line end trailing white space.
 Keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
 
-vim.keymap.set("n", "<leader>tt", require('wezterm').switch_tab.index)
+-- TODO: keymap below depends upon a https://github.com/willothy/wezterm.nvim
+-- Move this to wezterm.configuation
+-- vim.keymap.set("n", "<leader>tt", require('wezterm').switch_tab.index)
 
 -- Delete empty lines.
 vim.api.nvim_set_keymap(
