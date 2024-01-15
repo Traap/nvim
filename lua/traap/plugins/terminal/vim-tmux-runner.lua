@@ -1,6 +1,6 @@
 return {
   "christoomey/vim-tmux-runner",
-  enabled = true and In_Tmux(),
+  enabled = false and In_Tmux(),
   event = "VeryLazy",
 
   keys = {

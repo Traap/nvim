@@ -1,6 +1,6 @@
 return {
   "christoomey/vim-tmux-navigator",
-  enabled = true,
+  enabled = false,
   event =  "VeryLazy",
 
   keys = {
