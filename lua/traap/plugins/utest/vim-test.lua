@@ -1,4 +1,5 @@
 return {
   "vim-test/vim-test",
-  opt = true,
+  opts = true,
+  enabled = true,
 }

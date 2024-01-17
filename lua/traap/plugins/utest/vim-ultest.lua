@@ -2,7 +2,7 @@ return  {
   "rcarriga/vim-ultest",
   requires = { "vim-test/vim-test" },
 
-  enable = false,
+  enabled = false,
 
   keys = { "<leader>ut" },
 
