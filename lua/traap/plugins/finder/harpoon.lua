@@ -68,7 +68,7 @@ return {
   end,
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ Configure harpoon.
+  -- {{{ Configure Harpoon.
 
   config = function(_, opts)
     require("harpoon").setup(opts)
