@@ -2,12 +2,7 @@
 
 require("lazy").setup({
   spec = {
-		{ "LazyVim/LazyVim", import = "lazyvim.plugins",
-       opts = {
-        defaults = { keymaps = false, },
-        colorscheme = 'tokyonight',
-      },
-    },
+		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
     -- LazyVim plugins I Use.
 		{ import = "lazyvim.plugins.extras.dap.core" },
@@ -45,16 +40,23 @@ require("lazy").setup({
     keymaps = false,
   },
 
-  install = {
-    missing = true,
-    colorscheme = { "tokyonight", "habamax" }
-  },
-
   checker = { enabled = true },
 
   change_detection = {
     enable = true,
     notify = false,
+  },
+
+  install = {
+    missing = true,
+    colorscheme = { "tokyonight", "darkplus", "default" }
+  },
+
+
+  ui = {
+    size = { width = 0.75, height = 0.75 },
+    border = "rounded",
+    title = "lazy.nvim",
   },
 
   performance = {
@@ -90,11 +92,5 @@ require("lazy").setup({
         "zipPlugin",
       },
     },
-  },
-
-  ui = {
-    size = { width = 0.75, height = 0.75 },
-    border = "rounded",
-    title = "lazy.nvim",
   },
 })
