@@ -1,10 +1,19 @@
-require("traap.core.globals")
 -- {{{ Create autogroup.
 --     NOTE: Found in lazy.vim auto commands.
 
 local function augroup(name)
   return vim.api.nvim_create_augroup("traap_" .. name, { clear = true })
 end
+
+-- -------------------------------------------------------------------------- }}}
+-- {{{ Automagically close command-line window.
+
+vim.api.nvim_create_autocmd({ "CmdWinEnter"}, {
+  group = augroup("cwe"),
+  callback = function()
+    vim.cmd "quit"
+  end,
+})
 
 -- -------------------------------------------------------------------------- }}}
 -- {{{ Color tweeks when entering a buffer or when colorscheme change.
