@@ -15,22 +15,8 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.tailwind" },
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 
-    -- LazyVim plugins I don't use.
-    { import = "traap.plugins.disabled" },
-
     -- Now tell lazy.nvim about my customizations.
-    { import = "traap.plugins.colorscheme" },
-    { import = "traap.plugins.ui" },
-    { import = "traap.plugins.util" },
-    { import = "traap.plugins.terminal" },
-    { import = "traap.plugins.wiki" },
-    { import = "traap.plugins.finder" },
-    { import = "traap.plugins.syntax" },
-    { import = "traap.plugins.cmp" },
-    { import = "traap.plugins.vimtex" },
-
-    -- Now hookup unit testing.
-    { import = "traap.plugins.utest" },
+    { import = "traap.plugins" },
   },
 
   defaults = {

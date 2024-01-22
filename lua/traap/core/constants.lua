@@ -1,6 +1,4 @@
--- local Constants = {}
-
-local Constants = {
+return {
   file_types = {
     "BufEnter *.c",
     "BufEnter *.cpp",
@@ -13,9 +11,5 @@ local Constants = {
     "BufEnter *.rs",
     "BufEnter *.ts",
   },
-
   colorscheme = "tokyonight",
 }
-
-
-return Constants
