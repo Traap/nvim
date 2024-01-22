@@ -1,5 +1,3 @@
--- local ToggleTerm = {}
-
 local ToggleTerm = {
 
   bashtop = function()

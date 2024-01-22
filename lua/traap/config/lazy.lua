@@ -2,35 +2,32 @@
 
 require("lazy").setup({
   spec = {
-		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins",
+      opts = {
+        colorscheme = function()
+          require("tokyonight").load()
+        end,
+
+        defaults = {
+          autocmds = true,
+          keymaps = false,
+        },
+      },
+    },
 
     -- LazyVim plugins I Use.
-		{ import = "lazyvim.plugins.extras.dap.core" },
-		{ import = "lazyvim.plugins.extras.lang.clangd" },
-		{ import = "lazyvim.plugins.extras.lang.go" },
-		{ import = "lazyvim.plugins.extras.lang.json" },
-		{ import = "lazyvim.plugins.extras.lang.python" },
-		{ import = "lazyvim.plugins.extras.lang.ruby" },
-		{ import = "lazyvim.plugins.extras.lang.rust" },
-		{ import = "lazyvim.plugins.extras.lang.tailwind" },
-		{ import = "lazyvim.plugins.extras.lang.typescript" },
-
-    -- LazyVim plugins I don't use.
-    { import = "traap.plugins.disabled" },
+    { import = "lazyvim.plugins.extras.dap.core" },
+    { import = "lazyvim.plugins.extras.lang.clangd" },
+    { import = "lazyvim.plugins.extras.lang.go" },
+    { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.lang.python" },
+    { import = "lazyvim.plugins.extras.lang.ruby" },
+    { import = "lazyvim.plugins.extras.lang.rust" },
+    { import = "lazyvim.plugins.extras.lang.tailwind" },
+    { import = "lazyvim.plugins.extras.lang.typescript" },
 
     -- Now tell lazy.nvim about my customizations.
-    { import = "traap.plugins.colorscheme" },
-    { import = "traap.plugins.ui" },
-    { import = "traap.plugins.util" },
-    { import = "traap.plugins.terminal" },
-    { import = "traap.plugins.wiki" },
-    { import = "traap.plugins.finder" },
-    { import = "traap.plugins.syntax" },
-    { import = "traap.plugins.cmp" },
-    { import = "traap.plugins.vimtex" },
-
-    -- Now hookup unit testing.
-    { import = "traap.plugins.utest" },
+    { import = "traap.plugins" },
   },
 
   defaults = {

@@ -1,7 +1,7 @@
 return {
   "chrishrb/gx.nvim",
   enabled = true,
-  event = Constants.file_types,
+  event = require("traap.core.constants").file_types,
   dependencies = { "nvim-lua/plenary.nvim" },
 
   opts = function(_, opts)
