@@ -1,12 +1,67 @@
 return {
+  -- {{{ dap icons
+
+  dap = {
+    Stopped             = " ",
+    Breakpoint          = " ",
+    BreakpointCondition = " ",
+    BreakpointRejected  = " ",
+    LogPoint            = ".>",
+  },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ diagnostics icons
+
+  diagnostics = {
+    BoldError = "",
+    BoldHint = "",
+    BoldInformation = "",
+    BoldQuestion = "",
+    BoldWarning = "",
+    Debug = "",
+    Error = " ",
+    Hint = "",
+    Information = "",
+    Question = "",
+    Trace = "✎",
+    Warning = "",
+  },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ git icons
+
+  git = {
+    LineAdded = " ",
+    LineModified = " ",
+    LineRemoved = " ",
+    FileDeleted = " ",
+    FileIgnored = "◌",
+    FileRenamed = " ",
+    FileStaged = "S",
+    FileUnmerged = "",
+    FileUnstaged = "",
+    FileUntracked = "U",
+    Diff = " ",
+    Repo = " ",
+    Octoface = " ",
+    Copilot = " ",
+    Branch = "",
+  },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ kind icons
+
   kind = {
     Array = " ",
     Boolean = " ",
     Calc = " ",
     Class = "",
+    Codium = "",
     Color = "",
     Constant = "",
     Constructor = "",
+    Control = "",
+    Copilot = "",
     Enum = "",
     EnumMember = "",
     Event = "",
@@ -31,6 +86,7 @@ return {
     Spell = " ",
     String = " ",
     Struct = " ",
+    TabNine = " ",
     Text = " ",
     TypeParameter = " ",
     Unit = "",
@@ -44,23 +100,24 @@ return {
     spell = " ",
     vsnip = " ",
   },
-  git = {
-    LineAdded = " ",
-    LineModified = " ",
-    LineRemoved = " ",
-    FileDeleted = " ",
-    FileIgnored = "◌",
-    FileRenamed = " ",
-    FileStaged = "S",
-    FileUnmerged = "",
-    FileUnstaged = "",
-    FileUntracked = "U",
-    Diff = " ",
-    Repo = " ",
-    Octoface = " ",
-    Copilot = " ",
-    Branch = "",
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ misc icons
+
+  misc = {
+    CircuitBoard = " ",
+    Dots = " ",
+    Package = " ",
+    Robot = "󰚩 ",
+    Smiley = " ",
+    Squirrel = " ",
+    Tag = " ",
+    Watch = "",
   },
+
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ ui icons
+
   ui = {
     ArrowCircleDown = "",
     ArrowCircleLeft = "",
@@ -144,27 +201,6 @@ return {
     TriangleShortArrowUp = "",
     Watches = "󰂥",
   },
-  diagnostics = {
-    BoldError = "",
-    Error = "",
-    BoldWarning = "",
-    Warning = "",
-    BoldInformation = "",
-    Information = "",
-    BoldQuestion = "",
-    Question = "",
-    BoldHint = "",
-    Hint = "󰌶",
-    Debug = "",
-    Trace = "✎",
-  },
-  misc = {
-    Robot = "󰚩 ",
-    Squirrel = " ",
-    Tag = " ",
-    Watch = "",
-    Smiley = " ",
-    Package = " ",
-    CircuitBoard = " ",
-  },
+
+  -- ----------------------------------------------------------------------- }}}
 }

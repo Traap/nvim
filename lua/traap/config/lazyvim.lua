@@ -1,88 +1,84 @@
 -- NOTE:  LazyVim defaults.
+
+local icons = require("traap.core.icons")
+
 return {
-  colorscheme = function()
-    require("tokyonight").load()
-  end,
+  "LazyVim/LazyVim",
+  import = "Lazyvim.plugins",
 
-  defaults = {
-    autocmds = true,
-    keymaps = false,
-  },
-  news = {
-    lazyvim = true,
-    neovim = false,
-  },
-  icons = {
-    misc = {
-      dots = "󰇘",
-    },
-
-    dap = {
-      Stopped             = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
-      Breakpoint          = " ",
-      BreakpointCondition = " ",
-      BreakpointRejected  = { " ", "DiagnosticError" },
-      LogPoint            = ".>",
-    },
-
-    diagnostics = {
-      Error = " ",
-      Warn  = " ",
-      Hint  = " ",
-      Info  = " ",
-    },
-
-    git = {
-      added    = " ",
-      modified = " ",
-      removed  = " ",
-    },
-
-    kinds = {
-      Array         = " ",
-      Boolean       = "󰨙 ",
-      Class         = " ",
-      Codeium       = "󰘦 ",
-      Color         = " ",
-      Control       = " ",
-      Collapsed     = " ",
-      Constant      = "󰏿 ",
-      Constructor   = " ",
-      Copilot       = " ",
-      Enum          = " ",
-      EnumMember    = " ",
-      Event         = " ",
-      Field         = " ",
-      File          = " ",
-      Folder        = " ",
-      Function      = "󰊕 ",
-      Interface     = " ",
-      Key           = " ",
-      Keyword       = " ",
-      Method        = "󰊕 ",
-      Module        = " ",
-      Namespace     = "󰦮 ",
-      Null          = " ",
-      Number        = "󰎠 ",
-      Object        = " ",
-      Operator      = " ",
-      Package       = " ",
-      Property      = " ",
-      Reference     = " ",
-      Snippet       = " ",
-      String        = " ",
-      Struct        = "󰆼 ",
-      TabNine       = "󰏚 ",
-      Text          = " ",
-      TypeParameter = " ",
-      Unit          = " ",
-      Value         = " ",
-      Variable      = "󰀫 ",
-    },
-  },
-
-  kind_filter = {
-    default = {
+  opts = function(_, opts)
+    opts.colorscheme = function()
+      require("tokyonight").load()
+    end
+    opts.defaults = {
+      autocmds = true,
+      keymaps = false,
+    }
+    opts.news = {
+      lazyvim = true,
+      neovim = false,
+    }
+    opts.icons.misc = { dots = icons.misc.Dots }
+    opts.icons.dap = {
+      Stopped             = { icons.dap.Stopped, "DiagnosticWarn", "DapStoppedLine" },
+      Breakpoint          =   icons.dap.Breakpoint,
+      BreakpointCondition =   icons.dap.BreakpointCondition,
+      BreakpointRejected  = { icons.dap.BreakpointRejected, "DiagnosticError" },
+      LogPoint            =   icons.dap.LogPoint,
+    }
+    opts.icons.diagnostics = {
+      Error = icons.diagnostics.Error,
+      Warn  = icons.diagnostics.Warn,
+      Hint  = icons.diagnostics.Hint,
+      Info  = icons.diagnostics.Info,
+    }
+    opts.icons.git = {
+      added    = icons.git.LineAdded,
+      modified = icons.git.LineModified,
+      removed  = icons.git.LineRemoved,
+    }
+    opts.icons.kinds = {
+      Array         = icons.kind.Array,
+      Boolean       = icons.kind.Boolean,
+      Class         = icons.kind.Class,
+      Codeium       = icons.kind.Codium,
+      Color         = icons.kind.Color,
+      Control       = icons.kind.Control,
+      Collapsed     = icons.kind.Collapsed,
+      Constant      = icons.kind.Constant,
+      Constructor   = icons.kind.Constructor,
+      Copilot       = icons.kind.Copilot,
+      Enum          = icons.kind.Enum,
+      EnumMember    = icons.kind.EnumMember,
+      Event         = icons.kind.Event,
+      Field         = icons.kind.Field,
+      File          = icons.kind.File,
+      Folder        = icons.kind.Folder,
+      Function      = icons.kind.Function,
+      Interface     = icons.kind.Interface,
+      Key           = icons.kind.Key,
+      Keyword       = icons.kind.Keyword,
+      Method        = icons.kind.Method,
+      Module        = icons.kind.Module,
+      Namespace     = icons.kind.Namespace,
+      Null          = icons.kind.Null,
+      Number        = icons.kind.Number,
+      Object        = icons.kind.Object,
+      Operator      = icons.kind.Operator,
+      Package       = icons.kind.Package,
+      Property      = icons.kind.Property,
+      Reference     = icons.kind.Reference,
+      Snippet       = icons.kind.Snippet,
+      String        = icons.kind.String,
+      Struct        = icons.kind.Struct,
+      TabNine       = icons.kind.TabNine,
+      Text          = icons.kind.Text,
+      TypeParameter = icons.kind.TypeParameter,
+      Unit          = icons.kind.Unit,
+      Value         = icons.kind.Value,
+      Variable      = icons.kind.Variable,
+    }
+    opts.kind_filter.default = {
       "Class",
       "Constructor",
       "Enum",
@@ -96,12 +92,10 @@ return {
       "Property",
       "Struct",
       "Trait",
-    },
-
-    markdown = false,
-    help = false,
-
-    lua = {
+    }
+    opts.kind_filter.markdown = false
+    opts.kind_filter.help = false
+    opts.kind_filter.lua = {
       "Class",
       "Constructor",
       "Enum",
@@ -114,6 +108,6 @@ return {
       "Property",
       "Struct",
       "Trait",
-    },
-  },
+    }
+  end,
 }
