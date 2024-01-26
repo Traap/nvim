@@ -3,16 +3,7 @@
 require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins",
-      opts = {
-        colorscheme = function()
-          require("tokyonight").load()
-        end,
-
-        defaults = {
-          autocmds = true,
-          keymaps = false,
-        },
-      },
+      opts = require("traap.config.lazyvim").opts
     },
 
     -- LazyVim plugins I Use.
