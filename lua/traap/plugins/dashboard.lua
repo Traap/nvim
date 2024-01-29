@@ -35,9 +35,10 @@ return {
         },
 
         footer = function()
+          local ui =  require("traap.core.icons").ui
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          return {icons.ui.Lazy .. "Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+          return {ui.Lazy .. "Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
         end,
       },
     }
