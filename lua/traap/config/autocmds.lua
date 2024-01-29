@@ -27,6 +27,12 @@ vim.api.nvim_create_autocmd({"BufWinEnter", "ColorScheme" }, {
 
     -- NOTE: RGB values found in Tokyonight-night colors.
 
+    -- Better Quick Fix
+    vim.api.nvim_set_hl(0, "BqfPreviewBorder", { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "BqfPrevieTitle", { fg="#3b4261"})
+    vim.api.nvim_set_hl(0, "BqfPrevieThumb", { fg="#3b4261"})
+    vim.cmd([[ hi link BqfPreviewRange Search ]])
+
     -- Cmp
     vim.api.nvim_set_hl(0, "CmpDocumentationBorder", { fg="#3b4261"})
 
