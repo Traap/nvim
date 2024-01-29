@@ -44,8 +44,10 @@ return {
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
+        inactive_winbar = {},
+        statusline = { "alpha", "dashboard", "fzf", "lazy", "mason", "TelescopePrompt", },
+        tabline = {},
         winbar = {},
-        statusline = { "alpha", "dashboard", "fzf", "TelescopePrompt", },
       },
       ignore_focus = {},
       always_divide_middle = true,
