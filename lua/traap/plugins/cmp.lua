@@ -1,8 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
   event = {"InsertEnter", "CmdLineEnter"},
-  -- event = {"InsertEnter"},
-  -- event = {"BufReadPost", "BufNewFile"},
 
   enabled = true,
   opts = function(_, opts)
@@ -94,9 +92,6 @@ return {
     local mapping = {
       ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
       ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-
-      ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-      ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
 
       ["<C-c>"] = cmp.mapping { i = cmp.mapping.abort(), c = cmp.mapping.close() },
 

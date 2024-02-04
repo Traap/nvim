@@ -1,6 +1,4 @@
 -- {{{ Create autogroup.
---     NOTE: Found in lazy.vim auto commands.
-
 local function augroup(name)
   return vim.api.nvim_create_augroup("traap_" .. name, { clear = true })
 end
@@ -293,11 +291,13 @@ vim.api.nvim_create_autocmd("BufLeave", {
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   group = augroup("resize_splits"),
-  callback = function()
-    local current_tab = vim.fn.tabpagenr()
-    vim.cmd("tabdo wincmd =")
-    vim.cmd("tabnext " .. current_tab)
-  end,
+  -- callback = function()
+  --   local current_tab = vim.fn.tabpagenr()
+  --   vim.cmd("tabdo wincmd =")
+  --   vim.cmd("tabnext " .. current_tab)
+  -- end,
+  pattern = "*",
+  command = "wincmd =",
 })
 
 -- ------------------------------------------------------------------------- }}}
@@ -343,6 +343,19 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   group = augroup("wiki"),
   command = "setlocal foldlevelstart=2 filetype=wiki",
   pattern = { "*.md", "*.markdown", "*.wiki" },
+})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Vertical help
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("help"),
+	pattern = "help",
+	callback = function()
+		vim.bo.bufhidden = "unload"
+		vim.cmd.wincmd("L")
+		vim.cmd.wincmd("=")
+	end,
 })
 
 -- ------------------------------------------------------------------------- }}}
