@@ -53,7 +53,7 @@ return {
       layout_config = {
         prompt_position = "top",
         height = 0.7,
-        width = 0.7,
+        width = 0.87,
       },
       layout_strategy = "horizontal",
       mappings = {
