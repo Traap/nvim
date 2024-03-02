@@ -1,7 +1,7 @@
 return {
   "LunarVim/breadcrumbs.nvim",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = true,
+  enabled = false,
   config = function()
     require("breadcrumbs").setup()
   end,
