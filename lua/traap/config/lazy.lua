@@ -28,7 +28,7 @@ require("lazy").setup({
     keymaps = false,
   },
 
-  checker = { enabled = true },
+  checker = { enabled = false },
 
   change_detection = {
     enable = true,
