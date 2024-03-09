@@ -169,41 +169,31 @@ return {
         filter = {
           event = "msg_show",
           any = {
-            { find = "%d+L, %d+B" },
+            { find = "E490: No fold found" },
+            { find = "Already at oldest change" },
             { find = "; after #%d+" },
             { find = "; before #%d+" },
+            { find = "#%d+ fewer lines" },
+            { find = ".*Pattern not found.*$" },
+          }
+        },
+        opts = { skip = true },
+      },
+
+      {
+        filter = {
+          event = "msg_show",
+          any = {
+            { find = "%d+L, %d+B" },
           },
         },
         view = "mini",
       },
 
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "echo",
-      --     any = {
-      --       { find = "Prompt" },
-      --       { find = "No lines in buffer" },
-      --       { find = "line" },
-      --       { find = "lines" },
-      --     },
-      --   },
-      --   opts = { skip = true },
-      -- },
-
       {
         filter = {
           event = "msg_show",
-          find = "E490: No fold found",
-        },
-        opts = { skip = true },
-      },
-
-
-      {
-        filter = {
-          event = "msg_show",
-          find = ".*Pattern not found.*$",
+          kind = "wmsg",
         },
         opts = { skip = true },
       },
@@ -216,15 +206,6 @@ return {
       --   },
       --   opts = { skip = true },
       -- },
-
-
-      {
-        filter = {
-          event = "msg_show",
-          kind = "wmsg",
-        },
-        opts = { skip = true },
-      },
 
     }
 
