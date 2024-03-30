@@ -1,10 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = {"InsertEnter", "CmdLineEnter"},
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
-
+  event = { "BufReadPost", "BufNewFile" },
   opts = function(_, opts)
     local function show_macro_recording()
       local recording_register = vim.fn.reg_recording()
