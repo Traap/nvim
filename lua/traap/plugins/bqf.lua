@@ -1,12 +1,12 @@
 return {
   "kevinhwang91/nvim-bqf",
-  event = "VeryLazy",
   enabled = true,
 
   config = function()
 
     require('bqf').setup({
       auto_enable = true,
+      magic_window = true,
       auto_resize_height = true, -- highly recommended enable
       preview = {
         auto_preview = true,
