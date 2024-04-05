@@ -1,5 +1,3 @@
-require("traap.core.globals")
-
 local keywords = 'YouTube,Youtube,URL,Url'
 
 return {

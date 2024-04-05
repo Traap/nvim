@@ -1,5 +1,3 @@
-require("traap.core.globals")
-
 return {
   "lervag/vimtex",
   ft = {"tex", "texx"},

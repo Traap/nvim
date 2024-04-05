@@ -78,12 +78,9 @@ Keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]])
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Q/q - Quit
 
--- Quit all
+-- Quit all and Save All
 Keymap("n", "<c-q>", "<cmd>qall!<cr>")
-
--- TODO: Experiment without <leader>qq and start using <c-q>.  Use rightside
--- keyboard <ctrl> key.
--- Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
+Keymap("n", "<c-s>", "<cmd>wall!<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
@@ -107,11 +104,7 @@ Keymap("n", "<leader>bh", "<cmd>vertical resize -1<cr>")
 Keymap("n", "<leader>bj", "<cmd>resize +1<cr>")
 Keymap("n", "<leader>bk", "<cmd>resize -1<cr>")
 Keymap("n", "<leader>bl", "<cmd>vertical resize +1<cr>")
-Keymap(
-  "n",
-  "<leader>bx",
-  [[<cmd>w<cr><cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]]
-)
+Keymap("n", "<leader>bx", [[<cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ c - Copy & Paste
