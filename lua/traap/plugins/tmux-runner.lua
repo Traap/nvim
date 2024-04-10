@@ -1,5 +1,5 @@
 return {
-  "christoomey/vim-tmux-runner",
+  "Traap/vim-tmux-runner",
   enabled = true and In_Tmux(),
   event = "VeryLazy",
 
