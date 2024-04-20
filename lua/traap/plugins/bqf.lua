@@ -1,6 +1,7 @@
 return {
   "kevinhwang91/nvim-bqf",
   enabled = true,
+  event = {"InsertEnter", "CmdLineEnter"},
 
   config = function()
 
