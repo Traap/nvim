@@ -109,7 +109,7 @@ Keymap("n", "<leader>bx", [[<cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]])
 -- ------------------------------------------------------------------------- }}}
 -- {{{ c - Copy & Paste
 
-Keymap("n", "<leader>cc", 'ggVGg_"+y')
+Keymap("n", "<leader>yb", 'ggVGg_"+y')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - KJV commands

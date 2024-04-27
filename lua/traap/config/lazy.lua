@@ -7,11 +7,6 @@ require("lazy").setup({
       opts = require("traap.config.lazyvim").opts
     },
 
-    -- Now tell lazy.nvim about my customizations.
-    { import = "traap.plugins",
-      opts = require("traap.config.lazyvim").opts
-    },
-
     -- lazyvim plugins i use.
     { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.dap.core" },
     { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.lang.clangd" },
@@ -22,6 +17,11 @@ require("lazy").setup({
     { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.lang.rust" },
     { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.lang.tailwind" },
     { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.lang.typescript" },
+
+    -- Now tell lazy.nvim about my customizations.
+    { import = "traap.plugins",
+      opts = require("traap.config.lazyvim").opts
+    },
   },
 
   defaults = {

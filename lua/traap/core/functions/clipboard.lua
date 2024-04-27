@@ -11,8 +11,8 @@ if in_wsl then
       ["*"] = { "clip.exe" }
     },
     paste = {
-      ["+"] = { "win32yank.exe -o --lf" },
-      ["*"] = { "win32yank.exe -o --lf" }
+      ["+"] = { "nvim-paste" },
+      ["*"] = { "nvim-paste" }
     },
     cache_enabled = true
   }
