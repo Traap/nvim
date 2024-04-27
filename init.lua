@@ -13,3 +13,5 @@ vim.cmd.colorscheme(require("traap.core.constants").colorscheme)
 require("traap.config.options")
 require("traap.config.autocmds")
 require("traap.config.keymaps")
+
+require("traap.core.functions.clipboard")
