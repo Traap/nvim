@@ -1,9 +1,9 @@
 local icons = require("traap.core.icons")
 return {
   opts = {
-    colorscheme = function()
-      require("tokyonight").load()
-    end,
+    -- colorscheme = function()
+    --   require("tokyonight").load()
+    -- end,
     defaults = {
       autocmds = true,
       keymaps = false,

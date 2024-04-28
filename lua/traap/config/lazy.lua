@@ -34,12 +34,12 @@ require("lazy").setup({
   checker = { enabled = false },
 
   change_detection = {
-    enable = true,
+    enable = false,
     notify = false,
   },
 
   install = {
-    missing = true,
+    missing = false,
     colorscheme = { "tokyonight", "darkplus", "default" }
   },
 
