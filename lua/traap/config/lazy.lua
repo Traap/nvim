@@ -39,7 +39,7 @@ require("lazy").setup({
   },
 
   install = {
-    missing = false,
+    missing = true,
     colorscheme = { "tokyonight", "darkplus", "default" }
   },
 
