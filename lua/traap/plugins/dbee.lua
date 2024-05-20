@@ -4,7 +4,7 @@ return {
     "MunifTanjim/nui.nvim",
   },
 
-  enabled = true,
+  enabled = false,
 
   build = function()
     -- Install tries to automatically detect the install method.
