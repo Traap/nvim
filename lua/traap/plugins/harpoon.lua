@@ -45,7 +45,7 @@ return {
 
       -- Harpoon user interface.
       {"<a-7>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc ="Harpoon Toggle Menu"},
-      {"<a-8>", function() harpoon:list():append() end, desc ="Harpoon add file"},
+      {"<a-8>", function() harpoon:list():add() end, desc ="Harpoon add file"},
 
       -- Use Telescope as Harpoon user interface.
       {"<a-9>", function() toggle_telescope(harpoon:list() )end, desc ="Open Harpoon window"},
