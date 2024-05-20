@@ -7,7 +7,7 @@ return {
     defaults = {
       autocmds = true,
       keymaps = false,
-    ,
+    },
     news = {
       lazyvim = true,
       neovim = false,
