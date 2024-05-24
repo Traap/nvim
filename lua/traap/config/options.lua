@@ -1,5 +1,6 @@
 -- {{{ Alphabetical listing of settings I like.
 
+-- NOTE: formatoptions default "tcqj"
 local options = {
   autoread = true,
   autowrite = true,
@@ -15,6 +16,7 @@ local options = {
   foldlevel = 0,
   foldmethod = "marker",
   hidden = true,
+  inccommand = "split",
   ignorecase = true,
   list = false,
   listchars = { eol = "↲", tab = "▸ ", trail = "·" },
@@ -54,6 +56,8 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.opt.formatoptions:remove("o")
 
 vim.cmd[[set termguicolors]]
 vim.cmd([[filetype plugin indent on]])
