@@ -173,10 +173,12 @@ return {
             { find = "Already at oldest change" },
             { find = "; after #%d+" },
             { find = "; before #%d+" },
-            { find = "#%d+ fewer lines;?" },
-            { find = "#%d+ more lines;?" },
-            { find = "#%d+ line lesses;?" },
+            { find = "^%d+ fewer lines;?" },
+            { find = "^%d+ more lines;?" },
+            { find = "^%d+ line lesses;?" },
             { find = ".*Pattern not found.*$" },
+            { find = '^%d+ lines .ed %d+ times?$' },
+            { find = '^%d+ lines yanked$' },
             { kind = 'wmsg' },
             { kind = 'emsg', find = 'E486' },
             { kind = 'echo', find = 'E490' },
@@ -184,14 +186,6 @@ return {
         },
         opts = { skip = true },
       },
-
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "wmsg",
-      --   },
-      --   opts = { skip = true },
-      -- },
 
       {
         filter = {
