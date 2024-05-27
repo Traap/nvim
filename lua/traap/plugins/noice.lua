@@ -169,16 +169,29 @@ return {
         filter = {
           event = "msg_show",
           any = {
-            { find = "E490: No fold found" },
+            -- { find = "E490: No fold found" },
             { find = "Already at oldest change" },
             { find = "; after #%d+" },
             { find = "; before #%d+" },
-            { find = "#%d+ fewer lines" },
+            { find = "#%d+ fewer lines;?" },
+            { find = "#%d+ more lines;?" },
+            { find = "#%d+ line lesses;?" },
             { find = ".*Pattern not found.*$" },
+            { kind = 'wmsg' },
+            { kind = 'emsg', find = 'E486' },
+            { kind = 'echo', find = 'E490' },
           }
         },
         opts = { skip = true },
       },
+
+      -- {
+      --   filter = {
+      --     event = "msg_show",
+      --     kind = "wmsg",
+      --   },
+      --   opts = { skip = true },
+      -- },
 
       {
         filter = {
@@ -189,23 +202,6 @@ return {
         },
         view = "mini",
       },
-
-      {
-        filter = {
-          event = "msg_show",
-          kind = "wmsg",
-        },
-        opts = { skip = true },
-      },
-
-      -- TODO: enable and disable this block to show the wild side.
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "",
-      --   },
-      --   opts = { skip = true },
-      -- },
 
     }
 
