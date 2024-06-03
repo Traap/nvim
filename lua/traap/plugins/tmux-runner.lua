@@ -1,6 +1,6 @@
 return {
   "Traap/vim-tmux-runner",
-  enabled = true and In_Tmux(),
+  enabled = true and os.getenv('TMUX') ~= nil,
   event = "VeryLazy",
 
   keys = {

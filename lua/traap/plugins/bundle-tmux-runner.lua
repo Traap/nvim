@@ -1,10 +1,8 @@
-require("traap.core.globals")
-
 return {
   "Traap/vim-bundle-tmux-runner",
-  enabled = true and In_Tmux(),
+  enabled = true and os.getenv('TMUX') ~= nil,
   event = "VeryLazy",
   dependencies = {
-    "christoomey/vim-tmux-runner",
+    "Traap/vim-tmux-runner",
   },
 }
