@@ -24,14 +24,16 @@ return {
         header = vim.split(logo, "\n"),
         -- stylua: ignore
         center = {
-          {key = "f", icon = icons.ui.FindFile,  desc = " Find file",   action = "Telescope find_files" },
-          {key = "n", icon = icons.ui.NewFile,   desc = " New file",    action = "ene | startinsert" },
-          {key = "r", icon = icons.ui.Files,     desc = " Recent files",action = "Telescope oldfiles" },
-          {key = "g", icon = icons.ui.FindText,  desc = " Find text",   action = "Telescope live_grep" },
-          {key = "c", icon = icons.ui.Gear,      desc = " Config",      action = [[lua require("lazyvim.util").telescope.config_files()()]] },
+          {key = "c", icon = icons.ui.Gear,      desc = " Config",      action = [[lua LazyVim.pick.config_files()()]] },
+          {key = "f", icon = icons.ui.FindFile,  desc = " Find file",   action = [[lua LazyVim.pick()()]]},
+          {key = "g", icon = icons.ui.FindText,  desc = " Find text",   action = [[lua LazyVim.pick("live_grep")()]]},
+          {key = "h", icon = icons.ui.FindText,  desc = " Check Health",action = "checkhealth" },
           {key = "l", icon = icons.ui.Event,     desc = " Lazy",        action = "Lazy" },
           {key = "m", icon = icons.ui.Mason,     desc = " Mason",       action = "Mason" },
+          {key = "n", icon = icons.ui.NewFile,   desc = " New file",    action = "ene | startinsert" },
           {key = "q", icon = icons.ui.Quit,      desc = " Quit",        action = "qa" },
+          {key = "r", icon = icons.ui.Files,     desc = " Recent files",action = [[lua LazyVim.pick("oldfiles")()]]},
+          {key = "x", icon = icons.ui.Event,     desc = " LazyExtras",  action = "LazyExtras" },
         },
 
         footer = function()
