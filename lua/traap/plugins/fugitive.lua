@@ -8,7 +8,6 @@ return {
 
   keys = {
     {"<leader>gP", "<cmd>G pull<cr>"},
-    {"<leader>gc", "<cmd>G commmit<cr>"},
     {"<leader>gd", "<cmd>G diff<cr>"},
     {"<leader>gl", "<cmd>G log<cr>"},
     {"<leader>gh", "<cmd>vert bo help fugitive<cr>"},
