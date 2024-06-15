@@ -79,7 +79,7 @@ Keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]])
 -- {{{ Q/q - Quit
 
 -- Quit all and Save All
-Keymap("n", "<c-q>", "<cmd>qall!<cr>")
+Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
 Keymap("n", "<c-s>", "<cmd>wall!<cr>")
 
 -- ------------------------------------------------------------------------- }}}
