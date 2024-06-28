@@ -21,12 +21,7 @@ require("lazy").setup({
     },
   },
 
-  defaults = {
-    lazy = true,
-    version = false,
-    autocmds = true,
-    keymaps = false,
-  },
+  build = { warn_on_override = true, },
 
   checker = { enabled = false },
 
@@ -35,20 +30,21 @@ require("lazy").setup({
     notify = false,
   },
 
+  defaults = {
+    lazy = true,
+    version = false,
+    autocmds = true,
+    keymaps = false,
+  },
+
   install = {
     missing = true,
     colorscheme = { "tokyonight", "darkplus", "default" }
   },
 
-
-  ui = {
-    size = { width = 0.75, height = 0.75 },
-    border = "rounded",
-    title = "lazy.nvim",
-  },
-
   performance = {
     cache = { enabled = true, },
+    reset_packpath = true,
     rtp = {
       disabled_plugins = {
         "2html_plugin",
@@ -81,4 +77,11 @@ require("lazy").setup({
       },
     },
   },
+
+  ui = {
+    size = { width = 0.75, height = 0.75 },
+    border = "rounded",
+    title = "lazy.nvim",
+  },
+
 })
