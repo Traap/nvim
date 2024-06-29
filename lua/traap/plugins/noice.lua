@@ -169,7 +169,8 @@ return {
         filter = {
           event = "msg_show",
           any = {
-            -- { find = "E490: No fold found" },
+            { find = "E486: Pattern not found: ?$" },
+            { find = "E490: No fold found" },
             { find = "Already at oldest change" },
             { find = "; after #%d+" },
             { find = "; before #%d+" },
@@ -180,8 +181,6 @@ return {
             { find = '^%d+ lines .ed %d+ times?$' },
             { find = '^%d+ lines yanked$' },
             { kind = 'wmsg' },
-            { kind = 'emsg', find = 'E486' },
-            { kind = 'echo', find = 'E490' },
           }
         },
         opts = { skip = true },
@@ -211,8 +210,12 @@ return {
 
     opts.views = {
       mini = {
-        align = "message-right",
-        -- position = { col = 5 },
+        align = "message-left",
+        reverse = true,
+        position = {
+          row = -2,
+          col = "100%",
+        },
         win_options = {
           winblend = 0,
         },
