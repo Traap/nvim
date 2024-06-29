@@ -7,14 +7,6 @@ require("lazy").setup({
       opts = require("traap.config.lazyvim").opts
     },
 
-    -- lazyvim plugins i use.
-    { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.dap.core" },
-    { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.lang.clangd" },
-    { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.lang.go" },
-    { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.lang.json" },
-    { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.lang.ruby" },
-    { "lazyvim/lazyvim", import = "lazyvim.plugins.extras.lang.rust" },
-
     -- Now tell lazy.nvim about my customizations.
     { import = "traap.plugins",
       opts = require("traap.config.lazyvim").opts
