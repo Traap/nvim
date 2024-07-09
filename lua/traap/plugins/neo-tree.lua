@@ -2,6 +2,12 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   enabled = true,
 
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons",
+  },
+
   keys = {
     {"<c-n>", "<cmd>Neotree toggle<cr>", "Neotree toggle"},
     {"<leader>nf", "<cmd>Neotree focus<cr>", "Neotree focus"},
