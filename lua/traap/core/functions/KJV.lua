@@ -9,13 +9,13 @@ function M.get_selected_text()
 end
 
 function M.insert_wiki_link(spos, epos, line, text)
-  local link = string.format("[%s](# %s)", text, text)
+  local link = string.format("[%s](### %s)", text, text)
   local nline = line:sub(1, spos[3] - 1) .. link .. line:sub(epos[3] + 1)
   vim.fn.setline(".", nline)
 end
 
 function M.insert_link(text)
-  local target = "# " .. text
+  local target = "### " .. text
   vim.api.nvim_buf_set_lines(0, -1, -1, false, { target } )
 end
 
