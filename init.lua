@@ -1,7 +1,3 @@
--- Set em' first! Things might go sideways while I'm configuring Neovim
-vim.g.mapleader = [[ ]]
-vim.g.maplocalleader = [[,]]
-
 -- Bootstrap using lazy.nvim package manager.
 require("traap.core.bootstrap")
 
