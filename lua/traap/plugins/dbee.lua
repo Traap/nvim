@@ -1,10 +1,12 @@
 return {
   "kndndrj/nvim-dbee",
+
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
 
-  enabled = false,
+  lazy = false,
+  enabled = true,
 
   build = function()
     -- Install tries to automatically detect the install method.
