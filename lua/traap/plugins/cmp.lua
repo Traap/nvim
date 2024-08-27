@@ -39,9 +39,15 @@ return {
     cmp.setup.filetype("gitcommit", {
       sources = cmp.config.sources({
         { name = "fugitive" },
-      },{
         { name = "buffer" },
         { name = "spell" },
+      }),
+    })
+
+    cmp.setup.filetype("sql", {
+      sources = cmp.config.sources({
+        { name = "vim-dadbod-completion" },
+        { name = "buffer" },
       }),
     })
 
