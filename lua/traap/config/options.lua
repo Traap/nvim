@@ -62,6 +62,7 @@ vim.opt.formatoptions:remove("o")
 vim.cmd[[set termguicolors]]
 vim.cmd([[filetype plugin indent on]])
 
+vim.g.have_nerd_font = true
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Bullets
