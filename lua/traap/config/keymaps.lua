@@ -82,7 +82,7 @@ Keymap("n", "<c-s>", "<cmd>wall!<cr>")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
 
-Keymap("n", "<localleader><space>", "<cmd>nohlsearch<cr>")
+Keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ H - Help
