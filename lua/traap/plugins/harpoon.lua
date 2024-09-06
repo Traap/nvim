@@ -3,6 +3,7 @@ return {
 
   "ThePrimeagen/harpoon",
   enabled = true,
+  event = {"InsertEnter", "CmdLineEnter"},
   branch = "harpoon2",
   dependencies = {
     "nvim-lua/plenary.nvim",
