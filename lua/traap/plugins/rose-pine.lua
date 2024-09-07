@@ -1,6 +1,6 @@
 return {
   "rose-pine/neovim",
-  enabled = true,
+  enabled = false,
   lazy = false,
   priority = 1000,
 
