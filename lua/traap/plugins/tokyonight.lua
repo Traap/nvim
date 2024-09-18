@@ -6,7 +6,7 @@ return {
 
    opts = function(_, opts)
     opts.transparent = false
-    opts.style = "moon"
+    opts.style = "night"
     opts.styles = {
       comments = { italic = true },
       keywords = { italic = true },

@@ -11,5 +11,5 @@ return {
     "BufEnter *.rs",
     "BufEnter *.ts",
   },
-  colorscheme = "tokyonight",
+  colorscheme = "tokyonight-night",
 }
