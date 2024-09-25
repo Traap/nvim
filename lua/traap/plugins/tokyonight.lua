@@ -5,7 +5,7 @@ return {
   priority = 1000,
 
    opts = function(_, opts)
-    opts.transparent = false
+    opts.transparent = true
     opts.style = "night"
     opts.styles = {
       comments = { italic = true },
