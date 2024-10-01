@@ -1,5 +1,5 @@
 return {
-  "kosayoda/nvim-lightbulb",
+  "traap/nvim-lightbulb",
   event = "BufReadPre",
   enabled = true,
   dependencies = { "antoinemadec/FixCursorHold.nvim" },

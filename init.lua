@@ -16,6 +16,11 @@ require("traap.config.keymaps")
 
 require("traap.core.functions.clipboard")
 
+
+-- TODO: Traap's comment block pre-plugin.
+-- [x] Add Traap's style comment block to visually selected block.
+-- [ ] Remvoe Traap's style comment block from visuall selected block.
+
 -- Function to surround selected code with comment blocks using Neovim's commentstring
 function SurroundSelectionWithComments()
   local api = vim.api
@@ -53,12 +58,3 @@ end
 
 -- Keymap to trigger the function on a visually selected region
 vim.api.nvim_set_keymap('v', '<leader>c', [[:lua SurroundSelectionWithComments()<CR>]], { noremap = true, silent = true })
-
-
--- This is your life 1.
--- This is your life 2.
--- This is your life 3.
--- This is your life 4.
--- This is your life 5.
--- This is your life 6.
--- This is your life 7.
