@@ -361,3 +361,14 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Set SQL comment string
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup("sql"),
+  pattern = "sql",
+  callback = function()
+    vim.cmd([[setlocal commentstring=--%s]])
+  end,
+})
+
+-- ------------------------------------------------------------------------- }}}
