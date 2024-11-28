@@ -1,8 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
-  event = {"InsertEnter", "CmdLineEnter"},
-
   enabled = true,
+  event = "VeryLazy",
   opts = function(_, opts)
     -- {{{ opts function begins and overrides LazyVim default behavior.
 

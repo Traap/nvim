@@ -1,5 +1,5 @@
 return {
   "tpope/vim-speeddating",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
 }

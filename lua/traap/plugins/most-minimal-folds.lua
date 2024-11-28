@@ -1,5 +1,5 @@
 return {
   "vim-utils/vim-most-minimal-folds",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
 }

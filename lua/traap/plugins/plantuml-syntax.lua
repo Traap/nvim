@@ -1,5 +1,5 @@
 return {
   "aklt/plantuml-syntax",
-  event = {"BufReadPost", "BufNewFile"},
+  event = "VeryLazy",
   enabled = true,
 }

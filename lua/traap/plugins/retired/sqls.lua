@@ -1,5 +1,5 @@
 return {
   "nanotee/sqls.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = false,
 }

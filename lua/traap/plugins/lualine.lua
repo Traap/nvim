@@ -1,7 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
- -- event = { "BufReadPost", "BufNewFile" },
-  lazy = false,
+  event = "VeryLazy",
   opts = function(_, opts)
     local function show_macro_recording()
       local recording_register = vim.fn.reg_recording()

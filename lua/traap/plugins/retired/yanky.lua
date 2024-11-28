@@ -12,7 +12,7 @@ return {
       storage = "shada",
       --      storage_path = vim.fn.stdpath("data") .. "/databases/yanky.db", -- Only for sqlite storage
       sync_with_numbered_registers = true,
-      cancel_event = "update",
+      cancel_event = "VeryLazy",
       ignore_registers = { "_" },
       update_register_on_cycle = false,
     },

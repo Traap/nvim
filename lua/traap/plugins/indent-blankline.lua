@@ -1,7 +1,7 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
   enabled = false,
-  event = {"InsertEnter", "CmdLineEnter"},
+  event = "VeryLazy",
   opts = function()
     -- LazyVim.toggle.map("<leader>ug", {
     --   name = "Indention Guides",

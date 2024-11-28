@@ -1,6 +1,6 @@
 return {
   "junegunn/vim-easy-align",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
 
   config = function()

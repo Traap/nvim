@@ -1,5 +1,5 @@
 return {
   "tpope/vim-commentary",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
 }

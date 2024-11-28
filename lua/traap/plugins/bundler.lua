@@ -1,5 +1,5 @@
 return {
   "tpope/vim-bundler",
-  event = { "BufEnter *.rb" },
+  event = "VeryLazy",
   enabled = true,
 }

@@ -1,5 +1,5 @@
 return {
-  -- {{{ lazyde`
+  -- {{{ lazyde
   -- configures Lua LSP for your Neovim config, runtime and plugins
   -- used for completion, annotations and signatures of Neovim apis
   {
@@ -23,7 +23,7 @@ return {
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
-    event = {"BufReadPost", "BufNewFile"},
+    event = "VeryLazy",
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants

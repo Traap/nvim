@@ -1,6 +1,6 @@
 return {
   "windwp/nvim-autopairs",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
   opts = {
     check_ts = true,

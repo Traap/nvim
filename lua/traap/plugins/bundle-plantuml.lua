@@ -1,6 +1,6 @@
 return {
   "Traap/vim-bundle-plantuml",
-  event = {"BufReadPost", "BufNewFile"},
+  event = "VeryLazy",
   enabled = true,
 
   keys = {

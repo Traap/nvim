@@ -1,7 +1,7 @@
 return {
   "Traap/vim-tmux-navigator",
   enabled = false,
-  event =  "VeryLazy",
+  event = "VeryLazy",
 
   keys = {
     {"<c-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Navigate Window Left"},

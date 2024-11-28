@@ -6,7 +6,7 @@
 --
 return {
   "NvChad/nvim-colorizer.lua",
-  event = { "BufReadPre", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
   config = true,
 }

@@ -1,7 +1,7 @@
 return {
   "stevearc/dressing.nvim",
   enabled = true,
-  event = {"BufReadPost", "BufNewFile"},
+  event = "VeryLazy",
 
   init = function()
     ---@diagnostic disable-next-line: duplicate-set-field

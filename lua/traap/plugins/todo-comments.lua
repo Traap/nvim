@@ -3,7 +3,7 @@ local keywords = 'YouTube,Youtube,URL,Url'
 return {
   "folke/todo-comments.nvim",
   enabled = true,
-  event = {"BufReadPost", "BufNewFile"},
+  event = "VeryLazy",
 
   keys = {
     {"<leader>fy", "<cmd>TodoTelescope keywords="..keywords.."<cr>"},

@@ -1,5 +1,5 @@
 return {
   "tpope/vim-endwise",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = false,
 }

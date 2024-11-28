@@ -1,5 +1,5 @@
 return {
   "tpope/vim-repeat",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
 }

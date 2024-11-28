@@ -110,6 +110,7 @@ vim.api.nvim_create_autocmd({"BufWinEnter", "ColorScheme" }, {
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
+    "Gru FAR",
     "PlenaryTestPopup",
     "checkhealth",
     "fugitive",

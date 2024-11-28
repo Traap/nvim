@@ -20,7 +20,7 @@ return {
       },
     },
 
-    event = { "BufEnter *.rb" },
+    event = "VeryLazy",
     plugins = {
       enabled = true,
       options = {

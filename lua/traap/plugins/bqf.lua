@@ -1,7 +1,7 @@
 return {
   "kevinhwang91/nvim-bqf",
   enabled = true,
-  event = {"InsertEnter", "CmdLineEnter"},
+  event = "VeryLazy",
 
   config = function()
 

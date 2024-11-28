@@ -1,7 +1,7 @@
 return {
   "tpope/vim-fugitive",
   -- lazy = false,
-  -- event = {"BufWinEnter"},
+  -- event = "VeryLazy",
   enabled = true,
 
   cmd = "G",

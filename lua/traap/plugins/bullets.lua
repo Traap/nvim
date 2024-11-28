@@ -1,5 +1,5 @@
 return {
   "dkarter/bullets.vim",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
 }

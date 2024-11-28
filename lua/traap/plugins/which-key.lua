@@ -1,8 +1,8 @@
 return {
   "folke/which-key.nvim",
   enabled = true,
-  keys = {"<leader>", "<c-r>", "<c-w>", '"', "`", "c", "v", "g"},
-  event = {"InsertEnter"},
+  keys = {"<leader>", '"', "`", "c", "v", "g"},
+  event = "VeryLazy",
 
   init = function()
     vim.o.timeout = true

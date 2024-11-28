@@ -1,5 +1,5 @@
 return {
   "tpope/vim-eunuch",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = false,
 }

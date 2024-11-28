@@ -1,5 +1,5 @@
 return {
   "tpope/vim-dispatch",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
 }

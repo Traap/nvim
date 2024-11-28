@@ -1,6 +1,6 @@
 return {
   "Traap/clipboard-image.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = false,
 
   keys = {

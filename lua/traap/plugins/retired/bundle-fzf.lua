@@ -1,5 +1,5 @@
 return {
   "Traap/vim-bundle-fzf",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = false,
 }

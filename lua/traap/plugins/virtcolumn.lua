@@ -1,5 +1,5 @@
 return {
   "xiyaowong/virtcolumn.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   enabled = true,
 }

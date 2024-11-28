@@ -1,5 +1,5 @@
 return {
   "Traap/vim-bundle-abbreviate",
-  event = "InsertEnter",
+  event = "VeryLazy",
   enabled = true,
 }

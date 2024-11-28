@@ -1,6 +1,6 @@
 return {
     "junegunn/fzf.vim",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     enabled = false,
     dependencies = { "Traap/vim-bundle-fzf" },
 }

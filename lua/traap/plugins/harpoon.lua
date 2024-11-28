@@ -3,7 +3,7 @@ return {
 
   "ThePrimeagen/harpoon",
   enabled = true,
-  event = {"InsertEnter", "CmdLineEnter"},
+  event = "VeryLazy",
   branch = "harpoon2",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -11,7 +11,7 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ Define events to load Harpoon.
+  -- {{{ Defin events to load Harpoon.
 
   keys = function()
     local harpoon = require("harpoon")
