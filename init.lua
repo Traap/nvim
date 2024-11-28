@@ -10,14 +10,11 @@ require("traap.config.lazy")
 
 -- Apply my customizations.
 vim.cmd.colorscheme(require("traap.core.constants").colorscheme)
+require("traap.config.options")
+require("traap.config.autocmds")
+require("traap.config.keymaps")
+require("traap.core.functions.clipboard")
 
-if not pcall(require, "lazyvim") then
-  vim.notify("NOT using LazyVim plugins")
-  require("traap.config.options")
-  require("traap.config.autocmds")
-  require("traap.config.keymaps")
-else
+if pcall(require, "lazyvim") then
   vim.notify("Using LazyVim plugins")
 end
-
-require("traap.core.functions.clipboard")
