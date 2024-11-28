@@ -1,8 +1,21 @@
 -- {{{ Create autogroup.
 
-local function augroup(name)
-  return vim.api.nvim_create_augroup("traap_" .. name, { clear = true })
+local function is_lazyvim_loaded()
+  if pcall(require, "lazyvim") then
+    return true
+  else
+    return false
+  end
 end
+
+local function augroup(name)
+  local agName = "traap_"
+  if is_lazyvim_loaded() then
+    agName = "lazyvim_"
+  end
+  return vim.api.nvim_create_augroup(agName .. name, { clear = true })
+end
+
 
 -- -------------------------------------------------------------------------- }}}
 -- {{{ Automagically close command-line window.

@@ -23,12 +23,12 @@ require("lazy").setup({
     notify = false,
   },
 
-  -- defaults = {
-  --   lazy = true,
-  --   version = false,
-  --   autocmds = true,
-  --   keymaps = false,
-  -- },
+  defaults = {
+    lazy = true,
+    version = false,
+    autocmds = true,
+    keymaps = false,
+  },
 
   install = {
     missing = true,
