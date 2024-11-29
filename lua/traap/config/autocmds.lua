@@ -284,6 +284,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   },
   callback = function()
     require("lspconfig.ui.windows").default_options.border = "rounded"
+    vim.opt_local.bufhiddden = "wipe"
   end,
 })
 
