@@ -5,8 +5,7 @@ return {
 
   dependencies = {
     { 'tpope/vim-dadbod', lazy = true },
-    { 'kristijanhusak/vim-dadbod-completion',
-      ft = { 'sql', 'mysql', 'plsql' }, lazy = true
+    { 'kristijanhusaj/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true
     }, -- Optional
   },
 
@@ -17,15 +16,25 @@ return {
     'DBUIFindBuffer',
   },
 
+  jeys = {
+    { "<leader>db", "<cmd>DBUIToggle<CR>", desc = "Toggle DBUI" },
+  },
+
   init = function()
-    -- TODO: Dynamically swap db_ui_save_location: GITHOME | WORKHOME
+    local db_ui_save_location = vim.fn.getenv('GITHOME')
+    if not require('traap.core.functions.working').at_home then
+      db_ui_save_location = vim.fn.getenv('WORK')
+    end
 
-    local db_ui_save_location = vim.fn.getenv('WORKHOME')
-
-    vim.g.db_ui_auto_execute_table_helpers = 1
-    vim.g.db_ui_enable_query_history = 1
     vim.g.db_ui_save_location = db_ui_save_location
-    vim.g.db_ui_use_nerd_fonts = 1
+    vim.g.db_ui_tmp_query_location = db_ui_save_location .. "/tmp"
+
+    vim.g.db_ui_auto_execute_table_helpers = true
+    vim.g.db_ui_enable_query_history = true
+    vim.g.db_ui_show_database_icon = true
+    vim.g.db_ui_use_nerd_fonts = true
+    vim.g.db_ui_use_nvim_notify = true
+    vim.g.db_ui_ui_execute_on_save = false
 
     vim.g.db_ui_table_helpers = {
       sqlserver = {
