@@ -1,6 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
+  lazy = false,
+  priority = 999,
   opts = function(_, opts)
     local function show_macro_recording()
       local recording_register = vim.fn.reg_recording()
@@ -11,6 +12,7 @@ return {
       end
     end
 
+    -- Recording started.
     vim.api.nvim_create_autocmd("RecordingEnter", {
       callback = function()
         require("lualine").refresh({
@@ -19,6 +21,7 @@ return {
       end,
     })
 
+    -- Recording completed.
     vim.api.nvim_create_autocmd("RecordingLeave", {
       callback = function()
         local timer = vim.loop.new_timer()
@@ -41,19 +44,44 @@ return {
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
         inactive_winbar = {},
-        statusline = { "alpha", "dashboard", "fzf", "lazy", "mason", "TelescopePrompt", },
+        statusline = {
+          "alpha",
+          "checkhealth",
+          "dashboard",
+          "fzf",
+          "lazy",
+          "mason",
+          "TelescopePrompt",
+        },
         tabline = {},
         winbar = {},
       },
       ignore_focus = {},
       always_divide_middle = true,
-      globalstatus = true,
+      globalstatus = false,
       refresh = {
         statusline = 1000,
         tabline = 1000,
         winbar = 1000,
       },
     }
+
+    -- Remove statuline for specific filetypes on statup and navigation.
+    vim.api.nvim_create_autocmd({"FileType", "BufEnter"}, {
+      pattern = opts.options.disabled_filetypes.statusline,
+      callback = function()
+        vim.opt_local.laststatus = 0
+      end,
+    })
+
+    -- Restore statusline for non-disabled filetypes
+    vim.api.nvim_create_autocmd("BufEnter", {
+      callback = function()
+        if not vim.tbl_contains(opts.options.disabled_filetypes.statusline, vim.bo.filetype) then
+          vim.opt.laststatus = 2
+        end
+      end,
+    })
 
     opts.sections = {
       lualine_a = { "mode" },
@@ -68,6 +96,14 @@ return {
       lualine_z = { "encoding" },
     }
 
+    opts.inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
+    }
     opts.tabline = {}
     opts.winbar = {}
     opts.inactive_winbar = {}
