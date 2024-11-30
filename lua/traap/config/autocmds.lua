@@ -287,16 +287,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = augroup("mason_border"),
-  pattern = {
-    "mason",
-  },
-  callback = function()
-    require("lspconfig.ui.windows").default_options.border = "rounded"
-  end,
-})
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ PlantUML automatic commands.
 
