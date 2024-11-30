@@ -51,12 +51,7 @@ keymap("n", "<f3>", "mmggg?G`m", {desc="Obfuscate toogle"})
 keymap("n", "<leader>X", "<Plug>(bullets-toggle-checkbox)", {desc="Checkbox toggle"})
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Commend block and Folding commands.
-
-keymap('x', 'cb',
-  [[:lua require("traap.core.functions.comment_block").surround()<cr>]],
-  { desc = 'Surround selction with comment block.'}
-)
+-- {{{ Folding commands.
 
 -- Author: Karl Yngve Lervåg
 --    See: https://github.com/lervag/dotnvim
@@ -123,6 +118,11 @@ keymap("n", "<leader>bx", [[<cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]])
 -- {{{ c - Yank buffer
 
 keymap("n", "<leader>yb", 'ggVGg_"+y', {desc="Select buffer char mode"})
+
+keymap('x', 'cb',
+  [[:lua require("traap.core.functions.comment_block").surround()<cr>]],
+  { desc = 'Surround selction with comment block.'}
+)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - KJV commands

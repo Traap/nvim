@@ -4,7 +4,7 @@
 
 local M = {}
 
--- Surround selected code with comment blocks using Neovim's commentstring
+-- Surround selected code with comment blocks using Neovim's comment string.
 function M.surround()
   local api = vim.api
 
@@ -40,5 +40,8 @@ function M.surround()
   api.nvim_win_set_cursor(0, {start_line + 1, 4}) -- {line_number, column_number}
 end
 
+-- Remove comment block.
 function M.remove()
 end
+
+return M
