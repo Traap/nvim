@@ -51,7 +51,12 @@ keymap("n", "<f3>", "mmggg?G`m", {desc="Obfuscate toogle"})
 keymap("n", "<leader>X", "<Plug>(bullets-toggle-checkbox)", {desc="Checkbox toggle"})
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Folding commands.
+-- {{{ Commend block and Folding commands.
+
+keymap('x', 'cb',
+  [[:lua require("traap.core.functions.comment_block").surround()<cr>]],
+  { desc = 'Surround selction with comment block.'}
+)
 
 -- Author: Karl Yngve Lervåg
 --    See: https://github.com/lervag/dotnvim
@@ -75,8 +80,13 @@ keymap("n", "<leader>J", "myvipJ`ygq<cr>")
 -- {{{ Shell commands.
 
 -- Execute the current line of text as a shell command.
-keymap("n", "<localleader>E", [[0mMvg_"ky :exec "r!" getreg("k")<cr>]], {desc="Execute current line"})
-keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]], {desc="Execute current selection"})
+keymap("n", "<localleader>E",
+  [[0mMvg_"ky :exec "r!" getreg("k")<cr>]], {desc="Execute current line"}
+)
+
+keymap("v", "<localleader>E",
+  [["ky :exec "r!" getreg("k")<cr>]], {desc="Execute current selection"}
+)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Q/q - Quit
@@ -117,14 +127,14 @@ keymap("n", "<leader>yb", 'ggVGg_"+y', {desc="Select buffer char mode"})
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - KJV commands
 
-vim.api.nvim_set_keymap('x', 'gk',
+keymap('x', 'gk',
   [[:lua require("traap.core.functions.KJV").insert_verse_from_visual_selection()<cr>]],
-  { noremap = true, silent = true, desc = "Insert verse from visual selection" }
+  { desc = "Insert verse from visual selection" }
 )
 
-vim.api.nvim_set_keymap('n', 'gk',
+keymap('n', 'gk',
   [[:lua require("traap.core.functions.KJV").insert_verse_from_line()<cr>]],
-  { noremap = true, silent = true, desc = "Insert verse from line" }
+  { desc = "Insert verse from line" }
 )
 
 -- ------------------------------------------------------------------------- }}}

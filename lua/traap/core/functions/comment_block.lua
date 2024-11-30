@@ -4,7 +4,7 @@
 
 local M = {}
 
--- Function to surround selected code with comment blocks using Neovim's commentstring
+-- Surround selected code with comment blocks using Neovim's commentstring
 function M.surround()
   local api = vim.api
 
@@ -12,7 +12,8 @@ function M.surround()
   local commentstring = vim.bo.commentstring
   local comment_start, comment_end = commentstring:match("^(.-)%%s(.-)$")
 
-  -- If comment_end is empty (like in languages with single-line comments), default to empty string
+  -- If comment_end is empty (like in languages with single-line comments),
+  -- default to empty string
   comment_end = comment_end or ""
 
   -- Get the position of the start and end of the visual selection
