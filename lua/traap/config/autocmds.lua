@@ -280,11 +280,20 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   group = augroup("lspinfo_border"),
   pattern = {
     "lspinfo",
-    "mason",
   },
   callback = function()
     require("lspconfig.ui.windows").default_options.border = "rounded"
     vim.opt_local.bufhiddden = "wipe"
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = augroup("mason_border"),
+  pattern = {
+    "mason",
+  },
+  callback = function()
+    require("lspconfig.ui.windows").default_options.border = "rounded"
   end,
 })
 
