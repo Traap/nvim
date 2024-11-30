@@ -1,7 +1,9 @@
 return {
   "nvim-lualine/lualine.nvim",
+  enabled = true,
   lazy = false,
-  priority = 999,
+  priority = 995,
+
   opts = function(_, opts)
     local function show_macro_recording()
       local recording_register = vim.fn.reg_recording()
@@ -12,16 +14,14 @@ return {
       end
     end
 
-    -- Recording started.
+    -- Update statusline indicating a macro is being recorded.
     vim.api.nvim_create_autocmd("RecordingEnter", {
       callback = function()
-        require("lualine").refresh({
-          place = {"statusline"},
-        })
+        require("lualine").refresh({ place = { "statusline" } })
       end,
     })
 
-    -- Recording completed.
+    -- Clear status line macro recording message.s
     vim.api.nvim_create_autocmd("RecordingLeave", {
       callback = function()
         local timer = vim.loop.new_timer()
@@ -29,21 +29,19 @@ return {
           50,
           0,
           vim.schedule_wrap(function()
-            require("lualine").refresh({
-              place = {"statusline"},
-            })
+            require("lualine").refresh({ place = { "statusline" } })
           end)
         )
       end,
     })
 
+    -- Customzie my options.
     opts.options = {
       icons_enabled = true,
       theme = "auto",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
-        inactive_winbar = {},
         statusline = {
           "alpha",
           "checkhealth",
@@ -53,10 +51,7 @@ return {
           "mason",
           "TelescopePrompt",
         },
-        tabline = {},
-        winbar = {},
       },
-      ignore_focus = {},
       always_divide_middle = true,
       globalstatus = false,
       refresh = {
@@ -66,29 +61,41 @@ return {
       },
     }
 
-    -- Remove statuline for specific filetypes on statup and navigation.
-    vim.api.nvim_create_autocmd({"FileType", "BufEnter"}, {
-      pattern = opts.options.disabled_filetypes.statusline,
+    -- Forcefully hide statusline on startup
+    vim.api.nvim_create_autocmd("UIEnter", {
+      once = true,
       callback = function()
-        vim.opt_local.laststatus = 0
-      end,
-    })
-
-    -- Restore statusline for non-disabled filetypes
-    vim.api.nvim_create_autocmd("BufEnter", {
-      callback = function()
-        if not vim.tbl_contains(opts.options.disabled_filetypes.statusline, vim.bo.filetype) then
-          vim.opt.laststatus = 2
+        if vim.tbl_contains(opts.options.disabled_filetypes.statusline, vim.bo.filetype) then
+          vim.opt.laststatus = 0
         end
       end,
     })
 
+    -- Function to update laststatus based on filetype
+    local function update_laststatus()
+      if vim.tbl_contains(
+        opts.options.disabled_filetypes.statusline, vim.bo.filetype
+      ) then
+        vim.opt.laststatus = 0
+      else
+        vim.opt.laststatus = 2
+      end
+    end
+
+    -- Autocmd to handle statusline visibility when changing buffers/windows
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function()
+        update_laststatus()
+      end,
+    })
+
+    -- Set desired sections.
     opts.sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
       lualine_c = { "filename" },
       lualine_x = {
-        { show_macro_recording, },
+        { show_macro_recording },
         { "progress", separator = " ", padding = { left = 1, right = 0 } },
         { "location", padding = { left = 0, right = 1 } },
       },
@@ -96,6 +103,7 @@ return {
       lualine_z = { "encoding" },
     }
 
+    -- Set inactive sections.
     opts.inactive_sections = {
       lualine_a = {},
       lualine_b = {},
@@ -104,9 +112,12 @@ return {
       lualine_y = {},
       lualine_z = {},
     }
+
+    -- Initialize everything else.
     opts.tabline = {}
     opts.winbar = {}
     opts.inactive_winbar = {}
     opts.extensions = { "neo-tree", "lazy" }
   end,
 }
+

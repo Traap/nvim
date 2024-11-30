@@ -1,7 +1,8 @@
 return {
   "nvimdev/dashboard-nvim",
-  event = "VimEnter",
   enabled = true,
+  lazy = false,
+  priority = 990,
 
   keys = {
     {"<leader>aa", "<cmd>Dashboard<cr>", desc = "Dashboard display"}
@@ -17,7 +18,7 @@ return {
       theme = "doom",
       hide = {
         -- Lualine controls status line.
-        statusline = false,
+        statusline = true,
       },
 
       config = {
