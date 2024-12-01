@@ -57,19 +57,19 @@ keymap("n", "<leader>X", "<Plug>(bullets-toggle-checkbox)", {desc="Checkbox togg
 --    See: https://github.com/lervag/dotnvim
 
 -- Close all fold except the current one.
-keymap("n", "zv", "zMzvzz")
+keymap("n", "zv", "zMzvzz", {desc='Close all folds except current'})
 
 -- Close current fold when open. Always open next fold.
-keymap("n", "zj", "zcjzOzz")
+keymap("n", "zj", "zcjzOzz", {desc='Close fold & open next one'})
 
 -- Close current fold when open. Always open previous fold.
-keymap("n", "zk", "zckzOzz")
+keymap("n", "zk", "zckzOzz", {desc='Close fold & open previous one'})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Keep the cursor in place while joining lines.
 
-keymap("n", "J", "mzJ`z")
-keymap("n", "<leader>J", "myvipJ`ygq<cr>")
+keymap("n", "J", "mzJ`z", {desc="Join lines"})
+keymap("n", "<leader>J", "myvipJ`ygq<cr>", {desc="Join Paragraph"})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Shell commands.
@@ -87,32 +87,51 @@ keymap("v", "<localleader>E",
 -- {{{ Q/q - Quit
 
 -- Quit all and Save All
-keymap("n", "<leader>qq", "<cmd>qall!<cr>")
-keymap("n", "<c-s>", "<cmd>wall!<cr>")
+keymap("n", "<leader>q", "<cmd>qall!<cr>", {desc="Quit all!"})
+keymap("n", "<leader>wq", "<cmd>wall!<cr>", {desc="Write quit all!" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
 
-keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
+keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>", {desc="Clear highghted"})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ H - Help
 
-keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>")
+keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>", {desc="Vertical help"})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ V - Linewise reselection of what you just pasted.
 
-keymap("n", "<leader>VV", "V`]")
+keymap("n", "<leader>VV", "V`]", {desc="Linewise reslection of last paste"})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ b - Buffer adjustments.
 
-keymap("n", "<leader>bh", "<cmd>vertical resize -1<cr>")
-keymap("n", "<leader>bj", "<cmd>resize +1<cr>")
-keymap("n", "<leader>bk", "<cmd>resize -1<cr>")
-keymap("n", "<leader>bl", "<cmd>vertical resize +1<cr>")
-keymap("n", "<leader>bx", [[<cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]])
+keymap("n", "<leader>bh",
+  "<cmd>vertical resize -1<cr>",
+  {desc='Vertical resize -1'}
+)
+
+keymap("n", "<leader>bj",
+  "<cmd>resize +1<cr>",
+  {desc='Horizontal resize +1'}
+)
+
+keymap("n", "<leader>bk",
+  "<cmd>resize -1<cr>",
+  {desc='Horizontal resize -1'}
+)
+
+keymap("n", "<leader>bl",
+  "<cmd>vertical resize +1<cr>",
+  {desc='Vertical resize +1'}
+)
+
+keymap("n", "<leader>bx",
+  [[<cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]],
+  {desc="Source current file."}
+)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ c - Yank buffer

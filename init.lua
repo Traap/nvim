@@ -17,4 +17,9 @@ require("traap.core.functions.clipboard")
 
 if pcall(require, "lazyvim") then
   vim.notify("Using LazyVim plugins")
+else
+  require('notify')(
+    "is not using LazyVim plugins", "info",
+    {title="Traap's Startup"}
+  )
 end

@@ -169,6 +169,7 @@ return {
         filter = {
           event = "msg_show",
           any = {
+            { find = "E85: There is no listed buffer" },
             { find = "E486: Pattern not found: ?$" },
             { find = "E490: No fold found" },
             { find = "Already at oldest change" },

@@ -1,6 +1,9 @@
 return {
   "ggandor/flit.nvim",
   enabled = true,
+  dependencies = {
+    "ggandor/leap.nvim",
+  },
   keys = function()
     local ret = {}
     for _, key in ipairs({ "f", "F", "t", "T" }) do

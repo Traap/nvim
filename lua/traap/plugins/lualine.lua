@@ -46,6 +46,7 @@ return {
           "alpha",
           "checkhealth",
           "dashboard",
+          "snacks_dashboard",
           "fzf",
           "lazy",
           "mason",

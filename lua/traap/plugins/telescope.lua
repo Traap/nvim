@@ -33,7 +33,7 @@ return {
       {"<leader>fm", cmdT .. "marks<cr>", desc = "Telescope marks" },
       {"<leader>fo", cmdT .. "oldfiles<cr>", desc = "Telescope old files" },
       {"<leader>fp", cmdT .. "planets<cr>", desc = "Telescope Planets" },
-      {"<leader>fw", cmdT .. "grep_string<cr>", desc = "" },
+      {"<leader>fw", cmdT .. "grep_string<cr>", desc = "Telescope Find Word" },
 
       {"<leader>gC", cmdT .. "git_commits<cr>", desc = "Telescope git commits" },
       {"<leader>gb", cmdT .. "git_branches<cr>", desc = "Telescope git branches" },

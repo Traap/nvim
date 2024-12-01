@@ -13,8 +13,8 @@ return {
     plugins = { spelling = true }
   },
 
-  config = function(_, opts)
-    local wk = require("which-key")
-    wk.setup(opts)
-  end,
+  -- config = function(_, opts)
+  --   local wk = require("which-key")
+  --   wk.setup(opts)
+  -- end,
 }
