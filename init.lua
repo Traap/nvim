@@ -1,6 +1,6 @@
 -- Take control of my leader keys.
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Bootstrap using lazy.nvim package manager.
 require("traap.core.bootstrap")
@@ -15,11 +15,12 @@ require("traap.config.autocmds")
 require("traap.config.keymaps")
 require("traap.core.functions.clipboard")
 
-if pcall(require, "lazyvim") then
-  vim.notify("Using LazyVim plugins")
-else
-  require('notify')(
-    "is not using LazyVim plugins", "info",
-    {title="Traap's Startup"}
+if not pcall(require, "lazyvim") then
+  require("notify")(
+    "is not using LazyVim plugins",
+    "info",
+    { title = "Traap's Startup" }
   )
+else
+  vim.notify("Using LazyVim plugins")
 end
