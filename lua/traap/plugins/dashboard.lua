@@ -2,6 +2,8 @@ return {
   "nvimdev/dashboard-nvim",
   enabled = true,
   lazy = false,
+  priority = 998,
+
 
   keys = {
     {"<leader>aa", "<cmd>Dashboard<cr>", desc = "Dashboard display"}

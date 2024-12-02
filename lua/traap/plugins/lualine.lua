@@ -4,6 +4,7 @@ return {
   --event = require("traap.core.events").file,
   -- event = "WinEnter",
   lazy = false,
+  priority = 999,
 
   opts = function(_, opts)
     local function show_macro_recording()
