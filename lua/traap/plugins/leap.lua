@@ -1,7 +1,7 @@
 return {
   "ggandor/leap.nvim",
   enabled = true,
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
 
   keys = {
     { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },

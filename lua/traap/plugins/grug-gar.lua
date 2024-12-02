@@ -1,6 +1,6 @@
 return   {
   'MagicDuck/grug-far.nvim',
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
   config = function()
     require('grug-far').setup({})

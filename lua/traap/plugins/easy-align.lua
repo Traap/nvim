@@ -1,6 +1,6 @@
 return {
   "junegunn/vim-easy-align",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
 
   config = function()

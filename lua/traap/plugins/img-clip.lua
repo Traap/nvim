@@ -1,7 +1,7 @@
 return {
   "HakonHarnes/img-clip.nvim",
   enabled = true,
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
 
   keys = {
     {"<leader>pi", "<cmd>PasteImage<cr>", desc = "Save and Paste Image"},

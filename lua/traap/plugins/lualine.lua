@@ -1,8 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   enabled = true,
-  lazy = false,
-  priority = 995,
+  event = require("traap.core.events").file,
 
   opts = function(_, opts)
     local function show_macro_recording()
@@ -54,41 +53,13 @@ return {
         },
       },
       always_divide_middle = true,
-      globalstatus = false,
+      globalstatus = 1,
       refresh = {
         statusline = 1000,
         tabline = 1000,
         winbar = 1000,
       },
     }
-
-    -- Forcefully hide statusline on startup
-    vim.api.nvim_create_autocmd("UIEnter", {
-      once = true,
-      callback = function()
-        if vim.tbl_contains(opts.options.disabled_filetypes.statusline, vim.bo.filetype) then
-          vim.opt.laststatus = 0
-        end
-      end,
-    })
-
-    -- Function to update laststatus based on filetype
-    local function update_laststatus()
-      if vim.tbl_contains(
-        opts.options.disabled_filetypes.statusline, vim.bo.filetype
-      ) then
-        vim.opt.laststatus = 0
-      else
-        vim.opt.laststatus = 2
-      end
-    end
-
-    -- Autocmd to handle statusline visibility when changing buffers/windows
-    vim.api.nvim_create_autocmd("FileType", {
-      callback = function()
-        update_laststatus()
-      end,
-    })
 
     -- Set desired sections.
     opts.sections = {

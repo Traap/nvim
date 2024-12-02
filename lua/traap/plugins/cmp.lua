@@ -1,7 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
   enabled = true,
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   opts = function(_, opts)
     -- {{{ opts function begins and overrides LazyVim default behavior.
 

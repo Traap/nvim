@@ -1,7 +1,7 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   enabled = true,
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
 
   dependencies = {
     "MunifTanjim/nui.nvim",

@@ -1,5 +1,5 @@
 return {
   "dkarter/bullets.vim",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
 }

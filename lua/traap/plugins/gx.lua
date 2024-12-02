@@ -1,7 +1,7 @@
 return {
   "chrishrb/gx.nvim",
   enabled = true,
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   dependencies = { "nvim-lua/plenary.nvim" },
 
   opts = function(_, opts)

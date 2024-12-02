@@ -1,5 +1,5 @@
 return {
   "aklt/plantuml-syntax",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
 }

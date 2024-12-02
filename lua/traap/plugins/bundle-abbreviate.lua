@@ -1,5 +1,5 @@
 return {
   "Traap/vim-bundle-abbreviate",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
 }

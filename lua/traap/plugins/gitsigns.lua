@@ -1,6 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
 
   opts = function(_, opts)

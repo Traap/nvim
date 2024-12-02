@@ -1,6 +1,6 @@
 return {
   "Traap/vim-bundle-plantuml",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
 
   keys = {

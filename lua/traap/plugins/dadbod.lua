@@ -1,7 +1,7 @@
 return {
   'kristijanhusak/vim-dadbod-ui',
 
-  enabled = true,
+  event = require("traap.core.events").file,
   dependencies = {
     { 'tpope/vim-dadbod', lazy = true },
     { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true

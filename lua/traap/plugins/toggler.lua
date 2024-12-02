@@ -1,7 +1,7 @@
 return {
   "nguyenvukhang/nvim-toggler",
   enabled = true,
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
 
   config = function()
     local toggler = require("nvim-toggler")

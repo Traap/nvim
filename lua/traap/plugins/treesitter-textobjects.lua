@@ -1,7 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   enabled = true,
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },

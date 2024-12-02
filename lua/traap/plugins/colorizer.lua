@@ -6,7 +6,7 @@
 --
 return {
   "NvChad/nvim-colorizer.lua",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
   config = true,
 }

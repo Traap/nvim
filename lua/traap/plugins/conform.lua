@@ -1,7 +1,7 @@
 return {
   'stevearc/conform.nvim',
   enabled = true,
-  event = 'VeryLazy',
+  event = require("traap.core.events").file,
   cmd = { 'ConformInfo' },
 
   keys = {

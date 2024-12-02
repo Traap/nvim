@@ -1,7 +1,7 @@
 return {
   "rcarriga/nvim-notify",
   enabled = true,
-  event = 'VeryLazy',
+  event = require("traap.core.events").file,
 
   keys = {
     { "<leader>un",

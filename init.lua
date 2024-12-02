@@ -2,6 +2,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- require("traap.core.lazyfile").setup()
+
 -- Bootstrap using lazy.nvim package manager.
 require("traap.core.bootstrap")
 
@@ -15,12 +17,12 @@ require("traap.config.autocmds")
 require("traap.config.keymaps")
 require("traap.core.functions.clipboard")
 
-if not pcall(require, "lazyvim") then
-  require("notify")(
-    "is not using LazyVim plugins",
-    "info",
-    { title = "Traap's Startup" }
-  )
-else
-  vim.notify("Using LazyVim plugins")
-end
+-- if not pcall(require, "lazyvim") then
+--   require("notify")(
+--     "is not using LazyVim plugins",
+--     "info",
+--     { title = "Traap's Startup" }
+--   )
+-- else
+--   vim.notify("Using LazyVim plugins")
+-- end

@@ -1,6 +1,6 @@
 return {
   "folke/noice.nvim",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
 
   keys = {

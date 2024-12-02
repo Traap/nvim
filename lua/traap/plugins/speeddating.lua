@@ -1,5 +1,5 @@
 return {
   "tpope/vim-speeddating",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
 }

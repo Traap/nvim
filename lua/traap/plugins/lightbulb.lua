@@ -1,6 +1,6 @@
 return {
   "traap/nvim-lightbulb",
-  event = "VeryLazy",
+  event = require("traap.core.events").file,
   enabled = true,
   dependencies = { "antoinemadec/FixCursorHold.nvim" },
   opts = function(_, opts)

@@ -1,5 +1,5 @@
-return {
-  "nvim-lua/plenary.nvim",
-  lazy = true,
-  enabled = true
-}
+return {}
+--   "nvim-lua/plenary.nvim",
+--   lazy = true,
+--   enabled = true
+-- }
