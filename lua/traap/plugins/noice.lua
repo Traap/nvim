@@ -1,7 +1,12 @@
 return {
   "folke/noice.nvim",
-  event = require("traap.core.events").file,
   enabled = true,
+  -- event = require("traap.core.events").file,
+  event = "VeryLazy",
+
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+  },
 
   keys = {
     {"<leader>ne", "<cmd>NoiceErrors<cr>"},
@@ -71,7 +76,7 @@ return {
 
       message = {
         enabled = true,
-        view = "mini",
+        view = "notify",
         opts = {},
       },
 
@@ -118,7 +123,7 @@ return {
 
     opts.messages  = {
       enabled = true,
-      view = "mini",
+      view = "notify",
       view_error = "mini",
       view_warn = "mini",
       view_history = "messages",
@@ -129,7 +134,7 @@ return {
     -- {{{ Notify
 
     opts.notify = {
-      enabled = false,
+      enabled = true,
       view = "notify"
     }
 
@@ -157,7 +162,7 @@ return {
     -- {{{ Redirect
 
     opts.redirect  = {
-      view = "mini",
+      view = "notify",
       filter = { event = "msg_show" },
     }
 
@@ -192,6 +197,7 @@ return {
           event = "msg_show",
           any = {
             { find = "%d+L, %d+B" },
+            { find = "[nvim-treesitter]*$" },
           },
         },
         view = "mini",
