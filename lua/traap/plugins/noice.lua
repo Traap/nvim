@@ -1,7 +1,6 @@
 return {
   "folke/noice.nvim",
   enabled = true,
-  -- event = require("traap.core.events").file,
   event = "VeryLazy",
 
   dependencies = {
