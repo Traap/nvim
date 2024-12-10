@@ -75,7 +75,7 @@ return {
 
       message = {
         enabled = true,
-        view = "notify",
+        view = "mini",
         opts = {},
       },
 
@@ -122,7 +122,7 @@ return {
 
     opts.messages  = {
       enabled = true,
-      view = "notify",
+      view = "mini",
       view_error = "mini",
       view_warn = "mini",
       view_history = "messages",
@@ -134,7 +134,7 @@ return {
 
     opts.notify = {
       enabled = true,
-      view = "notify"
+      view = "mini"
     }
 
     -- --------------------------------------------------------------------- }}}
@@ -161,7 +161,7 @@ return {
     -- {{{ Redirect
 
     opts.redirect  = {
-      view = "notify",
+      view = "mini",
       filter = { event = "msg_show" },
     }
 
@@ -209,7 +209,7 @@ return {
 
     opts.smart_move = {
       enable = true,
-      excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
+      excluded_filetypes = { "cmp_menu", "cmp_docs", "mini" },
     }
     -- --------------------------------------------------------------------- }}}
     -- {{{ Views
