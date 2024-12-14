@@ -2,8 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- require("traap.core.lazyfile").setup()
-
 -- Bootstrap using lazy.nvim package manager.
 require("traap.core.bootstrap")
 
