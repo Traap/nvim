@@ -1,6 +1,6 @@
 return {
   "nvimdev/dashboard-nvim",
-  enabled = true,
+  enabled = false,
   lazy = false,
   priority = 998,
 
