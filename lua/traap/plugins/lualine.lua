@@ -1,7 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   enabled = true,
-  --event = require("traap.core.events").file,
+  --event = require("traap.config.events").file,
   -- event = "WinEnter",
   lazy = false,
   priority = 999,

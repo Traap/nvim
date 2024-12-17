@@ -23,7 +23,7 @@ return {
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
-    ft = require('traap.core.constants').ft,
+    ft = require('traap.config.events').ft,
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim',

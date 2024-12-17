@@ -11,7 +11,7 @@ return {
 
   opts = function()
     local logo = [[Configured by Traap and powered by lazy.nvim.]]
-    local icons = require("traap.core.icons")
+    local icons = require("traap.config.icons")
 
     logo = string.rep("\n", 4) .. logo .. "\n\n"
 
@@ -39,7 +39,7 @@ return {
         },
 
         footer = function()
-          local ui =  require("traap.core.icons").ui
+          local ui =  require("traap.config.icons").ui
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
           return {ui.Lazy .. "Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }

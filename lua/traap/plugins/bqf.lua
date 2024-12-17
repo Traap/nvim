@@ -1,7 +1,7 @@
 return {
   "kevinhwang91/nvim-bqf",
   enabled = true,
-  event = require("traap.core.events").file,
+  event = require("traap.config.events").file,
   opts = {
     auto_enable = true,
     magic_window = true,

@@ -1,4 +1,10 @@
 return {
+  file = {
+    "BufReadPost",
+    "BufNewFile",
+    "BufWritePre"
+  },
+
   file_types = {
     'BufEnter *.c',
     'BufEnter *.cpp',
@@ -12,6 +18,7 @@ return {
     'BufEnter *.sql',
     'BufEnter *.ts',
   },
+
   ft = {
     'c',
     'cpp',
@@ -25,5 +32,4 @@ return {
     'sql',
     'ts',
   },
-  colorscheme = 'tokyonight-night',
 }

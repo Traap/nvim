@@ -1,7 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
   enabled = true,
-  event = require("traap.core.events").file,
+  event = require("traap.config.events").file,
   opts = function(_, opts)
     -- {{{ opts function begins and overrides LazyVim default behavior.
 
@@ -82,7 +82,7 @@ return {
     -- --------------------------------------------------------------------- }}}
     -- {{{ lsp kind icons
 
-    local kind_icons = require("traap.core.icons").kind
+    local kind_icons = require("traap.config.icons").kind
 
     -- --------------------------------------------------------------------- }}}
     -- {{{ Snippets

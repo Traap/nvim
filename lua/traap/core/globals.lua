@@ -2,10 +2,10 @@
 -- TODO: Remove dependencines on this file.
 -- TODO: Or redesign .
 
-In_Tmux = require("traap.core.functions.plugins").in_tmux
+In_Tmux = require("traap.core.plugins").in_tmux
 
-Keymap = require("traap.core.functions.keymap").keymap
+Keymap = require("traap.core.keymap").keymap
 
-Page_Viewer = require("traap.core.functions.wiki").page_viewer
+Page_Viewer = require("traap.core.wiki").page_viewer
 
-ToggleTerm = require("traap.core.functions.toggleterm")
+ToggleTerm = require("traap.core.toggleterm")

@@ -1,4 +1,4 @@
-local icons = require("traap.core.icons")
+local icons = require("traap.config.icons")
 return {
   opts = {
     -- colorscheme = function()

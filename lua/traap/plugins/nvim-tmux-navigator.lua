@@ -1,7 +1,7 @@
 return {
   "alexghergh/nvim-tmux-navigation",
   enabled = true,
-  event = require("traap.core.events").file,
+  event = require("traap.config.events").file,
 
   opts = function(_, opts)
     opts.disable_when_zoomed = true

@@ -139,7 +139,7 @@ keymap("n", "<leader>bx",
 keymap("n", "<leader>yb", 'ggVGg_"+y', {desc="Select buffer char mode"})
 
 keymap('x', 'cb',
-  [[:lua require("traap.core.functions.comment_block").surround()<cr>]],
+  [[:lua require("traap.core.comment_block").surround()<cr>]],
   { desc = 'Surround selction with comment block.'}
 )
 
@@ -147,12 +147,12 @@ keymap('x', 'cb',
 -- {{{ g - KJV commands
 
 keymap('x', 'gk',
-  [[:lua require("traap.core.functions.KJV").insert_verse_from_visual_selection()<cr>]],
+  [[:lua require("traap.core.KJV").insert_verse_from_visual_selection()<cr>]],
   { desc = "Insert verse from visual selection" }
 )
 
 keymap('n', 'gk',
-  [[:lua require("traap.core.functions.KJV").insert_verse_from_line()<cr>]],
+  [[:lua require("traap.core.KJV").insert_verse_from_line()<cr>]],
   { desc = "Insert verse from line" }
 )
 

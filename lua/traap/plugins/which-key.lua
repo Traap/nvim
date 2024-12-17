@@ -2,7 +2,7 @@ return {
   "folke/which-key.nvim",
   enabled = true,
   keys = {"<leader>", '"', "`", "c", "v", "g"},
-  event = require("traap.core.events").file,
+  event = require("traap.config.events").file,
 
   init = function()
     vim.o.timeout = true

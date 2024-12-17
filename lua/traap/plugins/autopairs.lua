@@ -1,6 +1,6 @@
 return {
   "windwp/nvim-autopairs",
-  event = require("traap.core.events").file,
+  event = require("traap.config.events").file,
   enabled = true,
   opts = {
     check_ts = true,

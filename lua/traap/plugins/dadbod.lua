@@ -1,7 +1,7 @@
 return {
   'kristijanhusak/vim-dadbod-ui',
 
-  event = require("traap.core.events").file,
+  event = require("traap.config.events").file,
   dependencies = {
     { 'tpope/vim-dadbod', lazy = true },
     { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true
@@ -21,7 +21,7 @@ return {
 
   init = function()
     local db_ui_save_location = vim.fn.getenv('GITHOME')
-    if not require('traap.core.functions.working').at_home then
+    if not require('traap.core.working').at_home then
       db_ui_save_location = vim.fn.getenv('WORK')
     end
 

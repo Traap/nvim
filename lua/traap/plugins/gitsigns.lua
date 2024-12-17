@@ -1,6 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
-  event = require("traap.core.events").file,
+  event = require("traap.config.events").file,
   enabled = true,
 
   opts = function(_, opts)
