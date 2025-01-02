@@ -7,5 +7,5 @@ return {
     {"<leader>ms", "<cmd>MarkdownPreviewStop<cr>", desc = "Markdown Stop Preview"},
   },
   ft = {"wiki", "markdown", "md", "puml"},
-  build = function() vim.fn["mkdp#util#install"]() end,
+  build = "cd app && yarn install",
 }
