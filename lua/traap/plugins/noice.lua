@@ -1,13 +1,15 @@
 return {
   "folke/noice.nvim",
   enabled = true,
-  event = "VeryLazy",
+  lazy = false,
+  -- event = "VeryLazy",
 
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
 
   keys = {
+    {"<leader>na", "<cmd>NoiceAll<cr>"},
     {"<leader>ne", "<cmd>NoiceErrors<cr>"},
     {"<leader>nh", "<cmd>NoiceHistory<cr>"}
   },
@@ -31,7 +33,7 @@ return {
         search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
         filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
         lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
-        help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+        help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
         input = {},
       },
     }
