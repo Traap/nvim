@@ -28,17 +28,25 @@ return {
     config = function()
       local notify = require('traap.core.notify')
       local msg_header = 'traap.plugin.lspconfig:\n'
+      local debug = false
+
+      -- TODO: Externalize debug setting.
+      local function notify_info(msg)
+        if debug then
+          notify.info(msg_header .. msg)
+        end
+      end
 
       -- Setup LSP server configuration
       local function setup_server(lsp)
-        notify.info(msg_header .. 'Configuring LSP server: ' .. lsp.name)
+        notify_info('Configuring LSP server: ' .. lsp.name)
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         require('lspconfig')[lsp.name].setup {
           capabilities = capabilities,
           filetypes = lsp.filetypes,
           on_attach = function(client, bufnr)
-            notify.info(msg_header .. client.name .. ' attached to buffer ' .. bufnr)
+            notify_info(client.name .. ' attached to buffer ' .. bufnr)
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
