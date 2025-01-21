@@ -5,19 +5,19 @@ local function _notify(message, level)
 end
 
 M.debug = function(message)
-  _notify("[Debug] " .. message, vim.log.levels.INFO)
+  _notify(message, vim.log.levels.INFO)
 end
 
 M.error = function(message)
-  _notify("[Error] " .. message, vim.log.levels.ERROR)
+  _notify(message, vim.log.levels.ERROR)
 end
 
 M.info = function(message)
-  _notify("[Info] " .. message, vim.log.levels.INFO)
+  _notify(message, vim.log.levels.INFO)
 end
 
 M.warn = function(message)
-  _notify("[Warn]" .. message, vim.log.levels.WARN)
+  _notify(message, vim.log.levels.WARN)
 end
 
 return M

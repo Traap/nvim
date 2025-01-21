@@ -1,11 +1,12 @@
 return {
   'kristijanhusak/vim-dadbod-ui',
-
   event = require("traap.config.events").file,
   dependencies = {
     { 'tpope/vim-dadbod', lazy = true },
-    { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true
-    }, -- Optional
+    { 'kristijanhusak/vim-dadbod-completion',
+       ft = { 'sql', 'mysql', 'plsql' },
+       lazy = true,
+    },
   },
 
   cmd = {
@@ -15,14 +16,14 @@ return {
     'DBUIFindBuffer',
   },
 
-  jeys = {
+  keys = {
     { "<leader>db", "<cmd>DBUIToggle<CR>", desc = "Toggle DBUI" },
   },
 
   init = function()
     local db_ui_save_location = vim.fn.getenv('GITHOME')
     if not require('traap.core.working').at_home then
-      db_ui_save_location = vim.fn.getenv('WORK')
+      db_ui_save_location = vim.fn.getenv('WORKHOME')
     end
 
     vim.g.db_ui_save_location = db_ui_save_location
