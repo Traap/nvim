@@ -18,7 +18,7 @@ function M.whosePlugins()
     require("notify")(
       "is not using LazyVim plugins",
       "info",
-      { title = "Traap's Startup..." }
+      { title = "Traap's Startup" }
     )
   else
     vim.notify("Using LazyVim plugins")
