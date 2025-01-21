@@ -2,7 +2,7 @@ local M = {}
 -- {{{ LSP Server names to filetypes
 
 M.filetype_to_server = {
-  bash = {
+  sh = {
     name = 'bashls',
     filetypes = {
       'sh',
@@ -97,16 +97,16 @@ M.filetype_to_server = {
     }
   },
 
+  rust = {
+    name = 'rust_analyzer',
+    filetypes = { 'rust' }
+  },
+
   sql = {
     name = 'sqlls',
     filetypes = {
       'sql',
     }
-  },
-
-  rust = {
-    name = 'rust_analyzer',
-    filetypes = { 'rust' }
   },
 
   tex = {
@@ -119,7 +119,7 @@ M.filetype_to_server = {
   },
 
   typescript = {
-    name = 'tsserver',
+    name = 'ts_ls',
     filetypes = {
       'javascript',
       'javascriptreact',
