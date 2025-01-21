@@ -2,7 +2,7 @@ return {
   -- LSP
   {
     'neovim/nvim-lspconfig',
-    ft = {'cpp', 'ruby', 'sql', 'lua'},
+    ft = vim.tbl_keys(require('traap.config.servers').filetype_to_server),
     lazy = true,
     dependencies = {
       {
@@ -26,11 +26,12 @@ return {
     },
 
     config = function()
+      local servers = require('traap.config.servers')
       local notify = require('traap.core.notify')
       local msg_header = 'traap.plugin.lspconfig:\n'
       local debug = false
 
-      -- TODO: Externalize debug setting.
+      -- Helper for debug notifications
       local function notify_info(msg)
         if debug then
           notify.info(msg_header .. msg)
@@ -84,16 +85,11 @@ return {
       -- Autocommand for FileType
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('traap-lsp-file-types', { clear = true }),
-        pattern = {'cpp', 'ruby', 'sql', 'lua'},
+        pattern = vim.iter(servers.filetype_to_server)
+          :map(function(item) return item.filetypes end)
+          :totable(),
         callback = function(event)
-          local filetype_to_server = {
-            cpp = { name = 'clangd', filetypes = { 'cpp' } },
-            ruby = { name = 'solargraph', filetypes = { 'ruby' } },
-            sql = { name = 'sqls', filetypes = { 'sql' } },
-            lua = { name = 'lua_ls', filetypes = { 'lua' } },
-          }
-
-          local lsp = filetype_to_server[event.match]
+          local lsp = servers.filetype_to_server[event.match]
           if not lsp then return end
 
           -- Ensure server installation and configuration
@@ -103,4 +99,3 @@ return {
     end,
   },
 }
-
