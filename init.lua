@@ -15,12 +15,4 @@ require("traap.config.autocmds")
 require("traap.config.keymaps")
 require("traap.core.clipboard")
 
--- if not pcall(require, "lazyvim") then
---   require("notify")(
---     "is not using LazyVim plugins",
---     "info",
---     { title = "Traap's Startup" }
---   )
--- else
---   vim.notify("Using LazyVim plugins")
--- end
+require("traap.core.working").whosePlugins()

@@ -13,4 +13,16 @@ function M.at_home()
   return false
 end
 
+function M.whosePlugins()
+  if not pcall(require, "lazyvim") then
+    require("notify")(
+      "is not using LazyVim plugins",
+      "info",
+      { title = "Traap's Startup..." }
+    )
+  else
+    vim.notify("Using LazyVim plugins")
+  end
+end
+
 return M
