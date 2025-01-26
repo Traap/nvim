@@ -22,7 +22,7 @@ language_servers = {
   'solargraph',
   'lua_ls',
   'texlab',
-  'tsserver',
+  'ts_ls',
   'yamlls',
 },
 
