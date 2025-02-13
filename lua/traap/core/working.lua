@@ -15,13 +15,13 @@ end
 
 function M.whosePlugins()
   if not pcall(require, "lazyvim") then
-    require("notify")(
-      "is not using LazyVim plugins",
-      "info",
-      { title = "Traap's Startup" }
+    Snacks.notify.info(
+      "LazyVim plugins are NOT used.", {title = "Startup: nvim.traap"}
     )
-  else
-    vim.notify("Using LazyVim plugins")
+ else
+    Snacks.notify.info(
+      "LazyVim plugins ARE used.",{title="Startup: nvim.traap"}
+  )
   end
 end
 

@@ -12,6 +12,7 @@ return {
       enabled = true,
       style = "compact",
       top_down = false,
+      title_pos = "left"
     },
     quickfile = { enabled = true },
     scroll = { enabled = false },
