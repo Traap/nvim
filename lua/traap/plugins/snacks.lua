@@ -5,8 +5,8 @@ return {
   enable = true,
   opts = {
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
-    indent = { enabled = true },
+    dashboard = { enabled = false },
+    indent = { enabled = false },
     input = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
