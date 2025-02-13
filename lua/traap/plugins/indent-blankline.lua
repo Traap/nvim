@@ -1,6 +1,6 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
-  enabled = true,
+  enabled = false,
   event = require("traap.config.events").file,
   opts = {
     indent = {
