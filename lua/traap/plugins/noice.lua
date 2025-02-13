@@ -1,7 +1,7 @@
 return {
   "folke/noice.nvim",
-  event = require("traap.config.events").file,
   enabled = true,
+  lazy = false,
 
   keys = {
     {"<leader>ne", "<cmd>NoiceErrors<cr>"},

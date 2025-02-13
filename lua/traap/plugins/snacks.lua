@@ -6,7 +6,17 @@ return {
   opts = {
     bigfile = { enabled = true },
     dashboard = { enabled = false },
-    indent = { enabled = true },
+    indent = {
+      enabled = true,
+      animate = {
+        step = 10,
+        total = 150,
+      },
+      indent = {
+        only_scope = false,
+        only_current = false,
+      }
+    },
     input = { enabled = true },
     notifier = {
       enabled = true,
