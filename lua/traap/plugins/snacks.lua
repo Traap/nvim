@@ -8,7 +8,11 @@ return {
     dashboard = { enabled = false },
     indent = { enabled = true },
     input = { enabled = true },
-    notifier = { enabled = true },
+    notifier = {
+      enabled = true,
+      style = "compact",
+      top_down = false,
+    },
     quickfile = { enabled = true },
     scroll = { enabled = false },
     statuscolumn = { enabled = true },

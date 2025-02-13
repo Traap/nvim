@@ -1,15 +1,9 @@
 return {
   "folke/noice.nvim",
+  event = require("traap.config.events").file,
   enabled = true,
-  lazy = false,
-  -- event = "VeryLazy",
-
-  dependencies = {
-    "MunifTanjim/nui.nvim",
-  },
 
   keys = {
-    {"<leader>na", "<cmd>NoiceAll<cr>"},
     {"<leader>ne", "<cmd>NoiceErrors<cr>"},
     {"<leader>nh", "<cmd>NoiceHistory<cr>"}
   },
@@ -33,7 +27,7 @@ return {
         search_up = { kind = "search", pattern = "^%?", icon = "", lang = "regex" },
         filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
         lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
-        help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
+        help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
         input = {},
       },
     }
@@ -124,9 +118,9 @@ return {
 
     opts.messages  = {
       enabled = true,
-      view = "notify",
-      view_error = "notify",
-      view_warn = "notify",
+      view = "snacks",
+      view_error = "snacks",
+      view_warn = "snacks",
       view_history = "messages",
       view_search = "virtualtext",
     }
@@ -136,7 +130,7 @@ return {
 
     opts.notify = {
       enabled = true,
-      view = "notify"
+      view = "snacks"
     }
 
     -- --------------------------------------------------------------------- }}}
@@ -163,7 +157,7 @@ return {
     -- {{{ Redirect
 
     opts.redirect  = {
-      view = "notify",
+      view = "mini",
       filter = { event = "msg_show" },
     }
 
@@ -198,7 +192,6 @@ return {
           event = "msg_show",
           any = {
             { find = "%d+L, %d+B" },
-            { find = "[nvim-treesitter]*$" },
           },
         },
         view = "mini",
@@ -211,7 +204,7 @@ return {
 
     opts.smart_move = {
       enable = true,
-      excluded_filetypes = { "cmp_menu", "cmp_docs", "mini" },
+      excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
     }
     -- --------------------------------------------------------------------- }}}
     -- {{{ Views
