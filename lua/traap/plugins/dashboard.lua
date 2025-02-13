@@ -34,7 +34,7 @@ return {
           {key = "m", icon = icons.ui.Mason,     desc = "Mason",       action = "Mason" },
           {key = "n", icon = icons.ui.NewFile,   desc = "New file",    action = "ene | startinsert" },
           {key = "q", icon = icons.ui.Quit,      desc = "Quit",        action = "qa" },
-          -- {key = "r", icon = icons.ui.Files,     desc = " Recent files",action = [[lua LazyVim.pick("oldfiles")()]]},
+          {key = "r", icon = icons.ui.Files,     desc = "Recent files",action = "Telescope oldfiles"},
           -- {key = "x", icon = icons.ui.Event,     desc = " LazyExtras",  action = "LazyExtras" },
         },
 
