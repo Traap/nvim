@@ -33,7 +33,6 @@ keymap("n", "vv", "^vg_", {desc = "Charwise line select" })
 keymap("n", "vaa", "ggvGg_", {desc = "Select buffer char mode"})
 keymap("n", "Vaa", "ggVG", {desc = "Select buffer line mode "})
 
-
 -- Save all files.
 keymap("n", "<F2>", "<cmd>wall<cr>", {desc="Save all files"})
 
@@ -94,6 +93,12 @@ keymap("n", "<leader>wq", "<cmd>wall!<cr>", {desc="Write quit all!" })
 -- {{{ leader + space
 
 keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>", {desc="Clear highghted"})
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ G - Global to buffer.
+
+-- Delete buffer contents.
+keymap("n", "<leader>G", "ggdG", {desc="Delete buffer contents."})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ H - Help
@@ -183,10 +188,24 @@ keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]],
 keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]],
   {desc="Remove line end and trailing white spaces"})
 
-
 vim.api.nvim_set_keymap(
   "n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>",
   { desc="Delete empty lines"}
+)
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ x - eXtra quality of life items.
+
+vim.keymap.set('n', '<leader><leader>xf',
+  [[<cmd>source %<cr><cmd>echo 'Sourced ' . @%<cr>]]
+)
+
+vim.keymap.set('n', '<leader><leader>xl',
+  [[<cmd>.lua<cr><cmd>echo 'Current line executed.' . <cr>]]
+)
+
+vim.keymap.set('v', '<leader><leader>xs',
+  [[:lua<cr><cmd>echo 'Visual selection executed.'<cr>]]
 )
 
 -- ------------------------------------------------------------------------- }}}
