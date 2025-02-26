@@ -193,6 +193,11 @@ vim.api.nvim_set_keymap(
   { desc="Delete empty lines"}
 )
 
+vim.api.nvim_set_keymap(
+  "n", "<leader>|", "<cmd>%s/\t/|/g<CR>",
+  { desc="Replace \t with |"}
+)
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ x - eXtra quality of life items.
 
