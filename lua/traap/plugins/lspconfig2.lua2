@@ -1,0 +1,114 @@
+-- Advanced LSP Setup for Neovim
+
+-- Import your server configuration and notification utility.
+local servers = require('traap.config.servers')
+local notify = require('traap.core.notify')
+local msg_header = 'traap.plugin.lspconfig:\n'
+local debug = true
+
+local function notify_info(msg)
+  if debug then
+    notify.info(msg_header .. msg)
+  end
+end
+
+-- Global LSP capabilities and on_attach function.
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local on_attach = function(client, bufnr)
+  notify_info(client.name .. ' attached to buffer ' .. bufnr)
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+end
+
+-- Require the Mason and LSP configuration modules.
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
+local lspconfig = require("lspconfig")
+
+-- Global Mason setup (only once).
+mason.setup({
+  ui = { border = "rounded" },
+})
+
+-- Gather all unique server names from your configuration.
+local server_names = {}
+for _, value in pairs(servers.filetype_to_server) do
+  if type(value) == "table" then
+    if value.name then
+      table.insert(server_names, value.name)
+    else
+      for _, srv in ipairs(value) do
+        if srv.name then
+          table.insert(server_names, srv.name)
+        end
+      end
+    end
+  end
+end
+
+-- Setup mason-lspconfig with the list of servers.
+mason_lspconfig.setup({
+  ensure_installed = server_names,
+  automatic_installation = true,
+})
+
+-- Setup handlers for each LSP server once.
+mason_lspconfig.setup_handlers({
+  function(server_name)
+    lspconfig[server_name].setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
+  end,
+})
+
+-- Create a BufEnter autocmd that attempts to attach servers if they aren’t already.
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("traap-lsp-advanced", { clear = true }),
+  callback = function(event)
+    local buf = event.buf
+    local ft = vim.bo[buf].filetype
+    local servers_for_ft = servers.filetype_to_server[ft]
+    if not servers_for_ft then
+      return
+    end
+
+    -- Normalize the server configuration to a list.
+    local server_list = {}
+    if type(servers_for_ft) == "table" then
+      if servers_for_ft.name then
+        server_list = { servers_for_ft }
+      else
+        server_list = servers_for_ft
+      end
+    else
+      server_list = { servers_for_ft }
+    end
+
+    -- Iterate over each server configured for this filetype.
+    for _, server in ipairs(server_list) do
+      -- Check whether this server is already attached to the current buffer.
+      local attached = false
+      for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = buf })) do
+        if client.name == server.name then
+          attached = true
+          break
+        end
+      end
+
+      if not attached then
+        notify_info("Attaching " .. server.name .. " to buffer " .. buf)
+        -- Defer a bit to allow other startup events to settle.
+        vim.defer_fn(function()
+          -- This assumes an :LspStart command is available.
+          vim.cmd("LspStart " .. server.name)
+        end, 100)
+      end
+    end
+  end,
+})
+

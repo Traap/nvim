@@ -29,6 +29,7 @@ return {
       local servers = require('traap.config.servers')
       local notify = require('traap.core.notify')
       local msg_header = 'traap.plugin.lspconfig:\n'
+      local lsp_server_names = servers.lsp_server_names()
       local debug = true
 
       -- Helper for debug notifications
@@ -55,9 +56,10 @@ return {
       -- Autocommand for FileType
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('traap-lsp-file-types', { clear = true }),
-        pattern = vim.iter(servers.filetype_to_server)
-        :map(function(item) return item.filetypes end)
-        :totable(),
+        pattern = servers.get_filetypes_for_lsp_servers,
+        -- pattern = vim.iter(servers.filetype_to_server)
+        -- :map(function(item) return item.filetypes end)
+        -- :totable(),
 
         callback = function(event)
           local server = servers.filetype_to_server[event.match]
