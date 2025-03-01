@@ -50,7 +50,6 @@ M.filetype_to_server = {
     },
   },
 
-
   python = {
     name = 'pyright',
     filetypes = {
@@ -75,8 +74,7 @@ M.filetype_to_server = {
   },
 
   lua = {
-    name =
-    'lua_ls',
+    name = 'lua_ls',
     filetypes = {
       'lua',
     },
@@ -185,11 +183,12 @@ M.formatter = {
       'lua'
     },
   },
+}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Return filetypes associated LSP servers.
 
-M.get_filetypes_for_lsp_severs = function()
+M.filetypes_for_lsp_severs = function()
   local filetypes = {}
 
   for _, server in pairs(M.filetype_to_server) do
@@ -204,10 +203,10 @@ end
 -- --------------------------------------------------------------------------}}}
 -- {{{ Return LSP server names to install
 
-M.get_lsp_server_names()
+M.lsp_server_names = function()
   local names = {}
 
-  for _, server in pairs(lsp_servers.filetype_to_server) do
+  for _, server in pairs(M.filetype_to_server) do
     table.insert(names, server.name)
   end
 
