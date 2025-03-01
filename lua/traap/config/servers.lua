@@ -1,5 +1,5 @@
 local M = {}
--- {{{ LSP Server names to filetypes
+-- {{{ File types to LSP Server names
 
 M.filetype_to_server = {
   sh = {
@@ -8,7 +8,7 @@ M.filetype_to_server = {
       'sh',
       'bash',
       'zsh',
-    }
+    },
   },
 
   cpp = {
@@ -18,7 +18,7 @@ M.filetype_to_server = {
       'cpp',
       'objc',
       'objcpp',
-    }
+    },
   },
 
   css = {
@@ -27,7 +27,7 @@ M.filetype_to_server = {
       'css',
       'less',
       'scss',
-    }
+    },
   },
 
   emmet = {
@@ -47,15 +47,14 @@ M.filetype_to_server = {
       "svelte",
       "typescriptreact",
       "vue",
-    }
+    },
   },
-
 
   python = {
     name = 'pyright',
     filetypes = {
       'python',
-    }
+    },
   },
 
   go = {
@@ -63,7 +62,7 @@ M.filetype_to_server = {
     filetypes = {
       'go',
       'gomod'
-    }
+    },
   },
 
   json = {
@@ -71,15 +70,14 @@ M.filetype_to_server = {
     filetypes = {
       'json',
       'jsonc',
-    }
+    },
   },
 
   lua = {
-    name =
-    'lua_ls',
+    name = 'lua_ls',
     filetypes = {
       'lua',
-    }
+    },
   },
 
   csharp = {
@@ -87,14 +85,14 @@ M.filetype_to_server = {
     filetypes = {
       'cs',
       'vb',
-    }
+    },
   },
 
   ruby = {
     name = 'solargraph',
     filetypes = {
       'ruby',
-    }
+    },
   },
 
   rust = {
@@ -106,7 +104,7 @@ M.filetype_to_server = {
     name = 'sqlls',
     filetypes = {
       'sql',
-    }
+    },
   },
 
   tex = {
@@ -115,7 +113,7 @@ M.filetype_to_server = {
       'bib',
       'latex',
       'tex',
-    }
+    },
   },
 
   typescript = {
@@ -125,7 +123,7 @@ M.filetype_to_server = {
       'javascriptreact',
       'typescript',
       'typescriptreact',
-    }
+    },
   },
 
   yaml = {
@@ -133,11 +131,11 @@ M.filetype_to_server = {
     filetypes = {
       'yaml',
       'yml',
-    }
+    },
   },
 }
 
--- -------------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Linter names to filetypes
 
 M.linter = {
@@ -149,25 +147,25 @@ M.linter = {
       'typescript',
       'typescriptreact',
       'vue',
-    }
+    },
   },
 
   shellcheck = {
     name = 'shellcheck',
     filetypes = {
       'sh',
-    }
+    },
   },
 
   flake8 = {
     name = 'flake8',
     filetypes = {
       'python',
-    }
+    },
   },
 }
 
--- -------------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Formatter names to filetypes
 
 M.formatter = {
@@ -176,16 +174,44 @@ M.formatter = {
     filetypes = {
       'bash',
       'sh',
-    }
+    },
   },
 
   stylua = {
     name = 'stylua',
     filetypes = {
       'lua'
-    }
+    },
   },
 }
 
--- -------------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Return filetypes associated LSP servers.
+
+M.filetypes_for_lsp_servers = function()
+  local filetypes = {}
+
+  for _, server in pairs(M.filetype_to_server) do
+    for _, ft in ipairs(server.filetypes) do
+      table.insert(filetypes, ft)
+    end
+  end
+
+  return filetypes
+end
+
+-- --------------------------------------------------------------------------}}}
+-- {{{ Return LSP server names to install
+
+M.lsp_server_names = function()
+  local names = {}
+
+  for _, server in pairs(M.filetype_to_server) do
+    table.insert(names, server.name)
+  end
+
+  return names
+end
+
+-- ------------------------------------------------------------------------- }}}
 return M
