@@ -188,7 +188,7 @@ M.formatter = {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Return filetypes associated LSP servers.
 
-M.filetypes_for_lsp_severs = function()
+M.filetypes_for_lsp_servers = function()
   local filetypes = {}
 
   for _, server in pairs(M.filetype_to_server) do

@@ -34,8 +34,7 @@ return {
       local servers = require('traap.config.servers')
       local notify = require('traap.core.notify')
       local msg_header = 'traap.plugin.lspconfig:\n'
-      local lsp_server_names = servers.lsp_server_names()
-      local debug = true
+      local debug = false
 
       -- ------------------------------------------------------------------- }}}
       -- {{{ Helper for debug notifications
@@ -69,7 +68,7 @@ return {
 
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('traap-lsp-file-types', { clear = true }),
-        pattern = servers.filetypes_for_lsp_servers,
+        pattern = servers.filetypes_for_lsp_servers(),
 
         callback = function(event)
           local server = servers.filetype_to_server[event.match]
@@ -104,23 +103,20 @@ return {
           local server = servers.filetype_to_server[ft]
           if not server then return end
 
-          local server_names = servers.lsp_server_names
-          if not server_names then return end
+          local attached = false
 
-          for _, server in ipairs(server_names) do
-            local attached = false
-            for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = buf })) do
-              if client.name == server.name then
-                attached = true
-                break
-              end
+          for _, client in ipairs(vim.lsp.get_clients({ bufnr = buf })) do
+            if client.name == server.name then
+              attached = true
+              break
             end
-            if not attached then
-              notify_info(server.name .. ' attaching to buffer ' .. buf)
-              vim.defer_fn(function()
-                vim.cmd("LspStart" .. server.name)
-              end, 100)
-            end
+          end
+
+          if not attached then
+            notify_info(server.name .. ' attaching to buffer' .. buf)
+            vim.defer_fn(function()
+              vim.cmd('LspStart ' .. server.name)
+            end, 100)
           end
         end,
       })
