@@ -109,15 +109,15 @@ return {
 
           for _, server in ipairs(server_names) do
             local attached = false
-            for _, client in ipairs(vim.lsp.get_active_clients({bufnr = buf})) do
+            for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = buf })) do
               if client.name == server.name then
                 attached = true
                 break
               end
-
-              if not attached then
-                notify_info(server.name .. 'attaching to buffer ' .. buf)
-                vim.defer_fn(function()
+            end
+            if not attached then
+              notify_info(server.name .. ' attaching to buffer ' .. buf)
+              vim.defer_fn(function()
                 vim.cmd("LspStart" .. server.name)
               end, 100)
             end
