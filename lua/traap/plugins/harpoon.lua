@@ -5,6 +5,9 @@ return {
   enabled = true,
   event = require("traap.config.events").file,
   branch = "harpoon2",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Defin events to load Harpoon.
