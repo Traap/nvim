@@ -3,6 +3,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     ft = vim.tbl_keys(require('traap.config.servers').filetype_to_server),
+    -- ft = vim.tbl_keys(require('traap.config.servers').filetypes_for_lsp_servers()),
     lazy = true,
     -- {{{ Dependencies
 
@@ -33,7 +34,7 @@ return {
 
       local servers = require('traap.config.servers')
       local notify = require('traap.core.notify')
-      local msg_header = 'traap.plugin.lspconfig:\n'
+      local msg_header = '[traap] '
       local debug = false
 
       -- ------------------------------------------------------------------- }}}
@@ -55,6 +56,7 @@ return {
 
       local on_attach = function(client, bufnr)
         notify_info(client.name .. ' attached to buffer ' .. bufnr)
+
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -74,7 +76,8 @@ return {
           local server = servers.filetype_to_server[event.match]
           if not server then return end
 
-          notify_info(server.name .. ' callback fired')
+          notify_info('Server name: ' .. server.name)
+          notify_info('Event match: ' .. event.match)
 
           require('mason').setup()
           require('mason-lspconfig').setup {
@@ -113,8 +116,8 @@ return {
           end
 
           if not attached then
-            notify_info(server.name .. ' attaching to buffer' .. buf)
             vim.defer_fn(function()
+              notify_info(server.name .. ' attaching to buffer ' .. buf)
               vim.cmd('LspStart ' .. server.name)
             end, 100)
           end
