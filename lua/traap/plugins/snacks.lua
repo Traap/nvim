@@ -19,6 +19,20 @@ return {
       enabled = true,
       sources = {
         explorer = {
+          win = {
+            input = {
+              keys = {
+                ["<c-n>"] = { "close", mode = { "i", "n" } },
+                ["<c-l>"] = { "NvimTmuxNavigateRight", mode = { "i", "n" } },
+              },
+            },
+            list = {
+              keys = {
+                ["<c-n>"] = { "close", mode = { "i", "n" } },
+                ["<c-l>"] = { "NvimTmuxNavigateRight", mode = { "i", "n" } },
+              },
+            }
+          },
           layout = {
             layout = {
               position = "right"
@@ -45,7 +59,7 @@ return {
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>nH ", function() Snacks.picker.notifications() end, desc = "Notification History" },
-    { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+    { "<c-n>", function() Snacks.explorer() end, desc = "File Explorer" },
 
     -- find
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
