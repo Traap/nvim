@@ -22,16 +22,52 @@ return {
           win = {
             input = {
               keys = {
-                ["<c-n>"] = { "close", mode = { "i", "n" } },
-                ["<c-l>"] = { "NvimTmuxNavigateRight", mode = { "i", "n" } },
+                ["<c-h>"] = { mode = { "i", "n" },
+                  function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
+                  end,
+                },
+                ["<c-j>"] = { mode = { "i", "n" },
+                  function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateDown()
+                  end,
+                },
+                ["<c-k>"] = { mode = { "i", "n" },
+                  function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateUp()
+                  end,
+                },
+                ["<c-l>"] = { mode = { "i", "n" },
+                  function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateRight()
+                  end,
+                },
               },
             },
             list = {
               keys = {
-                ["<c-n>"] = { "close", mode = { "i", "n" } },
-                ["<c-l>"] = { "NvimTmuxNavigateRight", mode = { "i", "n" } },
+                 ["<c-h>"] = { mode = { "i", "n" },
+                  function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
+                  end,
+                },
+                ["<c-j>"] = { mode = { "i", "n" },
+                  function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateDown()
+                  end,
+                },
+                ["<c-k>"] = { mode = { "i", "n" },
+                  function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateUp()
+                  end,
+                },
+                ["<c-l>"] = { mode = { "i", "n" },
+                  function()
+                    require("nvim-tmux-navigation").NvimTmuxNavigateRight()
+                  end,
+                },
               },
-            }
+            },
           },
           layout = {
             layout = {
@@ -59,7 +95,7 @@ return {
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>nH ", function() Snacks.picker.notifications() end, desc = "Notification History" },
-    { "<c-n>", function() Snacks.explorer() end, desc = "File Explorer" },
+    { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
 
     -- find
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
