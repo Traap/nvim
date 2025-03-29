@@ -1,5 +1,6 @@
 return {
   'kristijanhusak/vim-dadbod-ui',
+  enabled = true,
   event = require("traap.config.events").file,
   dependencies = {
     { 'tpope/vim-dadbod', lazy = true },
