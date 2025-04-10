@@ -22,13 +22,15 @@ return {
   },
 
   init = function()
-    local db_ui_save_location = vim.fn.getenv('GITHOME')
-    if not require('traap.core.working').at_home then
-      db_ui_save_location = vim.fn.getenv('WORKHOME')
+    local repoRoot = nil
+    if require('traap.core.working').at_home() then
+      repoRoot = vim.fn.getenv('GITHOME')
+    else
+      repoRoot = vim.fn.getenv('WORKHOME')
     end
 
-    vim.g.db_ui_save_location = db_ui_save_location
-    vim.g.db_ui_tmp_query_location = db_ui_save_location .. "/tmp"
+    vim.g.db_ui_save_location = repoRoot
+    vim.g.db_ui_tmp_query_location = repoRoot .. "/tmp"
 
     vim.g.db_ui_auto_execute_table_helpers = true
     vim.g.db_ui_enable_query_history = true
@@ -36,6 +38,7 @@ return {
     vim.g.db_ui_use_nerd_fonts = true
     vim.g.db_ui_use_nvim_notify = true
     vim.g.db_ui_ui_execute_on_save = false
+    vim.g.db_ui_win_position = 'right'
 
     vim.g.db_ui_table_helpers = {
       sqlserver = {
