@@ -3,7 +3,7 @@
 local M = {}
 
 function M.at_home()
-  local host = os.getenv('HOSTNAME') ~= nil
+  local host = vim.uv.os_gethostname()
   local hostnames = {'DarkNight', 'Ninja', 'Zero'}
   for _, hostname in ipairs(hostnames) do
     if hostname == host then
@@ -23,6 +23,10 @@ function M.whosePlugins()
       "LazyVim plugins ARE used.",{title="Startup: nvim.traap"}
   )
   end
+end
+
+function M.hostname()
+  Snacks.notify.info(vim.uv.os_gethostname(), {title="Startup: nvim.traap 1"})
 end
 
 return M
