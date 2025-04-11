@@ -3,6 +3,7 @@ return {
   priority = 1000,
   lazy = false,
   enable = true,
+
   opts = {
     bigfile = { enabled = true },
     dashboard = { enabled = false },
@@ -85,6 +86,23 @@ return {
       notification = {
         -- wo = { wrap = true } -- Wrap notifications
       }
+    },
+    toggle = {
+      map = vim.keymap.set,
+      which_key = true,
+      notify = true,
+      icon = {
+        enabled = " ",
+        disabled = " ",
+      },
+      color = {
+        enabled = "green",
+        disabled = "yellow",
+      },
+      wk_desc = {
+        enabled = "Disable ",
+        disabled = "Enable ",
+      },
     },
     words = { enabled = true },
   },
