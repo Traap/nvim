@@ -1,18 +1,15 @@
 -- wsl clipboard setup
--- https://mitchellt.com/2022/05/15/WSL-Neovim-Lua-and-the-Windows-Clipboard.html See
 
-local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
-
-if in_wsl then
+if vim.fn.has("wsl") then
   vim.g.clipboard = {
-    name = 'wsl clipboard',
+    name = "win32yank-wsl",
     copy =  {
-      ["+"] = { "clip.exe" },
-      ["*"] = { "clip.exe" }
+      ["+"] = { "win32yank.exe -i --crlf" },
+      ["*"] = { "win32yank.exe -i --crlf" },
     },
     paste = {
-      ["+"] = { "nvim-paste" },
-      ["*"] = { "nvim-paste" }
+      ["+"] = { "win32yank.exe -o --lf" },
+      ["*"] = { "win32yank.exe -o --lf" },
     },
     cache_enabled = true
   }
