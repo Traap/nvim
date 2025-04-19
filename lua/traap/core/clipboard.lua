@@ -1,16 +1,80 @@
--- wsl clipboard setup
+-- lua/config/clipboard.lua
 
-if vim.fn.has("wsl") then
-  vim.g.clipboard = {
-    name = "win32yank-wsl",
-    copy =  {
-      ["+"] = { "win32yank.exe -i --crlf" },
-      ["*"] = { "win32yank.exe -i --crlf" },
-    },
-    paste = {
-      ["+"] = { "win32yank.exe -o --lf" },
-      ["*"] = { "win32yank.exe -o --lf" },
-    },
-    cache_enabled = true
-  }
+local clipboard = {}
+
+local function executable(cmd)
+  return vim.fn.executable(cmd) == 1
 end
+
+-- Detect environment
+local function in_wsl()
+  local uname = vim.loop.os_uname().release
+  return uname:lower():find("microsoft") ~= nil
+end
+
+local function is_wayland()
+  return vim.env.WAYLAND_DISPLAY ~= nil
+end
+
+local function is_git_bash()
+  return vim.fn.has("win32") == 1 and vim.env.MSYSTEM ~= nil
+end
+
+-- Configure clipboard
+if in_wsl() and is_wayland() then
+  -- WSLg clipboard (native)
+  vim.opt.clipboard = "unnamed,unnamedplus"
+
+elseif is_git_bash() then
+  -- Git Bash (limited or manual setup)
+  print("[nvim] Git Bash detected. Clipboard support may be limited.")
+
+elseif is_wayland() then
+  -- Wayland (Hyprland)
+  if executable("wl-copy") and executable("wl-paste") then
+    vim.g.clipboard = {
+      name = "wl-clipboard",
+      copy = {
+        ["+"] = "wl-copy --foreground --type text/plain",
+        ["*"] = "wl-copy --foreground --type text/plain",
+      },
+      paste = {
+        ["+"] = "wl-paste --no-newline",
+        ["*"] = "wl-paste --no-newline",
+      },
+      cache_enabled = false,
+    }
+  end
+
+else
+  -- X11 (BSPWM)
+  if executable("xclip") then
+    vim.g.clipboard = {
+      name = "xclip",
+      copy = {
+        ["+"] = "xclip -selection clipboard",
+        ["*"] = "xclip -selection primary",
+      },
+      paste = {
+        ["+"] = "xclip -selection clipboard -o",
+        ["*"] = "xclip -selection primary -o",
+      },
+      cache_enabled = false,
+    }
+  elseif executable("xsel") then
+    vim.g.clipboard = {
+      name = "xsel",
+      copy = {
+        ["+"] = "xsel --clipboard --input",
+        ["*"] = "xsel --primary --input",
+      },
+      paste = {
+        ["+"] = "xsel --clipboard --output",
+        ["*"] = "xsel --primary --output",
+      },
+      cache_enabled = false,
+    }
+  end
+end
+
+return clipboard
