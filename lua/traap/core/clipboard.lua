@@ -22,8 +22,19 @@ end
 
 -- Configure clipboard
 if in_wsl() and is_wayland() then
-  -- WSLg clipboard (native)
-  vim.opt.clipboard = "unnamed,unnamedplus"
+   -- WSLg clipboard (native)
+   vim.g.clipboard = {
+    name = 'wsl clipboard',
+    copy =  {
+      ["+"] = { "clip.exe" },
+      ["*"] = { "clip.exe" }
+    },
+    paste = {
+      ["+"] = { "nvim-paste" },
+      ["*"] = { "nvim-paste" }
+    },
+    cache_enabled = false
+  }
 
 elseif is_git_bash() then
   -- Git Bash (limited or manual setup)
