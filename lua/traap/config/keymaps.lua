@@ -34,7 +34,9 @@ keymap("n", "vaa", "ggvGg_", {desc = "Select buffer char mode"})
 keymap("n", "Vaa", "ggVG", {desc = "Select buffer line mode "})
 
 -- Save all files.
-keymap("n", "<F2>", "<cmd>wall<cr>", {desc="Save all files"})
+keymap("n", ";s", "<cmd>write<cr>", {desc="Write buffer"})
+keymap("n", ";w", "<cmd>wall<cr>", {desc="Write all buffers"})
+keymap("i", "<C-j>", "<cmd>write<cr>", {desc="Write buffer"})
 
 -- Toggle [in]visible characters.
 keymap("n", "<leader>i", "<cmd>set list!<cr>", {desc="Toggle invisible chars"})
