@@ -43,18 +43,7 @@ elseif is_git_bash() then
 elseif is_wayland() then
   -- Wayland (Hyprland)
   if executable("wl-copy") and executable("wl-paste") then
-    vim.g.clipboard = {
-      name = "wl-clipboard",
-      copy = {
-        ["+"] = "wl-copy --foreground --type text/plain",
-        ["*"] = "wl-copy --foreground --type text/plain",
-      },
-      paste = {
-        ["+"] = "wl-paste --no-newline",
-        ["*"] = "wl-paste --no-newline",
-      },
-      cache_enabled = false,
-    }
+    vim.g.clipboard = "wl-copy"
   end
 
 else
