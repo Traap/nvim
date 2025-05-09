@@ -1,8 +1,8 @@
 return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
-  lazy = true,
   enabled = true,
+  lazy = true,
   -- {{{ Dependencies
 
     dependencies = {
