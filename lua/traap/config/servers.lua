@@ -31,7 +31,7 @@ M.filetype_to_server = {
   },
 
   emmet = {
-    name = 'emmetls',
+    name = 'emmet_ls',
     filetypes = {
       "astro",
       "css",
