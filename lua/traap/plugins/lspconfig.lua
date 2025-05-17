@@ -17,7 +17,7 @@ return {
       },
       {
         'williamboman/mason.nvim',
-        event = 'VimEnter',
+        -- event = 'VimEnter',
         opts = { ui = { border = 'rounded' } },
         config = function(_, opts)
           require('mason').setup(opts)
@@ -25,7 +25,7 @@ return {
       },
       {
         'williamboman/mason-lspconfig.nvim',
-        event = 'VimEnter',
+        -- event = 'VimEnter',
         dependencies = { 'mason.nvim' },
         -- We'll configure handlers below in one place
       },
