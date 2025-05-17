@@ -1,7 +1,9 @@
 return {
   "tpope/vim-fugitive",
-  -- lazy = false,
-  -- event = "VeryLazy",
+  dependencies = {
+    "tpope/vim-rhubarb"
+  },
+
   enabled = true,
 
   cmd = "G",
