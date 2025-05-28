@@ -7,6 +7,7 @@ return {
 
   dependencies = {
     "nvim-lua/plenary.nvim",
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
   },
 
   -- {{{ keymaps
@@ -91,6 +92,12 @@ return {
       file_browser = {
         hijack_netrw = true,
       },
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = false,
+      }
     }
   end,
 
