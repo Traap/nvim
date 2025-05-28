@@ -1,6 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  enabled = false,
+  enabled = true,
   event = require("traap.config.events").file,
 
   dependencies = {
