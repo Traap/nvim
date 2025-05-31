@@ -1,6 +1,6 @@
 return {
   "alexghergh/nvim-tmux-navigation",
-  enabled = true,
+  enabled = false,
   event = 'VeryLazy',
 
   opts = function(_, opts)

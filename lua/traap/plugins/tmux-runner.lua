@@ -1,7 +1,6 @@
 return {
   "Traap/vim-tmux-runner",
   enabled = true and os.getenv('TMUX') ~= nil,
-  event = require("traap.config.events").file,
 
   keys = {
     {"<leader>tC", "<cmd>VtrClearRunner<cr>", desc = "Clear Tmux Runner"},

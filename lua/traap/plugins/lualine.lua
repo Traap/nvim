@@ -1,10 +1,10 @@
 return {
   "nvim-lualine/lualine.nvim",
   enabled = true,
-  --event = require("traap.config.events").file,
+  event = require("traap.config.events").file,
   -- event = "WinEnter",
-  lazy = false,
-  priority = 999,
+  -- lazy = false,
+  -- priority = 999,
 
   opts = function(_, opts)
     local function show_macro_recording()
