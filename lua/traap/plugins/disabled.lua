@@ -12,5 +12,6 @@ else
     {"echasnovski/mini.surround", enabled = true},
     {"nvim-treesitter/nvim-treesitter-context", enabled = true},
     {"rcarriga/nvim-notify", enabled = false},
+    {"folke/snacks.nvim", enabled = false},
   }
 end
