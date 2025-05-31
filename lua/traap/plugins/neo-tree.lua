@@ -1,6 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  enabled = false,
+  enabled = true,
   event = require("traap.config.events").file,
 
   dependencies = {
@@ -10,6 +10,7 @@ return {
   },
 
   keys = {
+    {"<leader>e", "<cmd>Neotree toggle<cr>", "Neotree toggle"},
     {"<c-n>", "<cmd>Neotree toggle<cr>", "Neotree toggle"},
     {"<leader>nf", "<cmd>Neotree focus<cr>", "Neotree focus"},
   },
