@@ -6,8 +6,8 @@ return {
   cmd = {"Telescope"},
 
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
   },
 
   -- {{{ keymaps
@@ -24,42 +24,42 @@ return {
       {"<leader>fb", cmdT .. "buffers<cr>", desc = "List buffers" },
 
       {"<leader>fc",
-       function()
-         require("telescope.builtin").find_files{
-           cwd = vim.fn.stdpath("config")
-         }
-       end,
-       desc = "Neovim config files"
-      },
+      function()
+        require("telescope.builtin").find_files{
+          cwd = vim.fn.stdpath("config")
+        }
+      end,
+      desc = "Neovim config files"
+    },
 
-      {"<leader>fd", cmdT .. "diagnostics<cr>", desc = "Buffer diagnostics" },
-      {"<leader>ff", cmdT .. "find_files<cr>", desc = "Find Find files" },
-      {"<leader>fg", cmdT .. "live_grep<cr>", desc = "Live Grep" },
-      {"<leader>fh", cmdT .. "help_tags<cr>", desc = "List Help files" },
+    {"<leader>fd", cmdT .. "diagnostics<cr>", desc = "Buffer diagnostics" },
+    {"<leader>ff", cmdT .. "find_files<cr>", desc = "Find Find files" },
+    {"<leader>fg", cmdT .. "live_grep<cr>", desc = "Live Grep" },
+    {"<leader>fh", cmdT .. "help_tags<cr>", desc = "List Help files" },
 
-      {"<leader>fk", cmdT .. "keymaps<cr>", desc = "List keymaps" },
-      {"<leader>fl", cmdT .. "resume<cr>", desc = "Telescope resume" },
-      {"<leader>fm", cmdT .. "marks<cr>", desc = "List marks" },
-      {"<leader>fo", cmdT .. "oldfiles<cr>", desc = "List old files" },
+    {"<leader>fk", cmdT .. "keymaps<cr>", desc = "List keymaps" },
+    {"<leader>fl", cmdT .. "resume<cr>", desc = "Telescope resume" },
+    {"<leader>fm", cmdT .. "marks<cr>", desc = "List marks" },
+    {"<leader>fo", cmdT .. "oldfiles<cr>", desc = "List old files" },
 
-      {"<leader>fp",
-       function()
-         require("telescope.builtin").find_files{
-           cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
-         }
-       end,
-       desc = "Neovim plugin packages"
-      },
+    {"<leader>fp",
+    function()
+      require("telescope.builtin").find_files{
+        cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+      }
+    end,
+    desc = "Neovim plugin packages"
+  },
 
-      {"<leader>fw", cmdT .. "grep_string<cr>", desc = "Find word under cursor" },
+  {"<leader>fw", cmdT .. "grep_string<cr>", desc = "Find word under cursor" },
 
-      {"<leader>gC", cmdT .. "git_commits<cr>", desc = "List git commits" },
-      {"<leader>gb", cmdT .. "git_branches<cr>", desc = "List git branches" },
-      {"<leader>go", cmdT .. "git_status<cr>", desc = "List git status" },
+  {"<leader>gC", cmdT .. "git_commits<cr>", desc = "List git commits" },
+  {"<leader>gb", cmdT .. "git_branches<cr>", desc = "List git branches" },
+  {"<leader>go", cmdT .. "git_status<cr>", desc = "List git status" },
 
-      {"<leader>LS", cmdT .. "lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
-      {"<leader>Ls", cmdT .. "lsp_document_symbols<cr>", desc = "Document Symbols" },
-    }
+  {"<leader>LS", cmdT .. "lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
+  {"<leader>Ls", cmdT .. "lsp_document_symbols<cr>", desc = "Document Symbols" },
+}
   end,
 
   -- ----------------------------------------------------------------------- }}}
@@ -93,11 +93,11 @@ return {
         hijack_netrw = true,
       },
       fzf = {
-        fuzzy = true,
-        override_generic_sorter = true,
-        override_file_sorter = true,
-        case_mode = false,
-      }
+        fuzzy = true,                    -- false will only do exact matching
+        override_generic_sorter = true,  -- override the generic sorter
+        override_file_sorter = true,     -- override the file sorter
+        case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+      },
     }
   end,
 
@@ -110,4 +110,4 @@ return {
   end,
 }
 
-  -- ----------------------------------------------------------------------- }}}
+-- ----------------------------------------------------------------------- }}}
