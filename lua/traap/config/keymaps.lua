@@ -48,8 +48,8 @@ keymap("v", ">", ">gv", {desc="Visual Indent"})
 -- Obfuscate
 keymap("n", "<f3>", "mmggg?G`m", {desc="Obfuscate toogle"})
 
--- <leader>x conflicts with LazyVim
-keymap("n", "<leader>X", "<Plug>(bullets-toggle-checkbox)", {desc="Checkbox toggle"})
+--  ;x conflicts with LazyVim
+keymap("n", ";x", "<Plug>(bullets-toggle-checkbox)", {desc="Checkbox toggle"})
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
@@ -83,13 +83,6 @@ keymap("n", "<localleader>E",
 keymap("v", "<localleader>E",
   [["ky :exec "r!" getreg("k")<cr>]], {desc="Execute current selection"}
 )
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Q/q - Quit
-
--- Quit all and Save All
-keymap("n", "<leader>q", "<cmd>qall!<cr>", {desc="Quit all!"})
-keymap("n", "<leader>wq", "<cmd>wall!<cr>", {desc="Write quit all!" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
@@ -170,6 +163,13 @@ keymap("n", "<leader>oh", "<cmd>checkhealth<cr>", {desc="Checkhealth"})
 keymap("n", "<leader>oo", "<cmd>only<cr>", {desc="Only current buffer"})
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Q/q - Quit
+
+-- Quit all and Save All
+keymap("n", "<leader>q", "<cmd>qall!<cr>", {desc="Quit all!"})
+keymap("n", "<leader>wq", "<cmd>wqall!<cr>", {desc="Write quit all!" })
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ s - Split & Sorts
 
 keymap("n", "<leader>sj", "<cmd>split<cr>", {desc="Split horizontal"})
@@ -189,6 +189,13 @@ keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]],
 
 keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]],
   {desc="Remove line end and trailing white spaces"})
+
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>]',
+  [[:%s/\[\|\]//g<CR>]],
+  { noremap = true, silent = true }
+)
 
 vim.api.nvim_set_keymap(
   "n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>",
