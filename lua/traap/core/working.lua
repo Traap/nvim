@@ -15,12 +15,20 @@ end
 
 function M.whosePlugins()
   if pcall(require, "lazyvim") then
-    require("notify")("LazyVim plugins are used.", "warn", { title = "Startup Notice", })
+    require("notify")("LazyVim plugins ARE used.",
+                      "warn",
+                      { title = vim.uv.os_gethostname() .. " startup" })
+  else
+    require("notify")("LazyVim plugins are NOT used.",
+                      "info",
+                      { title = vim.uv.os_gethostname() .. " startup" })
   end
 end
 
 function M.hostname()
-  Snacks.notify.info(vim.uv.os_gethostname(), {title="Startup: nvim.traap 1"})
+  require("notify")(vim.uv.os_gethostname(),
+                    "info",
+                    { title = vim.uv.os_gethostname() .. " startup" })
 end
 
 return M
