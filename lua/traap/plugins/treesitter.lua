@@ -14,9 +14,11 @@ return {
       })
 
       local parsers = {
-        "bash", "c", "c_sharp", "cpp", "dockerfile", "go", "html", "javascript",
-        "json", "lua", "markdown", "markdown_inline", "python", "query", "regex",
-        "ruby", "sql", "toml", "tsx", "typescript", "vim", "vimdoc", "yaml",
+        "bash", "c", "c_sharp", "cpp", "dockerfile", "go", "html",
+        "javascript", "json", "jsonc", "lua", "markdown",
+        "markdown_inline", "python", "query", "regex", "ruby",
+        "sql", "toml", "tsx", "typescript", "vim", "vimdoc", "xml",
+        "yaml",
       }
 
       for _, parser in ipairs(parsers) do
