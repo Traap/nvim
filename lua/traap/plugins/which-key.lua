@@ -9,7 +9,8 @@ return {
     vim.o.timeoutlen = 300
   end,
 
-  opts = {
-    plugins = { spelling = true }
-  },
+  opts = function(_, opts)
+    opts.plugins = { spelling = true }
+    opts.preset = "modern"
+  end,
 }
