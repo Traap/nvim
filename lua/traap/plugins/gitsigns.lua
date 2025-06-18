@@ -13,9 +13,9 @@ return {
       untracked    = { text = "▎" },
     }
 
-    opts.current_line_blame = true
+    opts.current_line_blame = false
     opts.current_line_blame_formatter = " <author>, <author_time:%Y-%m-%d> - <summary>"
-    opts.trouble = false
+    opts.trouble = true
 
     opts.on_attach = function(buffer)
       local gs = package.loaded.gitsigns
