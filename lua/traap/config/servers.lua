@@ -214,4 +214,28 @@ M.lsp_server_names = function()
 end
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Return linter names to install via mason-nvim-lint
+
+M.linters_for_mason = function()
+  return {
+    "shellcheck",
+    "clangtidy",
+    "hadolint",
+    "golangci-lint",
+    "tidy",
+    "eslint_d",
+    "jsonlint",
+    "luacheck",
+    "markdownlint",
+    "flake8",
+    "rubocop",
+    "sqlfluff",
+    "taplo",
+    "vint",
+    "xmllint",
+    "yamllint",
+  }
+end
+
+-- ------------------------------------------------------------------------- }}}
 return M
