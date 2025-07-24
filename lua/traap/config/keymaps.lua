@@ -194,7 +194,14 @@ vim.api.nvim_set_keymap(
   'n',
   '<leader>]',
   [[:%s/\[\|\]//g<CR>]],
-  { noremap = true, silent = true }
+  { noremap = true, silent = true, desc = "Remove [ and ]" }
+)
+
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>r|',
+  [[:%s/\\s*|\\s*/|/g<CR>]],
+  { noremap = true, silent = true, desc = "Remove whitespace before and after |"}
 )
 
 vim.api.nvim_set_keymap(
