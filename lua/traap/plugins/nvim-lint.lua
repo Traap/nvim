@@ -1,5 +1,6 @@
 return {
   "mfussenegger/nvim-lint",
+  enable = true,
   event = { "BufReadPost", "BufWritePost" },
   dependencies = {
     "williamboman/mason.nvim",
@@ -33,7 +34,7 @@ return {
       markdown_inline = { "markdownlint" },
       python = { "flake8" },
       ruby = { "rubocop" },
-      sql = { "sqlfluff" },
+      -- sql = { "sqlfluff" },
       toml = { "taplo" },
       tsx = { "eslint_d" },
       typescript = { "eslint_d" },
