@@ -21,54 +21,54 @@ return {
       sources = {
         explorer = {
           win = {
-            input = {
-              keys = {
-                ["<c-h>"] = { mode = { "i", "n" },
-                  function()
-                    require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
-                  end,
-                },
-                ["<c-j>"] = { mode = { "i", "n" },
-                  function()
-                    require("nvim-tmux-navigation").NvimTmuxNavigateDown()
-                  end,
-                },
-                ["<c-k>"] = { mode = { "i", "n" },
-                  function()
-                    require("nvim-tmux-navigation").NvimTmuxNavigateUp()
-                  end,
-                },
-                ["<c-l>"] = { mode = { "i", "n" },
-                  function()
-                    require("nvim-tmux-navigation").NvimTmuxNavigateRight()
-                  end,
-                },
-              },
-            },
-            list = {
-              keys = {
-                 ["<c-h>"] = { mode = { "i", "n" },
-                  function()
-                    require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
-                  end,
-                },
-                ["<c-j>"] = { mode = { "i", "n" },
-                  function()
-                    require("nvim-tmux-navigation").NvimTmuxNavigateDown()
-                  end,
-                },
-                ["<c-k>"] = { mode = { "i", "n" },
-                  function()
-                    require("nvim-tmux-navigation").NvimTmuxNavigateUp()
-                  end,
-                },
-                ["<c-l>"] = { mode = { "i", "n" },
-                  function()
-                    require("nvim-tmux-navigation").NvimTmuxNavigateRight()
-                  end,
-                },
-              },
-            },
+            -- input = {
+              -- keys = {
+              --   ["<c-h>"] = { mode = { "i", "n" },
+              --     function()
+              --       require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
+              --     end,
+              --   },
+              --   ["<c-j>"] = { mode = { "i", "n" },
+              --     function()
+              --       require("nvim-tmux-navigation").NvimTmuxNavigateDown()
+              --     end,
+              --   },
+              --   ["<c-k>"] = { mode = { "i", "n" },
+              --     function()
+              --       require("nvim-tmux-navigation").NvimTmuxNavigateUp()
+              --     end,
+              --   },
+              --   ["<c-l>"] = { mode = { "i", "n" },
+              --     function()
+              --       require("nvim-tmux-navigation").NvimTmuxNavigateRight()
+              --     end,
+              --   },
+              -- },
+            -- },
+            -- list = {
+              -- keys = {
+              --    ["<c-h>"] = { mode = { "i", "n" },
+              --     function()
+              --       require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
+              --     end,
+              --   },
+              --   ["<c-j>"] = { mode = { "i", "n" },
+              --     function()
+              --       require("nvim-tmux-navigation").NvimTmuxNavigateDown()
+              --     end,
+              --   },
+              --   ["<c-k>"] = { mode = { "i", "n" },
+              --     function()
+              --       require("nvim-tmux-navigation").NvimTmuxNavigateUp()
+              --     end,
+              --   },
+              --   ["<c-l>"] = { mode = { "i", "n" },
+              --     function()
+              --       require("nvim-tmux-navigation").NvimTmuxNavigateRight()
+              --     end,
+              --   },
+              -- },
+            -- },
           },
           layout = {
             layout = {

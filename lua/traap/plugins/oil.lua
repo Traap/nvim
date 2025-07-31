@@ -3,7 +3,7 @@ return {
   dependencies = {"nvim-tree/nvim-web-devicons"},
   cmd = "Oil",
   keys = { { "<leader>no", "<cmd>Oil --float<cr>", desc = "Oil buffer" } },
-  enabled = false,
+  enabled = true,
 
   -- {{{ Option
   opts = function(_, opts)
