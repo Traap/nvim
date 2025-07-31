@@ -2,12 +2,13 @@
 
 return {
   "nvim-telescope/telescope.nvim",
-  enabled = true,
+  enabled = false,
   cmd = {"Telescope"},
 
   dependencies = {
     {"nvim-lua/plenary.nvim"},
     {"nvim-telescope/telescope-fzf-native.nvim", build = "make"},
+    {"nvim-telescope/telescope-media-files.nvim"},
   },
 
   -- {{{ keymaps
@@ -97,6 +98,10 @@ return {
         override_generic_sorter = true,  -- override the generic sorter
         override_file_sorter = true,     -- override the file sorter
         case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+      },
+      media_files = {
+        filetypes = {"png", "jpg", "jpeg", "webp"},
+        find_cmd = "rg"
       },
     }
   end,

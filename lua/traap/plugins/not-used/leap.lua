@@ -1,6 +1,6 @@
 return {
   "ggandor/leap.nvim",
-  enabled = true,
+  enabled = false,
   event = require("traap.config.events").file,
 
   keys = {
