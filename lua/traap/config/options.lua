@@ -50,6 +50,7 @@ local options = {
   updatetime = 500,
   virtualedit = { "block" },
   wildmode = { "list", "longest" },
+  winborder = 'rounded',
   wrap = false,
 }
 
