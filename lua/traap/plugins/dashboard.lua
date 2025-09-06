@@ -31,10 +31,9 @@ return {
           -- {key = "g", icon = icons.ui.FindText,  desc = " Find text",   action = [[lua LazyVim.pick("live_grep")()]]},
           {key = "h", icon = icons.ui.Check,     desc = " Check Health",action = "checkhealth" },
           {key = "l", icon = icons.ui.Event,     desc = "Lazy",         action = "Lazy" },
-          {key = "m", icon = icons.ui.Mason,     desc = "Mason",       action = "Mason" },
           {key = "n", icon = icons.ui.NewFile,   desc = "New file",    action = "ene | startinsert" },
           {key = "q", icon = icons.ui.Quit,      desc = "Quit",        action = "qa" },
-          {key = "r", icon = icons.ui.Files,     desc = "Recent files",action = "Telescope oldfiles"},
+          {key = "r", icon = icons.ui.Files,     desc = "Recent files",action = "lua Snacks.dashboard.pick('oldfiles')"},
           -- {key = "x", icon = icons.ui.Event,     desc = " LazyExtras",  action = "LazyExtras" },
         },
 
