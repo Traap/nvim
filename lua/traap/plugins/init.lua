@@ -8,7 +8,7 @@ return {
   {enabled = false, event = EVENT, "akinsho/bufferline.nvim" },
   {enabled = true,  event = EVENT, "dkarter/bullets.vim" },
   {enabled = false, event = EVENT, "RRethy/vim-illuminate" },
-  {enabled = false, event = EVENT, "saghen/blink.cmp" },
+  {enabled = true , event = EVENT, "saghen/blink.cmp" },
   {enabled = true,  event = EVENT, "echasnovski/mini.ai" },
   {enabled = true,  event = EVENT, "echasnovski/mini.comment" },
   {enabled = false, event = EVENT, "echasnovski/mini.indentscope" },
