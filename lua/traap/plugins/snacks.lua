@@ -1,3 +1,4 @@
+Snacks = Snacks
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -6,8 +7,11 @@ return {
 
   opts = {
     bigfile = { enabled = true },
-    dashboard = { enabled = false },
-    explorer = { enabled = true, },
+    dashboard = {
+      enabled = true,
+      preset = { header = [[Configured by Traap and powered by lazy.nvim.]],}
+    },
+    explorer = { enabled = true },
     indent = { enabled = false },
     input = { enabled = true },
     notifier = {
@@ -20,56 +24,7 @@ return {
       enabled = true,
       sources = {
         explorer = {
-          win = {
-            -- input = {
-              -- keys = {
-              --   ["<c-h>"] = { mode = { "i", "n" },
-              --     function()
-              --       require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
-              --     end,
-              --   },
-              --   ["<c-j>"] = { mode = { "i", "n" },
-              --     function()
-              --       require("nvim-tmux-navigation").NvimTmuxNavigateDown()
-              --     end,
-              --   },
-              --   ["<c-k>"] = { mode = { "i", "n" },
-              --     function()
-              --       require("nvim-tmux-navigation").NvimTmuxNavigateUp()
-              --     end,
-              --   },
-              --   ["<c-l>"] = { mode = { "i", "n" },
-              --     function()
-              --       require("nvim-tmux-navigation").NvimTmuxNavigateRight()
-              --     end,
-              --   },
-              -- },
-            -- },
-            -- list = {
-              -- keys = {
-              --    ["<c-h>"] = { mode = { "i", "n" },
-              --     function()
-              --       require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
-              --     end,
-              --   },
-              --   ["<c-j>"] = { mode = { "i", "n" },
-              --     function()
-              --       require("nvim-tmux-navigation").NvimTmuxNavigateDown()
-              --     end,
-              --   },
-              --   ["<c-k>"] = { mode = { "i", "n" },
-              --     function()
-              --       require("nvim-tmux-navigation").NvimTmuxNavigateUp()
-              --     end,
-              --   },
-              --   ["<c-l>"] = { mode = { "i", "n" },
-              --     function()
-              --       require("nvim-tmux-navigation").NvimTmuxNavigateRight()
-              --     end,
-              --   },
-              -- },
-            -- },
-          },
+          win = {},
           layout = {
             layout = {
               position = "right"
@@ -82,28 +37,28 @@ return {
     scope = { enabled = true },
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
-    styles = {
-      notification = {
-        -- wo = { wrap = true } -- Wrap notifications
-      }
-    },
-    toggle = {
-      map = vim.keymap.set,
-      which_key = true,
-      notify = true,
-      icon = {
-        enabled = " ",
-        disabled = " ",
-      },
-      color = {
-        enabled = "green",
-        disabled = "yellow",
-      },
-      wk_desc = {
-        enabled = "Disable ",
-        disabled = "Enable ",
-      },
-    },
+    -- styles = {
+    --   notification = {
+    --     -- wo = { wrap = true } -- Wrap notifications
+    --   }
+    -- },
+    -- toggle = {
+    --   map = vim.keymap.set,
+    --   which_key = true,
+    --   notify = true,
+    --   icon = {
+    --     enabled = " ",
+    --     disabled = " ",
+    --   },
+    --   color = {
+    --     enabled = "green",
+    --     disabled = "yellow",
+    --   },
+    --   wk_desc = {
+    --     enabled = "Disable ",
+    --     disabled = "Enable ",
+    --   },
+    -- },
     words = { enabled = true },
   },
   keys = {

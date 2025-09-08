@@ -4,7 +4,7 @@ return {
     enabled = true,
 
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
+    event = require("traap.config.events").file,
     config = function()
       require("nvim-treesitter.configs").setup({
         highlight = {

@@ -1,6 +1,7 @@
 -- Take control of my leader keys.
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.lazyvim_check_order = false
 
 -- Bootstrap using lazy.nvim package manager.
 require("traap.config.bootstrap")
