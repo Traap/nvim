@@ -4,7 +4,9 @@
 local EVENT = require("traap.config.events").file
 
 return {
+  -- Event bases
   {enabled = false, event = EVENT, "akinsho/bufferline.nvim" },
+  {enabled = true,  event = EVENT, "dkarter/bullets.vim" },
   {enabled = false, event = EVENT, "RRethy/vim-illuminate" },
   {enabled = false, event = EVENT, "saghen/blink.cmp" },
   {enabled = true,  event = EVENT, "echasnovski/mini.ai" },
@@ -17,5 +19,7 @@ return {
   {enabled = true,  event = EVENT, "folke/trouble.nvim" },
   {enabled = false, event = EVENT, "nvim-treesitter/nvim-treesitter-context" },
   {enabled = true,  event = EVENT, "nvim-treesitter/nvim-treesitter-textobjects" },
+
+  -- lazy = true based
 }
 
