@@ -14,7 +14,7 @@ return {
   {enabled = true , event = EVENT, "saghen/blink.cmp" },
   {enabled = true,  event = EVENT, "echasnovski/mini.ai" },
   {enabled = true,  event = EVENT, "echasnovski/mini.comment" },
-  {enabled = false, event = EVENT, "echasnovski/mini.indentscope" },
+  {enabled = true,  event = EVENT, "echasnovski/mini.indentscope" },
   {enabled = true,  event = EVENT, "echasnovski/mini.pairs" },
   {enabled = true,  event = EVENT, "echasnovski/mini.surround" },
   {enabled = false, event = EVENT, "rcarriga/nvim-notify" },
@@ -32,13 +32,11 @@ return {
   {enabled = true,  event = EVENT, "vim-utils/vim-most-minimal-folds" },
   {enabled = true,  event = EVENT, "xiyaowong/virtcolumn.nvim" },
 
-  {enabled = true,  event = EVENT, "mrjones2014/nvim-ts-rainbow",
-                    dependencies = "nvim-treesitter/nvim-treesitter" },
-  {enabled = true,  event = EVENT, "nvim-treesitter/nvim-treesitter-textobjects",
-                    dependencies = "nvim-treesitter/nvim-treesitter"},
+  -- {enabled = true,  event = EVENT, "mrjones2014/nvim-ts-rainbow",
+  --                   dependencies = "nvim-treesitter/nvim-treesitter" },
 
   -- File type events
-  {enabled = true,  ft = CSV,  "mechatroner/rainbow_csv" },
+  -- {enabled = true,  ft = CSV,  "mechatroner/rainbow_csv" },
   {enabled = true,  ft = TEX,  "Traap/vim-bundle-vimtex" },
   {enabled = true,  ft = WIKI, "lervag/wiki.vim" },
   {enabled = true,  ft = WIKI, "Traap/vim-bundle-wiki.vim", dependencies = "lervag/wiki.vim" },
