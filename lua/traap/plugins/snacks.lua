@@ -37,28 +37,6 @@ return {
     scope = { enabled = true },
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
-    -- styles = {
-    --   notification = {
-    --     -- wo = { wrap = true } -- Wrap notifications
-    --   }
-    -- },
-    -- toggle = {
-    --   map = vim.keymap.set,
-    --   which_key = true,
-    --   notify = true,
-    --   icon = {
-    --     enabled = " ",
-    --     disabled = " ",
-    --   },
-    --   color = {
-    --     enabled = "green",
-    --     disabled = "yellow",
-    --   },
-    --   wk_desc = {
-    --     enabled = "Disable ",
-    --     disabled = "Enable ",
-    --   },
-    -- },
     words = { enabled = true },
   },
   keys = {
