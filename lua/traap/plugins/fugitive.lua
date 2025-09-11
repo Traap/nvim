@@ -5,7 +5,7 @@ return {
   },
 
   enabled = true,
-
+  event = "VeryLazy",
   cmd = "G",
 
   keys = {
