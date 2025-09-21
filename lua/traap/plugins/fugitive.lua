@@ -1,3 +1,10 @@
+local EVENT = nil
+if pcall(require, "lazyvim") then
+  EVENT = 'VeryLazy'
+else
+  EVENT = { "BufReadPost", "BufNewFile", "BufWritePre" }
+end
+
 return {
   "tpope/vim-fugitive",
   dependencies = {
@@ -5,7 +12,7 @@ return {
   },
 
   enabled = true,
-  event = "VeryLazy",
+  event = EVENT,
   cmd = "G",
 
   keys = {

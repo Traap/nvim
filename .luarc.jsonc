@@ -1,0 +1,37 @@
+{
+  // Use LuaJIT since that's what Neovim embeds
+  "runtime": {
+    "version": "LuaJIT",
+    "path": [
+      "?.lua",
+      "?/init.lua",
+      // Add your config's lua/ folder for module resolution
+      "${workspaceFolder}/lua/?/init.lua"
+    ]
+  },
+
+  "workspace": {
+    // Include Neovim runtime libraries for better completions & docs
+    "library": [
+      "${3rd}/luv/library",
+      "${3rd}/busted/library",
+      "${workspaceFolder}",
+      "/usr/share/nvim/runtime/lua",
+      "/usr/share/nvim/runtime/lua/vim",
+      "/usr/share/nvim/runtime/lua/vim/lsp"
+    ],
+    // Prevent prompts to configure "third-party" libraries
+    "checkThirdParty": false
+  },
+
+  "diagnostics": {
+    // Silence "undefined global 'vim'" warnings
+    "globals": ["vim"]
+  },
+
+  "telemetry": {
+    // Disable telemetry for privacy
+    "enable": false
+  }
+}
+

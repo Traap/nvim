@@ -3,9 +3,9 @@
 require("lazy").setup({
   spec = {
     -- LazyVim plugins.
-    { "LazyVim/LazyVim", import = "lazyvim.plugins",
-      opts = require("traap.config.lazyvim").opts
-    },
+    -- { "LazyVim/LazyVim", import = "lazyvim.plugins",
+    --   opts = require("traap.config.lazyvim").opts
+    -- },
 
     -- Now tell lazy.nvim about my customizations.
     { import = "traap.plugins",
