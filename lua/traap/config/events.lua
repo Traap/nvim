@@ -1,8 +1,7 @@
 return {
   file = {
-    "BufReadPost",
+    "BufReadPre",
     "BufNewFile",
-    "BufWritePre"
   },
 
   file_types = {
