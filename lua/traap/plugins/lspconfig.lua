@@ -38,12 +38,13 @@ return {
       capabilities.experimental = capabilities.experimental or {}
       capabilities.experimental.ghostText = true
 
-      -- ✅ Diagnostic signs
+      -- ✅ Diagnostic signs (migrate away from sign_define deprecation)
       local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
+      vim.diagnostic.config({
+        signs = {
+          text = signs,
+        },
+      })
 
       -- ✅ on_attach
       local on_attach = function(client, bufnr)
@@ -71,7 +72,7 @@ return {
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
         vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
-        if client.supports_method("textDocument/formatting") then
+        if client:supports_method("textDocument/formatting") then
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = vim.api.nvim_create_augroup("LspFormatting", {}),
             buffer = bufnr,
@@ -92,19 +93,24 @@ return {
         dockerfile = "dockerls",
         go = "gopls",
         html = "html",
+        java = "jdtls",
         json = "jsonls",
         julia = "julials",
         latex = "ltex",
         lua = "lua_ls",
         markdown = "marksman",
         nix = "rnix",
+        python = "pyright",
+        ruby = "solargraph",
         sql = "sqlls",
         svelte = "svelte",
+        tex = "texlab",
         toml = "taplo",
         tsx = "ts_ls",
         typescript = "ts_ls",
         vim = "vimls",
         yaml = "yamlls",
+        zig = "zls",
         xml = "lemminx",
       }
 
@@ -145,14 +151,9 @@ return {
 
           -- ✅ Version-aware API branch with logging
           local nvim_version = vim.version()
-          if nvim_version and nvim_version.minor >= 11
-            and vim.lsp.config
-            and vim.lsp.config[server]
-            and vim.lsp.config[server].setup then
-
+          if nvim_version and nvim_version.minor >= 11 and vim.lsp.config and vim.lsp.config[server] then
             vim.notify("Using new vim.lsp.config API for " .. server, vim.log.levels.INFO)
-            vim.lsp.start(vim.lsp.config[server].setup(server_opts))
-
+            vim.lsp.start(vim.tbl_deep_extend("force", vim.lsp.config[server], server_opts))
           else
             vim.notify("Using legacy lspconfig API for " .. server, vim.log.levels.WARN)
             local old = require("lspconfig")
@@ -178,7 +179,11 @@ return {
       indent = { enable = true },
     },
     config = function(_, opts)
-      local ts = require("nvim-treesitter.configs")
+      local ok, ts = pcall(require, "nvim-treesitter.configs")
+      if not ok then
+        vim.notify("nvim-treesitter.configs not available", vim.log.levels.WARN)
+        return
+      end
       ts.setup(opts)
 
       local parsers = require("nvim-treesitter.parsers")
@@ -195,4 +200,3 @@ return {
     end,
   },
 }
-
