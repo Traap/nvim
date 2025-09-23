@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.lazyvim_check_order = false
 
+require("traap.core.notify")
+
 -- Bootstrap using lazy.nvim package manager.
 require("traap.config.bootstrap")
 

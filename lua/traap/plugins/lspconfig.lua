@@ -1,3 +1,5 @@
+-- LSP + Treesitter with traap.core.notify integration
+
 return {
   -- Mason.nvim
   {
@@ -20,8 +22,9 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local mason_lsp = require("mason-lspconfig")
+      local notify = require("traap.core.notify")
 
-      -- ✅ Capabilities
+      -- Capabilities
       local capabilities
       if vim.lsp.protocol and vim.lsp.protocol.client_capabilities then
         capabilities = vim.lsp.protocol.client_capabilities()
@@ -30,43 +33,33 @@ return {
       end
       capabilities.offsetEncoding = { "utf-16" }
       capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-      -- 👻 Ghost text support
       capabilities.textDocument.completion.completionItem.insertTextModeSupport = {
         valueSet = { 1, 2 },
       }
       capabilities.experimental = capabilities.experimental or {}
       capabilities.experimental.ghostText = true
 
-      -- ✅ Diagnostic signs (migrate away from sign_define deprecation)
+      -- Diagnostic signs
       local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-      vim.diagnostic.config({
-        signs = {
-          text = signs,
-        },
-      })
+      vim.diagnostic.config({ signs = { text = signs } })
 
-      -- ✅ on_attach
+      -- on_attach
       local on_attach = function(client, bufnr)
         local opts = { noremap = true, silent = true, buffer = bufnr }
-
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-
         vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
         vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
         vim.keymap.set("n", "<leader>wl", function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
-
         vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-
         vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
@@ -83,7 +76,7 @@ return {
         end
       end
 
-      -- ✅ LSP ↔ Treesitter mapping
+      -- LSP ↔ Treesitter mapping
       local lsp_map = {
         bash = "bashls",
         c = "clangd",
@@ -114,14 +107,14 @@ return {
         xml = "lemminx",
       }
 
-      -- ✅ Auto-install on FileType
+      -- Auto-install on FileType
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
           local ft = args.match
           local server = lsp_map[ft]
           if not server then return end
 
-          vim.notify("Ensuring LSP server: " .. server, vim.log.levels.INFO)
+          notify.info("Ensuring LSP server: " .. server)
           mason_lsp.setup({ ensure_installed = { server } })
 
           local server_opts = {
@@ -149,18 +142,18 @@ return {
             }
           end
 
-          -- ✅ Version-aware API branch with logging
+          -- Version-aware API
           local nvim_version = vim.version()
           if nvim_version and nvim_version.minor >= 11 and vim.lsp.config and vim.lsp.config[server] then
-            vim.notify("Using new vim.lsp.config API for " .. server, vim.log.levels.INFO)
+            notify.info("Using new vim.lsp.config API for " .. server)
             vim.lsp.start(vim.tbl_deep_extend("force", vim.lsp.config[server], server_opts))
           else
-            vim.notify("Using legacy lspconfig API for " .. server, vim.log.levels.WARN)
+            notify.warn("Using legacy lspconfig API for " .. server)
             local old = require("lspconfig")
             if old[server] then
               old[server].setup(server_opts)
             else
-              vim.notify("No config method found for LSP server: " .. server, vim.log.levels.ERROR)
+              notify.error("No config method found for LSP server: " .. server)
             end
           end
         end,
@@ -179,9 +172,11 @@ return {
       indent = { enable = true },
     },
     config = function(_, opts)
+      local notify = require("traap.core.notify")
+
       local ok, ts = pcall(require, "nvim-treesitter.configs")
       if not ok then
-        vim.notify("nvim-treesitter.configs not available", vim.log.levels.WARN)
+        notify.warn("nvim-treesitter.configs not available")
         return
       end
       ts.setup(opts)
@@ -192,7 +187,7 @@ return {
           local ft = args.match
           local available = parsers.get_parser_configs()[ft]
           if available and not parsers.has_parser(ft) then
-            vim.notify("Installing Treesitter parser for " .. ft, vim.log.levels.INFO)
+            notify.info("Installing Treesitter parser for " .. ft)
             vim.cmd("TSInstallSync " .. ft)
           end
         end,
