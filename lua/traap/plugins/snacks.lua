@@ -16,6 +16,7 @@ return {
     explorer = { enabled = true },
     indent = { enabled = false },
     input = { enabled = true },
+    image = { enabled = (vim.loop.os_uname().sysname ~= "Windows_NT") },
     notifier = {
       enabled = true,
       timeout = 3000,
