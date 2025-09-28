@@ -33,14 +33,16 @@ return {
       end
       capabilities.offsetEncoding = { "utf-16" }
       capabilities.textDocument.completion.completionItem.snippetSupport = true
-      capabilities.textDocument.completion.completionItem.insertTextModeSupport = {
-        valueSet = { 1, 2 },
-      }
+      capabilities.textDocument.completion.completionItem.insertTextModeSupport =
+        {
+          valueSet = { 1, 2 },
+        }
       capabilities.experimental = capabilities.experimental or {}
       capabilities.experimental.ghostText = true
 
       -- Diagnostic signs
-      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+      local signs =
+        { Error = " ", Warn = " ", Hint = " ", Info = " " }
       vim.diagnostic.config({ signs = { text = signs } })
 
       -- on_attach
@@ -51,8 +53,18 @@ return {
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-        vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-        vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+        vim.keymap.set(
+  map.    "n",
+ set("n", "<leader>wa",
+ der>wa", vim.lsp.buf.add_workspace_folder,
+ _fold    opts
+er, opts)
+        vim.keymap.set(
+  map.    "n",
+ set("n", "<leader>wr",
+ der>wr", vim.lsp.buf.remove_workspace_folder,
+ _fold    opts
+er, opts)
         vim.keymap.set("n", "<leader>wl", function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
@@ -60,7 +72,7 @@ return {
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-        vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+        vim.keymap.set("n", "<leader>E", vim.diagnostic.open_float, opts)
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
         vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
@@ -112,7 +124,8 @@ return {
         callback = function(args)
           local ft = args.match
           local server = lsp_map[ft]
-          if not server then return end
+          if not server then
+ erver t    returnhen return end
 
           notify.info("Ensuring LSP server: " .. server)
           mason_lsp.setup({ ensure_installed = { server } })
@@ -144,9 +157,15 @@ return {
 
           -- Version-aware API
           local nvim_version = vim.version()
-          if nvim_version and nvim_version.minor >= 11 and vim.lsp.config and vim.lsp.config[server] then
+          if
+         if nvim_version
+ im_version and nvim_version.minor >= 11
+ inor >= 11 and vim.lsp.config
+ lsp.config and vim.lsp.config[server]ig[server] then
             notify.info("Using new vim.lsp.config API for " .. server)
-            vim.lsp.start(vim.tbl_deep_extend("force", vim.lsp.config[server], server_opts))
+            vim.lsp.start(
+    lsp.start(vim.tbl_deep_extend("force", vim.lsp.config[server], server_opts)
+  rver_opts))
           else
             notify.warn("Using legacy lspconfig API for " .. server)
             local old = require("lspconfig")
