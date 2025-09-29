@@ -107,8 +107,9 @@ return {
         xml = "lemminx",
       }
 
-      -- Auto-install on FileType
+      -- Auto-install on FileType (restricted to mapped filetypes only)
       vim.api.nvim_create_autocmd("FileType", {
+        pattern = vim.tbl_keys(lsp_map),
         callback = function(args)
           local ft = args.match
           local server = lsp_map[ft]
@@ -182,14 +183,31 @@ return {
       ts.setup(opts)
 
       local parsers = require("nvim-treesitter.parsers")
+      local supported = vim.tbl_keys(parsers.get_parser_configs())
+
+      -- skip pseudo filetypes that break parser install
+      local skip_fts = {
+        fugitive = true,
+        gitcommit = true,
+        help = true,
+        qf = true,
+        lspinfo = true,
+        notify = true,
+        lazy = true,
+        mason = true,
+      }
+
       vim.api.nvim_create_autocmd("FileType", {
+        pattern = supported, -- only valid languages
         callback = function(args)
           local ft = args.match
-          local available = parsers.get_parser_configs()[ft]
-          if available and not parsers.has_parser(ft) then
-            notify.info("Installing Treesitter parser for " .. ft)
-            vim.cmd("TSInstallSync " .. ft)
-          end
+          if not ft or ft == "" then return end
+          if skip_fts[ft] then return end
+          if not parsers.get_parser_configs()[ft] then return end
+          if parsers.has_parser(ft) then return end
+
+          notify.info("Installing Treesitter parser for " .. ft)
+          vim.cmd("TSInstallSync " .. ft)
         end,
       })
     end,
