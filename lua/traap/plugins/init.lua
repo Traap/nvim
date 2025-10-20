@@ -48,11 +48,11 @@ return {
   { enabled = true,  event = EVENT, "folke/lazydev.nvim" },
   { enabled = true,  event = EVENT, "folke/trouble.nvim" },
   { enabled = true,  event = EVENT, "lewis6991/gitsigns.nvim" },
-  { enabled = true,  event = EVENT, "nvim-mini/mini.ai" },
-  { enabled = true,  event = EVENT, "nvim-mini/mini.comment" },
-  { enabled = true,  event = EVENT, "nvim-mini/mini.indentscope" },
-  { enabled = true,  event = EVENT, "nvim-mini/mini.pairs" },
-  { enabled = true,  event = EVENT, "nvim-mini/mini.surround" },
+  { enabled = true,  event = EVENT, "nvim-mini/mini.ai", config = true },
+  { enabled = true,  event = EVENT, "nvim-mini/mini.comment", config = true },
+  { enabled = false, event = EVENT, "nvim-mini/mini.indentscope", config = true },
+  { enabled = true,  event = EVENT, "nvim-mini/mini.pairs", config = true },
+  { enabled = true,  event = EVENT, "nvim-mini/mini.surround", config = true },
   { enabled = true,  event = EVENT, "rafamadriz/friendly-snippets" },
   { enabled = true,  event = EVENT, "rcarriga/nvim-notify" },
   { enabled = true,  event = EVENT, "saghen/blink.cmp" },
@@ -63,13 +63,13 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ File type events
 
-  { enabled = true,  ft = RUBY, "tpope/vim-bundler" },
-  { enabled = true,  ft = RUBY, "tpope/vim-rails" },
-  { enabled = true,  ft = PUML, "aklt/plantuml-syntax" },
-  { enabled = true,  ft = TEX,  "Traap/vim-bundle-vimtex" },
-  { enabled = true,  ft = WIKI, "Traap/vim-bundle-wiki.vim", dependencies = "lervag/wiki.vim" },
-  { enabled = true,  ft = WIKI, "lervag/wiki-ft.vim", dependencies = "lervag/wiki.vim" },
-  { enabled = true,  ft = WIKI, "lervag/wiki.vim" },
+  { enabled = true,  ft = RUBY,     "tpope/vim-bundler" },
+  { enabled = true,  ft = RUBY,     "tpope/vim-rails" },
+  { enabled = true,  ft = PUML,     "aklt/plantuml-syntax" },
+  { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
+  { enabled = true,  ft = WIKI,     "Traap/vim-bundle-wiki.vim",              dependencies = "lervag/wiki.vim" },
+  { enabled = true,  ft = WIKI,     "lervag/wiki-ft.vim",                     dependencies = "lervag/wiki.vim" },
+  { enabled = true,  ft = WIKI,     "lervag/wiki.vim" },
 
   -- ----------------------------------------------------------------------- }}}
   -- {{{ lazy = true based
