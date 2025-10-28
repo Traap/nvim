@@ -30,6 +30,7 @@ vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
 -- {{{ Color tweeks when entering a buffer or when colorscheme change.
 --
 --     https://image-color-picker.com/rgb-color-picker
+--     Note: Normally I use 3b4261 most settings found here.
 
 vim.api.nvim_create_autocmd({ "BufWinEnter", "ColorScheme" }, {
   group = augroup("colors"),
@@ -38,27 +39,27 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "ColorScheme" }, {
     -- NOTE: RGB values found in Tokyonight-night colors.
 
     -- Better Quick Fix
-    vim.api.nvim_set_hl(0, "BqfPreviewBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "BqfPrevieTitle", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "BqfPrevieThumb", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "BqfPreviewBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "BqfPrevieTitle", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "BqfPrevieThumb", { fg = "#bb9af7" })
     vim.cmd([[ hi link BqfPreviewRange Search ]])
 
     -- Cmp
-    vim.api.nvim_set_hl(0, "CmpDocumentationBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "CmpDocumentationBorder", { fg = "#bb9af7" })
 
     -- Harpoon
-    vim.api.nvim_set_hl(0, "HarpoonBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "HarpoonBorder", { fg = "#bb9af7" })
 
     -- LspSaga
-    vim.api.nvim_set_hl(0, "LspSagaSignatureHelpBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "LspSagaCodeActionBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "LspSagaDefPreviewBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "LspSagaRenameBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "LspSagaHoverBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "LspSagaBorderTitle", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "LspSagaSignatureHelpBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "LspSagaCodeActionBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "LspSagaDefPreviewBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "LspSagaRenameBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "LspSagaHoverBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "LspSagaBorderTitle", { fg = "#bb9af7" })
 
     -- NeoTest
-    vim.api.nvim_set_hl(0, "NeoTestBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "NeoTestBorder", { fg = "#bb9af7" })
 
     -- Folds
     vim.api.nvim_set_hl(0, "Folded", { fg = "#6a79b3" })
@@ -66,52 +67,52 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "ColorScheme" }, {
     -- Line numbers
     vim.api.nvim_set_hl(0, "LineNr", { fg = "#e0af68" })
     vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#bb9af7" })
 
     -- Telescope
-    vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#bb9af7" })
 
     -- Lsp
-    vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "LspFloatWinBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "LspFloatWinBorder", { fg = "#bb9af7" })
 
     -- Neovim
-    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#bb9af7" })
 
     -- Noice
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCalculator", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderFilter", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderHelp", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderLua", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderInput", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderIncRename", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceConfirmBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoicePopupBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoicePopupmenuBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NoiceSplitBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCalculator", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderFilter", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderHelp", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderLua", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderInput", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderIncRename", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceConfirmBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoicePopupBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoicePopupmenuBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NoiceSplitBorder", { fg = "#bb9af7" })
 
     -- Notify
-    vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { fg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg = "#ff0000" })
-    vim.api.nvim_set_hl(0, "NotifyINFOBorder", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "NotifyINFOBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { fg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "NotifyWARNBorder", { fg = "#e0af68" })
 
     -- Pmenu
     vim.api.nvim_set_hl(0, "Pmenu", { blend = 100 })
-    vim.api.nvim_set_hl(0, "PmenuSel", { fg = "#e0af68", bg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "PmenuKindSel", { fg = "#e0af68", bg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "PmenuEstraSel", { fg = "#e0af68", bg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "PmenuSel", { fg = "#e0af68", bg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "PmenuKindSel", { fg = "#e0af68", bg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "PmenuEstraSel", { fg = "#e0af68", bg = "#bb9af7" })
 
     -- WhichKey
-    vim.api.nvim_set_hl(0, "WhichKeyBorder", { fg = "#3b4261" })
+    vim.api.nvim_set_hl(0, "WhichKeyBorder", { fg = "#bb9af7" })
   end,
 })
 
