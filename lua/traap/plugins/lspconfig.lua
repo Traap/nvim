@@ -83,7 +83,7 @@ return {
         cpp = "clangd",
         c_sharp = "omnisharp",
         css = "cssls",
-        dockerfile = "dockerls",
+        -- dockerfile = "dockerls",
         go = "gopls",
         html = "html",
         java = "jdtls",
