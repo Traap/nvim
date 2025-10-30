@@ -111,6 +111,14 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "ColorScheme" }, {
     vim.api.nvim_set_hl(0, "PmenuKindSel", { fg = "#e0af68", bg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "PmenuEstraSel", { fg = "#e0af68", bg = "#bb9af7" })
 
+    -- Snacks
+    vim.api.nvim_set_hl(0, "SnacksInputBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "SnacksPickerBoxBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "SnacksPickerInputBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "SnacksPickerListBorder", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "SnacksPreviewListBorder", { fg = "#bb9af7" })
+
     -- WhichKey
     vim.api.nvim_set_hl(0, "WhichKeyBorder", { fg = "#bb9af7" })
   end,
