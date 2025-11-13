@@ -18,7 +18,7 @@ return {
         "javascript", "json", "jsonc", "julia", "latex", "lua", "markdown",
         "markdown_inline", "python", "query", "regex", "ruby", "scss", "sql",
         "svelte", "toml", "tsx", "typescript", "typst", "vim", "vimdoc", "vue",
-        "xml", "yaml",
+        "xml", "yaml", "zig"
       }
 
       for _, parser in ipairs(parsers) do
