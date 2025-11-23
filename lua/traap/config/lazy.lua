@@ -2,8 +2,7 @@
 
 require("lazy").setup({
   spec = {
-
-    -- -- LazyVim plugins.
+    -- LazyVim plugins.
     -- { "LazyVim/LazyVim", import = "lazyvim.plugins",
     --   opts = require("traap.config.lazyvim").opts
     -- },
@@ -12,6 +11,8 @@ require("lazy").setup({
     { import = "traap.plugins",
       opts = require("traap.config.lazyvim").opts
     },
+
+
   },
 
   build = { warn_on_override = true, },

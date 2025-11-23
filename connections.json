@@ -1,0 +1,19 @@
+{
+  "connections": [
+    {
+      "name": "GSASQL16",
+      "type": "sqlserver",
+      "url": "Driver=FreeTDS;Server=GSASQL16;Port=1433;TDS_Version=7.4;Database=GSABSS;Trusted_Connection=yes;Encrypt=yes;TrustServerCertificate=yes;"
+    },
+    {
+      "name": "GSASQL6",
+      "type": "sqlserver",
+      "url": "Driver=FreeTDS;Server=GSASQL6;Port=1433;TDS_Version=7.4;Database=Repgen;Trusted_Connection=yes;Encrypt=yes;TrustServerCertificate=yes;"
+    },
+    {
+      "name": "GSA-Scan",
+      "type": "sqlserver",
+      "url": "Driver=FreeTDS;Server=GSASQL16;Port=1433;TDS_Version=7.4;Database=[GSA Scan];Trusted_Connection=yes;Encrypt=yes;TrustServerCertificate=yes;"
+    }
+  ]
+}

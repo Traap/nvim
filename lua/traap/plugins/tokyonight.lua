@@ -17,7 +17,8 @@ return {
     }
 
     opts.on_colors = function(colors)
-      colors.border = "#3b4261"
+      -- colors.border = "#3b4261"
+      colors.border = "#bb9af7"
     end
   end,
 

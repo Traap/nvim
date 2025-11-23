@@ -1,11 +1,12 @@
 return {
   "Traap/vim-bundle-plantuml",
-  event = require("traap.config.events").file,
   enabled = true,
 
+  ft = { "puml" },
+
   keys = {
-    {"<leader>gu", "<cmd>PlantUmlAssemble<cr>"},
-    {"<leader>gv", "<cmd>PlantUmlView<cr>"},
+    { "<leader>gu", "<cmd>PlantUmlAssemble<cr>" },
+    { "<leader>gv", "<cmd>PlantUmlView<cr>" },
   },
 
   dependencies = {

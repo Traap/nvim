@@ -1,12 +1,12 @@
 return {
   'kristijanhusak/vim-dadbod-ui',
-  enabled = true,
-  event = require("traap.config.events").file,
+  enabled = false,
   dependencies = {
     { 'tpope/vim-dadbod', lazy = true },
-    { 'kristijanhusak/vim-dadbod-completion',
-       ft = { 'sql', 'mysql', 'plsql' },
-       lazy = true,
+    {
+      'kristijanhusak/vim-dadbod-completion',
+      ft = { 'sql', 'mysql', 'plsql' },
+      lazy = true,
     },
   },
 
@@ -42,9 +42,11 @@ return {
 
     vim.g.db_ui_table_helpers = {
       sqlserver = {
-         Count = 'select count(*) from {table}'
-        ,Top10 = 'select top 10 * from {table}'
-        ,ColumnInfo = 'exec sp_columns {table}'
+        Count = 'select count(*) from {table}'
+        ,
+        Top10 = 'select top 10 * from {table}'
+        ,
+        ColumnInfo = 'exec sp_columns {table}'
       }
     }
   end,

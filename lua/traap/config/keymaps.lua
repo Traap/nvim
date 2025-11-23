@@ -24,32 +24,35 @@ keymap("v", "<A-k>", "")
 -- {{{ General mappings.
 
 -- Delete the current line.
-keymap("n", "-", "dd", {desc = "Delete line"})
+keymap("n", "-", "dd", { desc = "Delete line" })
 
 -- Select (charwise) the contents of the current line, excluding indentation.
-keymap("n", "vv", "^vg_", {desc = "Charwise line select" })
+keymap("n", "vv", "^vg_", { desc = "Charwise line select" })
 
 -- Select entire buffer
-keymap("n", "vaa", "ggvGg_", {desc = "Select buffer char mode"})
-keymap("n", "Vaa", "ggVG", {desc = "Select buffer line mode "})
+keymap("n", "vaa", "ggvGg_", { desc = "Select buffer char mode" })
+keymap("n", "Vaa", "ggVG", { desc = "Select buffer line mode " })
 
 -- Save all files.
-keymap("n", ";s", "<cmd>write<cr>", {desc="Write buffer"})
-keymap("n", ";w", "<cmd>wall<cr>", {desc="Write all buffers"})
-keymap("i", "<C-j>", "<cmd>write<cr>", {desc="Write buffer"})
+keymap("n", ";W", "<cmd>wqall!<cr>", { desc = "Write quit all!" })
+keymap("n", ";w", "<cmd>wall<cr>", { desc = "Write all buffers" })
+keymap("n", ";q", "<cmd>qall!<cr>", { desc = "Quit all!" })
+keymap("n", ";s", "<cmd>write<cr>", { desc = "Write buffer" })
+
+keymap("i", "<C-j>", "<cmd>write<cr>", { desc = "Write buffer" })
 
 -- Toggle [in]visible characters.
-keymap("n", "<leader>i", "<cmd>set list!<cr>", {desc="Toggle invisible chars"})
+keymap("n", "<leader>i", "<cmd>set list!<cr>", { desc = "Toggle invisible chars" })
 
 -- Stay in indent mode.
-keymap("v", "<", "<gv", {desc="Visual Outdent"})
-keymap("v", ">", ">gv", {desc="Visual Indent"})
+keymap("v", "<", "<gv", { desc = "Visual Outdent" })
+keymap("v", ">", ">gv", { desc = "Visual Indent" })
 
 -- Obfuscate
-keymap("n", "<f3>", "mmggg?G`m", {desc="Obfuscate toogle"})
+keymap("n", "<f3>", "mmggg?G`m", { desc = "Obfuscate toogle" })
 
 --  ;x conflicts with LazyVim
-keymap("n", ";x", "<Plug>(bullets-toggle-checkbox)", {desc="Checkbox toggle"})
+keymap("n", ";x", "<Plug>(bullets-toggle-checkbox)", { desc = "Checkbox toggle" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
@@ -58,89 +61,89 @@ keymap("n", ";x", "<Plug>(bullets-toggle-checkbox)", {desc="Checkbox toggle"})
 --    See: https://github.com/lervag/dotnvim
 
 -- Close all fold except the current one.
-keymap("n", "zv", "zMzvzz", {desc='Close all folds except current'})
+keymap("n", "zv", "zMzvzz", { desc = 'Close all folds except current' })
 
 -- Close current fold when open. Always open next fold.
-keymap("n", "zj", "zcjzOzz", {desc='Close fold & open next one'})
+keymap("n", "zj", "zcjzOzz", { desc = 'Close fold & open next one' })
 
 -- Close current fold when open. Always open previous fold.
-keymap("n", "zk", "zckzOzz", {desc='Close fold & open previous one'})
+keymap("n", "zk", "zckzOzz", { desc = 'Close fold & open previous one' })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Keep the cursor in place while joining lines.
 
-keymap("n", "J", "mzJ`z", {desc="Join lines"})
-keymap("n", "<leader>J", "myvipJ`ygq<cr>", {desc="Join Paragraph"})
+keymap("n", "J", "mzJ`z", { desc = "Join lines" })
+keymap("n", "<leader>J", "myvipJ`ygq<cr>", { desc = "Join Paragraph" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Shell commands.
 
 -- Execute the current line of text as a shell command.
 keymap("n", "<localleader>E",
-  [[0mMvg_"ky :exec "r!" getreg("k")<cr>]], {desc="Execute current line"}
+  [[0mMvg_"ky :exec "r!" getreg("k")<cr>]], { desc = "Execute current line" }
 )
 
 keymap("v", "<localleader>E",
-  [["ky :exec "r!" getreg("k")<cr>]], {desc="Execute current selection"}
+  [["ky :exec "r!" getreg("k")<cr>]], { desc = "Execute current selection" }
 )
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
 
-keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>", {desc="Clear highghted"})
+keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>", { desc = "Clear highghted" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ G - Global to buffer.
 
 -- Delete buffer contents.
-keymap("n", "<leader>G", "ggdG", {desc="Delete buffer contents."})
+keymap("n", "<leader>G", "ggdG", { desc = "Delete buffer contents." })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ H - Help
 
-keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>", {desc="Vertical help"})
+keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>", { desc = "Vertical help" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ V - Linewise reselection of what you just pasted.
 
-keymap("n", "<leader>VV", "V`]", {desc="Linewise reslection of last paste"})
+keymap("n", "<leader>VV", "V`]", { desc = "Linewise reslection of last paste" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ b - Buffer adjustments.
 
 keymap("n", "<leader>bh",
   "<cmd>vertical resize -1<cr>",
-  {desc='Vertical resize -1'}
+  { desc = 'Vertical resize -1' }
 )
 
 keymap("n", "<leader>bj",
   "<cmd>resize +1<cr>",
-  {desc='Horizontal resize +1'}
+  { desc = 'Horizontal resize +1' }
 )
 
 keymap("n", "<leader>bk",
   "<cmd>resize -1<cr>",
-  {desc='Horizontal resize -1'}
+  { desc = 'Horizontal resize -1' }
 )
 
 keymap("n", "<leader>bl",
   "<cmd>vertical resize +1<cr>",
-  {desc='Vertical resize +1'}
+  { desc = 'Vertical resize +1' }
 )
 
 keymap("n", "<leader>bx",
   [[<cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]],
-  {desc="Source current file."}
+  { desc = "Source current file." }
 )
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ c - Yank buffer
 
-keymap("n", "<leader>yb", 'ggVGg_"+y', {desc="Select buffer char mode"})
+keymap("n", "<leader>yb", 'ggVGg_"+y', { desc = "Select buffer char mode" })
 
 keymap('x', 'cb',
   [[:lua require("traap.core.comment_block").surround()<cr>]],
-  { desc = 'Surround selction with comment block.'}
+  { desc = 'Surround selction with comment block.' }
 )
 
 -- ------------------------------------------------------------------------- }}}
@@ -159,36 +162,29 @@ keymap('n', 'gk',
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options
 
-keymap("n", "<leader>oh", "<cmd>checkhealth<cr>", {desc="Checkhealth"})
-keymap("n", "<leader>oo", "<cmd>only<cr>", {desc="Only current buffer"})
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Q/q - Quit
-
--- Quit all and Save All
-keymap("n", "<leader>q", "<cmd>qall!<cr>", {desc="Quit all!"})
-keymap("n", "<leader>wq", "<cmd>wqall!<cr>", {desc="Write quit all!" })
+keymap("n", "<leader>oh", "<cmd>checkhealth<cr>", { desc = "Checkhealth" })
+keymap("n", "<leader>oo", "<cmd>only<cr>", { desc = "Only current buffer" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ s - Split & Sorts
 
-keymap("n", "<leader>sj", "<cmd>split<cr>", {desc="Split horizontal"})
-keymap("n", "<leader>sl", "<cmd>vsplit<cr>", {desc="Split vertical"})
-keymap("n", "<leader>ss", "0v)k$:sort<cr>", {desc="Sort acronym list"})
-keymap("n", "<leader>sr", "<cmd>GrugFar<cr>", {desc="Scan and Replace"})
+keymap("n", "<leader>sj", "<cmd>split<cr>", { desc = "Split horizontal" })
+keymap("n", "<leader>sl", "<cmd>vsplit<cr>", { desc = "Split vertical" })
+keymap("n", "<leader>ss", "0v)k$:sort<cr>", { desc = "Sort acronym list" })
+keymap("n", "<leader>sr", "<cmd>GrugFar<cr>", { desc = "Scan and Replace" })
 
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ w - Whitespace
 
 keymap("n", "<leader>wr", [[mz<cmd>%s/\r//g<cr><cmd>let @/=''<cr>`z]],
-  {desc="Remove Windoz line ending"})
+  { desc = "Remove Windoz line ending" })
 
 keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]],
-  {desc="Convert tab to 2 spaces"})
+  { desc = "Convert tab to 2 spaces" })
 
 keymap("n", "<leader>ww", [[mz<cmd>%s/\s\+$//e<cr><cmd>let @/=''<cr>`z]],
-  {desc="Remove line end and trailing white spaces"})
+  { desc = "Remove line end and trailing white spaces" })
 
 vim.api.nvim_set_keymap(
   'n',
@@ -201,17 +197,17 @@ vim.api.nvim_set_keymap(
   'n',
   '<leader>r|',
   [[:%s/\\s*|\\s*/|/g<CR>]],
-  { noremap = true, silent = true, desc = "Remove whitespace before and after |"}
+  { noremap = true, silent = true, desc = "Remove whitespace before and after |" }
 )
 
 vim.api.nvim_set_keymap(
   "n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>",
-  { desc="Delete empty lines"}
+  { desc = "Delete empty lines" }
 )
 
 vim.api.nvim_set_keymap(
   "n", "<leader>|", "<cmd>%s/\t/|/g<CR>",
-  { desc="Replace \t with |"}
+  { desc = "Replace \t with |" }
 )
 
 -- ------------------------------------------------------------------------- }}}

@@ -1,6 +1,6 @@
 return {
   "HakonHarnes/img-clip.nvim",
-  enabled = true,
+  enabled = (vim.loop.os_uname().sysname ~= "Windows_NT"),
   event = require("traap.config.events").file,
 
   keys = {

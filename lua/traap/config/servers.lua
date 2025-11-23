@@ -214,7 +214,7 @@ M.lsp_server_names = function()
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Return linter names to install via mason-nvim-lint
+- - {{{ Return linter names to install via mason-nvim-lint
 
 M.linters_for_mason = function()
   return {
