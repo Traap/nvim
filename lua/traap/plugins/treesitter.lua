@@ -35,7 +35,7 @@ return {
           if not lang then return end
 
           -- already available → nothing to do
-          if pcall(vim.treesitter.language.require_language, lang) then
+          if pcall(vim.treesitter.language.add, lang) then
             return
           end
 
