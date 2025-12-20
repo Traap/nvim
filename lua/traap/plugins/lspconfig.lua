@@ -167,34 +167,29 @@ return {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
+
     opts = {
-      ensure_installed = {},
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
       indent = { enable = true },
     },
+
     config = function(_, opts)
       local notify = require("traap.core.notify")
-
-      local ok, ts = pcall(require, "nvim-treesitter.configs")
-      if not ok then
-        notify.warn("nvim-treesitter.configs not available")
-        return
-      end
-      ts.setup(opts)
-
       local parsers = require("nvim-treesitter.parsers")
       local supported = vim.tbl_keys(parsers.get_parser_configs())
 
-      -- skip pseudo filetypes that break parser install
       local skip_fts = {
         fugitive = true,
         gitcommit = true,
         help = true,
-        qf = true,
-        lspinfo = true,
-        notify = true,
         lazy = true,
+        lspinfo = true,
         mason = true,
+        notify = true,
+        qf = true,
       }
 
       vim.api.nvim_create_autocmd("FileType", {
