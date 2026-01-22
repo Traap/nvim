@@ -65,7 +65,7 @@ return {
 
   { enabled = true,  ft = RUBY,     "tpope/vim-bundler" },
   { enabled = true,  ft = RUBY,     "tpope/vim-rails" },
-  { enabled = true,  ft = PUML,     "aklt/plantuml-syntax" },
+  -- { enabled = true,  ft = PUML,     "aklt/plantuml-syntax" },
   { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
   { enabled = true,  ft = WIKI,     "Traap/vim-bundle-wiki.vim",              dependencies = "lervag/wiki.vim" },
   { enabled = true,  ft = WIKI,     "lervag/wiki-ft.vim",                     dependencies = "lervag/wiki.vim" },
