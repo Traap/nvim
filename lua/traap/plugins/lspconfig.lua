@@ -94,7 +94,7 @@ return {
         markdown = "marksman",
         nix = "rnix",
         python = "pyright",
-        -- ruby = "solargraph",
+        ruby = "solargraph",
         sql = "sqlls",
         svelte = "svelte",
         tex = "texlab",
