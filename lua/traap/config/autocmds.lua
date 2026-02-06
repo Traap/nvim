@@ -86,13 +86,21 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "ColorScheme" }, {
     -- Noice
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { fg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { fg = "#bb9af7" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCalculator", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(
+      0,
+      "NoiceCmdlinePopupBorderCalculator",
+      { fg = "#bb9af7" }
+    )
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline", { fg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderFilter", { fg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderHelp", { fg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderLua", { fg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderInput", { fg = "#bb9af7" })
-    vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderIncRename", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(
+      0,
+      "NoiceCmdlinePopupBorderIncRename",
+      { fg = "#bb9af7" }
+    )
     vim.api.nvim_set_hl(0, "NoiceConfirmBorder", { fg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "NoicePopupBorder", { fg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "NoicePopupmenuBorder", { fg = "#bb9af7" })
@@ -151,7 +159,10 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set(
-      "n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true }
+      "n",
+      "q",
+      "<cmd>close<cr>",
+      { buffer = event.buf, silent = true }
     )
   end,
 })
@@ -244,7 +255,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function(event)
     local exclude = { "gitcommit", "fugitive" }
     local buf = event.buf
-    if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].lazyvim_last_loc then
+    if
+        vim.tbl_contains(exclude, vim.bo[buf].filetype)
+        or vim.b[buf].lazyvim_last_loc
+    then
       return
     end
     vim.b[buf].lazyvim_last_loc = true
@@ -282,7 +296,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "startuptime",
     "tsplayground",
   },
-  command = "setlocal colorcolumn=0"
+  command = "setlocal colorcolumn=0",
 })
 
 -- ------------------------------------------------------------------------- }}}
@@ -361,7 +375,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
-  pattern = { "gitcommit", },
+  pattern = { "gitcommit" },
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.wrap = true
