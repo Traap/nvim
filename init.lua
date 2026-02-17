@@ -17,4 +17,10 @@ require("traap.config.autocmds")
 require("traap.config.keymaps")
 require("traap.core.clipboard")
 vim.cmd.colorscheme(require("traap.config.colorscheme").name)
+
 -- require("traap.core.working").whosePlugins()
+
+-- esc fallbadk Omarchy -> vpn -> Reminna -> W11
+vim.keymap.set("i", "jk", function()
+  return vim.fn.pumvisible() == 1 and "jk" or "<Esc>"
+end, { expr = true, noremap = true, silent = true })
