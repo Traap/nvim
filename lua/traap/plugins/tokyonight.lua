@@ -1,7 +1,8 @@
 return {
   "folke/tokyonight.nvim",
   enabled = true,
-  lazy = false,
+  event = "VeryLazy",
+  -- lazy = false,
   priority = 1000,
 
    opts = function(_, opts)

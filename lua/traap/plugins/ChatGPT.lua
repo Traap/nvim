@@ -1,7 +1,7 @@
 return {
   "jackMort/ChatGPT.nvim",
-  event = "VeryLazy",
-  enabled = false,
+  event = require("traap.config.events").file,
+  enabled = true,
 
   config = function()
     require("chatgpt").setup()

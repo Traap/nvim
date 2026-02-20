@@ -1,11 +1,11 @@
 return {
   "folke/noice.nvim",
   enabled = true,
-  lazy = false,
+  event = "VeryLazy",
 
   keys = {
-    {"<leader>ne", "<cmd>NoiceErrors<cr>"},
-    {"<leader>nh", "<cmd>NoiceHistory<cr>"}
+    { "<leader>ne", "<cmd>NoiceErrors<cr>" },
+    { "<leader>nh", "<cmd>NoiceHistory<cr>" },
   },
 
   opts = function(_, opts)
@@ -23,10 +23,24 @@ return {
       },
       format = {
         cmdline = { pattern = "^:", icon = "$", lang = "vim" },
-        search_down = { kind = "search", pattern = "^/", icon = "", lang = "regex" },
-        search_up = { kind = "search", pattern = "^%?", icon = "", lang = "regex" },
+        search_down = {
+          kind = "search",
+          pattern = "^/",
+          icon = "",
+          lang = "regex",
+        },
+        search_up = {
+          kind = "search",
+          pattern = "^%?",
+          icon = "",
+          lang = "regex",
+        },
         filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
-        lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
+        lua = {
+          pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
+          icon = "",
+          lang = "lua",
+        },
         help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
         input = {},
       },
@@ -116,7 +130,7 @@ return {
     -- --------------------------------------------------------------------- }}}
     -- {{{ Messages
 
-    opts.messages  = {
+    opts.messages = {
       enabled = true,
       view = "snacks",
       view_error = "snacks",
@@ -130,7 +144,7 @@ return {
 
     opts.notify = {
       enabled = true,
-      view = "snacks"
+      view = "snacks",
     }
 
     -- --------------------------------------------------------------------- }}}
@@ -156,7 +170,7 @@ return {
     -- --------------------------------------------------------------------- }}}
     -- {{{ Redirect
 
-    opts.redirect  = {
+    opts.redirect = {
       view = "mini",
       filter = { event = "msg_show" },
     }
@@ -179,10 +193,10 @@ return {
             { find = "^%d+ more lines;?" },
             { find = "^%d+ line lesses;?" },
             { find = ".*Pattern not found.*$" },
-            { find = '^%d+ lines .ed %d+ times?$' },
-            { find = '^%d+ lines yanked$' },
-            { kind = 'wmsg' },
-          }
+            { find = "^%d+ lines .ed %d+ times?$" },
+            { find = "^%d+ lines yanked$" },
+            { kind = "wmsg" },
+          },
         },
         opts = { skip = true },
       },
@@ -196,7 +210,6 @@ return {
         },
         view = "mini",
       },
-
     }
 
     -- --------------------------------------------------------------------- }}}
@@ -222,8 +235,8 @@ return {
         },
         border = {
           style = "none",
-          padding = {0, 1},
-        }
+          padding = { 0, 1 },
+        },
       },
     }
 

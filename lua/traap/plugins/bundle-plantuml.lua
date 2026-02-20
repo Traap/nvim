@@ -1,7 +1,7 @@
 return {
   "Traap/vim-bundle-plantuml",
   enabled = true,
-  event = 'VeryLazy',
+  event = "VeryLazy",
 
   ft = { "puml" },
 
@@ -12,5 +12,6 @@ return {
 
   dependencies = {
     "aklt/plantuml-syntax",
+    event = "VeryLazy",
   },
 }
