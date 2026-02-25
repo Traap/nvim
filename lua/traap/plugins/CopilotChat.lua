@@ -1,7 +1,7 @@
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    enabled = true,
+    enabled = true and (not vim.g.vscode),
 
     branch = "main",
     cmd = "CopilotChat",

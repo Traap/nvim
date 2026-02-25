@@ -2,7 +2,8 @@ return {
   -- {{{ Define the Harpoon lazy.vim specificaiton.
 
   "ThePrimeagen/harpoon",
-  enabled = true,
+  enabled = true and (not vim.g.vscode),
+
   event = require("traap.config.events").file,
   branch = "harpoon2",
   dependencies = {

@@ -226,3 +226,22 @@ vim.keymap.set('v', '<leader><leader>xs',
 )
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ vscode bridge
+
+if vim.g.vscode then
+  -- Navigate VSCode tabs like lazyvim buffers
+  vim.keymap.set("n", "<S-h>", function()
+    vscode.call("workbench.action.previousEditor")
+  end)
+
+  vim.keymap.set("n", "<S-l>", function()
+    vscode.call("workbench.action.nextEditor")
+  end)
+
+  -- Toggle VS Explorer sidebar
+  vim.keymap.set("n", "<S-l>", function()
+    vscode.call("workbench.action.toggleSidebarVisibility")
+  end)
+end
+
+-- ------------------------------------------------------------------------- }}}

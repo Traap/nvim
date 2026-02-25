@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  enabled = true,
+  enabled = true and (not vim.g.vscode),
   event = require("traap.config.events").file,
   priority = 999,
 
@@ -69,8 +69,8 @@ return {
       lualine_c = { "filename" },
       lualine_x = {
         { show_macro_recording },
-        { "progress", separator = " ", padding = { left = 1, right = 0 } },
-        { "location", padding = { left = 0, right = 1 } },
+        { "progress",          separator = " ",                  padding = { left = 1, right = 0 } },
+        { "location",          padding = { left = 0, right = 1 } },
       },
       lualine_y = { "fileformat", "filetype" },
       lualine_z = { "encoding" },
@@ -93,4 +93,3 @@ return {
     opts.extensions = { "neo-tree", "lazy" }
   end,
 }
-

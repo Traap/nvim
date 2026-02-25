@@ -1,12 +1,13 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    enabled = true,
     event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
 
     opts = {
       highlight = {
-        enable = true,
+        enable = true and not vim.g.vscode,
         additional_vim_regex_highlighting = false,
       },
       indent = { enable = true },

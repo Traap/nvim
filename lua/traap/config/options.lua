@@ -5,7 +5,7 @@ local options = {
   autoread = true,
   autowrite = true,
   breakindent = true,
-  clipboard = "unnamed,unnamedplus",
+  clipboard = vim.env.SSH_CONNECTION and "" or "unnamedplus",
   colorcolumn = "+1",
   cmdheight = 0,
   complete = { ".", "w", "b", "u", "t", "i", "kspell" },
@@ -24,6 +24,12 @@ local options = {
   nrformats = { "alpha", "octal", "hex" },
   number = true,
   numberwidth = 3,
+
+  -- Popup blend
+  pumblend = 10,
+
+  -- Maximum number of entries in a popup
+  pumheight = 10,
   relativenumber = true,
   scrolloff = 0,
   shiftround = true,
@@ -44,12 +50,12 @@ local options = {
   termguicolors = true,
   textwidth = 80,
   timeout = true,
-  timeoutlen = 270,
+  timeoutlen = vim.g.vscode and 1000 or 270,
   ttimeout = true,
   ttimeoutlen = 5,
   updatetime = 500,
   virtualedit = { "block" },
-  wildmode = { "list", "longest" },
+  wildmode = { "longest:full", "full" },
   winborder = 'rounded',
   wrap = false,
 }
@@ -60,10 +66,13 @@ end
 
 vim.opt.formatoptions:remove("o")
 
-vim.cmd[[set termguicolors]]
+vim.cmd [[set termguicolors]]
 vim.cmd([[filetype plugin indent on]])
 
 vim.g.have_nerd_font = true
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Bullets

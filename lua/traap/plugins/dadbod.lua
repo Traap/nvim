@@ -1,6 +1,7 @@
 return {
   'kristijanhusak/vim-dadbod-ui',
-  enabled = true,
+  enabled = true and (not vim.g.vscode),
+
   -- event = require("traap.config.events").file,
   lazy = true,
 

@@ -4,6 +4,7 @@ return {
   -- Mason.nvim
   {
     "mason-org/mason.nvim",
+    enabled = true and (not vim.g.vscode),
     event = { "BufReadPre", "BufNewFile" },
     opts = {},
   },
@@ -11,6 +12,7 @@ return {
   -- Mason-lspconfig.nvim
   {
     "mason-org/mason-lspconfig.nvim",
+    enabled = true and (not vim.g.vscode),
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
     opts = { ensure_installed = {} }, -- handled dynamically
@@ -19,6 +21,7 @@ return {
   -- nvim-lspconfig with dynamic auto-install
   {
     "neovim/nvim-lspconfig",
+    enabled = true and (not vim.g.vscode),
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local mason_lsp = require("mason-lspconfig")

@@ -2,6 +2,8 @@
 
 local clipboard = {}
 
+local is_vscode = vim.g.vscode ~= nil
+
 local function executable(cmd)
   return vim.fn.executable(cmd) == 1
 end
@@ -21,7 +23,10 @@ local function is_git_bash()
 end
 
 -- Configure clipboard
-if in_wsl() and is_wayland() then
+if is_vscode then
+  -- Do nothing hack
+
+elseif in_wsl() and is_wayland() then
    -- WSLg clipboard (native)
    vim.g.clipboard = {
     name = 'wsl clipboard',

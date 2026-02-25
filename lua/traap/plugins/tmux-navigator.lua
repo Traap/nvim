@@ -1,6 +1,6 @@
 return {
   "christoomey/vim-tmux-navigator",
-  enabled = true,
+  enabled = true and (not vim.g.vscode),
 
   keys = {
     {"<c-h>", "<cmd>TmuxNavigateLeft<cr>"},

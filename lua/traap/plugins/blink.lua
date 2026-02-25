@@ -1,6 +1,7 @@
 return {
   'saghen/blink.cmp',
-  enable = true,
+  enabled = true and (not vim.g.vscode),
+
   dependencies = { 'rafamadriz/friendly-snippets' },
   version = '1.*',
   opts = {

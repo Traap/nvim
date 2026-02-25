@@ -1,6 +1,6 @@
 return {
   "folke/noice.nvim",
-  enabled = true,
+  enabled = true, -- and (not vim.g.vscode),
   event = "VeryLazy",
 
   keys = {

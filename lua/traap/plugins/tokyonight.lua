@@ -1,7 +1,7 @@
 return {
   "folke/tokyonight.nvim",
-  enabled = true,
   event = "VeryLazy",
+  enabled = true and (not vim.g.vscode),
   -- lazy = false,
   priority = 1000,
 

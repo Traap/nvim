@@ -1,7 +1,8 @@
 return {
   "jackMort/ChatGPT.nvim",
+  enabled = true and (not vim.g.vscode),
+
   event = require("traap.config.events").file,
-  enabled = true,
 
   config = function()
     require("chatgpt").setup()

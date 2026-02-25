@@ -3,6 +3,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.lazyvim_check_order = false
 
+-- Disable certian plugins, autocommands, etc when inside VScode.
+local is_vscode = vim.g.vscode ~= nil
+
 require("traap.core.notify")
 
 -- Bootstrap using lazy.nvim package manager.
@@ -16,8 +19,10 @@ require("traap.config.options")
 require("traap.config.autocmds")
 require("traap.config.keymaps")
 require("traap.core.clipboard")
-vim.cmd.colorscheme(require("traap.config.colorscheme").name)
 
+if not is_vscode then
+  vim.cmd.colorscheme(require("traap.config.colorscheme").name)
+end
 -- require("traap.core.working").whosePlugins()
 
 -- esc fallbadk Omarchy -> vpn -> Reminna -> W11
