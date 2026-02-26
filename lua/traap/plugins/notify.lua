@@ -9,6 +9,7 @@ return {
     -- Defaults + just set the transparency base color
     notify.setup({
       background_colour = "#000000",
+      timeout = 500,
     })
 
     -- Route vim.notify through nvim-notify everywhere
