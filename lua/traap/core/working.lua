@@ -6,7 +6,8 @@ local function hostname()
 end
 
 local function notify(msg, level, title)
-  -- If nvim-notify is installed and enabled, use it; otherwise fall back to vim.notify.
+  -- If nvim-notify is installed and enabled, use it; otherwise fall back to
+  -- vim.notify.
   local ok, n = pcall(require, "notify")
   if ok then
     n(msg, level, { title = title })
