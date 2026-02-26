@@ -189,6 +189,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 -- {{{ csv settings.
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+
   group = augroup("csv"),
   command = "setlocal filetype=csv nowrap textwidth=0",
   pattern = "*.csv",

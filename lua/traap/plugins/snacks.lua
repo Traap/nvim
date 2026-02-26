@@ -4,7 +4,7 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
-  enable = true,
+  enable = true and not is_vscode,
 
   opts = {
     bigfile = { enabled = true and not is_vscode },
@@ -83,7 +83,7 @@ return {
     {
       "<leader>/",
       function()
-        if is_vscode then
+        if not is_vscode then
           vim.fn.VSCodeNotify("workbench.action.findInFiles")
         else
           Snacks.picker.grep()

@@ -66,7 +66,7 @@ end
 
 vim.opt.formatoptions:remove("o")
 
-vim.cmd [[set termguicolors]]
+vim.cmd([[set termguicolors]])
 vim.cmd([[filetype plugin indent on]])
 
 vim.g.have_nerd_font = true
@@ -74,10 +74,31 @@ vim.g.have_nerd_font = true
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
+-- Shutup vscode
+if vim.g.vscode then
+  -- Stop "X lines yanked / more / fewer" for normal edits.
+  vim.opt.report = 9999
+
+  -- Stop incremental search
+  vim.opt.incsearch = false
+
+  -- My shortmess defaults "aToIOWAF",
+  vim.opt.shortmess:append("AcCFSsW")
+
+  -- Silent undo: don't show "Aleardy at oldest change."
+  vim.keymap.set("n", "u", function()
+    local ut = vim.fn.undotree()
+    if ut.seq_cur > 0 then
+      vim.cmd("silent! undo")
+    end
+  end, { desc = "Undo (silent)" })
+end
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Bullets
-
+--
 vim.g.bullets_enabled_file_types = {
+
   "gitcommit",
   "markdown",
   "scratch",
