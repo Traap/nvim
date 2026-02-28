@@ -1,13 +1,19 @@
 -- Am I using Neovim @home or @work?
 local M = {}
 
-local function hostname()
+local function get_host()
   return vim.uv.os_gethostname()
 end
 
+local function is_verbose()
+  local verbose = vim.uv.os_getenv("NVIM_VERBOSE")
+  return verbose and verbose ~= "false" and verbose ~= "0"
+end
+
 local function notify(msg, level, title)
-  -- If nvim-notify is installed and enabled, use it; otherwise fall back to
-  -- vim.notify.
+  if not is_verbose() then
+    return
+  end
   local ok, n = pcall(require, "notify")
   if ok then
     n(msg, level, { title = title })
@@ -16,8 +22,14 @@ local function notify(msg, level, title)
   end
 end
 
+local function notify_at_host(msg, level)
+  local host = get_host()
+  local title = host .. " startup"
+  notify(msg, level, title)
+end
+
 function M.at_home()
-  local host = hostname()
+  local host = get_host()
   local hostnames = { "DarkKnight", "DarkNight", "Ninja", "Zero" }
 
   for _, h in ipairs(hostnames) do
@@ -34,13 +46,10 @@ function M.whosePlugins()
     return
   end
 
-  local host = hostname()
-  local title = host .. " startup"
-
   if pcall(require, "lazyvim") then
-    notify("LazyVim plugins ARE used.", "warn", title)
+    notify_at_host("LazyVim plugins ARE used.", "warn")
   else
-    notify("LazyVim plugins are NOT used.", "info", title)
+    notify_at_host("LazyVim plugins are NOT used.", "info")
   end
 end
 
@@ -48,13 +57,11 @@ function M.from()
   if vim.g.vscode then
     return
   end
-  local host = hostname()
-  local title = host .. " startup"
 
   if M.at_home() then
-    notify(host .. " working home", "info", title)
+    notify_at_host("Working home", "info")
   else
-    notify(host .. " working remote", "info", title)
+    notify_at_host("Working remote", "info")
   end
 end
 
