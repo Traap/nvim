@@ -32,10 +32,12 @@ local RUBY = { "rb", "erb" }
 local TEX = { "tex", "texx" }
 local WIKI = { "md", "wiki" }
 
+local platform = require("traap.core.platform")
+
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Enable plugins when I'm not using vscode
 
-if vim.g.vscode then
+if platform.is_nvim() then
   return {
     { enabled = false, event = EVENT, "RRethy/vim-illuminate" },
     { enabled = false, event = EVENT, "akinsho/bufferline.nvim" },

@@ -1,8 +1,9 @@
+local platform = require("traap.core.platform")
 return {
   -- {{{ Define the Harpoon lazy.vim specificaiton.
 
   "ThePrimeagen/harpoon",
-  enabled = true and (not vim.g.vscode),
+  enabled = true and platform.is_nvim(),
 
   event = require("traap.config.events").file,
   branch = "harpoon2",

@@ -1,4 +1,5 @@
 -- {{{ local keymap function
+local platform = require("traap.core.platform")
 
 -- keymaps are silent and noremap by default
 local function keymap(mode, lhs, rhs, opts)
@@ -228,7 +229,7 @@ vim.keymap.set('v', '<leader><leader>xs',
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vscode bridge
 
-if vim.g.vscode then
+if platform.is_vscode() then
   -- Navigate VSCode tabs like lazyvim buffers
   vim.keymap.set("n", "<S-h>", function()
     vscode.call("workbench.action.previousEditor")

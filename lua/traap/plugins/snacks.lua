@@ -1,32 +1,32 @@
 -- Snacks = Snacks
-local is_vscode = vim.g.vscode ~= nil
+local platform = require("traap.core.platform")
 return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
-  enable = true and not is_vscode,
+  enable = true and platform.is_nvim(),
 
   opts = {
-    bigfile = { enabled = true and not is_vscode },
+    bigfile = { enabled = true },
     dashboard = {
-      enabled = true and not is_vscode,
+      enabled = true,
       preset = { header = [[Configured by Traap and powered by lazy.nvim.]] },
     },
     git = { enabled = true },
     gitbrowse = { enabled = true },
-    explorer = { enabled = true and not is_vscode },
+    explorer = { enabled = true },
     indent = { enabled = false },
-    input = { enabled = true and not is_vscode },
+    input = { enabled = true },
     image = { enabled = (vim.loop.os_uname().sysname ~= "Windows_NT") },
     notifier = {
-      enabled = true and not is_vscode,
+      enabled = true ,
       timeout = 3000,
       top_down = false,
       title_pos = "left",
     },
 
     picker = {
-      enabled = true and not is_vscode,
+      enabled = true,
       actions = {
         tmux_left = function(_)
           vim.cmd("TmuxNavigateLeft")
@@ -65,11 +65,11 @@ return {
         },
       },
     },
-    quickfile = { enabled = true and not is_vscode },
+    quickfile = { enabled = true},
     scope = { enabled = false },
-    scroll = { enabled = false and not is_vscode },
-    statuscolumn = { enabled = true and not is_vscode },
-    words = { enabled = true and not is_vscode },
+    scroll = { enabled = false },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     -- Top Pickers & Explorer
@@ -83,11 +83,7 @@ return {
     {
       "<leader>/",
       function()
-        if not is_vscode then
-          vim.fn.VSCodeNotify("workbench.action.findInFiles")
-        else
-          Snacks.picker.grep()
-        end
+        Snacks.picker.grep()
       end,
       desc = "Grep",
     },
@@ -102,11 +98,7 @@ return {
     {
       "<leader>e",
       function()
-        if is_vscode then
-          vim.fn.VSCodeNotify("workbench.view.explorer")
-        else
-          Snacks.explorer()
-        end
+        Snacks.explorer()
       end,
       desc = "File Explorer",
     },
@@ -129,11 +121,7 @@ return {
     {
       "<leader>ff",
       function()
-        if is_vscode then
-          vim.fn.VSCodeNotify("workbench.action.quickOpen")
-        else
-          Snacks.picker.files()
-        end
+        Snacks.picker.files()
       end,
       desc = "Find Files",
     },

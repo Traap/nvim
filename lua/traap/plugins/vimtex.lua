@@ -1,7 +1,8 @@
+local platform = require("traap.core.platform")
 return {
   "lervag/vimtex",
   ft = { "tex", "texx" },
-  enabled = true and not vim.g.vscode,
+  enabled = true and platform.is_nvim(),
 
   keys = {
     { "<leader>lC", "<Plug>(vimtex-clean-full)" },

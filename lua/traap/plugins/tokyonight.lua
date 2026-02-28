@@ -1,7 +1,8 @@
+local platform = require("traap.core.platform")
 return {
   "folke/tokyonight.nvim",
   event = "VeryLazy",
-  enabled = true and (not vim.g.vscode),
+  enabled = true and platform.is_nvim(),
   -- lazy = false,
   priority = 1000,
 

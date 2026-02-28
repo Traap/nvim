@@ -1,6 +1,7 @@
+local platform = require("traap.core.platform")
 return {
   "iamcco/markdown-preview.nvim",
-  enabled = false and (not vim.g.vscode),
+  enabled = false and platform.is_nvim(),
   keys = {
     { "<leader>mt", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Toggle Preview" },
     { "<leader>mp", "<cmd>MarkdownPreview<cr>",       desc = "Markdown Preview" },

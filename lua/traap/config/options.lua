@@ -1,6 +1,7 @@
 -- {{{ Alphabetical listing of settings I like.
 
 -- NOTE: formatoptions default "tcqj"
+local platform = require("traap.core.platform")
 local options = {
   autoread = true,
   autowrite = true,
@@ -50,7 +51,7 @@ local options = {
   termguicolors = true,
   textwidth = 80,
   timeout = true,
-  timeoutlen = vim.g.vscode and 1000 or 270,
+  timeoutlen = platform.is_vscode() and 1000 or 270,
   ttimeout = true,
   ttimeoutlen = 5,
   updatetime = 500,
@@ -75,7 +76,7 @@ vim.g.have_nerd_font = true
 vim.g.markdown_recommended_style = 0
 
 -- Shutup vscode
-if vim.g.vscode then
+if platform.is_vscode() then
   -- Stop "X lines yanked / more / fewer" for normal edits.
   vim.opt.report = 9999
 

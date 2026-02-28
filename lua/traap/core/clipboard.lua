@@ -2,7 +2,7 @@
 
 local clipboard = {}
 
-local is_vscode = vim.g.vscode ~= nil
+local platform = require("traap.core.platform")
 
 local function executable(cmd)
   return vim.fn.executable(cmd) == 1
@@ -23,7 +23,7 @@ local function is_git_bash()
 end
 
 -- Configure clipboard
-if is_vscode then
+if platform.is_vscode() then
   -- Do nothing hack
 
 elseif in_wsl() and is_wayland() then

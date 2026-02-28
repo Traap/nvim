@@ -1,6 +1,7 @@
+local platform = require("traap.core.platform")
 return {
   "nvim-lualine/lualine.nvim",
-  enabled = true and (not vim.g.vscode),
+  enabled = true and platform.is_nvim(),
   event = require("traap.config.events").file,
   priority = 999,
 

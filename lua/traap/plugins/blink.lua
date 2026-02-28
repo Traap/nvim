@@ -1,6 +1,7 @@
+local platform = require("traap.core.platform")
 return {
   'saghen/blink.cmp',
-  enabled = true and (not vim.g.vscode),
+  enabled = true and platform.is_nvim(),
 
   dependencies = { 'rafamadriz/friendly-snippets' },
   version = '1.*',

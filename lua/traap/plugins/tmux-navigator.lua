@@ -1,6 +1,7 @@
+local platform = require("traap.core.platform")
 return {
   "christoomey/vim-tmux-navigator",
-  enabled = true and (not vim.g.vscode),
+  enabled = true and platform.is_nvim(),
 
   keys = {
     {"<c-h>", "<cmd>TmuxNavigateLeft<cr>"},

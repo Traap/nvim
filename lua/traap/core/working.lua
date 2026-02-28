@@ -1,5 +1,6 @@
 -- Am I using Neovim @home or @work?
 local M = {}
+local platform = require("traap.core.platform")
 
 local function get_host()
   return vim.uv.os_gethostname()
@@ -42,7 +43,7 @@ function M.at_home()
 end
 
 function M.whosePlugins()
-  if vim.g.vscode then
+  if platform.is_vscode() then
     return
   end
 
@@ -54,7 +55,7 @@ function M.whosePlugins()
 end
 
 function M.from()
-  if vim.g.vscode then
+  if platform.is_vscode() then
     return
   end
 

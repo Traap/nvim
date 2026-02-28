@@ -1,7 +1,8 @@
+local platform = require("traap.core.platform")
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    enabled = true and not vim.g.vscode,
+    enabled = true and platform.is_nvim(),
     event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
 

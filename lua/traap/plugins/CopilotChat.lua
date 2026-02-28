@@ -1,7 +1,8 @@
+local platform = require("traap.core.platform")
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    enabled = true and (not vim.g.vscode),
+    enabled = true and platform.is_nvim(),
 
     branch = "main",
     cmd = "CopilotChat",
