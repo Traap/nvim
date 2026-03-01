@@ -20,7 +20,7 @@ return {
     image = { enabled = (vim.loop.os_uname().sysname ~= "Windows_NT") },
     notifier = {
       enabled = true,
-      timeout = 3000,
+      timeout = 1000,
       top_down = true,
       title_pos = "left",
     },
