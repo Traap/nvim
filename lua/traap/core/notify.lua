@@ -5,8 +5,8 @@ M.verbose = false
 local default_notify = vim.notify
 
 local function is_verbose()
-  local verbose = vim.uv.os_getenv("NVIM_VERBOSE")
-  return verbose and verbose ~= "false" and verbose ~= "0"
+  local env_verbose = vim.uv.os_getenv("NVIM_VERBOSE")
+  return M.verbose or (env_verbose and env_verbose ~= "false" and env_verbose ~= "0")
 end
 
 local function _notify(message, level)
