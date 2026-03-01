@@ -27,14 +27,12 @@ return {
     config = function()
       local mason_lsp = require("mason-lspconfig")
       local notify = require("traap.core.notify")
+      local lspconfig = require("lspconfig")
+
+      local installed_servers = {}
 
       -- Capabilities
-      local capabilities
-      if vim.lsp.protocol and vim.lsp.protocol.client_capabilities then
-        capabilities = vim.lsp.protocol.client_capabilities()
-      else
-        capabilities = vim.lsp.protocol.make_client_capabilities()
-      end
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.offsetEncoding = { "utf-16" }
       capabilities.textDocument.completion.completionItem.snippetSupport = true
       capabilities.textDocument.completion.completionItem.insertTextModeSupport = {
@@ -46,6 +44,8 @@ return {
       -- Diagnostic signs
       local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
       vim.diagnostic.config({ signs = { text = signs } })
+
+      local formatting_group = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
 
       -- on_attach
       local on_attach = function(client, bufnr)
@@ -71,7 +71,7 @@ return {
 
         if client:supports_method("textDocument/formatting") then
           vim.api.nvim_create_autocmd("BufWritePre", {
-            group = vim.api.nvim_create_augroup("LspFormatting", {}),
+            group = formatting_group,
             buffer = bufnr,
             callback = function()
               vim.lsp.buf.format { async = false }
@@ -85,7 +85,7 @@ return {
         bash = "bashls",
         c = "clangd",
         cpp = "clangd",
-        c_sharp = "omnisharp",
+        c_sharp = "csharp_ls",
         css = "cssls",
         -- dockerfile = "dockerls",
         go = "gopls",
@@ -96,11 +96,11 @@ return {
         latex = "ltex",
         lua = "lua_ls",
         markdown = "marksman",
-        nix = "rnix",
+        nix = "nixd",
         python = "pyright",
         ruby = "solargraph",
-        sql = "sqlls",
-        svelte = "svelte",
+        sql = "sqls",
+        svelte = "svelte-language-server",
         tex = "texlab",
         toml = "taplo",
         tsx = "ts_ls",
@@ -149,14 +149,17 @@ return {
 
           -- Version-aware API
           local nvim_version = vim.version()
-          if nvim_version and nvim_version.minor >= 11 and vim.lsp.config and vim.lsp.config[server] then
+          if nvim_version and nvim_version.minor >= 10 and vim.lsp.config and vim.lsp.config[server] then
             notify.info("Using new vim.lsp.config API for " .. server)
             vim.lsp.start(vim.tbl_deep_extend("force", vim.lsp.config[server], server_opts))
           else
+            if installed_servers[server] then
+              return
+            end
+            installed_servers[server] = true
             notify.warn("Using legacy lspconfig API for " .. server)
-            local old = require("lspconfig")
-            if old[server] then
-              old[server].setup(server_opts)
+            if lspconfig[server] then
+              lspconfig[server].setup(server_opts)
             else
               notify.error("No config method found for LSP server: " .. server)
             end
