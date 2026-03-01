@@ -19,9 +19,9 @@ return {
     input = { enabled = true },
     image = { enabled = (vim.loop.os_uname().sysname ~= "Windows_NT") },
     notifier = {
-      enabled = true ,
+      enabled = true,
       timeout = 3000,
-      top_down = false,
+      top_down = true,
       title_pos = "left",
     },
 
@@ -65,7 +65,7 @@ return {
         },
       },
     },
-    quickfile = { enabled = true},
+    quickfile = { enabled = true },
     scope = { enabled = false },
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
@@ -454,25 +454,25 @@ return {
         Snacks.toggle.indent():map("yoi")
         Snacks.toggle.line_number():map("yon")
         Snacks.toggle
-          .option("relativenumber", { name = "Relative Number" })
-          :map("yor")
+            .option("relativenumber", { name = "Relative Number" })
+            :map("yor")
         Snacks.toggle.option("spell", { name = "Spelling" }):map("yos")
         Snacks.toggle.treesitter():map("yot")
         Snacks.toggle.option("wrap", { name = "Wrap" }):map("yow")
 
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle
-          .option(
-            "conceallevel",
-            { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }
-          )
-          :map("<leader>uc")
+            .option(
+              "conceallevel",
+              { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }
+            )
+            :map("<leader>uc")
         Snacks.toggle
-          .option(
-            "background",
-            { off = "light", on = "dark", name = "Dark Background" }
-          )
-          :map("<leader>ub")
+            .option(
+              "background",
+              { off = "light", on = "dark", name = "Dark Background" }
+            )
+            :map("<leader>ub")
         Snacks.toggle.dim():map("<leader>uD")
       end,
     })
