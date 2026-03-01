@@ -21,4 +21,12 @@ function M.is_git_bash()
   return vim.fn.has("win32") == 1 and vim.env.MSYSTEM ~= nil
 end
 
+function M.in_tmux()
+  return os.getenv("TMUX") ~= nil
+end
+
+function M.get_host()
+  return vim.uv.os_gethostname()
+end
+
 return M

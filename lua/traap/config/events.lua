@@ -1,34 +1,29 @@
+local filetypes = {
+  "c",
+  "cpp",
+  "cs",
+  "go",
+  "java",
+  "lua",
+  "py",
+  "ruby",
+  "rust",
+  "sql",
+  "ts",
+}
+
+local file_types = {}
+for _, ft in ipairs(filetypes) do
+  table.insert(file_types, "BufEnter *." .. ft)
+end
+
 return {
   file = {
     "BufReadPre",
     "BufNewFile",
   },
 
-  file_types = {
-    'BufEnter *.c',
-    'BufEnter *.cpp',
-    'BufEnter *.cs',
-    'BufEnter *.go',
-    'BufEnter *.java',
-    'BufEnter *.lua',
-    'BufEnter *.py',
-    'BufEnter *.rb',
-    'BufEnter *.rs',
-    'BufEnter *.sql',
-    'BufEnter *.ts',
-  },
+  file_types = file_types,
 
-  ft = {
-    'c',
-    'cpp',
-    'cs',
-    'go',
-    'java',
-    'lua',
-    'py',
-    'ruby',
-    'rust',
-    'sql',
-    'ts',
-  },
+  ft = filetypes,
 }

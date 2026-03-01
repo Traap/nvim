@@ -1,7 +1,8 @@
 return {
   "folke/noice.nvim",
   enabled = true, -- and (not vim.g.vscode),
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  lazy = false,
 
   keys = {
     { "<leader>ne", "<cmd>NoiceErrors<cr>" },
