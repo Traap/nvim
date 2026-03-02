@@ -32,8 +32,8 @@ return {
       local installed_servers = {}
 
       -- Capabilities
+      ---@class lsp.ClientCapabilities
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.offsetEncoding = { "utf-16" }
       capabilities.textDocument.completion.completionItem.snippetSupport = true
       capabilities.textDocument.completion.completionItem.insertTextModeSupport = {
         valueSet = { 1, 2 },
@@ -65,8 +65,8 @@ return {
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
         vim.keymap.set("n", "<leader>E", vim.diagnostic.open_float, opts)
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+        vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ float = true, count = 1, direction = -1 }) end, opts)
+        vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ float = true, count = 1, direction = 1, }) end, opts)
         vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
         if client:supports_method("textDocument/formatting") then
@@ -130,7 +130,7 @@ return {
           if server == "lua_ls" then
             server_opts.settings = {
               Lua = {
-                diagnostics = { globals = { "vim" } },
+                diagnostics = { globals = { "vim", "Snacks" } },
                 workspace = {
                   library = vim.api.nvim_get_runtime_file("", true),
                   checkThirdParty = false,

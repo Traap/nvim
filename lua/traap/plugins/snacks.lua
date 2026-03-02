@@ -1,4 +1,4 @@
--- Snacks = Snacks
+Snacks = Snacks
 local platform = require("traap.core.platform")
 return {
   "folke/snacks.nvim",
