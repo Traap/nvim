@@ -1,3 +1,4 @@
+-- Make Snacks global.
 Snacks = Snacks
 local platform = require("traap.core.platform")
 return {
