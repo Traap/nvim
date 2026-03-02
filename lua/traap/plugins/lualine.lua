@@ -25,7 +25,7 @@ return {
     -- Clear status line macro recording message.s
     vim.api.nvim_create_autocmd("RecordingLeave", {
       callback = function()
-        local timer = vim.loop.new_timer()
+        local timer = vim.uv.new_timer()
         timer:start(
           50,
           0,

@@ -9,7 +9,7 @@ function M.is_nvim()
 end
 
 function M.in_wsl()
-  local uname = vim.loop.os_uname().release
+  local uname = vim.uv.os_uname().release
   return uname:lower():find("microsoft") ~= nil
 end
 
