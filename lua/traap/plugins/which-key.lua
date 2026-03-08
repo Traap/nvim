@@ -1,8 +1,9 @@
 return {
   "folke/which-key.nvim",
   enabled = true,
-  keys = {"<leader>", '"', "`", "c", "v", "g"},
-  event = require("traap.config.events").file,
+  keys = { "<leader>", '"', "`", "c", "v", "g" },
+  -- event = require("traap.config.events").file,
+  event = "VeryLazy",
 
   init = function()
     vim.o.timeout = true
