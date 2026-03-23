@@ -10,13 +10,14 @@ end
 
 -- Configure clipboard
 if platform.is_vscode() then
-  -- Do nothing hack
-
+  -- Do nothing: Do not distrube vscode.
+elseif platform.is_git_bash() then
+  -- Do nothing: Git Bash (limited or manual setup)
 elseif platform.in_wsl() and platform.is_wayland() then
-   -- WSLg clipboard (native)
-   vim.g.clipboard = {
+  -- WSLg clipboard (native)
+  vim.g.clipboard = {
     name = 'wsl clipboard',
-    copy =  {
+    copy = {
       ["+"] = { "clip.exe" },
       ["*"] = { "clip.exe" }
     },
@@ -26,17 +27,11 @@ elseif platform.in_wsl() and platform.is_wayland() then
     },
     cache_enabled = false
   }
-
-elseif platform.is_git_bash() then
-  -- Git Bash (limited or manual setup)
-  print("[nvim] Git Bash detected. Clipboard support may be limited.")
-
 elseif platform.is_wayland() then
   -- Wayland (Hyprland)
   if executable("wl-copy") and executable("wl-paste") then
     vim.g.clipboard = "wl-copy"
   end
-
 else
   -- X11 (BSPWM)
   if executable("xclip") then
