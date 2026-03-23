@@ -2,8 +2,13 @@ local platform = require("traap.core.platform")
 return {
   "jackMort/ChatGPT.nvim",
   enabled = true and platform.is_nvim(),
-
-  event = require("traap.config.events").file,
+  cmd = {
+    "ChatGPT",
+    "ChatGPTActAs",
+    "ChatGPTEditWithInstructions",
+    "ChatGPTRun",
+    "ChatGPTCompleteCode",
+  },
 
   config = function()
     require("chatgpt").setup()
