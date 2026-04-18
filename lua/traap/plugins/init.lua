@@ -53,6 +53,7 @@ if platform.is_nvim() then
     { enabled = true,  event = EVENT, "lewis6991/gitsigns.nvim" },
     { enabled = true,  event = EVENT, "nvim-mini/mini.ai",                       config = true, },
     { enabled = true,  event = EVENT, "nvim-mini/mini.icons",                    config = true, },
+    { enabled = true,  event = EVENT, "nvim-tree/nvim-web-devicons" },
     { enabled = true,  event = EVENT, "nvim-mini/mini.comment",                  config = true, },
     { enabled = false, event = EVENT, "nvim-mini/mini.indentscope",              config = true, },
     { enabled = true,  event = EVENT, "nvim-mini/mini.pairs",                    config = true, },
