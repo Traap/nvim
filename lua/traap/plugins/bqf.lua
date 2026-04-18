@@ -1,3 +1,4 @@
+local platform = require("traap.core.platform")
 return {
   "kevinhwang91/nvim-bqf",
   enabled = true and platform.is_nvim(),
