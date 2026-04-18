@@ -5,6 +5,8 @@ local filetypes = {
   "go",
   "java",
   "lua",
+  "md",
+  "norg",
   "py",
   "ruby",
   "rust",

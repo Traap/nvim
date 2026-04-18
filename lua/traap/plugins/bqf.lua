@@ -1,7 +1,6 @@
 return {
   "kevinhwang91/nvim-bqf",
-  enabled = true,
-  enable = true,
+  enabled = true and platform.is_nvim(),
   event = require("traap.config.events").file,
   opts = {
     auto_enable = true,
@@ -43,8 +42,8 @@ return {
     },
     filter = {
       fzf = {
-        action_for = {['ctrl-s'] = 'split', ['ctrl-t'] = 'tab drop'},
-        extra_opts = {'--bind', 'ctrl-o:toggle-all', '--prompt', '> '}
+        action_for = { ['ctrl-s'] = 'split', ['ctrl-t'] = 'tab drop' },
+        extra_opts = { '--bind', 'ctrl-o:toggle-all', '--prompt', '> ' }
       }
     }
   },
