@@ -2,6 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.lazyvim_check_order = false
+vim.g.loaded_perl_provider = 0
 
 require("traap.core.notify")
 
