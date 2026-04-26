@@ -1,13 +1,7 @@
 -- {{{ local keymap function
-local platform = require("traap.core.platform")
 
--- keymaps are silent and noremap by default
-local function keymap(mode, lhs, rhs, opts)
-  opts = opts or {}
-  opts.silent = opts.silent ~= false
-  opts.noremap = opts.noremap ~= false
-  vim.keymap.set(mode, lhs, rhs, opts)
-end
+local platform = require("traap.core.platform")
+local keymap = require("traap.core.keymap").keymap
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Disable LazyVim keybindsings
