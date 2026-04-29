@@ -2,6 +2,7 @@
 
 local platform = require("traap.core.platform")
 local keymap = require("traap.core.keymap").keymap
+local Snacks = require("snacks")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Disable LazyVim keybindsings
@@ -142,7 +143,7 @@ keymap('x', 'cb',
 )
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ g - KJV commands
+-- {{{ g - KJV and Fugitive commands
 
 keymap('x', 'gk',
   [[:lua require("traap.core.KJV").insert_verse_from_visual_selection()<cr>]],
@@ -153,6 +154,15 @@ keymap('n', 'gk',
   [[:lua require("traap.core.KJV").insert_verse_from_line()<cr>]],
   { desc = "Insert verse from line" }
 )
+
+keymap("n", "<leader>gP", "<cmd>G pull<cr>", { desc = "Git Pull" })
+keymap("n", "<leader>gd", "<cmd>G diff<cr>", { desc = "Git Difference" })
+keymap("n", "<leader>gl", "<cmd>G log<cr>", { desc = "Git Log" })
+keymap("n", "<leader>gh", "<cmd>vert bo help fugitive<cr>", { desc = "Vertical Help" })
+keymap("n", "<leader>gp", "<cmd>G push<cr>", { desc = "Git Push" })
+keymap("n", "<leader>gs", "<cmd>G<cr>", { desc = "Git Status" })
+keymap("n", "gh", "<cmd>diffget //2<cr>", { desc = "Gitdiff choose left side" })
+keymap("n", "gl", "<cmd>diffget //3<cr>", { desc = "Gitdiff choose right size" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options
@@ -181,62 +191,120 @@ keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]],
 keymap("n", "<leader>ww", [[mz<cmd>%s/\s\+$//e<cr><cmd>let @/=''<cr>`z]],
   { desc = "Remove line end and trailing white spaces" })
 
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader>]',
+keymap("n", "<leader>]",
   [[:%s/\[\|\]//g<CR>]],
   { noremap = true, silent = true, desc = "Remove [ and ]" }
 )
 
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader>r|',
+keymap('n', '<leader>r|',
   [[:%s/\\s*|\\s*/|/g<CR>]],
-  { noremap = true, silent = true, desc = "Remove whitespace before and after |" }
-)
+  { noremap = true, silent = true, desc = "Remove whitespace before and after |" })
 
-vim.api.nvim_set_keymap(
-  "n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>",
-  { desc = "Delete empty lines" }
-)
-
-vim.api.nvim_set_keymap(
-  "n", "<leader>|", "<cmd>%s/\t/|/g<CR>",
-  { desc = "Replace \t with |" }
-)
+keymap("n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>", { desc = "Delete empty lines" })
+keymap("n", "<leader>|", "<cmd>%s/\t/|/g<CR>", { desc = "Replace \t with |" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ x - eXtra quality of life items.
 
-vim.keymap.set('n', '<leader><leader>xf',
-  [[<cmd>source %<cr><cmd>echo 'Sourced ' . @%<cr>]]
+keymap("n", "<leader><leader>xf",
+  [[<cmd>source %<cr><cmd>echo 'Sourced ' . @%<cr>]],
+  { desc = "Source file" }
 )
 
-vim.keymap.set('n', '<leader><leader>xl',
-  [[<cmd>.lua<cr><cmd>echo 'Current line executed.' . <cr>]]
+keymap("n", "<leader><leader>xl",
+  [[<cmd>.lua<cr><cmd>echo 'Current line executed.' . <cr>]],
+  { desc = "Source current line." }
 )
 
-vim.keymap.set('v', '<leader><leader>xs',
-  [[:lua<cr><cmd>echo 'Visual selection executed.'<cr>]]
+keymap('v', '<leader><leader>xs',
+  [[:lua<cr><cmd>echo 'Visual selection executed.'<cr>]],
+  { desc = "" }
 )
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ y - yank
+
+keymap({ "n", "v", "x" }, "<leader>d", '"+d')
+keymap({ "n", "v", "x" }, "<leader>y", '"+y')
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vscode bridge
 
 if platform.is_vscode() then
   -- Navigate VSCode tabs like lazyvim buffers
-  vim.keymap.set("n", "<S-h>", function()
+  keymap("n", "<S-h>", function()
     vscode.call("workbench.action.previousEditor")
   end)
 
-  vim.keymap.set("n", "<S-l>", function()
+  keymap("n", "<S-l>", function()
     vscode.call("workbench.action.nextEditor")
   end)
 
   -- Toggle VS Explorer sidebar
-  vim.keymap.set("n", "<S-l>", function()
+  keymap("n", "<S-l>", function()
     vscode.call("workbench.action.toggleSidebarVisibility")
   end)
 end
 
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Snacks
+
+keymap("n", "<leader>fb", Snacks.picker.buffers, { desc = "Buffers" })
+
+keymap("n", "<leader>fc", function()
+  Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+end, { desc = "Find Config File" })
+
+keymap("n", "<leader>ff", Snacks.picker.files, { desc = "Find Files" })
+keymap("n", "<leader>fg", Snacks.picker.git_files, { desc = "Find Git Files" })
+keymap("n", "<leader>fp", Snacks.picker.projects, { desc = "Projects" })
+keymap("n", "<leader>fr", Snacks.picker.recent, { desc = "Recent" })
+
+-- Git
+keymap("n", "<leader>gB", function()
+  Snacks.gitbrowse()
+end, { desc = "Git Browse" })
+
+keymap("n", "<leader>gL", Snacks.picker.git_log_line, { desc = "Git Log Line" })
+-- keymap("n", "<leader>gS", Snacks.picker.git_stash, { desc = "Git Stash" })
+keymap("n", "<leader>gb", Snacks.picker.git_branches, { desc = "Git Branches" })
+keymap("n", "<leader>gd", Snacks.picker.git_diff, { desc = "Git Diff (Hunks)" })
+keymap("n", "<leader>gf", Snacks.picker.git_log_file, { desc = "Git Log File" })
+keymap("n", "<leader>gl", Snacks.picker.git_log, { desc = "Git Log" })
+
+-- Grep
+keymap("n", "<leader>sb", Snacks.picker.lines, { desc = "Buffer Lines" })
+keymap("n", "<leader>sB", Snacks.picker.grep_buffers, { desc = "Grep Open Buffers" })
+keymap("n", "<leader>sg", Snacks.picker.grep, { desc = "Grep" })
+keymap({ "n", "x" }, "<leader>sw", Snacks.picker.grep_word, { desc = "Visual Word or Selection" })
+
+-- Search
+keymap("n", "<leader>sC", Snacks.picker.commands, { desc = "Commands" })
+keymap("n", "<leader>sD", Snacks.picker.diagnostics_buffer, { desc = "Buffer Diagnostics" })
+keymap("n", "<leader>sH", Snacks.picker.highlights, { desc = "Highlights" })
+keymap("n", "<leader>sM", Snacks.picker.man, { desc = "Man Pages" })
+keymap("n", "<leader>sR", Snacks.picker.resume, { desc = "Resume" })
+keymap("n", "<leader>sa", Snacks.picker.autocmds, { desc = "Autocmds" })
+keymap("n", "<leader>sd", Snacks.picker.diagnostics, { desc = "Diagnostics" })
+keymap("n", "<leader>sh", Snacks.picker.help, { desc = "Help Pages" })
+keymap("n", "<leader>si", Snacks.picker.icons, { desc = "Icons" })
+keymap("n", "<leader>sj", Snacks.picker.jumps, { desc = "Jumps" })
+keymap("n", "<leader>sk", Snacks.picker.keymaps, { desc = "Keymaps" })
+keymap("n", "<leader>sl", Snacks.picker.loclist, { desc = "Location List" })
+keymap("n", "<leader>sm", Snacks.picker.marks, { desc = "Marks" })
+keymap("n", "<leader>sp", Snacks.picker.lazy, { desc = "Plugin Specs" })
+keymap("n", "<leader>sq", Snacks.picker.qflist, { desc = "Quickfix List" })
+keymap("n", "<leader>su", Snacks.picker.undo, { desc = "Undo History" })
+keymap("n", "<leader>s/", Snacks.picker.search_history, { desc = "Search History" })
+keymap("n", "<leader>sr", Snacks.picker.registers, { desc = "Registers" })
+keymap("n", "<leader>uC", Snacks.picker.colorschemes, { desc = "Colorschemes" })
+
+-- Utilities
+keymap("n", "<leader>.", Snacks.scratch.open, { desc = "Toggle Scratch Buffer" })
+keymap("n", "<leader>S", Snacks.scratch.select, { desc = "Select Scratch Buffer" })
+-- keymap("n", "<leader>bd", snacks.bufdelete, { desc = "Delete Buffer" })
+keymap("n", "<leader>cR", Snacks.rename.rename_file, { desc = "Rename File" })
+keymap("n", "<leader>un", Snacks.notifier.hide, { desc = "Dismiss All Notifications" })
+keymap({ "n", "t" }, "]]", function() Snacks.words.jump(vim.v.count1) end, { desc = "Next Reference" })
+keymap({ "n", "t" }, "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference" })
 -- ------------------------------------------------------------------------- }}}

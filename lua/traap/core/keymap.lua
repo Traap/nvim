@@ -6,6 +6,7 @@ function M.keymap(mode, lhs, rhs, opts)
   opts.silent = opts.silent ~= false
   opts.noremap = opts.noremap ~= false
   vim.keymap.set(mode, lhs, rhs, opts)
+  -- vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
 end
 
 return M
