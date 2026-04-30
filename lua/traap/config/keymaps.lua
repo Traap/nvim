@@ -538,57 +538,50 @@ end
 -- {{{ vim-easy-align
 
 if has_plugin("vim-easy-align") then
-  keymap("x", "ga", function()
-    if load_plugin("vim-easy-align") then
-      input("<Plug>(EasyAlign)")
-    end
-  end, { desc = "EasyAlign" })
+  load_plugin("vim-easy-align")
 
-  keymap("n", "ga", function()
-    if load_plugin("vim-easy-align") then
+  local ok, easy = pcall(require, "vim-easy-align")
+  if ok then
+    keymap("x", "ga", function()
       input("<Plug>(EasyAlign)")
-    end
-  end, { desc = "EasyAlign" })
+    end, { desc = "EasyAlign" })
 
-  keymap("n", "<bar>", function()
-    if load_plugin("vim-easy-align") then
+    keymap("n", "ga", function()
+      input("<Plug>(EasyAlign)")
+    end, { desc = "EasyAlign" })
+
+    keymap("n", "<bar>", function()
       pcall(vim.cmd, "NoiceDisable")
       vim.opt.cmdheight = 1
       vim.cmd("normal gaip*|")
       vim.opt.cmdheight = 0
       pcall(vim.cmd, "NoiceEnable")
-    end
-  end, { desc = "EasyAlign gaip*<bar>" })
+    end, { desc = "EasyAlign gaip*<bar>" })
 
-  keymap("n", "<leader>0", function()
-    if load_plugin("vim-easy-align") then
+    keymap("n", "<leader>0", function()
       pcall(vim.cmd, "NoiceDisable")
       vim.opt.cmdheight = 1
       vim.cmd("normal gaip*,")
       vim.opt.cmdheight = 0
       pcall(vim.cmd, "NoiceEnable")
-    end
-  end, { desc = "EasyAlign gaip=," })
+    end, { desc = "EasyAlign gaip=," })
 
-  keymap("n", "<leader>1", function()
-    if load_plugin("vim-easy-align") then
+    keymap("n", "<leader>1", function()
       pcall(vim.cmd, "NoiceDisable")
       vim.opt.cmdheight = 1
       vim.cmd("normal gaip=,")
       vim.opt.cmdheight = 0
       pcall(vim.cmd, "NoiceEnable")
-    end
-  end, { desc = "EasyAlign gaip=," })
+    end, { desc = "EasyAlign gaip=," })
 
-  keymap("n", "<leader>2", function()
-    if load_plugin("vim-easy-align") then
+    keymap("n", "<leader>2", function()
       pcall(vim.cmd, "NoiceDisable")
       vim.opt.cmdheight = 1
       vim.cmd("normal gaip= ")
       vim.opt.cmdheight = 0
       pcall(vim.cmd, "NoiceDisable")
-    end
-  end, { desc = "EasyAlign gaip=<space>" })
+    end, { desc = "EasyAlign gaip=<space>" })
+  end
 end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vim-tmux-navigator
