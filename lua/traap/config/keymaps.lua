@@ -594,28 +594,22 @@ end
 -- {{{ vim-tmux-navigator
 
 if has_plugin("vim-tmux-navigator") then
+  load_plugin("vim-tmux-navigator")
+
   keymap("n", "<c-h>", function()
-    if load_plugin("vim-tmux-navigator") then
-      vim.cmd("TmuxNavigateLeft")
-    end
+    vim.cmd("TmuxNavigateLeft")
   end)
 
   keymap("n", "<c-j>", function()
-    if load_plugin("vim-tmux-navigator") then
-      vim.cmd("TmuxNavigateDown")
-    end
+    vim.cmd("TmuxNavigateDown")
   end)
 
   keymap("n", "<c-k>", function()
-    if load_plugin("vim-tmux-navigator") then
-      vim.cmd("TmuxNavigateUp")
-    end
+    vim.cmd("TmuxNavigateUp")
   end)
 
   keymap("n", "<c-l>", function()
-    if load_plugin("vim-tmux-navigator") then
-      vim.cmd("TmuxNavigateRight")
-    end
+    vim.cmd("TmuxNavigateRight")
   end)
 end
 
