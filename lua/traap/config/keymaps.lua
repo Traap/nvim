@@ -296,6 +296,7 @@ if has_plugin("snacks.nvim") then
     -- Search
     keymap("n", "<leader>sC", snacks.picker.commands, { desc = "Commands" })
     keymap("n", "<leader>sD", snacks.picker.diagnostics_buffer, { desc = "Buffer Diagnostics" })
+    keymap("n", "<leader>sG", snacks.picker.registers, { desc = "Registers" })
     keymap("n", "<leader>sH", snacks.picker.highlights, { desc = "Highlights" })
     keymap("n", "<leader>sM", snacks.picker.man, { desc = "Man Pages" })
     keymap("n", "<leader>sR", snacks.picker.resume, { desc = "Resume" })
@@ -303,15 +304,14 @@ if has_plugin("snacks.nvim") then
     keymap("n", "<leader>sd", snacks.picker.diagnostics, { desc = "Diagnostics" })
     keymap("n", "<leader>sh", snacks.picker.help, { desc = "Help Pages" })
     keymap("n", "<leader>si", snacks.picker.icons, { desc = "Icons" })
-    keymap("n", "<leader>sj", snacks.picker.jumps, { desc = "Jumps" })
+    keymap("n", "<leader>sJ", snacks.picker.jumps, { desc = "Jumps" })
     keymap("n", "<leader>sk", snacks.picker.keymaps, { desc = "Keymaps" })
-    keymap("n", "<leader>sl", snacks.picker.loclist, { desc = "Location List" })
+    keymap("n", "<leader>sL", snacks.picker.loclist, { desc = "Location List" })
     keymap("n", "<leader>sm", snacks.picker.marks, { desc = "Marks" })
     keymap("n", "<leader>sp", snacks.picker.lazy, { desc = "Plugin Specs" })
     keymap("n", "<leader>sq", snacks.picker.qflist, { desc = "Quickfix List" })
     keymap("n", "<leader>su", snacks.picker.undo, { desc = "Undo History" })
     keymap("n", "<leader>s/", snacks.picker.search_history, { desc = "Search History" })
-    -- keymap("n", "<leader>sr", snacks.picker.registers, { desc = "Registers" })
     keymap("n", "<leader>uC", snacks.picker.colorschemes, { desc = "Colorschemes" })
 
     -- Toggles
