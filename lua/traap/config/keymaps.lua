@@ -249,6 +249,10 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Snacks
 
+keymap("n", "<leader>e", function()
+  Snacks.explorer()
+end, { desc = "File Explorer" })
+
 keymap("n", "<leader>fb", Snacks.picker.buffers, { desc = "Buffers" })
 
 keymap("n", "<leader>fc", function()
