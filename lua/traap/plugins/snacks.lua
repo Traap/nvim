@@ -64,23 +64,4 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
   },
-  init = function()
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "VeryLazy",
-      callback = function()
-        Snacks.toggle.inlay_hints():map("yoh")
-        Snacks.toggle.indent():map("yoi")
-        Snacks.toggle.line_number():map("yon")
-        Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("yor")
-        Snacks.toggle.option("spell", { name = "Spelling" }):map("yos")
-        Snacks.toggle.treesitter():map("yot")
-        Snacks.toggle.option("wrap", { name = "Wrap" }):map("yow")
-        Snacks.toggle.diagnostics():map("<leader>ud")
-        Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map(
-          "<leader>uc")
-        Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-        Snacks.toggle.dim():map("<leader>uD")
-      end,
-    })
-  end,
 }

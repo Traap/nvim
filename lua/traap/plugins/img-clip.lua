@@ -3,10 +3,6 @@ return {
   enabled = (vim.uv.os_uname().sysname ~= "Windows_NT"),
   event = require("traap.config.events").file,
 
-  keys = {
-    {"<leader>pi", "<cmd>PasteImage<cr>", desc = "Save and Paste Image"},
-  },
-
   opts = {
     default = {
       debug = false,

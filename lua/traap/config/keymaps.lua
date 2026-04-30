@@ -2,7 +2,34 @@
 
 local platform = require("traap.core.platform")
 local keymap = require("traap.core.keymap").keymap
-local Snacks = require("snacks")
+
+local function has_plugin(name)
+  local ok, config = pcall(require, "lazy.core.config")
+  if not ok then
+    return false
+  end
+
+  local plugin = config.plugins[name]
+  return plugin ~= nil and plugin.enabled ~= false
+end
+
+local function load_plugin(name)
+  if not has_plugin(name) then
+    return false
+  end
+
+  local ok, lazy = pcall(require, "lazy")
+  if not ok then
+    return false
+  end
+
+  lazy.load({ plugins = { name } })
+  return true
+end
+
+local function input(keys)
+  vim.api.nvim_input(vim.keycode(keys))
+end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Disable LazyVim keybindsings
@@ -176,8 +203,6 @@ keymap("n", "<leader>oo", "<cmd>only<cr>", { desc = "Only current buffer" })
 keymap("n", "<leader>sj", "<cmd>split<cr>", { desc = "Split horizontal" })
 keymap("n", "<leader>sl", "<cmd>vsplit<cr>", { desc = "Split vertical" })
 keymap("n", "<leader>ss", "0v)k$:sort<cr>", { desc = "Sort acronym list" })
-keymap("n", "<leader>sr", "<cmd>GrugFar<cr>", { desc = "Scan and Replace" })
-
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ w - Whitespace
@@ -228,6 +253,504 @@ keymap({ "n", "v", "x" }, "<leader>d", '"+d')
 keymap({ "n", "v", "x" }, "<leader>y", '"+y')
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Snacks
+
+if has_plugin("snacks.nvim") then
+  load_plugin("snacks.nvim")
+
+  local ok, snacks = pcall(require, "snacks")
+  if ok then
+    keymap("n", "<leader>e", function()
+      snacks.explorer()
+    end, { desc = "File Explorer" })
+
+    keymap("n", "<leader>fb", snacks.picker.buffers, { desc = "Buffers" })
+
+    keymap("n", "<leader>fc", function()
+      snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+    end, { desc = "Find Config File" })
+
+    keymap("n", "<leader>ff", snacks.picker.files, { desc = "Find Files" })
+    keymap("n", "<leader>fg", snacks.picker.git_files, { desc = "Find Git Files" })
+    keymap("n", "<leader>fp", snacks.picker.projects, { desc = "Projects" })
+    keymap("n", "<leader>fr", snacks.picker.recent, { desc = "Recent" })
+
+    -- Git
+    keymap("n", "<leader>gB", function()
+      snacks.gitbrowse()
+    end, { desc = "Git Browse" })
+
+    keymap("n", "<leader>gL", snacks.picker.git_log_line, { desc = "Git Log Line" })
+    -- keymap("n", "<leader>gS", snacks.picker.git_stash, { desc = "Git Stash" })
+    keymap("n", "<leader>gb", snacks.picker.git_branches, { desc = "Git Branches" })
+    keymap("n", "<leader>gd", snacks.picker.git_diff, { desc = "Git Diff (Hunks)" })
+    keymap("n", "<leader>gf", snacks.picker.git_log_file, { desc = "Git Log File" })
+    keymap("n", "<leader>gl", snacks.picker.git_log, { desc = "Git Log" })
+
+    -- Grep
+    keymap("n", "<leader>sb", snacks.picker.lines, { desc = "Buffer Lines" })
+    keymap("n", "<leader>sB", snacks.picker.grep_buffers, { desc = "Grep Open Buffers" })
+    keymap("n", "<leader>sg", snacks.picker.grep, { desc = "Grep" })
+    keymap({ "n", "x" }, "<leader>sw", snacks.picker.grep_word, { desc = "Visual Word or Selection" })
+
+    -- Search
+    keymap("n", "<leader>sC", snacks.picker.commands, { desc = "Commands" })
+    keymap("n", "<leader>sD", snacks.picker.diagnostics_buffer, { desc = "Buffer Diagnostics" })
+    keymap("n", "<leader>sH", snacks.picker.highlights, { desc = "Highlights" })
+    keymap("n", "<leader>sM", snacks.picker.man, { desc = "Man Pages" })
+    keymap("n", "<leader>sR", snacks.picker.resume, { desc = "Resume" })
+    keymap("n", "<leader>sa", snacks.picker.autocmds, { desc = "Autocmds" })
+    keymap("n", "<leader>sd", snacks.picker.diagnostics, { desc = "Diagnostics" })
+    keymap("n", "<leader>sh", snacks.picker.help, { desc = "Help Pages" })
+    keymap("n", "<leader>si", snacks.picker.icons, { desc = "Icons" })
+    keymap("n", "<leader>sj", snacks.picker.jumps, { desc = "Jumps" })
+    keymap("n", "<leader>sk", snacks.picker.keymaps, { desc = "Keymaps" })
+    keymap("n", "<leader>sl", snacks.picker.loclist, { desc = "Location List" })
+    keymap("n", "<leader>sm", snacks.picker.marks, { desc = "Marks" })
+    keymap("n", "<leader>sp", snacks.picker.lazy, { desc = "Plugin Specs" })
+    keymap("n", "<leader>sq", snacks.picker.qflist, { desc = "Quickfix List" })
+    keymap("n", "<leader>su", snacks.picker.undo, { desc = "Undo History" })
+    keymap("n", "<leader>s/", snacks.picker.search_history, { desc = "Search History" })
+    -- keymap("n", "<leader>sr", snacks.picker.registers, { desc = "Registers" })
+    keymap("n", "<leader>uC", snacks.picker.colorschemes, { desc = "Colorschemes" })
+
+    -- Toggles
+    snacks.toggle.inlay_hints():map("yoh")
+    snacks.toggle.indent():map("yoi")
+    snacks.toggle.line_number():map("yon")
+    snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("yor")
+    snacks.toggle.option("spell", { name = "Spelling" }):map("yos")
+    snacks.toggle.treesitter():map("yot")
+    snacks.toggle.option("wrap", { name = "Wrap" }):map("yow")
+    snacks.toggle.diagnostics():map("<leader>ud")
+    snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map(
+      "<leader>uc")
+    snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
+    snacks.toggle.dim():map("<leader>uD")
+
+    -- Utilities
+    keymap("n", "<leader>.", snacks.scratch.open, { desc = "Toggle Scratch Buffer" })
+    keymap("n", "<leader>S", snacks.scratch.select, { desc = "Select Scratch Buffer" })
+    -- keymap("n", "<leader>bd", snacks.bufdelete, { desc = "Delete Buffer" })
+    keymap("n", "<leader>cR", snacks.rename.rename_file, { desc = "Rename File" })
+    keymap("n", "<leader>un", snacks.notifier.hide, { desc = "Dismiss All Notifications" })
+    keymap({ "n", "t" }, "]]", function() snacks.words.jump(vim.v.count1) end, { desc = "Next Reference" })
+    keymap({ "n", "t" }, "[[", function() snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference" })
+  end
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Harpoon
+
+if has_plugin("harpoon") then
+  load_plugin("harpoon")
+
+  local ok, harpoon = pcall(require, "harpoon")
+  if ok then
+    keymap("n", "<a-1>", function()
+      harpoon:list():select(1)
+    end, { desc = "Harpoon buffer 1" })
+
+    keymap("n", "<a-2>", function()
+      harpoon:list():select(2)
+    end, { desc = "Harpoon buffer 2" })
+
+    keymap("n", "<a-3>", function()
+      harpoon:list():select(3)
+    end, { desc = "Harpoon buffer 3" })
+
+    keymap("n", "<a-4>", function()
+      harpoon:list():select(4)
+    end, { desc = "Harpoon buffer 4" })
+
+    keymap("n", "<a-5>", function()
+      harpoon:list():next()
+    end, { desc = "Harpoon next buffer" })
+
+    keymap("n", "<a-6>", function()
+      harpoon:list():prev()
+    end, { desc = "Harpoon prev buffer" })
+
+    keymap("n", "<a-7>", function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end, { desc = "Harpoon Toggle Menu" })
+
+    keymap("n", "<a-8>", function()
+      harpoon:list():add()
+    end, { desc = "Harpoon Add file" })
+  end
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Noice
+
+if has_plugin("noice.nvim") then
+  keymap("n", "<leader>ne", function()
+    if load_plugin("noice.nvim") then
+      vim.cmd("NoiceErrors")
+    end
+  end)
+
+  keymap("n", "<leader>nh", function()
+    if load_plugin("noice.nvim") then
+      vim.cmd("NoiceHistory")
+    end
+  end)
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ LSP
+
+if has_plugin("nvim-lspconfig") then
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local opts = { buffer = args.buf }
+
+      keymap("n", "gd", vim.lsp.buf.definition, opts)
+      keymap("n", "gD", vim.lsp.buf.declaration, opts)
+      keymap("n", "gi", vim.lsp.buf.implementation, opts)
+      keymap("n", "K", vim.lsp.buf.hover, opts)
+      keymap("n", "<leader>k", vim.lsp.buf.signature_help, opts)
+      keymap("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+      keymap("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+      keymap("n", "<leader>wl", function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end, opts)
+      keymap("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+      keymap("n", "gr", vim.lsp.buf.references, opts)
+      keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
+      keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+      keymap("n", "<leader>E", vim.diagnostic.open_float, opts)
+      keymap("n", "[d", function() vim.diagnostic.jump({ float = true, count = 1, direction = -1 }) end, opts)
+      keymap("n", "]d", function() vim.diagnostic.jump({ float = true, count = 1, direction = 1 }) end, opts)
+      keymap("n", "<leader>q", vim.diagnostic.setloclist, opts)
+    end,
+  })
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ grug-far
+
+if has_plugin("grug-far.nvim") then
+  keymap("n", "<leader>sr", function()
+    if load_plugin("grug-far.nvim") then
+      vim.cmd("GrugFar")
+    end
+  end, { desc = "Scan and Replace" })
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ img-clip.nvim
+
+if has_plugin("img-clip.nvim") then
+  keymap("n", "<leader>pi", function()
+    if load_plugin("img-clip.nvim") then
+      vim.cmd("PasteImage")
+    end
+  end, { desc = "Save and Paste Image" })
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ in-and-out.nvim
+
+if has_plugin("in-and-out.nvim") then
+  keymap("i", "<c-l>", function()
+    if load_plugin("in-and-out.nvim") then
+      require("in-and-out").in_and_out()
+    end
+  end)
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ nvim-toggler
+
+if has_plugin("nvim-toggler") then
+  keymap({ "n", "v" }, "<leader>tn", function()
+    if load_plugin("nvim-toggler") then
+      require("nvim-toggler").toggle()
+    end
+  end, { desc = "Toggle operand" })
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ markdown-preview.nvim
+
+if has_plugin("markdown-preview.nvim") then
+  keymap("n", "<leader>mt", function()
+    if load_plugin("markdown-preview.nvim") then
+      vim.cmd("MarkdownPreviewToggle")
+    end
+  end, { desc = "Markdown Toggle Preview" })
+
+  keymap("n", "<leader>mp", function()
+    if load_plugin("markdown-preview.nvim") then
+      vim.cmd("MarkdownPreview")
+    end
+  end, { desc = "Markdown Preview" })
+
+  keymap("n", "<leader>ms", function()
+    if load_plugin("markdown-preview.nvim") then
+      vim.cmd("MarkdownPreviewStop")
+    end
+  end, { desc = "Markdown Stop Preview" })
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ todo-comments.nvim
+
+if has_plugin("todo-comments.nvim") then
+  keymap("n", "<leader>fy", function()
+    if load_plugin("todo-comments.nvim") then
+      vim.cmd("Find Todo keywords=YouTube,Youtube,URL,Url")
+    end
+  end)
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ vim-bundle-plantuml
+
+if has_plugin("vim-bundle-plantuml") then
+  keymap("n", "<leader>gu", function()
+    if load_plugin("vim-bundle-plantuml") then
+      vim.cmd("PlantUmlAssemble")
+    end
+  end)
+
+  keymap("n", "<leader>gv", function()
+    if load_plugin("vim-bundle-plantuml") then
+      vim.cmd("PlantUmlView")
+    end
+  end)
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ vim-dadbod-ui
+
+if has_plugin("vim-dadbod-ui") then
+  keymap("n", "<leader>db", function()
+    if load_plugin("vim-dadbod-ui") then
+      vim.cmd("DBUIToggle")
+    end
+  end, { desc = "Toggle DBUI" })
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ vim-easy-align
+
+if has_plugin("vim-easy-align") then
+  keymap("x", "ga", function()
+    if load_plugin("vim-easy-align") then
+      input("<Plug>(EasyAlign)")
+    end
+  end, { desc = "EasyAlign" })
+
+  keymap("n", "ga", function()
+    if load_plugin("vim-easy-align") then
+      input("<Plug>(EasyAlign)")
+    end
+  end, { desc = "EasyAlign" })
+
+  keymap("n", "<bar>", function()
+    if load_plugin("vim-easy-align") then
+      pcall(vim.cmd, "NoiceDisable")
+      vim.opt.cmdheight = 1
+      vim.cmd("normal gaip*|")
+      vim.opt.cmdheight = 0
+      pcall(vim.cmd, "NoiceEnable")
+    end
+  end, { desc = "EasyAlign gaip*<bar>" })
+
+  keymap("n", "<leader>0", function()
+    if load_plugin("vim-easy-align") then
+      pcall(vim.cmd, "NoiceDisable")
+      vim.opt.cmdheight = 1
+      vim.cmd("normal gaip*,")
+      vim.opt.cmdheight = 0
+      pcall(vim.cmd, "NoiceEnable")
+    end
+  end, { desc = "EasyAlign gaip=," })
+
+  keymap("n", "<leader>1", function()
+    if load_plugin("vim-easy-align") then
+      pcall(vim.cmd, "NoiceDisable")
+      vim.opt.cmdheight = 1
+      vim.cmd("normal gaip=,")
+      vim.opt.cmdheight = 0
+      pcall(vim.cmd, "NoiceEnable")
+    end
+  end, { desc = "EasyAlign gaip=," })
+
+  keymap("n", "<leader>2", function()
+    if load_plugin("vim-easy-align") then
+      pcall(vim.cmd, "NoiceDisable")
+      vim.opt.cmdheight = 1
+      vim.cmd("normal gaip= ")
+      vim.opt.cmdheight = 0
+      pcall(vim.cmd, "NoiceDisable")
+    end
+  end, { desc = "EasyAlign gaip=<space>" })
+end
+-- ------------------------------------------------------------------------- }}}
+-- {{{ vim-tmux-navigator
+
+if has_plugin("vim-tmux-navigator") then
+  keymap("n", "<c-h>", function()
+    if load_plugin("vim-tmux-navigator") then
+      vim.cmd("TmuxNavigateLeft")
+    end
+  end)
+
+  keymap("n", "<c-j>", function()
+    if load_plugin("vim-tmux-navigator") then
+      vim.cmd("TmuxNavigateDown")
+    end
+  end)
+
+  keymap("n", "<c-k>", function()
+    if load_plugin("vim-tmux-navigator") then
+      vim.cmd("TmuxNavigateUp")
+    end
+  end)
+
+  keymap("n", "<c-l>", function()
+    if load_plugin("vim-tmux-navigator") then
+      vim.cmd("TmuxNavigateRight")
+    end
+  end)
+end
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ vimtex
+
+if has_plugin("vimtex") then
+  keymap("n", "<leader>lC", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-clean-full)")
+    end
+  end)
+
+  keymap("n", "<leader>lG", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-status-all)")
+    end
+  end)
+
+  keymap("n", "<leader>lI", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-info-full)")
+    end
+  end)
+
+  keymap("n", "<leader>lK", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-stop-all)")
+    end
+  end)
+
+  keymap("n", "<leader>lL", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-compile-selected)")
+    end
+  end)
+
+  keymap("n", "<leader>lT", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-toc-toggle)")
+    end
+  end)
+
+  keymap("n", "<leader>lX", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-reload-state)")
+    end
+  end)
+
+  keymap("n", "<leader>la", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-context-menu)")
+    end
+  end)
+
+  keymap("n", "<leader>lc", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-clean-full)")
+    end
+  end)
+
+  keymap("n", "<leader>le", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-error)")
+    end
+  end)
+
+  keymap("n", "<leader>lg", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-status)")
+    end
+  end)
+
+  keymap("n", "<leader>li", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-info)")
+    end
+  end)
+
+  keymap("n", "<leader>lk", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-stop)")
+    end
+  end)
+
+  keymap("n", "<leader>ll", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-compile)")
+    end
+  end)
+
+  keymap("n", "<leader>lm", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-impas-list)")
+    end
+  end)
+
+  keymap("n", "<leader>lo", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-compile-output)")
+    end
+  end)
+
+  keymap("n", "<leader>lq", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-log)")
+    end
+  end)
+
+  keymap("n", "<leader>ls", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-toggle-main)")
+    end
+  end)
+
+  keymap("n", "<leader>lt", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-toc_open)")
+    end
+  end)
+
+  keymap("n", "<leader>lv", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-view)")
+    end
+  end)
+
+  keymap("n", "<leader>lx", function()
+    if load_plugin("vimtex") then
+      input("<Plug>(vimtex-reload)")
+    end
+  end)
+end
+
+-- ------------------------------------------------------------------------- }}}
 -- {{{ vscode bridge
 
 if platform.is_vscode() then
@@ -247,68 +770,45 @@ if platform.is_vscode() then
 end
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Snacks
+-- {{{ wiki.vim
 
-keymap("n", "<leader>e", function()
-  Snacks.explorer()
-end, { desc = "File Explorer" })
+if has_plugin("wiki.vim") then
+  local wikihome = os.getenv("WIKIHOME")
+  local workhome = os.getenv("WORKHOME")
+  local ythome = os.getenv("YOUTUBEHOME")
 
-keymap("n", "<leader>fb", Snacks.picker.buffers, { desc = "Buffers" })
+  keymap("n", "<leader>pw", "<cmd>edit " .. wikihome .. "/index.md<cr>", { desc = "Personal Wiki" })
+  keymap("n", "<leader>wb", "<cmd>edit " .. wikihome .. "/journal/Backlog.md<cr>", { desc = "Wiki Backlog" })
+  keymap("n", "<leader>wa", "<cmd>edit " .. wikihome .. "/journal/Acronyms.md<cr>", { desc = "Wiki Acronyms" })
+  keymap("n", "<leader>wk", "<cmd>edit " .. workhome .. "/Wiki/index.md<cr>", { desc = "Work Wiki" })
+  keymap("n", "<leader>yt", "<cmd>edit " .. ythome .. "/wiki/index.md<cr>", { desc = "YouTube Wiki" })
 
-keymap("n", "<leader>fc", function()
-  Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-end, { desc = "Find Config File" })
+  keymap("n", "<leader>we", function()
+    if load_plugin("wiki.vim") then
+      vim.cmd("WikiExport")
+    end
+  end, { desc = "Wiki Export" })
 
-keymap("n", "<leader>ff", Snacks.picker.files, { desc = "Find Files" })
-keymap("n", "<leader>fg", Snacks.picker.git_files, { desc = "Find Git Files" })
-keymap("n", "<leader>fp", Snacks.picker.projects, { desc = "Projects" })
-keymap("n", "<leader>fr", Snacks.picker.recent, { desc = "Recent" })
+  keymap("n", "<leader>wi", "<cmd>edit " .. wikihome .. "/index.md<cr>", { desc = "Personal Wiki" })
 
--- Git
-keymap("n", "<leader>gB", function()
-  Snacks.gitbrowse()
-end, { desc = "Git Browse" })
+  keymap("n", "<leader>wj", function()
+    if load_plugin("wiki.vim") then
+      vim.cmd("cd " .. wikihome)
+      vim.cmd("WikiJournal")
+    end
+  end, { desc = "Wiki Journal" })
 
-keymap("n", "<leader>gL", Snacks.picker.git_log_line, { desc = "Git Log Line" })
--- keymap("n", "<leader>gS", Snacks.picker.git_stash, { desc = "Git Stash" })
-keymap("n", "<leader>gb", Snacks.picker.git_branches, { desc = "Git Branches" })
-keymap("n", "<leader>gd", Snacks.picker.git_diff, { desc = "Git Diff (Hunks)" })
-keymap("n", "<leader>gf", Snacks.picker.git_log_file, { desc = "Git Log File" })
-keymap("n", "<leader>gl", Snacks.picker.git_log, { desc = "Git Log" })
+  keymap("n", "<leader>wp", function()
+    if load_plugin("wiki.vim") then
+      vim.cmd("WikiFzfPages")
+    end
+  end, { desc = "Wiki FzF Pages" })
 
--- Grep
-keymap("n", "<leader>sb", Snacks.picker.lines, { desc = "Buffer Lines" })
-keymap("n", "<leader>sB", Snacks.picker.grep_buffers, { desc = "Grep Open Buffers" })
-keymap("n", "<leader>sg", Snacks.picker.grep, { desc = "Grep" })
-keymap({ "n", "x" }, "<leader>sw", Snacks.picker.grep_word, { desc = "Visual Word or Selection" })
+  keymap("n", "<leader>wv", function()
+    if load_plugin("wiki.vim") then
+      vim.cmd("lua Page_Viewer()")
+    end
+  end, { desc = "Wiki View Exported Page" })
+end
 
--- Search
-keymap("n", "<leader>sC", Snacks.picker.commands, { desc = "Commands" })
-keymap("n", "<leader>sD", Snacks.picker.diagnostics_buffer, { desc = "Buffer Diagnostics" })
-keymap("n", "<leader>sH", Snacks.picker.highlights, { desc = "Highlights" })
-keymap("n", "<leader>sM", Snacks.picker.man, { desc = "Man Pages" })
-keymap("n", "<leader>sR", Snacks.picker.resume, { desc = "Resume" })
-keymap("n", "<leader>sa", Snacks.picker.autocmds, { desc = "Autocmds" })
-keymap("n", "<leader>sd", Snacks.picker.diagnostics, { desc = "Diagnostics" })
-keymap("n", "<leader>sh", Snacks.picker.help, { desc = "Help Pages" })
-keymap("n", "<leader>si", Snacks.picker.icons, { desc = "Icons" })
-keymap("n", "<leader>sj", Snacks.picker.jumps, { desc = "Jumps" })
-keymap("n", "<leader>sk", Snacks.picker.keymaps, { desc = "Keymaps" })
-keymap("n", "<leader>sl", Snacks.picker.loclist, { desc = "Location List" })
-keymap("n", "<leader>sm", Snacks.picker.marks, { desc = "Marks" })
-keymap("n", "<leader>sp", Snacks.picker.lazy, { desc = "Plugin Specs" })
-keymap("n", "<leader>sq", Snacks.picker.qflist, { desc = "Quickfix List" })
-keymap("n", "<leader>su", Snacks.picker.undo, { desc = "Undo History" })
-keymap("n", "<leader>s/", Snacks.picker.search_history, { desc = "Search History" })
-keymap("n", "<leader>sr", Snacks.picker.registers, { desc = "Registers" })
-keymap("n", "<leader>uC", Snacks.picker.colorschemes, { desc = "Colorschemes" })
-
--- Utilities
-keymap("n", "<leader>.", Snacks.scratch.open, { desc = "Toggle Scratch Buffer" })
-keymap("n", "<leader>S", Snacks.scratch.select, { desc = "Select Scratch Buffer" })
--- keymap("n", "<leader>bd", snacks.bufdelete, { desc = "Delete Buffer" })
-keymap("n", "<leader>cR", Snacks.rename.rename_file, { desc = "Rename File" })
-keymap("n", "<leader>un", Snacks.notifier.hide, { desc = "Dismiss All Notifications" })
-keymap({ "n", "t" }, "]]", function() Snacks.words.jump(vim.v.count1) end, { desc = "Next Reference" })
-keymap({ "n", "t" }, "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference" })
 -- ------------------------------------------------------------------------- }}}

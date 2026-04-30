@@ -3,11 +3,6 @@ return {
   enabled = true, -- and (not vim.g.vscode),
   event = "VeryLazy",
 
-  keys = {
-    { "<leader>ne", "<cmd>NoiceErrors<cr>" },
-    { "<leader>nh", "<cmd>NoiceHistory<cr>" },
-  },
-
   opts = function(_, opts)
     -- {{{ Cmdline
     opts.cmdline = {

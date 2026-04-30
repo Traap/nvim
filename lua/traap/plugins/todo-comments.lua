@@ -5,10 +5,6 @@ return {
   enabled = true,
   event = require("traap.config.events").file,
 
-  keys = {
-    {"<leader>fy", "<cmd>Find Todo keywords="..keywords.."<cr>"},
-  },
-
   opts = function(_, opts)
     opts.merge_keywords = true
     opts.keywords = {

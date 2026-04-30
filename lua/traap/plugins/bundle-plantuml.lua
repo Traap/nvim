@@ -5,11 +5,6 @@ return {
 
   ft = { "puml" },
 
-  keys = {
-    { "<leader>gu", "<cmd>PlantUmlAssemble<cr>" },
-    { "<leader>gv", "<cmd>PlantUmlView<cr>" },
-  },
-
   dependencies = {
     "aklt/plantuml-syntax",
     event = "VeryLazy",

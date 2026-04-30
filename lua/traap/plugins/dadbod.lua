@@ -23,10 +23,6 @@ return {
     "DBUIFindBuffer",
   },
 
-  keys = {
-    { "<leader>db", "<cmd>DBUIToggle<CR>", desc = "Toggle DBUI" },
-  },
-
   init = function()
     local repoRoot = nil
     if working.at_home() then

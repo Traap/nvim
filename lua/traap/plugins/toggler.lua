@@ -14,10 +14,5 @@ return {
       remove_default_keybinds = true,
       remove_default_inverses = false,
     })
-
-    vim.keymap.set( {'n', 'v'},
-      '<leader>tn', toggler.toggle,
-      { noremap = true, silent = true, desc = "Toggle operand"}
-    )
   end,
 }
