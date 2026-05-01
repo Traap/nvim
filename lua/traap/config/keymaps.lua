@@ -75,7 +75,7 @@ keymap("v", ">", ">gv", { desc = "Visual Indent" })
 keymap("n", "<f3>", "mmggg?G`m", { desc = "Obfuscate toogle" })
 
 --  ;x conflicts with LazyVim
-keymap("n", ";x", "<Plug>(bullets-toggle-checkbox)", { desc = "Checkbox toggle" })
+keymap("n", ";x", "<Plug>(bullets-toggle-checkbox)", { desc = "Checkbox toggle", noremap = false })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
@@ -387,13 +387,13 @@ end
 if has_plugin("noice.nvim") then
   keymap("n", "<leader>ne", function()
     if load_plugin("noice.nvim") then
-      vim.cmd("NoiceErrors")
+      require("noice").cmd("errors")
     end
   end)
 
   keymap("n", "<leader>nh", function()
     if load_plugin("noice.nvim") then
-      vim.cmd("NoiceHistory")
+      require("noice").cmd("history")
     end
   end)
 end
@@ -538,50 +538,24 @@ end
 -- {{{ vim-easy-align
 
 if has_plugin("vim-easy-align") then
-  load_plugin("vim-easy-align")
+  keymap("x", "ga", "<Plug>(EasyAlign)", { desc = "EasyAlign", noremap = false })
+  keymap("n", "ga", "<Plug>(EasyAlign)", { desc = "EasyAlign", noremap = false })
 
-  local ok, easy = pcall(require, "vim-easy-align")
-  if ok then
-    keymap("x", "ga", function()
-      input("<Plug>(EasyAlign)")
-    end, { desc = "EasyAlign" })
+  keymap("n", "<bar>", function()
+    pcall(vim.cmd, "NoiceDisable")
+    vim.opt.cmdheight = 1
+    vim.cmd("normal gaip*|")
+    vim.opt.cmdheight = 0
+    pcall(vim.cmd, "NoiceEnable")
+  end, { desc = "EasyAlign gaip*<bar>" })
 
-    keymap("n", "ga", function()
-      input("<Plug>(EasyAlign)")
-    end, { desc = "EasyAlign" })
-
-    keymap("n", "<bar>", function()
-      pcall(vim.cmd, "NoiceDisable")
-      vim.opt.cmdheight = 1
-      vim.cmd("normal gaip*|")
-      vim.opt.cmdheight = 0
-      pcall(vim.cmd, "NoiceEnable")
-    end, { desc = "EasyAlign gaip*<bar>" })
-
-    keymap("n", "<leader>0", function()
-      pcall(vim.cmd, "NoiceDisable")
-      vim.opt.cmdheight = 1
-      vim.cmd("normal gaip*,")
-      vim.opt.cmdheight = 0
-      pcall(vim.cmd, "NoiceEnable")
-    end, { desc = "EasyAlign gaip=," })
-
-    keymap("n", "<leader>1", function()
-      pcall(vim.cmd, "NoiceDisable")
-      vim.opt.cmdheight = 1
-      vim.cmd("normal gaip=,")
-      vim.opt.cmdheight = 0
-      pcall(vim.cmd, "NoiceEnable")
-    end, { desc = "EasyAlign gaip=," })
-
-    keymap("n", "<leader>2", function()
-      pcall(vim.cmd, "NoiceDisable")
-      vim.opt.cmdheight = 1
-      vim.cmd("normal gaip= ")
-      vim.opt.cmdheight = 0
-      pcall(vim.cmd, "NoiceDisable")
-    end, { desc = "EasyAlign gaip=<space>" })
-  end
+  keymap("n", "<leader>0", function()
+    pcall(vim.cmd, "NoiceDisable")
+    vim.opt.cmdheight = 1
+    vim.cmd("normal gaip*,")
+    vim.opt.cmdheight = 0
+    pcall(vim.cmd, "NoiceEnable")
+  end, { desc = "EasyAlign gaip=," })
 end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vim-tmux-navigator
@@ -660,13 +634,13 @@ if has_plugin("vimtex") then
 
   keymap("n", "<leader>lc", function()
     if load_plugin("vimtex") then
-      input("<Plug>(vimtex-clean-full)")
+      input("<Plug>(vimtex-clean)")
     end
   end)
 
   keymap("n", "<leader>le", function()
     if load_plugin("vimtex") then
-      input("<Plug>(vimtex-error)")
+      input("<Plug>(vimtex-errors)")
     end
   end)
 
@@ -696,7 +670,7 @@ if has_plugin("vimtex") then
 
   keymap("n", "<leader>lm", function()
     if load_plugin("vimtex") then
-      input("<Plug>(vimtex-impas-list)")
+      input("<Plug>(vimtex-imaps-list)")
     end
   end)
 
@@ -720,7 +694,7 @@ if has_plugin("vimtex") then
 
   keymap("n", "<leader>lt", function()
     if load_plugin("vimtex") then
-      input("<Plug>(vimtex-toc_open)")
+      input("<Plug>(vimtex-toc-open)")
     end
   end)
 
@@ -787,9 +761,9 @@ if has_plugin("wiki.vim") then
 
   keymap("n", "<leader>wp", function()
     if load_plugin("wiki.vim") then
-      vim.cmd("WikiFzfPages")
+      vim.cmd("WikiPages")
     end
-  end, { desc = "Wiki FzF Pages" })
+  end, { desc = "Wiki Pages" })
 
   keymap("n", "<leader>wv", function()
     if load_plugin("wiki.vim") then
