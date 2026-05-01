@@ -8,6 +8,14 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    {
+      "nvim-neorg/tree-sitter-norg",
+      event = require("traap.config.events").file,
+    },
+    {
+      "nvim-neorg/tree-sitter-norg-meta",
+      event = require("traap.config.events").file,
+    },
   },
 
   config = function()

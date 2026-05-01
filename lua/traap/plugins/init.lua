@@ -44,7 +44,6 @@ if platform.is_nvim() then
     { enabled = false, event = EVENT, "RRethy/vim-illuminate" },
     { enabled = false, event = EVENT, "akinsho/bufferline.nvim" },
     { enabled = false, event = EVENT, "folke/flash.nvim" },
-    { enabled = false, event = EVENT, "nvim-mini/mini.indentscope",              config = true, },
     { enabled = false, event = EVENT, "nvim-treesitter/nvim-treesitter-context", },
 
     { enabled = true,  event = EVENT, "MagicDuck/grug-far.nvim",                 config = true, },
@@ -69,7 +68,7 @@ if platform.is_nvim() then
 
     { enabled = true,  cmd = "G",     "tpope/vim-fugitive",                      lazy = false, },
 
-    { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { "aklt/plantuml-syntax", event = "VeryLazy" }, },
+    { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { { "aklt/plantuml-syntax", event = EVENT } }, },
     { enabled = true,  ft = RUBY,     "tpope/vim-bundler" },
     { enabled = true,  ft = RUBY,     "tpope/vim-rails" },
     { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
@@ -97,7 +96,7 @@ else
 
     { enabled = true,  cmd = "G",     "tpope/vim-fugitive",                      lazy = false, },
 
-    { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { "aklt/plantuml-syntax", event = "VeryLazy" }, },
+    { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { { "aklt/plantuml-syntax", event = EVENT } }, },
     { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
     { enabled = true,  ft = WIKI,     "Traap/vim-bundle-wiki.vim",               dependencies = "lervag/wiki.vim", },
     { enabled = true,  ft = WIKI,     "iamcco/markdown-preview.nvim",            build = "cd app && yarn install", },
