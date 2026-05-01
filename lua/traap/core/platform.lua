@@ -1,5 +1,27 @@
 local M = {}
 
+---Snacks picker actions that delegate directional movement to
+---vim-tmux-navigator.
+---
+---The keys in this table are action names consumed by snacks.nvim picker
+---mappings. Each action accepts the picker argument supplied by Snacks, but the
+---value is not needed because the Vim commands perform the navigation.
+---@type table<string, fun(picker?: unknown)>
+M.tmux_actions = {
+  tmux_left = function(_)
+    vim.cmd("TmuxNavigateLeft")
+  end,
+  tmux_down = function(_)
+    vim.cmd("TmuxNavigateDown")
+  end,
+  tmux_up = function(_)
+    vim.cmd("TmuxNavigateUp")
+  end,
+  tmux_right = function(_)
+    vim.cmd("TmuxNavigateRight")
+  end,
+}
+
 ---Return whether Neovim is running inside the VS Code extension host.
 ---@return boolean
 function M.is_vscode()

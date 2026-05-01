@@ -7,6 +7,10 @@ return {
   lazy = false,
   enabled = true and platform.is_nvim(),
 
+  init = function()
+    vim.o.equalalways = false
+  end,
+
   opts = {
     bigfile = { enabled = true },
     dashboard = {
@@ -28,12 +32,7 @@ return {
 
     picker = {
       enabled = true,
-      actions = {
-        tmux_left  = function(_) vim.cmd("TmuxNavigateLeft") end,
-        tmux_down  = function(_) vim.cmd("TmuxNavigateDown") end,
-        tmux_up    = function(_) vim.cmd("TmuxNavigateUp") end,
-        tmux_right = function(_) vim.cmd("TmuxNavigateRight") end,
-      },
+      actions = platform.tmux_actions,
       sources = {
         explorer = {
           win = {
@@ -54,7 +53,7 @@ return {
               },
             },
           },
-          layout = { layout = { position = "right" } },
+          layout = { preset = "right" },
         },
       },
     },
