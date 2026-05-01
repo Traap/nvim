@@ -3,69 +3,6 @@
 local platform = require("traap.core.platform")
 local keymap = require("traap.core.keymap").keymap
 
----Return whether a lazy.nvim plugin exists and is enabled.
----@param name string lazy.nvim plugin name
----@return boolean
-local function has_plugin(name)
-  local ok, config = pcall(require, "lazy.core.config")
-  if not ok then
-    return false
-  end
-
-  local plugin = config.plugins[name]
-  return plugin ~= nil and plugin.enabled ~= false
-end
-
----Load a lazy.nvim plugin by name when it is configured and enabled.
----@param name string lazy.nvim plugin name
----@return boolean
-local function load_plugin(name)
-  if not has_plugin(name) then
-    return false
-  end
-
-  local ok, lazy = pcall(require, "lazy")
-  if not ok then
-    return false
-  end
-
-  lazy.load({ plugins = { name } })
-  return true
-end
-
----Run a callback after a plugin has been loaded successfully.
----@param plugin_name string lazy.nvim plugin name
----@param fn fun()
-local function with_loaded_plugin(plugin_name, fn)
-  if load_plugin(plugin_name) then
-    fn()
-  end
-end
-
----Run a callback with a required Lua module after loading its plugin.
----@param plugin_name string lazy.nvim plugin name
----@param module_name? string Lua module name passed to require
----@param fn fun(mod?: unknown)
-local function with_plugin(plugin_name, module_name, fn)
-  with_loaded_plugin(plugin_name, function()
-    if not module_name then
-      fn()
-      return
-    end
-
-    local ok, mod = pcall(require, module_name)
-    if ok then
-      fn(mod)
-    end
-  end)
-end
-
----Feed key input through Neovim's keycode translation.
----@param keys string
-local function input(keys)
-  vim.api.nvim_input(vim.keycode(keys))
-end
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Disable LazyVim keybindsings
 
@@ -290,8 +227,8 @@ keymap({ "n", "v", "x" }, "<leader>y", '"+y')
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Snacks
 
-if has_plugin("snacks.nvim") then
-  load_plugin("snacks.nvim")
+if platform.has_plugin("snacks.nvim") then
+  platform.load_plugin("snacks.nvim")
 
   local ok, snacks = pcall(require, "snacks")
   if ok then
@@ -377,51 +314,51 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Harpoon
 
-if has_plugin("harpoon") then
+if platform.has_plugin("harpoon") then
   keymap("n", "<a-1>", function()
-    with_plugin("harpoon", "harpoon", function(harpoon)
+    platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():select(1)
     end)
   end, { desc = "Harpoon buffer 1" })
 
   keymap("n", "<a-2>", function()
-    with_plugin("harpoon", "harpoon", function(harpoon)
+    platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():select(2)
     end)
   end, { desc = "Harpoon buffer 2" })
 
   keymap("n", "<a-3>", function()
-    with_plugin("harpoon", "harpoon", function(harpoon)
+    platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():select(3)
     end)
   end, { desc = "Harpoon buffer 3" })
 
   keymap("n", "<a-4>", function()
-    with_plugin("harpoon", "harpoon", function(harpoon)
+    platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():select(4)
     end)
   end, { desc = "Harpoon buffer 4" })
 
   keymap("n", "<a-5>", function()
-    with_plugin("harpoon", "harpoon", function(harpoon)
+    platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():next()
     end)
   end, { desc = "Harpoon next buffer" })
 
   keymap("n", "<a-6>", function()
-    with_plugin("harpoon", "harpoon", function(harpoon)
+    platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():prev()
     end)
   end, { desc = "Harpoon prev buffer" })
 
   keymap("n", "<a-7>", function()
-    with_plugin("harpoon", "harpoon", function(harpoon)
+    platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end)
   end, { desc = "Harpoon Toggle Menu" })
 
   keymap("n", "<a-8>", function()
-    with_plugin("harpoon", "harpoon", function(harpoon)
+    platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():add()
     end)
   end, { desc = "Harpoon Add file" })
@@ -430,15 +367,15 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Noice
 
-if has_plugin("noice.nvim") then
+if platform.has_plugin("noice.nvim") then
   keymap("n", "<leader>ne", function()
-    with_plugin("noice.nvim", "noice", function(noice)
+    platform.with_plugin("noice.nvim", "noice", function(noice)
       noice.cmd("errors")
     end)
   end)
 
   keymap("n", "<leader>nh", function()
-    with_plugin("noice.nvim", "noice", function(noice)
+    platform.with_plugin("noice.nvim", "noice", function(noice)
       noice.cmd("history")
     end)
   end)
@@ -447,7 +384,7 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ LSP
 
-if has_plugin("nvim-lspconfig") then
+if platform.has_plugin("nvim-lspconfig") then
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
       local opts = { buffer = args.buf }
@@ -477,9 +414,9 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ grug-far
 
-if has_plugin("grug-far.nvim") then
+if platform.has_plugin("grug-far.nvim") then
   keymap("n", "<leader>sr", function()
-    with_loaded_plugin("grug-far.nvim", function()
+    platform.with_loaded_plugin("grug-far.nvim", function()
       vim.cmd("GrugFar")
     end)
   end, { desc = "Scan and Replace" })
@@ -488,9 +425,9 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ img-clip.nvim
 
-if has_plugin("img-clip.nvim") then
+if platform.has_plugin("img-clip.nvim") then
   keymap("n", "<leader>pi", function()
-    with_loaded_plugin("img-clip.nvim", function()
+    platform.with_loaded_plugin("img-clip.nvim", function()
       vim.cmd("PasteImage")
     end)
   end, { desc = "Save and Paste Image" })
@@ -499,9 +436,9 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ in-and-out.nvim
 
-if has_plugin("in-and-out.nvim") then
+if platform.has_plugin("in-and-out.nvim") then
   keymap("i", "<c-l>", function()
-    with_plugin("in-and-out.nvim", "in-and-out", function(in_and_out)
+    platform.with_plugin("in-and-out.nvim", "in-and-out", function(in_and_out)
       in_and_out.in_and_out()
     end)
   end)
@@ -510,9 +447,9 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ nvim-toggler
 
-if has_plugin("nvim-toggler") then
+if platform.has_plugin("nvim-toggler") then
   keymap({ "n", "v" }, "<leader>tn", function()
-    with_plugin("nvim-toggler", "nvim-toggler", function(toggler)
+    platform.with_plugin("nvim-toggler", "nvim-toggler", function(toggler)
       toggler.toggle()
     end)
   end, { desc = "Toggle operand" })
@@ -521,21 +458,21 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ markdown-preview.nvim
 
-if has_plugin("markdown-preview.nvim") then
+if platform.has_plugin("markdown-preview.nvim") then
   keymap("n", "<leader>mt", function()
-    with_loaded_plugin("markdown-preview.nvim", function()
+    platform.with_loaded_plugin("markdown-preview.nvim", function()
       vim.cmd("MarkdownPreviewToggle")
     end)
   end, { desc = "Markdown Toggle Preview" })
 
   keymap("n", "<leader>mp", function()
-    with_loaded_plugin("markdown-preview.nvim", function()
+    platform.with_loaded_plugin("markdown-preview.nvim", function()
       vim.cmd("MarkdownPreview")
     end)
   end, { desc = "Markdown Preview" })
 
   keymap("n", "<leader>ms", function()
-    with_loaded_plugin("markdown-preview.nvim", function()
+    platform.with_loaded_plugin("markdown-preview.nvim", function()
       vim.cmd("MarkdownPreviewStop")
     end)
   end, { desc = "Markdown Stop Preview" })
@@ -544,9 +481,9 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ todo-comments.nvim
 
-if has_plugin("todo-comments.nvim") then
+if platform.has_plugin("todo-comments.nvim") then
   keymap("n", "<leader>fy", function()
-    with_loaded_plugin("todo-comments.nvim", function()
+    platform.with_loaded_plugin("todo-comments.nvim", function()
       vim.cmd("Find Todo keywords=YouTube,Youtube,URL,Url")
     end)
   end)
@@ -555,15 +492,15 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vim-bundle-plantuml
 
-if has_plugin("vim-bundle-plantuml") then
+if platform.has_plugin("vim-bundle-plantuml") then
   keymap("n", "<leader>gu", function()
-    with_loaded_plugin("vim-bundle-plantuml", function()
+    platform.with_loaded_plugin("vim-bundle-plantuml", function()
       vim.cmd("PlantUmlAssemble")
     end)
   end)
 
   keymap("n", "<leader>gv", function()
-    with_loaded_plugin("vim-bundle-plantuml", function()
+    platform.with_loaded_plugin("vim-bundle-plantuml", function()
       vim.cmd("PlantUmlView")
     end)
   end)
@@ -572,9 +509,9 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vim-dadbod-ui
 
-if has_plugin("vim-dadbod-ui") then
+if platform.has_plugin("vim-dadbod-ui") then
   keymap("n", "<leader>db", function()
-    with_loaded_plugin("vim-dadbod-ui", function()
+    platform.with_loaded_plugin("vim-dadbod-ui", function()
       vim.cmd("DBUIToggle")
     end)
   end, { desc = "Toggle DBUI" })
@@ -583,7 +520,7 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vim-easy-align
 
-if has_plugin("vim-easy-align") then
+if platform.has_plugin("vim-easy-align") then
   keymap("x", "ga", "<Plug>(EasyAlign)", { desc = "EasyAlign", noremap = false })
   keymap("n", "ga", "<Plug>(EasyAlign)", { desc = "EasyAlign", noremap = false })
 
@@ -606,8 +543,8 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vim-tmux-navigator
 
-if has_plugin("vim-tmux-navigator") then
-  load_plugin("vim-tmux-navigator")
+if platform.has_plugin("vim-tmux-navigator") then
+  platform.load_plugin("vim-tmux-navigator")
 
   keymap("n", "<c-h>", function()
     vim.cmd("TmuxNavigateLeft")
@@ -629,130 +566,130 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vimtex
 
-if has_plugin("vimtex") then
+if platform.has_plugin("vimtex") then
   keymap("n", "<leader>lC", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-clean-full)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-clean-full)")
     end)
   end)
 
   keymap("n", "<leader>lG", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-status-all)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-status-all)")
     end)
   end)
 
   keymap("n", "<leader>lI", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-info-full)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-info-full)")
     end)
   end)
 
   keymap("n", "<leader>lK", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-stop-all)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-stop-all)")
     end)
   end)
 
   keymap("n", "<leader>lL", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-compile-selected)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-compile-selected)")
     end)
   end)
 
   keymap("n", "<leader>lT", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-toc-toggle)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-toc-toggle)")
     end)
   end)
 
   keymap("n", "<leader>lX", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-reload-state)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-reload-state)")
     end)
   end)
 
   keymap("n", "<leader>la", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-context-menu)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-context-menu)")
     end)
   end)
 
   keymap("n", "<leader>lc", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-clean)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-clean)")
     end)
   end)
 
   keymap("n", "<leader>le", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-errors)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-errors)")
     end)
   end)
 
   keymap("n", "<leader>lg", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-status)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-status)")
     end)
   end)
 
   keymap("n", "<leader>li", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-info)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-info)")
     end)
   end)
 
   keymap("n", "<leader>lk", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-stop)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-stop)")
     end)
   end)
 
   keymap("n", "<leader>ll", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-compile)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-compile)")
     end)
   end)
 
   keymap("n", "<leader>lm", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-imaps-list)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-imaps-list)")
     end)
   end)
 
   keymap("n", "<leader>lo", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-compile-output)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-compile-output)")
     end)
   end)
 
   keymap("n", "<leader>lq", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-log)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-log)")
     end)
   end)
 
   keymap("n", "<leader>ls", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-toggle-main)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-toggle-main)")
     end)
   end)
 
   keymap("n", "<leader>lt", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-toc-open)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-toc-open)")
     end)
   end)
 
   keymap("n", "<leader>lv", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-view)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-view)")
     end)
   end)
 
   keymap("n", "<leader>lx", function()
-    with_loaded_plugin("vimtex", function()
-      input("<Plug>(vimtex-reload)")
+    platform.with_loaded_plugin("vimtex", function()
+      platform.input("<Plug>(vimtex-reload)")
     end)
   end)
 end
@@ -779,7 +716,7 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ wiki.vim
 
-if has_plugin("wiki.vim") then
+if platform.has_plugin("wiki.vim") then
   local wikihome = os.getenv("WIKIHOME")
   local workhome = os.getenv("WORKHOME")
   local ythome = os.getenv("YOUTUBEHOME")
@@ -791,7 +728,7 @@ if has_plugin("wiki.vim") then
   keymap("n", "<leader>yt", "<cmd>edit " .. ythome .. "/wiki/index.md<cr>", { desc = "YouTube Wiki" })
 
   keymap("n", "<leader>we", function()
-    with_loaded_plugin("wiki.vim", function()
+    platform.with_loaded_plugin("wiki.vim", function()
       vim.cmd("WikiExport")
     end)
   end, { desc = "Wiki Export" })
@@ -799,20 +736,20 @@ if has_plugin("wiki.vim") then
   keymap("n", "<leader>wi", "<cmd>edit " .. wikihome .. "/index.md<cr>", { desc = "Personal Wiki" })
 
   keymap("n", "<leader>wj", function()
-    with_loaded_plugin("wiki.vim", function()
+    platform.with_loaded_plugin("wiki.vim", function()
       vim.cmd("cd " .. wikihome)
       vim.cmd("WikiJournal")
     end)
   end, { desc = "Wiki Journal" })
 
   keymap("n", "<leader>wp", function()
-    with_loaded_plugin("wiki.vim", function()
+    platform.with_loaded_plugin("wiki.vim", function()
       vim.cmd("WikiPages")
     end)
   end, { desc = "Wiki Pages" })
 
   keymap("n", "<leader>wv", function()
-    with_loaded_plugin("wiki.vim", function()
+    platform.with_loaded_plugin("wiki.vim", function()
       vim.cmd("lua Page_Viewer()")
     end)
   end, { desc = "Wiki View Exported Page" })
