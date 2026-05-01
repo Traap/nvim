@@ -13,6 +13,7 @@ local options = {
   completeopt = { "menuone", "noselect" },
   cursorline = false,
   expandtab = true,
+  equalalways = false,
   fillchars = { foldclose = " ", fold = " ", eob = " " },
   foldlevel = 0,
   foldmethod = "marker",
