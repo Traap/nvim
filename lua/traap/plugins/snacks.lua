@@ -5,7 +5,7 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
-  enable = true and platform.is_nvim(),
+  enabled = true and platform.is_nvim(),
 
   opts = {
     bigfile = { enabled = true },
