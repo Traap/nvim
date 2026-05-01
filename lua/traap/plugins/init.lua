@@ -40,12 +40,13 @@ local platform = require("traap.core.platform")
 
 if platform.is_nvim() then
   return {
-    { enabled = false, event = EVENT, "NvChad/nvim-colorizer.lua",               config = true, },
+    { enabled = true,  event = EVENT, "NvChad/nvim-colorizer.lua",               config = true, },
     { enabled = false, event = EVENT, "RRethy/vim-illuminate" },
     { enabled = false, event = EVENT, "akinsho/bufferline.nvim" },
     { enabled = false, event = EVENT, "folke/flash.nvim" },
     { enabled = false, event = EVENT, "nvim-mini/mini.indentscope",              config = true, },
     { enabled = false, event = EVENT, "nvim-treesitter/nvim-treesitter-context", },
+
     { enabled = true,  event = EVENT, "MagicDuck/grug-far.nvim",                 config = true, },
     { enabled = true,  event = EVENT, "Traap/vim-bundle-abbreviate" },
     { enabled = true,  event = EVENT, "dkarter/bullets.vim" },
@@ -61,15 +62,22 @@ if platform.is_nvim() then
     { enabled = true,  event = EVENT, "nvim-tree/nvim-web-devicons" },
     { enabled = true,  event = EVENT, "rafamadriz/friendly-snippets" },
     { enabled = true,  event = EVENT, "saghen/blink.cmp" },
+    { enabled = true,  event = EVENT, "ysmb-wtsg/in-and-out.nvim" },
     { enabled = true,  event = EVENT, "tpope/vim-repeat" },
     { enabled = true,  event = EVENT, "vim-utils/vim-most-minimal-folds" },
     { enabled = true,  event = EVENT, "xiyaowong/virtcolumn.nvim" },
+
+    { enabled = true,  cmd = "G",     "tpope/vim-fugitive",                      dependencies = { "tpope/vim-rhubarb" },                        lazy = false, },
+
+    { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { "aklt/plantuml-syntax", event = "VeryLazy" }, },
     { enabled = true,  ft = RUBY,     "tpope/vim-bundler" },
     { enabled = true,  ft = RUBY,     "tpope/vim-rails" },
     { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
+    { enabled = true,  ft = TEX,      "lervag/vimtex" },
     { enabled = true,  ft = WIKI,     "Traap/vim-bundle-wiki.vim",               dependencies = "lervag/wiki.vim", },
+    { enabled = true,  ft = WIKI,     "iamcco/markdown-preview.nvim",            build = "cd app && yarn install", },
     { enabled = true,  ft = WIKI,     "lervag/wiki-ft.vim",                      dependencies = "lervag/wiki.vim", },
-    { enabled = true,  ft = WIKI,     "lervag/wiki.vim" },
+    { enabled = true,  ft = WIKI,     "lervag/wiki.vim",                         cmd = { "WikiIndex", "WikiJournal" }, },
   }
 
   -- ------------------------------------------------------------------------- }}}
@@ -82,13 +90,19 @@ else
     { enabled = false, event = EVENT, "nvim-treesitter/nvim-treesitter-context", },
     { enabled = true,  event = EVENT, "MagicDuck/grug-far.nvim",                 config = true, },
     { enabled = true,  event = EVENT, "junegunn/vim-easy-align" },
+    { enabled = true,  event = EVENT, "ysmb-wtsg/in-and-out.nvim" },
     { enabled = true,  event = EVENT, "tpope/vim-repeat" },
     { enabled = true,  event = EVENT, "vim-utils/vim-most-minimal-folds" },
     { enabled = true,  event = EVENT, "xiyaowong/virtcolumn.nvim" },
+
+    { enabled = true,  cmd = "G",     "tpope/vim-fugitive",                      dependencies = { "tpope/vim-rhubarb" },                        lazy = false, },
+
+    { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { "aklt/plantuml-syntax", event = "VeryLazy" }, },
     { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
     { enabled = true,  ft = WIKI,     "Traap/vim-bundle-wiki.vim",               dependencies = "lervag/wiki.vim", },
+    { enabled = true,  ft = WIKI,     "iamcco/markdown-preview.nvim",            build = "cd app && yarn install", },
     { enabled = true,  ft = WIKI,     "lervag/wiki-ft.vim",                      dependencies = "lervag/wiki.vim", },
-    { enabled = true,  ft = WIKI,     "lervag/wiki.vim" },
+    { enabled = true,  ft = WIKI,     "lervag/wiki.vim",                         cmd = { "WikiIndex", "WikiJournal" }, },
   }
 end
 
