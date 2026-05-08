@@ -22,7 +22,7 @@ return {
     explorer = { enabled = true },
     indent = { enabled = false },
     input = { enabled = true },
-    image = { enabled = (vim.uv.os_uname().sysname ~= "Windows_NT") },
+    image = { enabled = not platform.is_windows_nt() },
     notifier = {
       enabled = true,
       timeout = 1000,

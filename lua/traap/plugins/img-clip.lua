@@ -1,6 +1,8 @@
+local platform = require("traap.core.platform")
+
 return {
   "HakonHarnes/img-clip.nvim",
-  enabled = (vim.uv.os_uname().sysname ~= "Windows_NT"),
+  enabled = not platform.is_windows_nt(),
   event = require("traap.config.events").file,
 
   opts = {

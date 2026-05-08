@@ -41,6 +41,12 @@ function M.in_wsl()
   return uname:lower():find("microsoft") ~= nil
 end
 
+---Return whether the current host is native Windows.
+---@return boolean
+function M.is_windows_nt()
+  return vim.uv.os_uname().sysname == "Windows_NT"
+end
+
 ---Return whether the current desktop session is using Wayland.
 ---@return boolean
 function M.is_wayland()
