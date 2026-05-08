@@ -1,3 +1,4 @@
+-- stylua: ignore start
 -- {{{ init overview
 --
 -- Plugins below use default settings.
@@ -28,7 +29,7 @@ else
   EVENT = { "BufReadPre", "BufNewFile" }
 end
 
-local PUML = { "puml" }
+local PUML = { "plantuml", "puml" }
 local RUBY = { "rb", "erb" }
 local TEX = { "tex", "texx" }
 local WIKI = { "md", "wiki" }
@@ -78,10 +79,12 @@ if platform.is_nvim() then
     { enabled = true,  ft = WIKI,     "lervag/wiki-ft.vim",                      dependencies = "lervag/wiki.vim", },
     { enabled = true,  ft = WIKI,     "lervag/wiki.vim",                         cmd = { "WikiIndex", "WikiJournal" }, },
   }
+end
 
-  -- ------------------------------------------------------------------------- }}}
-  -- {{{ Enable plugins when I am using vscode.
-else
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Enable plugins when I am using vscode.
+
+if platform.is_vscode() then
   return {
     { enabled = false, event = EVENT, "RRethy/vim-illuminate" },
     { enabled = false, event = EVENT, "akinsho/bufferline.nvim" },
@@ -106,3 +109,9 @@ else
 end
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Disable default plugins.
+
+return {}
+
+-- ------------------------------------------------------------------------- }}}
+-- stylua: ignore end
