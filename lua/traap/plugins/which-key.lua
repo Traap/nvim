@@ -1,6 +1,7 @@
+local platform = require("traap.core.platform")
 return {
   "folke/which-key.nvim",
-  enabled = true,
+  enabled = true and platform.is_nvim(),
   -- event = require("traap.config.events").file,
   event = "VeryLazy",
 

@@ -716,7 +716,7 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ wiki.vim
 
-if platform.has_plugin("wiki.vim") then
+if platform.has_plugin("wiki.vim") and platform.is_nvim() then
   local wikihome = os.getenv("WIKIHOME")
   local workhome = os.getenv("WORKHOME")
   local ythome = os.getenv("YOUTUBEHOME")

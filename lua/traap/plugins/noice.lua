@@ -1,6 +1,7 @@
+local platform = require("traap.core.platform")
 return {
   "folke/noice.nvim",
-  enabled = true, -- and (not vim.g.vscode),
+  enabled = true and platform.is_nvim(),
   event = "VeryLazy",
 
   opts = function(_, opts)
