@@ -32,7 +32,7 @@ end
 local PUML = { "plantuml", "puml" }
 local RUBY = { "rb", "erb" }
 local TEX = { "tex", "texx" }
-local WIKI = { "md", "wiki" }
+local WIKI = { "markdown", "wiki" }
 
 local platform = require("traap.core.platform")
 
@@ -75,7 +75,6 @@ if platform.is_nvim() then
     { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
     { enabled = true,  ft = TEX,      "lervag/vimtex" },
     { enabled = true,  ft = WIKI,     "Traap/vim-bundle-wiki.vim",               dependencies = "lervag/wiki.vim", },
-    { enabled = true,  ft = WIKI,     "iamcco/markdown-preview.nvim",            build = "cd app && yarn install", },
     { enabled = true,  ft = WIKI,     "lervag/wiki-ft.vim",                      dependencies = "lervag/wiki.vim", },
     { enabled = true,  ft = WIKI,     "lervag/wiki.vim",                         cmd = { "WikiIndex", "WikiJournal" }, },
   }
@@ -102,7 +101,6 @@ if platform.is_vscode() then
     { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { { "aklt/plantuml-syntax", event = EVENT } }, },
     { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
     { enabled = true,  ft = WIKI,     "Traap/vim-bundle-wiki.vim",               dependencies = "lervag/wiki.vim", },
-    { enabled = true,  ft = WIKI,     "iamcco/markdown-preview.nvim",            build = "cd app && yarn install", },
     { enabled = true,  ft = WIKI,     "lervag/wiki-ft.vim",                      dependencies = "lervag/wiki.vim", },
     { enabled = true,  ft = WIKI,     "lervag/wiki.vim",                         cmd = { "WikiIndex", "WikiJournal" }, },
   }
