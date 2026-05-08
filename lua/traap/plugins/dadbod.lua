@@ -2,7 +2,7 @@ local platform = require("traap.core.platform")
 local working = require("traap.core.working")
 return {
   "kristijanhusak/vim-dadbod-ui",
-  enabled = true and platform.is_nvim(),
+  enabled = false and platform.is_nvim(),
 
   -- event = require("traap.config.events").file,
   lazy = true,

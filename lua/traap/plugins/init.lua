@@ -62,15 +62,15 @@ if platform.is_nvim() then
     { enabled = true,  event = EVENT, "rafamadriz/friendly-snippets" },
     { enabled = true,  event = EVENT, "saghen/blink.cmp" },
     { enabled = true,  event = EVENT, "ysmb-wtsg/in-and-out.nvim" },
-    { enabled = true,  event = EVENT, "tpope/vim-repeat" },
+    { enabled = false, event = EVENT, "tpope/vim-repeat" },
     { enabled = true,  event = EVENT, "vim-utils/vim-most-minimal-folds" },
     { enabled = true,  event = EVENT, "xiyaowong/virtcolumn.nvim" },
 
     { enabled = true,  cmd = "G",     "tpope/vim-fugitive",                      lazy = false, },
 
     { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { { "aklt/plantuml-syntax", event = EVENT } }, },
-    { enabled = true,  ft = RUBY,     "tpope/vim-bundler" },
-    { enabled = true,  ft = RUBY,     "tpope/vim-rails" },
+    { enabled = false, ft = RUBY,     "tpope/vim-bundler" },
+    { enabled = false, ft = RUBY,     "tpope/vim-rails" },
     { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
     { enabled = true,  ft = TEX,      "lervag/vimtex" },
     { enabled = true,  ft = WIKI,     "Traap/vim-bundle-wiki.vim",               dependencies = "lervag/wiki.vim", },
@@ -90,7 +90,7 @@ else
     { enabled = true,  event = EVENT, "MagicDuck/grug-far.nvim",                 config = true, },
     { enabled = true,  event = EVENT, "junegunn/vim-easy-align" },
     { enabled = true,  event = EVENT, "ysmb-wtsg/in-and-out.nvim" },
-    { enabled = true,  event = EVENT, "tpope/vim-repeat" },
+    { enabled = false, event = EVENT, "tpope/vim-repeat" },
     { enabled = true,  event = EVENT, "vim-utils/vim-most-minimal-folds" },
     { enabled = true,  event = EVENT, "xiyaowong/virtcolumn.nvim" },
 
