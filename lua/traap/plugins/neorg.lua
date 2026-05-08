@@ -2,7 +2,7 @@ local platform = require("traap.core.platform")
 
 return {
   "nvim-neorg/neorg",
-  enabled = true and platform.is_nvim(),
+  enabled = false and platform.is_nvim(),
   event = require("traap.config.events").file,
   version = "*",
   dependencies = {
