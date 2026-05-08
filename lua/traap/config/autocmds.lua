@@ -257,8 +257,8 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     local exclude = { "gitcommit", "fugitive" }
     local buf = event.buf
     if
-      vim.tbl_contains(exclude, vim.bo[buf].filetype)
-      or vim.b[buf].lazyvim_last_loc
+        vim.tbl_contains(exclude, vim.bo[buf].filetype)
+        or vim.b[buf].lazyvim_last_loc
     then
       return
     end
@@ -336,61 +336,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- ------------------------------------------------------------------------- }}}
 -- {{{ PlantUML automatic commands.
 
-local function plantuml_java_options()
-  local headless = "-Djava.awt.headless=true"
-  local current = vim.env.JAVA_TOOL_OPTIONS
-
-  if current == nil or current == "" then
-    return headless
-  end
-
-  if current:find("-Djava%.awt%.headless=", 1) then
-    return current
-  end
-
-  return headless .. " " .. current
-end
-
-local function plantuml_generate_png(event)
-  if vim.bo[event.buf].buftype ~= "" then
-    return
-  end
-
-  local plantuml = "/usr/bin/plantuml"
-  if vim.fn.executable(plantuml) ~= 1 then
-    require("traap.core.notify").error(plantuml .. " is not executable")
-    return
-  end
-
-  local file = vim.api.nvim_buf_get_name(event.buf)
-  if file == "" then
-    file = event.match
-  end
-  file = vim.fn.fnamemodify(file, ":p")
-
-  vim.system({ plantuml, "-tpng", file }, {
-    text = true,
-    env = {
-      JAVA_TOOL_OPTIONS = plantuml_java_options(),
-    },
-  }, function(result)
-    if result.code == 0 then
-      return
-    end
-
-    vim.schedule(function()
-      local message = vim.trim(result.stderr or result.stdout or "")
-      if message == "" then
-        message = "unknown error"
-      end
-      require("traap.core.notify").error("PlantUML failed: " .. message)
-    end)
-  end)
-end
-
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = augroup("plantuml_generate_png"),
-  callback = plantuml_generate_png,
+  command = "PlantUmlAssemble",
   pattern = { "*.puml", "*.wsd" },
 })
 
