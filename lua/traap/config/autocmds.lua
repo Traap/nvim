@@ -40,8 +40,8 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "ColorScheme" }, {
 
     -- Better Quick Fix
     vim.api.nvim_set_hl(0, "BqfPreviewBorder", { fg = "#bb9af7" })
-    vim.api.nvim_set_hl(0, "BqfPrevieTitle", { fg = "#bb9af7" })
-    vim.api.nvim_set_hl(0, "BqfPrevieThumb", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "BqfPreviewTitle", { fg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "BqfPreviewThumb", { fg = "#bb9af7" })
     vim.cmd([[ hi link BqfPreviewRange Search ]])
 
     -- Cmp
@@ -117,7 +117,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "ColorScheme" }, {
     vim.api.nvim_set_hl(0, "Pmenu", { blend = 100 })
     vim.api.nvim_set_hl(0, "PmenuSel", { fg = "#e0af68", bg = "#bb9af7" })
     vim.api.nvim_set_hl(0, "PmenuKindSel", { fg = "#e0af68", bg = "#bb9af7" })
-    vim.api.nvim_set_hl(0, "PmenuEstraSel", { fg = "#e0af68", bg = "#bb9af7" })
+    vim.api.nvim_set_hl(0, "PmenuExtraSel", { fg = "#e0af68", bg = "#bb9af7" })
 
     -- Snacks
     vim.api.nvim_set_hl(0, "SnacksInputBorder", { fg = "#bb9af7" })
@@ -329,7 +329,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   },
   callback = function()
     require("lspconfig.ui.windows").default_options.border = "rounded"
-    vim.opt_local.bufhiddden = "wipe"
+    vim.opt_local.bufhidden = "wipe"
   end,
 })
 
