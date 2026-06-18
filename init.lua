@@ -29,8 +29,14 @@ vim.keymap.set("i", "jk", function()
 end, { expr = true, noremap = true, silent = true })
 
 -- vscode kackery
-if not vim.g.vscode then
+local platform = require("traap.core.platform")
+if platform.is_nvim() then
   vim.cmd.colorscheme(require("traap.config.colorscheme").name)
 end
 
+-- Suppress seach count and wrap messages.
+if platform.is_vscode() then
+  vim.opt.shortmess:append("S")
+  vim.opt.shortmess:append("s")
+end
 -- ------------------------------------------------------------------------- }}}
