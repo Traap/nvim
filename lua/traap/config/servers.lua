@@ -2,12 +2,21 @@ local M = {}
 -- {{{ File types to LSP Server names
 
 M.filetype_to_server = {
-  sh = {
+  bash = {
     name = 'bashls',
     filetypes = {
       'sh',
       'bash',
       'zsh',
+    },
+  },
+
+  csharp = {
+    name = 'csharp_ls',
+    filetypes = {
+      'cs',
+      'vb',
+      'c_sharp',
     },
   },
 
@@ -18,6 +27,15 @@ M.filetype_to_server = {
       'cpp',
       'objc',
       'objcpp',
+    },
+    opts = {
+      cmd = {
+        'clangd',
+        '--background-index',
+        '--clang-tidy',
+        '--completion-style=detailed',
+        '--header-insertion=never',
+      },
     },
   },
 
@@ -30,38 +48,25 @@ M.filetype_to_server = {
     },
   },
 
-  emmet = {
-    name = 'emmet_ls',
-    filetypes = {
-      "astro",
-      "css",
-      "eruby",
-      "html",
-      "htmlangular",
-      "htmldjango",
-      "javascriptreact",
-      "less",
-      "pug",
-      "sass",
-      "scss",
-      "svelte",
-      "typescriptreact",
-      "vue",
-    },
-  },
-
-  python = {
-    name = 'pyright',
-    filetypes = {
-      'python',
-    },
-  },
-
   go = {
     name = 'gopls',
     filetypes = {
       'go',
-      'gomod'
+      'gomod',
+    },
+  },
+
+  html = {
+    name = 'html',
+    filetypes = {
+      'html',
+    },
+  },
+
+  java = {
+    name = 'jdtls',
+    filetypes = {
+      'java',
     },
   },
 
@@ -73,18 +78,58 @@ M.filetype_to_server = {
     },
   },
 
+  julia = {
+    name = 'julials',
+    filetypes = {
+      'julia',
+    },
+  },
+
+  latex = {
+    name = 'ltex',
+    filetypes = {
+      'latex',
+    },
+  },
+
   lua = {
     name = 'lua_ls',
     filetypes = {
       'lua',
     },
+    opts = function()
+      return {
+        settings = {
+          Lua = {
+            diagnostics = { globals = { 'vim', 'Snacks' } },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
+          },
+        },
+      }
+    end,
   },
 
-  csharp = {
-    name = 'omnisharp',
+  markdown = {
+    name = 'marksman',
     filetypes = {
-      'cs',
-      'vb',
+      'markdown',
+    },
+  },
+
+  nix = {
+    name = 'nixd',
+    filetypes = {
+      'nix',
+    },
+  },
+
+  python = {
+    name = 'pyright',
+    filetypes = {
+      'python',
     },
   },
 
@@ -93,17 +138,28 @@ M.filetype_to_server = {
     filetypes = {
       'ruby',
     },
+    mason = false,
+    opts = {
+      cmd = { 'mise', 'exec', 'ruby@4.0.0', '--', 'solargraph', 'stdio' },
+    },
   },
 
   rust = {
     name = 'rust_analyzer',
-    filetypes = { 'rust' }
+    filetypes = { 'rust' },
   },
 
   sql = {
-    name = 'sqlls',
+    name = 'sqls',
     filetypes = {
       'sql',
+    },
+  },
+
+  svelte = {
+    name = 'svelte',
+    filetypes = {
+      'svelte',
     },
   },
 
@@ -111,8 +167,14 @@ M.filetype_to_server = {
     name = 'texlab',
     filetypes = {
       'bib',
-      'latex',
       'tex',
+    },
+  },
+
+  toml = {
+    name = 'taplo',
+    filetypes = {
+      'toml',
     },
   },
 
@@ -126,11 +188,32 @@ M.filetype_to_server = {
     },
   },
 
+  vim = {
+    name = 'vimls',
+    filetypes = {
+      'vim',
+    },
+  },
+
+  xml = {
+    name = 'lemminx',
+    filetypes = {
+      'xml',
+    },
+  },
+
   yaml = {
     name = 'yamlls',
     filetypes = {
       'yaml',
       'yml',
+    },
+  },
+
+  zig = {
+    name = 'zls',
+    filetypes = {
+      'zig',
     },
   },
 }
@@ -180,10 +263,15 @@ M.formatter = {
   stylua = {
     name = 'stylua',
     filetypes = {
-      'lua'
+      'lua',
     },
   },
 }
+
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Debug adapters
+
+M.debugger = {}
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Return filetypes associated LSP servers.
@@ -201,16 +289,63 @@ M.filetypes_for_lsp_servers = function()
 end
 
 -- --------------------------------------------------------------------------}}}
+-- {{{ Return filetype to LSP server name mapping.
+
+M.filetype_to_lsp_server = function()
+  local filetypes = {}
+
+  for _, server in pairs(M.filetype_to_server) do
+    for _, ft in ipairs(server.filetypes) do
+      filetypes[ft] = server.name
+    end
+  end
+
+  return filetypes
+end
+
+-- --------------------------------------------------------------------------}}}
 -- {{{ Return LSP server names to install
 
 M.lsp_server_names = function()
   local names = {}
 
   for _, server in pairs(M.filetype_to_server) do
-    table.insert(names, server.name)
+    if server.mason ~= false then
+      table.insert(names, server.name)
+    end
   end
 
   return names
+end
+
+-- --------------------------------------------------------------------------}}}
+-- {{{ Return LSP server options
+
+M.lsp_server_opts = function(server_name)
+  for _, server in pairs(M.filetype_to_server) do
+    if server.name == server_name then
+      if type(server.opts) == 'function' then
+        return server.opts()
+      end
+
+      return server.opts or {}
+    end
+  end
+
+  return {}
+end
+
+-- --------------------------------------------------------------------------}}}
+-- {{{ Return whether Mason should manage an LSP server
+
+M.is_mason_managed_lsp_server = function(server_name)
+  for _, server in pairs(M.filetype_to_server) do
+    if server.name == server_name then
+      return server.mason ~= false
+    end
+  end
+
+  return true
 end
 
 -- ------------------------------------------------------------------------- }}}
