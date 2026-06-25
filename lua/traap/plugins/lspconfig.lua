@@ -2,7 +2,8 @@
 local platform = require("traap.core.platform")
 
 return {
-  -- Mason.nvim
+  -- {{{ Mason.nvim
+
   {
     "mason-org/mason.nvim",
     enabled = true and platform.is_nvim(),
@@ -10,7 +11,9 @@ return {
     opts = {},
   },
 
-  -- Mason-lspconfig.nvim
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ Mason-lspconfig.nvim
+
   {
     "mason-org/mason-lspconfig.nvim",
     enabled = true and platform.is_nvim(),
@@ -19,12 +22,16 @@ return {
     opts = { ensure_installed = {}, automatic_enable = false }, -- handled dynamically
   },
 
-  -- nvim-lspconfig with dynamic auto-install
+  -- ----------------------------------------------------------------------- }}}
+  -- {{{ nvim-lspconfig with dynamic auto-install
+
   {
     "neovim/nvim-lspconfig",
     enabled = true and platform.is_nvim(),
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "saghen/blink.cmp" },
+    -- {{{ init function
+
     init = function()
       vim.g.lspconfig = 1
 
@@ -62,11 +69,11 @@ return {
 
       vim.api.nvim_create_user_command("LspRestart", function(info)
         local server_names = #info.fargs > 0 and info.fargs or vim
-          .iter(vim.lsp.get_clients())
-          :map(function(client)
-            return client.name
-          end)
-          :totable()
+            .iter(vim.lsp.get_clients())
+            :map(function(client)
+              return client.name
+            end)
+            :totable()
 
         for _, server in ipairs(server_names) do
           vim.lsp.enable(server, false)
@@ -93,11 +100,11 @@ return {
 
       vim.api.nvim_create_user_command("LspStop", function(info)
         local server_names = #info.fargs > 0 and info.fargs or vim
-          .iter(vim.lsp.get_clients())
-          :map(function(client)
-            return client.name
-          end)
-          :totable()
+            .iter(vim.lsp.get_clients())
+            :map(function(client)
+              return client.name
+            end)
+            :totable()
 
         for _, server in ipairs(server_names) do
           vim.lsp.enable(server, false)
@@ -116,6 +123,10 @@ return {
         nargs = "*",
       })
     end,
+
+    -- --------------------------------------------------------------------- }}}
+    -- {{{ config function
+
     config = function()
       local notify = require("traap.core.notify")
       local servers = require("traap.config.servers")
@@ -190,5 +201,7 @@ return {
         end,
       })
     end,
+    -- --------------------------------------------------------------------- }}}
   },
+  -- ----------------------------------------------------------------------- }}}
 }
