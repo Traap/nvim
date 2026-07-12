@@ -12,25 +12,31 @@ return {
   end,
 
   opts = {
-    bigfile = { enabled = true },
-    dashboard = {
+    animate      = { enabled = false },
+    bufdelete    = { enabled = true },
+    bigfile      = { enabled = true },
+    dashboard    = {
       enabled = true,
       preset = { header = [[Configured by Traap and powered by lazy.nvim.]] },
     },
-    git = { enabled = true },
-    gitbrowse = { enabled = true },
-    explorer = { enabled = true },
-    indent = { enabled = false },
-    input = { enabled = true },
-    image = { enabled = not platform.is_windows_nt() },
-    notifier = {
+    dim          = { enabled = false },
+    gh           = { enabled = false },
+    git          = { enabled = true },
+    gitbrowse    = { enabled = true },
+    explorer     = { enabled = true },
+    image        = { enabled = not platform.is_windows_nt() },
+    indent       = { enabled = false },
+    input        = { enabled = not platform.is_vscode() },
+    keymap       = { enabled = true },
+    layout       = { enabled = false },
+    lazygit      = { enabled = false },
+    notifier     = {
       enabled = true,
       timeout = 1000,
       top_down = true,
       title_pos = "left",
     },
-
-    picker = {
+    picker       =  {
       enabled = true,
       actions = platform.tmux_actions,
       sources = {
@@ -57,10 +63,11 @@ return {
         },
       },
     },
-    quickfile = { enabled = true },
-    scope = { enabled = false },
-    scroll = { enabled = false },
+    quickfile    = { enabled = true },
+    = { enabled = true },
+    scope        = { enabled = false },
+    scroll       = { enabled = false },
     statuscolumn = { enabled = true },
-    words = { enabled = true },
+    words        = { enabled = true },
   },
 }
