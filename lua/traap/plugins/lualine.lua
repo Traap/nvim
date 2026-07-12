@@ -70,8 +70,22 @@ return {
       lualine_c = { "filename" },
       lualine_x = {
         { show_macro_recording },
-        { "progress",          separator = " ",                  padding = { left = 1, right = 0 } },
-        { "location",          padding = { left = 0, right = 1 } },
+        {
+          require("noice").api.status.command.get,
+          cond = require("noice").api.status.command.has,
+          color = { fg = "#ff9e64" },
+        },
+        {
+          require("noice").api.status.search.get,
+          cond = require("noice").api.status.search.has,
+          color = { fg = "#ff9e64" },
+        },
+        {
+          "progress",
+          separator = " ",
+          padding = { left = 1, right = 0 },
+        },
+        { "location", padding = { left = 0, right = 1 } },
       },
       lualine_y = { "fileformat", "filetype" },
       lualine_z = { "encoding" },

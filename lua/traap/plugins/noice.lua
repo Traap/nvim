@@ -6,17 +6,11 @@ return {
 
   opts = function(_, opts)
     -- {{{ Cmdline
+
     opts.cmdline = {
       enabled = true,
       view = "cmdline_popup",
-      opts = {
-        cmdline_popup = {
-          win_options = {
-            winblend = 0,
-          },
-          scrollbar = false,
-        },
-      },
+      opts = {},
       format = {
         cmdline = { pattern = "^:", icon = "$", lang = "vim" },
         search_down = {
@@ -58,7 +52,7 @@ return {
 
     opts.lsp = {
       progress = {
-        enable = true,
+        enabled = true,
         format = "lsp_progress",
         format_done = "lsp_progress_done",
         throttle = 1000 / 30,
@@ -72,11 +66,11 @@ return {
       },
 
       hover = {
-        enable = true,
+        enabled = true,
       },
 
       signature = {
-        enable = true,
+        enabled = true,
       },
 
       message = {
@@ -128,9 +122,9 @@ return {
 
     opts.messages = {
       enabled = true,
-      view = "snacks",
-      view_error = "snacks",
-      view_warn = "snacks",
+      view = "notify",
+      view_error = "notify",
+      view_warn = "notify",
       view_history = "messages",
       view_search = "virtualtext",
     }
@@ -140,7 +134,7 @@ return {
 
     opts.notify = {
       enabled = true,
-      view = "snacks",
+      view = "notify",
     }
 
     -- --------------------------------------------------------------------- }}}
@@ -209,16 +203,15 @@ return {
     }
 
     -- --------------------------------------------------------------------- }}}
-    -- {{{ Smart move
-
-    opts.smart_move = {
-      enable = true,
-      excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
-    }
-    -- --------------------------------------------------------------------- }}}
     -- {{{ Views
 
     opts.views = {
+      cmdline_popup = {
+        win_options = {
+          winblend = 0,
+        },
+        scrollbar = false,
+      },
       mini = {
         align = "message-left",
         reverse = true,
