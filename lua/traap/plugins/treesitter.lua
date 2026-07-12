@@ -33,7 +33,7 @@ return {
       end
 
       local skip_fts = {
-        blink_cmp_menu = true,
+        ["blink-cmp-menu"] = true,
         help = true,
         qf = true,
         gitcommit = true,
