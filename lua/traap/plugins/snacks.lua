@@ -36,7 +36,7 @@ return {
       top_down = true,
       title_pos = "left",
     },
-    picker       =  {
+    picker       = {
       enabled = true,
       actions = platform.tmux_actions,
       sources = {
@@ -64,10 +64,16 @@ return {
       },
     },
     quickfile    = { enabled = true },
-    = { enabled = true },
+    rename       = { enabled = true },
     scope        = { enabled = false },
+    scratchfile  = { enabled = false },
     scroll       = { enabled = false },
     statuscolumn = { enabled = true },
+    terminal     = { enabled = false },
+    toggle       = { enabled = true },
+    util         = { enabled = false },
+    win          = { enabled = false },
     words        = { enabled = true },
+    zen          = { enabled = true },
   },
 }
