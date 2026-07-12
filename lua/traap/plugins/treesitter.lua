@@ -33,14 +33,17 @@ return {
       end
 
       local skip_fts = {
+        blink_cmp_menu = true,
         help = true,
         qf = true,
         gitcommit = true,
         fugitive = true,
         lazy = true,
         mason = true,
+        noice = true,
         notify = true,
         lspinfo = true,
+        snacks_notif = true,
       }
 
       vim.api.nvim_create_autocmd("FileType", {
