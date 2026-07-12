@@ -37,7 +37,12 @@ keymap("n", ";s", "<cmd>write<cr>", { desc = "Write buffer" })
 keymap("i", "<C-j>", "<cmd>write<cr>", { desc = "Write buffer" })
 
 -- Toggle [in]visible characters.
-keymap("n", "<leader>i", "<cmd>set list!<cr>", { desc = "Toggle invisible chars" })
+keymap(
+  "n",
+  "<leader>i",
+  "<cmd>set list!<cr>",
+  { desc = "Toggle invisible chars" }
+)
 
 -- Stay in indent mode.
 keymap("v", "<", "<gv", { desc = "Visual Outdent" })
@@ -47,7 +52,12 @@ keymap("v", ">", ">gv", { desc = "Visual Indent" })
 keymap("n", "<f3>", "mmggg?G`m", { desc = "Obfuscate toogle" })
 
 --  ;x conflicts with LazyVim
-keymap("n", ";x", "<Plug>(bullets-toggle-checkbox)", { desc = "Checkbox toggle", noremap = false })
+keymap(
+  "n",
+  ";x",
+  "<Plug>(bullets-toggle-checkbox)",
+  { desc = "Checkbox toggle", noremap = false }
+)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
@@ -56,13 +66,13 @@ keymap("n", ";x", "<Plug>(bullets-toggle-checkbox)", { desc = "Checkbox toggle",
 --    See: https://github.com/lervag/dotnvim
 
 -- Close all fold except the current one.
-keymap("n", "zv", "zMzvzz", { desc = 'Close all folds except current' })
+keymap("n", "zv", "zMzvzz", { desc = "Close all folds except current" })
 
 -- Close current fold when open. Always open next fold.
-keymap("n", "zj", "zcjzOzz", { desc = 'Close fold & open next one' })
+keymap("n", "zj", "zcjzOzz", { desc = "Close fold & open next one" })
 
 -- Close current fold when open. Always open previous fold.
-keymap("n", "zk", "zckzOzz", { desc = 'Close fold & open previous one' })
+keymap("n", "zk", "zckzOzz", { desc = "Close fold & open previous one" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Keep the cursor in place while joining lines.
@@ -74,18 +84,29 @@ keymap("n", "<leader>J", "myvipJ`ygq<cr>", { desc = "Join Paragraph" })
 -- {{{ Shell commands.
 
 -- Execute the current line of text as a shell command.
-keymap("n", "<localleader>E",
-  [[0mMvg_"ky :exec "r!" getreg("k")<cr>]], { desc = "Execute current line" }
+keymap(
+  "n",
+  "<localleader>E",
+  [[0mMvg_"ky :exec "r!" getreg("k")<cr>]],
+  { desc = "Execute current line" }
 )
 
-keymap("v", "<localleader>E",
-  [["ky :exec "r!" getreg("k")<cr>]], { desc = "Execute current selection" }
+keymap(
+  "v",
+  "<localleader>E",
+  [["ky :exec "r!" getreg("k")<cr>]],
+  { desc = "Execute current selection" }
 )
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
 
-keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>", { desc = "Clear highghted" })
+keymap(
+  "n",
+  "<leader><space>",
+  "<cmd>nohlsearch<cr>",
+  { desc = "Clear highghted" }
+)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ G - Global to buffer.
@@ -96,7 +117,12 @@ keymap("n", "<leader>G", "ggdG", { desc = "Delete buffer contents." })
 -- ------------------------------------------------------------------------- }}}
 -- {{{ H - Help
 
-keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>", { desc = "Vertical help" })
+keymap(
+  "n",
+  "<leader>HH",
+  "<cmd>silent vert bo help<cr>",
+  { desc = "Vertical help" }
+)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ V - Linewise reselection of what you just pasted.
@@ -106,27 +132,37 @@ keymap("n", "<leader>VV", "V`]", { desc = "Linewise reslection of last paste" })
 -- ------------------------------------------------------------------------- }}}
 -- {{{ b - Buffer adjustments.
 
-keymap("n", "<leader>bh",
+keymap(
+  "n",
+  "<leader>bh",
   "<cmd>vertical resize -1<cr>",
-  { desc = 'Vertical resize -1' }
+  { desc = "Vertical resize -1" }
 )
 
-keymap("n", "<leader>bj",
+keymap(
+  "n",
+  "<leader>bj",
   "<cmd>resize +1<cr>",
-  { desc = 'Horizontal resize +1' }
+  { desc = "Horizontal resize +1" }
 )
 
-keymap("n", "<leader>bk",
+keymap(
+  "n",
+  "<leader>bk",
   "<cmd>resize -1<cr>",
-  { desc = 'Horizontal resize -1' }
+  { desc = "Horizontal resize -1" }
 )
 
-keymap("n", "<leader>bl",
+keymap(
+  "n",
+  "<leader>bl",
   "<cmd>vertical resize +1<cr>",
-  { desc = 'Vertical resize +1' }
+  { desc = "Vertical resize +1" }
 )
 
-keymap("n", "<leader>bx",
+keymap(
+  "n",
+  "<leader>bx",
   [[<cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]],
   { desc = "Source current file." }
 )
@@ -136,20 +172,26 @@ keymap("n", "<leader>bx",
 
 keymap("n", "<leader>yb", 'ggVGg_"+y', { desc = "Select buffer char mode" })
 
-keymap('x', 'cb',
+keymap(
+  "x",
+  "cb",
   [[:lua require("traap.core.comment_block").surround()<cr>]],
-  { desc = 'Surround selction with comment block.' }
+  { desc = "Surround selction with comment block." }
 )
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ g - KJV and Fugitive commands
 
-keymap('x', 'gk',
+keymap(
+  "x",
+  "gk",
   [[:lua require("traap.core.KJV").insert_verse_from_visual_selection()<cr>]],
   { desc = "Insert verse from visual selection" }
 )
 
-keymap('n', 'gk',
+keymap(
+  "n",
+  "gk",
   [[:lua require("traap.core.KJV").insert_verse_from_line()<cr>]],
   { desc = "Insert verse from line" }
 )
@@ -157,11 +199,21 @@ keymap('n', 'gk',
 keymap("n", "<leader>gP", "<cmd>G pull<cr>", { desc = "Git Pull" })
 keymap("n", "<leader>gd", "<cmd>G diff<cr>", { desc = "Git Difference" })
 keymap("n", "<leader>gl", "<cmd>G log<cr>", { desc = "Git Log" })
-keymap("n", "<leader>gh", "<cmd>vert bo help fugitive<cr>", { desc = "Vertical Help" })
+keymap(
+  "n",
+  "<leader>gh",
+  "<cmd>vert bo help fugitive<cr>",
+  { desc = "Vertical Help" }
+)
 keymap("n", "<leader>gp", "<cmd>G push<cr>", { desc = "Git Push" })
 keymap("n", "<leader>gs", "<cmd>G<cr>", { desc = "Git Status" })
 keymap("n", "gh", "<cmd>diffget //2<cr>", { desc = "Gitdiff choose left side" })
-keymap("n", "gl", "<cmd>diffget //3<cr>", { desc = "Gitdiff choose right size" })
+keymap(
+  "n",
+  "gl",
+  "<cmd>diffget //3<cr>",
+  { desc = "Gitdiff choose right size" }
+)
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options
@@ -179,41 +231,68 @@ keymap("n", "<leader>ss", "0v)k$:sort<cr>", { desc = "Sort acronym list" })
 -- ------------------------------------------------------------------------- }}}
 -- {{{ w - Whitespace
 
-keymap("n", "<leader>wr", [[mz<cmd>%s/\r//g<cr><cmd>let @/=''<cr>`z]],
-  { desc = "Remove Windoz line ending" })
+keymap(
+  "n",
+  "<leader>wr",
+  [[mz<cmd>%s/\r//g<cr><cmd>let @/=''<cr>`z]],
+  { desc = "Remove Windoz line ending" }
+)
 
-keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]],
-  { desc = "Convert tab to 2 spaces" })
+keymap(
+  "n",
+  "<leader>wt",
+  [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]],
+  { desc = "Convert tab to 2 spaces" }
+)
 
-keymap("n", "<leader>ww", [[mz<cmd>%s/\s\+$//e<cr><cmd>let @/=''<cr>`z]],
-  { desc = "Remove line end and trailing white spaces" })
+keymap(
+  "n",
+  "<leader>ww",
+  [[mz<cmd>%s/\s\+$//e<cr><cmd>let @/=''<cr>`z]],
+  { desc = "Remove line end and trailing white spaces" }
+)
 
-keymap("n", "<leader>]",
+keymap(
+  "n",
+  "<leader>]",
   [[:%s/\[\|\]//g<CR>]],
   { noremap = true, silent = true, desc = "Remove [ and ]" }
 )
 
-keymap('n', '<leader>r|',
-  [[:%s/\\s*|\\s*/|/g<CR>]],
-  { noremap = true, silent = true, desc = "Remove whitespace before and after |" })
+keymap("n", "<leader>r|", [[:%s/\\s*|\\s*/|/g<CR>]], {
+  noremap = true,
+  silent = true,
+  desc = "Remove whitespace before and after |",
+})
 
-keymap("n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>", { desc = "Delete empty lines" })
+keymap(
+  "n",
+  "<leader>wl",
+  "<cmd>g/^\\s*$/d<CR>",
+  { desc = "Delete empty lines" }
+)
 keymap("n", "<leader>|", "<cmd>%s/\t/|/g<CR>", { desc = "Replace \t with |" })
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ x - eXtra quality of life items.
 
-keymap("n", "<leader><leader>xf",
+keymap(
+  "n",
+  "<leader><leader>xf",
   [[<cmd>source %<cr><cmd>echo 'Sourced ' . @%<cr>]],
   { desc = "Source file" }
 )
 
-keymap("n", "<leader><leader>xl",
+keymap(
+  "n",
+  "<leader><leader>xl",
   [[<cmd>.lua<cr><cmd>echo 'Current line executed.' . <cr>]],
   { desc = "Source current line." }
 )
 
-keymap('v', '<leader><leader>xs',
+keymap(
+  "v",
+  "<leader><leader>xs",
   [[:lua<cr><cmd>echo 'Visual selection executed.'<cr>]],
   { desc = "" }
 )
@@ -228,87 +307,467 @@ keymap({ "n", "v", "x" }, "<leader>y", '"+y')
 -- {{{ Snacks
 
 if platform.has_plugin("snacks.nvim") then
-  platform.load_plugin("snacks.nvim")
-
-  local ok, snacks = pcall(require, "snacks")
-  if ok then
-    keymap("n", "<leader>e", function()
-      snacks.explorer()
-    end, { desc = "File Explorer" })
-
-    keymap("n", "<leader>fb", snacks.picker.buffers, { desc = "Buffers" })
-
-    keymap("n", "<leader>fc", function()
-      snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-    end, { desc = "Find Config File" })
-
-    keymap("n", "<leader>ff", snacks.picker.files, { desc = "Find Files" })
-    keymap("n", "<leader>fg", snacks.picker.git_files, { desc = "Find Git Files" })
-    keymap("n", "<leader>fp", snacks.picker.projects, { desc = "Projects" })
-    keymap("n", "<leader>fr", snacks.picker.recent, { desc = "Recent" })
-
-    -- Git
-    keymap("n", "<leader>gB", function()
-      snacks.gitbrowse()
-    end, { desc = "Git Browse" })
-
-    keymap("n", "<leader>gL", snacks.picker.git_log_line, { desc = "Git Log Line" })
-    -- keymap("n", "<leader>gS", snacks.picker.git_stash, { desc = "Git Stash" })
-    keymap("n", "<leader>gb", snacks.picker.git_branches, { desc = "Git Branches" })
-    keymap("n", "<leader>gd", snacks.picker.git_diff, { desc = "Git Diff (Hunks)" })
-    keymap("n", "<leader>gf", snacks.picker.git_log_file, { desc = "Git Log File" })
-    keymap("n", "<leader>gl", snacks.picker.git_log, { desc = "Git Log" })
-
-    -- Grep
-    keymap("n", "<leader>sb", snacks.picker.lines, { desc = "Buffer Lines" })
-    keymap("n", "<leader>sB", snacks.picker.grep_buffers, { desc = "Grep Open Buffers" })
-    keymap("n", "<leader>sg", snacks.picker.grep, { desc = "Grep" })
-    keymap({ "n", "x" }, "<leader>sw", snacks.picker.grep_word, { desc = "Visual Word or Selection" })
-
-    -- Search
-    keymap("n", "<leader>sC", snacks.picker.commands, { desc = "Commands" })
-    keymap("n", "<leader>sD", snacks.picker.diagnostics_buffer, { desc = "Buffer Diagnostics" })
-    keymap("n", "<leader>sG", snacks.picker.registers, { desc = "Registers" })
-    keymap("n", "<leader>sH", snacks.picker.highlights, { desc = "Highlights" })
-    keymap("n", "<leader>sM", snacks.picker.man, { desc = "Man Pages" })
-    keymap("n", "<leader>sR", snacks.picker.resume, { desc = "Resume" })
-    keymap("n", "<leader>sa", snacks.picker.autocmds, { desc = "Autocmds" })
-    keymap("n", "<leader>sd", snacks.picker.diagnostics, { desc = "Diagnostics" })
-    keymap("n", "<leader>sh", snacks.picker.help, { desc = "Help Pages" })
-    keymap("n", "<leader>si", snacks.picker.icons, { desc = "Icons" })
-    keymap("n", "<leader>sJ", snacks.picker.jumps, { desc = "Jumps" })
-    keymap("n", "<leader>sk", snacks.picker.keymaps, { desc = "Keymaps" })
-    keymap("n", "<leader>sL", snacks.picker.loclist, { desc = "Location List" })
-    keymap("n", "<leader>sm", snacks.picker.marks, { desc = "Marks" })
-    keymap("n", "<leader>sp", snacks.picker.lazy, { desc = "Plugin Specs" })
-    keymap("n", "<leader>sq", snacks.picker.qflist, { desc = "Quickfix List" })
-    keymap("n", "<leader>su", snacks.picker.undo, { desc = "Undo History" })
-    keymap("n", "<leader>s/", snacks.picker.search_history, { desc = "Search History" })
-    keymap("n", "<leader>uC", snacks.picker.colorschemes, { desc = "Colorschemes" })
-
-    -- Toggles
-    snacks.toggle.inlay_hints():map("yoh")
-    snacks.toggle.indent():map("yoi")
-    snacks.toggle.line_number():map("yon")
-    snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("yor")
-    snacks.toggle.option("spell", { name = "Spelling" }):map("yos")
-    snacks.toggle.treesitter():map("yot")
-    snacks.toggle.option("wrap", { name = "Wrap" }):map("yow")
-    snacks.toggle.diagnostics():map("<leader>ud")
-    snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map(
-      "<leader>uc")
-    snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-    snacks.toggle.dim():map("<leader>uD")
-
-    -- Utilities
-    keymap("n", "<leader>.", snacks.scratch.open, { desc = "Toggle Scratch Buffer" })
-    keymap("n", "<leader>S", snacks.scratch.select, { desc = "Select Scratch Buffer" })
-    -- keymap("n", "<leader>bd", snacks.bufdelete, { desc = "Delete Buffer" })
-    keymap("n", "<leader>cR", snacks.rename.rename_file, { desc = "Rename File" })
-    keymap("n", "<leader>un", snacks.notifier.hide, { desc = "Dismiss All Notifications" })
-    keymap({ "n", "t" }, "]]", function() snacks.words.jump(vim.v.count1) end, { desc = "Next Reference" })
-    keymap({ "n", "t" }, "[[", function() snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference" })
+  local function with_snacks(fn)
+    return function()
+      platform.with_plugin("snacks.nvim", "snacks", fn)
+    end
   end
+
+  local function toggle_snacks(fn)
+    return with_snacks(function(snacks)
+      fn(snacks):toggle()
+    end)
+  end
+
+  keymap(
+    "n",
+    "<leader>e",
+    with_snacks(function(snacks)
+      snacks.explorer()
+    end),
+    { desc = "File Explorer" }
+  )
+
+  keymap(
+    "n",
+    "<leader>fb",
+    with_snacks(function(snacks)
+      snacks.picker.buffers()
+    end),
+    { desc = "Buffers" }
+  )
+
+  keymap(
+    "n",
+    "<leader>fc",
+    with_snacks(function(snacks)
+      snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+    end),
+    { desc = "Find Config File" }
+  )
+
+  keymap(
+    "n",
+    "<leader>ff",
+    with_snacks(function(snacks)
+      snacks.picker.files()
+    end),
+    { desc = "Find Files" }
+  )
+  keymap(
+    "n",
+    "<leader>fg",
+    with_snacks(function(snacks)
+      snacks.picker.git_files()
+    end),
+    { desc = "Find Git Files" }
+  )
+  keymap(
+    "n",
+    "<leader>fp",
+    with_snacks(function(snacks)
+      snacks.picker.projects()
+    end),
+    { desc = "Projects" }
+  )
+  keymap(
+    "n",
+    "<leader>fr",
+    with_snacks(function(snacks)
+      snacks.picker.recent()
+    end),
+    { desc = "Recent" }
+  )
+
+  -- Git
+  keymap(
+    "n",
+    "<leader>gB",
+    with_snacks(function(snacks)
+      snacks.gitbrowse()
+    end),
+    { desc = "Git Browse" }
+  )
+
+  keymap(
+    "n",
+    "<leader>gL",
+    with_snacks(function(snacks)
+      snacks.picker.git_log_line()
+    end),
+    { desc = "Git Log Line" }
+  )
+  -- keymap("n", "<leader>gS", with_snacks(function(snacks) snacks.picker.git_stash() end), { desc = "Git Stash" })
+  keymap(
+    "n",
+    "<leader>gb",
+    with_snacks(function(snacks)
+      snacks.picker.git_branches()
+    end),
+    { desc = "Git Branches" }
+  )
+  keymap(
+    "n",
+    "<leader>gd",
+    with_snacks(function(snacks)
+      snacks.picker.git_diff()
+    end),
+    { desc = "Git Diff (Hunks)" }
+  )
+  keymap(
+    "n",
+    "<leader>gf",
+    with_snacks(function(snacks)
+      snacks.picker.git_log_file()
+    end),
+    { desc = "Git Log File" }
+  )
+  keymap(
+    "n",
+    "<leader>gl",
+    with_snacks(function(snacks)
+      snacks.picker.git_log()
+    end),
+    { desc = "Git Log" }
+  )
+
+  -- Grep
+  keymap(
+    "n",
+    "<leader>sb",
+    with_snacks(function(snacks)
+      snacks.picker.lines()
+    end),
+    { desc = "Buffer Lines" }
+  )
+  keymap(
+    "n",
+    "<leader>sB",
+    with_snacks(function(snacks)
+      snacks.picker.grep_buffers()
+    end),
+    { desc = "Grep Open Buffers" }
+  )
+  keymap(
+    "n",
+    "<leader>sg",
+    with_snacks(function(snacks)
+      snacks.picker.grep()
+    end),
+    { desc = "Grep" }
+  )
+  keymap(
+    { "n", "x" },
+    "<leader>sw",
+    with_snacks(function(snacks)
+      snacks.picker.grep_word()
+    end),
+    { desc = "Visual Word or Selection" }
+  )
+
+  -- Search
+  keymap(
+    "n",
+    "<leader>sC",
+    with_snacks(function(snacks)
+      snacks.picker.commands()
+    end),
+    { desc = "Commands" }
+  )
+  keymap(
+    "n",
+    "<leader>sD",
+    with_snacks(function(snacks)
+      snacks.picker.diagnostics_buffer()
+    end),
+    { desc = "Buffer Diagnostics" }
+  )
+  keymap(
+    "n",
+    "<leader>sG",
+    with_snacks(function(snacks)
+      snacks.picker.registers()
+    end),
+    { desc = "Registers" }
+  )
+  keymap(
+    "n",
+    "<leader>sH",
+    with_snacks(function(snacks)
+      snacks.picker.highlights()
+    end),
+    { desc = "Highlights" }
+  )
+  keymap(
+    "n",
+    "<leader>sM",
+    with_snacks(function(snacks)
+      snacks.picker.man()
+    end),
+    { desc = "Man Pages" }
+  )
+  keymap(
+    "n",
+    "<leader>sR",
+    with_snacks(function(snacks)
+      snacks.picker.resume()
+    end),
+    { desc = "Resume" }
+  )
+  keymap(
+    "n",
+    "<leader>sa",
+    with_snacks(function(snacks)
+      snacks.picker.autocmds()
+    end),
+    { desc = "Autocmds" }
+  )
+  keymap(
+    "n",
+    "<leader>sd",
+    with_snacks(function(snacks)
+      snacks.picker.diagnostics()
+    end),
+    { desc = "Diagnostics" }
+  )
+  keymap(
+    "n",
+    "<leader>sh",
+    with_snacks(function(snacks)
+      snacks.picker.help()
+    end),
+    { desc = "Help Pages" }
+  )
+  keymap(
+    "n",
+    "<leader>si",
+    with_snacks(function(snacks)
+      snacks.picker.icons()
+    end),
+    { desc = "Icons" }
+  )
+  keymap(
+    "n",
+    "<leader>sJ",
+    with_snacks(function(snacks)
+      snacks.picker.jumps()
+    end),
+    { desc = "Jumps" }
+  )
+  keymap(
+    "n",
+    "<leader>sk",
+    with_snacks(function(snacks)
+      snacks.picker.keymaps()
+    end),
+    { desc = "Keymaps" }
+  )
+  keymap(
+    "n",
+    "<leader>sL",
+    with_snacks(function(snacks)
+      snacks.picker.loclist()
+    end),
+    { desc = "Location List" }
+  )
+  keymap(
+    "n",
+    "<leader>sm",
+    with_snacks(function(snacks)
+      snacks.picker.marks()
+    end),
+    { desc = "Marks" }
+  )
+  keymap(
+    "n",
+    "<leader>sp",
+    with_snacks(function(snacks)
+      snacks.picker.lazy()
+    end),
+    { desc = "Plugin Specs" }
+  )
+  keymap(
+    "n",
+    "<leader>sq",
+    with_snacks(function(snacks)
+      snacks.picker.qflist()
+    end),
+    { desc = "Quickfix List" }
+  )
+  keymap(
+    "n",
+    "<leader>su",
+    with_snacks(function(snacks)
+      snacks.picker.undo()
+    end),
+    { desc = "Undo History" }
+  )
+  keymap(
+    "n",
+    "<leader>s/",
+    with_snacks(function(snacks)
+      snacks.picker.search_history()
+    end),
+    { desc = "Search History" }
+  )
+  keymap(
+    "n",
+    "<leader>uC",
+    with_snacks(function(snacks)
+      snacks.picker.colorschemes()
+    end),
+    { desc = "Colorschemes" }
+  )
+
+  -- Toggles
+  keymap(
+    "n",
+    "yoh",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.inlay_hints()
+    end),
+    { desc = "Toggle Inlay Hints" }
+  )
+  keymap(
+    "n",
+    "yoi",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.indent()
+    end),
+    { desc = "Toggle Indent" }
+  )
+  keymap(
+    "n",
+    "yon",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.line_number()
+    end),
+    { desc = "Toggle Line Numbers" }
+  )
+  keymap(
+    "n",
+    "yor",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.option(
+        "relativenumber",
+        { name = "Relative Number" }
+      )
+    end),
+    { desc = "Toggle Relative Number" }
+  )
+  keymap(
+    "n",
+    "yos",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.option("spell", { name = "Spelling" })
+    end),
+    { desc = "Toggle Spelling" }
+  )
+  keymap(
+    "n",
+    "yot",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.treesitter()
+    end),
+    { desc = "Toggle Treesitter" }
+  )
+  keymap(
+    "n",
+    "yow",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.option("wrap", { name = "Wrap" })
+    end),
+    { desc = "Toggle Wrap" }
+  )
+  keymap(
+    "n",
+    "<leader>ud",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.diagnostics()
+    end),
+    { desc = "Toggle Diagnostics" }
+  )
+  keymap(
+    "n",
+    "<leader>uc",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.option(
+        "conceallevel",
+        { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }
+      )
+    end),
+    { desc = "Toggle Conceallevel" }
+  )
+  keymap(
+    "n",
+    "<leader>ub",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.option(
+        "background",
+        { off = "light", on = "dark", name = "Dark Background" }
+      )
+    end),
+    { desc = "Toggle Dark Background" }
+  )
+  keymap(
+    "n",
+    "<leader>uD",
+    toggle_snacks(function(snacks)
+      return snacks.toggle.dim()
+    end),
+    { desc = "Toggle Dim" }
+  )
+
+  -- Utilities
+  keymap(
+    "n",
+    "<leader>.",
+    with_snacks(function(snacks)
+      snacks.scratch.open()
+    end),
+    { desc = "Toggle Scratch Buffer" }
+  )
+  keymap(
+    "n",
+    "<leader>S",
+    with_snacks(function(snacks)
+      snacks.scratch.select()
+    end),
+    { desc = "Select Scratch Buffer" }
+  )
+  -- keymap("n", "<leader>bd", with_snacks(function(snacks) snacks.bufdelete() end), { desc = "Delete Buffer" })
+  keymap(
+    "n",
+    "<leader>cR",
+    with_snacks(function(snacks)
+      snacks.rename.rename_file()
+    end),
+    { desc = "Rename File" }
+  )
+  keymap(
+    "n",
+    "<leader>un",
+    with_snacks(function(snacks)
+      snacks.notifier.hide()
+    end),
+    { desc = "Dismiss All Notifications" }
+  )
+  keymap(
+    { "n", "t" },
+    "]]",
+    with_snacks(function(snacks)
+      snacks.words.jump(vim.v.count1)
+    end),
+    { desc = "Next Reference" }
+  )
+  keymap(
+    { "n", "t" },
+    "[[",
+    with_snacks(function(snacks)
+      snacks.words.jump(-vim.v.count1)
+    end),
+    { desc = "Prev Reference" }
+  )
 end
 
 -- ------------------------------------------------------------------------- }}}
@@ -404,8 +863,12 @@ if platform.has_plugin("nvim-lspconfig") then
       keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
       keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
       keymap("n", "<leader>E", vim.diagnostic.open_float, opts)
-      keymap("n", "[d", function() vim.diagnostic.jump({ float = true, count = 1, direction = -1 }) end, opts)
-      keymap("n", "]d", function() vim.diagnostic.jump({ float = true, count = 1, direction = 1 }) end, opts)
+      keymap("n", "[d", function()
+        vim.diagnostic.jump({ float = true, count = 1, direction = -1 })
+      end, opts)
+      keymap("n", "]d", function()
+        vim.diagnostic.jump({ float = true, count = 1, direction = 1 })
+      end, opts)
       keymap("n", "<leader>q", vim.diagnostic.setloclist, opts)
     end,
   })
@@ -521,8 +984,18 @@ end
 -- {{{ vim-easy-align
 
 if platform.has_plugin("vim-easy-align") then
-  keymap("x", "ga", "<Plug>(EasyAlign)", { desc = "EasyAlign", noremap = false })
-  keymap("n", "ga", "<Plug>(EasyAlign)", { desc = "EasyAlign", noremap = false })
+  keymap(
+    "x",
+    "ga",
+    "<Plug>(EasyAlign)",
+    { desc = "EasyAlign", noremap = false }
+  )
+  keymap(
+    "n",
+    "ga",
+    "<Plug>(EasyAlign)",
+    { desc = "EasyAlign", noremap = false }
+  )
 
   keymap("n", "<bar>", function()
     pcall(vim.cmd, "NoiceDisable")
@@ -540,29 +1013,6 @@ if platform.has_plugin("vim-easy-align") then
     pcall(vim.cmd, "NoiceEnable")
   end, { desc = "EasyAlign gaip=," })
 end
--- ------------------------------------------------------------------------- }}}
--- {{{ vim-tmux-navigator
-
-if platform.has_plugin("vim-tmux-navigator") then
-  platform.load_plugin("vim-tmux-navigator")
-
-  keymap("n", "<c-h>", function()
-    vim.cmd("TmuxNavigateLeft")
-  end)
-
-  keymap("n", "<c-j>", function()
-    vim.cmd("TmuxNavigateDown")
-  end)
-
-  keymap("n", "<c-k>", function()
-    vim.cmd("TmuxNavigateUp")
-  end)
-
-  keymap("n", "<c-l>", function()
-    vim.cmd("TmuxNavigateRight")
-  end)
-end
-
 -- ------------------------------------------------------------------------- }}}
 -- {{{ vimtex
 
@@ -721,11 +1171,36 @@ if platform.has_plugin("wiki.vim") and platform.is_nvim() then
   local workhome = os.getenv("WORKHOME")
   local ythome = os.getenv("YOUTUBEHOME")
 
-  keymap("n", "<leader>pw", "<cmd>edit " .. wikihome .. "/index.md<cr>", { desc = "Personal Wiki" })
-  keymap("n", "<leader>wb", "<cmd>edit " .. wikihome .. "/journal/Backlog.md<cr>", { desc = "Wiki Backlog" })
-  keymap("n", "<leader>wa", "<cmd>edit " .. wikihome .. "/journal/Acronyms.md<cr>", { desc = "Wiki Acronyms" })
-  keymap("n", "<leader>wk", "<cmd>edit " .. workhome .. "/Wiki/index.md<cr>", { desc = "Work Wiki" })
-  keymap("n", "<leader>yt", "<cmd>edit " .. ythome .. "/wiki/index.md<cr>", { desc = "YouTube Wiki" })
+  keymap(
+    "n",
+    "<leader>pw",
+    "<cmd>edit " .. wikihome .. "/index.md<cr>",
+    { desc = "Personal Wiki" }
+  )
+  keymap(
+    "n",
+    "<leader>wb",
+    "<cmd>edit " .. wikihome .. "/journal/Backlog.md<cr>",
+    { desc = "Wiki Backlog" }
+  )
+  keymap(
+    "n",
+    "<leader>wa",
+    "<cmd>edit " .. wikihome .. "/journal/Acronyms.md<cr>",
+    { desc = "Wiki Acronyms" }
+  )
+  keymap(
+    "n",
+    "<leader>wk",
+    "<cmd>edit " .. workhome .. "/Wiki/index.md<cr>",
+    { desc = "Work Wiki" }
+  )
+  keymap(
+    "n",
+    "<leader>yt",
+    "<cmd>edit " .. ythome .. "/wiki/index.md<cr>",
+    { desc = "YouTube Wiki" }
+  )
 
   keymap("n", "<leader>we", function()
     platform.with_loaded_plugin("wiki.vim", function()
@@ -733,7 +1208,12 @@ if platform.has_plugin("wiki.vim") and platform.is_nvim() then
     end)
   end, { desc = "Wiki Export" })
 
-  keymap("n", "<leader>wi", "<cmd>edit " .. wikihome .. "/index.md<cr>", { desc = "Personal Wiki" })
+  keymap(
+    "n",
+    "<leader>wi",
+    "<cmd>edit " .. wikihome .. "/index.md<cr>",
+    { desc = "Personal Wiki" }
+  )
 
   keymap("n", "<leader>wj", function()
     platform.with_loaded_plugin("wiki.vim", function()

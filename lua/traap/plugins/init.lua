@@ -67,7 +67,7 @@ if platform.is_nvim() then
     { enabled = true,  event = EVENT, "vim-utils/vim-most-minimal-folds" },
     { enabled = true,  event = EVENT, "xiyaowong/virtcolumn.nvim" },
 
-    { enabled = true,  cmd = "G",     "tpope/vim-fugitive",                      lazy = false, },
+    { enabled = true,  cmd = "G",     "tpope/vim-fugitive" },
 
     { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { { "aklt/plantuml-syntax", event = EVENT } }, },
     { enabled = false, ft = RUBY,     "tpope/vim-bundler" },
