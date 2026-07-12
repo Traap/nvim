@@ -26,11 +26,16 @@ return {
     vim.api.nvim_create_autocmd("RecordingLeave", {
       callback = function()
         local timer = vim.uv.new_timer()
+        if not timer then
+          return
+        end
+
         timer:start(
           50,
           0,
           vim.schedule_wrap(function()
             require("lualine").refresh({ place = { "statusline" } })
+            timer:close()
           end)
         )
       end,
