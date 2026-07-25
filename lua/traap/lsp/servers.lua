@@ -133,6 +133,14 @@ M.filetype_to_server = {
     },
   },
 
+  qml = {
+    name = 'qmlls',
+    filetypes = {
+      'qml',
+      'qmljs',
+    },
+  },
+
   ruby = {
     name = 'solargraph',
     filetypes = {
