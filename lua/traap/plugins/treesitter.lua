@@ -43,7 +43,10 @@ return {
         noice = true,
         notify = true,
         lspinfo = true,
+        snacks_layout_box = true,
         snacks_notif = true,
+        snacks_picker_input = true,
+        snacks_picker_list = true,
       }
 
       vim.api.nvim_create_autocmd("FileType", {
