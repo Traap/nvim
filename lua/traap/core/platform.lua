@@ -65,6 +65,12 @@ function M.in_tmux()
   return os.getenv("TMUX") ~= nil
 end
 
+---Return whether the current process is running inside Herdr.
+---@return boolean
+function M.in_herdr()
+  return vim.env.HERDR_PANE_ID ~= nil
+end
+
 ---Return the current hostname.
 ---@return string
 function M.get_host()
