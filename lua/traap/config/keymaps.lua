@@ -278,21 +278,21 @@ keymap("n", "<leader>|", "<cmd>%s/\t/|/g<CR>", { desc = "Replace \t with |" })
 
 keymap(
   "n",
-  "<leader><leader>xf",
+  ";f",
   [[<cmd>source %<cr><cmd>echo 'Sourced ' . @%<cr>]],
   { desc = "Source file" }
 )
 
 keymap(
   "n",
-  "<leader><leader>xl",
+  ";l",
   [[<cmd>.lua<cr><cmd>echo 'Current line executed.' . <cr>]],
   { desc = "Source current line." }
 )
 
 keymap(
   "v",
-  "<leader><leader>xs",
+  ";v",
   [[:lua<cr><cmd>echo 'Visual selection executed.'<cr>]],
   { desc = "" }
 )
