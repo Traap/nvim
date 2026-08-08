@@ -774,49 +774,49 @@ end
 -- {{{ Harpoon
 
 if platform.has_plugin("harpoon") then
-  keymap("n", "<a-1>", function()
+  keymap("n", ";1", function()
     platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():select(1)
     end)
   end, { desc = "Harpoon buffer 1" })
 
-  keymap("n", "<a-2>", function()
+  keymap("n", ";2", function()
     platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():select(2)
     end)
   end, { desc = "Harpoon buffer 2" })
 
-  keymap("n", "<a-3>", function()
+  keymap("n", ";3", function()
     platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():select(3)
     end)
   end, { desc = "Harpoon buffer 3" })
 
-  keymap("n", "<a-4>", function()
+  keymap("n", ";4", function()
     platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():select(4)
     end)
   end, { desc = "Harpoon buffer 4" })
 
-  keymap("n", "<a-5>", function()
+  keymap("n", ";5", function()
     platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():next()
     end)
   end, { desc = "Harpoon next buffer" })
 
-  keymap("n", "<a-6>", function()
+  keymap("n", ";6", function()
     platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():prev()
     end)
   end, { desc = "Harpoon prev buffer" })
 
-  keymap("n", "<a-7>", function()
+  keymap("n", ";7", function()
     platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end)
   end, { desc = "Harpoon Toggle Menu" })
 
-  keymap("n", "<a-8>", function()
+  keymap("n", ";8", function()
     platform.with_plugin("harpoon", "harpoon", function(harpoon)
       harpoon:list():add()
     end)
