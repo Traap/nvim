@@ -100,7 +100,7 @@ if platform.is_vscode() then
 
     { enabled = true,  ft = PUML,     "Traap/vim-bundle-plantuml",               dependencies = { { "aklt/plantuml-syntax", event = EVENT } }, },
     { enabled = true,  ft = TEX,      "Traap/vim-bundle-vimtex" },
-    { enabled = true,  ft = WIKI,     "Traap/vim-bundle-wiki.vim",               dependencies = "lervag/wiki.vim", },
+    { enabled = false, ft = WIKI,     "Traap/vim-bundle-wiki.vim",               dependencies = "lervag/wiki.vim", },
     { enabled = true,  ft = WIKI,     "lervag/wiki-ft.vim",                      dependencies = "lervag/wiki.vim", },
     { enabled = true,  ft = WIKI,     "lervag/wiki.vim",                         cmd = { "WikiIndex", "WikiJournal" }, },
   }

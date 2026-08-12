@@ -1148,6 +1148,40 @@ end
 -- {{{ vscode bridge
 
 if platform.is_vscode() then
+  local vscode = require("vscode")
+
+  keymap("n", ";q", function()
+    vscode.call("workbench.action.closeAllEditors")
+  end, { desc = "Close all VSCode editors" })
+
+  keymap("n", "<leader>e", function()
+    vscode.call("workbench.action.toggleSidebarVisibility")
+  end, { desc = "Toggle VSCode sidebar" })
+
+  keymap("n", "<leader>ff", function()
+    vscode.call("workbench.action.quickOpen")
+  end, { desc = "Find files in VSCode" })
+
+  keymap("n", "<leader>sc", function()
+    vscode.call("workbench.action.openSettingsJson")
+  end, { desc = "Open VSCode settings" })
+
+  keymap("n", "<leader>sg", function()
+    vscode.call("workbench.action.findInFiles")
+  end, { desc = "Find in VSCode files" })
+
+  keymap("n", "<leader>sj", function()
+    vscode.call("workbench.action.splitEditorDown")
+  end, { desc = "Split VSCode editor down" })
+
+  keymap("n", "<leader>sk", function()
+    vscode.call("workbench.action.openGlobalKeybindingsFile")
+  end, { desc = "Open VSCode keybindings" })
+
+  keymap("n", "<leader>sv", function()
+    vscode.call("workbench.action.splitEditorRight")
+  end, { desc = "Split VSCode editor right" })
+
   -- Navigate VSCode tabs like lazyvim buffers
   keymap("n", "<S-h>", function()
     vscode.call("workbench.action.previousEditor")
