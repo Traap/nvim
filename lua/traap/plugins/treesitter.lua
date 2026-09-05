@@ -3,15 +3,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     enabled = true and platform.is_nvim(),
-    event = { "BufReadPost", "BufNewFile" },
+    event = require("traap.config.events").file,
     build = ":TSUpdate",
 
-    opts = {
-      highlight = {
-        additional_vim_regex_highlighting = false,
-      },
-      indent = { enable = true },
-    },
+    opts = {},
 
     config = function(_, opts)
       local treesitter = require("nvim-treesitter")
@@ -61,13 +56,22 @@ return {
             return
           end
 
-          -- already available → nothing to do
-          if has_parser(lang) then
+          if not has_parser(lang) then
+            notify.info("Installing Treesitter parser: " .. lang)
+            treesitter.install({ lang }):wait()
+          end
+
+          if not vim.api.nvim_buf_is_valid(args.buf) or not has_parser(lang) then
             return
           end
 
-          notify.info("Installing Treesitter parser: " .. lang)
-          treesitter.install({ lang }):wait()
+          local ok, err = pcall(vim.treesitter.start, args.buf, lang)
+          if not ok then
+            notify.warn("Could not start Treesitter for " .. lang .. ": " .. tostring(err))
+            return
+          end
+
+          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
       })
     end,

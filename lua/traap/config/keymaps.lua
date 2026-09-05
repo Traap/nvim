@@ -863,11 +863,16 @@ if platform.has_plugin("nvim-lspconfig") then
       keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
       keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
       keymap("n", "<leader>E", vim.diagnostic.open_float, opts)
+      local function diagnostic_float(diagnostic, bufnr)
+        if diagnostic then
+          vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+        end
+      end
       keymap("n", "[d", function()
-        vim.diagnostic.jump({ float = true, count = 1, direction = -1 })
+        vim.diagnostic.jump({ count = -1, on_jump = diagnostic_float })
       end, opts)
       keymap("n", "]d", function()
-        vim.diagnostic.jump({ float = true, count = 1, direction = 1 })
+        vim.diagnostic.jump({ count = 1, on_jump = diagnostic_float })
       end, opts)
       keymap("n", "<leader>q", vim.diagnostic.setloclist, opts)
     end,

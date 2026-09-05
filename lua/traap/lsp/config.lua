@@ -15,7 +15,13 @@ end
 -- {{{ diagnostic
 
 M.configure_diagnostics = function()
-  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  local severity = vim.diagnostic.severity
+  local signs = {
+    [severity.ERROR] = " ",
+    [severity.WARN] = " ",
+    [severity.HINT] = " ",
+    [severity.INFO] = " ",
+  }
   vim.diagnostic.config({ signs = { text = signs } })
 end
 
