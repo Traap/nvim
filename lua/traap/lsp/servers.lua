@@ -139,6 +139,10 @@ M.filetype_to_server = {
       'qml',
       'qmljs',
     },
+    mason = false,
+    opts = {
+      cmd = { '/usr/lib/qt6/bin/qmlls' },
+    },
   },
 
   ruby = {
