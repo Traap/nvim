@@ -18,6 +18,10 @@ keymap("v", "<A-k>", "")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ General mappings.
 
+keymap("n", "<leader>uv", function()
+  require("traap.lsp.config").toggle_diagnostic_text()
+end, { desc = "Toggle Diagnostic Text" })
+
 -- Delete the current line.
 keymap("n", "-", "dd", { desc = "Delete line" })
 
@@ -105,7 +109,7 @@ keymap(
   "n",
   "<leader><space>",
   "<cmd>nohlsearch<cr>",
-  { desc = "Clear highghted" }
+  { desc = "Clear Highlights" }
 )
 
 -- ------------------------------------------------------------------------- }}}

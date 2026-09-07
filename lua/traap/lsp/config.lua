@@ -14,6 +14,21 @@ end
 -- ------------------------------------------------------------------------- }}}
 -- {{{ diagnostic
 
+local diagnostic_text
+
+M.toggle_diagnostic_text = function()
+  local config = vim.diagnostic.config() or {}
+  if config.virtual_text or config.virtual_lines then
+    diagnostic_text = {
+      virtual_text = config.virtual_text,
+      virtual_lines = config.virtual_lines,
+    }
+    vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
+  else
+    vim.diagnostic.config(diagnostic_text or { virtual_text = true })
+  end
+end
+
 M.configure_diagnostics = function()
   local severity = vim.diagnostic.severity
   local signs = {
