@@ -858,7 +858,7 @@ if platform.has_plugin("nvim-lspconfig") then
       keymap("n", "K", vim.lsp.buf.hover, opts)
       keymap("n", "<leader>k", vim.lsp.buf.signature_help, opts)
       keymap("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-      keymap("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+      keymap("n", "<leader>wR", vim.lsp.buf.remove_workspace_folder, opts)
       keymap("n", "<leader>wl", function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, opts)
