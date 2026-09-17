@@ -1,17 +1,13 @@
 local platform = require("traap.core.platform")
-
 return {
-  "christoomey/vim-tmux-navigator",
-  enabled = true and platform.is_nvim() and not platform.in_herdr(),
+  "odiumuniverse/herdr-smart-nav",
+  enabled = platform.is_nvim() and platform.in_herdr(),
   keys = {
     { "<c-h>", function() platform.navigate("left") end,  desc = "Navigate Left", },
     { "<c-j>", function() platform.navigate("down") end,  desc = "Navigate Down", },
     { "<c-k>", function() platform.navigate("up") end,    desc = "Navigate Up", },
     { "<c-l>", function() platform.navigate("right") end, desc = "Navigate Right", },
   },
-  init = function()
-    vim.g.tmux_navigator_no_mappings = 1
-    vim.g.tmux_navigator_disable_when_zoomed = 1
-    vim.g.tmux_navigator_preserve_zoom = 1
-  end,
+  build = "cargo build --release",
+  opts = {},
 }

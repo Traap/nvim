@@ -109,9 +109,9 @@ notifications, buffer deletion, status column, word references, toggles, image
 support, and Zen mode are enabled. Animation, indentation guides, scrolling,
 terminal, and Lazygit integrations are deliberately disabled.
 
-The explorer and picker cooperate with tmux: `<C-h>`, `<C-j>`, `<C-k>`, and
+The explorer and picker cooperate with Herdr and tmux: `<C-h>`, `<C-j>`, `<C-k>`, and
 `<C-l>` leave the picker and move in the requested direction when there is no
-adjacent Neovim window.
+adjacent Neovim window. Herdr takes precedence when both environments are present.
 
 Frequently used mappings include:
 

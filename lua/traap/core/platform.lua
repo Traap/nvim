@@ -1,25 +1,42 @@
 local M = {}
 
----Snacks picker actions that delegate directional movement to
----vim-tmux-navigator.
----
----The keys in this table are action names consumed by snacks.nvim picker
----mappings. Each action accepts the picker argument supplied by Snacks, but the
----value is not needed because the Vim commands perform the navigation.
+local directions = {
+  left = { tmux = "Left", wincmd = "h" },
+  down = { tmux = "Down", wincmd = "j" },
+  up = { tmux = "Up", wincmd = "k" },
+  right = { tmux = "Right", wincmd = "l" },
+}
+
+---Move to an adjacent Neovim window, then a Herdr or tmux pane at the edge.
+---Herdr takes precedence when both environments are present.
+---@param direction "left"|"down"|"up"|"right"
+function M.navigate(direction)
+  local target = assert(directions[direction], "Invalid navigation direction")
+  local current_win = vim.api.nvim_get_current_win()
+
+  vim.cmd("wincmd " .. target.wincmd)
+  if vim.api.nvim_get_current_win() ~= current_win then
+    return
+  end
+
+  if M.in_herdr() then
+    local herdr = vim.env.HERDR_BIN_PATH
+    if not herdr or herdr == "" then
+      herdr = "herdr"
+    end
+    vim.fn.system({ herdr, "pane", "focus", "--direction", direction, "--current" })
+  elseif M.in_tmux() then
+    vim.cmd("TmuxNavigate" .. target.tmux)
+  end
+end
+
+---Snacks picker actions; retain the action names used by existing mappings.
 ---@type table<string, fun(picker?: unknown)>
 M.tmux_actions = {
-  tmux_left = function(_)
-    vim.cmd("TmuxNavigateLeft")
-  end,
-  tmux_down = function(_)
-    vim.cmd("TmuxNavigateDown")
-  end,
-  tmux_up = function(_)
-    vim.cmd("TmuxNavigateUp")
-  end,
-  tmux_right = function(_)
-    vim.cmd("TmuxNavigateRight")
-  end,
+  tmux_left = function(_) M.navigate("left") end,
+  tmux_down = function(_) M.navigate("down") end,
+  tmux_up = function(_) M.navigate("up") end,
+  tmux_right = function(_) M.navigate("right") end,
 }
 
 ---Return whether Neovim is running inside the VS Code extension host.
@@ -62,13 +79,14 @@ end
 ---Return whether the current process is running inside tmux.
 ---@return boolean
 function M.in_tmux()
-  return os.getenv("TMUX") ~= nil
+  return vim.env.TMUX ~= nil and vim.env.TMUX ~= ""
 end
 
 ---Return whether the current process is running inside Herdr.
 ---@return boolean
 function M.in_herdr()
-  return vim.env.HERDR_PANE_ID ~= nil
+  return vim.env.HERDR_ENV == "1"
+    or (vim.env.HERDR_PANE_ID ~= nil and vim.env.HERDR_PANE_ID ~= "")
 end
 
 ---Return the current hostname.
