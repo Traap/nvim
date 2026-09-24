@@ -176,6 +176,7 @@ return {
             { find = "E85: There is no listed buffer" },
             { find = "E486: Pattern not found: ?$" },
             { find = "E490: No fold found" },
+            { find = "skipping unsupported language:" },
             { find = "Already at oldest change" },
             { find = "; after #%d+" },
             { find = "; before #%d+" },
