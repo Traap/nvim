@@ -87,6 +87,19 @@ keymap("n", "<leader>J", "myvipJ`ygq<cr>", { desc = "Join Paragraph" })
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Shell commands.
 
+keymap(
+  "n",
+  "<leader>ru",
+  function()
+    local notify = require("traap.core.notify")
+
+    notify.info("Unit test started", true)
+    vim.cmd([[exec "r!bin/unit-test"]])
+    notify.info("Unit testing completed.", true)
+  end,
+  { desc = "Run unit tests" }
+)
+
 -- Execute the current line of text as a shell command.
 keymap(
   "n",

@@ -9,9 +9,9 @@ local function is_verbose()
   return M.verbose or (env_verbose and env_verbose ~= "false" and env_verbose ~= "0")
 end
 
-local function _notify(message, level)
+local function _notify(message, level, force)
   if (level == vim.log.levels.INFO or level == vim.log.levels.DEBUG)
-      and not M.verbose then
+      and not M.verbose and not force then
     return
   end
   default_notify(message, level)
@@ -43,8 +43,8 @@ M.error = function(message)
   _notify(message, vim.log.levels.ERROR)
 end
 
-M.info = function(message)
-  _notify(message, vim.log.levels.INFO)
+M.info = function(message, force)
+  _notify(message, vim.log.levels.INFO, force)
 end
 
 M.warn = function(message)
@@ -62,4 +62,3 @@ vim.api.nvim_create_user_command("VerboseOff", function()
 end, {})
 
 return M
-
