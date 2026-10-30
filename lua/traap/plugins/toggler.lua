@@ -10,6 +10,9 @@ return {
       inverses = {
         [">="] = "<=",
         [">"] = "<",
+        ["yes"] = "no",
+        ["Yes"] = "No",
+        ["YES"] = "NO",
       },
       remove_default_keybinds = true,
       remove_default_inverses = false,
