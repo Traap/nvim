@@ -1,8 +1,8 @@
--- My plugin customizations require the following global values.
--- TODO: Remove dependencines on this file.
--- TODO: Or redesign .
+-- Globals kept for older experiments.
+-- TODO: Remove dependencies on this file.
+-- TODO: Or redesign.
 
-In_Tmux = require("traap.core.plugins").in_tmux
+In_Tmux = require("traap.core.platform").in_tmux
 
 Keymap = require("traap.core.keymap").keymap
 

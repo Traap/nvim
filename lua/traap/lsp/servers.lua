@@ -1,5 +1,9 @@
 local M = {}
 -- {{{ File types to LSP Server names
+--
+-- `name` is the vim.lsp.config name, matching nvim-lspconfig's lsp/<name>.lua.
+-- `mason = false` skips Mason and uses `opts.cmd` or an executable on PATH.
+-- `opts` is a table, or a function that returns a table.
 
 M.filetype_to_server = {
   bash = {

@@ -1,4 +1,4 @@
--- lua/config/clipboard.lua
+-- Pick a clipboard provider for VS Code, Git Bash, WSL, Wayland, and X11.
 
 local clipboard = {}
 
@@ -10,7 +10,7 @@ end
 
 -- Configure clipboard
 if platform.is_vscode() then
-  -- Do nothing: Do not distrube vscode.
+  -- Do nothing: Do not disturb VS Code.
 elseif platform.is_git_bash() then
   -- Do nothing: Git Bash (limited or manual setup)
 elseif platform.in_wsl() and platform.is_wayland() then

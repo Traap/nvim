@@ -1,4 +1,4 @@
--- Bootstraap lazy.nvim when needed.
+-- Bootstrap lazy.nvim when needed.
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -22,7 +22,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.getchar()
     os.exit(1)
   end
-
 end
 
 vim.opt.rtp:prepend(lazypath)

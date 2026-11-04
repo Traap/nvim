@@ -59,6 +59,8 @@ return {
         view = "mini",
       },
 
+      -- stylize_markdown is deprecated in Neovim 0.12 and removed in 0.14.
+      -- Noice replaces that function while this override stays on.
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,

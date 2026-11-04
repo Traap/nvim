@@ -1,26 +1,33 @@
 local M = {}
 
--- Use PDF_VIEWER to view pdf document of prior WikiExport.  WikiExports are
--- done to WIKIHOME/printed.
---
--- TODO: Notify user when PDF_VIEWER does not exits.
--- TODO: Notify user when WIKIHOME does not exits.
--- TODO: Notify user when WikiExport document does not exist.
+-- Open the PDF written by :WikiExport.
+-- Exports land in $WIKIHOME/printed/<page>.pdf. $PDF_VIEWER is the executable,
+-- plus optional arguments. This does not use :Dispatch.
 function M.page_viewer()
-  local pdf_viewer = os.getenv("PDF_VIEWER")
-  local wiki_home = os.getenv("WIKIHOME")
-  local page_name = vim.fn.fnameescape(vim.fn.expand('%:p:t:r'))
+  local notify = require("traap.core.notify")
+  local pdf_viewer = vim.env.PDF_VIEWER
+  local wiki_home = vim.env.WIKIHOME
 
-  local cmd_string = pdf_viewer.." "..wiki_home.."/printed/"..page_name..".pdf"
+  if not pdf_viewer or pdf_viewer == "" then
+    notify.error("PDF_VIEWER is not set")
+    return
+  end
 
-  local command = {
-    cmd = 'Dispatch',
-    bang = true,
-    args = { cmd_string }
-  }
+  if not wiki_home or wiki_home == "" then
+    notify.error("WIKIHOME is not set")
+    return
+  end
 
-  vim.api.nvim_cmd(command, {})
+  local page_name = vim.fn.expand("%:t:r")
+  local pdf = wiki_home .. "/printed/" .. page_name .. ".pdf"
+  if vim.fn.filereadable(pdf) ~= 1 then
+    notify.error("Wiki export not found: " .. pdf)
+    return
+  end
 
+  local cmd = vim.split(pdf_viewer, "%s+", { trimempty = true })
+  table.insert(cmd, pdf)
+  vim.system(cmd, { detach = true })
 end
 
 return M

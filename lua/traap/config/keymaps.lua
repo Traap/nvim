@@ -4,7 +4,7 @@ local platform = require("traap.core.platform")
 local keymap = require("traap.core.keymap").keymap
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Disable LazyVim keybindsings
+-- {{{ Disable LazyVim keybindings
 
 -- Delete the current line.
 keymap("n", "<A-j>", "")
@@ -863,7 +863,7 @@ end
 if platform.has_plugin("nvim-lspconfig") then
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
-      local opts = { buffer = args.buf }
+      local opts = { buf = args.buf }
 
       keymap("n", "gd", vim.lsp.buf.definition, opts)
       keymap("n", "gD", vim.lsp.buf.declaration, opts)
@@ -1285,9 +1285,7 @@ if platform.has_plugin("wiki.vim") and platform.is_nvim() then
   end, { desc = "Wiki Pages" })
 
   keymap("n", "<leader>wv", function()
-    platform.with_loaded_plugin("wiki.vim", function()
-      vim.cmd("lua Page_Viewer()")
-    end)
+    require("traap.core.wiki").page_viewer()
   end, { desc = "Wiki View Exported Page" })
 end
 

@@ -16,6 +16,8 @@ local options = {
   equalalways = false,
   fillchars = { foldclose = " ", fold = " ", eob = " " },
   foldlevel = 0,
+  -- Marker folds. Open with a comment, three left braces, and a title.
+  -- The close line ends on column 80. Indent shortens the dash run.
   foldmethod = "marker",
   hidden = true,
   inccommand = "split",
@@ -76,7 +78,7 @@ vim.g.have_nerd_font = true
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
--- Shutup vscode
+-- Quiet VS Code messages.
 if platform.is_vscode() then
   -- Stop "X lines yanked / more / fewer" for normal edits.
   vim.opt.report = 9999
@@ -87,7 +89,7 @@ if platform.is_vscode() then
   -- My shortmess defaults "aToIOWAF",
   vim.opt.shortmess:append("AcCFSsW")
 
-  -- Silent undo: don't show "Aleardy at oldest change."
+  -- Silent undo: don't show "Already at oldest change."
   vim.keymap.set("n", "u", function()
     local ut = vim.fn.undotree()
     if ut.seq_cur > 0 then

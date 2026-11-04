@@ -9,7 +9,7 @@ return {
     auto_resize_height = true, -- highly recommended enable
     preview = {
       auto_preview = true,
-      -- border = {'ΓöÅ', 'Γöü', 'Γöô', 'Γöâ', 'Γö¢', 'Γöü', 'Γöù', 'Γöâ'},
+      -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
       border = "rounded",
       buf_label = true,
       delay_syntax = 80,

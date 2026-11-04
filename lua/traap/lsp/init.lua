@@ -1,6 +1,9 @@
 local M = {}
 -- {{{ claim_lspconfig_commands
 
+-- Skip nvim-lspconfig's plugin script so it does not define LspStart, LspStop,
+-- LspRestart, LspInfo, or LspLog. The commands below own those names.
+-- On Neovim 0.11+ the :lsp command also exists; these wrappers stay.
 M.claim_lspconfig_commands = function()
   vim.g.lspconfig = 1
 end
@@ -57,7 +60,8 @@ end
 
 M.create_lsp_restart_command = function()
   vim.api.nvim_create_user_command("LspRestart", function(info)
-    local server_names = #info.fargs > 0 and info.fargs or vim
+    local server_names = #info.fargs > 0 and info.fargs
+      or vim
         .iter(vim.lsp.get_clients())
         :map(function(client)
           return client.name
@@ -93,7 +97,8 @@ end
 
 M.create_lsp_stop_command = function()
   vim.api.nvim_create_user_command("LspStop", function(info)
-    local server_names = #info.fargs > 0 and info.fargs or vim
+    local server_names = #info.fargs > 0 and info.fargs
+      or vim
         .iter(vim.lsp.get_clients())
         :map(function(client)
           return client.name

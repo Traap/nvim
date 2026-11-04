@@ -1,7 +1,7 @@
 Traap's *Blazing Fast* Neovim configuration.
 
 ### Credits
-* [Folke Lamaitre](https://github.com/folke)
+* [Folke Lemaitre](https://github.com/folke)
 * [LazyVim](https://github.com/LazyVim/LazyVim)
 
 ### Linux Bash Installation
@@ -28,14 +28,17 @@ integration layer when embedded in VS Code.
 
 ### Requirements
 
-- A recent Neovim release with the native `vim.lsp.config()` and
-  `vim.lsp.enable()` APIs.
+- Neovim 0.12 or newer. This tree is maintained on Neovim 0.13, which
+  provides `vim.lsp.config()` and `vim.lsp.enable()`.
 - Git, which bootstraps `lazy.nvim` and installs plugins.
-- A Nerd Font for icons used throughout the interface.
+- A Nerd Font from the v3 collection. Diagnostic signs use the icon table in
+  `lua/traap/config/icons.lua`.
 - `ripgrep` for Snacks grep and todo searches.
+- `tree-sitter` CLI 0.26.1 or newer, `curl`, `tar`, and a C compiler, so
+  `nvim-treesitter` can build parsers.
 - Node.js and Yarn to build `markdown-preview.nvim`.
 - `mise` with Ruby 4.0.0 and Solargraph for Ruby LSP support.
-- `nixd` on `PATH` for Nix LSP support.
+- `nixd` on `PATH` when Mason's registry does not ship it.
 
 Language servers managed by Mason may have additional runtime requirements.
 Use `:checkhealth`, `:checkhealth vim.lsp`, and `:Mason` when diagnosing a
@@ -90,6 +93,14 @@ relative line numbers, persistent sign columns, rounded floating windows,
 right/below splits, no swapfile, and no line wrapping. The system clipboard is
 used locally; remote SSH sessions retain Neovim's internal clipboard.
 
+Folds use `foldmethod=marker`. A fold opens with a Lua comment, three left
+braces, and a title. It closes on column 80. The close line is the comment
+leader, one space, dashes, and three right braces. Deeper indentation shortens
+the dash run so the line stays 80 columns. Four closes in `servers.lua` omit
+the space before the braces and add one dash instead. Do not reflow these
+lines. `comment_block.lua` generates the same 80-column pair from
+`'commentstring'`.
+
 Autocommands add several workflow conveniences:
 
 - Create missing parent directories immediately before saving.
@@ -137,17 +148,22 @@ understand `vim`, plugin APIs, and the active runtime path.
 
 #### Treesitter
 
-Treesitter loads for real file buffers. Bash and regular-expression parsers are
-always ensured; other parsers are installed on the first corresponding
-`FileType` event. Parser setup is skipped for transient interfaces such as
+Treesitter is loaded at startup. The current `nvim-treesitter` rewrite does
+not support lazy-loading, and it needs Neovim 0.12 or newer. Bash and
+regular-expression parsers are ensured during setup. Other parsers are
+installed on the first corresponding `FileType` event, with the install wait
+capped at two minutes. Parser setup is skipped for transient interfaces such as
 completion menus, help, quickfix, Lazy, Mason, Noice, notifications, LSP info,
 and Snacks picker buffers.
 
 #### Harpoon
 
-Harpoon 2 saves changes to its list automatically while leaving branch-specific
-marks and automatic UI-close synchronization disabled. Slots one through eight
-are selected with `;1` through `;8`. Harpoon is not enabled inside VS Code.
+Harpoon 2 writes its list on `VimLeavePre`. UI edits are not saved on toggle,
+and closing the Harpoon window does not sync the list. The old `save_on_change`,
+`mark_branch`, `enter_on_sendcmd`, `excluded_filetypes`, and
+`tmux_autoclose_windows` settings are no longer part of Harpoon. Slots one
+through eight are selected with `;1` through `;8`. Harpoon is not enabled
+inside VS Code.
 
 #### Markdown and wiki editing
 
@@ -155,7 +171,8 @@ are selected with `;1` through `;8`. Harpoon is not enabled inside VS Code.
 web application with `yarn install`. Wiki and journal commands are provided by
 `wiki.vim` plus the local `vim-bundle-wiki.vim` customizations. Bullets and
 checkboxes are active for Markdown, wiki, text, scratch, and Git commit buffers;
-`;x` toggles a checkbox.
+`;x` toggles a checkbox. `<leader>wv` opens the last `:WikiExport` PDF with
+`$PDF_VIEWER` from `$WIKIHOME/printed/`.
 
 `img-clip.nvim` stores pasted images beneath `images/<document-name>/`, prompts
 for the filename, URL-encodes paths, and inserts filetype-specific markup for
@@ -182,8 +199,9 @@ window whose borders follow the configuration's purple highlight palette.
 #### UI
 
 TokyoNight uses its transparent `night` style with italic comments and keywords,
-transparent sidebars and floats, a hidden inactive statusline, bold Lualine, and
-purple borders. Noice renders the command line in a popup, sends ordinary
+transparent sidebars and floats, bold Lualine section headers, and purple
+borders. TokyoNight 4 removed `hide_inactive_statusline`; Lualine runs with
+`globalstatus` instead. Noice renders the command line in a popup, sends ordinary
 messages through notifications, exposes long messages in a split, and filters
 routine editor noise. Lualine includes Git state, diagnostics, macro recording,
 Noice command/search status, file metadata, and cursor position. Which-key uses
@@ -207,11 +225,15 @@ startup. On the first matching `FileType` event, the configuration:
 4. Merges Blink completion capabilities and the format-on-save attachment hook
    with the server-specific options.
 5. Configures and enables the server through `vim.lsp.config()` and
-   `vim.lsp.enable()`; a legacy `lspconfig.setup()` fallback remains available.
+   `vim.lsp.enable()`. `nvim-lspconfig`'s `setup()` framework is not used.
 
-The first visit to a filetype may initiate a Mason installation. Open another
-buffer of that type or run `:LspStart` after installation finishes if the
-executable was not available when Neovim first attempted to start it.
+The first visit to a filetype may start a Mason install for that one package.
+`mason-lspconfig` is not set up again on each filetype, because a later
+`setup()` call replaces `ensure_installed`. Open another buffer of that type
+or run `:LspStart` after installation finishes if the executable was not
+available when Neovim first attempted to start the server. A server missing
+from the Mason registry produces a warning. Set `mason = false` and provide
+`opts.cmd` for those tools.
 
 The registry currently supports:
 
@@ -231,15 +253,15 @@ launched with:
 mise exec ruby@4.0.0 -- solargraph stdio
 ```
 
-`nixd` is expected to exist on `PATH`. If it is unavailable through the active
-Mason registry, its server entry should also use `mason = false`. The Lua server
+`nixd` is installed by Mason when the registry ships it, and otherwise must
+exist on `PATH` with `mason = false`. The Lua server
 knows the complete Neovim runtime library and accepts `vim` and `Snacks` as
 globals. Clangd enables background indexing and clang-tidy, requests detailed
 completion, and suppresses automatic header insertion.
 
-When a client supports `textDocument/formatting`, a buffer-local `BufWritePre`
-hook formats synchronously. The current LSP hook does not consult the
-`vim.b.autoformat` flag used elsewhere in the configuration.
+When a client supports `textDocument/formatting` for that buffer, a
+buffer-local `BufWritePre` hook formats synchronously. The hook skips the
+buffer when `vim.b.autoformat` is `false`. `csv`, `sh`, and `tex` set that flag.
 
 Native LSP mappings are installed when a client attaches:
 

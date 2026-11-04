@@ -1,4 +1,5 @@
 ;; extends
+;; `@namespace` was renamed to `@module`. These are injected globals.
 
-((identifier) @namespace.builtin
-  (#eq? @namespace.builtin "vim"))
+((identifier) @module.builtin
+  (#any-of? @module.builtin "vim" "Snacks"))

@@ -10,8 +10,14 @@ return {
     vim.o.timeoutlen = 300
   end,
 
+  -- plugins.spelling is a table in which-key 3. A boolean used to be enough,
+  -- and assigning a new plugins table would drop marks, registers, and presets
+  -- before which-key merges its defaults.
   opts = function(_, opts)
-    opts.plugins = { spelling = true }
     opts.preset = "modern"
+    opts.plugins = vim.tbl_deep_extend("force", opts.plugins or {}, {
+      spelling = { enabled = true, suggestions = 20 },
+    })
+    return opts
   end,
 }

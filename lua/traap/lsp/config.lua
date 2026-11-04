@@ -1,3 +1,7 @@
+-- Native LSP for Neovim 0.11 and later. Server definitions come from
+-- nvim-lspconfig's `lsp/*.lua` files. This module merges capabilities and
+-- enables one server per filetype. It does not call lspconfig's setup()
+-- framework. That framework is deprecated and removed in nvim-lspconfig v3.
 local M = {}
 local installed_servers = {}
 -- {{{ capabilities
@@ -30,30 +34,41 @@ M.toggle_diagnostic_text = function()
 end
 
 M.configure_diagnostics = function()
+  -- Nerd Font 3 moved the old codicon code points. Use the icon table.
+  local icons = require("traap.config.icons").diagnostics
   local severity = vim.diagnostic.severity
-  local signs = {
-    [severity.ERROR] = " ",
-    [severity.WARN] = " ",
-    [severity.HINT] = " ",
-    [severity.INFO] = " ",
-  }
-  vim.diagnostic.config({ signs = { text = signs } })
+  vim.diagnostic.config({
+    signs = {
+      text = {
+        [severity.ERROR] = icons.Error,
+        [severity.WARN] = icons.Warning,
+        [severity.HINT] = icons.Hint,
+        [severity.INFO] = icons.Information,
+      },
+    },
+  })
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ on_attach
 
 M.on_attach = function()
-  local formatting_group = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+  local formatting_group =
+    vim.api.nvim_create_augroup("LspFormatting", { clear = false })
 
   return function(client, bufnr)
-    if client:supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = formatting_group, buffer = bufnr })
+    -- bufnr matters: formatting can be registered per buffer.
+    if client:supports_method("textDocument/formatting", bufnr) then
+      vim.api.nvim_clear_autocmds({ group = formatting_group, buf = bufnr })
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = formatting_group,
-        buffer = bufnr,
+        buf = bufnr,
         callback = function()
-          vim.lsp.buf.format { async = false }
+          -- csv, sh, and tex set vim.b.autoformat in autocmds.lua.
+          if vim.b[bufnr].autoformat == false then
+            return
+          end
+          vim.lsp.buf.format({ async = false, bufnr = bufnr })
         end,
       })
     end
@@ -66,19 +81,14 @@ end
 M.configure_server = function(server, opts)
   local notify = require("traap.core.notify")
 
-  if vim.lsp.config and vim.lsp.enable and vim.lsp.config[server] then
-    notify.info("Using vim.lsp.config API for " .. server)
+  -- vim.lsp.config() merges opts over lsp/<server>.lua. Do not index
+  -- vim.lsp.config[server] first: that resolves and caches before the merge.
+  local ok, err = pcall(function()
     vim.lsp.config(server, opts)
     vim.lsp.enable(server)
-    return
-  end
-
-  notify.warn("Using legacy lspconfig API for " .. server)
-  local lspconfig = require("lspconfig")
-  if lspconfig[server] then
-    lspconfig[server].setup(opts)
-  else
-    notify.error("No config method found for LSP server: " .. server)
+  end)
+  if not ok then
+    notify.error("Failed to enable " .. server .. ": " .. tostring(err))
   end
 end
 
@@ -93,9 +103,46 @@ M.ensure_mason_server = function(server)
     return
   end
 
-  notify.info("Ensuring LSP server: " .. server)
-  local mason_lsp = require("mason-lspconfig")
-  mason_lsp.setup({ ensure_installed = { server }, automatic_enable = false })
+  -- mason-lspconfig setup() replaces ensure_installed. Install this one
+  -- package through the registry instead of calling setup() again.
+  local ok_mason, mason = pcall(require, "mason")
+  if not ok_mason then
+    notify.error("mason.nvim is not available for " .. server)
+    return
+  end
+  if not mason.has_setup then
+    mason.setup()
+  end
+
+  local registry = require("mason-registry")
+  registry.refresh(vim.schedule_wrap(function(success)
+    if not success then
+      notify.warn("Mason registry refresh failed for " .. server)
+      return
+    end
+
+    local pkg_name =
+      require("mason-lspconfig.mappings").get_mason_map().lspconfig_to_package[server]
+    if not pkg_name then
+      notify.warn(
+        server
+          .. " is not in the Mason registry. Set mason = false or install it on PATH."
+      )
+      return
+    end
+
+    local ok_pkg, pkg = pcall(registry.get_package, pkg_name)
+    if not ok_pkg then
+      notify.warn("Mason package missing for " .. server .. ": " .. pkg_name)
+      return
+    end
+    if pkg:is_installed() or pkg:is_installing() then
+      return
+    end
+
+    notify.info("Installing LSP server: " .. server)
+    pkg:install()
+  end))
 end
 
 -- ------------------------------------------------------------------------- }}}
@@ -112,8 +159,12 @@ M.create_filetype_autocmd = function()
     callback = function(args)
       local ft = args.match
       local server = lsp_map[ft]
-      if not server then return end
-      if installed_servers[server] then return end
+      if not server then
+        return
+      end
+      if installed_servers[server] then
+        return
+      end
       installed_servers[server] = true
 
       M.ensure_mason_server(server)

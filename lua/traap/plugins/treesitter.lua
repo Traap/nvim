@@ -3,7 +3,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     enabled = true and platform.is_nvim(),
-    event = require("traap.config.events").file,
+    -- The rewrite requires Neovim 0.12, tree-sitter CLI >= 0.26, and a C
+    -- compiler. It does not support lazy-loading: queries must be on the
+    -- runtimepath before FileType.
+    lazy = false,
     build = ":TSUpdate",
 
     opts = {},
@@ -20,11 +23,31 @@ return {
         return ok and parser ~= nil
       end
 
-      for _, parser in ipairs(required_parsers) do
-        if not has_parser(parser) then
-          notify.info("Installing Treesitter parser: " .. parser)
-          treesitter.install({ parser }):wait()
+      local function ensure_parser(lang)
+        if has_parser(lang) then
+          return true
         end
+
+        notify.info("Installing Treesitter parser: " .. lang)
+        local ok, err = pcall(function()
+          -- Bound the wait. install() is async and wait() with no timeout blocks forever.
+          treesitter.install({ lang }):wait(120000)
+        end)
+        if not ok then
+          notify.warn(
+            "Could not install Treesitter parser "
+              .. lang
+              .. ": "
+              .. tostring(err)
+          )
+          return false
+        end
+
+        return has_parser(lang)
+      end
+
+      for _, parser in ipairs(required_parsers) do
+        ensure_parser(parser)
       end
 
       local skip_fts = {
@@ -56,22 +79,26 @@ return {
             return
           end
 
-          if not has_parser(lang) then
-            notify.info("Installing Treesitter parser: " .. lang)
-            treesitter.install({ lang }):wait()
+          if not ensure_parser(lang) then
+            return
           end
 
-          if not vim.api.nvim_buf_is_valid(args.buf) or not has_parser(lang) then
+          if
+            not vim.api.nvim_buf_is_valid(args.buf) or not has_parser(lang)
+          then
             return
           end
 
           local ok, err = pcall(vim.treesitter.start, args.buf, lang)
           if not ok then
-            notify.warn("Could not start Treesitter for " .. lang .. ": " .. tostring(err))
+            notify.warn(
+              "Could not start Treesitter for " .. lang .. ": " .. tostring(err)
+            )
             return
           end
 
-          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          vim.bo[args.buf].indentexpr =
+            "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
       })
     end,

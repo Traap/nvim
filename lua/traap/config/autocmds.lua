@@ -16,7 +16,7 @@ local function augroup(name)
   return vim.api.nvim_create_augroup(agName .. name, { clear = true })
 end
 
--- -------------------------------------------------------------------------- }}}
+-- ------------------------------------------------------------------------- }}}
 -- {{{ Automagically close command-line window.
 
 vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
@@ -26,8 +26,8 @@ vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
   end,
 })
 
--- -------------------------------------------------------------------------- }}}
--- {{{ Color tweeks when entering a buffer or when colorscheme change.
+-- ------------------------------------------------------------------------- }}}
+-- {{{ Color tweaks when entering a buffer or when the colorscheme changes.
 --
 --     https://image-color-picker.com/rgb-color-picker
 --     Note: Normally I use 3b4261 most settings found here.
@@ -162,13 +162,13 @@ vim.api.nvim_create_autocmd("FileType", {
       "n",
       "q",
       "<cmd>close<cr>",
-      { buffer = event.buf, silent = true }
+      { buf = event.buf, silent = true }
     )
   end,
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Create dir when saving a file when an intermediate directory is missing.
+-- {{{ Create parent directories before saving.
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = augroup("auto_create_dir"),
@@ -196,7 +196,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Disable autoformat for all file types.
+-- {{{ Disable autoformat for csv, sh, and tex.
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = augroup("no_autoformat"),
@@ -352,7 +352,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Remove trailing WhiteSpace
+-- {{{ Remove trailing whitespace
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = augroup("whitespace"),
@@ -378,7 +378,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Set TeX files types.
+-- {{{ Set TeX file types.
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = augroup("tex"),

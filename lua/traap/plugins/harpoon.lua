@@ -1,6 +1,6 @@
 local platform = require("traap.core.platform")
 return {
-  -- {{{ Define the Harpoon lazy.vim specificaiton.
+  -- {{{ Define the Harpoon lazy.nvim specification.
 
   "ThePrimeagen/harpoon",
   enabled = true and platform.is_nvim(),
@@ -14,15 +14,12 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ Use Harpoon defaults or my customizations.
 
+  -- Harpoon writes the list on VimLeavePre. save_on_change, mark_branch,
+  -- enter_on_sendcmd, excluded_filetypes, and tmux_autoclose_windows are gone.
   opts = {
     settings = {
-      enter_on_sendcmd = false,
-      excluded_filetypes = { "harpoon", "alpha", "dashboard", "gitcommit" },
-      mark_branch = false,
-      save_on_change = true,
       save_on_toggle = false,
       sync_on_ui_close = false,
-      tmux_autoclose_windows = false,
     },
   },
 

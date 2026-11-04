@@ -66,7 +66,6 @@ return {
     quickfile    = { enabled = true },
     rename       = { enabled = true },
     scope        = { enabled = false },
-    scratchfile  = { enabled = false },
     scroll       = { enabled = false },
     statuscolumn = { enabled = true },
     terminal     = { enabled = false },

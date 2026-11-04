@@ -23,18 +23,18 @@ require("traap.core.working").whosePlugins()
 
 -- {{{ HACK: stuff I experiment with before I modify plugins or core files.
 
--- esc fallbadk Omarchy -> vpn -> Reminna -> W11
+-- esc fallback Omarchy -> vpn -> Remmina -> W11
 vim.keymap.set("i", "jk", function()
   return vim.fn.pumvisible() == 1 and "jk" or "<Esc>"
 end, { expr = true, noremap = true, silent = true })
 
--- vscode kackery
+-- vscode hackery
 local platform = require("traap.core.platform")
 if platform.is_nvim() then
   vim.cmd.colorscheme(require("traap.config.colorscheme").name)
 end
 
--- Suppress seach count and wrap messages.
+-- Suppress search count and wrap messages.
 if platform.is_vscode() then
   vim.opt.shortmess:append("S")
   vim.opt.shortmess:append("s")

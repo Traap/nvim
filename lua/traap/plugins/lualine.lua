@@ -22,7 +22,7 @@ return {
       end,
     })
 
-    -- Clear status line macro recording message.s
+    -- Clear the statusline macro recording message.
     vim.api.nvim_create_autocmd("RecordingLeave", {
       callback = function()
         local timer = vim.uv.new_timer()
@@ -41,7 +41,7 @@ return {
       end,
     })
 
-    -- Customzie my options.
+    -- Customize my options.
     opts.options = {
       icons_enabled = true,
       theme = "auto",
