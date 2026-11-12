@@ -14,6 +14,7 @@ local options = {
   cursorline = false,
   expandtab = true,
   equalalways = false,
+  fileencodings = { "ucs-bom", "utf-8", "utf-16le", "utf-16be", "latin1" },
   fillchars = { foldclose = " ", fold = " ", eob = " " },
   foldlevel = 0,
   -- Marker folds. Open with a comment, three left braces, and a title.
