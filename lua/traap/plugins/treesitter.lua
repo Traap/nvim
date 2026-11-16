@@ -65,6 +65,9 @@ return {
         snacks_notif = true,
         snacks_picker_input = true,
         snacks_picker_list = true,
+        -- wiki-ft.vim owns this filetype. There is no tree-sitter parser,
+        -- and starting one sets b:ts_highlight, which blocks syntax/wiki.vim.
+        wiki = true,
       }
 
       vim.api.nvim_create_autocmd("FileType", {
